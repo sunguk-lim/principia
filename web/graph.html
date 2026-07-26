@@ -146,6 +146,28 @@
   .lc-loop { margin-top: 5px; padding: 5px 10px; border: 1px dashed #e0b34d; border-radius: 8px; background: #fdf6e3; color: #a06a00; font-weight: 600; text-align: center; font-size: 12px; }
   .lc-note { color: #8b97b1; font-style: italic; }
   .ac-you { color: #51607a; font-weight: 600; } .ac-llm { color: #7262fd; font-weight: 600; } .ac-cli { color: #1f9d78; font-weight: 600; } .ac-git { color: #b8860b; font-weight: 600; }
+  @media (max-width: 640px) {
+    #topbar { gap: 6px; padding: 8px; }
+    #stats, .spacer { display: none; }
+    .brand { flex-basis: 100%; line-height: 20px; }
+    .controls {
+      flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 3px;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    }
+    .controls::-webkit-scrollbar { display: none; }
+    .controls > * { flex: none; }
+    #search { width: 132px; }
+    #legend { display: none; }
+    #details {
+      top: 82px; right: 8px; left: 8px; width: auto;
+      max-height: calc(100% - 132px); box-sizing: border-box;
+    }
+    #hint {
+      bottom: 8px; max-width: calc(100% - 32px); box-sizing: border-box;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    #help-card { width: calc(100% - 24px); max-height: calc(100% - 24px); padding: 16px; box-sizing: border-box; }
+  }
 </style>
 
 <div id="app">

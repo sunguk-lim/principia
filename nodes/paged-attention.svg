@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <pattern id="waste" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#CFB48A" stroke-width="2" opacity="0.5"/>
+    </pattern>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11px;font-style:italic;font-family:sans-serif}
+      .colh{fill:#8A857C;font-size:9.5px;font-style:italic;font-family:sans-serif}
+      .seq{font-size:10px;font-weight:700;font-family:sans-serif}
+      .bl{font-size:9px;font-weight:700;font-family:sans-serif}
+      .tag{font-size:7.5px;font-weight:700;font-family:sans-serif}
+      .pl{font-size:8.5px;font-weight:700;font-family:sans-serif}
+      .fl{fill:#BAB5AC;font-size:8px;font-family:sans-serif;font-style:italic}
+      .cap{fill:#5A564E;font-size:10.5px;font-family:sans-serif}
+      .leg{font-size:9px;font-family:sans-serif;fill:#5A564E}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="780" height="440" rx="6"/>
+
+  <text class="title" x="30" y="27">Paged attention</text>
+  <text class="sub" x="172" y="27">store the KV-cache in fixed-size blocks, mapped by a block table &#8212; like OS virtual memory</text>
+
+  <text class="colh" x="150" y="56" text-anchor="middle">logical KV blocks  (tag = block-table entry)</text>
+  <text class="colh" x="620" y="56" text-anchor="middle">physical KV pool  (blocks live anywhere)</text>
+
+  <!-- ============ logical sequences ============ -->
+  <text class="seq" x="34" y="98" fill="#16805F">Seq A</text>
+  <rect x="92"  y="80" width="50" height="30" rx="4" fill="#1D9E75" fill-opacity="0.16" stroke="#1D9E75"/><text class="bl" x="117" y="99" text-anchor="middle" fill="#16805F">blk0</text><text class="tag" x="117" y="123" text-anchor="middle" fill="#B07908">&#8594;P3</text>
+  <rect x="150" y="80" width="50" height="30" rx="4" fill="#1D9E75" fill-opacity="0.16" stroke="#1D9E75"/><text class="bl" x="175" y="99" text-anchor="middle" fill="#16805F">blk1</text><text class="tag" x="175" y="123" text-anchor="middle" fill="#16805F">&#8594;P0</text>
+  <rect x="208" y="80" width="50" height="30" rx="4" fill="#1D9E75" fill-opacity="0.16" stroke="#1D9E75"/><text class="bl" x="233" y="99" text-anchor="middle" fill="#16805F">blk2</text><text class="tag" x="233" y="123" text-anchor="middle" fill="#16805F">&#8594;P5</text>
+
+  <text class="seq" x="34" y="178" fill="#433AA0">Seq B</text>
+  <rect x="92"  y="160" width="50" height="30" rx="4" fill="#534AB7" fill-opacity="0.16" stroke="#534AB7"/><text class="bl" x="117" y="179" text-anchor="middle" fill="#433AA0">blk0</text><text class="tag" x="117" y="203" text-anchor="middle" fill="#B07908">&#8594;P3</text>
+  <rect x="150" y="160" width="50" height="30" rx="4" fill="#534AB7" fill-opacity="0.16" stroke="#534AB7"/><text class="bl" x="175" y="179" text-anchor="middle" fill="#433AA0">blk1</text><text class="tag" x="175" y="203" text-anchor="middle" fill="#433AA0">&#8594;P1</text>
+  <text class="fl" x="266" y="179">prefix of A &amp; B is identical &#8594; both blk0 map to P3 (shared once)</text>
+
+  <!-- ============ arrows logical -> physical ============ -->
+  <path id="aL0" d="M142 89  C 360 70, 520 78, 686 95"  fill="none" stroke="#1D9E75" stroke-width="1.3" opacity="0.45" marker-end="url(#ah)"/>
+  <path id="aL1" d="M200 92  C 340 96, 430 98, 506 100" fill="none" stroke="#1D9E75" stroke-width="1.3" opacity="0.45" marker-end="url(#ah)"/>
+  <path id="aL2" d="M258 98  C 380 150, 480 162, 570 164" fill="none" stroke="#1D9E75" stroke-width="1.3" opacity="0.45" marker-end="url(#ah)"/>
+  <path id="bL0" d="M142 172 C 380 168, 540 120, 686 104" fill="none" stroke="#534AB7" stroke-width="1.3" opacity="0.45" marker-end="url(#ah)"/>
+  <path id="bL1" d="M200 168 C 360 158, 470 110, 570 100" fill="none" stroke="#534AB7" stroke-width="1.3" opacity="0.45" marker-end="url(#ah)"/>
+
+  <!-- lookup dots: ride each arrow logical -> physical (the indirection resolving) -->
+  <circle r="3.5" fill="#E8A317" stroke="#FBFAF7" stroke-width="1"><animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"><mpath href="#aL0"/></animateMotion></circle>
+  <circle r="3.5" fill="#E8A317" stroke="#FBFAF7" stroke-width="1"><animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"><mpath href="#aL1"/></animateMotion></circle>
+  <circle r="3.5" fill="#E8A317" stroke="#FBFAF7" stroke-width="1"><animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"><mpath href="#aL2"/></animateMotion></circle>
+  <circle r="3.5" fill="#E8A317" stroke="#FBFAF7" stroke-width="1"><animateMotion dur="5s" begin="0.4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"><mpath href="#bL0"/></animateMotion></circle>
+  <circle r="3.5" fill="#E8A317" stroke="#FBFAF7" stroke-width="1"><animateMotion dur="5s" begin="0.4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"><mpath href="#bL1"/></animateMotion></circle>
+
+  <!-- ============ physical KV pool (4 x 2) ============ -->
+  <rect x="478" y="70" width="284" height="118" rx="6" fill="#B8B3AA" fill-opacity="0.05" stroke="#D7D2C9"/>
+  <!-- row 0 -->
+  <rect x="494" y="82" width="52" height="34" rx="4" fill="#1D9E75" fill-opacity="0.22" stroke="#1D9E75"/><text class="pl" x="520" y="103" text-anchor="middle" fill="#16805F">P0</text>
+  <rect x="560" y="82" width="52" height="34" rx="4" fill="#534AB7" fill-opacity="0.22" stroke="#534AB7"/><text class="pl" x="586" y="103" text-anchor="middle" fill="#433AA0">P1</text>
+  <rect x="626" y="82" width="52" height="34" rx="4" fill="none" stroke="#CFCABF" stroke-width="1.1" stroke-dasharray="3 2.5"/><text class="pl" x="652" y="103" text-anchor="middle" fill="#BAB5AC">P2</text>
+  <rect x="692" y="82" width="52" height="34" rx="4" fill="#E8A317" fill-opacity="0.18" stroke="#E8A317" stroke-width="1.7"/><text class="pl" x="718" y="100" text-anchor="middle" fill="#B07908">P3</text><text class="tag" x="718" y="111" text-anchor="middle" fill="#B07908">shared</text>
+  <!-- row 1 -->
+  <rect x="494" y="146" width="52" height="34" rx="4" fill="none" stroke="#CFCABF" stroke-width="1.1" stroke-dasharray="3 2.5"/><text class="pl" x="520" y="167" text-anchor="middle" fill="#BAB5AC">P4</text>
+  <rect x="560" y="146" width="52" height="34" rx="4" fill="#1D9E75" fill-opacity="0.22" stroke="#1D9E75"/><text class="pl" x="586" y="164" text-anchor="middle" fill="#16805F">P5</text><text class="tag" x="586" y="175" text-anchor="middle" fill="#16805F">newest</text>
+  <rect x="626" y="146" width="52" height="34" rx="4" fill="none" stroke="#CFCABF" stroke-width="1.1" stroke-dasharray="3 2.5"/><text class="pl" x="652" y="167" text-anchor="middle" fill="#BAB5AC">P6</text>
+  <rect x="692" y="146" width="52" height="34" rx="4" fill="none" stroke="#CFCABF" stroke-width="1.1" stroke-dasharray="3 2.5"/><text class="pl" x="718" y="167" text-anchor="middle" fill="#BAB5AC">P7</text>
+
+  <!-- legend -->
+  <rect x="478" y="202" width="13" height="11" rx="2" fill="#1D9E75" fill-opacity="0.4" stroke="#1D9E75"/><text class="leg" x="496" y="211">allocated</text>
+  <rect x="560" y="202" width="13" height="11" rx="2" fill="none" stroke="#CFCABF" stroke-dasharray="3 2.5"/><text class="leg" x="578" y="211">free</text>
+  <rect x="616" y="202" width="13" height="11" rx="2" fill="#E8A317" fill-opacity="0.3" stroke="#E8A317" stroke-width="1.5"/><text class="leg" x="634" y="211">shared (copy-on-write)</text>
+
+  <line x1="30" y1="236" x2="750" y2="236" stroke="#E2DDD3" stroke-width="1"/>
+
+  <!-- ============ naive contrast ============ -->
+  <text class="colh" x="30" y="262" fill="#A6471F" font-style="normal" font-weight="700">the problem paged attention solves &#8212; naive contiguous cache:</text>
+  <rect x="30" y="272" width="120" height="24" rx="3" fill="#1D9E75" fill-opacity="0.22" stroke="#1D9E75"/><text class="leg" x="90" y="288" text-anchor="middle" fill="#16805F">used (50 tok)</text>
+  <rect x="150" y="272" width="500" height="24" rx="3" fill="url(#waste)" stroke="#CFB48A"/>
+  <text class="leg" x="400" y="288" text-anchor="middle" fill="#9A7B3A">reserved for MAX length but unused &#8212; dead memory, can't be shared</text>
+  <text class="fl" x="660" y="288" font-style="normal">one block / seq</text>
+
+  <!-- captions -->
+  <text class="cap" x="30" y="328">&#8226; <tspan font-weight="700">Block table = page table.</tspan> Attention reads K,V by walking each sequence's logical&#8594;physical map; the math is unchanged.</text>
+  <text class="cap" x="30" y="348">&#8226; <tspan font-weight="700">On demand.</tspan> A new physical block is handed out only when the current one fills &#8212; internal waste &#8804; one partial block, not a whole buffer.</text>
+  <text class="cap" x="30" y="368">&#8226; <tspan font-weight="700">Share by reference.</tspan> Identical prefix blocks (A.blk0, B.blk0) point to the <tspan font-style="italic">same</tspan> physical P3 &#8212; stored once, copied only on divergence.</text>
+  <text class="cap" x="30" y="388">&#8226; <tspan font-weight="700">Result.</tspan> Near-zero fragmentation &#8594; many more sequences fit in GPU memory at once &#8594; far higher batch throughput.</text>
+</svg>

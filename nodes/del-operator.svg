@@ -1,0 +1,64 @@
+<svg viewBox="0 0 680 515" role="img" xmlns="http://www.w3.org/2000/svg">
+<style>
+text{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+.th{font-weight:600;font-size:15px;fill:#1B1A17}
+.t{font-size:13px;fill:#1B1A17}
+.ts{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:12px;fill:#5A564E}
+.c-blue{fill:#E3EFFB;stroke:#5B8FD0}
+.c-teal{fill:#E2F3EE;stroke:#3F9B86}
+.c-amber{fill:#FBF0DB;stroke:#C79A3E}
+</style>
+<rect x="0" y="0" width="680" height="515" fill="#FBFAF7"/>
+        <title>One building block combined by three products and then composed</title>
+        <defs><marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <text class="th" x="40" y="30">The whole family from one building block</text>
+        <text class="ts" x="40" y="50">∇ is the atom; products and compositions build everything else.</text>
+        <rect x="468" y="30" width="12" height="12" rx="2" class="c-blue"/>
+        <text class="ts" x="484" y="40" dominant-baseline="central">scalar</text>
+        <rect x="540" y="30" width="12" height="12" rx="2" class="c-teal"/>
+        <text class="ts" x="556" y="40" dominant-baseline="central">vector</text>
+        <rect x="612" y="30" width="12" height="12" rx="2" class="c-amber"/>
+        <text class="ts" x="628" y="40" dominant-baseline="central">matrix</text>
+        <text class="ts" x="340" y="72" text-anchor="middle">the del operator — a vector of derivatives</text>
+        <rect x="222" y="82" width="236" height="46" rx="10" fill="#F2EFE9" stroke="#D85A30" stroke-width="1.8"/>
+        <text class="t" x="340" y="105" text-anchor="middle" dominant-baseline="central">∇ = ( ∂/∂x , ∂/∂y , ∂/∂z )</text>
+        <line x1="300" y1="128" x2="150" y2="176" stroke="#D85A30" stroke-width="1.5" marker-end="url(#ar2)"/>
+        <text class="ts" x="205" y="150" text-anchor="middle">scalar ×</text>
+        <line x1="340" y1="128" x2="340" y2="176" stroke="#D85A30" stroke-width="1.5" marker-end="url(#ar2)"/>
+        <text class="ts" x="372" y="153" dominant-baseline="central">dot ·</text>
+        <line x1="380" y1="128" x2="546" y2="176" stroke="#D85A30" stroke-width="1.5" marker-end="url(#ar2)"/>
+        <text class="ts" x="470" y="150" text-anchor="middle">cross ×</text>
+        <rect x="40" y="180" width="184" height="64" rx="8" class="c-teal" stroke-width="0.5"/>
+        <text class="th" x="132" y="198" text-anchor="middle" dominant-baseline="central">∇f</text>
+        <text class="t" x="132" y="218" text-anchor="middle" dominant-baseline="central">gradient</text>
+        <text class="ts" x="132" y="234" text-anchor="middle" dominant-baseline="central">scalar → vector</text>
+        <rect x="248" y="180" width="184" height="64" rx="8" class="c-blue" stroke-width="0.5"/>
+        <text class="th" x="340" y="198" text-anchor="middle" dominant-baseline="central">∇ · F</text>
+        <text class="t" x="340" y="218" text-anchor="middle" dominant-baseline="central">divergence</text>
+        <text class="ts" x="340" y="234" text-anchor="middle" dominant-baseline="central">vector → scalar</text>
+        <rect x="456" y="180" width="184" height="64" rx="8" class="c-teal" stroke-width="0.5"/>
+        <text class="th" x="548" y="198" text-anchor="middle" dominant-baseline="central">∇ × F</text>
+        <text class="t" x="548" y="218" text-anchor="middle" dominant-baseline="central">curl</text>
+        <text class="ts" x="548" y="234" text-anchor="middle" dominant-baseline="central">vector → vector</text>
+        <line x1="120" y1="244" x2="120" y2="298" stroke="#D85A30" stroke-width="1.4" marker-end="url(#ar2)"/>
+        <text class="ts" x="135" y="272" dominant-baseline="central">then ∇·</text>
+        <line x1="180" y1="244" x2="312" y2="298" stroke="#D85A30" stroke-width="1.4" marker-end="url(#ar2)"/>
+        <text class="ts" x="258" y="266" text-anchor="middle">then ∇ (full)</text>
+        <line x1="388" y1="244" x2="500" y2="298" stroke="#938E83" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ar2)"/>
+        <line x1="556" y1="244" x2="556" y2="298" stroke="#938E83" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ar2)"/>
+        <rect x="40" y="300" width="184" height="56" rx="8" class="c-blue" stroke-width="0.5"/>
+        <text class="th" x="132" y="320" text-anchor="middle" dominant-baseline="central">∇²f = ∇·(∇f)</text>
+        <text class="ts" x="132" y="340" text-anchor="middle" dominant-baseline="central">Laplacian (scalar)</text>
+        <rect x="248" y="300" width="184" height="56" rx="8" class="c-amber" stroke-width="0.5"/>
+        <text class="th" x="340" y="320" text-anchor="middle" dominant-baseline="central">H = ∇(∇f)</text>
+        <text class="ts" x="340" y="340" text-anchor="middle" dominant-baseline="central">Hessian (matrix)</text>
+        <rect x="456" y="300" width="184" height="56" rx="8" class="c-amber" stroke-width="0.5"/>
+        <text class="th" x="548" y="320" text-anchor="middle" dominant-baseline="central">J = ∇F</text>
+        <text class="ts" x="548" y="340" text-anchor="middle" dominant-baseline="central">Jacobian (matrix)</text>
+        <text class="ts" x="340" y="382" text-anchor="middle">Read the full matrix: trace → divergence &amp; Laplacian,   antisymmetric part → curl.</text>
+        <rect x="40" y="400" width="600" height="58" rx="10" fill="#F2EFE9"/>
+        <text class="th" x="340" y="420" text-anchor="middle" dominant-baseline="central">Identities from antisymmetry</text>
+        <text class="t" x="210" y="442" text-anchor="middle" dominant-baseline="central">∇ × (∇f) = 0</text>
+        <text class="t" x="470" y="442" text-anchor="middle" dominant-baseline="central">∇ · (∇ × F) = 0</text>
+        <text class="ts" x="340" y="490" text-anchor="middle">Every operator here is ∇ combined by a product, then optionally composed.</text>
+      </svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" width="680" height="320" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11.5px;font-style:italic;font-family:sans-serif}
+      .hdr{fill:#8A857C;font-size:11px;font-family:sans-serif;font-style:italic}
+      .bhdr{fill:#C8860A;font-size:11px;font-family:sans-serif;font-weight:600}
+      .rank{font-size:12px;font-weight:600;font-family:sans-serif}
+      .cap{fill:#5A564E;font-size:12px;font-family:sans-serif}
+      .axis{stroke:#C9C4BB;stroke-width:1}
+      .axlab{fill:#8A857C;font-size:11px;font-family:sans-serif;font-style:italic}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="680" height="320" rx="6"/>
+
+  <text class="title" x="32" y="30">Barrier</text>
+  <text class="sub" x="108" y="30">block every process until all have arrived, then release together  ·  synchronization, no data</text>
+
+  <!-- column headers -->
+  <text class="hdr"  x="230" y="58" text-anchor="middle">working</text>
+  <text class="bhdr" x="450" y="58" text-anchor="middle">barrier</text>
+  <text class="hdr"  x="558" y="58" text-anchor="middle">continue</text>
+
+  <!-- barrier line -->
+  <line x1="450" y1="66" x2="450" y2="240" stroke="#EF9F27" stroke-width="2.5" stroke-dasharray="5 3" opacity="0.9"/>
+
+  <!-- ===== P0 (purple): finishes early, waits long ===== -->
+  <text class="rank" x="40" y="96" text-anchor="middle" fill="#534AB7">P0</text>
+  <rect x="64" y="82" width="136" height="20" rx="4" fill="#534AB7" fill-opacity="0.28" stroke="#534AB7" stroke-width="0.8"/>
+  <circle cx="200" cy="92" r="3.5" fill="#534AB7"/>
+  <line x1="200" y1="92" x2="450" y2="92" stroke="#534AB7" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.5"/>
+  <rect x="460" y="82" width="150" height="20" rx="4" fill="#534AB7" fill-opacity="0.28" stroke="#534AB7" stroke-width="0.8"/>
+
+  <!-- ===== P1 (teal) ===== -->
+  <text class="rank" x="40" y="138" text-anchor="middle" fill="#1D9E75">P1</text>
+  <rect x="64" y="124" width="236" height="20" rx="4" fill="#1D9E75" fill-opacity="0.28" stroke="#1D9E75" stroke-width="0.8"/>
+  <circle cx="300" cy="134" r="3.5" fill="#1D9E75"/>
+  <line x1="300" y1="134" x2="450" y2="134" stroke="#1D9E75" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.5"/>
+  <rect x="460" y="124" width="150" height="20" rx="4" fill="#1D9E75" fill-opacity="0.28" stroke="#1D9E75" stroke-width="0.8"/>
+
+  <!-- ===== P2 (coral): the straggler — last to arrive ===== -->
+  <text class="rank" x="40" y="180" text-anchor="middle" fill="#D85A30">P2</text>
+  <rect x="64" y="166" width="376" height="20" rx="4" fill="#D85A30" fill-opacity="0.28" stroke="#D85A30" stroke-width="0.8"/>
+  <circle cx="440" cy="176" r="3.5" fill="#D85A30"/>
+  <line x1="440" y1="176" x2="450" y2="176" stroke="#D85A30" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.5"/>
+  <rect x="460" y="166" width="150" height="20" rx="4" fill="#D85A30" fill-opacity="0.28" stroke="#D85A30" stroke-width="0.8"/>
+
+  <!-- ===== P3 (pink) ===== -->
+  <text class="rank" x="40" y="222" text-anchor="middle" fill="#D4537E">P3</text>
+  <rect x="64" y="208" width="186" height="20" rx="4" fill="#D4537E" fill-opacity="0.28" stroke="#D4537E" stroke-width="0.8"/>
+  <circle cx="250" cy="218" r="3.5" fill="#D4537E"/>
+  <line x1="250" y1="218" x2="450" y2="218" stroke="#D4537E" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.5"/>
+  <rect x="460" y="208" width="150" height="20" rx="4" fill="#D4537E" fill-opacity="0.28" stroke="#D4537E" stroke-width="0.8"/>
+
+  <!-- time axis -->
+  <line class="axis" x1="60" y1="252" x2="624" y2="252" marker-end="url(#ah)"/>
+  <text class="axlab" x="636" y="252" text-anchor="start" fill="#8A857C">time</text>
+
+  <text class="cap" x="340" y="284" text-anchor="middle">Each process finishes its work at a different time, then blocks at the barrier (dashed = waiting).</text>
+  <text class="cap" x="340" y="302" text-anchor="middle">No one continues until the last to arrive (P2); then all are released together. No data moves.</text>
+</svg>

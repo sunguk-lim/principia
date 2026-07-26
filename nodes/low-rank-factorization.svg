@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="420" height="220" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <style>
+    .bg{fill:#FBFAF7}
+    .mat{fill:#FBF0DB;stroke:#C79A3E;stroke-width:1}
+    .grid{stroke:#C79A3E;stroke-width:0.5}
+    .brk{fill:none;stroke:#1B1A17;stroke-width:1.1}
+    .op{fill:#D85A30;font-size:20px;font-weight:600}
+    .name{fill:#1B1A17;font-weight:600;font-size:14px}
+    .dim{fill:#2F6FB5;font-style:italic;font-size:12px;font-family:sans-serif}
+    .rel{fill:#5A564E;font-size:11px;font-family:sans-serif}
+    .title{fill:#1B1A17;font-size:15px}
+    .leg{fill:#2F6FB5;font-size:11px;font-style:italic;font-family:sans-serif}
+  </style>
+  <rect class="bg" x="0" y="0" width="420" height="220" rx="6"/>
+  <text class="title" x="210" y="24" text-anchor="middle">W  ≈  B · A</text>
+  <text class="leg" x="210" y="42" text-anchor="middle">drawn to scale:  r ≪ d</text>
+
+  <!-- W : d×d  (square, 6×6) -->
+  <rect class="mat" x="50" y="60" width="96" height="96"/>
+  <line class="grid" x1="66" y1="60" x2="66" y2="156"/><line class="grid" x1="82" y1="60" x2="82" y2="156"/><line class="grid" x1="98" y1="60" x2="98" y2="156"/><line class="grid" x1="114" y1="60" x2="114" y2="156"/><line class="grid" x1="130" y1="60" x2="130" y2="156"/>
+  <line class="grid" x1="50" y1="76" x2="146" y2="76"/><line class="grid" x1="50" y1="92" x2="146" y2="92"/><line class="grid" x1="50" y1="108" x2="146" y2="108"/><line class="grid" x1="50" y1="124" x2="146" y2="124"/><line class="grid" x1="50" y1="140" x2="146" y2="140"/>
+  <path class="brk" d="M46 60 L40 60 L40 156 L46 156"/><path class="brk" d="M150 60 L156 60 L156 156 L150 156"/>
+  <text class="name" x="98" y="52" text-anchor="middle">W</text>
+  <text class="dim" x="98" y="174" text-anchor="middle">d × d</text>
+
+  <text class="op" x="176" y="114" text-anchor="middle">≈</text>
+
+  <!-- B : d×r  (thin vertical sliver, 1 col × 6 rows) -->
+  <rect class="mat" x="196" y="60" width="16" height="96"/>
+  <line class="grid" x1="196" y1="76" x2="212" y2="76"/><line class="grid" x1="196" y1="92" x2="212" y2="92"/><line class="grid" x1="196" y1="108" x2="212" y2="108"/><line class="grid" x1="196" y1="124" x2="212" y2="124"/><line class="grid" x1="196" y1="140" x2="212" y2="140"/>
+  <path class="brk" d="M192 60 L186 60 L186 156 L192 156"/><path class="brk" d="M216 60 L222 60 L222 156 L216 156"/>
+  <text class="name" x="204" y="52" text-anchor="middle">B</text>
+  <text class="dim" x="204" y="174" text-anchor="middle">d × r</text>
+
+  <text class="op" x="238" y="114" text-anchor="middle">·</text>
+
+  <!-- A : r×d  (flat horizontal sliver, 6 cols × 1 row) -->
+  <rect class="mat" x="258" y="100" width="96" height="16"/>
+  <line class="grid" x1="274" y1="100" x2="274" y2="116"/><line class="grid" x1="290" y1="100" x2="290" y2="116"/><line class="grid" x1="306" y1="100" x2="306" y2="116"/><line class="grid" x1="322" y1="100" x2="322" y2="116"/><line class="grid" x1="338" y1="100" x2="338" y2="116"/>
+  <path class="brk" d="M254 100 L248 100 L248 116 L254 116"/><path class="brk" d="M358 100 L364 100 L364 116 L358 116"/>
+  <text class="name" x="306" y="92" text-anchor="middle">A</text>
+  <text class="dim" x="306" y="134" text-anchor="middle">r × d</text>
+
+  <text class="rel" x="210" y="202" text-anchor="middle">B is a tall sliver, A a flat one (width/height r ≪ d) → B·A has rank ≤ r</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="680" height="340" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11.5px;font-style:italic;font-family:sans-serif}
+      .rowlab{fill:#8A857C;font-size:11px;font-family:sans-serif;font-style:italic}
+      .off{fill:#B8B3AA;fill-opacity:0.10;stroke:#C9C4BB;stroke-width:1}
+      .host{fill:#B8B3AA;fill-opacity:0.06;stroke:#C9C4BB;stroke-width:1}
+      .rank{fill:#8A857C;font-size:11px;font-family:sans-serif}
+      .cap{fill:#5A564E;font-size:12.5px;font-family:sans-serif}
+      .lbl{font-size:14px;font-weight:600;font-family:sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="680" height="340" rx="6"/>
+
+  <text class="title" x="32" y="30">Scatter</text>
+  <text class="sub" x="100" y="30">root splits data into chunks, one per process  ·  one → all (split, not copy)</text>
+
+  <!-- before: P0 holds four distinct chunks A B C D -->
+  <text class="rowlab" x="32" y="92">before</text>
+  <rect class="host" x="44" y="70" width="132" height="40" rx="6"/>
+  <rect x="50"  y="76" width="28" height="28" rx="3" fill="#534AB7" fill-opacity="0.20" stroke="#534AB7"/>
+  <rect x="80"  y="76" width="28" height="28" rx="3" fill="#1D9E75" fill-opacity="0.20" stroke="#1D9E75"/>
+  <rect x="110" y="76" width="28" height="28" rx="3" fill="#D85A30" fill-opacity="0.20" stroke="#D85A30"/>
+  <rect x="140" y="76" width="28" height="28" rx="3" fill="#D4537E" fill-opacity="0.20" stroke="#D4537E"/>
+  <text class="lbl" x="64"  y="95" text-anchor="middle" fill="#534AB7">A</text>
+  <text class="lbl" x="94"  y="95" text-anchor="middle" fill="#1D9E75">B</text>
+  <text class="lbl" x="124" y="95" text-anchor="middle" fill="#D85A30">C</text>
+  <text class="lbl" x="154" y="95" text-anchor="middle" fill="#D4537E">D</text>
+  <rect class="off" x="228" y="70" width="84" height="40" rx="6"/>
+  <rect class="off" x="388" y="70" width="84" height="40" rx="6"/>
+  <rect class="off" x="548" y="70" width="84" height="40" rx="6"/>
+  <text class="rank" x="110" y="126" text-anchor="middle">P0  (root)</text>
+  <text class="rank" x="270" y="126" text-anchor="middle">P1</text>
+  <text class="rank" x="430" y="126" text-anchor="middle">P2</text>
+  <text class="rank" x="590" y="126" text-anchor="middle">P3</text>
+
+  <!-- flow: each chunk goes to a different process (color-matched) -->
+  <path d="M64 110 L108 228"  fill="none" stroke="#534AB7" stroke-width="1.6" opacity="0.6" marker-end="url(#ah)"/>
+  <path d="M94 110 C 140 165, 230 175, 268 226" fill="none" stroke="#1D9E75" stroke-width="1.6" opacity="0.6" marker-end="url(#ah)"/>
+  <path d="M124 110 C 220 160, 360 165, 426 226" fill="none" stroke="#D85A30" stroke-width="1.6" opacity="0.6" marker-end="url(#ah)"/>
+  <path d="M154 110 C 320 150, 500 160, 586 226" fill="none" stroke="#D4537E" stroke-width="1.6" opacity="0.6" marker-end="url(#ah)"/>
+
+  <!-- after: each process holds one chunk -->
+  <text class="rowlab" x="32" y="252">after</text>
+  <rect x="68"  y="230" width="84" height="40" rx="6" fill="#534AB7" fill-opacity="0.14" stroke="#534AB7" stroke-width="1.2"/>
+  <rect x="228" y="230" width="84" height="40" rx="6" fill="#1D9E75" fill-opacity="0.14" stroke="#1D9E75" stroke-width="1.2"/>
+  <rect x="388" y="230" width="84" height="40" rx="6" fill="#D85A30" fill-opacity="0.14" stroke="#D85A30" stroke-width="1.2"/>
+  <rect x="548" y="230" width="84" height="40" rx="6" fill="#D4537E" fill-opacity="0.14" stroke="#D4537E" stroke-width="1.2"/>
+  <text class="lbl" x="110" y="255" text-anchor="middle" fill="#534AB7">A</text>
+  <text class="lbl" x="270" y="255" text-anchor="middle" fill="#1D9E75">B</text>
+  <text class="lbl" x="430" y="255" text-anchor="middle" fill="#D85A30">C</text>
+  <text class="lbl" x="590" y="255" text-anchor="middle" fill="#D4537E">D</text>
+  <text class="rank" x="110" y="286" text-anchor="middle">P0</text>
+  <text class="rank" x="270" y="286" text-anchor="middle">P1</text>
+  <text class="rank" x="430" y="286" text-anchor="middle">P2</text>
+  <text class="rank" x="590" y="286" text-anchor="middle">P3</text>
+
+  <text class="cap" x="340" y="320" text-anchor="middle">P0 holds chunks A B C D  →  each process receives a different chunk (split, one-to-each — distinct colors)</text>
+</svg>

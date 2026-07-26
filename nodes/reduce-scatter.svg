@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" width="680" height="440" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11.5px;font-style:italic;font-family:sans-serif}
+      .rowlab{fill:#8A857C;font-size:11px;font-family:sans-serif;font-style:italic}
+      .rank{fill:#8A857C;font-size:11px;font-family:sans-serif}
+      .cap{fill:#5A564E;font-size:12px;font-family:sans-serif}
+      .host{fill:#B8B3AA;fill-opacity:0.06;stroke:#C9C4BB;stroke-width:1}
+      .cl{font-size:11px;font-weight:600;font-family:sans-serif}
+      .eq{font-size:10px;font-weight:600;font-family:sans-serif}
+      .lbl{font-size:15px;font-weight:600;font-family:sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="680" height="440" rx="6"/>
+
+  <text class="title" x="32" y="30">Reduce-scatter</text>
+  <text class="sub" x="172" y="30">reduce each column element-wise, then scatter one slice to each process  ·  all → all, computed</text>
+
+  <!-- ===== BEFORE: each process holds a vector; colour = column = destination slice ===== -->
+  <text class="rowlab" x="32" y="90">before</text>
+  <!-- P0 -->
+  <rect class="host" x="52"  y="68" width="116" height="36" rx="6"/>
+  <rect x="59"  y="72" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
+  <rect x="85"  y="72" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
+  <rect x="111" y="72" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
+  <rect x="137" y="72" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
+  <text class="cl" x="71"  y="89" text-anchor="middle" fill="#534AB7">1</text>
+  <text class="cl" x="97"  y="89" text-anchor="middle" fill="#1D9E75">2</text>
+  <text class="cl" x="123" y="89" text-anchor="middle" fill="#D85A30">3</text>
+  <text class="cl" x="149" y="89" text-anchor="middle" fill="#D4537E">4</text>
+  <!-- P1 -->
+  <rect class="host" x="212" y="68" width="116" height="36" rx="6"/>
+  <rect x="219" y="72" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
+  <rect x="245" y="72" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
+  <rect x="271" y="72" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
+  <rect x="297" y="72" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
+  <text class="cl" x="231" y="89" text-anchor="middle" fill="#534AB7">5</text>
+  <text class="cl" x="257" y="89" text-anchor="middle" fill="#1D9E75">3</text>
+  <text class="cl" x="283" y="89" text-anchor="middle" fill="#D85A30">1</text>
+  <text class="cl" x="309" y="89" text-anchor="middle" fill="#D4537E">2</text>
+  <!-- P2 -->
+  <rect class="host" x="372" y="68" width="116" height="36" rx="6"/>
+  <rect x="379" y="72" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
+  <rect x="405" y="72" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
+  <rect x="431" y="72" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
+  <rect x="457" y="72" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
+  <text class="cl" x="391" y="89" text-anchor="middle" fill="#534AB7">2</text>
+  <text class="cl" x="417" y="89" text-anchor="middle" fill="#1D9E75">7</text>
+  <text class="cl" x="443" y="89" text-anchor="middle" fill="#D85A30">4</text>
+  <text class="cl" x="469" y="89" text-anchor="middle" fill="#D4537E">1</text>
+  <!-- P3 -->
+  <rect class="host" x="532" y="68" width="116" height="36" rx="6"/>
+  <rect x="539" y="72" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
+  <rect x="565" y="72" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
+  <rect x="591" y="72" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
+  <rect x="617" y="72" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
+  <text class="cl" x="551" y="89" text-anchor="middle" fill="#534AB7">4</text>
+  <text class="cl" x="577" y="89" text-anchor="middle" fill="#1D9E75">1</text>
+  <text class="cl" x="603" y="89" text-anchor="middle" fill="#D85A30">2</text>
+  <text class="cl" x="629" y="89" text-anchor="middle" fill="#D4537E">8</text>
+  <text class="rank" x="110" y="120" text-anchor="middle">P0</text>
+  <text class="rank" x="270" y="120" text-anchor="middle">P1</text>
+  <text class="rank" x="430" y="120" text-anchor="middle">P2</text>
+  <text class="rank" x="590" y="120" text-anchor="middle">P3</text>
+
+  <!-- ===== PHASE 1: each column's values converge to its SUM box (colour = column) ===== -->
+  <!-- col 0 (purple) -> box at 110 -->
+  <path d="M71 106 L110 188"  fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M231 106 L110 188" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M391 106 L110 188" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M551 106 L110 188" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <!-- col 1 (teal) -> box at 270 -->
+  <path d="M97 106 L270 188"  fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M257 106 L270 188" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M417 106 L270 188" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M577 106 L270 188" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <!-- col 2 (coral) -> box at 430 -->
+  <path d="M123 106 L430 188" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M283 106 L430 188" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M443 106 L430 188" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M603 106 L430 188" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <!-- col 3 (pink) -> box at 590 -->
+  <path d="M149 106 L590 188" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M309 106 L590 188" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M469 106 L590 188" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <path d="M629 106 L590 188" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+
+  <!-- SUM boxes (one per column), positioned above their destination process -->
+  <rect x="54"  y="190" width="112" height="34" rx="8" fill="#534AB7" fill-opacity="0.06" stroke="#B0ABA2"/>
+  <rect x="214" y="190" width="112" height="34" rx="8" fill="#1D9E75" fill-opacity="0.06" stroke="#B0ABA2"/>
+  <rect x="374" y="190" width="112" height="34" rx="8" fill="#D85A30" fill-opacity="0.06" stroke="#B0ABA2"/>
+  <rect x="534" y="190" width="112" height="34" rx="8" fill="#D4537E" fill-opacity="0.06" stroke="#B0ABA2"/>
+  <text class="eq" x="110" y="211" text-anchor="middle"><tspan fill="#534AB7">1+5+2+4</tspan><tspan fill="#5A564E"> = </tspan><tspan fill="#BA7517">12</tspan></text>
+  <text class="eq" x="270" y="211" text-anchor="middle"><tspan fill="#1D9E75">2+3+7+1</tspan><tspan fill="#5A564E"> = </tspan><tspan fill="#BA7517">13</tspan></text>
+  <text class="eq" x="430" y="211" text-anchor="middle"><tspan fill="#D85A30">3+1+4+2</tspan><tspan fill="#5A564E"> = </tspan><tspan fill="#BA7517">10</tspan></text>
+  <text class="eq" x="590" y="211" text-anchor="middle"><tspan fill="#D4537E">4+2+1+8</tspan><tspan fill="#5A564E"> = </tspan><tspan fill="#BA7517">15</tspan></text>
+
+  <!-- ===== PHASE 2: scatter — each result drops to its own process (amber = computed) ===== -->
+  <path d="M110 226 L110 326" fill="none" stroke="#BA7517" stroke-width="1.8" opacity="0.7" marker-end="url(#ah)"/>
+  <path d="M270 226 L270 326" fill="none" stroke="#BA7517" stroke-width="1.8" opacity="0.7" marker-end="url(#ah)"/>
+  <path d="M430 226 L430 326" fill="none" stroke="#BA7517" stroke-width="1.8" opacity="0.7" marker-end="url(#ah)"/>
+  <path d="M590 226 L590 326" fill="none" stroke="#BA7517" stroke-width="1.8" opacity="0.7" marker-end="url(#ah)"/>
+
+  <!-- ===== AFTER: each process holds one reduced slice ===== -->
+  <text class="rowlab" x="32" y="350">after</text>
+  <rect x="68"  y="328" width="84" height="38" rx="6" fill="#BA7517" fill-opacity="0.16" stroke="#BA7517" stroke-width="1.3"/>
+  <rect x="228" y="328" width="84" height="38" rx="6" fill="#BA7517" fill-opacity="0.16" stroke="#BA7517" stroke-width="1.3"/>
+  <rect x="388" y="328" width="84" height="38" rx="6" fill="#BA7517" fill-opacity="0.16" stroke="#BA7517" stroke-width="1.3"/>
+  <rect x="548" y="328" width="84" height="38" rx="6" fill="#BA7517" fill-opacity="0.16" stroke="#BA7517" stroke-width="1.3"/>
+  <text class="lbl" x="110" y="352" text-anchor="middle" fill="#BA7517">12</text>
+  <text class="lbl" x="270" y="352" text-anchor="middle" fill="#BA7517">13</text>
+  <text class="lbl" x="430" y="352" text-anchor="middle" fill="#BA7517">10</text>
+  <text class="lbl" x="590" y="352" text-anchor="middle" fill="#BA7517">15</text>
+  <text class="rank" x="110" y="382" text-anchor="middle">P0</text>
+  <text class="rank" x="270" y="382" text-anchor="middle">P1</text>
+  <text class="rank" x="430" y="382" text-anchor="middle">P2</text>
+  <text class="rank" x="590" y="382" text-anchor="middle">P3</text>
+
+  <text class="cap" x="340" y="410" text-anchor="middle">colour = column = destination slice.  Phase 1: sum each column across all processes (amber result).</text>
+  <text class="cap" x="340" y="428" text-anchor="middle">Phase 2: scatter — slice j goes only to P j.  (= reduce, then scatter)</text>
+</svg>

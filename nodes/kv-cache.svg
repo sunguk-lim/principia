@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11px;font-style:italic;font-family:sans-serif}
+      .sect{fill:#3F3B34;font-size:11px;font-weight:700;font-family:sans-serif}
+      .lab{fill:#6A655C;font-size:9px;font-family:sans-serif}
+      .cell{font-size:9.5px;font-weight:700;font-family:sans-serif}
+      .tcol{fill:#8A857C;font-size:9px;font-family:sans-serif}
+      .note{font-size:8.5px;font-style:italic;font-family:sans-serif}
+      .cap{fill:#5A564E;font-size:10.5px;font-family:sans-serif}
+      .leg{font-size:9px;font-family:sans-serif;fill:#5A564E}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="800" height="420" rx="6"/>
+
+  <text class="title" x="30" y="27">KV-cache</text>
+  <text class="sub" x="116" y="27">reuse every past token's K and V &#8212; compute only the new token each step</text>
+
+  <!-- ===================== PANEL A: one decode step ===================== -->
+  <text class="sect" x="30" y="62">one decode step &#8212; generating token t = 4</text>
+
+  <!-- new token -->
+  <rect x="38" y="116" width="46" height="30" rx="5" fill="#EFEAE2" stroke="#9A958C"/>
+  <text class="cell" x="61" y="135" text-anchor="middle" fill="#3F3B34">x&#8324;</text>
+  <text class="lab" x="61" y="159" text-anchor="middle">new token</text>
+  <path d="M86 131 L108 131" fill="none" stroke="#9A958C" stroke-width="1.3" marker-end="url(#ah)"/>
+
+  <!-- projection q,k,v -->
+  <text class="lab" x="139" y="100" text-anchor="middle">project</text>
+  <rect x="116" y="106" width="34" height="22" rx="3" fill="#D85A30" fill-opacity="0.16" stroke="#D85A30"/>
+  <text class="cell" x="133" y="121" text-anchor="middle" fill="#D85A30">q&#8324;</text>
+  <rect x="116" y="134" width="34" height="22" rx="3" fill="#1D9E75" fill-opacity="0.16" stroke="#1D9E75"/>
+  <text class="cell" x="133" y="149" text-anchor="middle" fill="#1D9E75">k&#8324;</text>
+  <rect x="116" y="162" width="34" height="22" rx="3" fill="#534AB7" fill-opacity="0.16" stroke="#534AB7"/>
+  <text class="cell" x="133" y="177" text-anchor="middle" fill="#534AB7">v&#8324;</text>
+
+  <!-- KV-cache box -->
+  <text class="sect" x="338" y="86" text-anchor="middle" fill="#6A655C">KV-cache</text>
+  <rect x="226" y="92" width="226" height="74" rx="6" fill="#B8B3AA" fill-opacity="0.05" stroke="#D7D2C9"/>
+  <!-- reused columns t1..t3 (dim, dashed) -->
+  <g>
+    <rect x="240" y="100" width="44" height="26" rx="3" fill="#1D9E75" fill-opacity="0.10" stroke="#7FBBA6" stroke-dasharray="3 2"/>
+    <rect x="240" y="128" width="44" height="26" rx="3" fill="#534AB7" fill-opacity="0.10" stroke="#9A93D2" stroke-dasharray="3 2"/>
+    <text class="cell" x="262" y="117" text-anchor="middle" fill="#7FBBA6">k&#8321;</text>
+    <text class="cell" x="262" y="145" text-anchor="middle" fill="#9A93D2">v&#8321;</text>
+    <text class="tcol" x="262" y="178" text-anchor="middle">t&#8321;</text>
+  </g>
+  <g>
+    <rect x="290" y="100" width="44" height="26" rx="3" fill="#1D9E75" fill-opacity="0.10" stroke="#7FBBA6" stroke-dasharray="3 2"/>
+    <rect x="290" y="128" width="44" height="26" rx="3" fill="#534AB7" fill-opacity="0.10" stroke="#9A93D2" stroke-dasharray="3 2"/>
+    <text class="cell" x="312" y="117" text-anchor="middle" fill="#7FBBA6">k&#8322;</text>
+    <text class="cell" x="312" y="145" text-anchor="middle" fill="#9A93D2">v&#8322;</text>
+    <text class="tcol" x="312" y="178" text-anchor="middle">t&#8322;</text>
+  </g>
+  <g>
+    <rect x="340" y="100" width="44" height="26" rx="3" fill="#1D9E75" fill-opacity="0.10" stroke="#7FBBA6" stroke-dasharray="3 2"/>
+    <rect x="340" y="128" width="44" height="26" rx="3" fill="#534AB7" fill-opacity="0.10" stroke="#9A93D2" stroke-dasharray="3 2"/>
+    <text class="cell" x="362" y="117" text-anchor="middle" fill="#7FBBA6">k&#8323;</text>
+    <text class="cell" x="362" y="145" text-anchor="middle" fill="#9A93D2">v&#8323;</text>
+    <text class="tcol" x="362" y="178" text-anchor="middle">t&#8323;</text>
+  </g>
+  <text class="note" x="312" y="196" text-anchor="middle" fill="#8A857C">reused &#8212; already in the cache</text>
+  <!-- new column t4 (gold, static-complete) -->
+  <rect x="390" y="100" width="44" height="26" rx="3" fill="#E8A317" fill-opacity="0.20" stroke="#E8A317" stroke-width="1.4"/>
+  <rect x="390" y="128" width="44" height="26" rx="3" fill="#E8A317" fill-opacity="0.20" stroke="#E8A317" stroke-width="1.4"/>
+  <text class="cell" x="412" y="117" text-anchor="middle" fill="#B07908">k&#8324;</text>
+  <text class="cell" x="412" y="145" text-anchor="middle" fill="#B07908">v&#8324;</text>
+  <text class="tcol" x="412" y="178" text-anchor="middle">t&#8324;</text>
+  <text class="note" x="412" y="196" text-anchor="middle" fill="#B07908">new</text>
+
+  <!-- append motion: k4,v4 travel from projection into the gold column -->
+  <g>
+    <rect x="-15" y="-10" width="30" height="20" rx="3" fill="#1D9E75" stroke="#FBFAF7" stroke-width="1.5"/>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">k&#8324;</text>
+    <animateTransform attributeName="transform" type="translate" dur="9s" repeatCount="indefinite" keyTimes="0;0.14;0.9;1" values="133 145;412 113;412 113;133 145"/>
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;0.86;0.9;1" values="1;1;0;0"/>
+  </g>
+  <g>
+    <rect x="-15" y="-10" width="30" height="20" rx="3" fill="#534AB7" stroke="#FBFAF7" stroke-width="1.5"/>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">v&#8324;</text>
+    <animateTransform attributeName="transform" type="translate" dur="9s" repeatCount="indefinite" keyTimes="0;0.14;0.9;1" values="133 173;412 141;412 141;133 173"/>
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;0.86;0.9;1" values="1;1;0;0"/>
+  </g>
+
+  <!-- attend: q4 arcs over the whole cache -> o4 -->
+  <path d="M150 110 C 250 72, 460 72, 506 110" fill="none" stroke="#D85A30" stroke-width="1.3" opacity="0.55" marker-end="url(#ah)"/>
+  <text class="note" x="340" y="78" text-anchor="middle" fill="#C0613A">q&#8324; attends over ALL cached K, V &#8594; softmax &#8594; weighted sum</text>
+  <rect x="506" y="116" width="46" height="30" rx="5" fill="#D85A30" fill-opacity="0.16" stroke="#D85A30"/>
+  <text class="cell" x="529" y="135" text-anchor="middle" fill="#D85A30">o&#8324;</text>
+  <path d="M554 131 L578 131" fill="none" stroke="#9A958C" stroke-width="1.3" marker-end="url(#ah)"/>
+  <text class="lab" x="600" y="135" text-anchor="middle">emit x&#8325;</text>
+
+  <!-- legend -->
+  <g>
+    <rect x="226" y="214" width="13" height="11" rx="2" fill="#1D9E75" fill-opacity="0.5" stroke="#1D9E75"/><text class="leg" x="244" y="223">K</text>
+    <rect x="262" y="214" width="13" height="11" rx="2" fill="#534AB7" fill-opacity="0.5" stroke="#534AB7"/><text class="leg" x="280" y="223">V</text>
+    <rect x="298" y="214" width="13" height="11" rx="2" fill="#D85A30" fill-opacity="0.5" stroke="#D85A30"/><text class="leg" x="316" y="223">Q</text>
+    <rect x="338" y="214" width="13" height="11" rx="2" fill="#E8A317" fill-opacity="0.5" stroke="#E8A317"/><text class="leg" x="356" y="223">new (computed now)</text>
+    <rect x="470" y="214" width="13" height="11" rx="2" fill="#1D9E75" fill-opacity="0.10" stroke="#7FBBA6" stroke-dasharray="3 2"/><text class="leg" x="488" y="223">reused (from cache)</text>
+  </g>
+
+  <line x1="30" y1="244" x2="770" y2="244" stroke="#E2DDD3" stroke-width="1"/>
+
+  <!-- ===================== PANEL B: growth over steps ===================== -->
+  <text class="sect" x="30" y="270">the cache grows one column per step &#8212; reuse the rest, so memory grows with length</text>
+
+  <!-- snapshots -->
+  <g transform="translate(70,286)">
+    <rect x="0" y="0" width="16" height="26" rx="2" fill="#E8A317" fill-opacity="0.20" stroke="#E8A317"/>
+    <text class="tcol" x="8" y="40" text-anchor="middle">after step 1</text>
+  </g>
+  <path d="M150 300 L182 300" fill="none" stroke="#B0ABA2" stroke-width="1.1" marker-end="url(#ah)"/>
+  <g transform="translate(210,286)">
+    <rect x="0"  y="0" width="16" height="26" rx="2" fill="#B8B3AA" fill-opacity="0.12" stroke="#CFCABF" stroke-dasharray="3 2"/>
+    <rect x="20" y="0" width="16" height="26" rx="2" fill="#E8A317" fill-opacity="0.20" stroke="#E8A317"/>
+    <text class="tcol" x="18" y="40" text-anchor="middle">after step 2</text>
+  </g>
+  <path d="M330 300 L362 300" fill="none" stroke="#B0ABA2" stroke-width="1.1" marker-end="url(#ah)"/>
+  <g transform="translate(390,286)">
+    <rect x="0"  y="0" width="16" height="26" rx="2" fill="#B8B3AA" fill-opacity="0.12" stroke="#CFCABF" stroke-dasharray="3 2"/>
+    <rect x="20" y="0" width="16" height="26" rx="2" fill="#B8B3AA" fill-opacity="0.12" stroke="#CFCABF" stroke-dasharray="3 2"/>
+    <rect x="40" y="0" width="16" height="26" rx="2" fill="#E8A317" fill-opacity="0.20" stroke="#E8A317"/>
+    <text class="tcol" x="28" y="40" text-anchor="middle">after step 3</text>
+  </g>
+  <path d="M530 300 L562 300" fill="none" stroke="#B0ABA2" stroke-width="1.1" marker-end="url(#ah)"/>
+  <g transform="translate(590,286)">
+    <rect x="0"  y="0" width="16" height="26" rx="2" fill="#B8B3AA" fill-opacity="0.12" stroke="#CFCABF" stroke-dasharray="3 2"/>
+    <rect x="20" y="0" width="16" height="26" rx="2" fill="#B8B3AA" fill-opacity="0.12" stroke="#CFCABF" stroke-dasharray="3 2"/>
+    <rect x="40" y="0" width="16" height="26" rx="2" fill="#B8B3AA" fill-opacity="0.12" stroke="#CFCABF" stroke-dasharray="3 2"/>
+    <rect x="60" y="0" width="16" height="26" rx="2" fill="#E8A317" fill-opacity="0.20" stroke="#E8A317"/>
+    <text class="tcol" x="38" y="40" text-anchor="middle">after step 4</text>
+  </g>
+
+  <!-- captions -->
+  <text class="cap" x="30" y="362">&#8226; Each step computes only the new token's q, k, v; k &amp; v are <tspan fill="#B07908" font-weight="700">appended</tspan>, all earlier columns are <tspan font-style="italic">reused</tspan>.</text>
+  <text class="cap" x="30" y="382">&#8226; Per-step compute stops growing with length &#8212; the <tspan font-weight="700">O(n&#178;)</tspan> recompute of naive decoding becomes <tspan font-weight="700">O(n)</tspan>.</text>
+  <text class="cap" x="30" y="402">&#8226; Price: cache size = 2 &#183; tokens &#183; layers &#183; heads &#183; d_head &#8212; the memory that dominates long-context inference.</text>
+</svg>

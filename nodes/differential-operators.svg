@@ -1,0 +1,136 @@
+<svg viewBox="0 0 680 655" role="img" xmlns="http://www.w3.org/2000/svg">
+<style>
+text{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+.th{font-weight:600;font-size:15px;fill:#1B1A17}
+.t{font-size:13px;fill:#1B1A17}
+.ts{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:12px;fill:#5A564E}
+.c-blue{fill:#E3EFFB;stroke:#5B8FD0}
+.c-teal{fill:#E2F3EE;stroke:#3F9B86}
+.c-amber{fill:#FBF0DB;stroke:#C79A3E}
+</style>
+<rect x="0" y="0" width="680" height="655" fill="#FBFAF7"/>
+        <title>Atlas of the six operators with shapes and elements</title>
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <text class="th" x="16" y="26">The full picture: every input, output, and element</text>
+        <text class="ts" x="16" y="46">Shape = how many cells; elements = the actual partial derivatives. All six operators.</text>
+        <text class="th" x="16" y="72">From a scalar function   f : ℝ³ → ℝ</text>
+        <line x1="16" y1="79" x2="650" y2="79" stroke="#E1DCD2" stroke-width="0.6"/>
+        <text class="th" x="16" y="120">∇f</text>
+        <text class="t" x="16" y="136">gradient</text>
+        <text class="ts" x="16" y="150">scalar → vector</text>
+        <g class="c-blue"><rect x="130" y="122" width="34" height="24" rx="3" stroke-width="0.5"/></g>
+        <text class="t" x="147" y="134" text-anchor="middle" dominant-baseline="central">f</text>
+        <line x1="174" y1="134" x2="208" y2="134" stroke="#D85A30" stroke-width="1.4" marker-end="url(#ar)"/>
+        <text class="ts" x="191" y="120" text-anchor="middle">∇</text>
+        <rect x="218" y="96" width="76" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="218" y="122" width="76" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="218" y="148" width="76" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <path d="M214 96 L210 96 L210 172 L214 172" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <path d="M298 96 L302 96 L302 172 L298 172" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <text class="t" x="256" y="108" text-anchor="middle" dominant-baseline="central">∂f/∂x</text>
+        <text class="t" x="256" y="134" text-anchor="middle" dominant-baseline="central">∂f/∂y</text>
+        <text class="t" x="256" y="160" text-anchor="middle" dominant-baseline="central">∂f/∂z</text>
+        <text class="th" x="16" y="182">∇²f</text>
+        <text class="t" x="16" y="196">Laplacian</text>
+        <text class="ts" x="16" y="210">scalar → scalar</text>
+        <g class="c-blue"><rect x="130" y="184" width="34" height="24" rx="3" stroke-width="0.5"/></g>
+        <text class="t" x="147" y="196" text-anchor="middle" dominant-baseline="central">f</text>
+        <line x1="174" y1="196" x2="208" y2="196" stroke="#D85A30" stroke-width="1.4" marker-end="url(#ar)"/>
+        <text class="ts" x="191" y="182" text-anchor="middle">∇²</text>
+        <rect x="218" y="184" width="232" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <text class="t" x="334" y="196" text-anchor="middle" dominant-baseline="central">∂²f/∂x² + ∂²f/∂y² + ∂²f/∂z²</text>
+        <text class="th" x="16" y="250">H(f)</text>
+        <text class="t" x="16" y="264">Hessian</text>
+        <text class="ts" x="16" y="278">scalar → matrix</text>
+        <g class="c-blue"><rect x="130" y="252" width="34" height="24" rx="3" stroke-width="0.5"/></g>
+        <text class="t" x="147" y="264" text-anchor="middle" dominant-baseline="central">f</text>
+        <line x1="174" y1="264" x2="208" y2="264" stroke="#D85A30" stroke-width="1.4" marker-end="url(#ar)"/>
+        <text class="ts" x="191" y="250" text-anchor="middle">H</text>
+        <rect x="218" y="226" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="292" y="226" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="366" y="226" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="218" y="252" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="292" y="252" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="366" y="252" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="218" y="278" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="292" y="278" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="366" y="278" width="72" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <path d="M214 226 L210 226 L210 302 L214 302" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <path d="M440 226 L444 226 L444 302 L440 302" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <text class="t" x="254" y="238" text-anchor="middle" dominant-baseline="central">∂²f/∂x²</text>
+        <text class="t" x="328" y="238" text-anchor="middle" dominant-baseline="central">∂²f/∂x∂y</text>
+        <text class="t" x="402" y="238" text-anchor="middle" dominant-baseline="central">∂²f/∂x∂z</text>
+        <text class="t" x="254" y="264" text-anchor="middle" dominant-baseline="central">∂²f/∂y∂x</text>
+        <text class="t" x="328" y="264" text-anchor="middle" dominant-baseline="central">∂²f/∂y²</text>
+        <text class="t" x="402" y="264" text-anchor="middle" dominant-baseline="central">∂²f/∂y∂z</text>
+        <text class="t" x="254" y="290" text-anchor="middle" dominant-baseline="central">∂²f/∂z∂x</text>
+        <text class="t" x="328" y="290" text-anchor="middle" dominant-baseline="central">∂²f/∂z∂y</text>
+        <text class="t" x="402" y="290" text-anchor="middle" dominant-baseline="central">∂²f/∂z²</text>
+        <text class="th" x="16" y="322">From a vector field   F : ℝ³ → ℝ³</text>
+        <line x1="16" y1="329" x2="650" y2="329" stroke="#E1DCD2" stroke-width="0.6"/>
+        <text class="th" x="16" y="370">∇·F</text>
+        <text class="t" x="16" y="384">divergence</text>
+        <text class="ts" x="16" y="398">vector → scalar</text>
+        <g class="c-teal"><rect x="130" y="346" width="34" height="24" rx="3" stroke-width="0.5"/><rect x="130" y="372" width="34" height="24" rx="3" stroke-width="0.5"/><rect x="130" y="398" width="34" height="24" rx="3" stroke-width="0.5"/></g>
+        <path d="M126 346 L122 346 L122 422 L126 422" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <path d="M168 346 L172 346 L172 422 L168 422" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <text class="t" x="147" y="358" text-anchor="middle" dominant-baseline="central">F₁</text>
+        <text class="t" x="147" y="384" text-anchor="middle" dominant-baseline="central">F₂</text>
+        <text class="t" x="147" y="410" text-anchor="middle" dominant-baseline="central">F₃</text>
+        <line x1="178" y1="384" x2="208" y2="384" stroke="#D85A30" stroke-width="1.4" marker-end="url(#ar)"/>
+        <text class="ts" x="193" y="370" text-anchor="middle">∇·</text>
+        <rect x="218" y="372" width="212" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <text class="t" x="324" y="384" text-anchor="middle" dominant-baseline="central">∂F₁/∂x + ∂F₂/∂y + ∂F₃/∂z</text>
+        <text class="th" x="16" y="456">∇×F</text>
+        <text class="t" x="16" y="470">curl</text>
+        <text class="ts" x="16" y="484">vector → vector</text>
+        <g class="c-teal"><rect x="130" y="432" width="34" height="24" rx="3" stroke-width="0.5"/><rect x="130" y="458" width="34" height="24" rx="3" stroke-width="0.5"/><rect x="130" y="484" width="34" height="24" rx="3" stroke-width="0.5"/></g>
+        <path d="M126 432 L122 432 L122 508 L126 508" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <path d="M168 432 L172 432 L172 508 L168 508" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <text class="t" x="147" y="444" text-anchor="middle" dominant-baseline="central">F₁</text>
+        <text class="t" x="147" y="470" text-anchor="middle" dominant-baseline="central">F₂</text>
+        <text class="t" x="147" y="496" text-anchor="middle" dominant-baseline="central">F₃</text>
+        <line x1="178" y1="470" x2="208" y2="470" stroke="#D85A30" stroke-width="1.4" marker-end="url(#ar)"/>
+        <text class="ts" x="193" y="456" text-anchor="middle">∇×</text>
+        <rect x="218" y="432" width="130" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="218" y="458" width="130" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="218" y="484" width="130" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <path d="M214 432 L210 432 L210 508 L214 508" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <path d="M352 432 L356 432 L356 508 L352 508" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <text class="t" x="283" y="444" text-anchor="middle" dominant-baseline="central">∂F₃/∂y − ∂F₂/∂z</text>
+        <text class="t" x="283" y="470" text-anchor="middle" dominant-baseline="central">∂F₁/∂z − ∂F₃/∂x</text>
+        <text class="t" x="283" y="496" text-anchor="middle" dominant-baseline="central">∂F₂/∂x − ∂F₁/∂y</text>
+        <text class="th" x="16" y="546">J(F)</text>
+        <text class="t" x="16" y="560">Jacobian</text>
+        <text class="ts" x="16" y="574">vector → matrix</text>
+        <g class="c-teal"><rect x="130" y="522" width="34" height="24" rx="3" stroke-width="0.5"/><rect x="130" y="548" width="34" height="24" rx="3" stroke-width="0.5"/><rect x="130" y="574" width="34" height="24" rx="3" stroke-width="0.5"/></g>
+        <path d="M126 522 L122 522 L122 598 L126 598" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <path d="M168 522 L172 522 L172 598 L168 598" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <text class="t" x="147" y="534" text-anchor="middle" dominant-baseline="central">F₁</text>
+        <text class="t" x="147" y="560" text-anchor="middle" dominant-baseline="central">F₂</text>
+        <text class="t" x="147" y="586" text-anchor="middle" dominant-baseline="central">F₃</text>
+        <line x1="178" y1="560" x2="208" y2="560" stroke="#D85A30" stroke-width="1.4" marker-end="url(#ar)"/>
+        <text class="ts" x="193" y="546" text-anchor="middle">J</text>
+        <rect x="218" y="522" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="286" y="522" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="354" y="522" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="218" y="548" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="286" y="548" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="354" y="548" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="218" y="574" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="286" y="574" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <rect x="354" y="574" width="66" height="24" rx="3" fill="#F2EFE9" stroke="#D85A30" stroke-width="1"/>
+        <path d="M214 522 L210 522 L210 598 L214 598" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <path d="M422 522 L426 522 L426 598 L422 598" fill="none" stroke="#1B1A17" stroke-width="1.1"/>
+        <text class="t" x="251" y="534" text-anchor="middle" dominant-baseline="central">∂F₁/∂x</text>
+        <text class="t" x="319" y="534" text-anchor="middle" dominant-baseline="central">∂F₁/∂y</text>
+        <text class="t" x="387" y="534" text-anchor="middle" dominant-baseline="central">∂F₁/∂z</text>
+        <text class="t" x="251" y="560" text-anchor="middle" dominant-baseline="central">∂F₂/∂x</text>
+        <text class="t" x="319" y="560" text-anchor="middle" dominant-baseline="central">∂F₂/∂y</text>
+        <text class="t" x="387" y="560" text-anchor="middle" dominant-baseline="central">∂F₂/∂z</text>
+        <text class="t" x="251" y="586" text-anchor="middle" dominant-baseline="central">∂F₃/∂x</text>
+        <text class="t" x="319" y="586" text-anchor="middle" dominant-baseline="central">∂F₃/∂y</text>
+        <text class="t" x="387" y="586" text-anchor="middle" dominant-baseline="central">∂F₃/∂z</text>
+        <text class="ts" x="16" y="624">Blue = scalar input,  teal = vector input.  Every coral cell is one partial derivative of those input elements.</text>
+        <text class="ts" x="16" y="642">Same machine throughout: differentiate the input's elements, then arrange the results by output shape.</text>
+      </svg>

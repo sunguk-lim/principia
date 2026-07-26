@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480" width="700" height="480" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11.5px;font-style:italic;font-family:sans-serif}
+      .stage{fill:#A39E95;font-size:9.5px;font-family:sans-serif;font-style:italic}
+      .gpu{fill:#8A857C;font-size:11px;font-weight:600;font-family:sans-serif}
+      .same{fill:#5A564E;fill-opacity:0.05;stroke:#B0ABA2;stroke-width:1}
+      .samet{fill:#6F6A61;font-size:10px;font-family:sans-serif}
+      .cl{font-size:10.5px;font-weight:600;font-family:sans-serif}
+      .pipe{stroke:#C9C4BB;stroke-width:1;opacity:0.5}
+      .cap{fill:#5A564E;font-size:12px;font-family:sans-serif}
+      .arband{fill:#EF9F27;fill-opacity:0.07;stroke:#EFB552;stroke-width:0.8}
+      .arlab{fill:#C8860A;font-size:10.5px;font-weight:600;font-family:sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="700" height="480" rx="6"/>
+
+  <text class="title" x="30" y="28">Data parallelism</text>
+  <text class="sub" x="184" y="28">replicate the model · split the data · all-reduce the gradients</text>
+
+  <!-- stage labels (left margin) -->
+  <text class="stage" x="10" y="69"  text-anchor="start">data</text>
+  <text class="stage" x="10" y="103" text-anchor="start">model (fwd)</text>
+  <text class="stage" x="10" y="136" text-anchor="start">predict</text>
+  <text class="stage" x="10" y="164" text-anchor="start">loss</text>
+  <text class="stage" x="10" y="199" text-anchor="start">model (bwd)</text>
+  <text class="stage" x="10" y="233" text-anchor="start">gradient</text>
+  <text class="stage" x="10" y="311" text-anchor="start">same ∇</text>
+  <text class="stage" x="10" y="346" text-anchor="start">update</text>
+
+  <!-- faint pipeline connectors behind each column -->
+  <line class="pipe" x1="120" y1="76" x2="120" y2="240"/>
+  <line class="pipe" x1="285" y1="76" x2="285" y2="240"/>
+  <line class="pipe" x1="450" y1="76" x2="450" y2="240"/>
+  <line class="pipe" x1="615" y1="76" x2="615" y2="240"/>
+
+  <!-- ===================== PER-GPU COLUMNS ===================== -->
+  <!-- GPU 0 (blue) -->
+  <rect x="74"  y="58" width="92" height="20" rx="4" fill="#6C8EEF" fill-opacity="0.16" stroke="#6C8EEF"/>
+  <text class="cl" x="120" y="72" text-anchor="middle" fill="#3F63C6">data 0</text>
+  <rect class="same" x="74" y="86" width="92" height="28" rx="4"/>
+  <text class="samet" x="120" y="103" text-anchor="middle">model (same)</text>
+  <rect x="80" y="124" width="80" height="18" rx="3" fill="#6C8EEF" fill-opacity="0.10" stroke="#6C8EEF" stroke-opacity="0.6"/>
+  <text class="cl" x="120" y="136" text-anchor="middle" fill="#3F63C6">pred 0</text>
+  <rect x="80" y="150" width="80" height="18" rx="3" fill="#6C8EEF" fill-opacity="0.16" stroke="#6C8EEF"/>
+  <text class="cl" x="120" y="162" text-anchor="middle" fill="#3F63C6">loss 0</text>
+  <rect class="same" x="74" y="176" width="92" height="28" rx="4"/>
+  <text class="samet" x="120" y="193" text-anchor="middle">model (bwd)</text>
+  <rect x="74" y="220" width="92" height="20" rx="4" fill="#6C8EEF" fill-opacity="0.16" stroke="#6C8EEF"/>
+  <text class="cl" x="120" y="234" text-anchor="middle" fill="#3F63C6">∇0</text>
+
+  <!-- GPU 1 (teal) -->
+  <rect x="239" y="58" width="92" height="20" rx="4" fill="#4ECDC4" fill-opacity="0.16" stroke="#4ECDC4"/>
+  <text class="cl" x="285" y="72" text-anchor="middle" fill="#1F9C93">data 1</text>
+  <rect class="same" x="239" y="86" width="92" height="28" rx="4"/>
+  <text class="samet" x="285" y="103" text-anchor="middle">model (same)</text>
+  <rect x="245" y="124" width="80" height="18" rx="3" fill="#4ECDC4" fill-opacity="0.10" stroke="#4ECDC4" stroke-opacity="0.6"/>
+  <text class="cl" x="285" y="136" text-anchor="middle" fill="#1F9C93">pred 1</text>
+  <rect x="245" y="150" width="80" height="18" rx="3" fill="#4ECDC4" fill-opacity="0.16" stroke="#4ECDC4"/>
+  <text class="cl" x="285" y="162" text-anchor="middle" fill="#1F9C93">loss 1</text>
+  <rect class="same" x="239" y="176" width="92" height="28" rx="4"/>
+  <text class="samet" x="285" y="193" text-anchor="middle">model (bwd)</text>
+  <rect x="239" y="220" width="92" height="20" rx="4" fill="#4ECDC4" fill-opacity="0.16" stroke="#4ECDC4"/>
+  <text class="cl" x="285" y="234" text-anchor="middle" fill="#1F9C93">∇1</text>
+
+  <!-- GPU 2 (coral) -->
+  <rect x="404" y="58" width="92" height="20" rx="4" fill="#F97068" fill-opacity="0.16" stroke="#F97068"/>
+  <text class="cl" x="450" y="72" text-anchor="middle" fill="#D8453B">data 2</text>
+  <rect class="same" x="404" y="86" width="92" height="28" rx="4"/>
+  <text class="samet" x="450" y="103" text-anchor="middle">model (same)</text>
+  <rect x="410" y="124" width="80" height="18" rx="3" fill="#F97068" fill-opacity="0.10" stroke="#F97068" stroke-opacity="0.6"/>
+  <text class="cl" x="450" y="136" text-anchor="middle" fill="#D8453B">pred 2</text>
+  <rect x="410" y="150" width="80" height="18" rx="3" fill="#F97068" fill-opacity="0.16" stroke="#F97068"/>
+  <text class="cl" x="450" y="162" text-anchor="middle" fill="#D8453B">loss 2</text>
+  <rect class="same" x="404" y="176" width="92" height="28" rx="4"/>
+  <text class="samet" x="450" y="193" text-anchor="middle">model (bwd)</text>
+  <rect x="404" y="220" width="92" height="20" rx="4" fill="#F97068" fill-opacity="0.16" stroke="#F97068"/>
+  <text class="cl" x="450" y="234" text-anchor="middle" fill="#D8453B">∇2</text>
+
+  <!-- GPU 3 (purple) -->
+  <rect x="569" y="58" width="92" height="20" rx="4" fill="#C084FC" fill-opacity="0.16" stroke="#C084FC"/>
+  <text class="cl" x="615" y="72" text-anchor="middle" fill="#9B53E0">data 3</text>
+  <rect class="same" x="569" y="86" width="92" height="28" rx="4"/>
+  <text class="samet" x="615" y="103" text-anchor="middle">model (same)</text>
+  <rect x="575" y="124" width="80" height="18" rx="3" fill="#C084FC" fill-opacity="0.10" stroke="#C084FC" stroke-opacity="0.6"/>
+  <text class="cl" x="615" y="136" text-anchor="middle" fill="#9B53E0">pred 3</text>
+  <rect x="575" y="150" width="80" height="18" rx="3" fill="#C084FC" fill-opacity="0.16" stroke="#C084FC"/>
+  <text class="cl" x="615" y="162" text-anchor="middle" fill="#9B53E0">loss 3</text>
+  <rect class="same" x="569" y="176" width="92" height="28" rx="4"/>
+  <text class="samet" x="615" y="193" text-anchor="middle">model (bwd)</text>
+  <rect x="569" y="220" width="92" height="20" rx="4" fill="#C084FC" fill-opacity="0.16" stroke="#C084FC"/>
+  <text class="cl" x="615" y="234" text-anchor="middle" fill="#9B53E0">∇3</text>
+
+  <!-- ===================== ALL-REDUCE BAND ===================== -->
+  <rect class="arband" x="40" y="252" width="620" height="26" rx="6"/>
+  <line x1="60" y1="265" x2="660" y2="265" stroke="#EF9F27" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.6"/>
+  <text class="arlab" x="350" y="268" text-anchor="middle">all-reduce  —  average the gradients</text>
+  <!-- gradients converge to centre (colour-matched) -->
+  <path d="M120 242 L344 252" fill="none" stroke="#6C8EEF" stroke-width="1.4" opacity="0.5" marker-end="url(#ah)"/>
+  <path d="M285 242 L352 252" fill="none" stroke="#4ECDC4" stroke-width="1.4" opacity="0.5" marker-end="url(#ah)"/>
+  <path d="M450 242 L360 252" fill="none" stroke="#F97068" stroke-width="1.4" opacity="0.5" marker-end="url(#ah)"/>
+  <path d="M615 242 L368 252" fill="none" stroke="#C084FC" stroke-width="1.4" opacity="0.5" marker-end="url(#ah)"/>
+
+  <!-- ===================== ∇avg FAN-OUT + UPDATE ===================== -->
+  <!-- gold ∇avg fans back to every GPU -->
+  <path d="M356 278 L122 296" fill="none" stroke="#EF9F27" stroke-width="1.6" opacity="0.7" marker-end="url(#ah)"/>
+  <path d="M356 278 L283 296" fill="none" stroke="#EF9F27" stroke-width="1.6" opacity="0.7" marker-end="url(#ah)"/>
+  <path d="M360 278 L450 296" fill="none" stroke="#EF9F27" stroke-width="1.6" opacity="0.7" marker-end="url(#ah)"/>
+  <path d="M362 278 L613 296" fill="none" stroke="#EF9F27" stroke-width="1.6" opacity="0.7" marker-end="url(#ah)"/>
+
+  <rect x="74"  y="300" width="92" height="20" rx="4" fill="#EF9F27" fill-opacity="0.16" stroke="#EF9F27" stroke-width="1.2"/>
+  <rect x="239" y="300" width="92" height="20" rx="4" fill="#EF9F27" fill-opacity="0.16" stroke="#EF9F27" stroke-width="1.2"/>
+  <rect x="404" y="300" width="92" height="20" rx="4" fill="#EF9F27" fill-opacity="0.16" stroke="#EF9F27" stroke-width="1.2"/>
+  <rect x="569" y="300" width="92" height="20" rx="4" fill="#EF9F27" fill-opacity="0.16" stroke="#EF9F27" stroke-width="1.2"/>
+  <text class="cl" x="120" y="314" text-anchor="middle" fill="#C8860A">∇avg</text>
+  <text class="cl" x="285" y="314" text-anchor="middle" fill="#C8860A">∇avg</text>
+  <text class="cl" x="450" y="314" text-anchor="middle" fill="#C8860A">∇avg</text>
+  <text class="cl" x="615" y="314" text-anchor="middle" fill="#C8860A">∇avg</text>
+
+  <rect class="same" x="74"  y="332" width="92" height="26" rx="4"/>
+  <rect class="same" x="239" y="332" width="92" height="26" rx="4"/>
+  <rect class="same" x="404" y="332" width="92" height="26" rx="4"/>
+  <rect class="same" x="569" y="332" width="92" height="26" rx="4"/>
+  <text class="samet" x="120" y="349" text-anchor="middle">W −= lr·∇avg</text>
+  <text class="samet" x="285" y="349" text-anchor="middle">W −= lr·∇avg</text>
+  <text class="samet" x="450" y="349" text-anchor="middle">W −= lr·∇avg</text>
+  <text class="samet" x="615" y="349" text-anchor="middle">W −= lr·∇avg</text>
+
+  <text class="gpu" x="120" y="380" text-anchor="middle" fill="#3F63C6">GPU 0</text>
+  <text class="gpu" x="285" y="380" text-anchor="middle" fill="#1F9C93">GPU 1</text>
+  <text class="gpu" x="450" y="380" text-anchor="middle" fill="#D8453B">GPU 2</text>
+  <text class="gpu" x="615" y="380" text-anchor="middle" fill="#9B53E0">GPU 3</text>
+
+  <text class="cap" x="350" y="412" text-anchor="middle">Same model on every GPU, but a different data batch ⇒ different predictions, loss, and gradient (∇0…∇3).</text>
+  <text class="cap" x="350" y="430" text-anchor="middle">all-reduce averages them to one gold ∇avg; every GPU applies the identical update, so the replicas stay in sync.</text>
+
+  <!-- ===================== ANIMATED FLOW TOKENS (SMIL) ===================== -->
+  <!-- discrete steps: each token ARRIVES at a stage and DWELLS, then snaps to the next.
+       all converge at centre (all-reduce, extra-long dwell), turn gold (∇avg), fan back, reset. -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="8s" repeatCount="indefinite" calcMode="linear"
+      keyTimes="0;0.06;0.085;0.145;0.17;0.23;0.255;0.315;0.34;0.40;0.425;0.485;0.52;0.60;0.635;0.71;0.735;0.83;1"
+      values="120 68;120 68;120 100;120 100;120 133;120 133;120 160;120 160;120 190;120 190;120 230;120 230;368 265;368 265;120 310;120 310;120 345;120 345;120 68"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" keyTimes="0;0.83;0.90;1" values="1;1;0;0"/>
+    <rect x="-9" y="-6.5" width="18" height="13" rx="3" stroke="#FBFAF7" stroke-width="1.5" fill="#6C8EEF">
+      <animate attributeName="fill" dur="8s" repeatCount="indefinite"
+        keyTimes="0;0.06;0.085;0.145;0.17;0.23;0.255;0.315;0.34;0.40;0.425;0.485;0.52;0.60;0.635;0.71;0.735;0.83;1"
+        values="#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#6C8EEF;#EF9F27;#EF9F27;#EF9F27;#EF9F27;#6C8EEF"/>
+    </rect>
+  </g>
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="8s" repeatCount="indefinite" calcMode="linear"
+      keyTimes="0;0.06;0.085;0.145;0.17;0.23;0.255;0.315;0.34;0.40;0.425;0.485;0.52;0.60;0.635;0.71;0.735;0.83;1"
+      values="285 68;285 68;285 100;285 100;285 133;285 133;285 160;285 160;285 190;285 190;285 230;285 230;368 265;368 265;285 310;285 310;285 345;285 345;285 68"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" keyTimes="0;0.83;0.90;1" values="1;1;0;0"/>
+    <rect x="-9" y="-6.5" width="18" height="13" rx="3" stroke="#FBFAF7" stroke-width="1.5" fill="#4ECDC4">
+      <animate attributeName="fill" dur="8s" repeatCount="indefinite"
+        keyTimes="0;0.06;0.085;0.145;0.17;0.23;0.255;0.315;0.34;0.40;0.425;0.485;0.52;0.60;0.635;0.71;0.735;0.83;1"
+        values="#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#4ECDC4;#EF9F27;#EF9F27;#EF9F27;#EF9F27;#4ECDC4"/>
+    </rect>
+  </g>
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="8s" repeatCount="indefinite" calcMode="linear"
+      keyTimes="0;0.06;0.085;0.145;0.17;0.23;0.255;0.315;0.34;0.40;0.425;0.485;0.52;0.60;0.635;0.71;0.735;0.83;1"
+      values="450 68;450 68;450 100;450 100;450 133;450 133;450 160;450 160;450 190;450 190;450 230;450 230;368 265;368 265;450 310;450 310;450 345;450 345;450 68"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" keyTimes="0;0.83;0.90;1" values="1;1;0;0"/>
+    <rect x="-9" y="-6.5" width="18" height="13" rx="3" stroke="#FBFAF7" stroke-width="1.5" fill="#F97068">
+      <animate attributeName="fill" dur="8s" repeatCount="indefinite"
+        keyTimes="0;0.06;0.085;0.145;0.17;0.23;0.255;0.315;0.34;0.40;0.425;0.485;0.52;0.60;0.635;0.71;0.735;0.83;1"
+        values="#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#F97068;#EF9F27;#EF9F27;#EF9F27;#EF9F27;#F97068"/>
+    </rect>
+  </g>
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="8s" repeatCount="indefinite" calcMode="linear"
+      keyTimes="0;0.06;0.085;0.145;0.17;0.23;0.255;0.315;0.34;0.40;0.425;0.485;0.52;0.60;0.635;0.71;0.735;0.83;1"
+      values="615 68;615 68;615 100;615 100;615 133;615 133;615 160;615 160;615 190;615 190;615 230;615 230;368 265;368 265;615 310;615 310;615 345;615 345;615 68"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" keyTimes="0;0.83;0.90;1" values="1;1;0;0"/>
+    <rect x="-9" y="-6.5" width="18" height="13" rx="3" stroke="#FBFAF7" stroke-width="1.5" fill="#C084FC">
+      <animate attributeName="fill" dur="8s" repeatCount="indefinite"
+        keyTimes="0;0.06;0.085;0.145;0.17;0.23;0.255;0.315;0.34;0.40;0.425;0.485;0.52;0.60;0.635;0.71;0.735;0.83;1"
+        values="#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#C084FC;#EF9F27;#EF9F27;#EF9F27;#EF9F27;#C084FC"/>
+    </rect>
+  </g>
+</svg>

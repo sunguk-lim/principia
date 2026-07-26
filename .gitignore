@@ -1,0 +1,14 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# draw-brain-figure workflow scratch (per-node render cache)
+.draw-cache/
+
+# committed-tool deps — regenerate with: cd .claude/workflows && npm i
+.claude/workflows/node_modules/
+.claude/workflows/package-lock.json
+.claude/workflows/wf.mmd
+
+# generated graph-diff artifact (regenerate: brain.py graph --diff <base>)
+graph-diff.html

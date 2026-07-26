@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 426" width="760" height="426" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11px;font-style:italic;font-family:sans-serif}
+      .colh{fill:#8A857C;font-size:9px;font-style:italic;font-family:sans-serif}
+      .box{font-size:10px;font-weight:700;font-family:sans-serif}
+      .el{font-size:9.5px;font-weight:700;font-family:sans-serif}
+      .il{fill:#BAB5AC;font-size:9.5px;font-weight:700;font-family:sans-serif}
+      .gv{font-size:8.5px;font-weight:700;font-family:sans-serif}
+      .sm{fill:#6A655C;font-size:8.5px;font-family:sans-serif}
+      .cap{fill:#5A564E;font-size:10.5px;font-family:sans-serif}
+      .eq{font-size:11px;font-family:sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="760" height="426" rx="6"/>
+
+  <text class="title" x="30" y="27">Mixture-of-Experts (MoE)</text>
+  <text class="sub" x="262" y="27">a router picks the top-k experts per token; the rest stay idle</text>
+
+  <text class="colh" x="282" y="46" text-anchor="middle">gate = softmax over experts</text>
+  <text class="colh" x="398" y="46" text-anchor="middle">experts (E = 8 FFNs)</text>
+
+  <!-- token h -->
+  <rect x="30" y="194" width="42" height="30" rx="5" fill="#EFEAE2" stroke="#9A958C"/>
+  <text class="box" x="51" y="213" text-anchor="middle" fill="#3F3B34">h</text>
+  <text class="sm" x="51" y="240" text-anchor="middle">1 token</text>
+  <path d="M74 209 L104 209" fill="none" stroke="#9A958C" stroke-width="1.3" marker-end="url(#ah)"/>
+
+  <!-- router -->
+  <rect x="106" y="186" width="92" height="46" rx="6" fill="#D85A30" fill-opacity="0.10" stroke="#D85A30"/>
+  <text class="box" x="152" y="206" text-anchor="middle" fill="#A6471F">router</text>
+  <text class="sm" x="152" y="221" text-anchor="middle" fill="#A6471F">softmax gate</text>
+
+  <!-- scoring fan: router -> every gate bar -->
+  <g stroke="#C9C4BB" stroke-width="0.9" opacity="0.55">
+    <line x1="200" y1="209" x2="246" y2="66"/><line x1="200" y1="209" x2="246" y2="104"/>
+    <line x1="200" y1="209" x2="246" y2="142"/><line x1="200" y1="209" x2="246" y2="180"/>
+    <line x1="200" y1="209" x2="246" y2="218"/><line x1="200" y1="209" x2="246" y2="256"/>
+    <line x1="200" y1="209" x2="246" y2="294"/><line x1="200" y1="209" x2="246" y2="332"/>
+  </g>
+
+  <!-- gate bars (per expert row): selected gold & tall, rest gray & short -->
+  <rect x="248" y="60" width="9"  height="12" rx="2" fill="#C9C4BB"/>
+  <rect x="248" y="98" width="13" height="12" rx="2" fill="#C9C4BB"/>
+  <rect x="248" y="136" width="64" height="12" rx="2" fill="#E8A317" fill-opacity="0.55" stroke="#E8A317"/><text class="gv" x="318" y="146" fill="#B07908">g&#8322;=0.42</text>
+  <rect x="248" y="174" width="11" height="12" rx="2" fill="#C9C4BB"/>
+  <rect x="248" y="212" width="7"  height="12" rx="2" fill="#C9C4BB"/>
+  <rect x="248" y="250" width="44" height="12" rx="2" fill="#E8A317" fill-opacity="0.55" stroke="#E8A317"/><text class="gv" x="298" y="260" fill="#B07908">g&#8325;=0.28</text>
+  <rect x="248" y="288" width="9"  height="12" rx="2" fill="#C9C4BB"/>
+  <rect x="248" y="326" width="6"  height="12" rx="2" fill="#C9C4BB"/>
+
+  <!-- expert FFN boxes: E2 (teal) & E5 (purple) active, rest idle dashed -->
+  <rect x="360" y="53"  width="76" height="26" rx="4" fill="#B0ABA2" fill-opacity="0.04" stroke="#CFCABF" stroke-dasharray="3 2.5"/><text class="il" x="398" y="70" text-anchor="middle">E0 &#183; idle</text>
+  <rect x="360" y="91"  width="76" height="26" rx="4" fill="#B0ABA2" fill-opacity="0.04" stroke="#CFCABF" stroke-dasharray="3 2.5"/><text class="il" x="398" y="108" text-anchor="middle">E1 &#183; idle</text>
+  <rect x="360" y="129" width="76" height="26" rx="4" fill="#1D9E75" fill-opacity="0.16" stroke="#1D9E75"/><text class="el" x="398" y="146" text-anchor="middle" fill="#16805F">E2 &#183; FFN</text>
+  <rect x="360" y="167" width="76" height="26" rx="4" fill="#B0ABA2" fill-opacity="0.04" stroke="#CFCABF" stroke-dasharray="3 2.5"/><text class="il" x="398" y="184" text-anchor="middle">E3 &#183; idle</text>
+  <rect x="360" y="205" width="76" height="26" rx="4" fill="#B0ABA2" fill-opacity="0.04" stroke="#CFCABF" stroke-dasharray="3 2.5"/><text class="il" x="398" y="222" text-anchor="middle">E4 &#183; idle</text>
+  <rect x="360" y="243" width="76" height="26" rx="4" fill="#534AB7" fill-opacity="0.16" stroke="#534AB7"/><text class="el" x="398" y="260" text-anchor="middle" fill="#433AA0">E5 &#183; FFN</text>
+  <rect x="360" y="281" width="76" height="26" rx="4" fill="#B0ABA2" fill-opacity="0.04" stroke="#CFCABF" stroke-dasharray="3 2.5"/><text class="il" x="398" y="298" text-anchor="middle">E6 &#183; idle</text>
+  <rect x="360" y="319" width="76" height="26" rx="4" fill="#B0ABA2" fill-opacity="0.04" stroke="#CFCABF" stroke-dasharray="3 2.5"/><text class="il" x="398" y="336" text-anchor="middle">E7 &#183; idle</text>
+
+  <!-- token routed (bold) only to the two selected experts -->
+  <path d="M200 200 C 280 150, 320 142, 358 142" fill="none" stroke="#16805F" stroke-width="1.8" marker-end="url(#ah)"/>
+  <path d="M200 218 C 280 256, 320 256, 358 256" fill="none" stroke="#433AA0" stroke-width="1.8" marker-end="url(#ah)"/>
+
+  <!-- combine: weighted sum -->
+  <path d="M436 142 C 470 142, 482 200, 498 204" fill="none" stroke="#16805F" stroke-width="1.5" marker-end="url(#ah)"/>
+  <path d="M436 256 C 470 256, 482 216, 498 214" fill="none" stroke="#433AA0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text class="gv" x="470" y="170" fill="#16805F">&#215;g&#8322;</text>
+  <text class="gv" x="470" y="252" fill="#433AA0">&#215;g&#8325;</text>
+  <circle cx="514" cy="209" r="16" fill="#E8A317" fill-opacity="0.16" stroke="#E8A317"/>
+  <text class="box" x="514" y="214" text-anchor="middle" fill="#B07908">&#931;</text>
+  <path d="M530 209 L560 209" fill="none" stroke="#9A958C" stroke-width="1.3" marker-end="url(#ah)"/>
+  <rect x="560" y="194" width="42" height="30" rx="5" fill="#D85A30" fill-opacity="0.12" stroke="#D85A30"/>
+  <text class="box" x="581" y="213" text-anchor="middle" fill="#A6471F">y</text>
+  <text class="sm" x="581" y="240" text-anchor="middle">output</text>
+
+  <!-- animated token packets: router -> selected experts -> sum -->
+  <g>
+    <rect x="-9" y="-8" width="18" height="16" rx="3" fill="#1D9E75" stroke="#FBFAF7" stroke-width="1.5"/>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="8" font-weight="700" font-family="sans-serif">h</text>
+    <animateTransform attributeName="transform" type="translate" dur="7s" repeatCount="indefinite" keyTimes="0;0.22;0.46;0.7;1" values="200 200;398 142;398 142;514 209;200 200"/>
+    <animate attributeName="opacity" dur="7s" repeatCount="indefinite" keyTimes="0;0.66;0.7;0.72;1" values="1;1;0;0;0"/>
+  </g>
+  <g>
+    <rect x="-9" y="-8" width="18" height="16" rx="3" fill="#534AB7" stroke="#FBFAF7" stroke-width="1.5"/>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="8" font-weight="700" font-family="sans-serif">h</text>
+    <animateTransform attributeName="transform" type="translate" dur="7s" repeatCount="indefinite" keyTimes="0;0.22;0.46;0.7;1" values="200 218;398 256;398 256;514 209;200 218"/>
+    <animate attributeName="opacity" dur="7s" repeatCount="indefinite" keyTimes="0;0.66;0.7;0.72;1" values="1;1;0;0;0"/>
+  </g>
+
+  <line x1="30" y1="360" x2="730" y2="360" stroke="#E2DDD3" stroke-width="1"/>
+  <text class="eq" x="30" y="382">y = g&#8322;&#183;FFN&#8322;(h) + g&#8325;&#183;FFN&#8325;(h)  &#8212; only the top-2 of 8 experts run; the other 6 are skipped (sparse).</text>
+  <text class="cap" x="30" y="402">&#8226; Params grow with E (capacity); per-token compute stays ~k (cheap). Routing must stay <tspan font-style="italic">load-balanced</tspan>.</text>
+  <text class="cap" x="30" y="420">&#8226; Put the experts on different GPUs and this routing becomes expert-parallelism's two all-to-alls.</text>
+</svg>

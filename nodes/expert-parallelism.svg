@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11px;font-style:italic;font-family:sans-serif}
+      .hd{fill:#3F3B34;font-size:10px;font-weight:700;font-family:sans-serif}
+      .hda{fill:#B07908;font-size:10px;font-weight:700;font-family:sans-serif}
+      .lane{fill:#B8B3AA;fill-opacity:0.05;stroke:#D7D2C9;stroke-width:1}
+      .gpu{fill:#8A857C;font-size:10px;font-weight:700;font-family:sans-serif}
+      .elab{font-size:8.5px;font-weight:700;font-family:sans-serif}
+      .idle{fill:#B0ABA2;fill-opacity:0.04;stroke:#CFCABF;stroke-width:1;stroke-dasharray:3 2.5}
+      .ilab{fill:#BAB5AC;font-size:8.5px;font-weight:700;font-family:sans-serif}
+      .tag{font-size:8px;font-family:sans-serif;font-style:italic}
+      .tk{fill:#fff;font-size:9px;font-weight:700;font-family:sans-serif}
+      .sep{stroke:#E2DDD3;stroke-width:1;stroke-dasharray:2 3}
+      .cap{fill:#5A564E;font-size:10.5px;font-family:sans-serif}
+      .leg{font-size:9.5px;font-family:sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="780" height="400" rx="6"/>
+
+  <text class="title" x="30" y="27">Expert parallelism (MoE)</text>
+  <text class="sub" x="248" y="27">a token uses 1 of many experts; two all-to-alls carry it to that expert's GPU and back</text>
+
+  <!-- stage separators -->
+  <line class="sep" x1="180" y1="62" x2="180" y2="292"/>
+  <line class="sep" x1="330" y1="62" x2="330" y2="292"/>
+  <line class="sep" x1="460" y1="62" x2="460" y2="292"/>
+  <line class="sep" x1="592" y1="62" x2="592" y2="292"/>
+
+  <!-- stage headers -->
+  <text class="hd"  x="148" y="54" text-anchor="middle">tokens / GPU</text>
+  <text class="hda" x="255" y="54" text-anchor="middle">all-to-all &#9312; dispatch</text>
+  <text class="hd"  x="392" y="54" text-anchor="middle">experts (sparse FFNs)</text>
+  <text class="hda" x="526" y="54" text-anchor="middle">all-to-all &#9313; combine</text>
+  <text class="hd"  x="656" y="54" text-anchor="middle">output / home</text>
+
+  <!-- 4 GPU lanes -->
+  <rect class="lane" x="56" y="66"  width="668" height="50" rx="6"/>
+  <rect class="lane" x="56" y="124" width="668" height="50" rx="6"/>
+  <rect class="lane" x="56" y="182" width="668" height="50" rx="6"/>
+  <rect class="lane" x="56" y="240" width="668" height="50" rx="6"/>
+  <text class="gpu" x="72" y="95"  text-anchor="middle">GPU0</text>
+  <text class="gpu" x="72" y="153" text-anchor="middle">GPU1</text>
+  <text class="gpu" x="72" y="211" text-anchor="middle">GPU2</text>
+  <text class="gpu" x="72" y="269" text-anchor="middle">GPU3</text>
+
+  <!-- expert boxes: 2 per lane. ACTIVE = token-coloured, IDLE = dashed/dim -->
+  <rect class="idle" x="334" y="72" width="52" height="38" rx="5"/><text class="ilab" x="360" y="88" text-anchor="middle">E0</text><text class="ilab" x="360" y="101" text-anchor="middle">idle</text>
+  <rect x="398" y="72" width="52" height="38" rx="5" fill="#D85A30" fill-opacity="0.13" stroke="#D85A30"/><text class="elab" x="424" y="86" text-anchor="middle" fill="#D85A30">E1</text>
+  <rect x="334" y="130" width="52" height="38" rx="5" fill="#D4537E" fill-opacity="0.13" stroke="#D4537E"/><text class="elab" x="360" y="144" text-anchor="middle" fill="#D4537E">E2</text>
+  <rect class="idle" x="398" y="130" width="52" height="38" rx="5"/><text class="ilab" x="424" y="146" text-anchor="middle">E3</text><text class="ilab" x="424" y="159" text-anchor="middle">idle</text>
+  <rect class="idle" x="334" y="188" width="52" height="38" rx="5"/><text class="ilab" x="360" y="204" text-anchor="middle">E4</text><text class="ilab" x="360" y="217" text-anchor="middle">idle</text>
+  <rect x="398" y="188" width="52" height="38" rx="5" fill="#534AB7" fill-opacity="0.13" stroke="#534AB7"/><text class="elab" x="424" y="202" text-anchor="middle" fill="#534AB7">E5</text>
+  <rect class="idle" x="334" y="246" width="52" height="38" rx="5"/><text class="ilab" x="360" y="262" text-anchor="middle">E6</text><text class="ilab" x="360" y="275" text-anchor="middle">idle</text>
+  <rect x="398" y="246" width="52" height="38" rx="5" fill="#1D9E75" fill-opacity="0.13" stroke="#1D9E75"/><text class="elab" x="424" y="260" text-anchor="middle" fill="#1D9E75">E7</text>
+
+  <!-- DISPATCH guide arrows (token-coloured) : home lane -> expert's lane -->
+  <path d="M172 91  C 250 91, 300 207, 396 207" fill="none" stroke="#534AB7" stroke-width="1.2" opacity="0.38" marker-end="url(#ah)"/>
+  <path d="M172 149 C 250 149, 300 265, 396 265" fill="none" stroke="#1D9E75" stroke-width="1.2" opacity="0.38" marker-end="url(#ah)"/>
+  <path d="M172 207 C 250 207, 300 91,  396 91"  fill="none" stroke="#D85A30" stroke-width="1.2" opacity="0.38" marker-end="url(#ah)"/>
+  <path d="M172 265 C 240 265, 270 149, 332 149" fill="none" stroke="#D4537E" stroke-width="1.2" opacity="0.38" marker-end="url(#ah)"/>
+
+  <!-- COMBINE guide arrows (gold) : expert's lane -> home lane -->
+  <path d="M452 207 C 520 207, 560 91,  630 91"  fill="none" stroke="#E8A317" stroke-width="1.2" opacity="0.42" marker-end="url(#ah)"/>
+  <path d="M452 265 C 520 265, 560 149, 630 149" fill="none" stroke="#E8A317" stroke-width="1.2" opacity="0.42" marker-end="url(#ah)"/>
+  <path d="M452 91  C 520 91,  560 207, 630 207" fill="none" stroke="#E8A317" stroke-width="1.2" opacity="0.42" marker-end="url(#ah)"/>
+  <path d="M388 149 C 520 149, 560 265, 630 265" fill="none" stroke="#E8A317" stroke-width="1.2" opacity="0.42" marker-end="url(#ah)"/>
+
+  <!-- routing tags at home -->
+  <text class="tag" x="148" y="112" text-anchor="middle" fill="#534AB7">gate &#8594; E5</text>
+  <text class="tag" x="148" y="170" text-anchor="middle" fill="#1D9E75">gate &#8594; E7</text>
+  <text class="tag" x="148" y="228" text-anchor="middle" fill="#D85A30">gate &#8594; E1</text>
+  <text class="tag" x="148" y="286" text-anchor="middle" fill="#D4537E">gate &#8594; E2</text>
+
+  <!-- animated token packets: home -> dispatch -> compute(gold) -> combine -> home -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.10;0.28;0.46;0.64;1" values="148 91;148 91;424 207;424 207;656 91;656 91"/>
+    <rect x="-22" y="-11" width="44" height="22" rx="5" stroke="#FBFAF7" stroke-width="2" fill="#534AB7"><animate attributeName="fill" dur="14s" repeatCount="indefinite" keyTimes="0;0.34;0.40;1" values="#534AB7;#534AB7;#E8A317;#E8A317"/></rect>
+    <text class="tk" x="0" y="0" text-anchor="middle" dominant-baseline="central">t0</text>
+  </g>
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.10;0.28;0.46;0.64;1" values="148 149;148 149;424 265;424 265;656 149;656 149"/>
+    <rect x="-22" y="-11" width="44" height="22" rx="5" stroke="#FBFAF7" stroke-width="2" fill="#1D9E75"><animate attributeName="fill" dur="14s" repeatCount="indefinite" keyTimes="0;0.34;0.40;1" values="#1D9E75;#1D9E75;#E8A317;#E8A317"/></rect>
+    <text class="tk" x="0" y="0" text-anchor="middle" dominant-baseline="central">t1</text>
+  </g>
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.10;0.28;0.46;0.64;1" values="148 207;148 207;424 91;424 91;656 207;656 207"/>
+    <rect x="-22" y="-11" width="44" height="22" rx="5" stroke="#FBFAF7" stroke-width="2" fill="#D85A30"><animate attributeName="fill" dur="14s" repeatCount="indefinite" keyTimes="0;0.34;0.40;1" values="#D85A30;#D85A30;#E8A317;#E8A317"/></rect>
+    <text class="tk" x="0" y="0" text-anchor="middle" dominant-baseline="central">t2</text>
+  </g>
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.10;0.28;0.46;0.64;1" values="148 265;148 265;360 149;360 149;656 265;656 265"/>
+    <rect x="-22" y="-11" width="44" height="22" rx="5" stroke="#FBFAF7" stroke-width="2" fill="#D4537E"><animate attributeName="fill" dur="14s" repeatCount="indefinite" keyTimes="0;0.34;0.40;1" values="#D4537E;#D4537E;#E8A317;#E8A317"/></rect>
+    <text class="tk" x="0" y="0" text-anchor="middle" dominant-baseline="central">t3</text>
+  </g>
+
+  <!-- legend -->
+  <rect x="60" y="312" width="14" height="11" rx="2" fill="#534AB7" fill-opacity="0.5" stroke="#534AB7"/><text class="leg" x="80" y="321" fill="#5A564E">active expert (runs its routed token)</text>
+  <rect x="300" y="312" width="14" height="11" rx="2" class="idle"/><text class="leg" x="320" y="321" fill="#5A564E">idle expert (not chosen)</text>
+  <rect x="486" y="312" width="14" height="11" rx="2" fill="#E8A317"/><text class="leg" x="506" y="321" fill="#5A564E">gold = computed result (after the FFN)</text>
+
+  <text class="cap" x="390" y="344" text-anchor="middle">Each GPU's softmax gate routes its tokens to <tspan font-style="italic">1 of 8</tspan> experts; only 4 run, the other 4 stay idle &#8212; compute is <tspan font-weight="700">sparse</tspan>.</text>
+  <text class="cap" x="390" y="362" text-anchor="middle"><tspan fill="#B07908" font-weight="700">Two all-to-alls</tspan> wrap the experts: &#9312; dispatch carries each token to its expert's GPU, &#9313; combine returns the gold result home.</text>
+  <text class="cap" x="390" y="380" text-anchor="middle">Huge parameter count (many experts), small per-token compute (few run) &#8212; paid for in all-to-all communication.</text>
+</svg>

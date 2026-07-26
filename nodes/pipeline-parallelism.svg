@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11px;font-style:italic;font-family:sans-serif}
+      .note{fill:#8A857C;font-size:9.5px;font-family:sans-serif}
+      .stage{fill:#5A564E;fill-opacity:0.05;stroke:#B0ABA2;stroke-width:1}
+      .stt{fill:#6F6A61;font-size:9.5px;font-weight:600;font-family:sans-serif}
+      .rowlab{fill:#6F6A61;font-size:10px;font-weight:700;font-family:sans-serif}
+      .gridbg{fill:#F1EEE8}
+      .gl{stroke:#D8D4CC;stroke-width:0.5}
+      .cell{font-size:9px;font-weight:700;font-family:sans-serif}
+      .leg{font-size:9px;font-family:sans-serif}
+      .cap{fill:#5A564E;font-size:11px;font-family:sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="720" height="330" rx="6"/>
+
+  <text class="title" x="26" y="25">Pipeline parallelism</text>
+  <text class="sub" x="220" y="25">split the model into sequential stages (layers); pipeline the micro-batches</text>
+
+  <!-- stage strip: each GPU owns a contiguous block of layers -->
+  <rect class="stage" x="40"  y="40" width="140" height="26" rx="4"/><text class="stt" x="110" y="50" text-anchor="middle">Stage 0 · GPU 0</text><text class="note" x="110" y="61" text-anchor="middle">layers 0–7</text>
+  <rect class="stage" x="200" y="40" width="140" height="26" rx="4"/><text class="stt" x="270" y="50" text-anchor="middle">Stage 1 · GPU 1</text><text class="note" x="270" y="61" text-anchor="middle">layers 8–15</text>
+  <rect class="stage" x="360" y="40" width="140" height="26" rx="4"/><text class="stt" x="430" y="50" text-anchor="middle">Stage 2 · GPU 2</text><text class="note" x="430" y="61" text-anchor="middle">layers 16–23</text>
+  <rect class="stage" x="520" y="40" width="140" height="26" rx="4"/><text class="stt" x="590" y="50" text-anchor="middle">Stage 3 · GPU 3</text><text class="note" x="590" y="61" text-anchor="middle">layers 24–31</text>
+  <path d="M182 53 L198 53" class="" fill="none" stroke="#9A958C" stroke-width="1" marker-end="url(#ah)"/>
+  <path d="M342 53 L358 53" fill="none" stroke="#9A958C" stroke-width="1" marker-end="url(#ah)"/>
+  <path d="M502 53 L518 53" fill="none" stroke="#9A958C" stroke-width="1" marker-end="url(#ah)"/>
+  <text class="note" x="360" y="82" text-anchor="middle">forward → activations passed point-to-point between stages  ·  ← backward passes gradients (no collective)</text>
+
+  <!-- schedule label -->
+  <text class="sub" x="26" y="104" fill="#C8860A">GPipe schedule — fill with forwards, drain with backwards; the empty cells are the bubble (idle)</text>
+
+  <!-- grid background (idle cells = bubble show through) -->
+  <rect class="gridbg" x="66" y="114" width="560" height="88" rx="2"/>
+  <line class="gl" x1="106" y1="114" x2="106" y2="202"/><line class="gl" x1="146" y1="114" x2="146" y2="202"/><line class="gl" x1="186" y1="114" x2="186" y2="202"/><line class="gl" x1="226" y1="114" x2="226" y2="202"/><line class="gl" x1="266" y1="114" x2="266" y2="202"/><line class="gl" x1="306" y1="114" x2="306" y2="202"/><line class="gl" x1="346" y1="114" x2="346" y2="202"/><line class="gl" x1="386" y1="114" x2="386" y2="202"/><line class="gl" x1="426" y1="114" x2="426" y2="202"/><line class="gl" x1="466" y1="114" x2="466" y2="202"/><line class="gl" x1="506" y1="114" x2="506" y2="202"/><line class="gl" x1="546" y1="114" x2="546" y2="202"/><line class="gl" x1="586" y1="114" x2="586" y2="202"/>
+  <line class="gl" x1="66" y1="136" x2="626" y2="136"/><line class="gl" x1="66" y1="158" x2="626" y2="158"/><line class="gl" x1="66" y1="180" x2="626" y2="180"/>
+  <text class="rowlab" x="52" y="128" text-anchor="middle">G0</text>
+  <text class="rowlab" x="52" y="150" text-anchor="middle">G1</text>
+  <text class="rowlab" x="52" y="172" text-anchor="middle">G2</text>
+  <text class="rowlab" x="52" y="194" text-anchor="middle">G3</text>
+
+  <!-- ===== forward (bright) + backward (dim, diagonal) cells, coloured by micro-batch ===== -->
+  <!-- G0 (y=114) -->
+  <rect x="67" y="115" width="38" height="20" rx="3" fill="#6C8EEF" fill-opacity="0.38"/><text class="cell" x="86" y="126" text-anchor="middle" fill="#3F63C6">F0</text>
+  <rect x="107" y="115" width="38" height="20" rx="3" fill="#4ECDC4" fill-opacity="0.38"/><text class="cell" x="126" y="126" text-anchor="middle" fill="#1F9C93">F1</text>
+  <rect x="147" y="115" width="38" height="20" rx="3" fill="#F97068" fill-opacity="0.38"/><text class="cell" x="166" y="126" text-anchor="middle" fill="#D8453B">F2</text>
+  <rect x="187" y="115" width="38" height="20" rx="3" fill="#C084FC" fill-opacity="0.38"/><text class="cell" x="206" y="126" text-anchor="middle" fill="#9B53E0">F3</text>
+  <rect x="467" y="115" width="38" height="20" rx="3" fill="#6C8EEF" fill-opacity="0.16"/><line x1="470" y1="133" x2="502" y2="117" stroke="#6C8EEF" stroke-width="0.6" opacity="0.4"/><text class="cell" x="486" y="126" text-anchor="middle" fill="#3F63C6">B0</text>
+  <rect x="507" y="115" width="38" height="20" rx="3" fill="#4ECDC4" fill-opacity="0.16"/><line x1="510" y1="133" x2="542" y2="117" stroke="#4ECDC4" stroke-width="0.6" opacity="0.4"/><text class="cell" x="526" y="126" text-anchor="middle" fill="#1F9C93">B1</text>
+  <rect x="547" y="115" width="38" height="20" rx="3" fill="#F97068" fill-opacity="0.16"/><line x1="550" y1="133" x2="582" y2="117" stroke="#F97068" stroke-width="0.6" opacity="0.4"/><text class="cell" x="566" y="126" text-anchor="middle" fill="#D8453B">B2</text>
+  <rect x="587" y="115" width="38" height="20" rx="3" fill="#C084FC" fill-opacity="0.16"/><line x1="590" y1="133" x2="622" y2="117" stroke="#C084FC" stroke-width="0.6" opacity="0.4"/><text class="cell" x="606" y="126" text-anchor="middle" fill="#9B53E0">B3</text>
+  <!-- G1 (y=136) -->
+  <rect x="107" y="137" width="38" height="20" rx="3" fill="#6C8EEF" fill-opacity="0.38"/><text class="cell" x="126" y="148" text-anchor="middle" fill="#3F63C6">F0</text>
+  <rect x="147" y="137" width="38" height="20" rx="3" fill="#4ECDC4" fill-opacity="0.38"/><text class="cell" x="166" y="148" text-anchor="middle" fill="#1F9C93">F1</text>
+  <rect x="187" y="137" width="38" height="20" rx="3" fill="#F97068" fill-opacity="0.38"/><text class="cell" x="206" y="148" text-anchor="middle" fill="#D8453B">F2</text>
+  <rect x="227" y="137" width="38" height="20" rx="3" fill="#C084FC" fill-opacity="0.38"/><text class="cell" x="246" y="148" text-anchor="middle" fill="#9B53E0">F3</text>
+  <rect x="427" y="137" width="38" height="20" rx="3" fill="#6C8EEF" fill-opacity="0.16"/><line x1="430" y1="155" x2="462" y2="139" stroke="#6C8EEF" stroke-width="0.6" opacity="0.4"/><text class="cell" x="446" y="148" text-anchor="middle" fill="#3F63C6">B0</text>
+  <rect x="467" y="137" width="38" height="20" rx="3" fill="#4ECDC4" fill-opacity="0.16"/><line x1="470" y1="155" x2="502" y2="139" stroke="#4ECDC4" stroke-width="0.6" opacity="0.4"/><text class="cell" x="486" y="148" text-anchor="middle" fill="#1F9C93">B1</text>
+  <rect x="507" y="137" width="38" height="20" rx="3" fill="#F97068" fill-opacity="0.16"/><line x1="510" y1="155" x2="542" y2="139" stroke="#F97068" stroke-width="0.6" opacity="0.4"/><text class="cell" x="526" y="148" text-anchor="middle" fill="#D8453B">B2</text>
+  <rect x="547" y="137" width="38" height="20" rx="3" fill="#C084FC" fill-opacity="0.16"/><line x1="550" y1="155" x2="582" y2="139" stroke="#C084FC" stroke-width="0.6" opacity="0.4"/><text class="cell" x="566" y="148" text-anchor="middle" fill="#9B53E0">B3</text>
+  <!-- G2 (y=158) -->
+  <rect x="147" y="159" width="38" height="20" rx="3" fill="#6C8EEF" fill-opacity="0.38"/><text class="cell" x="166" y="170" text-anchor="middle" fill="#3F63C6">F0</text>
+  <rect x="187" y="159" width="38" height="20" rx="3" fill="#4ECDC4" fill-opacity="0.38"/><text class="cell" x="206" y="170" text-anchor="middle" fill="#1F9C93">F1</text>
+  <rect x="227" y="159" width="38" height="20" rx="3" fill="#F97068" fill-opacity="0.38"/><text class="cell" x="246" y="170" text-anchor="middle" fill="#D8453B">F2</text>
+  <rect x="267" y="159" width="38" height="20" rx="3" fill="#C084FC" fill-opacity="0.38"/><text class="cell" x="286" y="170" text-anchor="middle" fill="#9B53E0">F3</text>
+  <rect x="387" y="159" width="38" height="20" rx="3" fill="#6C8EEF" fill-opacity="0.16"/><line x1="390" y1="177" x2="422" y2="161" stroke="#6C8EEF" stroke-width="0.6" opacity="0.4"/><text class="cell" x="406" y="170" text-anchor="middle" fill="#3F63C6">B0</text>
+  <rect x="427" y="159" width="38" height="20" rx="3" fill="#4ECDC4" fill-opacity="0.16"/><line x1="430" y1="177" x2="462" y2="161" stroke="#4ECDC4" stroke-width="0.6" opacity="0.4"/><text class="cell" x="446" y="170" text-anchor="middle" fill="#1F9C93">B1</text>
+  <rect x="467" y="159" width="38" height="20" rx="3" fill="#F97068" fill-opacity="0.16"/><line x1="470" y1="177" x2="502" y2="161" stroke="#F97068" stroke-width="0.6" opacity="0.4"/><text class="cell" x="486" y="170" text-anchor="middle" fill="#D8453B">B2</text>
+  <rect x="507" y="159" width="38" height="20" rx="3" fill="#C084FC" fill-opacity="0.16"/><line x1="510" y1="177" x2="542" y2="161" stroke="#C084FC" stroke-width="0.6" opacity="0.4"/><text class="cell" x="526" y="170" text-anchor="middle" fill="#9B53E0">B3</text>
+  <!-- G3 (y=180) -->
+  <rect x="187" y="181" width="38" height="20" rx="3" fill="#6C8EEF" fill-opacity="0.38"/><text class="cell" x="206" y="192" text-anchor="middle" fill="#3F63C6">F0</text>
+  <rect x="227" y="181" width="38" height="20" rx="3" fill="#4ECDC4" fill-opacity="0.38"/><text class="cell" x="246" y="192" text-anchor="middle" fill="#1F9C93">F1</text>
+  <rect x="267" y="181" width="38" height="20" rx="3" fill="#F97068" fill-opacity="0.38"/><text class="cell" x="286" y="192" text-anchor="middle" fill="#D8453B">F2</text>
+  <rect x="307" y="181" width="38" height="20" rx="3" fill="#C084FC" fill-opacity="0.38"/><text class="cell" x="326" y="192" text-anchor="middle" fill="#9B53E0">F3</text>
+  <rect x="347" y="181" width="38" height="20" rx="3" fill="#6C8EEF" fill-opacity="0.16"/><line x1="350" y1="199" x2="382" y2="183" stroke="#6C8EEF" stroke-width="0.6" opacity="0.4"/><text class="cell" x="366" y="192" text-anchor="middle" fill="#3F63C6">B0</text>
+  <rect x="387" y="181" width="38" height="20" rx="3" fill="#4ECDC4" fill-opacity="0.16"/><line x1="390" y1="199" x2="422" y2="183" stroke="#4ECDC4" stroke-width="0.6" opacity="0.4"/><text class="cell" x="406" y="192" text-anchor="middle" fill="#1F9C93">B1</text>
+  <rect x="427" y="181" width="38" height="20" rx="3" fill="#F97068" fill-opacity="0.16"/><line x1="430" y1="199" x2="462" y2="183" stroke="#F97068" stroke-width="0.6" opacity="0.4"/><text class="cell" x="446" y="192" text-anchor="middle" fill="#D8453B">B2</text>
+  <rect x="467" y="181" width="38" height="20" rx="3" fill="#C084FC" fill-opacity="0.16"/><line x1="470" y1="199" x2="502" y2="183" stroke="#C084FC" stroke-width="0.6" opacity="0.4"/><text class="cell" x="486" y="192" text-anchor="middle" fill="#9B53E0">B3</text>
+
+  <!-- discrete "now" sweep -->
+  <rect x="86" y="112" width="2.5" height="92" fill="#EF9F27" opacity="0.65">
+    <animate attributeName="x" calcMode="discrete" dur="7s" repeatCount="indefinite"
+      values="86;126;166;206;246;286;326;366;406;446;486;526;566;606"/>
+  </rect>
+
+  <text class="note" x="600" y="216" text-anchor="end">time →</text>
+  <!-- bubble callout -->
+  <text class="note" x="118" y="196" text-anchor="middle" fill="#B0805A">↙ bubble</text>
+
+  <!-- legend -->
+  <rect x="66" y="232" width="12" height="10" rx="2" fill="#6C8EEF" fill-opacity="0.38"/><text class="leg" x="82" y="241" fill="#3F63C6">µb0</text>
+  <rect x="120" y="232" width="12" height="10" rx="2" fill="#4ECDC4" fill-opacity="0.38"/><text class="leg" x="136" y="241" fill="#1F9C93">µb1</text>
+  <rect x="174" y="232" width="12" height="10" rx="2" fill="#F97068" fill-opacity="0.38"/><text class="leg" x="190" y="241" fill="#D8453B">µb2</text>
+  <rect x="228" y="232" width="12" height="10" rx="2" fill="#C084FC" fill-opacity="0.38"/><text class="leg" x="244" y="241" fill="#9B53E0">µb3</text>
+  <text class="leg" x="290" y="241" fill="#6F6A61">bright = forward · dim+slash = backward · empty = bubble (idle)</text>
+
+  <text class="cap" x="360" y="266" text-anchor="middle">Follow µb0 (blue) diagonally: F0 flows GPU0→1→2→3 (forward), then B0 flows GPU3→2→1→0 (backward).</text>
+  <text class="cap" x="360" y="284" text-anchor="middle">The idle triangles are the bubble; more micro-batches make it proportionally smaller. Only activations cross stages — point-to-point, no all-reduce.</text>
+</svg>

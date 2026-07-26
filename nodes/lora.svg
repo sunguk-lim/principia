@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 220" width="470" height="220" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <style>
+    .bg{fill:#FBFAF7}
+    .mat{fill:#FBF0DB;stroke:#C79A3E;stroke-width:1}
+    .frozen{fill:#ECEAE4;stroke:#9A958B;stroke-width:1}
+    .grid{stroke:#C79A3E;stroke-width:0.5}
+    .gridf{stroke:#9A958B;stroke-width:0.5}
+    .brk{fill:none;stroke:#1B1A17;stroke-width:1.1}
+    .op{fill:#D85A30;font-size:20px;font-weight:600}
+    .name{fill:#1B1A17;font-weight:600;font-size:14px}
+    .dim{fill:#2F6FB5;font-style:italic;font-size:12px;font-family:sans-serif}
+    .rel{fill:#5A564E;font-size:11px;font-family:sans-serif}
+    .title{fill:#1B1A17;font-size:15px}
+    .leg{fill:#2F6FB5;font-size:11px;font-style:italic;font-family:sans-serif}
+  </style>
+  <rect class="bg" x="0" y="0" width="470" height="220" rx="6"/>
+  <text class="title" x="235" y="24" text-anchor="middle">W′  =  W  +  B · A</text>
+  <text class="leg" x="235" y="42" text-anchor="middle">drawn to scale:  r ≪ d  →  only the slivers B, A are trained</text>
+
+  <!-- W' : d×d square -->
+  <rect class="mat" x="40" y="60" width="96" height="96"/>
+  <line class="grid" x1="56" y1="60" x2="56" y2="156"/><line class="grid" x1="72" y1="60" x2="72" y2="156"/><line class="grid" x1="88" y1="60" x2="88" y2="156"/><line class="grid" x1="104" y1="60" x2="104" y2="156"/><line class="grid" x1="120" y1="60" x2="120" y2="156"/>
+  <line class="grid" x1="40" y1="76" x2="136" y2="76"/><line class="grid" x1="40" y1="92" x2="136" y2="92"/><line class="grid" x1="40" y1="108" x2="136" y2="108"/><line class="grid" x1="40" y1="124" x2="136" y2="124"/><line class="grid" x1="40" y1="140" x2="136" y2="140"/>
+  <path class="brk" d="M36 60 L30 60 L30 156 L36 156"/><path class="brk" d="M140 60 L146 60 L146 156 L140 156"/>
+  <text class="name" x="88" y="52" text-anchor="middle">W′</text>
+  <text class="dim" x="88" y="174" text-anchor="middle">d × d</text>
+
+  <text class="op" x="160" y="114" text-anchor="middle">=</text>
+
+  <!-- W : d×d square, frozen (gray) -->
+  <rect class="frozen" x="176" y="60" width="96" height="96"/>
+  <line class="gridf" x1="192" y1="60" x2="192" y2="156"/><line class="gridf" x1="208" y1="60" x2="208" y2="156"/><line class="gridf" x1="224" y1="60" x2="224" y2="156"/><line class="gridf" x1="240" y1="60" x2="240" y2="156"/><line class="gridf" x1="256" y1="60" x2="256" y2="156"/>
+  <line class="gridf" x1="176" y1="76" x2="272" y2="76"/><line class="gridf" x1="176" y1="92" x2="272" y2="92"/><line class="gridf" x1="176" y1="108" x2="272" y2="108"/><line class="gridf" x1="176" y1="124" x2="272" y2="124"/><line class="gridf" x1="176" y1="140" x2="272" y2="140"/>
+  <path class="brk" d="M172 60 L166 60 L166 156 L172 156"/><path class="brk" d="M276 60 L282 60 L282 156 L276 156"/>
+  <text class="name" x="224" y="52" text-anchor="middle">W (frozen)</text>
+  <text class="dim" x="224" y="174" text-anchor="middle">d × d</text>
+
+  <text class="op" x="296" y="114" text-anchor="middle">+</text>
+
+  <!-- B : d×r thin sliver -->
+  <rect class="mat" x="316" y="60" width="16" height="96"/>
+  <line class="grid" x1="316" y1="76" x2="332" y2="76"/><line class="grid" x1="316" y1="92" x2="332" y2="92"/><line class="grid" x1="316" y1="108" x2="332" y2="108"/><line class="grid" x1="316" y1="124" x2="332" y2="124"/><line class="grid" x1="316" y1="140" x2="332" y2="140"/>
+  <path class="brk" d="M312 60 L306 60 L306 156 L312 156"/><path class="brk" d="M336 60 L342 60 L342 156 L336 156"/>
+  <text class="name" x="324" y="52" text-anchor="middle">B</text>
+  <text class="dim" x="324" y="174" text-anchor="middle">d × r</text>
+
+  <text class="op" x="356" y="114" text-anchor="middle">·</text>
+
+  <!-- A : r×d flat sliver -->
+  <rect class="mat" x="372" y="100" width="80" height="16"/>
+  <line class="grid" x1="388" y1="100" x2="388" y2="116"/><line class="grid" x1="404" y1="100" x2="404" y2="116"/><line class="grid" x1="420" y1="100" x2="420" y2="116"/><line class="grid" x1="436" y1="100" x2="436" y2="116"/>
+  <path class="brk" d="M368 100 L362 100 L362 116 L368 116"/><path class="brk" d="M452 100 L458 100 L458 116 L452 116"/>
+  <text class="name" x="412" y="92" text-anchor="middle">A</text>
+  <text class="dim" x="412" y="134" text-anchor="middle">r × d</text>
+
+  <text class="rel" x="235" y="202" text-anchor="middle">the full d×d weight stays frozen; only the thin B and flat A (rank r ≪ d) are learned</text>
+</svg>

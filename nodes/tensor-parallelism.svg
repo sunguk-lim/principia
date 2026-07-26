@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#FBFAF7}
+      .title{fill:#1B1A17;font-size:16px;font-weight:600}
+      .sub{fill:#5A564E;font-size:11px;font-style:italic;font-family:sans-serif}
+      .formula{fill:#C8860A;font-size:14px;font-weight:700;font-family:monospace}
+      .hdr{fill:#1B1A17;font-size:11px;font-weight:600;font-family:sans-serif}
+      .stg{fill:#8A857C;font-size:10px;font-family:sans-serif;font-style:italic}
+      .note{font-size:9px;font-family:sans-serif}
+      .shape{fill:#6F6A61;font-size:8.5px;font-family:monospace}
+      .nm{font-size:10px;font-weight:700;font-family:sans-serif}
+      .op{fill:#6F6A61;font-size:13px;font-weight:700;font-family:sans-serif}
+      .grid{stroke:#C9C4BB;stroke-width:0.5}
+      .out{fill:none;stroke:#9A958C;stroke-width:1}
+      .cap{fill:#5A564E;font-size:11px;font-family:sans-serif}
+      .arband{fill:#EF9F27;fill-opacity:0.08;stroke:#EFB552;stroke-width:0.8}
+      .ar{fill:#C8860A;font-size:11px;font-weight:700;font-family:sans-serif}
+      .flow{stroke:#B0ABA2;stroke-width:1;fill:none;opacity:0.7}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="720" height="480" rx="6"/>
+
+  <text class="title" x="26" y="26">Tensor parallelism</text>
+  <text class="sub" x="200" y="26">split each weight across GPUs; one all-reduce recombines</text>
+  <rect x="232" y="36" width="256" height="22" rx="6" fill="#EF9F27" fill-opacity="0.10"/>
+  <text class="formula" x="360" y="51" text-anchor="middle">Z = GeLU( X · A ) · B</text>
+
+  <line x1="246" y1="68" x2="246" y2="408" stroke="#C9C4BB" stroke-width="0.8" stroke-dasharray="4 4"/>
+  <text class="hdr" x="118" y="80" text-anchor="middle">1 GPU (full)</text>
+  <text class="hdr" x="485" y="80" text-anchor="middle">4 GPUs (tensor-parallel)</text>
+
+  <!-- ============ LEVEL 1:  X · A → Y   (X replicated, A split by columns) ============ -->
+  <text class="stg" x="14" y="100">① first matmul:  Y = X · A     X replicated · A split by columns</text>
+  <!-- single: X(1×4) · A(4×8) -->
+  <rect x="56" y="120" width="32" height="8" fill="#B8B3AA" fill-opacity="0.16"/>
+  <line class="grid" x1="64" y1="120" x2="64" y2="128"/><line class="grid" x1="72" y1="120" x2="72" y2="128"/><line class="grid" x1="80" y1="120" x2="80" y2="128"/>
+  <rect class="out" x="56" y="120" width="32" height="8"/>
+  <text class="nm" x="72" y="116" text-anchor="middle" fill="#6F6A61">X</text><text class="shape" x="72" y="140" text-anchor="middle">1×4</text>
+  <text class="op" x="98" y="125" text-anchor="middle">·</text>
+  <rect x="108" y="108" width="16" height="32" fill="#6C8EEF" fill-opacity="0.16"/><rect x="124" y="108" width="16" height="32" fill="#4ECDC4" fill-opacity="0.16"/><rect x="140" y="108" width="16" height="32" fill="#F97068" fill-opacity="0.16"/><rect x="156" y="108" width="16" height="32" fill="#C084FC" fill-opacity="0.16"/>
+  <line class="grid" x1="116" y1="108" x2="116" y2="140"/><line class="grid" x1="124" y1="108" x2="124" y2="140"/><line class="grid" x1="132" y1="108" x2="132" y2="140"/><line class="grid" x1="140" y1="108" x2="140" y2="140"/><line class="grid" x1="148" y1="108" x2="148" y2="140"/><line class="grid" x1="156" y1="108" x2="156" y2="140"/><line class="grid" x1="164" y1="108" x2="164" y2="140"/>
+  <line class="grid" x1="108" y1="116" x2="172" y2="116"/><line class="grid" x1="108" y1="124" x2="172" y2="124"/><line class="grid" x1="108" y1="132" x2="172" y2="132"/>
+  <rect class="out" x="108" y="108" width="64" height="32"/>
+  <text class="nm" x="140" y="104" text-anchor="middle" fill="#1B1A17">A</text><text class="shape" x="140" y="152" text-anchor="middle">4×8</text>
+  <!-- TP: X(gray) · Aᵢ per GPU -->
+  <g><rect x="298" y="120" width="28" height="7" fill="#B8B3AA" fill-opacity="0.16"/><line class="grid" x1="305" y1="120" x2="305" y2="127"/><line class="grid" x1="312" y1="120" x2="312" y2="127"/><line class="grid" x1="319" y1="120" x2="319" y2="127"/><rect class="out" x="298" y="120" width="28" height="7"/><text class="op" x="332" y="124" text-anchor="middle">·</text><rect x="339" y="108" width="14" height="28" fill="#6C8EEF" fill-opacity="0.26" stroke="#6C8EEF"/><line class="grid" x1="346" y1="108" x2="346" y2="136"/><line class="grid" x1="339" y1="115" x2="353" y2="115"/><line class="grid" x1="339" y1="122" x2="353" y2="122"/><line class="grid" x1="339" y1="129" x2="353" y2="129"/><text class="nm" x="346" y="104" text-anchor="middle" fill="#3F63C6">A₀</text></g>
+  <g><rect x="393" y="120" width="28" height="7" fill="#B8B3AA" fill-opacity="0.16"/><line class="grid" x1="400" y1="120" x2="400" y2="127"/><line class="grid" x1="407" y1="120" x2="407" y2="127"/><line class="grid" x1="414" y1="120" x2="414" y2="127"/><rect class="out" x="393" y="120" width="28" height="7"/><text class="op" x="427" y="124" text-anchor="middle">·</text><rect x="434" y="108" width="14" height="28" fill="#4ECDC4" fill-opacity="0.26" stroke="#4ECDC4"/><line class="grid" x1="441" y1="108" x2="441" y2="136"/><line class="grid" x1="434" y1="115" x2="448" y2="115"/><line class="grid" x1="434" y1="122" x2="448" y2="122"/><line class="grid" x1="434" y1="129" x2="448" y2="129"/><text class="nm" x="441" y="104" text-anchor="middle" fill="#1F9C93">A₁</text></g>
+  <g><rect x="488" y="120" width="28" height="7" fill="#B8B3AA" fill-opacity="0.16"/><line class="grid" x1="495" y1="120" x2="495" y2="127"/><line class="grid" x1="502" y1="120" x2="502" y2="127"/><line class="grid" x1="509" y1="120" x2="509" y2="127"/><rect class="out" x="488" y="120" width="28" height="7"/><text class="op" x="522" y="124" text-anchor="middle">·</text><rect x="529" y="108" width="14" height="28" fill="#F97068" fill-opacity="0.26" stroke="#F97068"/><line class="grid" x1="536" y1="108" x2="536" y2="136"/><line class="grid" x1="529" y1="115" x2="543" y2="115"/><line class="grid" x1="529" y1="122" x2="543" y2="122"/><line class="grid" x1="529" y1="129" x2="543" y2="129"/><text class="nm" x="536" y="104" text-anchor="middle" fill="#D8453B">A₂</text></g>
+  <g><rect x="583" y="120" width="28" height="7" fill="#B8B3AA" fill-opacity="0.16"/><line class="grid" x1="590" y1="120" x2="590" y2="127"/><line class="grid" x1="597" y1="120" x2="597" y2="127"/><line class="grid" x1="604" y1="120" x2="604" y2="127"/><rect class="out" x="583" y="120" width="28" height="7"/><text class="op" x="617" y="124" text-anchor="middle">·</text><rect x="624" y="108" width="14" height="28" fill="#C084FC" fill-opacity="0.26" stroke="#C084FC"/><line class="grid" x1="631" y1="108" x2="631" y2="136"/><line class="grid" x1="624" y1="115" x2="638" y2="115"/><line class="grid" x1="624" y1="122" x2="638" y2="122"/><line class="grid" x1="624" y1="129" x2="638" y2="129"/><text class="nm" x="631" y="104" text-anchor="middle" fill="#9B53E0">A₃</text></g>
+  <text class="shape" x="312" y="148" text-anchor="middle">X 1×4 (same)</text>
+  <text class="note" x="500" y="160" text-anchor="middle" fill="#C8860A">X is replicated; each GPU holds 1/4 of A's columns (Aᵢ 4×2)</text>
+
+  <!-- L1 → L2 arrows -->
+  <path class="flow" d="M130 142 L114 222" marker-end="url(#ah)"/>
+  <path class="flow" d="M330 138 L320 222" marker-end="url(#ah)"/>
+  <path class="flow" d="M425 138 L415 222" marker-end="url(#ah)"/>
+  <path class="flow" d="M520 138 L510 222" marker-end="url(#ah)"/>
+  <path class="flow" d="M615 138 L605 222" marker-end="url(#ah)"/>
+
+  <!-- ============ LEVEL 2:  GeLU(Y) · B → Z   (Y and B same level; B split by rows) ============ -->
+  <text class="stg" x="14" y="196">② second matmul:  Z = GeLU(Y) · B     Y and B feed Z together (not a cascade) · B split by rows</text>
+  <!-- single: Y(1×8) · B(8×4) -->
+  <rect x="56" y="228" width="16" height="8" fill="#6C8EEF" fill-opacity="0.16"/><rect x="72" y="228" width="16" height="8" fill="#4ECDC4" fill-opacity="0.16"/><rect x="88" y="228" width="16" height="8" fill="#F97068" fill-opacity="0.16"/><rect x="104" y="228" width="16" height="8" fill="#C084FC" fill-opacity="0.16"/>
+  <line class="grid" x1="64" y1="228" x2="64" y2="236"/><line class="grid" x1="72" y1="228" x2="72" y2="236"/><line class="grid" x1="80" y1="228" x2="80" y2="236"/><line class="grid" x1="88" y1="228" x2="88" y2="236"/><line class="grid" x1="96" y1="228" x2="96" y2="236"/><line class="grid" x1="104" y1="228" x2="104" y2="236"/><line class="grid" x1="112" y1="228" x2="112" y2="236"/>
+  <rect class="out" x="56" y="228" width="64" height="8"/>
+  <text class="nm" x="88" y="224" text-anchor="middle" fill="#1B1A17">Y</text><text class="shape" x="88" y="248" text-anchor="middle">1×8</text>
+  <text class="op" x="130" y="232" text-anchor="middle">·</text>
+  <rect x="140" y="200" width="32" height="16" fill="#6C8EEF" fill-opacity="0.16"/><rect x="140" y="216" width="32" height="16" fill="#4ECDC4" fill-opacity="0.16"/><rect x="140" y="232" width="32" height="16" fill="#F97068" fill-opacity="0.16"/><rect x="140" y="248" width="32" height="16" fill="#C084FC" fill-opacity="0.16"/>
+  <line class="grid" x1="148" y1="200" x2="148" y2="264"/><line class="grid" x1="156" y1="200" x2="156" y2="264"/><line class="grid" x1="164" y1="200" x2="164" y2="264"/>
+  <line class="grid" x1="140" y1="208" x2="172" y2="208"/><line class="grid" x1="140" y1="216" x2="172" y2="216"/><line class="grid" x1="140" y1="224" x2="172" y2="224"/><line class="grid" x1="140" y1="232" x2="172" y2="232"/><line class="grid" x1="140" y1="240" x2="172" y2="240"/><line class="grid" x1="140" y1="248" x2="172" y2="248"/><line class="grid" x1="140" y1="256" x2="172" y2="256"/>
+  <rect class="out" x="140" y="200" width="32" height="64"/>
+  <text class="nm" x="156" y="196" text-anchor="middle" fill="#1B1A17">B</text><text class="shape" x="156" y="276" text-anchor="middle">8×4</text>
+  <!-- TP per GPU: Yᵢ(1×2) · Bᵢ(2×4) -->
+  <g><rect x="298" y="228" width="14" height="7" fill="#6C8EEF" fill-opacity="0.26" stroke="#6C8EEF"/><line class="grid" x1="305" y1="228" x2="305" y2="235"/><text class="op" x="320" y="232" text-anchor="middle">·</text><rect x="327" y="224" width="28" height="14" fill="#6C8EEF" fill-opacity="0.26" stroke="#6C8EEF"/><line class="grid" x1="334" y1="224" x2="334" y2="238"/><line class="grid" x1="341" y1="224" x2="341" y2="238"/><line class="grid" x1="348" y1="224" x2="348" y2="238"/><line class="grid" x1="327" y1="231" x2="355" y2="231"/></g>
+  <g><rect x="393" y="228" width="14" height="7" fill="#4ECDC4" fill-opacity="0.26" stroke="#4ECDC4"/><line class="grid" x1="400" y1="228" x2="400" y2="235"/><text class="op" x="415" y="232" text-anchor="middle">·</text><rect x="422" y="224" width="28" height="14" fill="#4ECDC4" fill-opacity="0.26" stroke="#4ECDC4"/><line class="grid" x1="429" y1="224" x2="429" y2="238"/><line class="grid" x1="436" y1="224" x2="436" y2="238"/><line class="grid" x1="443" y1="224" x2="443" y2="238"/><line class="grid" x1="422" y1="231" x2="450" y2="231"/></g>
+  <g><rect x="488" y="228" width="14" height="7" fill="#F97068" fill-opacity="0.26" stroke="#F97068"/><line class="grid" x1="495" y1="228" x2="495" y2="235"/><text class="op" x="510" y="232" text-anchor="middle">·</text><rect x="517" y="224" width="28" height="14" fill="#F97068" fill-opacity="0.26" stroke="#F97068"/><line class="grid" x1="524" y1="224" x2="524" y2="238"/><line class="grid" x1="531" y1="224" x2="531" y2="238"/><line class="grid" x1="538" y1="224" x2="538" y2="238"/><line class="grid" x1="517" y1="231" x2="545" y2="231"/></g>
+  <g><rect x="583" y="228" width="14" height="7" fill="#C084FC" fill-opacity="0.26" stroke="#C084FC"/><line class="grid" x1="590" y1="228" x2="590" y2="235"/><text class="op" x="605" y="232" text-anchor="middle">·</text><rect x="612" y="224" width="28" height="14" fill="#C084FC" fill-opacity="0.26" stroke="#C084FC"/><line class="grid" x1="619" y1="224" x2="619" y2="238"/><line class="grid" x1="626" y1="224" x2="626" y2="238"/><line class="grid" x1="633" y1="224" x2="633" y2="238"/><line class="grid" x1="612" y1="231" x2="640" y2="231"/></g>
+  <text class="shape" x="305" y="250" text-anchor="middle">Yᵢ 1×2</text><text class="shape" x="341" y="252" text-anchor="middle">Bᵢ 2×4</text>
+  <text class="note" x="500" y="264" text-anchor="middle" fill="#1F9C93">GeLU(Yᵢ) · Bᵢ  — GeLU is element-wise, so still no communication</text>
+
+  <!-- L2 → L3 arrows -->
+  <path class="flow" d="M140 264 L124 306" marker-end="url(#ah)"/>
+  <path class="flow" d="M341 238 L330 306" marker-end="url(#ah)"/>
+  <path class="flow" d="M436 238 L425 306" marker-end="url(#ah)"/>
+  <path class="flow" d="M531 238 L520 306" marker-end="url(#ah)"/>
+  <path class="flow" d="M626 238 L615 306" marker-end="url(#ah)"/>
+
+  <!-- ============ LEVEL 3:  Z (partial) ============ -->
+  <text class="stg" x="14" y="300">result Z</text>
+  <rect x="108" y="308" width="32" height="10" fill="#EF9F27" fill-opacity="0.20" stroke="#EF9F27"/><line class="grid" x1="116" y1="308" x2="116" y2="318"/><line class="grid" x1="124" y1="308" x2="124" y2="318"/><line class="grid" x1="132" y1="308" x2="132" y2="318"/>
+  <text class="nm" x="124" y="304" text-anchor="middle" fill="#C8860A">Z</text><text class="shape" x="124" y="330" text-anchor="middle">1×4 ✓ done</text>
+  <g><rect x="314" y="308" width="32" height="10" fill="#6C8EEF" fill-opacity="0.26" stroke="#6C8EEF"/><line class="grid" x1="322" y1="308" x2="322" y2="318"/><line class="grid" x1="330" y1="308" x2="330" y2="318"/><line class="grid" x1="338" y1="308" x2="338" y2="318"/></g>
+  <g><rect x="409" y="308" width="32" height="10" fill="#4ECDC4" fill-opacity="0.26" stroke="#4ECDC4"/><line class="grid" x1="417" y1="308" x2="417" y2="318"/><line class="grid" x1="425" y1="308" x2="425" y2="318"/><line class="grid" x1="433" y1="308" x2="433" y2="318"/></g>
+  <g><rect x="504" y="308" width="32" height="10" fill="#F97068" fill-opacity="0.26" stroke="#F97068"/><line class="grid" x1="512" y1="308" x2="512" y2="318"/><line class="grid" x1="520" y1="308" x2="520" y2="318"/><line class="grid" x1="528" y1="308" x2="528" y2="318"/></g>
+  <g><rect x="599" y="308" width="32" height="10" fill="#C084FC" fill-opacity="0.26" stroke="#C084FC"/><line class="grid" x1="607" y1="308" x2="607" y2="318"/><line class="grid" x1="615" y1="308" x2="615" y2="318"/><line class="grid" x1="623" y1="308" x2="623" y2="318"/></g>
+  <text class="note" x="500" y="332" text-anchor="middle" fill="#D8453B">Zᵢ : 1×4 — full shape, but each is only a PARTIAL sum</text>
+
+  <!-- ============ LEVEL 4:  all-reduce ============ -->
+  <rect class="arband" x="262" y="350" width="406" height="24" rx="6"/>
+  <text class="ar" x="465" y="366" text-anchor="middle">all-reduce:  Z = Z₀ + Z₁ + Z₂ + Z₃</text>
+  <text class="note" x="124" y="366" text-anchor="middle" fill="#8A857C">(no step needed)</text>
+  <path d="M330 318 L455 348" fill="none" stroke="#6C8EEF" stroke-width="1.2" opacity="0.5" marker-end="url(#ah)"/>
+  <path d="M425 318 L461 348" fill="none" stroke="#4ECDC4" stroke-width="1.2" opacity="0.5" marker-end="url(#ah)"/>
+  <path d="M520 318 L469 348" fill="none" stroke="#F97068" stroke-width="1.2" opacity="0.5" marker-end="url(#ah)"/>
+  <path d="M615 318 L475 348" fill="none" stroke="#C084FC" stroke-width="1.2" opacity="0.5" marker-end="url(#ah)"/>
+  <rect x="449" y="384" width="32" height="10" fill="#EF9F27" fill-opacity="0.22" stroke="#EF9F27" stroke-width="1.2"/><line class="grid" x1="457" y1="384" x2="457" y2="394"/><line class="grid" x1="465" y1="384" x2="465" y2="394"/><line class="grid" x1="473" y1="384" x2="473" y2="394"/>
+  <path d="M465 374 L465 384" fill="none" stroke="#EF9F27" stroke-width="1.4" opacity="0.7" marker-end="url(#ah)"/>
+  <text class="shape" x="465" y="406" text-anchor="middle" fill="#C8860A">true Z 1×4 = the 1-GPU answer</text>
+
+  <text class="cap" x="360" y="440" text-anchor="middle">Two matmuls: X·A→Y (A split by columns), then GeLU(Y)·B→Z (B split by rows). X is replicated; Y and B feed Z together.</text>
+  <text class="cap" x="360" y="458" text-anchor="middle">Each GPU's Zᵢ is full-shape but a PARTIAL sum; one all-reduce adds the four into the true Z — identical to the single GPU.</text>
+</svg>

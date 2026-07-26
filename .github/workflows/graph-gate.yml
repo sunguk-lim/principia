@@ -1,0 +1,57 @@
+name: Graph diff (report-only)
+
+# Reports the structural graph delta a PR introduces (nodes/edges added/removed, and any
+# restructured existing node — the interleave/prune signal). REPORT-ONLY: a PR is expected to
+# change the graph, so this never fails the build; it surfaces the change for review.
+#   - text delta  -> the job's Step Summary (Checks tab)
+#   - visual diff -> a downloadable `graph-diff` artifact (self-contained graph.html)
+# Compares two snapshots: the PR base tip (base.sha) -> the PR head (head.sha); re-runs on each push.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read          # artifact upload + git reads only; no write scope needed
+
+jobs:
+  graph-diff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # full history so the PR base/head refs are reachable (no shallow clone)
+
+      - name: Text delta → job summary
+        run: |
+          BASE='${{ github.event.pull_request.base.sha }}'
+          HEAD='${{ github.event.pull_request.head.sha }}'
+          {
+            echo '## 🧠 Concept-graph diff'
+            echo "\`${BASE:0:9}\` (base) → \`${HEAD:0:9}\` (head)"
+            echo
+            echo '```'
+            python3 brain.py diff "$BASE" "$HEAD"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Render visual diff (self-contained graph.html)
+        run: |
+          BASE='${{ github.event.pull_request.base.sha }}'
+          HEAD='${{ github.event.pull_request.head.sha }}'
+          python3 brain.py graph --diff "$BASE" --head "$HEAD" --out graph-diff.html
+
+      - name: Upload visual diff
+        uses: actions/upload-artifact@v4
+        with:
+          name: graph-diff
+          path: graph-diff.html
+
+      # --- OPTIONAL hard gates (report-only by default; uncomment to enforce) ------------------
+      # - name: Audit must pass (closed world)
+      #   run: python3 brain.py audit
+      # - name: Generated files in sync (MANIFEST.md / web/graph.html)
+      #   run: |
+      #     python3 brain.py manifest && python3 brain.py graph
+      #     git diff --exit-code MANIFEST.md web/graph.html \
+      #       || { echo '::error::stale generated files — run `brain.py manifest && brain.py graph`'; exit 1; }

@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🧠 Learning Brain — Concept Graph</title>
+</head>
+<body>
+<style>
+  html, body { height: 100%; margin: 0; }
+  #app {
+    --bg: #0f1420; --panel: #161c2bdd; --panel-solid: #161c2b; --line: #283250;
+    --txt: #e3e9f5; --muted: #8b97b1; --accent: #ffd166;
+    position: fixed; inset: 0; background: var(--bg); color: var(--txt);
+    font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; overflow: hidden;
+  }
+  #cv { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; cursor: grab; }
+  #cv.grabbing { cursor: grabbing; }
+  #topbar {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 10px 14px; background: linear-gradient(#0f1420ee, #0f142000);
+    pointer-events: none;
+  }
+  #topbar > * { pointer-events: auto; }
+  .brand { font-weight: 700; font-size: 14px; letter-spacing: .2px; }
+  #stats { color: var(--muted); font-variant-numeric: tabular-nums; }
+  #stats b { color: var(--txt); font-weight: 600; }
+  .spacer { flex: 1; }
+  .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .seg button { background: transparent; color: var(--muted); border: 0; padding: 6px 11px; cursor: pointer; font: inherit; }
+  .seg button.active { background: #2b3656; color: var(--txt); }
+  input, select, .btn {
+    background: var(--panel-solid); color: var(--txt); border: 1px solid var(--line);
+    border-radius: 8px; padding: 6px 9px; font: inherit; outline: none;
+  }
+  input:focus, select:focus { border-color: #3d4d7a; }
+  #search { width: 150px; }
+  .btn { cursor: pointer; }
+  .btn:hover { border-color: #3d4d7a; }
+  .panel {
+    position: absolute; z-index: 4; background: var(--panel); backdrop-filter: blur(6px);
+    border: 1px solid var(--line); border-radius: 12px; padding: 12px;
+  }
+  #legend { top: 56px; left: 14px; width: 210px; max-height: calc(100% - 72px); overflow-y: auto; }
+  #legend h4 { margin: 0 0 8px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .fbar { display: flex; gap: 6px; align-items: center; margin: 0 0 8px; }
+  .fbtn { cursor: pointer; font-size: 11px; padding: 2px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); }
+  .fbtn:hover { color: var(--txt); border-color: #3d4d7a; }
+  .fhint { margin-left: auto; font-size: 10px; color: var(--muted); }
+  .chip { display: flex; align-items: center; gap: 8px; padding: 4px 6px; border-radius: 7px; cursor: pointer; user-select: none; }
+  .chip:hover { background: #1f2740; }
+  .chip.off { opacity: .38; }
+  .chip.partial { opacity: .72; }
+  .chip .cv, .chip .cv-sp { width: 12px; flex: none; text-align: center; font-size: 9px; color: var(--muted); }
+  .chip .cv:hover { color: var(--txt); }
+  .chip .sw { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+  .chip .nm { flex: 1; }
+  .chip .ct { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .insights { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px; }
+  .insights .row { display: flex; justify-content: space-between; gap: 8px; padding: 2px 6px; border-radius: 6px; cursor: pointer; }
+  .insights .row:hover { background: #1f2740; }
+  .insights .row .v { color: var(--accent); font-variant-numeric: tabular-nums; }
+  #details { top: 56px; right: 14px; width: 270px; max-height: calc(100% - 72px); overflow-y: auto; }
+  #details.hidden { display: none; }
+  #details .title { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  #details .path { color: var(--muted); font-size: 12px; margin-bottom: 8px; word-break: break-all; }
+  .doclink { color: var(--accent); text-decoration: none; white-space: nowrap; }
+  .doclink:hover { text-decoration: underline; }
+  #details .meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .tag { font-size: 11px; padding: 2px 7px; border-radius: 999px; background: #243056; color: #cdd7f0; }
+  .tag.stub { background: #4a3a12; color: #ffd166; }
+  .tag.axiom { background: #3a2440; color: #e6a8ff; }
+  #details h5 { margin: 10px 0 5px; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+  .links { display: flex; flex-wrap: wrap; gap: 5px; }
+  .nlink { font-size: 12px; padding: 3px 8px; border-radius: 7px; background: #1c2440; border: 1px solid var(--line); cursor: pointer; }
+  .nlink:hover { border-color: #3d4d7a; }
+  .chain { display: flex; flex-direction: column; gap: 0; }
+  .chain .step { padding: 2px 0 2px 14px; position: relative; cursor: pointer; }
+  .chain .step:hover { color: var(--accent); }
+  .chain .step::before { content: ""; position: absolute; left: 4px; top: 11px; bottom: -6px; border-left: 1px solid var(--line); }
+  .chain .step:last-child::before { display: none; }
+  .chain .step::after { content: ""; position: absolute; left: 1px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+  ol.roadmap { list-style: none; margin: 0; padding: 0; counter-reset: rm; display: flex; flex-direction: column; gap: 3px; }
+  .rstep { counter-increment: rm; display: flex; align-items: center; gap: 6px; padding: 3px 7px; border-radius: 6px; background: #1c2440; }
+  .rstep::before { content: counter(rm); min-width: 16px; text-align: right; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .rtitle { flex: 1; cursor: pointer; font-size: 12px; }
+  .rtitle:hover { color: var(--accent); }
+  .rdoc { flex-shrink: 0; color: var(--accent); text-decoration: none; }
+  .rdoc:hover { filter: brightness(1.25); }
+  .rstep.tgt { background: #243056; font-weight: 600; }
+  .close { position: absolute; top: 8px; right: 10px; cursor: pointer; color: var(--muted); font-size: 16px; }
+  .close:hover { color: var(--txt); }
+  #hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 4; color: var(--muted); font-size: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; }
+  #helpBtn { font-weight: 700; }
+  #help-overlay { position: absolute; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; background: rgba(8,12,22,.62); }
+  #help-overlay.open { display: flex; }
+  #help-card { position: relative; background: #f7f9fc; color: #2b3656; border-radius: 14px; padding: 18px 22px; width: min(720px, calc(100% - 48px)); max-height: calc(100% - 48px); overflow: auto; box-shadow: 0 24px 70px rgba(0,0,0,.55); }
+  #help-card h3 { margin: 0 0 4px; font-size: 16px; }
+  #help-card .hsub { margin: 0 0 12px; color: #6b779a; font-size: 13px; line-height: 1.5; }
+  #help-card svg { width: 100%; height: auto; background: #fff; border: 1px solid #dde3ee; border-radius: 10px; }
+  #help-card .hclose { position: absolute; top: 10px; right: 16px; cursor: pointer; font-size: 22px; color: #8b97b1; }
+  #help-card .hclose:hover { color: #2b3656; }
+  .htabs { display: flex; gap: 6px; margin: 2px 26px 12px 0; }
+  .htab { cursor: pointer; font: inherit; font-size: 13px; padding: 5px 12px; border: 1px solid #dde3ee; border-radius: 8px; background: #eef2f8; color: #51607a; }
+  .htab.active { background: #2b3656; color: #fff; border-color: #2b3656; }
+  .hpane.hidden { display: none; }
+  .lc { display: flex; flex-direction: column; }
+  .lc-row { display: flex; align-items: center; gap: 9px; padding: 7px 11px; border: 1px solid #e2e8f2; border-radius: 9px; background: #fff; }
+  .lc-row.exp { cursor: pointer; }
+  .lc-row.exp:hover { background: #f3f7ff; }
+  .lc-row b { font-size: 14px; }
+  .lc-d { color: #6b779a; font-size: 12px; flex: 1; }
+  .lc-sig i { font-style: normal; font-size: 9.5px; text-transform: uppercase; letter-spacing: .4px; color: #9aa6c0; }
+  .lc-sig b { color: #2f6fe0; font-size: 12px; margin: 0 3px; }
+  .lc-crud { font: 800 9.5px ui-monospace, "SF Mono", monospace; padding: 1px 4px; border-radius: 4px; flex: none; letter-spacing: .3px; white-space: nowrap; }
+  .lc-crud.c { color: #147a5c; background: #dcf3ea; }
+  .lc-crud.r { color: #1f5fd0; background: #dde9fb; }
+  .lc-crud.u { color: #9a6f00; background: #fbefcd; }
+  .lc-crud.d { color: #b3261e; background: #fbe0de; }
+  .lc-crud.x { color: #6b779a; background: #eef1f6; }
+  .lc-a { font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; letter-spacing: .02em; flex: none; }
+  .a-llm { color: #5b3fd6; background: #ece6ff; }
+  .a-cli { color: #147a5c; background: #dcf3ea; }
+  .a-git { color: #9a6f00; background: #fbefcd; }
+  .a-llmcli { color: #5b3fd6; background: #ece6ff; }
+  .a-you { color: #41506e; background: #e7ecf5; }
+  .dot.you { background: #6b779a; }
+  .lc-row.entry { background: #f0ecfb; border: 2px solid #b7a6ee; box-shadow: 0 1px 7px rgba(91,63,214,.13); }
+  .lc-row.entry b { color: #4b2fc4; }
+  .lc-row.entry .lc-crud { color: #5b3fd6; background: #e2d9fb; }
+  .lc-entrycap { font-size: 10.5px; color: #5b3fd6; font-weight: 600; margin: 1px 0 1px 8px; }
+  .lc .dot { width: 13px; height: 13px; border-radius: 50%; flex: none; box-shadow: 0 0 0 3px rgba(0,0,0,.05); }
+  .dot.llm { background: #7262fd; } .dot.cli { background: #1f9d78; } .dot.git { background: #b8860b; }
+  .dot.llmcli { background: linear-gradient(90deg, #7262fd 50%, #1f9d78 50%); }
+  .car { color: #8b97b1; width: 10px; font-size: 10px; flex: none; }
+  .lc-arrow { text-align: center; color: #c3ccde; font-size: 11px; line-height: 1.4; }
+  .lc-flow { color: #8b97b1; font-style: italic; font-size: 11px; }
+  .lc-inner { margin: 3px 0 3px 30px; padding: 8px 12px; border-left: 3px solid #cdd7f0; background: #f5f8ff; border-radius: 0 8px 8px 0; display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; color: #3a4666; }
+  .lc-inner.hidden { display: none; }
+  .lc-inner code { background: #e6ecf8; padding: 0 4px; border-radius: 4px; font-size: 11.5px; }
+  .lc-row.sub { padding: 5px 9px; gap: 7px; }
+  .lc-row.sub b { font-size: 12.5px; }
+  .lc-row.sub .dot { width: 11px; height: 11px; box-shadow: 0 0 0 2px rgba(0,0,0,.05); }
+  .lc-loop { margin-top: 5px; padding: 5px 10px; border: 1px dashed #e0b34d; border-radius: 8px; background: #fdf6e3; color: #a06a00; font-weight: 600; text-align: center; font-size: 12px; }
+  .lc-note { color: #8b97b1; font-style: italic; }
+  .ac-you { color: #51607a; font-weight: 600; } .ac-llm { color: #7262fd; font-weight: 600; } .ac-cli { color: #1f9d78; font-weight: 600; } .ac-git { color: #b8860b; font-weight: 600; }
+</style>
+
+<div id="app">
+  <canvas id="cv"></canvas>
+  <header id="topbar">
+    <span class="brand">🧠 Concept Graph</span>
+    <span id="stats"></span>
+    <span class="spacer"></span>
+    <div class="controls">
+      <span class="seg" id="phaseToggle" title="blink the graph: its state before vs after this change" style="display:none">
+        <button data-phase="before">◀ Before</button>
+        <button data-phase="after" class="active">After ▶</button>
+      </span>
+      <span class="seg" id="layoutToggle">
+        <button data-layout="dag" class="active">Layered DAG</button>
+        <button data-layout="force">Tag Force</button>
+      </span>
+      <input id="search" type="text" placeholder="search concepts…" autocomplete="off" />
+      <select id="typeFilter" title="type">
+        <option value="all">all types</option>
+        <option value="concept">concept</option>
+        <option value="axiom">axiom</option>
+        <option value="paper">paper</option>
+      </select>
+      <select id="statusFilter" title="status">
+        <option value="all">all status</option>
+        <option value="explained">explained</option>
+        <option value="stub">stub</option>
+      </select>
+      <label id="axLabel" title="hide the axiom floor nodes (they stay in the data)"
+             style="display:inline-flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer">
+        <input type="checkbox" id="hideAxioms" checked> hide axioms</label>
+      <button class="btn" id="fitBtn">Fit</button>
+      <button class="btn" id="helpBtn" title="How the graph grows — lifecycle">?</button>
+    </div>
+  </header>
+  <aside id="legend" class="panel"></aside>
+  <aside id="details" class="panel hidden"></aside>
+  <div id="hint">scroll = zoom · drag = pan · hover = neighbors · click = trace chain</div>
+
+  <div id="help-overlay">
+    <div id="help-card">
+      <span class="hclose" id="helpClose">×</span>
+      <div class="htabs">
+        <button class="htab active" data-pane="grow">How it grows</button>
+        <button class="htab" data-pane="lifecycle">Lifecycle</button>
+      </div>
+
+      <div class="hpane hidden" id="pane-lifecycle">
+        <h3>🔄 The lifecycle — a concept enters, the graph settles</h3>
+        <p class="hsub"><b>It starts with a prompt.</b> The graph's <b>one entry point</b> is a plain-language request (<i>"explain X"</i>) — everything below is the agent + <code>brain.py</code> turning that single ask into nodes &amp; edges. <b>An agentic graph database:</b> each row is a CRUD <b>tool-call</b> — <code>command</code>(typed args) <b>→</b> result (<code>∅</code> = a mutation returns nothing) — issued by a <b>subject</b>. Loop: the <span class="ac-llm">LLM</span> turns a <i>prompt</i> into a <i>tool-call</i> → <span class="ac-cli">brain.py</span> runs it on the graph → <span class="ac-git">git</span> versions. <span class="lc-crud c">C</span> create · <span class="lc-crud r">R</span> read · <span class="lc-crud u">U</span> update · <span class="lc-crud d">D</span> delete. <b>Compose</b> the whole sub-graph first, then <b>scaffold</b> + <b>sync</b> per node; <b>ground-check</b> &amp; <b>lock</b> are the rare settle-loop. ▸ rows unfold.</p>
+        <div class="lc">
+          <div class="lc-row entry"><span class="dot you"></span><span class="lc-crud x">ENTRY</span><b>prompt</b><span class="lc-d lc-sig">the one entry point — a plain request <i>"explain X"</i> <b>→</b> prompt</span><span class="lc-a a-you">you</span></div>
+          <div class="lc-entrycap">↑ the single front door — you only <b>ask</b>; the agent + <code>brain.py</code> do every CRUD below</div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row exp" data-exp="compose"><span class="dot llm"></span><span class="car">▸</span><span class="lc-crud x">PLAN</span><b>compose</b><span class="lc-d lc-sig">recurse the sub-graph <b>→</b> queue[node] · nothing added yet</span><span class="lc-a a-llm">LLM</span></div>
+          <div class="lc-inner hidden" id="exp-compose">
+            <div class="lc-row sub"><span class="dot llm"></span><span class="lc-crud r">R</span><b>get_children</b><span class="lc-d">direct prerequisites — Depth rule, graph-blind</span><span class="lc-a a-llm">LLM</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot llm"></span><span class="lc-crud r">R</span><b>already_have?</b><span class="lc-d">already a node / queued? — by meaning, not string</span><span class="lc-a a-llm">LLM</span></div>
+            <div class="lc-loop">↺ recurse new children → full queue; no <code>add</code> yet</div>
+          </div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row exp" data-exp="scaffold"><span class="dot llmcli"></span><span class="car">▸</span><span class="lc-crud c">C</span><b>scaffold</b><span class="lc-d lc-sig">per node: <code>add</code>(--requires=children) <b>→</b> node:id</span><span class="lc-a a-llmcli">LLM→CLI</span></div>
+          <div class="lc-inner hidden" id="exp-scaffold">
+            <div class="lc-row sub"><span class="dot cli"></span><span class="lc-crud c">C</span><b>add queued node</b><span class="lc-d"><code>add</code>(id, prereqs=children, tag) <b>→</b> node</span><span class="lc-a a-cli">brain.py</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot cli"></span><span class="lc-crud r">R</span><b>missing? (sanity)</b><span class="lc-d"><code>missing</code>() <b>→</b> should be ∅</span><span class="lc-a a-cli">brain.py</span></div>
+            <div class="lc-loop">↺ add each node in turn — <code>audit</code> is the final gate</div>
+          </div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row exp" data-exp="sync"><span class="dot llm"></span><span class="car">▸</span><span class="lc-crud u">U</span><b>sync</b><span class="lc-d lc-sig"><code>update</code>(id) <b>→</b> ∅</span><span class="lc-a a-llm">LLM</span></div>
+          <div class="lc-inner hidden" id="exp-sync">
+            <div class="lc-row sub"><span class="dot llm"></span><span class="lc-crud u">U</span><b>write body</b><span class="lc-d">edit <code>nodes/&lt;id&gt;.md</code> closed-world <b>→</b> ∅</span><span class="lc-a a-llm">LLM</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot llmcli"></span><span class="lc-crud u">U</span><b>write summary</b><span class="lc-d"><code>summary</code>(id, text) <b>→</b> ∅ — the folded view</span><span class="lc-a a-llmcli">LLM→CLI</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot llmcli"></span><span class="lc-crud u">U</span><b>emit feedback</b><span class="lc-d"><code>review</code>(id, note) <b>→</b> ∅ — writes the <code>review:</code> channel <code>lock</code> reads (missing-prereq / overlaps …)</span><span class="lc-a a-llmcli">LLM→CLI</span></div>
+            <div class="lc-note">an Update — fills &amp; reports, returns nothing, never reshapes the graph; the <code>review:</code> notes persist on the node for <code>lock</code> to read later</div>
+          </div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row exp" data-exp="ground"><span class="dot llmcli"></span><span class="car">▸</span><span class="lc-crud x">R→C</span><b>ground-check</b><span class="lc-d lc-sig"><code>reground</code>(id) <b>→</b> edge[] · <code>reindex</code> <b>→</b> ∅</span><span class="lc-a a-llmcli">LLM→CLI</span></div>
+          <div class="lc-inner hidden" id="exp-ground">
+            <div class="lc-row sub"><span class="dot cli"></span><span class="lc-crud r">R</span><b>reground</b><span class="lc-d"><code>reground</code>(id) <b>→</b> edge-candidate[] — scans the prose <code>sync</code> just wrote for existing nodes it leans on</span><span class="lc-a a-cli">brain.py</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot llm"></span><span class="lc-crud r">R</span><b>judge</b><span class="lc-d">read summary[] <b>→</b> keep / drop (folded)</span><span class="lc-a a-llm">LLM</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot llmcli"></span><span class="lc-crud c">C</span><b>reindex + wire</b><span class="lc-d"><code>reindex</code>(id, prereqs:id[]) <b>→</b> ∅ — declare the full set · link <code>[[id]]</code></span><span class="lc-a a-llmcli">LLM→CLI</span></div>
+            <div class="lc-loop">↺ rare now — compose already reused existing nodes via <code>already_have</code>, so this is usually empty</div>
+          </div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row"><span class="dot cli"></span><span class="lc-crud r">R</span><b>audit</b><span class="lc-d lc-sig"><code>audit</code>(graph) <b>→</b> ok:bool · the commit gate</span><span class="lc-a a-cli">brain.py</span></div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row exp" data-exp="lock"><span class="dot llm"></span><span class="car">▸</span><span class="lc-crud x">R→U/D</span><b>lock</b><span class="lc-d lc-sig">read feedback + summaries <b>→</b> <code>reindex</code> / <code>merge</code> <b>→</b> ∅</span><span class="lc-a a-llm">LLM</span></div>
+          <div class="lc-inner hidden" id="exp-lock">
+            <div class="lc-row sub"><span class="dot cli"></span><span class="lc-crud r">R</span><b>gather</b><span class="lc-d"><code>feedback</code>() <b>→</b> note[] (← <code>sync</code>'s <code>review:</code>) · <code>dupes</code>() <b>→</b> pair[] · <code>reground --prune</code> <b>→</b> wrong edges</span><span class="lc-a a-cli">brain.py</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot llm"></span><span class="lc-crud r">R</span><b>judge</b><span class="lc-d">compare summary[] (folded) — title→summary→rare body peek</span><span class="lc-a a-llm">LLM</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot llmcli"></span><span class="lc-crud u">U</span><b>execute</b><span class="lc-d"><code>reindex</code>(node, set) <b>→</b> ∅ — add + prune in one diff · <code>merge</code> (D) · <code>add</code> new node (C)</span><span class="lc-a a-llmcli">LLM→CLI</span></div>
+            <div class="lc-arrow">↓</div>
+            <div class="lc-row sub"><span class="dot cli"></span><span class="lc-crud r">R</span><b>audit-gate</b><span class="lc-d"><code>audit</code> <b>→</b> ok:bool — reviewable diff, never silent</span><span class="lc-a a-cli">brain.py</span></div>
+            <div class="lc-loop">↺ loop until settled — rare now that <code>add</code> grounds on insertion</div>
+          </div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row"><span class="dot cli"></span><span class="lc-crud r">R</span><b>manifest</b><span class="lc-d lc-sig"><code>manifest</code>(nodes) <b>→</b> MANIFEST.md</span><span class="lc-a a-cli">brain.py</span></div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row"><span class="dot cli"></span><span class="lc-crud r">R</span><b>graph</b><span class="lc-d lc-sig"><code>graph</code>(nodes) <b>→</b> graph.html</span><span class="lc-a a-cli">brain.py</span></div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row"><span class="dot cli"></span><span class="lc-crud r">R</span><b>diff</b><span class="lc-d lc-sig"><code>diff</code>(ref1, ref2) <b>→</b> Δ nodes/edges · review the delta before commit (PR gate reports it)</span><span class="lc-a a-cli">brain.py</span></div>
+          <div class="lc-arrow">↓</div>
+          <div class="lc-row"><span class="dot git"></span><span class="lc-crud x">—</span><b>commit</b><span class="lc-d lc-sig"><code>git commit</code>(files) <b>→</b> version</span><span class="lc-a a-git">git</span></div>
+        </div>
+      </div>
+
+      <div class="hpane" id="pane-grow">
+      <h3>🌱 How the graph grows</h3>
+      <p class="hsub">A concept enters as a <b>root</b>; its prerequisites grow beneath it. A second concept grows its own tree — but one of its prerequisites is a node that <b>already exists</b>, so it links to it instead of duplicating (the gold <b>shared node</b>). That reuse <em>is</em> the closed-world graph.</p>
+      <svg id="lifecycleSvg" viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg">
+        <text x="320" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#2b3656">a closed-world concept graph — trees share prerequisites</text>
+        <!-- action call-outs (the mechanism driving each phase) -->
+        <text x="320" y="52" text-anchor="middle" font-size="17" font-weight="800" fill="#2f6fe0" opacity="0">scaffold + sync<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.08;0.42;0.45;1" dur="10s" repeatCount="indefinite"/></text>
+        <text x="320" y="52" text-anchor="middle" font-size="17" font-weight="800" fill="#2f6fe0" opacity="0">scaffold + sync<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.49;0.64;0.66;1" dur="10s" repeatCount="indefinite"/></text>
+        <text x="320" y="52" text-anchor="middle" font-size="17" font-weight="800" fill="#c98a00" opacity="0">lock · reuse<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.66;0.69;1" dur="10s" repeatCount="indefinite"/></text>
+        <!-- tree-1 edges -->
+        <line x1="135" y1="72" x2="75"  y2="185" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="128" stroke-dashoffset="128"><animate attributeName="stroke-dashoffset" values="128;128;0;0" keyTimes="0;0.10;0.16;1" dur="10s" repeatCount="indefinite"/></line>
+        <line x1="135" y1="72" x2="300" y2="185" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="200" stroke-dashoffset="200"><animate attributeName="stroke-dashoffset" values="200;200;0;0" keyTimes="0;0.10;0.16;1" dur="10s" repeatCount="indefinite"/></line>
+        <line x1="75"  y1="185" x2="75"  y2="292" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="107" stroke-dashoffset="107"><animate attributeName="stroke-dashoffset" values="107;107;0;0" keyTimes="0;0.20;0.26;1" dur="10s" repeatCount="indefinite"/></line>
+        <line x1="300" y1="185" x2="300" y2="292" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="107" stroke-dashoffset="107"><animate attributeName="stroke-dashoffset" values="107;107;0;0" keyTimes="0;0.20;0.26;1" dur="10s" repeatCount="indefinite"/></line>
+        <!-- tree-2 edges -->
+        <line x1="510" y1="72" x2="575" y2="185" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="130" stroke-dashoffset="130"><animate attributeName="stroke-dashoffset" values="130;130;0;0" keyTimes="0;0.50;0.56;1" dur="10s" repeatCount="indefinite"/></line>
+        <line x1="575" y1="185" x2="575" y2="292" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="107" stroke-dashoffset="107"><animate attributeName="stroke-dashoffset" values="107;107;0;0" keyTimes="0;0.58;0.64;1" dur="10s" repeatCount="indefinite"/></line>
+        <!-- reuse edge: tree-2 root → shared depth-2 node -->
+        <line x1="510" y1="72" x2="300" y2="185" stroke="#e0a800" stroke-width="3.5" stroke-dasharray="239" stroke-dashoffset="239"><animate attributeName="stroke-dashoffset" values="239;239;0;0" keyTimes="0;0.68;0.75;1" dur="10s" repeatCount="indefinite"/></line>
+        <!-- tree-1 nodes -->
+        <circle cx="135" cy="72" r="0" fill="#4a82f0" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.04;0.05;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;30;24;24" keyTimes="0;0.04;0.08;0.12;1" dur="10s" repeatCount="indefinite"/></circle>
+        <circle cx="75"  cy="185" r="0" fill="#7ba8f5" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.14;0.15;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;20;16;16" keyTimes="0;0.14;0.18;0.22;1" dur="10s" repeatCount="indefinite"/></circle>
+        <circle cx="75"  cy="292" r="0" fill="#b9d2ff" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.24;0.25;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;16;12;12" keyTimes="0;0.24;0.28;0.32;1" dur="10s" repeatCount="indefinite"/></circle>
+        <circle cx="300" cy="292" r="0" fill="#b9d2ff" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.24;0.25;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;16;12;12" keyTimes="0;0.24;0.28;0.32;1" dur="10s" repeatCount="indefinite"/></circle>
+        <!-- SHARED node at depth 2 -->
+        <circle cx="300" cy="185" r="0" fill="#b9c2d6" stroke="#b8860b" stroke-width="0" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.14;0.15;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;23;18;18" keyTimes="0;0.14;0.18;0.22;1" dur="10s" repeatCount="indefinite"/><animate attributeName="fill" values="#b9c2d6;#b9c2d6;#f6bd16;#f6bd16" keyTimes="0;0.68;0.74;1" dur="10s" repeatCount="indefinite"/><animate attributeName="stroke-width" values="0;0;0;4;4" keyTimes="0;0.67;0.69;0.74;1" dur="10s" repeatCount="indefinite"/></circle>
+        <!-- tree-2 nodes -->
+        <circle cx="510" cy="72" r="0" fill="#25b48a" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.46;0.47;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;30;24;24" keyTimes="0;0.46;0.50;0.54;1" dur="10s" repeatCount="indefinite"/></circle>
+        <circle cx="575" cy="185" r="0" fill="#5fcaa8" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.54;0.55;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;20;16;16" keyTimes="0;0.54;0.58;0.62;1" dur="10s" repeatCount="indefinite"/></circle>
+        <circle cx="575" cy="292" r="0" fill="#aee6d4" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.62;0.63;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;16;12;12" keyTimes="0;0.62;0.66;0.70;1" dur="10s" repeatCount="indefinite"/></circle>
+        <!-- depth labels -->
+        <text x="624" y="76"  text-anchor="end" font-size="11" fill="#aeb8cc">depth 1 · root</text>
+        <text x="624" y="189" text-anchor="end" font-size="11" fill="#aeb8cc">depth 2</text>
+        <text x="624" y="296" text-anchor="end" font-size="11" fill="#aeb8cc">depth 3 · axioms</text>
+        <!-- captions -->
+        <text x="320" y="366" text-anchor="middle" font-size="14" fill="#51607a" opacity="0">(1) a concept grows its prerequisite tree — 3 levels, toward axioms<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.06;0.10;0.42;0.45;1" dur="10s" repeatCount="indefinite"/></text>
+        <text x="320" y="366" text-anchor="middle" font-size="14" fill="#51607a" opacity="0">(2) a second concept grows its own tree<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.50;0.63;0.65;1" dur="10s" repeatCount="indefinite"/></text>
+        <text x="320" y="366" text-anchor="middle" font-size="14" fill="#a06a00" font-weight="600" opacity="0">(3) ...reusing a depth-2 node from the first (shared prerequisite)<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.70;0.74;1" dur="10s" repeatCount="indefinite"/></text>
+      </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  const DATA = {"nodes":[{"id":"address-space-layout","title":"Address Space Layout","summary":"Address space layout is the standard floor plan the kernel imposes on a virtual-memory address space.","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":2,"dependents":1,"level":9},{"id":"agent-memory","title":"Agent Memory","summary":"Agent memory is the machinery by which an AI agent — a language model that takes actions and holds conversations over many turns — retains information it has seen and recalls it…","type":"concept","status":"explained","tag":"ml/agents","root":"ml","deps":2,"dependents":1,"level":10},{"id":"all-gather","title":"All-gather","summary":"All-gather is gather followed by broadcast: every process contributes its chunk, the chunks are collected into the full buffer, and then every process — not just the root —…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":2,"dependents":4,"level":16},{"id":"all-reduce","title":"All-reduce","summary":"All-reduce is reduce followed by broadcast: every process contributes a value, the values are combined into one result, and then every process — not just the root — receives that…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":3,"dependents":5,"level":16},{"id":"all-to-all","title":"All-to-all","summary":"All-to-all is the collective in which every process sends a different chunk to every other process — and receives a different chunk back from each.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":3,"dependents":1,"level":17},{"id":"arithmetic","title":"Arithmetic (+ − × ÷)","summary":"The four operations + − × ÷ on numbers, taken as primitive.","type":"axiom","status":"explained","tag":"math/linear-algebra","root":"math","deps":0,"dependents":20,"level":0},{"id":"atomic-operation","title":"Atomic Operation","summary":"An atomic operation performs a read-modify-write on one memory location indivisibly — the hardware guarantees that once a thread starts reading that location, no other thread can…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":1,"dependents":4,"level":8},{"id":"attention-sink","title":"Attention Sink","summary":"When you run sliding-window-attention for very long, streaming generation and evict the oldest tokens as the window slides forward, generation quality can collapse — the model's…","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":2,"dependents":0,"level":7},{"id":"b-tree","title":"B-Tree / B+-Tree","summary":"A balanced search tree generalized from binary to high fan-out — each node holds dozens-to-hundreds of keys and is sized to one disk block, so the tree is only 3-4 levels deep and a lookup costs 3-4 disk reads instead of the ~20+ a binary search tree would; the B+-tree variant keeps all data in leaves linked in a chain so range scans walk the chain without re-descending.","type":"concept","status":"explained","tag":"databases/storage","root":"databases","deps":3,"dependents":4,"level":11},{"id":"bank-conflict","title":"Bank Conflict","summary":"A bank conflict is the one way that shared-memory — the fast, on-chip, block-scoped space that is supposed to be roughly as quick as a register — can silently turn slow.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":0,"level":16},{"id":"barrier","title":"Barrier","summary":"Barrier is the collective-operation that synchronizes the group: every process that reaches the barrier blocks until all processes have reached it, and only then is everyone…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":1,"dependents":2,"level":14},{"id":"bayes-rule","title":"Bayes' Rule","summary":"Bayes' rule is the formula that inverts a conditional probability: it converts \"how probable is the evidence given the cause?\" into \"how probable is the cause given the evidence?\"…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":3,"dependents":8,"level":5},{"id":"bernoulli-distribution","title":"Bernoulli Distribution","summary":"The Bernoulli distribution is the simplest non-trivial probability-distribution: a single trial with exactly two outcomes — call them success (coded as the number $1$) and failure…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":1,"dependents":2,"level":4},{"id":"beta-distribution","title":"Beta Distribution","summary":"The Beta distribution is a continuous probability-distribution whose values live strictly inside the interval $(0,1)$ — the open stretch between $0$ and $1$, not including the…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":1,"dependents":2,"level":4},{"id":"binary-search","title":"Binary Search","summary":"Binary search finds a target value in a sorted sequence — one whose elements are arranged from smallest to largest — by repeatedly halving the range it still needs to examine.","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":2,"level":1},{"id":"binary-search-tree","title":"Binary Search Tree","summary":"A binary search tree (BST) stores ordered data not as a contiguous array but as a branching structure of linked nodes, arranged so that the same halving idea behind binary-search…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":4,"level":2},{"id":"block-layer","title":"Block Layer","summary":"The block layer is the kernel layer that sits between a filesystem — reached through the vfs — and the driver for an actual storage device.","type":"concept","status":"explained","tag":"os/filesystem","root":"os","deps":5,"dependents":2,"level":10},{"id":"boot-process","title":"Boot Process","summary":"The boot process is the chain of steps that carries a machine from the instant power is applied to a fully running system.","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":0,"level":5},{"id":"broadcast","title":"Broadcast","summary":"Broadcast is the collective-operation in which one process — the root-process — holds a piece of data and, after the call, every process in the group holds an identical copy of it.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":2,"dependents":2,"level":15},{"id":"bytecode-vm","title":"Bytecode Virtual Machine","summary":"A bytecode virtual machine runs a program in two stages — a compiler first translates the source into a compact, invented instruction set called bytecode, then a software machine interprets those instructions one at a time over a simple operand model (an operand stack or a bank of virtual registers), trading a little of native code's speed for portability.","type":"concept","status":"explained","tag":"languages/runtime","root":"languages","deps":2,"dependents":1,"level":3},{"id":"capabilities","title":"Capabilities","summary":"Capabilities are how Linux breaks the historically all-or-nothing power of the superuser — the special user, named root and numbered user id 0, that the kernel traditionally let…","type":"concept","status":"explained","tag":"os/virtualization","root":"os","deps":1,"dependents":1,"level":6},{"id":"cgroup","title":"Cgroup","summary":"A cgroup (control group) is a kernel feature that limits, accounts for, and prioritizes the resource usage of a group of processes — how much CPU time they may consume, how much…","type":"concept","status":"explained","tag":"os/virtualization","root":"os","deps":1,"dependents":2,"level":6},{"id":"chain-of-thought","title":"Chain-of-Thought","summary":"Chain-of-thought (CoT) is the practice of having a language model write out its intermediate reasoning steps as tokens before it commits to a final answer, rather than emitting…","type":"concept","status":"explained","tag":"ml/llm/reasoning","root":"ml","deps":1,"dependents":1,"level":6},{"id":"change-of-variables","title":"Change of Variables","summary":"You have a random variable $X$ with a known density, and you build a new variable $Y$ by feeding $X$ through a function, $Y = g(X)$ — for instance squaring it, taking its…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":5,"dependents":1,"level":5},{"id":"chunked-prefill","title":"Chunked Prefill","summary":"LLM inference has two phases.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":2,"dependents":0,"level":7},{"id":"clone","title":"clone()","summary":"clone() is the single Linux system call that creates a new task — and the surprising claim of this node is that it is the only one.","type":"concept","status":"explained","tag":"os/process","root":"os","deps":6,"dependents":0,"level":10},{"id":"closure","title":"Closure","summary":"A closure is a first-class function bundled with the environment of variables captured from the lexical scope where it was defined, so the function keeps access to those outer variables even after the enclosing scope has returned.","type":"concept","status":"explained","tag":"languages/semantics","root":"languages","deps":2,"dependents":1,"level":1},{"id":"collective-algorithm","title":"Collective Algorithm (Ring vs Tree)","summary":"A single collective-operation — say, \"broadcast this array from one process to all the others\" — names what must happen to the data, but it does not say how the underlying…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":1,"dependents":0,"level":14},{"id":"collective-operation","title":"Collective operation","summary":"A collective operation is a single communication step that the whole group of processes participates in together — every process in the group calls it, and the operation is only…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":2,"dependents":8,"level":13},{"id":"communicator","title":"Communicator","summary":"A communicator is a named, fixed group of processes that are allowed to exchange messages with one another, together with an addressing scheme that gives each member a rank — an…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":1,"dependents":2,"level":12},{"id":"compute-capability","title":"Compute Capability","summary":"Compute capability is the version number of an NVIDIA GPU's architecture — a number NVIDIA assigns to each generation of its hardware design, written as a major.minor pair (8.0…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":2,"level":9},{"id":"concurrency-control","title":"Concurrency Control","summary":"Concurrency control is the protocol layer that lets many [[transaction]]s run at once yet produces a result equivalent to SOME serial order (serializability), lifting [[atomic-operation]]'s single-cell lost-update guarantee to whole multi-row transactions; its two families are pessimistic locking (two-phase locking — acquire shared/exclusive row locks, hold to commit, make conflictors wait, risk deadlock and abort a victim) and optimistic/multi-version (proceed without blocking and detect conflicts at commit, or keep multiple row versions so readers never block writers — MVCC), trading waiting for bookkeeping.","type":"concept","status":"explained","tag":"databases/transactions","root":"databases","deps":2,"dependents":2,"level":10},{"id":"conjugate-prior","title":"Conjugate Prior","summary":"A conjugate prior is a prior distribution chosen so that, after the bayes-rule update, the posterior lands in the same family of distributions as the prior — only its parameters…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":4,"dependents":0,"level":6},{"id":"container","title":"Container","summary":"A container is not a special kind of machine and not a tiny virtual computer.","type":"concept","status":"explained","tag":"os/virtualization","root":"os","deps":5,"dependents":2,"level":14},{"id":"container-networking","title":"Container Networking","summary":"Container networking gives each container — a regular process the system runs in isolation — its own private network world, and then wires that world out to everything else.","type":"concept","status":"explained","tag":"networking","root":"networking","deps":4,"dependents":0,"level":15},{"id":"container-runtime","title":"Container Runtime","summary":"A container runtime is the software stack that actually creates and runs a container — the tooling that does the concrete work of assembling, around one ordinary process, the…","type":"concept","status":"explained","tag":"os/virtualization","root":"os","deps":6,"dependents":0,"level":15},{"id":"content-addressable-memory","title":"Content-Addressable Memory","summary":"Content-addressable memory (CAM), also called associative memory, is hardware that realizes the [[key-value]] mapping's associative access physically: you present a search word (the key) and the memory compares it against every stored word at once, in a single cycle, returning the address(es) where it matches — the inverse of ordinary RAM (address in → data out), and the hardware answer to 'given this content, where is it?', bought with a comparator at every cell (so it is fast and parallel but area- and power-hungry, hence small and used where one-cycle lookup is worth it: TLBs, cache tag matching, router forwarding tables).","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":1,"dependents":0,"level":2},{"id":"context-parallelism","title":"Context Parallelism","summary":"Context parallelism splits one single training sample along its sequence (token) dimension across $D$ devices, so a sequence too long to fit on any one device can still be…","type":"concept","status":"explained","tag":"ml/llm/training","root":"ml","deps":4,"dependents":0,"level":18},{"id":"context-switch","title":"Context Switch","summary":"A context switch is the maneuver by which one CPU runs more processes than it has cores: the kernel pauses whichever process is currently executing, saves everything that process…","type":"concept","status":"explained","tag":"os/process","root":"os","deps":2,"dependents":5,"level":6},{"id":"context-window","title":"Context Window","summary":"The context window is the largest number of tokens — the small chunks of text (words or word-pieces) a language model reads as its atomic units — that the model can take as input…","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":1,"dependents":2,"level":6},{"id":"continuous-batching","title":"Continuous Batching","summary":"When a language model serves many requests at once, the cheap way to feed the GPU is to run a batch — several sequences advancing together so one big matrix multiply does the work…","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":2,"dependents":1,"level":7},{"id":"convex-transformation-order","title":"Convex Transformation Order","summary":"Van Zwet's convex transformation order is a rigorous, strong notion of skewness that — unlike the moment measure or the nonparametric (mean-minus-median) measure, which are only…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":0,"level":6},{"id":"convexity","title":"Convexity","summary":"A function is convex when its graph curves upward like a bowl: every straight line drawn between two points on the graph stays on or above the graph, the function never dips below…","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":1,"dependents":2,"level":2},{"id":"copy-on-write","title":"Copy-on-Write","summary":"Copy-on-write (COW) is the trick that makes fork-exec's fork() instant and memory-cheap.","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":4,"dependents":2,"level":12},{"id":"coroutine","title":"Coroutine","summary":"A coroutine is a routine that can pause itself mid-execution with a yield and later be resumed from exactly that point, keeping its own call stack of local state in between — a form of cooperative multitasking in which routines hand control to one another voluntarily rather than being preempted from outside.","type":"concept","status":"explained","tag":"languages/semantics","root":"languages","deps":1,"dependents":1,"level":3},{"id":"cosine-similarity","title":"Cosine Similarity","summary":"Cosine similarity measures how aligned two vectors are — how nearly they point in the same direction — independent of how long either one is.","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":1,"dependents":2,"level":2},{"id":"cpu-vs-gpu","title":"CPU vs GPU","summary":"A CPU and a GPU are both processors that do arithmetic, and both face the same problem: the data they need lives far down a slow memory-hierarchy, where moving a number costs…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":1,"dependents":2,"level":4},{"id":"cromwell-rule","title":"Cromwell's Rule","summary":"Cromwell's rule is a discipline on how you choose a prior in bayes-rule: never assign a prior probability of exactly 0 (or exactly 1) to any proposition that is not logically…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":1,"dependents":0,"level":6},{"id":"cross-product","title":"Cross Product","summary":"The cross product $u \\times v$ takes two vectors in ordinary three-dimensional space and returns a third vector — one that points perpendicular to both inputs, whose length equals…","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":1,"dependents":2,"level":2},{"id":"cubin","title":"Cubin and Fatbinary","summary":"A cubin (CUDA binary) is the compiled GPU machine code for one specific GPU architecture, packaged in an ELF object file; it runs only on chips of that exact generation.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":3,"dependents":1,"level":11},{"id":"cuda-kernel","title":"CUDA Kernel","summary":"A CUDA kernel is a function you write once but that every thread of a GPU launch executes in parallel.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":5,"level":8},{"id":"cuda-thread-hierarchy","title":"CUDA Thread Hierarchy","summary":"When you run a program on an NVIDIA GPU, you do not start one execution — you start a whole army of them at once, and CUDA (NVIDIA's name for both the GPU and the programming…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":5,"level":7},{"id":"cumulative-distribution-function","title":"Cumulative Distribution Function","summary":"A probability-distribution tells you how a random-variable's probability is spread across its values — as point-weights (a pmf) when the values are separate, or as area under a…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":3,"level":4},{"id":"curl","title":"Curl (∇×F)","summary":"Curl turns a vector-field into a vector measuring the local rotation (spin) at each point.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":4,"dependents":3,"level":5},{"id":"curl-of-gradient-zero","title":"Curl of a Gradient is Zero","summary":"For any scalar function $f$, the curl of its gradient is always the zero vector: $\\nabla \\times (\\nabla f) = 0$.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":6,"dependents":0,"level":8},{"id":"data-parallelism","title":"Data parallelism","summary":"Data parallelism scales training by putting a full copy of the same neural-network on every GPU, giving each copy a different slice of the data batch, and keeping the copies…","type":"concept","status":"explained","tag":"ml/llm/training","root":"ml","deps":3,"dependents":3,"level":17},{"id":"database-index","title":"Database Index","summary":"A secondary access structure on a table column that maps each column value to the storage location(s) of the rows holding it — kept ordered (typically a B+-tree) so a query filtering or sorting by that column does an O(log N) lookup instead of an O(N) full table scan; it speeds reads but costs storage and slows every write, since each INSERT/UPDATE/DELETE must also maintain every index.","type":"concept","status":"explained","tag":"databases/storage","root":"databases","deps":3,"dependents":3,"level":12},{"id":"database-trigger","title":"Database Trigger","summary":"A database trigger is a procedure the engine runs automatically when a specified [[sql]] data-change event (INSERT / UPDATE / DELETE) occurs on a table — its body executing inside the same [[transaction]] as the statement that fired it, so its effects commit or roll back atomically with that statement; it moves a reaction from application code into the database, where it fires no matter which client caused the change.","type":"concept","status":"explained","tag":"databases/relational-database","root":"databases","deps":2,"dependents":1,"level":10},{"id":"del-operator","title":"Del operator (∇)","summary":"The del operator $\\nabla$ is a formal vector — a vector whose three entries are not numbers but instructions to differentiate.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":3,"dependents":3,"level":3},{"id":"demand-paging","title":"Demand Paging","summary":"Demand paging is the kernel's policy of refusing to commit real physical memory to a mapped region until the program actually touches it.","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":4,"dependents":3,"level":11},{"id":"dentry","title":"Dentry","summary":"A dentry (short for directory entry) is the vfs object that maps a single name to a file's identity.","type":"concept","status":"explained","tag":"os/filesystem","root":"os","deps":2,"dependents":1,"level":11},{"id":"deque","title":"Deque","summary":"A deque — short for double-ended queue, and pronounced \"deck\" — is a sequence of values that lets you add a value at either end and remove a value from either end, and lets you do…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":2,"dependents":0,"level":3},{"id":"derivative","title":"Derivative","summary":"The derivative measures the instantaneous rate of change of a function — how fast its output moves as its input nudges.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":1,"dependents":5,"level":1},{"id":"device-driver","title":"Device Driver","summary":"A device driver is the piece of kernel code that knows how to talk to one specific piece of hardware.","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":3,"dependents":2,"level":7},{"id":"differential","title":"Differential (Total Derivative)","summary":"The differential $Df$ of a scalar function $f$ of several inputs is its full (total) first derivative: a single row of numbers, the partial-derivatives laid side by side, that…","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":1,"dependents":5,"level":3},{"id":"differential-operators","title":"Differential operators","summary":"Gradient, divergence, curl, Laplacian, Jacobian, Hessian — six names, one machine: take the del-operator $\\nabla$, combine it with a field through a product, then optionally…","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":9,"dependents":1,"level":7},{"id":"directional-derivative","title":"Directional Derivative","summary":"The directional derivative of a scalar function $f$ (a function whose output is a single number) is the rate at which $f$ changes as you step away from a chosen point in a chosen…","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":3,"dependents":0,"level":4},{"id":"divergence","title":"Divergence (∇·F)","summary":"Divergence turns a vector-field into a scalar measuring the net outflow at each point.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":5,"dependents":3,"level":5},{"id":"divergence-of-curl-zero","title":"Divergence of a Curl is Zero","summary":"For any vector field $F$, the divergence of its curl is exactly zero: $\\nabla \\cdot (\\nabla \\times F) = 0$.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":4,"dependents":0,"level":6},{"id":"dma","title":"Direct Memory Access","summary":"When a device — a disk, a network card, a GPU — needs to move a block of data into or out of main memory (the RAM rung of the memory-hierarchy), there are two ways to do it.","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":2,"dependents":5,"level":6},{"id":"dns","title":"DNS","summary":"DNS (the Domain Name System) is the distributed directory that turns a human-readable name — like example.com — into the numeric IP address — like 93.184.216.34 — that the network…","type":"concept","status":"explained","tag":"networking","root":"networking","deps":2,"dependents":1,"level":13},{"id":"document-model","title":"Document Data Model","summary":"A data model in which each record is a self-contained document — a nested tree of key-value pairs (JSON-like) with no schema enforced across records — so data that belongs together is embedded inside one record and read in one fetch, where the relational model would normalize it into separate tables and reassemble it with joins.","type":"concept","status":"explained","tag":"databases/document-database","root":"databases","deps":2,"dependents":1,"level":2},{"id":"dynamic-array","title":"Dynamic Array","summary":"A dynamic array is a list that stores its elements in one unbroken run of memory cells and can grow as you add more.","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":2,"level":1},{"id":"dynamic-typing","title":"Dynamic Typing","summary":"Under dynamic typing a value carries its own type tag at runtime and type checks happen as the program runs, so a variable is just a name that can hold a value of any type — in contrast to static typing, where each variable's type is fixed and checked before the program runs.","type":"concept","status":"explained","tag":"languages/semantics","root":"languages","deps":0,"dependents":1,"level":0},{"id":"embedding","title":"Embedding","summary":"An embedding is a dense vector — an ordered list of real numbers, often a few hundred to a couple thousand of them (for example 768 or 1536 numbers) — that represents the meaning…","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":1,"dependents":6,"level":6},{"id":"empirical-bayes","title":"Empirical Bayes","summary":"Empirical Bayes is a shortcut for choosing the prior in bayes-rule.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":0,"level":6},{"id":"expectation","title":"Expectation","summary":"A probability-distribution tells you how likely each value of a random variable is, but not what value to expect on average.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":5,"level":4},{"id":"expectation-maximization","title":"Expectation-Maximization","summary":"Expectation-Maximization (EM) is the way to compute a maximum-likelihood-estimation estimate when a latent variable — a hidden cause you never get to observe — makes the…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":5,"dependents":0,"level":6},{"id":"expert-parallelism","title":"Expert parallelism (MoE)","summary":"A mixture-of-experts layer holds many expert FFNs and routes each token to only a few.","type":"concept","status":"explained","tag":"ml/llm/training","root":"ml","deps":2,"dependents":0,"level":18},{"id":"exponential-function","title":"Exponential function","summary":"The exponential function $e^{x}$ grows in proportion to its own value; it is always positive and turns addition into multiplication.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":1,"dependents":3,"level":1},{"id":"fair-scheduler","title":"Fair Scheduler (CFS/EEVDF)","summary":"The fair scheduler is the specific policy that Linux's scheduler uses to answer the recurring question \"which runnable task runs next?\" — and the structure that makes the answer…","type":"concept","status":"explained","tag":"os/process","root":"os","deps":2,"dependents":0,"level":8},{"id":"file-descriptor","title":"File Descriptor","summary":"A file descriptor (fd) is a small non-negative integer that a program uses to name one open resource — a file, a network socket, a pipe, a device, anything the kernel can hand it.","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":5,"level":8},{"id":"fine-tuning","title":"Fine-tuning","summary":"Fine-tuning continues training an already-trained model on new data so it adapts to a specific task.","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":2,"dependents":1,"level":8},{"id":"first-class-function","title":"First-Class Function","summary":"A function is first-class when it is an ordinary value — it can be stored in a variable, passed as an argument, returned from another function, and created on the fly — so a program can manipulate functions exactly as it manipulates numbers or strings.","type":"concept","status":"explained","tag":"languages/semantics","root":"languages","deps":0,"dependents":1,"level":0},{"id":"flash-attention","title":"FlashAttention","summary":"FlashAttention computes the exact same output as ordinary transformer-attention, but reorganizes the work so a GPU moves far less data.","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":3,"dependents":1,"level":6},{"id":"fma","title":"Fused Multiply-Add","summary":"A fused multiply-add (FMA) is a single hardware operation that computes d = a × b + c: it multiplies two numbers and adds a third, all at once.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":1,"dependents":2,"level":1},{"id":"fork-exec","title":"Fork and Exec","summary":"Fork and exec is how Unix creates a new program and starts it running — and the surprising thing is that it takes two separate system-calls, not one.","type":"concept","status":"explained","tag":"os/process","root":"os","deps":3,"dependents":2,"level":9},{"id":"fsdp","title":"FSDP / ZeRO","summary":"FSDP (Fully Sharded Data Parallel, a.k.a.","type":"concept","status":"explained","tag":"ml/llm/training","root":"ml","deps":3,"dependents":0,"level":18},{"id":"full-bayesian-inference","title":"Full Bayesian Inference","summary":"Full Bayesian inference is the choice to keep the entire posterior distribution P(θ | D) that bayes-rule produces, instead of crushing it down to a single representative number.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":0,"level":6},{"id":"garbage-collection","title":"Garbage Collection","summary":"Garbage collection automatically reclaims the memory of objects a program can no longer reach, freeing the programmer from manual deallocation; the collector periodically finds which objects are still reachable from the roots and treats everything else as garbage.","type":"concept","status":"explained","tag":"languages/runtime","root":"languages","deps":1,"dependents":1,"level":4},{"id":"gather","title":"Gather","summary":"Gather is the collective-operation in which every process sends its chunk to the root-process, which collects them into one buffer.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":2,"dependents":4,"level":15},{"id":"geometric-distribution","title":"Geometric Distribution","summary":"Imagine repeating the same yes/no experiment over and over — flipping a coin until it lands heads, say — where each attempt succeeds with the same fixed probability $p$ and the…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":0,"level":4},{"id":"gigathread","title":"GigaThread Engine","summary":"The GigaThread engine is the GPU's single global hardware scheduler — a small fixed circuit on the chip, not a program — whose one job is to hand out the work of a launched job to…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":0,"level":7},{"id":"gil","title":"Global Interpreter Lock","summary":"The Global Interpreter Lock (GIL) is a single lock inside the standard Python interpreter (the common implementation called CPython) that may be held by only one thread at a time…","type":"concept","status":"explained","tag":"os/process","root":"os","deps":1,"dependents":0,"level":8},{"id":"glibc-wrapper","title":"glibc Wrapper","summary":"A program almost never issues a raw system-call by hand.","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":0,"level":8},{"id":"gpu-data-flow","title":"GPU Data Flow","summary":"GPU data flow is the round trip a piece of work makes between the CPU and the GPU.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":0,"level":9},{"id":"gpu-memory-spaces","title":"GPU Memory Spaces","summary":"When you write a GPU program, every piece of data you touch lives in one of a few distinct memory spaces — named regions like registers, shared memory, and global memory.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":2,"level":8},{"id":"gpudirect","title":"GPUDirect (P2P/RDMA)","summary":"GPUDirect is an umbrella name for a family of NVIDIA technologies whose single defining idea is this: let a GPU's memory exchange data with another device directly, without first…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":0,"level":7},{"id":"gqa","title":"Grouped-query attention (GQA / MQA)","summary":"Standard multi-head-attention gives every query head its own key/value head — so the kv-cache stores one K,V per head.","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":3,"dependents":0,"level":7},{"id":"gradient","title":"Gradient","summary":"The gradient collects the partial derivatives of a multi-input function into a vector that points in the direction of steepest increase.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":2,"dependents":6,"level":3},{"id":"gradient-descent","title":"Gradient descent","summary":"Gradient descent minimizes a loss by repeatedly stepping the parameters in the direction that reduces it fastest.","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":2,"dependents":2,"level":7},{"id":"graph","title":"Graph (Adjacency List)","summary":"A graph is a set of vertices (also called nodes) — things — together with a set of edges — connections between pairs of those things.","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":2,"level":3},{"id":"graph-memory","title":"Graph Memory","summary":"Graph memory is agent long-term memory whose store is a knowledge graph — entities and typed relations extracted from the agent's history — so recall is a multi-hop, time-aware traversal over connected facts instead of a flat similarity lookup of independent text chunks.","type":"concept","status":"explained","tag":"ml/agents","root":"ml","deps":2,"dependents":0,"level":11},{"id":"hard-link","title":"Hard Link","summary":"A hard link is an additional name for a file that already exists — a directory entry (a name-to-number pair) pointing at an existing inode.","type":"concept","status":"explained","tag":"os/filesystem","root":"os","deps":2,"dependents":0,"level":12},{"id":"hash-map","title":"Hash Map","summary":"A hash map stores pairs of a key and its associated value — for example the key \"cat\" paired with the value 9 — so that, given a key, you can fetch, overwrite, or remove its value…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":2,"dependents":7,"level":2},{"id":"hash-set","title":"Hash Set","summary":"A hash set is a hash-map stripped down to its keys: it stores a collection of items with no value attached to each one, so it answers exactly one question, and answers it fast —…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":1,"level":3},{"id":"heap","title":"Heap","summary":"A heap (more precisely a binary heap) is a container that lets you repeatedly grab the smallest item without ever fully sorting your data.","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":0,"level":1},{"id":"hessian","title":"Hessian (H)","summary":"The Hessian is the matrix of second partial derivatives of a scalar function — the Jacobian of its gradient.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":3,"dependents":2,"level":5},{"id":"hierarchical-bayes","title":"Hierarchical Bayes","summary":"Plain bayes-rule turns a prior belief about an unknown θ into a posterior by reweighting it with the data — but it assumes you already fixed the prior.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":3,"dependents":0,"level":6},{"id":"http","title":"HTTP","summary":"HTTP is the stateless request–response protocol of the web: a client opens a TCP connection to a server and sends a small text message (method + path + headers, optionally a body), and the server answers with a status code + headers + body — each exchange complete in itself.","type":"concept","status":"explained","tag":"networking","root":"networking","deps":2,"dependents":2,"level":14},{"id":"hypervisor","title":"Hypervisor","summary":"A hypervisor (also called a virtual machine monitor) is software that slices one physical computer into several virtual machines (VMs).","type":"concept","status":"explained","tag":"os/virtualization","root":"os","deps":1,"dependents":0,"level":5},{"id":"init-process","title":"Init Process","summary":"The init process is the first process that runs in userspace — the very first ordinary program the kernel launches at the end of boot — and it is given the identifier PID 1.","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":0,"level":6},{"id":"inode","title":"Inode","summary":"An inode is the single object — living both on disk and, while in use, cached in kernel memory — that holds everything about a file except its name.","type":"concept","status":"explained","tag":"os/filesystem","root":"os","deps":1,"dependents":3,"level":10},{"id":"interpreter","title":"Interpreter","summary":"An interpreter is a program that executes another program directly from its source (or an intermediate form), evaluating each construct as it goes, instead of first translating the whole program into the machine's native code and then running that.","type":"concept","status":"explained","tag":"languages/runtime","root":"languages","deps":0,"dependents":2,"level":0},{"id":"interrupt","title":"Interrupt","summary":"An interrupt is an electrical signal a hardware device sends to the CPU that preempts whatever the CPU is currently doing — that is, it forces the CPU to stop in the middle of the…","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":11,"level":5},{"id":"ip-routing","title":"IP Routing","summary":"IP routing is the decision the network layer of the network-stack makes on every outgoing packet: out which interface, and to which next device, do I send this so it gets one step…","type":"concept","status":"explained","tag":"networking","root":"networking","deps":1,"dependents":0,"level":12},{"id":"jacobian","title":"Jacobian (J)","summary":"The Jacobian of a vector-field is the square grid holding all of the field's first partial-derivatives — its full derivative, the single matrix that says, to first order, how the…","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":5,"dependents":5,"level":4},{"id":"jit-vs-aot-compilation","title":"JIT vs AOT Compilation","summary":"A cuda-kernel is written by a human, but the GPU cannot run that source text — it can only run machine code for the exact chip in front of it.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":3,"dependents":1,"level":12},{"id":"k6","title":"k6","summary":"k6 is Grafana's open-source load-testing tool: you script a client's behavior in JavaScript, and a Go engine runs that script as hundreds-to-thousands of concurrent virtual users (lightweight green threads, each with its own embedded JS interpreter), aggregates per-request HTTP metrics into latency percentiles, and passes or fails the run on declared thresholds — a CI-friendly performance gate.","type":"concept","status":"explained","tag":"networking/performance","root":"networking","deps":6,"dependents":0,"level":16},{"id":"kernel","title":"Kernel","summary":"The kernel is the privileged core program of an operating system.","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":7,"level":4},{"id":"kernel-module","title":"Kernel Module","summary":"A kernel module is a chunk of kernel code, packaged as a single file (by convention ending in .ko, for kernel object), that can be loaded into the already-running kernel at…","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":0,"level":5},{"id":"kernel-thread","title":"Kernel Thread","summary":"A kernel thread (kthread) is a schedulable task — it has a numeric identity and is run by the scheduler exactly like a process — but it lives entirely inside the operating-system…","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":1,"level":6},{"id":"key-value","title":"Key–Value Mapping","summary":"An abstract mapping from distinct keys to values — a set of (key, value) pairs with unique keys — offering get/set/delete addressed by the key's content (associative access) rather than by position; the interface hash-maps, tries, and tree-maps each implement.","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":6,"level":1},{"id":"key-value-store","title":"Key–Value Store (key-value database)","summary":"A database whose data model is the key-value mapping — store and fetch opaque values by unique key — made durable, networked, and concurrent; values are opaque and the only access path is the key, a restriction that buys horizontal scale by partitioning the keyspace across machines.","type":"concept","status":"explained","tag":"databases/key-value-store","root":"databases","deps":2,"dependents":2,"level":9},{"id":"knowledge-graph","title":"Knowledge Graph","summary":"A knowledge graph is a graph whose vertices are typed real-world entities and whose edges are labeled, directed relations (subject–predicate–object triples), so the structure stores machine-readable facts you can answer by traversal — not just bare connectivity.","type":"concept","status":"explained","tag":"ml/information-retrieval","root":"ml","deps":1,"dependents":1,"level":4},{"id":"kv-cache","title":"KV-cache","summary":"When a transformer generates text one token at a time, every step's transformer-attention needs the keys and values of all earlier tokens.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":1,"dependents":10,"level":6},{"id":"kv-quantization","title":"KV-Cache Quantization","summary":"The kv-cache — the stored keys and values of every past token — is normally held in 16-bit floats (FP16), and for long context or large batch it is the biggest thing in memory and…","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":2,"dependents":0,"level":7},{"id":"laplacian","title":"Laplacian (∇²f)","summary":"The Laplacian is the divergence of the gradient — the sum of the second partials.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":2,"dependents":1,"level":6},{"id":"latency-percentile","title":"Latency Percentiles (Tail Latency)","summary":"Latency percentiles (p50/p95/p99) summarize a service's response-time distribution by reading its empirical CDF in reverse: pN is the time under which N% of requests completed — reporting the tail (p95 and up) instead of the average, because the mean hides the slow requests users actually feel.","type":"concept","status":"explained","tag":"networking/performance","root":"networking","deps":1,"dependents":2,"level":5},{"id":"leader-election","title":"Leader Election","summary":"The protocol by which a group of replicas agrees on a single new primary after the current one fails — a candidate solicits votes and wins only with a majority (quorum), and because any two majorities of the same group must share a member, at most one leader can win a given term, making failover automatic instead of a human paging exercise.","type":"concept","status":"explained","tag":"databases/distributed","root":"databases","deps":1,"dependents":1,"level":15},{"id":"lexical-scoping","title":"Lexical Scoping","summary":"Lexical (static) scoping resolves a variable name by the textual structure of the program — a name refers to the binding in the nearest enclosing block of source where it is written — so what every name means can be determined by reading the code, without running it.","type":"concept","status":"explained","tag":"languages/semantics","root":"languages","deps":0,"dependents":1,"level":0},{"id":"likelihood","title":"Likelihood","summary":"A probability-distribution $P(D \\mid \\theta)$ answers \"given the setting $\\theta$, how probable is each possible data outcome $D$?\" — here $\\theta$ (Greek \"theta\") is a parameter…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":1,"dependents":10,"level":4},{"id":"linear-independence","title":"Linear independence","summary":"A set of vectors is linearly independent when none of them can be written as a combination of the others — each adds a genuinely new direction.","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":1,"dependents":1,"level":1},{"id":"linked-list","title":"Linked List","summary":"A linked list stores a sequence of values by putting each value in its own small record, called a node, and having every node hold — alongside its value — a pointer: a stored…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":3,"level":1},{"id":"llm-from-sql","title":"Calling LLMs from SQL","summary":"Calling LLMs from SQL exposes model inference as ordinary [[sql]] functions — a generative call like ai.openai_chat_complete(model, prompt) and an [[embedding]] call like ai.openai_embed(model, text) — so a language model runs per row inside a query: the same SELECT/UPDATE that reads a table can classify, summarize, or embed its rows, and because retrieval is also just [[sql]], the whole retrieve-then-generate loop of [[retrieval-augmented-generation]] can be assembled in one statement instead of an external application pipeline.","type":"concept","status":"explained","tag":"databases/vector","root":"databases","deps":3,"dependents":1,"level":10},{"id":"load-testing","title":"Load Testing","summary":"Load testing drives a service with controlled synthetic traffic (e.g. concurrent HTTP clients) while measuring throughput and latency percentiles, to find how performance degrades as load rises — where the saturation knee is, and whether the service meets its tail-latency targets at the load it must survive.","type":"concept","status":"explained","tag":"networking/performance","root":"networking","deps":2,"dependents":1,"level":15},{"id":"log-normal-distribution","title":"Log-Normal Distribution","summary":"A positive random quantity $X$ is log-normal when its logarithm is normal: $Y = \\ln X$ follows a normal-distribution with mean $\\mu$ and standard deviation $\\sigma$, or…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":8,"dependents":0,"level":7},{"id":"lora","title":"LoRA (Low-Rank Adaptation)","summary":"LoRA (Low-Rank Adaptation) adapts a large pretrained model to a new task by freezing the original weight matrix W and learning only a small low-rank update ΔW = B·A.","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":3,"dependents":0,"level":9},{"id":"loss-function","title":"Loss function","summary":"A loss function turns \"how wrong is the model?\" into a single number to minimize.","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":3,"dependents":1,"level":6},{"id":"low-rank-factorization","title":"Low-rank factorization","summary":"Approximating a large matrix W (d×d) by the product of two thin matrices B (d×r) and A (r×d) with r ≪ d.","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":1,"dependents":2,"level":4},{"id":"lua","title":"Lua","summary":"Lua is a small, fast, embeddable scripting language whose single data structure is the table (a hash map); it is dynamically typed and garbage-collected, treats functions as first-class values with closures, offers coroutines for cooperative multitasking, uses metatables for extensible behavior, and runs on a compact register-based bytecode virtual machine.","type":"concept","status":"explained","tag":"languages/scripting","root":"languages","deps":7,"dependents":0,"level":5},{"id":"mac-vs-ip","title":"MAC vs IP Addressing","summary":"A single message crossing the network-stack is addressed twice, with two completely different kinds of address that answer two different questions, and the gap between them is how…","type":"concept","status":"explained","tag":"networking","root":"networking","deps":1,"dependents":0,"level":12},{"id":"mamba","title":"Mamba","summary":"Mamba is a selective state-space-model: it keeps the SSM's linear recurrence and its fixed-size state, but makes the input map $B$, the output map $C$, and the per-step \"step…","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":1,"dependents":0,"level":7},{"id":"matrix-multiplication","title":"Matrix multiplication","summary":"Combining an m×k matrix A with a k×n matrix B into an m×n matrix C, where each entry C[i][j] is the sum of the products of row i of A with column j of B.","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":2,"dependents":9,"level":2},{"id":"matrix-rank","title":"Matrix rank","summary":"The rank of a matrix is the number of \"genuinely independent\" directions it spans — informally, how much non-redundant information the matrix carries.","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":2,"dependents":1,"level":3},{"id":"matrix-trace","title":"Matrix Trace","summary":"The trace of a square matrix is the single number you get by adding up the entries that sit on its main diagonal — the entries M[1][1], M[2][2], … running from the top-left corner…","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":1,"dependents":1,"level":3},{"id":"maximum-a-posteriori","title":"Maximum A Posteriori","summary":"Maximum a posteriori (MAP) estimation is maximum-likelihood-estimation with one addition: a prior belief about the parameter, folded in before you look at the data.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":4,"dependents":0,"level":6},{"id":"maximum-likelihood-estimation","title":"Maximum Likelihood Estimation","summary":"Maximum likelihood estimation (MLE) is a recipe for turning observed data into a single best guess for an unknown parameter.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":4,"dependents":3,"level":5},{"id":"memory-coalescing","title":"Memory Coalescing","summary":"Memory coalescing is about the pattern in which the 32 threads of a warp read or write global memory — the large, slow off-chip space from gpu-memory-spaces.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":0,"level":9},{"id":"memory-hierarchy","title":"Memory Hierarchy","summary":"A processor keeps data in a ladder of stores (bigger = slower), so a computation's speed is set by its operations-per-byte ratio versus the balance point of the (machine, number-format) pair it runs on.","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":2,"dependents":9,"level":3},{"id":"message-passing","title":"Message passing","summary":"Message passing is the communication model in which separate processes, each with its own private memory, share data only by explicitly sending and receiving messages.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":1,"dependents":4,"level":11},{"id":"metatable","title":"Metatable","summary":"A metatable is an ordinary table attached to another table to customize how it behaves — when an operation such as indexing a missing key or applying an operator would otherwise be undefined, the language looks the operation up as a key-value entry in the metatable and runs the handler found there.","type":"concept","status":"explained","tag":"languages/semantics","root":"languages","deps":2,"dependents":1,"level":3},{"id":"mixture-of-experts","title":"Mixture-of-Experts (MoE)","summary":"A Mixture-of-Experts (MoE) layer replaces the transformer's single feed-forward block with many of them — each a small neural-network FFN with its own weights, called an expert —…","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":2,"dependents":2,"level":6},{"id":"mmu","title":"Memory Management Unit","summary":"The memory management unit (MMU) is the piece of hardware inside the CPU that turns every virtual address a program uses — the addresses it computes and dereferences — into the…","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":3,"dependents":2,"level":10},{"id":"moe-routing","title":"MoE Routing","summary":"Routing is the decision mechanism inside a mixture-of-experts layer that chooses which experts each token is sent to.","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":2,"dependents":0,"level":7},{"id":"moment-generating-function","title":"Moment Generating Function","summary":"The moment generating function (MGF) of a random variable $X$ is a single function $M_X(t) = E[e^{tX}]$ — for each real number $t$, it is the expectation of the exponential…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":1,"level":5},{"id":"moment-skewness","title":"Moment Skewness","summary":"Moment skewness is the standard quantitative measure of skewness — it turns the lopsidedness of a distribution into a single signed number $\\gamma$ (Greek \"gamma\").","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":1,"level":6},{"id":"mongodb","title":"MongoDB","summary":"MongoDB is a distributed document database defined by how it composes its parts — records are schema-flexible BSON documents under the [[document-model]], stored by the WiredTiger engine in [[b-tree]]s with snapshot isolation via [[mvcc]] and durability via a [[write-ahead-logging]] journal, reachable through secondary [[database-index]]es and groupable into multi-document ACID [[transaction]]s, kept highly available by replica sets doing log-based [[replication]] with automatic failover via [[leader-election]], and scaled out by [[sharding]] collections across replica sets on a shard key.","type":"concept","status":"explained","tag":"databases/document-database","root":"databases","deps":9,"dependents":0,"level":16},{"id":"mpi-datatype","title":"MPI Datatype","summary":"An MPI datatype is the part of a message that says what each element is.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":1,"dependents":0,"level":12},{"id":"multi-head-attention","title":"Multi-Head Attention","summary":"One transformer-attention produces a single weighting of the tokens — so it can emphasize only one kind of relationship at a time.","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":3,"dependents":2,"level":6},{"id":"multi-head-latent-attention","title":"Multi-Head Latent Attention","summary":"The kv-cache is the memory bottleneck of generation, and in multi-head-attention it stores the keys and values of every head for every past token.","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":3,"dependents":0,"level":7},{"id":"mvcc","title":"Multi-Version Concurrency Control","summary":"MVCC is the multi-version member of concurrency control's optimistic family (PostgreSQL's signature scheme) — an UPDATE never overwrites a row in place but writes a NEW version while keeping the old, each version stamped with the id of the transaction that created it (xmin) and the one that superseded it (xmax); a transaction reads against a snapshot of who-had-committed-at-its-start and a version is visible iff its xmin is committed-and-in-snapshot and its xmax is empty-or-not-in-snapshot, so readers never block writers and writers never block readers — delivering snapshot/repeatable-read isolation without read locks, at the cost of dead tuples that a background vacuum must reclaim.","type":"concept","status":"explained","tag":"databases/transactions","root":"databases","deps":2,"dependents":2,"level":11},{"id":"namespace","title":"Namespace","summary":"A namespace is a kernel feature that gives a process (and the children it creates) an isolated view of one class of system resource — so the process sees only its own slice of…","type":"concept","status":"explained","tag":"os/virtualization","root":"os","deps":1,"dependents":4,"level":6},{"id":"nccl","title":"NCCL","summary":"NCCL (NVIDIA Collective Communications Library) is the software library that implements multi-GPU collective-operations — above all all-reduce, where every GPU contributes a value…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":5,"dependents":0,"level":17},{"id":"nearest-neighbor-search","title":"Nearest-Neighbor Search","summary":"Nearest-neighbor search answers one question over a stored collection: given a query, which stored items are most similar to it?","type":"concept","status":"explained","tag":"ml/information-retrieval","root":"ml","deps":2,"dependents":2,"level":7},{"id":"netfilter","title":"Netfilter (iptables/NAT)","summary":"Netfilter is the part of the kernel that lets you intercept and act on packets while they move through the network-stack.","type":"concept","status":"explained","tag":"networking","root":"networking","deps":1,"dependents":0,"level":12},{"id":"network-stack","title":"Network Stack","summary":"The network stack is the layered path that bytes written to a socket travel down, inside the kernel and out the wire, to reach a program on another machine — and the mirror-image…","type":"concept","status":"explained","tag":"networking","root":"networking","deps":4,"dependents":7,"level":11},{"id":"neural-network","title":"Neural network","summary":"A neural network maps inputs to outputs by alternating linear transformations with simple nonlinearities, stacked into layers.","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":2,"dependents":9,"level":5},{"id":"nonparametric-skew","title":"Nonparametric Skew","summary":"The nonparametric skew is the simplest robust number for the asymmetry studied in skewness: take the gap between the mean and the median, and divide it by the standard deviation,","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":1,"dependents":0,"level":6},{"id":"normal-distribution","title":"Normal Distribution","summary":"The normal distribution (or Gaussian) is the most important continuous probability-distribution: a smooth, symmetric bell-shaped density curve.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":1,"level":4},{"id":"numeric-precision-formats","title":"Numeric Precision Formats","summary":"A numeric precision format is the fixed recipe for laying out one number inside a small, fixed number of bits.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":1,"dependents":1,"level":2},{"id":"nvlink","title":"NVLink","summary":"NVLink is a dedicated, high-bandwidth, low-latency wire that connects GPUs directly to each other (and, in some packages, a GPU directly to a CPU), so that data living in one…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":1,"dependents":2,"level":5},{"id":"occupancy","title":"Occupancy","summary":"Occupancy is the ratio of warps actually resident on a streaming-multiprocessor (loaded and ready, in that node's sense) to the maximum number that SM is built to hold.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":3,"dependents":1,"level":16},{"id":"online-softmax","title":"Online Softmax","summary":"Online softmax (also called streaming softmax) computes a numerically-stable softmax over a long list of values while seeing them one block at a time, in a single pass — never…","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":2,"dependents":2,"level":5},{"id":"oom-killer","title":"OOM Killer","summary":"The OOM (out-of-memory) killer is the kernel's last resort for the one situation demand-paging cannot bluff its way out of: a page fault demands a physical frame, every frame is…","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":3,"dependents":0,"level":13},{"id":"overlayfs","title":"OverlayFS","summary":"OverlayFS is a union filesystem — a filesystem that, instead of owning bytes on a disk of its own, builds one merged view by stacking other directory trees on top of each other.","type":"concept","status":"explained","tag":"os/filesystem","root":"os","deps":2,"dependents":1,"level":13},{"id":"page","title":"Page","summary":"A page is the fixed-size block — almost always 4 KB (4096 bytes) — in which memory is managed.","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":1,"dependents":3,"level":7},{"id":"page-cache","title":"Page Cache","summary":"The page cache is the kernel's use of otherwise-idle RAM to hold recently or frequently used file data, kept in page-sized units (4 KB blocks), so that file I/O issued through the…","type":"concept","status":"explained","tag":"os/filesystem","root":"os","deps":4,"dependents":2,"level":11},{"id":"page-fault","title":"Page Fault","summary":"A page fault is the hardware trap the CPU raises the instant a memory access cannot be satisfied by the page-table — either the looked-up entry maps nothing valid, or the entry…","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":2,"dependents":5,"level":9},{"id":"page-table","title":"Page Table","summary":"A page table is the per-process lookup structure that records, for each virtual page, which physical frame currently holds it — the \"translation book\" the CPU's address hardware…","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":1,"dependents":8,"level":8},{"id":"paged-attention","title":"Paged attention","summary":"The kv-cache grows one token at a time, but a sequence's final length is unknown, so the naive implementation reserves one big contiguous block sized for the maximum length —…","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":4,"dependents":1,"level":13},{"id":"parallel-process","title":"Parallel process","summary":"Parallel processes are two or more processes that run simultaneously — each making progress on its own stream of instructions at the same time as the others, with no guaranteed…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":6,"dependents":1,"level":10},{"id":"partial-derivative","title":"Partial derivative","summary":"A partial derivative measures how a multi-input function changes as one input moves, holding the others fixed.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":1,"dependents":8,"level":2},{"id":"pgai","title":"pgai","summary":"pgai is a suite of PostgreSQL extensions that turns the database itself into an AI-application platform — defined not by one feature but by how it composes three: [[pgvector]] stores and similarity-searches embeddings in a column, the [[pgai-vectorizer]] keeps those embeddings automatically in sync with the source table, and [[llm-from-sql]] calls generative and embedding models as SQL functions; assembled, they let the full retrieve-then-generate loop of [[retrieval-augmented-generation]] run inside one database — no separate vector store, no external embedding pipeline, no application-side model orchestration.","type":"concept","status":"explained","tag":"databases/vector","root":"databases","deps":4,"dependents":0,"level":17},{"id":"pgai-vectorizer","title":"pgai Vectorizer","summary":"The pgai Vectorizer is a declarative auto-embedding pipeline for Postgres: you declare that a source table's text column should be embedded, and it keeps the [[embedding]]s in sync automatically — a [[database-trigger]] on the source table records every INSERT/UPDATE/DELETE into a work queue, and a background worker drains that queue, chunks the text, calls an embedding model, and writes the vectors into a separate destination table with a [[pgvector]] column (exposed through a view joining source and vectors); decoupling embedding from the write means a slow or failing model call never blocks or aborts the original transaction, yet stale rows are always eventually re-embedded.","type":"concept","status":"explained","tag":"databases/vector","root":"databases","deps":3,"dependents":1,"level":16},{"id":"pgvector","title":"pgvector","summary":"pgvector is a PostgreSQL extension that adds a first-class vector column type plus distance operators and an approximate-nearest-neighbor index, turning an ordinary [[postgresql]] table into a store for [[embedding]]s: you keep each row's meaning-vector in a column beside its relational data and run [[nearest-neighbor-search]] as a plain ORDER BY ... LIMIT k query scored by a distance operator (cosine distance = 1 − [[cosine-similarity]]), accelerated by an ANN [[database-index]] the planner can use — so vector search lives inside the same engine, transactions, and joins as the rest of the data.","type":"concept","status":"explained","tag":"databases/vector","root":"databases","deps":5,"dependents":2,"level":15},{"id":"pipeline-parallelism","title":"Pipeline parallelism","summary":"Pipeline parallelism splits a neural-network by layers — each GPU holds a contiguous block of layers (a stage) — and pushes the data through the stages like an assembly line.","type":"concept","status":"explained","tag":"ml/llm/training","root":"ml","deps":3,"dependents":1,"level":12},{"id":"posterior-consistency","title":"Posterior Consistency","summary":"Posterior consistency is the property that, as the amount of data grows without bound, the bayes-rule posterior collapses onto the true value of the unknown quantity — no matter…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":0,"level":6},{"id":"postgresql","title":"PostgreSQL","summary":"PostgreSQL is an open-source relational database management system defined not by any one part but by how it composes them — tables under the [[relational-model]] queried in [[sql]], work grouped into ACID [[transaction]]s, concurrent isolation supplied by [[mvcc]] (its signature choice — readers never block writers) rather than by the read-locking branch of [[concurrency-control]], durability by [[write-ahead-logging]] (commit fsyncs the WAL, data pages flush lazily), data stored in heap tables reached through [[b-tree]] indexes, and each query turned into an execution plan by cost-based [[query-planning]].","type":"concept","status":"explained","tag":"databases/relational-database","root":"databases","deps":8,"dependents":1,"level":14},{"id":"predecessor-query","title":"Predecessor Query","summary":"A predecessor query asks one question of a collection of stored numbers (called keys): given a query value T, return the largest stored key that is strictly less than T — the key…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":2,"dependents":0,"level":3},{"id":"prefill-vs-decode","title":"Prefill vs Decode","summary":"Serving a large language model splits into two phases with opposite cost profiles.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":2,"dependents":1,"level":7},{"id":"prefix-caching","title":"Prefix Caching","summary":"A kv-cache reuses keys and values within one sequence as it grows.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":1,"dependents":0,"level":7},{"id":"probability","title":"Probability","summary":"Probability is a number between 0 and 1 attached to an event — a yes/no question about the result of some uncertain situation, like \"the die shows an even number.\" It measures how…","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":1,"dependents":2,"level":1},{"id":"probability-distribution","title":"Probability Distribution","summary":"A random-variable is a function that assigns numbers to outcomes, with each value carrying a probability.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":1,"dependents":15,"level":3},{"id":"process","title":"Process","summary":"A process is a running instance of a program.","type":"concept","status":"explained","tag":"os/process","root":"os","deps":1,"dependents":10,"level":5},{"id":"ptx","title":"PTX (Parallel Thread Execution)","summary":"PTX (Parallel Thread Execution) is the intermediate, virtual instruction set that a cuda-kernel's GPU code is first compiled into, on its way from high-level source to the actual…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":1,"dependents":3,"level":9},{"id":"quantization","title":"Quantization","summary":"Quantization stores a number with fewer bits by rounding it to one of a small, evenly spaced set of integer levels and remembering a single scaling number.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":1,"dependents":3,"level":1},{"id":"query-planning","title":"Query Planning & Optimization","summary":"The engine step that turns a declarative [[sql]] query into a concrete execution plan by enumerating physically-different ways to compute the same result relation and choosing the one of least estimated cost — deciding per table an access path (sequential scan vs index scan, chosen by predicate selectivity), per join a method (nested-loop / hash / merge), and the order to join 3+ tables, where estimated cost ≈ estimated rows × per-operation cost summed over the plan tree.","type":"concept","status":"explained","tag":"databases/relational-database","root":"databases","deps":3,"dependents":1,"level":13},{"id":"queue","title":"Queue","summary":"A queue is a collection that hands its values back in the exact order they arrived: the first value put in is the first value taken out — a discipline called FIFO, short for…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":2,"dependents":3,"level":2},{"id":"random-variable","title":"Random Variable","summary":"A random variable is a rule that attaches a number to each possible outcome of a random experiment.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":1,"dependents":6,"level":2},{"id":"rank","title":"Rank","summary":"A rank is the integer id that a communicator assigns to each of its member processes — 0, 1, …, n-1 for a group of n.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":1,"dependents":1,"level":13},{"id":"real-time-os","title":"Real-Time OS","summary":"A real-time operating system (RTOS) is an operating system that guarantees a task will run within a fixed, predictable amount of time after the event that needs it — every single…","type":"concept","status":"explained","tag":"os/virtualization","root":"os","deps":2,"dependents":0,"level":8},{"id":"redis","title":"Redis (in-memory data-structure store)","summary":"A key-value store whose keyspace is one big hash-map kept entirely in RAM, and whose values are not opaque blobs but typed data structures (string, list, set, hash, sorted set) the server mutates in place — one command at a time on a single thread, so every command is atomic by construction.","type":"concept","status":"explained","tag":"databases/key-value-store","root":"databases","deps":6,"dependents":0,"level":10},{"id":"reduce","title":"Reduce","summary":"Reduce is the collective-operation in which every process contributes a value and they are all combined by a reduction-operation (e.g.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":3,"dependents":2,"level":15},{"id":"reduce-scatter","title":"Reduce-scatter","summary":"Reduce-scatter is reduce followed by scatter: every process holds a vector of the same length; the vectors are reduced element-wise (slice j of every process is combined into one…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":3,"dependents":2,"level":16},{"id":"reduction-operation","title":"Reduction operation","summary":"A reduction operation is a binary arithmetic operation that combines two values into one and is associative — e.g.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":1,"dependents":4,"level":1},{"id":"register-pressure","title":"Register Pressure","summary":"Register pressure is the number of registers each thread uses — where a register is the fastest storage the hardware has, a tiny on-chip slot that holds one of a thread's live…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":0,"level":17},{"id":"relational-model","title":"Relational Model","summary":"The data model in which all data is a set of relations (tables); a relation is a set of tuples (rows) over named, typed attributes (columns), so rows are unordered and never duplicated, a key uniquely identifies each tuple, and a foreign key references another relation's key — the model SQL queries, joins, and indexes are built on.","type":"concept","status":"explained","tag":"databases/relational-database","root":"databases","deps":1,"dependents":3,"level":1},{"id":"replication","title":"Replication","summary":"Keeping full copies of the same data on multiple machines so the system survives a machine failure and can serve more reads — in the dominant leader-based form all writes go to one primary, which appends each change to a replication log that follower replicas replay in order, so every replica converges on the same state by the same replay-a-log mechanism a write-ahead log uses to recover from a crash.","type":"concept","status":"explained","tag":"databases/distributed","root":"databases","deps":1,"dependents":3,"level":14},{"id":"retrieval-augmented-generation","title":"Retrieval-Augmented Generation","summary":"Retrieval-augmented generation (RAG) is a way of making a language model answer a question using external knowledge — text it was never trained on — by retrieving the few most…","type":"concept","status":"explained","tag":"ml/information-retrieval","root":"ml","deps":3,"dependents":3,"level":9},{"id":"ring-attention","title":"Ring Attention","summary":"Ring Attention computes the exact same attention output as flash-attention, but for a sequence so long that its keys and values cannot fit on a single device.","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":3,"dependents":1,"level":17},{"id":"rmsnorm","title":"RMSNorm","summary":"RMSNorm (root-mean-square normalization) is a small layer placed between the layers of a neural-network that rescales each activation vector to a stable size: it divides the…","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":1,"dependents":0,"level":6},{"id":"roofline-model","title":"Roofline Model","summary":"The roofline model is a single picture that predicts the fastest a computation could possibly run on a given chip, and — more usefully — which limit is holding it back.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":1,"dependents":3,"level":4},{"id":"root-process","title":"Root process","summary":"The root is the single process singled out to play a special role in a collective that is not symmetric — the one rank that is either the source of the data (it has the value…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":1,"dependents":4,"level":14},{"id":"sass","title":"SASS (GPU Machine Code)","summary":"SASS (Streaming ASSembler) is the actual machine code a GPU runs — the real, binary instructions that the streaming-multiprocessors (the GPU's arithmetic cores, abbreviated SMs)…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":4,"dependents":1,"level":10},{"id":"scalar-field","title":"Scalar Field","summary":"A scalar field is a rule that attaches a single number to every point of a space.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":1,"dependents":1,"level":1},{"id":"scan","title":"Scan (prefix)","summary":"Scan (inclusive prefix scan) is the collective-operation in which every process contributes a value and process i receives the reduction-operation of values 0 … i — a running…","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":2,"dependents":0,"level":14},{"id":"scatter","title":"Scatter","summary":"Scatter is the collective-operation in which the root-process holds an array split into one chunk per process and sends a different chunk to each.","type":"concept","status":"explained","tag":"parallel-computing","root":"parallel-computing","deps":2,"dependents":2,"level":15},{"id":"scheduler","title":"Scheduler","summary":"A scheduler is the part of the kernel that answers one question, over and over, thousands of times a second: of all the tasks that are ready to run right now, which one should…","type":"concept","status":"explained","tag":"os/process","root":"os","deps":2,"dependents":3,"level":7},{"id":"seccomp","title":"seccomp","summary":"seccomp (secure computing mode) is a kernel facility that lets a process install a filter restricting which system-calls it — and every child it later spawns — is allowed to make.","type":"concept","status":"explained","tag":"os/virtualization","root":"os","deps":1,"dependents":1,"level":8},{"id":"set","title":"Set (membership)","summary":"A collection of distinct elements with membership — \"is x in S?\" answered yes/no — taken as primitive; unordered, no duplicates.","type":"axiom","status":"explained","tag":"math/set-theory","root":"math","deps":0,"dependents":2,"level":0},{"id":"sharding","title":"Sharding (Horizontal Partitioning)","summary":"Splitting one large dataset horizontally across many machines by a shard key — each shard owns either a contiguous range of key values or a hash-of-key bucket — so storage and write throughput scale by adding machines, at the cost of routing every query to the right shard, rebalancing data as machines join, and losing cheap cross-shard operations.","type":"concept","status":"explained","tag":"databases/distributed","root":"databases","deps":3,"dependents":1,"level":15},{"id":"shared-memory","title":"Shared Memory","summary":"Shared memory is one of the gpu-memory-spaces — specifically the fast, on-chip region whose scope is exactly one block of the cuda-thread-hierarchy.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":3,"dependents":2,"level":15},{"id":"simt","title":"SIMT","summary":"SIMT stands for Single Instruction, Multiple Threads, and it is the name for the GPU's execution model — the one the warp node described mechanically but never had to name.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":1,"dependents":0,"level":7},{"id":"sk-buff","title":"Socket Buffer (sk_buff)","summary":"The socket buffer, written sk_buff in the kernel, is the data structure that represents one packet the whole time it is inside the network-stack — the single object every layer…","type":"concept","status":"explained","tag":"networking","root":"networking","deps":1,"dependents":0,"level":12},{"id":"skewness","title":"Skewness","summary":"Skewness is the asymmetry of a distribution — whether its probability leans symmetrically about a center or trails off into one long tail.","type":"concept","status":"explained","tag":"math/probability","root":"math","deps":2,"dependents":4,"level":5},{"id":"sliding-window-attention","title":"Sliding-Window Attention","summary":"In ordinary transformer-attention every query attends to all $n$ keys, so the work scales like $n^2$.","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":2,"dependents":1,"level":6},{"id":"socket","title":"Socket","summary":"A socket is a communication endpoint for the network that the kernel hands to a program as a file-descriptor — the same small per-process integer, and the same coat-check ticket…","type":"concept","status":"explained","tag":"networking","root":"networking","deps":3,"dependents":4,"level":10},{"id":"softmax","title":"Softmax","summary":"Softmax turns a vector of real-valued scores (logits) into a probability distribution — every entry positive and the whole thing summing to 1.","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":3,"dependents":12,"level":4},{"id":"speculative-decoding","title":"Speculative Decoding","summary":"Generating text one token at a time runs the big \"target\" model once per token, and that pass is memory-bound — most of the time goes to streaming the model's weights and the…","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":4,"dependents":0,"level":7},{"id":"sql","title":"SQL (Structured Query Language)","summary":"The declarative query language over the [[relational-model]] — you state WHAT result relation you want (which columns, from which relations joined on which keys, filtered and aggregated how) and the engine derives HOW to compute it; a query's input and output are both relations (closure), and the same SELECT can be executed many ways, freeing the planner to optimize.","type":"concept","status":"explained","tag":"databases/relational-database","root":"databases","deps":1,"dependents":4,"level":2},{"id":"stack","title":"Stack","summary":"A stack is a collection of items that you can only touch at one end, called the top.","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":2,"level":2},{"id":"state-space-model","title":"State Space Model","summary":"A state space model (SSM) is a sequence model that carries a fixed-size hidden state forward in time by a learnable linear recurrence: at each step the state is a weighted blend…","type":"concept","status":"explained","tag":"ml/llm/architecture","root":"ml","deps":1,"dependents":1,"level":6},{"id":"streaming-multiprocessor","title":"Streaming Multiprocessor","summary":"A streaming multiprocessor (an SM) is the GPU's core compute building block, and a GPU is essentially an array of many of them — about 132 on an NVIDIA H100.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":2,"dependents":9,"level":5},{"id":"structured-output","title":"Structured Output","summary":"Structured output (a.k.a.","type":"concept","status":"explained","tag":"ml/llm/reasoning","root":"ml","deps":2,"dependents":0,"level":5},{"id":"swap","title":"Swap","summary":"Swap is a reserved area on disk — a dedicated disk partition or a regular file — that the kernel uses as an overflow extension of physical RAM.","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":2,"dependents":1,"level":12},{"id":"symmetric-antisymmetric-decomposition","title":"Symmetric-Antisymmetric Decomposition","summary":"Every square matrix M (a grid of numbers with as many rows as columns) splits in exactly one way into two pieces added together: a symmetric part S, which is unchanged when you…","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":1,"dependents":1,"level":3},{"id":"system-call","title":"System Call","summary":"A system call is the controlled gateway by which a program running in user mode asks the kernel to perform a privileged service on its behalf — opening a file, reading from a…","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":1,"dependents":10,"level":7},{"id":"tcp","title":"TCP","summary":"TCP (Transmission Control Protocol) is the rule set that runs at the transport layer of the network-stack — the layer whose header names which program — and its job is to turn…","type":"concept","status":"explained","tag":"networking","root":"networking","deps":2,"dependents":1,"level":12},{"id":"tensor-core","title":"Tensor Core","summary":"A Tensor Core is a specialized piece of hardware sitting inside each streaming-multiprocessor whose one job is to compute a small fixed-size matrix-multiplication — and to do it…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":3,"dependents":0,"level":6},{"id":"tensor-parallelism","title":"Tensor parallelism","summary":"Tensor parallelism splits a single layer's weight matrices across GPUs so that one matrix-multiplication too big for one device is computed as several smaller ones in parallel.","type":"concept","status":"explained","tag":"ml/llm/training","root":"ml","deps":3,"dependents":1,"level":17},{"id":"tensorrt","title":"TensorRT","summary":"An inference compiler + runtime that turns a trained neural network into a GPU-specific \"engine\" — fusing layers into fewer CUDA kernels, lowering numeric precision, and auto-tuning each kernel to the target GPU, all ahead of time.","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":5,"dependents":0,"level":13},{"id":"test-time-compute","title":"Test-Time Compute","summary":"Test-time compute is the idea that a model's accuracy can be raised by spending more computation at inference time — when it is actually answering a question — as a lever distinct…","type":"concept","status":"explained","tag":"ml/llm/reasoning","root":"ml","deps":1,"dependents":1,"level":7},{"id":"thread","title":"Thread","summary":"A thread is an independent flow of execution running inside a process — one \"line\" of activity stepping through the program's instructions.","type":"concept","status":"explained","tag":"os/process","root":"os","deps":2,"dependents":4,"level":7},{"id":"thread-synchronization","title":"Thread Synchronization","summary":"Recall from cuda-thread-hierarchy that a block is a bundle of threads placed together on one chip unit, and that the hardware does not run those threads all at once — it slices…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":4,"dependents":0,"level":15},{"id":"three-dimensional-parallelism","title":"3D Parallelism","summary":"3D parallelism trains a model too large for any single strategy by running all three of tensor-parallelism, pipeline-parallelism, and data-parallelism at the same time.","type":"concept","status":"explained","tag":"ml/llm/training","root":"ml","deps":4,"dependents":0,"level":18},{"id":"tlb","title":"Translation Lookaside Buffer","summary":"A translation lookaside buffer (TLB) is a small, very fast hardware cache, built into the CPU, that remembers recent virtual-page-to-physical-frame translations so the processor…","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":3,"dependents":0,"level":11},{"id":"transaction","title":"Transaction (ACID)","summary":"A transaction is an all-or-nothing unit of database work — a sequence of statements that either COMMITs (every effect takes hold) or ROLLBACKs/ABORTs (no effect takes hold), lifting the indivisibility of [[atomic-operation]] from one memory cell to a whole multi-row sequence; ACID names its guarantees — Atomicity (the indivisible commit-or-rollback unit), Consistency (each transaction carries the database from one constraint-honoring state to another), Durability (a committed effect survives a crash, because the write was forced to stable storage), and Isolation (covered separately).","type":"concept","status":"explained","tag":"databases/transactions","root":"databases","deps":1,"dependents":6,"level":9},{"id":"transaction-isolation","title":"Transaction Isolation","summary":"Isolation is the \"I\" of ACID — the degree to which concurrent [[transaction]]s are shielded from each other's uncommitted, in-progress effects, the strictest level (Serializable) making them appear to run one-at-a-time; the four standard levels form a ladder defined by which of three read anomalies (dirty read, non-repeatable read, phantom read) each one forbids, trading concurrency for correctness.","type":"concept","status":"explained","tag":"databases/transactions","root":"databases","deps":1,"dependents":1,"level":10},{"id":"transformer-attention","title":"Transformer attention","summary":"Attention lets each token build a context-aware representation by taking a weighted average of value vectors, where the weights come from how well its query matches each key.","type":"concept","status":"explained","tag":"ml/deep-learning","root":"ml","deps":3,"dependents":10,"level":5},{"id":"tree-search-decoding","title":"Tree-Search Decoding","summary":"Tree-search decoding is a concrete way to spend test-time-compute: instead of producing one reasoning chain left-to-right and committing to each next step as it comes, you treat…","type":"concept","status":"explained","tag":"ml/llm/reasoning","root":"ml","deps":1,"dependents":0,"level":8},{"id":"trie","title":"Trie","summary":"A trie (also called a prefix tree) stores a set of strings as a tree in which every edge is labelled with a single character, so the path from the root down to any node spells out…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":0,"level":3},{"id":"udp","title":"UDP","summary":"UDP (User Datagram Protocol) is the minimal transport layer of the network-stack — the bare-bones alternative to TCP.","type":"concept","status":"explained","tag":"networking","root":"networking","deps":1,"dependents":1,"level":12},{"id":"union-find","title":"Union-Find","summary":"Union-Find (also called a disjoint-set structure, or DSU) keeps a collection of items split into separate groups, where every item belongs to exactly one group and the groups…","type":"concept","status":"explained","tag":"algorithms","root":"algorithms","deps":1,"dependents":0,"level":1},{"id":"user-mode-vs-kernel-mode","title":"User Mode vs Kernel Mode","summary":"A CPU executes instructions in one of two privilege levels — a piece of internal state, set in the processor's own circuitry, that decides how much a running instruction is…","type":"concept","status":"explained","tag":"os/kernel","root":"os","deps":2,"dependents":1,"level":6},{"id":"vector-database","title":"Vector Database","summary":"A vector database is a data store built specifically to hold large collections of embeddings — the dense meaning-vectors that place similar inputs at nearby points in space — and…","type":"concept","status":"explained","tag":"ml/information-retrieval","root":"ml","deps":2,"dependents":1,"level":8},{"id":"vector-dot-product","title":"Vector dot product","summary":"The dot product combines two equal-length vectors into a single scalar by multiplying matching entries and summing them.","type":"concept","status":"explained","tag":"math/linear-algebra","root":"math","deps":1,"dependents":7,"level":1},{"id":"vector-field","title":"Vector Field","summary":"A vector field is a rule that pins a little arrow to every point of a space.","type":"concept","status":"explained","tag":"math/calculus","root":"math","deps":2,"dependents":6,"level":2},{"id":"vfs","title":"Virtual File System","summary":"The Virtual File System (VFS) is a layer inside the kernel that presents one uniform interface — the file system-calls open, read, write, close, lseek, all acting on a small…","type":"concept","status":"explained","tag":"os/filesystem","root":"os","deps":2,"dependents":7,"level":9},{"id":"virtual-memory","title":"Virtual Memory","summary":"Virtual memory is the trick that gives every process its own private, imaginary view of memory.","type":"concept","status":"explained","tag":"os/memory","root":"os","deps":2,"dependents":5,"level":6},{"id":"vllm","title":"vLLM","summary":"A high-throughput LLM inference/serving engine whose contribution is an engine loop that fuses paged KV-cache memory management (PagedAttention) with iteration-level continuous batching, so memory waste and idle GPU compute both collapse.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":4,"dependents":0,"level":14},{"id":"warp","title":"Warp","summary":"A warp is a fixed group of 32 threads that a streaming-multiprocessor runs in lockstep: each cycle the SM's scheduler issues one instruction, and all 32 threads execute that same…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":1,"dependents":9,"level":6},{"id":"warp-shuffle","title":"Warp Shuffle","summary":"A warp shuffle is a single hardware instruction (__shfl_sync and its variants) that lets the 32 threads of a warp read each other's register values directly — one lane hands…","type":"concept","status":"explained","tag":"gpu","root":"gpu","deps":1,"dependents":0,"level":7},{"id":"weight-load-amortization","title":"Weight-Load Amortization","summary":"Weight-load amortization is the reason batching rescues the slow, memory-starved generation step of a large language model.","type":"concept","status":"explained","tag":"ml/llm/inference","root":"ml","deps":3,"dependents":0,"level":5},{"id":"write-ahead-logging","title":"Write-Ahead Logging (WAL)","summary":"Write-Ahead Logging is the mechanism that delivers a transaction's Durability despite deferred writeback — its defining \"write-ahead\" invariant is that before any modified data page is allowed to reach disk, a record of the change is first appended to a sequential log, and at COMMIT that log (not the scattered data pages) is forced to stable storage with fsync and waited on; the data pages stay dirty in the page-cache and are flushed lazily by ordinary writeback, so per-commit durability costs one fast sequential block-layer write instead of many slow random ones, and a crash is recovered by replaying the log (REDO committed changes, ignore uncommitted).","type":"concept","status":"explained","tag":"databases/storage","root":"databases","deps":4,"dependents":3,"level":13},{"id":"writeback","title":"Writeback","summary":"Writeback is the deferred flushing of dirty pages from the page-cache out to persistent disk.","type":"concept","status":"explained","tag":"os/filesystem","root":"os","deps":4,"dependents":1,"level":12},{"id":"zero-redundancy-optimizer","title":"Zero Redundancy Optimizer","summary":"The Zero Redundancy Optimizer (ZeRO) removes the wasteful replication built into plain data-parallelism.","type":"concept","status":"explained","tag":"ml/llm/training","root":"ml","deps":2,"dependents":0,"level":18}],"edges":[{"s":"address-space-layout","t":"virtual-memory"},{"s":"address-space-layout","t":"page-table"},{"s":"agent-memory","t":"retrieval-augmented-generation"},{"s":"agent-memory","t":"context-window"},{"s":"all-gather","t":"gather"},{"s":"all-gather","t":"broadcast"},{"s":"all-reduce","t":"reduce"},{"s":"all-reduce","t":"broadcast"},{"s":"all-reduce","t":"reduction-operation"},{"s":"all-to-all","t":"scatter"},{"s":"all-to-all","t":"gather"},{"s":"all-to-all","t":"all-gather"},{"s":"atomic-operation","t":"cuda-thread-hierarchy"},{"s":"attention-sink","t":"sliding-window-attention"},{"s":"attention-sink","t":"softmax"},{"s":"b-tree","t":"binary-search-tree"},{"s":"b-tree","t":"page"},{"s":"b-tree","t":"block-layer"},{"s":"bank-conflict","t":"shared-memory"},{"s":"bank-conflict","t":"warp"},{"s":"barrier","t":"collective-operation"},{"s":"bayes-rule","t":"probability"},{"s":"bayes-rule","t":"probability-distribution"},{"s":"bayes-rule","t":"likelihood"},{"s":"bernoulli-distribution","t":"probability-distribution"},{"s":"beta-distribution","t":"probability-distribution"},{"s":"binary-search","t":"arithmetic"},{"s":"binary-search-tree","t":"binary-search"},{"s":"block-layer","t":"vfs"},{"s":"block-layer","t":"device-driver"},{"s":"block-layer","t":"dma"},{"s":"block-layer","t":"interrupt"},{"s":"block-layer","t":"queue"},{"s":"boot-process","t":"kernel"},{"s":"broadcast","t":"collective-operation"},{"s":"broadcast","t":"root-process"},{"s":"bytecode-vm","t":"interpreter"},{"s":"bytecode-vm","t":"stack"},{"s":"capabilities","t":"process"},{"s":"cgroup","t":"process"},{"s":"chain-of-thought","t":"transformer-attention"},{"s":"change-of-variables","t":"cumulative-distribution-function"},{"s":"change-of-variables","t":"derivative"},{"s":"change-of-variables","t":"random-variable"},{"s":"change-of-variables","t":"differential"},{"s":"change-of-variables","t":"jacobian"},{"s":"chunked-prefill","t":"kv-cache"},{"s":"chunked-prefill","t":"transformer-attention"},{"s":"clone","t":"fork-exec"},{"s":"clone","t":"thread"},{"s":"clone","t":"system-call"},{"s":"clone","t":"virtual-memory"},{"s":"clone","t":"file-descriptor"},{"s":"clone","t":"namespace"},{"s":"closure","t":"first-class-function"},{"s":"closure","t":"lexical-scoping"},{"s":"collective-algorithm","t":"collective-operation"},{"s":"collective-operation","t":"communicator"},{"s":"collective-operation","t":"message-passing"},{"s":"communicator","t":"message-passing"},{"s":"compute-capability","t":"cuda-kernel"},{"s":"compute-capability","t":"streaming-multiprocessor"},{"s":"concurrency-control","t":"transaction"},{"s":"concurrency-control","t":"atomic-operation"},{"s":"conjugate-prior","t":"bayes-rule"},{"s":"conjugate-prior","t":"beta-distribution"},{"s":"conjugate-prior","t":"bernoulli-distribution"},{"s":"conjugate-prior","t":"likelihood"},{"s":"container","t":"namespace"},{"s":"container","t":"cgroup"},{"s":"container","t":"vfs"},{"s":"container","t":"system-call"},{"s":"container","t":"overlayfs"},{"s":"container-networking","t":"namespace"},{"s":"container-networking","t":"socket"},{"s":"container-networking","t":"container"},{"s":"container-networking","t":"network-stack"},{"s":"container-runtime","t":"container"},{"s":"container-runtime","t":"capabilities"},{"s":"container-runtime","t":"namespace"},{"s":"container-runtime","t":"cgroup"},{"s":"container-runtime","t":"seccomp"},{"s":"container-runtime","t":"system-call"},{"s":"content-addressable-memory","t":"key-value"},{"s":"context-parallelism","t":"ring-attention"},{"s":"context-parallelism","t":"all-reduce"},{"s":"context-parallelism","t":"gather"},{"s":"context-parallelism","t":"online-softmax"},{"s":"context-switch","t":"process"},{"s":"context-switch","t":"interrupt"},{"s":"context-window","t":"transformer-attention"},{"s":"continuous-batching","t":"kv-cache"},{"s":"continuous-batching","t":"queue"},{"s":"convex-transformation-order","t":"convexity"},{"s":"convex-transformation-order","t":"skewness"},{"s":"convexity","t":"derivative"},{"s":"copy-on-write","t":"demand-paging"},{"s":"copy-on-write","t":"fork-exec"},{"s":"copy-on-write","t":"page-table"},{"s":"copy-on-write","t":"page-fault"},{"s":"coroutine","t":"stack"},{"s":"cosine-similarity","t":"vector-dot-product"},{"s":"cpu-vs-gpu","t":"memory-hierarchy"},{"s":"cromwell-rule","t":"bayes-rule"},{"s":"cross-product","t":"vector-dot-product"},{"s":"cubin","t":"ptx"},{"s":"cubin","t":"compute-capability"},{"s":"cubin","t":"sass"},{"s":"cuda-kernel","t":"cuda-thread-hierarchy"},{"s":"cuda-kernel","t":"streaming-multiprocessor"},{"s":"cuda-thread-hierarchy","t":"warp"},{"s":"cuda-thread-hierarchy","t":"streaming-multiprocessor"},{"s":"cumulative-distribution-function","t":"probability-distribution"},{"s":"cumulative-distribution-function","t":"random-variable"},{"s":"curl","t":"del-operator"},{"s":"curl","t":"vector-field"},{"s":"curl","t":"cross-product"},{"s":"curl","t":"jacobian"},{"s":"curl-of-gradient-zero","t":"curl"},{"s":"curl-of-gradient-zero","t":"gradient"},{"s":"curl-of-gradient-zero","t":"hessian"},{"s":"curl-of-gradient-zero","t":"partial-derivative"},{"s":"curl-of-gradient-zero","t":"vector-field"},{"s":"curl-of-gradient-zero","t":"differential-operators"},{"s":"data-parallelism","t":"neural-network"},{"s":"data-parallelism","t":"gradient-descent"},{"s":"data-parallelism","t":"all-reduce"},{"s":"database-index","t":"binary-search-tree"},{"s":"database-index","t":"key-value-store"},{"s":"database-index","t":"b-tree"},{"s":"database-trigger","t":"sql"},{"s":"database-trigger","t":"transaction"},{"s":"del-operator","t":"partial-derivative"},{"s":"del-operator","t":"vector-dot-product"},{"s":"del-operator","t":"cross-product"},{"s":"demand-paging","t":"page-table"},{"s":"demand-paging","t":"page-fault"},{"s":"demand-paging","t":"interrupt"},{"s":"demand-paging","t":"mmu"},{"s":"dentry","t":"vfs"},{"s":"dentry","t":"inode"},{"s":"deque","t":"linked-list"},{"s":"deque","t":"queue"},{"s":"derivative","t":"arithmetic"},{"s":"device-driver","t":"kernel"},{"s":"device-driver","t":"dma"},{"s":"device-driver","t":"interrupt"},{"s":"differential","t":"partial-derivative"},{"s":"differential-operators","t":"del-operator"},{"s":"differential-operators","t":"gradient"},{"s":"differential-operators","t":"divergence"},{"s":"differential-operators","t":"curl"},{"s":"differential-operators","t":"laplacian"},{"s":"differential-operators","t":"jacobian"},{"s":"differential-operators","t":"hessian"},{"s":"differential-operators","t":"vector-field"},{"s":"differential-operators","t":"differential"},{"s":"directional-derivative","t":"partial-derivative"},{"s":"directional-derivative","t":"vector-dot-product"},{"s":"directional-derivative","t":"differential"},{"s":"divergence","t":"del-operator"},{"s":"divergence","t":"vector-dot-product"},{"s":"divergence","t":"vector-field"},{"s":"divergence","t":"differential"},{"s":"divergence","t":"jacobian"},{"s":"divergence-of-curl-zero","t":"divergence"},{"s":"divergence-of-curl-zero","t":"curl"},{"s":"divergence-of-curl-zero","t":"partial-derivative"},{"s":"divergence-of-curl-zero","t":"vector-field"},{"s":"dma","t":"memory-hierarchy"},{"s":"dma","t":"interrupt"},{"s":"dns","t":"socket"},{"s":"dns","t":"udp"},{"s":"document-model","t":"key-value"},{"s":"document-model","t":"relational-model"},{"s":"dynamic-array","t":"arithmetic"},{"s":"embedding","t":"neural-network"},{"s":"empirical-bayes","t":"bayes-rule"},{"s":"empirical-bayes","t":"likelihood"},{"s":"expectation","t":"probability-distribution"},{"s":"expectation","t":"random-variable"},{"s":"expectation-maximization","t":"maximum-likelihood-estimation"},{"s":"expectation-maximization","t":"bayes-rule"},{"s":"expectation-maximization","t":"probability-distribution"},{"s":"expectation-maximization","t":"likelihood"},{"s":"expectation-maximization","t":"expectation"},{"s":"expert-parallelism","t":"mixture-of-experts"},{"s":"expert-parallelism","t":"all-to-all"},{"s":"exponential-function","t":"arithmetic"},{"s":"fair-scheduler","t":"scheduler"},{"s":"fair-scheduler","t":"binary-search-tree"},{"s":"file-descriptor","t":"system-call"},{"s":"fine-tuning","t":"gradient-descent"},{"s":"fine-tuning","t":"neural-network"},{"s":"flash-attention","t":"transformer-attention"},{"s":"flash-attention","t":"softmax"},{"s":"flash-attention","t":"online-softmax"},{"s":"fma","t":"arithmetic"},{"s":"fork-exec","t":"process"},{"s":"fork-exec","t":"system-call"},{"s":"fork-exec","t":"file-descriptor"},{"s":"fsdp","t":"data-parallelism"},{"s":"fsdp","t":"all-gather"},{"s":"fsdp","t":"reduce-scatter"},{"s":"full-bayesian-inference","t":"bayes-rule"},{"s":"full-bayesian-inference","t":"likelihood"},{"s":"garbage-collection","t":"graph"},{"s":"gather","t":"collective-operation"},{"s":"gather","t":"root-process"},{"s":"geometric-distribution","t":"probability-distribution"},{"s":"geometric-distribution","t":"random-variable"},{"s":"gigathread","t":"streaming-multiprocessor"},{"s":"gigathread","t":"warp"},{"s":"gil","t":"thread"},{"s":"glibc-wrapper","t":"system-call"},{"s":"gpu-data-flow","t":"cuda-kernel"},{"s":"gpu-data-flow","t":"dma"},{"s":"gpu-memory-spaces","t":"memory-hierarchy"},{"s":"gpu-memory-spaces","t":"cuda-thread-hierarchy"},{"s":"gpudirect","t":"nvlink"},{"s":"gpudirect","t":"dma"},{"s":"gqa","t":"transformer-attention"},{"s":"gqa","t":"kv-cache"},{"s":"gqa","t":"multi-head-attention"},{"s":"gradient","t":"derivative"},{"s":"gradient","t":"partial-derivative"},{"s":"gradient-descent","t":"gradient"},{"s":"gradient-descent","t":"loss-function"},{"s":"graph","t":"hash-map"},{"s":"graph-memory","t":"agent-memory"},{"s":"graph-memory","t":"knowledge-graph"},{"s":"hard-link","t":"inode"},{"s":"hard-link","t":"dentry"},{"s":"hash-map","t":"key-value"},{"s":"hash-map","t":"arithmetic"},{"s":"hash-set","t":"hash-map"},{"s":"heap","t":"arithmetic"},{"s":"hessian","t":"jacobian"},{"s":"hessian","t":"gradient"},{"s":"hessian","t":"partial-derivative"},{"s":"hierarchical-bayes","t":"bayes-rule"},{"s":"hierarchical-bayes","t":"beta-distribution"},{"s":"hierarchical-bayes","t":"likelihood"},{"s":"http","t":"tcp"},{"s":"http","t":"dns"},{"s":"hypervisor","t":"kernel"},{"s":"init-process","t":"process"},{"s":"inode","t":"vfs"},{"s":"interrupt","t":"kernel"},{"s":"ip-routing","t":"network-stack"},{"s":"jacobian","t":"partial-derivative"},{"s":"jacobian","t":"matrix-trace"},{"s":"jacobian","t":"symmetric-antisymmetric-decomposition"},{"s":"jacobian","t":"vector-field"},{"s":"jacobian","t":"differential"},{"s":"jit-vs-aot-compilation","t":"cuda-kernel"},{"s":"jit-vs-aot-compilation","t":"ptx"},{"s":"jit-vs-aot-compilation","t":"cubin"},{"s":"k6","t":"load-testing"},{"s":"k6","t":"http"},{"s":"k6","t":"latency-percentile"},{"s":"k6","t":"thread"},{"s":"k6","t":"interpreter"},{"s":"k6","t":"context-switch"},{"s":"kernel","t":"memory-hierarchy"},{"s":"kernel-module","t":"kernel"},{"s":"kernel-thread","t":"process"},{"s":"key-value","t":"set"},{"s":"key-value-store","t":"key-value"},{"s":"key-value-store","t":"atomic-operation"},{"s":"knowledge-graph","t":"graph"},{"s":"kv-cache","t":"transformer-attention"},{"s":"kv-quantization","t":"quantization"},{"s":"kv-quantization","t":"kv-cache"},{"s":"laplacian","t":"divergence"},{"s":"laplacian","t":"gradient"},{"s":"latency-percentile","t":"cumulative-distribution-function"},{"s":"leader-election","t":"replication"},{"s":"likelihood","t":"probability-distribution"},{"s":"linear-independence","t":"arithmetic"},{"s":"linked-list","t":"arithmetic"},{"s":"llm-from-sql","t":"sql"},{"s":"llm-from-sql","t":"retrieval-augmented-generation"},{"s":"llm-from-sql","t":"embedding"},{"s":"load-testing","t":"http"},{"s":"load-testing","t":"latency-percentile"},{"s":"log-normal-distribution","t":"change-of-variables"},{"s":"log-normal-distribution","t":"normal-distribution"},{"s":"log-normal-distribution","t":"expectation"},{"s":"log-normal-distribution","t":"convexity"},{"s":"log-normal-distribution","t":"moment-generating-function"},{"s":"log-normal-distribution","t":"skewness"},{"s":"log-normal-distribution","t":"exponential-function"},{"s":"log-normal-distribution","t":"moment-skewness"},{"s":"lora","t":"low-rank-factorization"},{"s":"lora","t":"fine-tuning"},{"s":"lora","t":"transformer-attention"},{"s":"loss-function","t":"arithmetic"},{"s":"loss-function","t":"maximum-likelihood-estimation"},{"s":"loss-function","t":"likelihood"},{"s":"low-rank-factorization","t":"matrix-rank"},{"s":"lua","t":"bytecode-vm"},{"s":"lua","t":"garbage-collection"},{"s":"lua","t":"dynamic-typing"},{"s":"lua","t":"closure"},{"s":"lua","t":"coroutine"},{"s":"lua","t":"metatable"},{"s":"lua","t":"hash-map"},{"s":"mac-vs-ip","t":"network-stack"},{"s":"mamba","t":"state-space-model"},{"s":"matrix-multiplication","t":"arithmetic"},{"s":"matrix-multiplication","t":"vector-dot-product"},{"s":"matrix-rank","t":"matrix-multiplication"},{"s":"matrix-rank","t":"linear-independence"},{"s":"matrix-trace","t":"matrix-multiplication"},{"s":"maximum-a-posteriori","t":"maximum-likelihood-estimation"},{"s":"maximum-a-posteriori","t":"bayes-rule"},{"s":"maximum-a-posteriori","t":"probability-distribution"},{"s":"maximum-a-posteriori","t":"likelihood"},{"s":"maximum-likelihood-estimation","t":"likelihood"},{"s":"maximum-likelihood-estimation","t":"derivative"},{"s":"maximum-likelihood-estimation","t":"bernoulli-distribution"},{"s":"maximum-likelihood-estimation","t":"probability-distribution"},{"s":"memory-coalescing","t":"warp"},{"s":"memory-coalescing","t":"gpu-memory-spaces"},{"s":"memory-hierarchy","t":"arithmetic"},{"s":"memory-hierarchy","t":"numeric-precision-formats"},{"s":"message-passing","t":"parallel-process"},{"s":"metatable","t":"hash-map"},{"s":"metatable","t":"key-value"},{"s":"mixture-of-experts","t":"neural-network"},{"s":"mixture-of-experts","t":"softmax"},{"s":"mmu","t":"page-table"},{"s":"mmu","t":"virtual-memory"},{"s":"mmu","t":"page-fault"},{"s":"moe-routing","t":"mixture-of-experts"},{"s":"moe-routing","t":"softmax"},{"s":"moment-generating-function","t":"expectation"},{"s":"moment-generating-function","t":"random-variable"},{"s":"moment-skewness","t":"skewness"},{"s":"moment-skewness","t":"expectation"},{"s":"mongodb","t":"document-model"},{"s":"mongodb","t":"b-tree"},{"s":"mongodb","t":"database-index"},{"s":"mongodb","t":"mvcc"},{"s":"mongodb","t":"write-ahead-logging"},{"s":"mongodb","t":"transaction"},{"s":"mongodb","t":"replication"},{"s":"mongodb","t":"leader-election"},{"s":"mongodb","t":"sharding"},{"s":"mpi-datatype","t":"message-passing"},{"s":"multi-head-attention","t":"transformer-attention"},{"s":"multi-head-attention","t":"matrix-multiplication"},{"s":"multi-head-attention","t":"softmax"},{"s":"multi-head-latent-attention","t":"multi-head-attention"},{"s":"multi-head-latent-attention","t":"kv-cache"},{"s":"multi-head-latent-attention","t":"low-rank-factorization"},{"s":"mvcc","t":"concurrency-control"},{"s":"mvcc","t":"transaction-isolation"},{"s":"namespace","t":"process"},{"s":"nccl","t":"all-reduce"},{"s":"nccl","t":"nvlink"},{"s":"nccl","t":"collective-operation"},{"s":"nccl","t":"reduce-scatter"},{"s":"nccl","t":"all-gather"},{"s":"nearest-neighbor-search","t":"cosine-similarity"},{"s":"nearest-neighbor-search","t":"embedding"},{"s":"netfilter","t":"network-stack"},{"s":"network-stack","t":"socket"},{"s":"network-stack","t":"device-driver"},{"s":"network-stack","t":"file-descriptor"},{"s":"network-stack","t":"interrupt"},{"s":"neural-network","t":"matrix-multiplication"},{"s":"neural-network","t":"softmax"},{"s":"nonparametric-skew","t":"skewness"},{"s":"normal-distribution","t":"probability-distribution"},{"s":"normal-distribution","t":"exponential-function"},{"s":"numeric-precision-formats","t":"quantization"},{"s":"nvlink","t":"cpu-vs-gpu"},{"s":"occupancy","t":"streaming-multiprocessor"},{"s":"occupancy","t":"warp"},{"s":"occupancy","t":"shared-memory"},{"s":"online-softmax","t":"softmax"},{"s":"online-softmax","t":"probability-distribution"},{"s":"oom-killer","t":"demand-paging"},{"s":"oom-killer","t":"page-fault"},{"s":"oom-killer","t":"swap"},{"s":"overlayfs","t":"vfs"},{"s":"overlayfs","t":"copy-on-write"},{"s":"page","t":"virtual-memory"},{"s":"page-cache","t":"page"},{"s":"page-cache","t":"vfs"},{"s":"page-cache","t":"inode"},{"s":"page-cache","t":"system-call"},{"s":"page-fault","t":"page-table"},{"s":"page-fault","t":"interrupt"},{"s":"page-table","t":"page"},{"s":"paged-attention","t":"kv-cache"},{"s":"paged-attention","t":"copy-on-write"},{"s":"paged-attention","t":"virtual-memory"},{"s":"paged-attention","t":"page-table"},{"s":"parallel-process","t":"process"},{"s":"parallel-process","t":"thread"},{"s":"parallel-process","t":"scheduler"},{"s":"parallel-process","t":"context-switch"},{"s":"parallel-process","t":"address-space-layout"},{"s":"parallel-process","t":"page-table"},{"s":"partial-derivative","t":"derivative"},{"s":"pgai","t":"pgvector"},{"s":"pgai","t":"pgai-vectorizer"},{"s":"pgai","t":"llm-from-sql"},{"s":"pgai","t":"retrieval-augmented-generation"},{"s":"pgai-vectorizer","t":"database-trigger"},{"s":"pgai-vectorizer","t":"embedding"},{"s":"pgai-vectorizer","t":"pgvector"},{"s":"pgvector","t":"postgresql"},{"s":"pgvector","t":"embedding"},{"s":"pgvector","t":"nearest-neighbor-search"},{"s":"pgvector","t":"cosine-similarity"},{"s":"pgvector","t":"database-index"},{"s":"pipeline-parallelism","t":"neural-network"},{"s":"pipeline-parallelism","t":"message-passing"},{"s":"pipeline-parallelism","t":"gradient"},{"s":"posterior-consistency","t":"bayes-rule"},{"s":"posterior-consistency","t":"likelihood"},{"s":"postgresql","t":"relational-model"},{"s":"postgresql","t":"sql"},{"s":"postgresql","t":"transaction"},{"s":"postgresql","t":"mvcc"},{"s":"postgresql","t":"write-ahead-logging"},{"s":"postgresql","t":"b-tree"},{"s":"postgresql","t":"query-planning"},{"s":"postgresql","t":"concurrency-control"},{"s":"predecessor-query","t":"binary-search"},{"s":"predecessor-query","t":"binary-search-tree"},{"s":"prefill-vs-decode","t":"kv-cache"},{"s":"prefill-vs-decode","t":"roofline-model"},{"s":"prefix-caching","t":"kv-cache"},{"s":"probability","t":"arithmetic"},{"s":"probability-distribution","t":"random-variable"},{"s":"process","t":"kernel"},{"s":"ptx","t":"cuda-kernel"},{"s":"quantization","t":"arithmetic"},{"s":"query-planning","t":"sql"},{"s":"query-planning","t":"database-index"},{"s":"query-planning","t":"b-tree"},{"s":"queue","t":"linked-list"},{"s":"queue","t":"dynamic-array"},{"s":"random-variable","t":"probability"},{"s":"rank","t":"communicator"},{"s":"real-time-os","t":"scheduler"},{"s":"real-time-os","t":"interrupt"},{"s":"redis","t":"key-value-store"},{"s":"redis","t":"hash-map"},{"s":"redis","t":"memory-hierarchy"},{"s":"redis","t":"linked-list"},{"s":"redis","t":"hash-set"},{"s":"redis","t":"atomic-operation"},{"s":"reduce","t":"collective-operation"},{"s":"reduce","t":"root-process"},{"s":"reduce","t":"reduction-operation"},{"s":"reduce-scatter","t":"reduce"},{"s":"reduce-scatter","t":"scatter"},{"s":"reduce-scatter","t":"reduction-operation"},{"s":"reduction-operation","t":"arithmetic"},{"s":"register-pressure","t":"occupancy"},{"s":"register-pressure","t":"warp"},{"s":"relational-model","t":"set"},{"s":"replication","t":"write-ahead-logging"},{"s":"retrieval-augmented-generation","t":"vector-database"},{"s":"retrieval-augmented-generation","t":"context-window"},{"s":"retrieval-augmented-generation","t":"embedding"},{"s":"ring-attention","t":"flash-attention"},{"s":"ring-attention","t":"all-gather"},{"s":"ring-attention","t":"softmax"},{"s":"rmsnorm","t":"neural-network"},{"s":"roofline-model","t":"memory-hierarchy"},{"s":"root-process","t":"rank"},{"s":"sass","t":"ptx"},{"s":"sass","t":"streaming-multiprocessor"},{"s":"sass","t":"compute-capability"},{"s":"sass","t":"fma"},{"s":"scalar-field","t":"arithmetic"},{"s":"scan","t":"collective-operation"},{"s":"scan","t":"reduction-operation"},{"s":"scatter","t":"collective-operation"},{"s":"scatter","t":"root-process"},{"s":"scheduler","t":"context-switch"},{"s":"scheduler","t":"interrupt"},{"s":"seccomp","t":"system-call"},{"s":"sharding","t":"key-value"},{"s":"sharding","t":"hash-map"},{"s":"sharding","t":"replication"},{"s":"shared-memory","t":"gpu-memory-spaces"},{"s":"shared-memory","t":"cuda-thread-hierarchy"},{"s":"shared-memory","t":"barrier"},{"s":"simt","t":"warp"},{"s":"sk-buff","t":"network-stack"},{"s":"skewness","t":"expectation"},{"s":"skewness","t":"cumulative-distribution-function"},{"s":"sliding-window-attention","t":"transformer-attention"},{"s":"sliding-window-attention","t":"softmax"},{"s":"socket","t":"vfs"},{"s":"socket","t":"file-descriptor"},{"s":"socket","t":"system-call"},{"s":"softmax","t":"exponential-function"},{"s":"softmax","t":"arithmetic"},{"s":"softmax","t":"probability-distribution"},{"s":"speculative-decoding","t":"transformer-attention"},{"s":"speculative-decoding","t":"kv-cache"},{"s":"speculative-decoding","t":"softmax"},{"s":"speculative-decoding","t":"probability-distribution"},{"s":"sql","t":"relational-model"},{"s":"stack","t":"dynamic-array"},{"s":"state-space-model","t":"neural-network"},{"s":"streaming-multiprocessor","t":"cpu-vs-gpu"},{"s":"streaming-multiprocessor","t":"memory-hierarchy"},{"s":"structured-output","t":"softmax"},{"s":"structured-output","t":"probability-distribution"},{"s":"swap","t":"demand-paging"},{"s":"swap","t":"page-fault"},{"s":"symmetric-antisymmetric-decomposition","t":"matrix-multiplication"},{"s":"system-call","t":"user-mode-vs-kernel-mode"},{"s":"tcp","t":"network-stack"},{"s":"tcp","t":"socket"},{"s":"tensor-core","t":"streaming-multiprocessor"},{"s":"tensor-core","t":"matrix-multiplication"},{"s":"tensor-core","t":"fma"},{"s":"tensor-parallelism","t":"matrix-multiplication"},{"s":"tensor-parallelism","t":"neural-network"},{"s":"tensor-parallelism","t":"all-reduce"},{"s":"tensorrt","t":"jit-vs-aot-compilation"},{"s":"tensorrt","t":"cuda-kernel"},{"s":"tensorrt","t":"roofline-model"},{"s":"tensorrt","t":"quantization"},{"s":"tensorrt","t":"neural-network"},{"s":"test-time-compute","t":"chain-of-thought"},{"s":"thread","t":"process"},{"s":"thread","t":"context-switch"},{"s":"thread-synchronization","t":"cuda-thread-hierarchy"},{"s":"thread-synchronization","t":"warp"},{"s":"thread-synchronization","t":"streaming-multiprocessor"},{"s":"thread-synchronization","t":"barrier"},{"s":"three-dimensional-parallelism","t":"data-parallelism"},{"s":"three-dimensional-parallelism","t":"tensor-parallelism"},{"s":"three-dimensional-parallelism","t":"pipeline-parallelism"},{"s":"three-dimensional-parallelism","t":"all-reduce"},{"s":"tlb","t":"page-table"},{"s":"tlb","t":"mmu"},{"s":"tlb","t":"context-switch"},{"s":"transaction","t":"atomic-operation"},{"s":"transaction-isolation","t":"transaction"},{"s":"transformer-attention","t":"softmax"},{"s":"transformer-attention","t":"vector-dot-product"},{"s":"transformer-attention","t":"matrix-multiplication"},{"s":"tree-search-decoding","t":"test-time-compute"},{"s":"trie","t":"hash-map"},{"s":"udp","t":"network-stack"},{"s":"union-find","t":"arithmetic"},{"s":"user-mode-vs-kernel-mode","t":"kernel"},{"s":"user-mode-vs-kernel-mode","t":"interrupt"},{"s":"vector-database","t":"embedding"},{"s":"vector-database","t":"nearest-neighbor-search"},{"s":"vector-dot-product","t":"arithmetic"},{"s":"vector-field","t":"arithmetic"},{"s":"vector-field","t":"scalar-field"},{"s":"vfs","t":"system-call"},{"s":"vfs","t":"file-descriptor"},{"s":"virtual-memory","t":"process"},{"s":"virtual-memory","t":"memory-hierarchy"},{"s":"vllm","t":"paged-attention"},{"s":"vllm","t":"continuous-batching"},{"s":"vllm","t":"prefill-vs-decode"},{"s":"vllm","t":"kv-cache"},{"s":"warp","t":"streaming-multiprocessor"},{"s":"warp-shuffle","t":"warp"},{"s":"weight-load-amortization","t":"roofline-model"},{"s":"weight-load-amortization","t":"memory-hierarchy"},{"s":"weight-load-amortization","t":"matrix-multiplication"},{"s":"write-ahead-logging","t":"transaction"},{"s":"write-ahead-logging","t":"page-cache"},{"s":"write-ahead-logging","t":"writeback"},{"s":"write-ahead-logging","t":"block-layer"},{"s":"writeback","t":"page-cache"},{"s":"writeback","t":"kernel-thread"},{"s":"writeback","t":"dma"},{"s":"writeback","t":"interrupt"},{"s":"zero-redundancy-optimizer","t":"data-parallelism"},{"s":"zero-redundancy-optimizer","t":"gather"}],"docBase":"https://github.com/sunguk-lim/principia/blob/main/nodes"};
+  const nodes = DATA.nodes, edges = DATA.edges;
+  const docBase = DATA.docBase || "";
+  const DIFF = DATA.diffMode === true;   // visual-diff mode: colour by change status, scope to the affected subgraph
+  const DIFF_NODE = { added: "#2fbf87", removed: "#e5484d", restructured: "#e6a417", unchanged: "#465071" };
+  const DIFF_EDGE = { added: "rgba(47,191,135,.9)", removed: "rgba(229,72,77,.85)" };
+  const byId = new Map(nodes.map(n => [n.id, n]));
+  const prereqOf = new Map(nodes.map(n => [n.id, []]));      // n -> prereqs (downward)
+  const dependentsOf = new Map(nodes.map(n => [n.id, []]));  // n -> dependents (upward)
+  for (const e of edges) {
+    if (prereqOf.has(e.s)) prereqOf.get(e.s).push(e.t);
+    if (dependentsOf.has(e.t)) dependentsOf.get(e.t).push(e.s);
+  }
+
+  const roots = [...new Set(nodes.map(n => n.root))].sort();
+
+  // Field taxonomy for the hierarchical filter: every distinct leaf-tag path + its node count.
+  const allTags = [...new Set(nodes.map(n => n.tag).filter(Boolean))].sort();
+  const leafCount = {};
+  for (const n of nodes) if (n.tag) leafCount[n.tag] = (leafCount[n.tag] || 0) + 1;
+
+  // Colour: HUE identifies the root field; LIGHTNESS distinguishes sub-fields within it
+  // (every ml/* reads as one purple family, but each sub-field gets its own shade).
+  const ROOT_HUE = { algorithms: 215, gpu: 150, math: 45, ml: 265,
+                     networking: 190, os: 25, "parallel-computing": 0 };
+  const hueFor = r => {
+    if (ROOT_HUE[r] != null) return ROOT_HUE[r];
+    let h = 0; for (const c of r) h = (h * 31 + c.charCodeAt(0)) % 360; return h;
+  };
+  const leavesByRoot = {};
+  for (const t of allTags) (leavesByRoot[t.split("/")[0]] = leavesByRoot[t.split("/")[0]] || []).push(t);
+  const colorOf = {};       // keyed by full leaf-tag path — the per-sub-field colour
+  const rootColor = {};     // one representative colour per root (parent legend rows, fallbacks)
+  for (const r of Object.keys(leavesByRoot)) {
+    const lv = leavesByRoot[r].sort(), hue = hueFor(r);
+    rootColor[r] = `hsl(${hue}, 64%, 60%)`;
+    lv.forEach((t, i) => {
+      const L = lv.length === 1 ? 62 : 72 - 24 * i / (lv.length - 1);   // 72% (light) → 48% (dark)
+      colorOf[t] = `hsl(${hue}, 64%, ${L.toFixed(1)}%)`;
+    });
+  }
+  const nodeColor = n => DIFF ? (DIFF_NODE[n.diff] || DIFF_NODE.unchanged)
+                              : (colorOf[n.tag] || rootColor[n.root] || "#8b97b1");
+
+  let layout = "dag";
+  let phase = "after";   // diff blink-compare: "after" (added shown) ⇄ "before" (added hidden, removed shown)
+  const view = { x: 0, y: 0, k: 1 };
+  let hoverId = null, selId = null, userAdjusted = false, hoverSet = null, helpOpen = false;
+  // Filter on the SET of enabled leaf-tag paths; toggling a parent toggles its whole subtree.
+  const active = { tags: new Set(allTags), type: "all", status: "all", query: "", hideAxioms: true, changedOnly: DIFF };
+  // Diff scope = the affected subgraph: changed nodes + their 1-hop neighbours (per the "don't show
+  // the whole graph" rule). Default on in diff mode; toggled from the legend.
+  const changedSet = DIFF ? new Set(nodes.filter(n => n.diff && n.diff !== "unchanged").map(n => n.id)) : null;
+  const changedPlus = DIFF ? new Set(changedSet) : null;
+  if (DIFF) for (const e of edges) {
+    if (changedSet.has(e.s)) changedPlus.add(e.t);
+    if (changedSet.has(e.t)) changedPlus.add(e.s);
+  }
+  const collapsed = new Set();   // tag prefixes whose children are hidden in the legend tree
+  const dagPos = new Map(), forcePos = new Map(), diffPos = new Map();
+  let forceReady = false;
+
+  // ---- layouts -------------------------------------------------------------
+  function computeDag() {
+    const maxL = Math.max(0, ...nodes.map(n => n.level));
+    const byLevel = new Map();
+    for (let l = 0; l <= maxL; l++) byLevel.set(l, []);
+    for (const n of nodes) byLevel.get(n.level).push(n.id);
+    const GAPX = 64, GAPY = 120;
+    for (const [l, arr] of byLevel) {
+      arr.sort((a, b) => byId.get(a).root.localeCompare(byId.get(b).root)
+                      || byId.get(a).title.localeCompare(byId.get(b).title));
+      arr.forEach((id, i) => dagPos.set(id, { x: i * GAPX, y: (maxL - l) * GAPY }));
+    }
+    for (let pass = 0; pass < 10; pass++) {
+      const order = pass % 2 ? [...byLevel.keys()].reverse() : [...byLevel.keys()];
+      for (const l of order) {
+        const arr = byLevel.get(l);
+        for (const id of arr) {
+          const nb = [...prereqOf.get(id), ...dependentsOf.get(id)].filter(x => dagPos.has(x));
+          if (nb.length) dagPos.get(id).x = nb.reduce((s, x) => s + dagPos.get(x).x, 0) / nb.length;
+        }
+        const sorted = [...arr].sort((a, b) => dagPos.get(a).x - dagPos.get(b).x);
+        let prev = -Infinity;
+        for (const id of sorted) {
+          let x = dagPos.get(id).x;
+          if (x < prev + GAPX) x = prev + GAPX;
+          dagPos.get(id).x = x; prev = x;
+        }
+      }
+    }
+  }
+
+  function computeForce() {
+    const R = 70 + nodes.length * 1.7;
+    const anchor = {};
+    roots.forEach((r, i) => {
+      const a = 2 * Math.PI * i / roots.length;
+      anchor[r] = { x: Math.cos(a) * R, y: Math.sin(a) * R };
+    });
+    for (const n of nodes) {
+      const an = anchor[n.root];
+      forcePos.set(n.id, { x: an.x + (Math.random() * 160 - 80), y: an.y + (Math.random() * 160 - 80), vx: 0, vy: 0 });
+    }
+    const arr = nodes;
+    for (let it = 0; it < 380; it++) {
+      for (let i = 0; i < arr.length; i++) {
+        const a = forcePos.get(arr[i].id);
+        for (let j = i + 1; j < arr.length; j++) {
+          const b = forcePos.get(arr[j].id);
+          let dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy + 0.01;
+          const d = Math.sqrt(d2), f = 1900 / d2;
+          const fx = f * dx / d, fy = f * dy / d;
+          a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+        }
+      }
+      for (const e of edges) {
+        const a = forcePos.get(e.s), b = forcePos.get(e.t);
+        if (!a || !b) continue;
+        let dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) + 0.01;
+        const f = 0.018 * (d - 58), fx = f * dx / d, fy = f * dy / d;
+        a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+      }
+      for (const n of arr) {
+        const p = forcePos.get(n.id), an = anchor[n.root];
+        p.vx += (an.x - p.x) * 0.006; p.vy += (an.y - p.y) * 0.006;
+        p.vx *= 0.86; p.vy *= 0.86; p.x += p.vx; p.y += p.vy;
+      }
+    }
+    forceReady = true;
+  }
+
+  // Compact local layout for the diff's affected subgraph (changed + 1-hop): a small force sim over
+  // JUST those nodes, so the diff reads as one tight cluster instead of a thin slice of the global DAG.
+  function computeDiffLayout() {
+    const ids = [...changedPlus];
+    if (!ids.length) return;
+    const sub = edges.filter(e => changedPlus.has(e.s) && changedPlus.has(e.t));
+    ids.forEach((id, i) => { const a = 2 * Math.PI * i / ids.length;
+      diffPos.set(id, { x: Math.cos(a) * 130, y: Math.sin(a) * 130, vx: 0, vy: 0 }); });
+    for (let it = 0; it < 320; it++) {
+      for (let i = 0; i < ids.length; i++) { const A = diffPos.get(ids[i]);
+        for (let j = i + 1; j < ids.length; j++) { const B = diffPos.get(ids[j]);
+          let dx = A.x - B.x, dy = A.y - B.y, d2 = dx * dx + dy * dy + 0.01, d = Math.sqrt(d2);
+          const f = 3000 / d2, fx = f * dx / d, fy = f * dy / d;
+          A.vx += fx; A.vy += fy; B.vx -= fx; B.vy -= fy; } }
+      for (const e of sub) { const A = diffPos.get(e.s), B = diffPos.get(e.t);
+        let dx = B.x - A.x, dy = B.y - A.y, d = Math.sqrt(dx * dx + dy * dy) + 0.01;
+        const f = 0.02 * (d - 78), fx = f * dx / d, fy = f * dy / d;
+        A.vx += fx; A.vy += fy; B.vx -= fx; B.vy -= fy; }
+      for (const id of ids) { const p = diffPos.get(id);
+        p.vx += -p.x * 0.004; p.vy += -p.y * 0.004; p.vx *= 0.85; p.vy *= 0.85; p.x += p.vx; p.y += p.vy; }
+    }
+  }
+
+  const P = id => ((DIFF && active.changedOnly && diffPos.has(id)) ? diffPos.get(id)
+                   : (layout === "dag" ? dagPos : forcePos).get(id));
+
+  // ---- filtering / selection ----------------------------------------------
+  function visible(n) {
+    if (DIFF && active.changedOnly && !changedPlus.has(n.id)) return false;   // scope to the affected subgraph
+    if (DIFF) {                                     // blink-compare: hide the phase-exclusive nodes
+      if (phase === "before" && n.diff === "added") return false;
+      if (phase === "after"  && n.diff === "removed") return false;
+    }
+    if (active.hideAxioms && n.type === "axiom") return false;   // hide the floor; data is preserved
+    if (n.tag && !active.tags.has(n.tag)) return false;
+    if (active.type !== "all" && n.type !== active.type) return false;
+    if (active.status !== "all" && n.status !== active.status) return false;
+    return true;
+  }
+  function searchHit(n) {
+    return active.query && (n.title.toLowerCase().includes(active.query) || n.id.includes(active.query));
+  }
+  function closure(start, adj) {
+    const seen = new Set(), st = [start];
+    while (st.length) {
+      const x = st.pop();
+      for (const y of adj.get(x) || []) if (!seen.has(y)) { seen.add(y); st.push(y); }
+    }
+    return seen;
+  }
+  let related = null;
+  function recomputeRelated() {
+    if (!selId) { related = null; return; }
+    related = new Set([selId, ...closure(selId, prereqOf), ...closure(selId, dependentsOf)]);
+  }
+  function chainToAxiom(id) {
+    const path = [id]; let cur = id; const guard = new Set([id]);
+    while ((prereqOf.get(cur) || []).length) {
+      const nx = prereqOf.get(cur).reduce((a, b) => byId.get(b).level > byId.get(a).level ? b : a);
+      if (guard.has(nx)) break;
+      path.push(nx); guard.add(nx); cur = nx;
+    }
+    return path;
+  }
+  // Leaf -> root study order over a node's prerequisite subgraph: the node plus all its
+  // transitive prereqs, sorted by global level ascending (tiebreak title). Valid topological
+  // order because a prereq's level is always strictly below its dependent's; target ends last.
+  function computeRoadmap(id) {
+    const ids = [id, ...closure(id, prereqOf)];
+    ids.sort((a, b) => {
+      const la = byId.get(a).level, lb = byId.get(b).level;
+      return la !== lb ? la - lb : byId.get(a).title.localeCompare(byId.get(b).title);
+    });
+    return ids;
+  }
+
+  // ---- rendering -----------------------------------------------------------
+  const cv = document.getElementById("cv"), ctx = cv.getContext("2d");
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+  function resize() {
+    const r = cv.getBoundingClientRect();
+    const w = Math.max(1, Math.round(r.width * DPR)), h = Math.max(1, Math.round(r.height * DPR));
+    if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+    draw();
+  }
+  const radius = n => 4 + Math.sqrt(n.dependents) * 2.3;
+  // On-screen radius is never smaller than ~3.4px, so 0-dependent nodes don't vanish when zoomed out.
+  const rWorld = n => Math.max(radius(n), 3.4 / view.k);
+
+  function drawArrow(pa, pb, rTarget) {
+    const dx = pb.x - pa.x, dy = pb.y - pa.y, d = Math.hypot(dx, dy) || 1;
+    const ux = dx / d, uy = dy / d, s = 7 / view.k;
+    const tx = pb.x - ux * (rTarget + 1.5 / view.k), ty = pb.y - uy * (rTarget + 1.5 / view.k);
+    ctx.beginPath();
+    ctx.moveTo(tx, ty);
+    ctx.lineTo(tx - ux * s - uy * s * 0.55, ty - uy * s + ux * s * 0.55);
+    ctx.lineTo(tx - ux * s + uy * s * 0.55, ty - uy * s - ux * s * 0.55);
+    ctx.closePath(); ctx.fill();
+  }
+
+  function draw() {
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    ctx.save();
+    ctx.translate(view.x, view.y); ctx.scale(view.k, view.k);
+    const hov = hoverSet;   // hovered node + all its ancestors (prereqs) and descendants (dependents)
+
+    // edges
+    ctx.lineWidth = 1 / view.k;
+    for (const e of edges) {
+      if (DIFF && ((phase === "before" && e.diff === "added") || (phase === "after" && e.diff === "removed"))) continue;
+      const a = byId.get(e.s), b = byId.get(e.t);
+      if (!a || !b || !visible(a) || !visible(b)) continue;
+      const pa = P(e.s), pb = P(e.t); if (!pa || !pb) continue;
+      const hot = (hov && hov.has(e.s) && hov.has(e.t)) || (related && related.has(e.s) && related.has(e.t));
+      let dashed = false;
+      if (DIFF && e.diff && e.diff !== "unchanged") {          // diff mode: changed edges pop, removed are dashed
+        ctx.strokeStyle = DIFF_EDGE[e.diff]; ctx.lineWidth = 1.8 / view.k;
+        dashed = e.diff === "removed";
+      } else {
+        // unchanged edges: in BEFORE they ARE the graph's structure → show them; in AFTER keep faint so added (green) pop
+        const uAlpha = DIFF ? (phase === "before" ? 0.5 : 0.15) : 0.10;
+        ctx.strokeStyle = hot ? "rgba(225,232,255,0.65)" : `rgba(150,165,210,${uAlpha})`;
+        ctx.lineWidth = (DIFF && phase === "before" ? 1.3 : 1) / view.k;
+      }
+      if (dashed) ctx.setLineDash([5 / view.k, 3 / view.k]);
+      ctx.beginPath(); ctx.moveTo(pa.x, pa.y); ctx.lineTo(pb.x, pb.y); ctx.stroke();
+      if (dashed) ctx.setLineDash([]);
+      if (layout === "dag" && (hot || view.k > 0.85)) {
+        ctx.fillStyle = ctx.strokeStyle; drawArrow(pa, pb, rWorld(b));
+      }
+    }
+
+    // nodes
+    for (const n of nodes) {
+      if (!visible(n)) continue;
+      const p = P(n.id); if (!p) continue;
+      const changed = DIFF && n.diff && n.diff !== "unchanged";
+      const dim = (related && !related.has(n.id)) || (hov && !hov.has(n.id));
+      ctx.globalAlpha = dim ? 0.13 : ((DIFF && phase === "after" && !changed) ? 0.4 : 1);   // fade unchanged only in AFTER; before-graph stays fully visible
+      let r = rWorld(n);
+      if (DIFF) r = Math.max(r, (n.diffRoot ? 16 : changed ? 10 : 6) / view.k);   // diff: root concept largest, others legible
+      ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.2832);
+      ctx.fillStyle = nodeColor(n); ctx.fill();
+      if (n.status === "stub") {
+        ctx.lineWidth = 1.4 / view.k; ctx.strokeStyle = "rgba(255,255,255,.85)";
+        ctx.setLineDash([3 / view.k, 2 / view.k]); ctx.stroke(); ctx.setLineDash([]);
+      }
+      if (DIFF && n.diff === "removed") {           // removed node: dashed red ring (it's gone in the new graph)
+        ctx.lineWidth = 1.6 / view.k; ctx.strokeStyle = DIFF_NODE.removed;
+        ctx.setLineDash([3 / view.k, 2 / view.k]); ctx.stroke(); ctx.setLineDash([]);
+      }
+      if (changed && n.diff !== "removed") {        // added / restructured: bright halo so it pops out
+        ctx.globalAlpha = 1; ctx.lineWidth = (n.diffRoot ? 4.5 : 3) / view.k; ctx.strokeStyle = DIFF_NODE[n.diff];
+        ctx.beginPath(); ctx.arc(p.x, p.y, r + 3 / view.k, 0, 6.2832); ctx.stroke();
+        if (n.diffRoot) {                           // the just-installed ROOT concept: extra white outer ring
+          ctx.lineWidth = 2 / view.k; ctx.strokeStyle = "#ffffff";
+          ctx.beginPath(); ctx.arc(p.x, p.y, r + 8 / view.k, 0, 6.2832); ctx.stroke();
+        }
+      }
+      if (n.id === selId) { ctx.lineWidth = 2.4 / view.k; ctx.strokeStyle = "#fff"; ctx.stroke(); }
+      if (searchHit(n)) {
+        ctx.globalAlpha = 1; ctx.lineWidth = 2.4 / view.k; ctx.strokeStyle = "#ffd166";
+        ctx.beginPath(); ctx.arc(p.x, p.y, r + 3 / view.k, 0, 6.2832); ctx.stroke();
+      }
+    }
+
+    ctx.restore();
+
+    // labels — drawn in SCREEN space, collision-aware: high-priority names win, any
+    // label that would overlap an already-placed one is skipped (zoom in to reveal more).
+    // When something is hovered/selected, only that node's chain is labelled (bright);
+    // its members are "forced" and bypass the overlap test so the whole chain stays legible.
+    const W = cv.width / DPR, H = cv.height / DPR;
+    const focus = hoverSet || related || null;
+    ctx.font = "11px ui-sans-serif, system-ui, sans-serif";
+    ctx.textBaseline = "middle";
+    const cand = [];
+    for (const n of nodes) {
+      if (!visible(n)) continue;
+      if (focus && !focus.has(n.id)) continue;          // focus mode: only the chain is named
+      const p = P(n.id); if (!p) continue;
+      const sx = view.x + p.x * view.k, sy = view.y + p.y * view.k;
+      if (sx < -40 || sx > W + 160 || sy < -16 || sy > H + 16) continue;   // off-screen cull
+      cand.push({ n, sx, sy, hit: searchHit(n), chg: (DIFF && n.diff && n.diff !== "unchanged") ? 1 : 0 });
+    }
+    cand.sort((a, b) => ((b.n.diffRoot ? 1 : 0) - (a.n.diffRoot ? 1 : 0)) || (b.chg - a.chg) || (b.hit - a.hit) || (b.n.dependents - a.n.dependents));
+    const placed = [];
+    for (const c of cand) {
+      const lx = c.sx + rWorld(c.n) * view.k + 4, ly = c.sy;
+      const w = ctx.measureText(c.n.title).width;
+      const box = [lx - 1, ly - 7, lx + w + 1, ly + 7];
+      const forced = !!focus || c.hit || c.chg;         // chain, search hits & changed nodes always draw
+      if (!forced) {
+        let clash = false;
+        for (const q of placed) {
+          if (box[0] < q[2] && box[2] > q[0] && box[1] < q[3] && box[3] > q[1]) { clash = true; break; }
+        }
+        if (clash) continue;
+      }
+      placed.push(box);
+      if (c.n.diffRoot) {                           // the just-installed root concept: bold, starred, in its status colour
+        ctx.font = "bold 13px ui-sans-serif, system-ui, sans-serif";
+        ctx.fillStyle = DIFF_NODE[c.n.diff] || DIFF_NODE.added;
+        ctx.fillText("★ " + c.n.title, lx, ly);
+        ctx.font = "11px ui-sans-serif, system-ui, sans-serif";
+      } else {
+        ctx.fillStyle = c.hit ? "#ffd166" : (c.chg ? DIFF_NODE[c.n.diff] : "#e7edf8");
+        ctx.fillText(c.n.title, lx, ly);
+      }
+    }
+    ctx.textBaseline = "alphabetic";
+  }
+
+  let raf = null;
+  function schedule() { if (!raf) raf = requestAnimationFrame(() => { raf = null; draw(); }); }
+
+  // ---- fit -----------------------------------------------------------------
+  function fit() {
+    const r = cv.getBoundingClientRect();
+    if (r.width < 60 || r.height < 60) return;     // not laid out yet — don't fit to a 0-size canvas
+    const vis = nodes.filter(visible).map(n => P(n.id)).filter(Boolean);
+    if (!vis.length) return;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const p of vis) { minX = Math.min(minX, p.x); minY = Math.min(minY, p.y); maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y); }
+    // Clear the panels only when the viewport is wide enough to afford it; on a
+    // narrow canvas, ignore them and use the full width (better to overlap than to shrink to nothing).
+    const padL = r.width > 760 ? 238 : 12;                          // legend
+    const padR = (!detailsEl.classList.contains("hidden") && r.width > 920) ? 298 : 16;
+    const padT = 52, padB = 40;                                     // topbar / hint
+    const availW = Math.max(120, r.width - padL - padR);
+    const availH = Math.max(120, r.height - padT - padB);
+    const inner = 24, w = (maxX - minX) || 1, h = (maxY - minY) || 1;
+    view.k = Math.max(0.05, Math.min((availW - inner * 2) / w, (availH - inner * 2) / h, 2.2));
+    view.x = padL + availW / 2 - (minX + maxX) / 2 * view.k;
+    view.y = padT + availH / 2 - (minY + maxY) / 2 * view.k;
+    userAdjusted = false;
+    schedule();
+  }
+
+  // ---- hit testing & interaction ------------------------------------------
+  function screenToWorld(sx, sy) { return { x: (sx - view.x) / view.k, y: (sy - view.y) / view.k }; }
+  function nodeAt(sx, sy) {
+    const w = screenToWorld(sx, sy); let best = null, bd = Infinity;
+    for (const n of nodes) {
+      if (!visible(n)) continue;
+      const p = P(n.id); if (!p) continue;
+      const d = Math.hypot(p.x - w.x, p.y - w.y);
+      if (d < rWorld(n) + 5 / view.k && d < bd) { bd = d; best = n; }
+    }
+    return best;
+  }
+  let dragging = false, dragMoved = false, lx = 0, ly = 0;
+  cv.addEventListener("mousedown", e => { if (helpOpen) return; dragging = true; dragMoved = false; lx = e.clientX; ly = e.clientY; cv.classList.add("grabbing"); });
+  window.addEventListener("mouseup", () => { dragging = false; cv.classList.remove("grabbing"); });
+  window.addEventListener("mousemove", e => {
+    if (helpOpen) return;          // overlay open → background graph is inert
+    if (dragging) {
+      if (Math.abs(e.clientX - lx) + Math.abs(e.clientY - ly) > 2) { dragMoved = true; userAdjusted = true; }
+      view.x += e.clientX - lx; view.y += e.clientY - ly; lx = e.clientX; ly = e.clientY; schedule(); return;
+    }
+    const r = cv.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
+    const n = nodeAt(e.clientX - r.left, e.clientY - r.top);
+    const id = n ? n.id : null;
+    if (id !== hoverId) {
+      hoverId = id;
+      hoverSet = id ? new Set([id, ...closure(id, prereqOf), ...closure(id, dependentsOf)]) : null;
+      cv.style.cursor = id ? "pointer" : (dragging ? "grabbing" : "grab"); schedule();
+    }
+  });
+  cv.addEventListener("click", e => {
+    if (helpOpen || dragMoved) return;
+    const r = cv.getBoundingClientRect();
+    const n = nodeAt(e.clientX - r.left, e.clientY - r.top);
+    select(n ? n.id : null);
+  });
+  cv.addEventListener("wheel", e => {
+    if (helpOpen) return;
+    e.preventDefault();
+    const r = cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    const w = screenToWorld(mx, my);
+    const f = Math.exp(-e.deltaY * 0.0015);
+    view.k = Math.max(0.05, Math.min(8, view.k * f));
+    view.x = mx - w.x * view.k; view.y = my - w.y * view.k;
+    userAdjusted = true;
+    schedule();
+  }, { passive: false });
+
+  // ---- selection / details panel -------------------------------------------
+  const detailsEl = document.getElementById("details");
+  function select(id) {
+    selId = (id && byId.has(id)) ? id : null;
+    recomputeRelated();
+    renderDetails();
+    schedule();
+  }
+  function nodeLinkHtml(id) {
+    const n = byId.get(id); if (!n) return `<span class="nlink">${id} ⚠️</span>`;
+    return `<span class="nlink" data-go="${id}" style="border-left:3px solid ${nodeColor(n)}">${n.title}</span>`;
+  }
+  function renderDetails() {
+    if (!selId) { detailsEl.classList.add("hidden"); return; }
+    const n = byId.get(selId);
+    const pr = (prereqOf.get(selId) || []);
+    const dp = (dependentsOf.get(selId) || []);
+    const ch = chainToAxiom(selId);
+    const rm = computeRoadmap(selId);
+    const meta = [`<span class="tag" style="background:${nodeColor(n)};color:#0b0f17">${n.tag || "untagged"}</span>`];
+    if (n.type === "axiom") meta.push(`<span class="tag axiom">🛑 axiom</span>`);
+    else meta.push(`<span class="tag">${n.type}</span>`);
+    if (n.status === "stub") meta.push(`<span class="tag stub">stub</span>`);
+    meta.push(`<span class="tag">L${n.level}</span>`);
+    detailsEl.innerHTML =
+      `<span class="close" data-close="1">×</span>` +
+      `<div class="title">${n.title}</div>` +
+      `<div class="path">${n.id} · <a class="doclink" href="${docBase}/${n.id}.md" target="_blank" rel="noopener">📄 Open document →</a></div>` +
+      `<div class="meta">${meta.join("")}</div>` +
+      (n.summary ? `<div style="margin:7px 0 3px;line-height:1.45;color:#c5cfe0">${n.summary}</div>` : ``) +
+      `<div style="color:var(--muted)">${pr.length} prerequisite(s) · depended on by ${dp.length}</div>` +
+      `<h5>Prerequisites (depends on)</h5>` +
+      (pr.length ? `<div class="links">${pr.map(nodeLinkHtml).join("")}</div>` : `<div style="color:var(--muted)">none — a leaf / axiom floor</div>`) +
+      `<h5>Depended on by</h5>` +
+      (dp.length ? `<div class="links">${dp.map(nodeLinkHtml).join("")}</div>` : `<div style="color:var(--muted)">none — a top-level node</div>`) +
+      `<h5>Learning roadmap (leaf → root) · ${rm.length} step(s)</h5>` +
+      (rm.length > 1
+        ? `<ol class="roadmap">${rm.map(id => {
+            const nn = byId.get(id), tgt = id === selId;
+            return `<li class="rstep${tgt ? " tgt" : ""}" style="border-left:3px solid ${nodeColor(nn)}">` +
+              `<span class="rtitle" data-go="${id}">${nn.title}${tgt ? " ★" : ""}</span>` +
+              `<a class="rdoc" href="${docBase}/${id}.md" target="_blank" rel="noopener" title="Open document in new tab">📄</a>` +
+              `</li>`;
+          }).join("")}</ol>`
+        : `<div style="color:var(--muted)">already a leaf — nothing to stack beneath it</div>`) +
+      `<h5>Chain to axiom (deepest)</h5>` +
+      `<div class="chain">${ch.map(id => `<div class="step" data-go="${id}">${byId.get(id).title}</div>`).join("")}</div>`;
+    detailsEl.classList.remove("hidden");
+  }
+  detailsEl.addEventListener("click", e => {
+    if (e.target.dataset.close) { select(null); return; }
+    const go = e.target.dataset.go || e.target.closest("[data-go]")?.dataset.go;
+    if (go) select(go);
+  });
+
+  // ---- legend + insights ---------------------------------------------------
+  const legendEl = document.getElementById("legend");
+  // Field tree built from the leaf-tag paths: nested {seg: {path, kids}}.
+  const fieldTree = {};
+  for (const t of allTags) {
+    let node = fieldTree, path = "";
+    for (const seg of t.split("/")) {
+      path = path ? path + "/" + seg : seg;
+      node[seg] = node[seg] || { path, kids: {} };
+      node = node[seg].kids;
+    }
+  }
+  const leavesUnder = prefix => allTags.filter(t => t === prefix || t.startsWith(prefix + "/"));
+  const countUnder = prefix => leavesUnder(prefix).reduce((s, t) => s + (leafCount[t] || 0), 0);
+  const stateOf = prefix => {                       // on | partial | off
+    const lv = leavesUnder(prefix), on = lv.filter(t => active.tags.has(t)).length;
+    return on === 0 ? "off" : (on === lv.length ? "on" : "partial");
+  };
+  function fieldRows() {
+    const out = [];
+    (function walk(kids, depth) {
+      for (const seg of Object.keys(kids).sort()) {
+        const node = kids[seg], prefix = node.path;
+        const hasKids = Object.keys(node.kids).length > 0;
+        const open = !collapsed.has(prefix), root = prefix.split("/")[0];
+        const sw = hasKids ? rootColor[root] : (colorOf[prefix] || rootColor[root]);
+        const caret = hasKids
+          ? `<span class="cv" data-caret="${prefix}">${open ? "▾" : "▸"}</span>`
+          : `<span class="cv-sp"></span>`;
+        out.push(`<div class="chip ${stateOf(prefix)}" data-prefix="${prefix}" `
+          + `style="padding-left:${6 + depth * 13}px">${caret}`
+          + `<span class="sw" style="background:${sw}"></span>`
+          + `<span class="nm">${seg}</span><span class="ct">${countUnder(prefix)}</span></div>`);
+        if (hasKids && open) walk(node.kids, depth + 1);
+      }
+    })(fieldTree, 0);
+    return out.join("");
+  }
+  function diffLegendHtml() {
+    const c = DATA.diffCounts || {};
+    const sw = (col, lbl) => `<div class="chip" style="cursor:default"><span class="cv-sp"></span>`
+      + `<span class="sw" style="background:${col}"></span><span class="nm">${lbl}</span></div>`;
+    return `<h4>Diff</h4>`
+      + `<div class="insights">`
+      + `<div class="row"><span>nodes</span><span class="v">+${c.nodesAdded || 0} / −${c.nodesRemoved || 0}</span></div>`
+      + `<div class="row"><span>edges</span><span class="v">+${c.edgesAdded || 0} / −${c.edgesRemoved || 0}</span></div>`
+      + `<div class="row"><span>restructured</span><span class="v">${c.restructured || 0}</span></div></div>`
+      + sw(DIFF_NODE.added, "added") + sw(DIFF_NODE.removed, "removed")
+      + sw(DIFF_NODE.restructured, "restructured") + sw(DIFF_NODE.unchanged, "unchanged")
+      + `<div class="fbar"><span class="fbtn" data-diffscope="1">`
+      + `${active.changedOnly ? "◉ changed + 1-hop" : "○ full graph"}</span></div>`
+      + `<div class="fhint" style="margin-top:6px">↑ use the <b>Before / After</b> toggle up top to blink the change</div>`;
+  }
+  function buildLegend() {
+    const top5 = [...nodes].sort((a, b) => b.dependents - a.dependents).slice(0, 5);
+    const maxL = Math.max(0, ...nodes.map(n => n.level));
+    const deepest = nodes.filter(n => n.level === maxL).sort((a, b) => b.dependents - a.dependents)[0];
+    legendEl.innerHTML =
+      (DIFF ? diffLegendHtml() : ``) +
+      `<h4>Fields</h4>` +
+      `<div class="fbar"><span class="fbtn" data-fall="all">all on</span>` +
+      `<span class="fbtn" data-fall="none">all off</span>` +
+      `<span class="fhint">click row · ▸ expand</span></div>` +
+      fieldRows() +
+      `<div class="insights">
+         <h4>Most depended-on</h4>
+         ${top5.map(n => `<div class="row" data-go="${n.id}"><span>${n.title}</span><span class="v">${n.dependents}</span></div>`).join("")}
+         <h4 style="margin-top:10px">Deepest chain</h4>
+         <div class="row" data-go="${deepest ? deepest.id : ""}"><span>${deepest ? deepest.title : "—"}</span><span class="v">${maxL} levels</span></div>
+       </div>`;
+  }
+  legendEl.addEventListener("click", e => {
+    const ds = e.target.closest("[data-diffscope]");
+    if (ds) { active.changedOnly = !active.changedOnly; buildLegend(); fit(); return; }
+    const fall = e.target.closest("[data-fall]");
+    if (fall) {                                     // all on / all off
+      if (fall.dataset.fall === "all") allTags.forEach(t => active.tags.add(t));
+      else active.tags.clear();
+      buildLegend(); schedule(); return;
+    }
+    const caret = e.target.closest("[data-caret]");
+    if (caret) {                                    // expand / collapse a subtree
+      const p = caret.dataset.caret;
+      collapsed.has(p) ? collapsed.delete(p) : collapsed.add(p);
+      buildLegend(); return;
+    }
+    const row = e.target.closest("[data-prefix]");
+    if (row) {                                      // toggle the whole subtree's leaves
+      const lv = leavesUnder(row.dataset.prefix);
+      const allOn = lv.every(t => active.tags.has(t));
+      lv.forEach(t => allOn ? active.tags.delete(t) : active.tags.add(t));
+      buildLegend(); schedule(); return;
+    }
+    const go = e.target.closest("[data-go]")?.dataset.go;
+    if (go) { select(go); fitToNode(go); }
+  });
+  function fitToNode(id) {
+    const p = P(id); if (!p) return;
+    const r = cv.getBoundingClientRect();
+    view.k = Math.max(view.k, 1.3);
+    view.x = r.width / 2 - p.x * view.k; view.y = r.height / 2 - p.y * view.k;
+    schedule();
+  }
+
+  // ---- stats header --------------------------------------------------------
+  function buildStats() {
+    const rootsN = nodes.filter(n => n.dependents === 0).length;
+    const axioms = nodes.filter(n => n.type === "axiom").length;
+    const stubs = nodes.filter(n => n.status === "stub").length;
+    document.getElementById("stats").innerHTML =
+      `<b>${nodes.length}</b> nodes · <b>${edges.length}</b> edges · ` +
+      `<b>${rootsN}</b> roots · <b>${axioms}</b> axioms` + (stubs ? ` · <b>${stubs}</b> stubs` : ``);
+  }
+
+  // ---- controls ------------------------------------------------------------
+  document.getElementById("layoutToggle").addEventListener("click", e => {
+    const b = e.target.closest("button[data-layout]"); if (!b) return;
+    const next = b.dataset.layout; if (next === layout) return;
+    [...e.currentTarget.children].forEach(c => c.classList.toggle("active", c === b));
+    layout = next;
+    if (layout === "force" && !forceReady) computeForce();
+    fit();
+  });
+  const phaseToggle = document.getElementById("phaseToggle");
+  if (DIFF) phaseToggle.style.display = "";         // reveal the Before/After toggle only in diff mode
+  phaseToggle.addEventListener("click", e => {      // click flips phase; positions are fixed → redraw only, no refit
+    const b = e.target.closest("button[data-phase]"); if (!b) return;
+    phase = b.dataset.phase;
+    [...e.currentTarget.children].forEach(c => c.classList.toggle("active", c === b));
+    schedule();
+  });
+  document.getElementById("search").addEventListener("input", e => { active.query = e.target.value.trim().toLowerCase(); schedule(); });
+  document.getElementById("typeFilter").addEventListener("change", e => { active.type = e.target.value; schedule(); });
+  document.getElementById("statusFilter").addEventListener("change", e => { active.status = e.target.value; schedule(); });
+  document.getElementById("hideAxioms").addEventListener("change", e => { active.hideAxioms = e.target.checked; schedule(); });
+  document.getElementById("fitBtn").addEventListener("click", fit);
+  const helpOverlay = document.getElementById("help-overlay");
+  // Pristine copy of the growth SVG. Re-inserting a fresh clone restarts its SMIL timeline from
+  // t=0 — so the animation always replays from the empty canvas whenever its tab is shown.
+  const lifeSvgTemplate = document.getElementById("lifecycleSvg").cloneNode(true);
+  const restartGrowth = () => {
+    const cur = document.getElementById("lifecycleSvg");
+    if (cur) cur.replaceWith(lifeSvgTemplate.cloneNode(true));
+  };
+  const showPane = (name) => {
+    helpOverlay.querySelectorAll(".htab").forEach(t => t.classList.toggle("active", t.dataset.pane === name));
+    helpOverlay.querySelectorAll(".hpane").forEach(p => p.classList.toggle("hidden", p.id !== "pane-" + name));
+    if (name === "grow") restartGrowth();   // replay the animation each time its tab opens
+  };
+  const openHelp = () => { helpOpen = true; helpOverlay.classList.add("open"); showPane("grow"); };
+  const closeHelp = () => { helpOpen = false; helpOverlay.classList.remove("open"); };
+  helpOverlay.querySelectorAll(".htab").forEach(t => t.addEventListener("click", () => showPane(t.dataset.pane)));
+  helpOverlay.querySelectorAll(".lc-row.exp").forEach(r => r.addEventListener("click", () => {
+    const nowHidden = document.getElementById("exp-" + r.dataset.exp).classList.toggle("hidden");
+    r.querySelector(".car").textContent = nowHidden ? "▸" : "▾";
+  }));
+  document.getElementById("helpBtn").addEventListener("click", openHelp);
+  document.getElementById("helpClose").addEventListener("click", closeHelp);
+  helpOverlay.addEventListener("click", e => { if (e.target === helpOverlay) closeHelp(); });
+  window.addEventListener("keydown", e => { if (e.key === "Escape") { closeHelp(); select(null); } });
+  window.addEventListener("resize", resize);
+
+  // ---- boot ----------------------------------------------------------------
+  computeDag();
+  if (DIFF) computeDiffLayout();
+  buildLegend();
+  buildStats();
+  resize();
+  fit();
+  // The artifact iframe can lay out late; re-fit once sizes settle, and on any
+  // canvas resize (unless the user has panned/zoomed away from the fitted view).
+  requestAnimationFrame(() => { resize(); fit(); });
+  setTimeout(() => { resize(); fit(); }, 120);
+  setTimeout(() => { resize(); fit(); }, 400);
+  if (window.ResizeObserver) {
+    new ResizeObserver(() => { resize(); if (!userAdjusted) fit(); }).observe(cv);
+  }
+})();
+</script>
+
+</body>
+</html>

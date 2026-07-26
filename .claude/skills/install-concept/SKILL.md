@@ -6,9 +6,18 @@ description: >
   explain, or ingest a concept/paper, to explain stubs, or to build an install queue
   from a source. Routes to the closed-world install -> explain -> audit -> manifest ->
   graph -> commit -> PR loop.
+argument-hint: <new-concept>
+arguments: [concept]
 ---
 
 # Install / explain a concept — the install workflow
+
+## Invocation
+
+Invoke directly as `/install-concept <new-concept>`. Treat `$concept` as the root concept or paper
+for the compose-and-install workflow below. Preserve a quoted multi-word argument as one concept.
+If invoked without an argument, derive the root from the triggering user request; if no root is
+present, ask for one before composing the add-queue.
 
 This skill is **the workflow**: *how* an install runs, step by step — the lifecycle, the action
 table, and the ordered checklist. Two things it does **not** restate (single source of truth):

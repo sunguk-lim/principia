@@ -14,7 +14,7 @@
     position: fixed; inset: 0; background: var(--bg); color: var(--txt);
     font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; overflow: hidden;
   }
-  #cv { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; cursor: grab; }
+  #cv { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
   #cv.grabbing { cursor: grabbing; }
   #topbar {
     position: absolute; top: 0; left: 0; right: 0; z-index: 5;
@@ -27,7 +27,8 @@
   #stats { color: var(--muted); font-variant-numeric: tabular-nums; }
   #stats b { color: var(--txt); font-weight: 600; }
   .spacer { flex: 1; }
-  .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .controls, .secondary-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .mobile-only { display: none; }
   .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
   .seg button { background: transparent; color: var(--muted); border: 0; padding: 6px 11px; cursor: pointer; font: inherit; }
   .seg button.active { background: #2b3656; color: var(--txt); }
@@ -39,6 +40,7 @@
   #search { width: 150px; }
   .btn { cursor: pointer; }
   .btn:hover { border-color: #3d4d7a; }
+  .btn:focus-visible, .seg button:focus-visible, .drawer-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .panel {
     position: absolute; z-index: 4; background: var(--panel); backdrop-filter: blur(6px);
     border: 1px solid var(--line); border-radius: 12px; padding: 12px;
@@ -92,6 +94,10 @@
   .rstep.tgt { background: #243056; font-weight: 600; }
   .close { position: absolute; top: 8px; right: 10px; cursor: pointer; color: var(--muted); font-size: 16px; }
   .close:hover { color: var(--txt); }
+  .drawer-close { display: none; }
+  #panelBackdrop { display: none; }
+  #zoomControls { position: absolute; z-index: 6; left: 264px; bottom: 52px; display: flex; flex-direction: column; gap: 6px; }
+  #zoomControls .btn { width: 38px; height: 38px; padding: 0; font-size: 20px; font-weight: 700; }
   #hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 4; color: var(--muted); font-size: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; }
   #helpBtn { font-weight: 700; }
   #help-overlay { position: absolute; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; background: rgba(8,12,22,.62); }
@@ -146,22 +152,45 @@
   .lc-loop { margin-top: 5px; padding: 5px 10px; border: 1px dashed #e0b34d; border-radius: 8px; background: #fdf6e3; color: #a06a00; font-weight: 600; text-align: center; font-size: 12px; }
   .lc-note { color: #8b97b1; font-style: italic; }
   .ac-you { color: #51607a; font-weight: 600; } .ac-llm { color: #7262fd; font-weight: 600; } .ac-cli { color: #1f9d78; font-weight: 600; } .ac-git { color: #b8860b; font-weight: 600; }
-  @media (max-width: 640px) {
-    #topbar { gap: 6px; padding: 8px; }
+  @media (max-width: 720px) {
+    #topbar { display: block; padding: 8px; }
     #stats, .spacer { display: none; }
-    .brand { flex-basis: 100%; line-height: 20px; }
-    .controls {
-      flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 3px;
-      scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    .brand { display: block; margin-bottom: 6px; line-height: 20px; }
+    .controls { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, auto); gap: 6px; }
+    .mobile-only { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
+    #search { width: auto; min-width: 0; min-height: 30px; }
+    .secondary-controls {
+      display: none; position: absolute; top: 76px; right: 8px; z-index: 14;
+      width: min(300px, calc(100vw - 16px)); padding: 10px; box-sizing: border-box;
+      background: var(--panel-solid); border: 1px solid var(--line); border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
     }
-    .controls::-webkit-scrollbar { display: none; }
-    .controls > * { flex: none; }
-    #search { width: 132px; }
-    #legend { display: none; }
+    .secondary-controls.open { display: flex; }
+    .secondary-controls > * { min-height: 38px; }
+    #fitBtn { display: none; }
+    #legend {
+      display: block; top: 0; bottom: 0; left: 0; width: min(84vw, 320px);
+      max-height: none; box-sizing: border-box; border-radius: 0 14px 14px 0;
+      padding: 52px 14px 18px; z-index: 13; transform: translateX(-105%);
+      transition: transform .2s ease; box-shadow: 12px 0 36px rgba(0,0,0,.4);
+    }
+    #legend.mobile-open { transform: translateX(0); }
+    .drawer-close {
+      display: inline-flex; align-items: center; justify-content: center; position: absolute;
+      top: 8px; right: 10px; width: 40px; height: 40px; border: 0; border-radius: 8px;
+      background: transparent; color: var(--muted); font: inherit; font-size: 24px; line-height: 1; cursor: pointer;
+    }
     #details {
-      top: 82px; right: 8px; left: 8px; width: auto;
-      max-height: calc(100% - 132px); box-sizing: border-box;
+      top: auto; right: 0; bottom: 0; left: 0; width: auto; max-height: min(72dvh, 620px);
+      box-sizing: border-box; border-radius: 16px 16px 0 0; z-index: 13;
+      padding: 18px 14px max(18px, env(safe-area-inset-bottom));
+      box-shadow: 0 -12px 36px rgba(0,0,0,.4);
     }
+    #details .close { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; top: 4px; right: 6px; }
+    #panelBackdrop { position: absolute; inset: 0; z-index: 12; background: rgba(8,12,22,.55); }
+    #panelBackdrop.open { display: block; }
+    #zoomControls { right: 10px; bottom: 48px; left: auto; }
+    #zoomControls .btn { width: 44px; height: 44px; }
     #hint {
       bottom: 8px; max-width: calc(100% - 32px); box-sizing: border-box;
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
@@ -177,36 +206,46 @@
     <span id="stats"></span>
     <span class="spacer"></span>
     <div class="controls">
-      <span class="seg" id="phaseToggle" title="blink the graph: its state before vs after this change" style="display:none">
-        <button data-phase="before">◀ Before</button>
-        <button data-phase="after" class="active">After ▶</button>
-      </span>
-      <span class="seg" id="layoutToggle">
-        <button data-layout="dag" class="active">Layered DAG</button>
-        <button data-layout="force">Tag Force</button>
-      </span>
       <input id="search" type="text" placeholder="search concepts…" autocomplete="off" />
-      <select id="typeFilter" title="type">
-        <option value="all">all types</option>
-        <option value="concept">concept</option>
-        <option value="axiom">axiom</option>
-        <option value="paper">paper</option>
-      </select>
-      <select id="statusFilter" title="status">
-        <option value="all">all status</option>
-        <option value="explained">explained</option>
-        <option value="stub">stub</option>
-      </select>
-      <label id="axLabel" title="hide the axiom floor nodes (they stay in the data)"
-             style="display:inline-flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer">
-        <input type="checkbox" id="hideAxioms" checked> hide axioms</label>
-      <button class="btn" id="fitBtn">Fit</button>
-      <button class="btn" id="helpBtn" title="How the graph grows — lifecycle">?</button>
+      <button class="btn mobile-only" id="filtersBtn" aria-controls="legend" aria-expanded="false">Filters</button>
+      <button class="btn mobile-only" id="mobileFitBtn">Fit</button>
+      <button class="btn mobile-only" id="moreBtn" aria-controls="moreMenu" aria-expanded="false">More</button>
+      <div class="secondary-controls" id="moreMenu">
+        <span class="seg" id="phaseToggle" title="blink the graph: its state before vs after this change" style="display:none">
+          <button data-phase="before">◀ Before</button>
+          <button data-phase="after" class="active">After ▶</button>
+        </span>
+        <span class="seg" id="layoutToggle">
+          <button data-layout="dag" class="active">Layered DAG</button>
+          <button data-layout="force">Tag Force</button>
+        </span>
+        <select id="typeFilter" title="type">
+          <option value="all">all types</option>
+          <option value="concept">concept</option>
+          <option value="axiom">axiom</option>
+          <option value="paper">paper</option>
+        </select>
+        <select id="statusFilter" title="status">
+          <option value="all">all status</option>
+          <option value="explained">explained</option>
+          <option value="stub">stub</option>
+        </select>
+        <label id="axLabel" title="hide the axiom floor nodes (they stay in the data)"
+               style="display:inline-flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer">
+          <input type="checkbox" id="hideAxioms" checked> hide axioms</label>
+        <button class="btn" id="fitBtn">Fit</button>
+        <button class="btn" id="helpBtn" title="How the graph grows — lifecycle">Help</button>
+      </div>
     </div>
   </header>
   <aside id="legend" class="panel"></aside>
   <aside id="details" class="panel hidden"></aside>
-  <div id="hint">scroll = zoom · drag = pan · hover = neighbors · click = trace chain</div>
+  <div id="panelBackdrop"></div>
+  <div id="zoomControls" aria-label="Graph zoom controls">
+    <button class="btn" id="zoomInBtn" aria-label="Zoom in">+</button>
+    <button class="btn" id="zoomOutBtn" aria-label="Zoom out">−</button>
+  </div>
+  <div id="hint">pinch / scroll = zoom · drag = pan · tap / click = trace chain</div>
 
   <div id="help-overlay">
     <div id="help-card">
@@ -678,6 +717,8 @@
 
   let raf = null;
   function schedule() { if (!raf) raf = requestAnimationFrame(() => { raf = null; draw(); }); }
+  const mobileQuery = window.matchMedia("(max-width: 720px)");
+  const isMobile = () => mobileQuery.matches;
 
   // ---- fit -----------------------------------------------------------------
   function fit() {
@@ -689,9 +730,10 @@
     for (const p of vis) { minX = Math.min(minX, p.x); minY = Math.min(minY, p.y); maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y); }
     // Clear the panels only when the viewport is wide enough to afford it; on a
     // narrow canvas, ignore them and use the full width (better to overlap than to shrink to nothing).
-    const padL = r.width > 760 ? 238 : 12;                          // legend
-    const padR = (!detailsEl.classList.contains("hidden") && r.width > 920) ? 298 : 16;
-    const padT = 52, padB = 40;                                     // topbar / hint
+    const padL = !isMobile() && r.width > 760 ? 238 : 12;           // legend
+    const padR = (!isMobile() && !detailsEl.classList.contains("hidden") && r.width > 920) ? 298 : 16;
+    const padT = isMobile() ? document.getElementById("topbar").getBoundingClientRect().height + 8 : 52;
+    const padB = 40;                                                 // hint
     const availW = Math.max(120, r.width - padL - padR);
     const availH = Math.max(120, r.height - padT - padB);
     const inner = 24, w = (maxX - minX) || 1, h = (maxY - minY) || 1;
@@ -704,6 +746,13 @@
 
   // ---- hit testing & interaction ------------------------------------------
   function screenToWorld(sx, sy) { return { x: (sx - view.x) / view.k, y: (sy - view.y) / view.k }; }
+  function zoomAt(sx, sy, nextScale) {
+    const w = screenToWorld(sx, sy);
+    view.k = Math.max(0.05, Math.min(8, nextScale));
+    view.x = sx - w.x * view.k; view.y = sy - w.y * view.k;
+    userAdjusted = true;
+    schedule();
+  }
   function nodeAt(sx, sy) {
     const w = screenToWorld(sx, sy); let best = null, bd = Infinity;
     for (const n of nodes) {
@@ -714,15 +763,22 @@
     }
     return best;
   }
-  let dragging = false, dragMoved = false, lx = 0, ly = 0;
-  cv.addEventListener("mousedown", e => { if (helpOpen) return; dragging = true; dragMoved = false; lx = e.clientX; ly = e.clientY; cv.classList.add("grabbing"); });
-  window.addEventListener("mouseup", () => { dragging = false; cv.classList.remove("grabbing"); });
-  window.addEventListener("mousemove", e => {
-    if (helpOpen) return;          // overlay open → background graph is inert
-    if (dragging) {
-      if (Math.abs(e.clientX - lx) + Math.abs(e.clientY - ly) > 2) { dragMoved = true; userAdjusted = true; }
-      view.x += e.clientX - lx; view.y += e.clientY - ly; lx = e.clientX; ly = e.clientY; schedule(); return;
-    }
+  const pointers = new Map();
+  let gestureMoved = false, gesturePinched = false, gestureDistance = 0, lastPrimary = null, pinch = null;
+  const pointerPosition = e => ({ x: e.clientX, y: e.clientY });
+  function startPinch() {
+    const [a, b] = [...pointers.values()];
+    if (!a || !b) return;
+    const r = cv.getBoundingClientRect();
+    const mx = (a.x + b.x) / 2 - r.left, my = (a.y + b.y) / 2 - r.top;
+    pinch = {
+      distance: Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)),
+      scale: view.k,
+      world: screenToWorld(mx, my)
+    };
+    gesturePinched = true;
+  }
+  function updateHover(e) {
     const r = cv.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
     const n = nodeAt(e.clientX - r.left, e.clientY - r.top);
@@ -730,29 +786,95 @@
     if (id !== hoverId) {
       hoverId = id;
       hoverSet = id ? new Set([id, ...closure(id, prereqOf), ...closure(id, dependentsOf)]) : null;
-      cv.style.cursor = id ? "pointer" : (dragging ? "grabbing" : "grab"); schedule();
+      cv.style.cursor = id ? "pointer" : "grab"; schedule();
+    }
+  }
+  cv.addEventListener("pointerdown", e => {
+    if (helpOpen) return;
+    if (moreMenu.classList.contains("open")) { setMoreOpen(false); return; }
+    e.preventDefault();
+    pointers.set(e.pointerId, pointerPosition(e));
+    cv.setPointerCapture?.(e.pointerId);
+    if (pointers.size === 1) {
+      gestureMoved = false; gesturePinched = false; gestureDistance = 0; pinch = null;
+      lastPrimary = pointerPosition(e); cv.classList.add("grabbing");
+    } else if (pointers.size === 2) {
+      startPinch();
     }
   });
-  cv.addEventListener("click", e => {
-    if (helpOpen || dragMoved) return;
-    const r = cv.getBoundingClientRect();
-    const n = nodeAt(e.clientX - r.left, e.clientY - r.top);
-    select(n ? n.id : null);
+  window.addEventListener("pointermove", e => {
+    if (helpOpen) return;
+    if (!pointers.has(e.pointerId)) {
+      if (e.pointerType === "mouse") updateHover(e);
+      return;
+    }
+    pointers.set(e.pointerId, pointerPosition(e));
+    if (pointers.size >= 2) {
+      if (!pinch) startPinch();
+      const [a, b] = [...pointers.values()];
+      const r = cv.getBoundingClientRect();
+      const mx = (a.x + b.x) / 2 - r.left, my = (a.y + b.y) / 2 - r.top;
+      const distance = Math.max(1, Math.hypot(a.x - b.x, a.y - b.y));
+      const nextScale = Math.max(0.05, Math.min(8, pinch.scale * distance / pinch.distance));
+      view.k = nextScale;
+      view.x = mx - pinch.world.x * nextScale; view.y = my - pinch.world.y * nextScale;
+      gestureMoved = true; userAdjusted = true; schedule();
+      return;
+    }
+    if (!gesturePinched && lastPrimary) {
+      const cur = pointerPosition(e), dx = cur.x - lastPrimary.x, dy = cur.y - lastPrimary.y;
+      gestureDistance += Math.abs(dx) + Math.abs(dy);
+      if (gestureDistance > 5) { gestureMoved = true; userAdjusted = true; }
+      view.x += dx; view.y += dy; lastPrimary = cur; schedule();
+    }
   });
+  function endPointer(e, cancelled = false) {
+    if (!pointers.has(e.pointerId)) return;
+    const wasSingle = pointers.size === 1;
+    if (!cancelled && wasSingle && !gestureMoved && !gesturePinched && !helpOpen) {
+      const r = cv.getBoundingClientRect();
+      const n = nodeAt(e.clientX - r.left, e.clientY - r.top);
+      select(n ? n.id : null);
+    }
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) pinch = null;
+    if (pointers.size === 0) {
+      lastPrimary = null; gestureMoved = false; gesturePinched = false; gestureDistance = 0;
+      cv.classList.remove("grabbing");
+    }
+  }
+  window.addEventListener("pointerup", e => endPointer(e));
+  window.addEventListener("pointercancel", e => endPointer(e, true));
   cv.addEventListener("wheel", e => {
     if (helpOpen) return;
     e.preventDefault();
     const r = cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
-    const w = screenToWorld(mx, my);
     const f = Math.exp(-e.deltaY * 0.0015);
-    view.k = Math.max(0.05, Math.min(8, view.k * f));
-    view.x = mx - w.x * view.k; view.y = my - w.y * view.k;
-    userAdjusted = true;
-    schedule();
+    zoomAt(mx, my, view.k * f);
   }, { passive: false });
 
   // ---- selection / details panel -------------------------------------------
   const detailsEl = document.getElementById("details");
+  const legendEl = document.getElementById("legend");
+  const panelBackdrop = document.getElementById("panelBackdrop");
+  const filtersBtn = document.getElementById("filtersBtn");
+  const moreBtn = document.getElementById("moreBtn");
+  const moreMenu = document.getElementById("moreMenu");
+  function syncMobileChrome() {
+    const legendOpen = isMobile() && legendEl.classList.contains("mobile-open");
+    const detailsOpen = isMobile() && !detailsEl.classList.contains("hidden");
+    panelBackdrop.classList.toggle("open", legendOpen || detailsOpen);
+    filtersBtn.setAttribute("aria-expanded", String(legendOpen));
+    moreBtn.setAttribute("aria-expanded", String(moreMenu.classList.contains("open")));
+  }
+  function setLegendOpen(open) {
+    legendEl.classList.toggle("mobile-open", isMobile() && open);
+    syncMobileChrome();
+  }
+  function setMoreOpen(open) {
+    moreMenu.classList.toggle("open", isMobile() && open);
+    syncMobileChrome();
+  }
   function select(id) {
     selId = (id && byId.has(id)) ? id : null;
     recomputeRelated();
@@ -764,7 +886,7 @@
     return `<span class="nlink" data-go="${id}" style="border-left:3px solid ${nodeColor(n)}">${n.title}</span>`;
   }
   function renderDetails() {
-    if (!selId) { detailsEl.classList.add("hidden"); return; }
+    if (!selId) { detailsEl.classList.add("hidden"); syncMobileChrome(); return; }
     const n = byId.get(selId);
     const pr = (prereqOf.get(selId) || []);
     const dp = (dependentsOf.get(selId) || []);
@@ -799,6 +921,8 @@
       `<h5>Chain to axiom (deepest)</h5>` +
       `<div class="chain">${ch.map(id => `<div class="step" data-go="${id}">${byId.get(id).title}</div>`).join("")}</div>`;
     detailsEl.classList.remove("hidden");
+    if (isMobile()) { setLegendOpen(false); setMoreOpen(false); }
+    syncMobileChrome();
   }
   detailsEl.addEventListener("click", e => {
     if (e.target.dataset.close) { select(null); return; }
@@ -807,7 +931,6 @@
   });
 
   // ---- legend + insights ---------------------------------------------------
-  const legendEl = document.getElementById("legend");
   // Field tree built from the leaf-tag paths: nested {seg: {path, kids}}.
   const fieldTree = {};
   for (const t of allTags) {
@@ -864,6 +987,7 @@
     const maxL = Math.max(0, ...nodes.map(n => n.level));
     const deepest = nodes.filter(n => n.level === maxL).sort((a, b) => b.dependents - a.dependents)[0];
     legendEl.innerHTML =
+      `<button class="drawer-close" type="button" data-panel-close="legend" aria-label="Close filters">×</button>` +
       (DIFF ? diffLegendHtml() : ``) +
       `<h4>Fields</h4>` +
       `<div class="fbar"><span class="fbtn" data-fall="all">all on</span>` +
@@ -878,6 +1002,7 @@
        </div>`;
   }
   legendEl.addEventListener("click", e => {
+    if (e.target.closest("[data-panel-close]")) { setLegendOpen(false); return; }
     const ds = e.target.closest("[data-diffscope]");
     if (ds) { active.changedOnly = !active.changedOnly; buildLegend(); fit(); return; }
     const fall = e.target.closest("[data-fall]");
@@ -942,6 +1067,24 @@
   document.getElementById("statusFilter").addEventListener("change", e => { active.status = e.target.value; schedule(); });
   document.getElementById("hideAxioms").addEventListener("change", e => { active.hideAxioms = e.target.checked; schedule(); });
   document.getElementById("fitBtn").addEventListener("click", fit);
+  document.getElementById("mobileFitBtn").addEventListener("click", fit);
+  document.getElementById("zoomInBtn").addEventListener("click", () => {
+    const r = cv.getBoundingClientRect(); zoomAt(r.width / 2, r.height / 2, view.k * 1.25);
+  });
+  document.getElementById("zoomOutBtn").addEventListener("click", () => {
+    const r = cv.getBoundingClientRect(); zoomAt(r.width / 2, r.height / 2, view.k / 1.25);
+  });
+  filtersBtn.addEventListener("click", () => {
+    const opening = !legendEl.classList.contains("mobile-open");
+    if (opening) { select(null); setMoreOpen(false); }
+    setLegendOpen(opening);
+  });
+  moreBtn.addEventListener("click", () => {
+    const opening = !moreMenu.classList.contains("open");
+    if (opening) { setLegendOpen(false); select(null); }
+    setMoreOpen(opening);
+  });
+  panelBackdrop.addEventListener("click", () => { setLegendOpen(false); select(null); });
   const helpOverlay = document.getElementById("help-overlay");
   // Pristine copy of the growth SVG. Re-inserting a fresh clone restarts its SMIL timeline from
   // t=0 — so the animation always replays from the empty canvas whenever its tab is shown.
@@ -955,7 +1098,11 @@
     helpOverlay.querySelectorAll(".hpane").forEach(p => p.classList.toggle("hidden", p.id !== "pane-" + name));
     if (name === "grow") restartGrowth();   // replay the animation each time its tab opens
   };
-  const openHelp = () => { helpOpen = true; helpOverlay.classList.add("open"); showPane("grow"); };
+  const openHelp = () => {
+    setLegendOpen(false); setMoreOpen(false);
+    if (isMobile()) select(null);
+    helpOpen = true; helpOverlay.classList.add("open"); showPane("grow");
+  };
   const closeHelp = () => { helpOpen = false; helpOverlay.classList.remove("open"); };
   helpOverlay.querySelectorAll(".htab").forEach(t => t.addEventListener("click", () => showPane(t.dataset.pane)));
   helpOverlay.querySelectorAll(".lc-row.exp").forEach(r => r.addEventListener("click", () => {
@@ -965,8 +1112,13 @@
   document.getElementById("helpBtn").addEventListener("click", openHelp);
   document.getElementById("helpClose").addEventListener("click", closeHelp);
   helpOverlay.addEventListener("click", e => { if (e.target === helpOverlay) closeHelp(); });
-  window.addEventListener("keydown", e => { if (e.key === "Escape") { closeHelp(); select(null); } });
-  window.addEventListener("resize", resize);
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape") { closeHelp(); setLegendOpen(false); setMoreOpen(false); select(null); }
+  });
+  window.addEventListener("resize", () => {
+    if (!isMobile()) { setLegendOpen(false); setMoreOpen(false); }
+    syncMobileChrome(); resize();
+  });
 
   // ---- boot ----------------------------------------------------------------
   computeDag();

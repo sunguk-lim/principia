@@ -2,7 +2,7 @@
 
 _Last rebuilt: 2026-07-27_
 
-**285** nodes · **3** axioms · **0** on the frontier
+**288** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
@@ -62,7 +62,7 @@ _Last rebuilt: 2026-07-27_
 - [NCCL](nodes/nccl.md)
 - [Netfilter (iptables/NAT)](nodes/netfilter.md)
 - [Nonparametric Skew](nodes/nonparametric-skew.md)
-- [ONNX (Open Neural Network Exchange)](nodes/onnx.md)
+- [ONNX Runtime](nodes/onnx-runtime.md)
 - [OOM Killer](nodes/oom-killer.md)
 - [OpenTelemetry](nodes/opentelemetry.md)
 - [pgai](nodes/pgai.md)
@@ -181,6 +181,7 @@ _Last rebuilt: 2026-07-27_
 - [Dynamic Typing](nodes/dynamic-typing.md)
 - [Embedding](nodes/embedding.md)
 - [Empirical Bayes](nodes/empirical-bayes.md)
+- [Execution provider](nodes/execution-provider.md)
 - [Expectation](nodes/expectation.md)
 - [Expectation-Maximization](nodes/expectation-maximization.md)
 - [Expert parallelism (MoE)](nodes/expert-parallelism.md)
@@ -208,6 +209,7 @@ _Last rebuilt: 2026-07-27_
 - [Gradient descent](nodes/gradient-descent.md)
 - [Graph (Adjacency List)](nodes/graph.md)
 - [Graph Memory](nodes/graph-memory.md)
+- [Graph optimization](nodes/graph-optimization.md)
 - [Hard Link](nodes/hard-link.md)
 - [Hash Map](nodes/hash-map.md)
 - [Hash Set](nodes/hash-set.md)
@@ -285,6 +287,7 @@ _Last rebuilt: 2026-07-27_
 - [Occupancy](nodes/occupancy.md)
 - [Online Softmax](nodes/online-softmax.md)
 - [ONNX (Open Neural Network Exchange)](nodes/onnx.md)
+- [ONNX Runtime](nodes/onnx-runtime.md)
 - [OOM Killer](nodes/oom-killer.md)
 - [OpenTelemetry](nodes/opentelemetry.md)
 - [OpenTelemetry Collector](nodes/opentelemetry-collector.md)
@@ -430,7 +433,7 @@ _Last rebuilt: 2026-07-27_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (57)
+### ml (60)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
@@ -446,7 +449,7 @@ _Last rebuilt: 2026-07-27_
 
     - **ml/llm/training** (8) — [Context Parallelism](nodes/context-parallelism.md), [Data parallelism](nodes/data-parallelism.md), [Expert parallelism (MoE)](nodes/expert-parallelism.md), [FSDP / ZeRO](nodes/fsdp.md), [Pipeline parallelism](nodes/pipeline-parallelism.md), [Tensor parallelism](nodes/tensor-parallelism.md), [3D Parallelism](nodes/three-dimensional-parallelism.md), [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-  - **ml/model-portability** (4) — [Computation graph](nodes/computation-graph.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [Operator set](nodes/operator-set.md)
+  - **ml/model-portability** (7) — [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md)
 
 ### networking (14)
 

@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-07-27_
 
-**280** nodes · **3** axioms · **0** on the frontier
+**285** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (81)
+## 🌳 Parent (root) nodes — top-level, required by nothing (82)
 
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
@@ -62,6 +62,7 @@ _Last rebuilt: 2026-07-27_
 - [NCCL](nodes/nccl.md)
 - [Netfilter (iptables/NAT)](nodes/netfilter.md)
 - [Nonparametric Skew](nodes/nonparametric-skew.md)
+- [ONNX (Open Neural Network Exchange)](nodes/onnx.md)
 - [OOM Killer](nodes/oom-killer.md)
 - [OpenTelemetry](nodes/opentelemetry.md)
 - [pgai](nodes/pgai.md)
@@ -131,6 +132,7 @@ _Last rebuilt: 2026-07-27_
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
 - [Collective operation](nodes/collective-operation.md)
 - [Communicator](nodes/communicator.md)
+- [Computation graph](nodes/computation-graph.md)
 - [Compute Capability](nodes/compute-capability.md)
 - [Concurrency Control](nodes/concurrency-control.md)
 - [Conjugate Prior](nodes/conjugate-prior.md)
@@ -216,6 +218,7 @@ _Last rebuilt: 2026-07-27_
 - [Hypervisor](nodes/hypervisor.md)
 - [Init Process](nodes/init-process.md)
 - [Inode](nodes/inode.md)
+- [Intermediate representation](nodes/intermediate-representation.md)
 - [Interpreter](nodes/interpreter.md)
 - [Interrupt](nodes/interrupt.md)
 - [IP Routing](nodes/ip-routing.md)
@@ -281,9 +284,11 @@ _Last rebuilt: 2026-07-27_
 - [Observability Instrumentation](nodes/observability-instrumentation.md)
 - [Occupancy](nodes/occupancy.md)
 - [Online Softmax](nodes/online-softmax.md)
+- [ONNX (Open Neural Network Exchange)](nodes/onnx.md)
 - [OOM Killer](nodes/oom-killer.md)
 - [OpenTelemetry](nodes/opentelemetry.md)
 - [OpenTelemetry Collector](nodes/opentelemetry-collector.md)
+- [Operator set](nodes/operator-set.md)
 - [OverlayFS](nodes/overlayfs.md)
 - [Page](nodes/page.md)
 - [Page Cache](nodes/page-cache.md)
@@ -350,6 +355,7 @@ _Last rebuilt: 2026-07-27_
 - [Telemetry Context](nodes/telemetry-context.md)
 - [Telemetry Metric](nodes/telemetry-metric.md)
 - [Telemetry Signal](nodes/telemetry-signal.md)
+- [Tensor](nodes/tensor.md)
 - [Tensor Core](nodes/tensor-core.md)
 - [Tensor parallelism](nodes/tensor-parallelism.md)
 - [TensorRT](nodes/tensorrt.md)
@@ -380,7 +386,7 @@ _Last rebuilt: 2026-07-27_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 37 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 38 leaf fields
 
 ### algorithms (15)
 
@@ -414,17 +420,17 @@ _Last rebuilt: 2026-07-27_
 
   - **languages/semantics** (6) — [Closure](nodes/closure.md), [Coroutine](nodes/coroutine.md), [Dynamic Typing](nodes/dynamic-typing.md), [First-Class Function](nodes/first-class-function.md), [Lexical Scoping](nodes/lexical-scoping.md), [Metatable](nodes/metatable.md)
 
-### math (56)
+### math (57)
 
   - **math/calculus** (18) — [Convexity](nodes/convexity.md), [Curl (∇×F)](nodes/curl.md), [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md), [Del operator (∇)](nodes/del-operator.md), [Derivative](nodes/derivative.md), [Differential (Total Derivative)](nodes/differential.md), [Differential operators](nodes/differential-operators.md), [Directional Derivative](nodes/directional-derivative.md), [Divergence (∇·F)](nodes/divergence.md), [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md), [Exponential function](nodes/exponential-function.md), [Gradient](nodes/gradient.md), [Hessian (H)](nodes/hessian.md), [Jacobian (J)](nodes/jacobian.md), [Laplacian (∇²f)](nodes/laplacian.md), [Partial derivative](nodes/partial-derivative.md), [Scalar Field](nodes/scalar-field.md), [Vector Field](nodes/vector-field.md)
 
-  - **math/linear-algebra** (10) — [Arithmetic (+ − × ÷)](nodes/arithmetic.md), [Cosine Similarity](nodes/cosine-similarity.md), [Cross Product](nodes/cross-product.md), [Linear independence](nodes/linear-independence.md), [Low-rank factorization](nodes/low-rank-factorization.md), [Matrix multiplication](nodes/matrix-multiplication.md), [Matrix rank](nodes/matrix-rank.md), [Matrix Trace](nodes/matrix-trace.md), [Symmetric-Antisymmetric Decomposition](nodes/symmetric-antisymmetric-decomposition.md), [Vector dot product](nodes/vector-dot-product.md)
+  - **math/linear-algebra** (11) — [Arithmetic (+ − × ÷)](nodes/arithmetic.md), [Cosine Similarity](nodes/cosine-similarity.md), [Cross Product](nodes/cross-product.md), [Linear independence](nodes/linear-independence.md), [Low-rank factorization](nodes/low-rank-factorization.md), [Matrix multiplication](nodes/matrix-multiplication.md), [Matrix rank](nodes/matrix-rank.md), [Matrix Trace](nodes/matrix-trace.md), [Symmetric-Antisymmetric Decomposition](nodes/symmetric-antisymmetric-decomposition.md), [Tensor](nodes/tensor.md), [Vector dot product](nodes/vector-dot-product.md)
 
   - **math/probability** (27) — [Bayes' Rule](nodes/bayes-rule.md), [Bernoulli Distribution](nodes/bernoulli-distribution.md), [Beta Distribution](nodes/beta-distribution.md), [Change of Variables](nodes/change-of-variables.md), [Conjugate Prior](nodes/conjugate-prior.md), [Convex Transformation Order](nodes/convex-transformation-order.md), [Cromwell's Rule](nodes/cromwell-rule.md), [Cumulative Distribution Function](nodes/cumulative-distribution-function.md), [Empirical Bayes](nodes/empirical-bayes.md), [Expectation](nodes/expectation.md), [Expectation-Maximization](nodes/expectation-maximization.md), [Full Bayesian Inference](nodes/full-bayesian-inference.md), [Geometric Distribution](nodes/geometric-distribution.md), [Hierarchical Bayes](nodes/hierarchical-bayes.md), [Likelihood](nodes/likelihood.md), [Log-Normal Distribution](nodes/log-normal-distribution.md), [Maximum A Posteriori](nodes/maximum-a-posteriori.md), [Maximum Likelihood Estimation](nodes/maximum-likelihood-estimation.md), [Moment Generating Function](nodes/moment-generating-function.md), [Moment Skewness](nodes/moment-skewness.md), [Nonparametric Skew](nodes/nonparametric-skew.md), [Normal Distribution](nodes/normal-distribution.md), [Posterior Consistency](nodes/posterior-consistency.md), [Probability](nodes/probability.md), [Probability Distribution](nodes/probability-distribution.md), [Random Variable](nodes/random-variable.md), [Skewness](nodes/skewness.md)
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (53)
+### ml (57)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
@@ -439,6 +445,8 @@ _Last rebuilt: 2026-07-27_
     - **ml/llm/reasoning** (4) — [Chain-of-Thought](nodes/chain-of-thought.md), [Structured Output](nodes/structured-output.md), [Test-Time Compute](nodes/test-time-compute.md), [Tree-Search Decoding](nodes/tree-search-decoding.md)
 
     - **ml/llm/training** (8) — [Context Parallelism](nodes/context-parallelism.md), [Data parallelism](nodes/data-parallelism.md), [Expert parallelism (MoE)](nodes/expert-parallelism.md), [FSDP / ZeRO](nodes/fsdp.md), [Pipeline parallelism](nodes/pipeline-parallelism.md), [Tensor parallelism](nodes/tensor-parallelism.md), [3D Parallelism](nodes/three-dimensional-parallelism.md), [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
+
+  - **ml/model-portability** (4) — [Computation graph](nodes/computation-graph.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [Operator set](nodes/operator-set.md)
 
 ### networking (14)
 

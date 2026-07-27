@@ -1,12 +1,12 @@
 # 🧠 Learning Brain — Concept Graph
 
-_Last rebuilt: 2026-07-14_
+_Last rebuilt: 2026-07-27_
 
-**267** nodes · **2** axioms · **0** on the frontier
+**280** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (80)
+## 🌳 Parent (root) nodes — top-level, required by nothing (81)
 
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
@@ -63,6 +63,7 @@ _Last rebuilt: 2026-07-14_
 - [Netfilter (iptables/NAT)](nodes/netfilter.md)
 - [Nonparametric Skew](nodes/nonparametric-skew.md)
 - [OOM Killer](nodes/oom-killer.md)
+- [OpenTelemetry](nodes/opentelemetry.md)
 - [pgai](nodes/pgai.md)
 - [Posterior Consistency](nodes/posterior-consistency.md)
 - [Predecessor Query](nodes/predecessor-query.md)
@@ -89,10 +90,11 @@ _Last rebuilt: 2026-07-14_
 - [Weight-Load Amortization](nodes/weight-load-amortization.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (6)
+## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (7)
 
 - [Arithmetic (+ − × ÷)](nodes/arithmetic.md)
 - [Dynamic Typing](nodes/dynamic-typing.md)
+- [Event](nodes/event.md)
 - [First-Class Function](nodes/first-class-function.md)
 - [Interpreter](nodes/interpreter.md)
 - [Lexical Scoping](nodes/lexical-scoping.md)
@@ -137,6 +139,7 @@ _Last rebuilt: 2026-07-14_
 - [Container Runtime](nodes/container-runtime.md)
 - [Content-Addressable Memory](nodes/content-addressable-memory.md)
 - [Context Parallelism](nodes/context-parallelism.md)
+- [Context Propagation](nodes/context-propagation.md)
 - [Context Switch](nodes/context-switch.md)
 - [Context Window](nodes/context-window.md)
 - [Continuous Batching](nodes/continuous-batching.md)
@@ -166,6 +169,7 @@ _Last rebuilt: 2026-07-14_
 - [Differential (Total Derivative)](nodes/differential.md)
 - [Differential operators](nodes/differential-operators.md)
 - [Directional Derivative](nodes/directional-derivative.md)
+- [Distributed Tracing](nodes/distributed-tracing.md)
 - [Divergence (∇·F)](nodes/divergence.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
 - [Direct Memory Access](nodes/dma.md)
@@ -236,6 +240,7 @@ _Last rebuilt: 2026-07-14_
 - [Calling LLMs from SQL](nodes/llm-from-sql.md)
 - [Load Testing](nodes/load-testing.md)
 - [Log-Normal Distribution](nodes/log-normal-distribution.md)
+- [Log Record](nodes/log-record.md)
 - [LoRA (Low-Rank Adaptation)](nodes/lora.md)
 - [Loss function](nodes/loss-function.md)
 - [Low-rank factorization](nodes/low-rank-factorization.md)
@@ -247,6 +252,7 @@ _Last rebuilt: 2026-07-14_
 - [Matrix Trace](nodes/matrix-trace.md)
 - [Maximum A Posteriori](nodes/maximum-a-posteriori.md)
 - [Maximum Likelihood Estimation](nodes/maximum-likelihood-estimation.md)
+- [Measurement](nodes/measurement.md)
 - [Memory Coalescing](nodes/memory-coalescing.md)
 - [Memory Hierarchy](nodes/memory-hierarchy.md)
 - [Message passing](nodes/message-passing.md)
@@ -271,9 +277,13 @@ _Last rebuilt: 2026-07-14_
 - [Normal Distribution](nodes/normal-distribution.md)
 - [Numeric Precision Formats](nodes/numeric-precision-formats.md)
 - [NVLink](nodes/nvlink.md)
+- [Observability](nodes/observability.md)
+- [Observability Instrumentation](nodes/observability-instrumentation.md)
 - [Occupancy](nodes/occupancy.md)
 - [Online Softmax](nodes/online-softmax.md)
 - [OOM Killer](nodes/oom-killer.md)
+- [OpenTelemetry](nodes/opentelemetry.md)
+- [OpenTelemetry Collector](nodes/opentelemetry-collector.md)
 - [OverlayFS](nodes/overlayfs.md)
 - [Page](nodes/page.md)
 - [Page Cache](nodes/page-cache.md)
@@ -337,6 +347,9 @@ _Last rebuilt: 2026-07-14_
 - [Symmetric-Antisymmetric Decomposition](nodes/symmetric-antisymmetric-decomposition.md)
 - [System Call](nodes/system-call.md)
 - [TCP](nodes/tcp.md)
+- [Telemetry Context](nodes/telemetry-context.md)
+- [Telemetry Metric](nodes/telemetry-metric.md)
+- [Telemetry Signal](nodes/telemetry-signal.md)
 - [Tensor Core](nodes/tensor-core.md)
 - [Tensor parallelism](nodes/tensor-parallelism.md)
 - [TensorRT](nodes/tensorrt.md)
@@ -345,6 +358,7 @@ _Last rebuilt: 2026-07-14_
 - [Thread Synchronization](nodes/thread-synchronization.md)
 - [3D Parallelism](nodes/three-dimensional-parallelism.md)
 - [Translation Lookaside Buffer](nodes/tlb.md)
+- [Trace Span](nodes/trace-span.md)
 - [Transaction (ACID)](nodes/transaction.md)
 - [Transaction Isolation](nodes/transaction-isolation.md)
 - [Transformer attention](nodes/transformer-attention.md)
@@ -366,7 +380,7 @@ _Last rebuilt: 2026-07-14_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 9 top-level / 31 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 37 leaf fields
 
 ### algorithms (15)
 
@@ -431,6 +445,20 @@ _Last rebuilt: 2026-07-14_
 - **networking** (11) — [Container Networking](nodes/container-networking.md), [DNS](nodes/dns.md), [HTTP](nodes/http.md), [IP Routing](nodes/ip-routing.md), [MAC vs IP Addressing](nodes/mac-vs-ip.md), [Netfilter (iptables/NAT)](nodes/netfilter.md), [Network Stack](nodes/network-stack.md), [Socket Buffer (sk_buff)](nodes/sk-buff.md), [Socket](nodes/socket.md), [TCP](nodes/tcp.md), [UDP](nodes/udp.md)
 
   - **networking/performance** (3) — [k6](nodes/k6.md), [Latency Percentiles (Tail Latency)](nodes/latency-percentile.md), [Load Testing](nodes/load-testing.md)
+
+### observability (13)
+
+  - **observability/collection** (1) — [OpenTelemetry Collector](nodes/opentelemetry-collector.md)
+
+  - **observability/fundamentals** (4) — [Event](nodes/event.md), [Measurement](nodes/measurement.md), [Observability](nodes/observability.md), [Telemetry Signal](nodes/telemetry-signal.md)
+
+  - **observability/instrumentation** (1) — [Observability Instrumentation](nodes/observability-instrumentation.md)
+
+  - **observability/opentelemetry** (1) — [OpenTelemetry](nodes/opentelemetry.md)
+
+  - **observability/signals** (2) — [Log Record](nodes/log-record.md), [Telemetry Metric](nodes/telemetry-metric.md)
+
+  - **observability/tracing** (4) — [Context Propagation](nodes/context-propagation.md), [Distributed Tracing](nodes/distributed-tracing.md), [Telemetry Context](nodes/telemetry-context.md), [Trace Span](nodes/trace-span.md)
 
 ### os (49)
 

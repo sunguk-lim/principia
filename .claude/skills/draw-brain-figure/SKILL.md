@@ -12,7 +12,7 @@ description: >
 This skill is **self-contained**: it holds both *when* to draw and *how*. There is no fan-out, no
 best-of-N bidding, no orchestration workflow, and no formal verification gate — you draw ONE candidate
 in this loop, looking at your own renders as you go. The **rules** (what a good figure *is*) are
-canonical in `brain/protocols/VISUAL_PROTOCOLS.md` — organized as §0 draw-at-all → §1 the building-block
+canonical in `protocols/VISUAL_PROTOCOLS.md` — organized as §0 draw-at-all → §1 the building-block
 catalog → §2 composition laws; do not duplicate them here — read that file each run.
 
 > **Draw from understanding — but SEE the source.** Compose from your own grasp of the concept + the
@@ -28,11 +28,11 @@ catalog → §2 composition laws; do not duplicate them here — read that file 
 
 ## Paths (per node `<id>`)
 
-- rules: `brain/protocols/VISUAL_PROTOCOLS.md`
-- node prose (the SOURCE): `brain/nodes/<id>.md`
-- result figure: `brain/nodes/<id>.svg`
-- persistent anchor spec: `brain/specs/<id>.spec.md`
-- scratch (gitignored): `brain/.draw-cache/<id>/`
+- rules: `protocols/VISUAL_PROTOCOLS.md`
+- node prose (the SOURCE): `nodes/<id>.md`
+- result figure: `nodes/<id>.svg`
+- persistent anchor spec: `specs/<id>.spec.md`
+- scratch (gitignored): `.draw-cache/<id>/`
 - Chrome: `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`
 
 ## Procedure
@@ -41,9 +41,9 @@ Run this autonomously — do not pause to ask the user to approve or continue.
 
 ### 1. Anchor spec (persistent — reuse, don't re-ground)
 
-- If `brain/specs/<id>.spec.md` **exists**, reuse it verbatim as the source of truth for what the figure
+- If `specs/<id>.spec.md` **exists**, reuse it verbatim as the source of truth for what the figure
   must teach. Do NOT re-derive it.
-- If it is **missing**, author it ONCE from the node prose `brain/nodes/<id>.md` (never invent content),
+- If it is **missing**, author it ONCE from the node prose `nodes/<id>.md` (never invent content),
   then freeze it to that path. Apply §0 of the protocol (the figure trigger + guardrail). The spec
   records: (a) components/actors with type + level; (b) the dataflow/routing or shape-evolution; (c) the
   ordered phases that become animation frames, **plus the full control structure** (every loop/level,
@@ -52,7 +52,7 @@ Run this autonomously — do not pause to ask the user to approve or continue.
 
 ### 2. Read the rules and draw ONE candidate
 
-- Read `brain/protocols/VISUAL_PROTOCOLS.md` in full: §0, the §1 building-block catalog (pick the block
+- Read `protocols/VISUAL_PROTOCOLS.md` in full: §0, the §1 building-block catalog (pick the block
   that renders each fact the spec requires — data atoms at true shape, containers by residence,
   connectors with ridden arrows, motion primitives on one master clock, status blocks, encoding
   channels, composite panels), and the §2 composition laws.
@@ -61,7 +61,7 @@ Run this autonomously — do not pause to ask the user to approve or continue.
   a complete static `t=0` fallback — a static multi-panel storyboard is a substitute ONLY when the spec
   defines no animation (§2 law 7's invariant-genre exception).
 - Write the SVG to the result path (or a scratch copy first); write any generator/temp files under
-  `brain/.draw-cache/<id>/` with unique names.
+  `.draw-cache/<id>/` with unique names.
 
 ### 3. Render, look, fix — as part of drawing
 
@@ -82,10 +82,10 @@ Run this autonomously — do not pause to ask the user to approve or continue.
 
 ### 4. Promote, embed, report
 
-- The finished SVG is `brain/nodes/<id>.svg`. Confirm it is non-empty.
-- Confirm `brain/nodes/<id>.md` embeds it via `![alt](<id>.svg)`; if the alt text is stale, update ONLY
+- The finished SVG is `nodes/<id>.svg`. Confirm it is non-empty.
+- Confirm `nodes/<id>.md` embeds it via `![alt](<id>.svg)`; if the alt text is stale, update ONLY
   the alt text.
-- Clean scratch (`brain/.draw-cache/<id>/` temp files); keeping the final per-timestep renders is
+- Clean scratch (`.draw-cache/<id>/` temp files); keeping the final per-timestep renders is
   optional.
 - Report: spec reused vs. authored, and any rule files changed.
 

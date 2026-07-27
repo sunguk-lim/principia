@@ -17,7 +17,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 TEMPLATE = HERE / "graph.template.html"
-TITLE = "🧠 Learning Brain — Concept Graph"
+TITLE = "Principia — Concept Graph"
 DOC_BASE_FALLBACK = "https://github.com/sunguk-lim/principia/blob/main/nodes"
 
 

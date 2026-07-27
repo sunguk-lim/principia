@@ -1,6 +1,6 @@
-# 🧠 Learning Brain — Concept Graph
+# Principia — Concept Graph
 
-_Last rebuilt: 2026-07-27_
+_Last rebuilt: 2026-07-28_
 
 **288** nodes · **3** axioms · **0** on the frontier
 

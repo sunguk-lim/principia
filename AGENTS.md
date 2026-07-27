@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository is a closed-world concept graph. `nodes/` is the source of truth: each concept uses `nodes/<id>.md`, with an optional Korean companion (`<id>.ko.md`) and SVG figure (`<id>.svg`). `brain.py` provides the standard-library-only graph CLI. Authoring and visual rules live in `protocols/`; specifications live in `specs/`. The dashboard template and renderer are in `web/`. Treat `MANIFEST.md` and `web/graph.html` as generated outputs, not hand-edited sources.
+This repository is a closed-world concept graph. `nodes/` is the source of truth: each concept uses `nodes/<id>.md`, with an optional Korean companion (`<id>.ko.md`) and SVG figure (`<id>.svg`). Human-facing reference lives in `docs/`; authoring and visual rules live in `protocols/`; figure specifications live in `specs/`. `brain.py` provides the standard-library-only graph CLI, and `web/` contains the dashboard. Treat `MANIFEST.md` and `web/graph.html` as generated outputs, not hand-edited sources.
 
 ## Build, Test, and Development Commands
 
@@ -20,7 +20,7 @@ After changing `nodes/`, run `audit`, then regenerate both derived files. After 
 
 ## Coding Style & Naming Conventions
 
-Use four-space indentation and standard Python conventions in `.py` files. Keep the runtime dependency-free unless a change clearly requires otherwise. Name concept IDs and files in lowercase kebab-case, such as `page-cache.md`. Node frontmatter must match the schema documented in `README.md`; declare one hierarchical tag and ensure every body `[[wikilink]]` appears in `prereqs`. Follow `protocols/EXPLAIN.md` for prose and `protocols/VISUAL_PROTOCOLS.md` for figures.
+Use four-space indentation and standard Python conventions in `.py` files. Keep the runtime dependency-free unless a change clearly requires otherwise. Name concept IDs and files in lowercase kebab-case, such as `page-cache.md`. Node frontmatter must match `docs/node-model.md`; declare one hierarchical tag and ensure every body `[[wikilink]]` appears in `prereqs`. Follow `protocols/EXPLAIN.md` for prose and `protocols/VISUAL_PROTOCOLS.md` for figures.
 
 ## Testing Guidelines
 
@@ -28,7 +28,7 @@ There is no separate unit-test suite in this checkout. `uv run python brain.py a
 
 ## Commit & Pull Request Guidelines
 
-Git history is unavailable in this checkout; the repository documentation specifies Conventional Commit subjects with a concise What/Why description. Work on a branch, stage files individually, and never bypass checks. Pull requests should explain the conceptual change, list added or restructured nodes/edges, and include screenshots for dashboard or figure changes. Link relevant issues and use a merge commit rather than squash-merging.
+History uses Conventional Commit subjects such as `feat:`, `fix:`, `refactor:`, and `chore:`. Keep subjects concise and explain What/Why in the body. Work on a branch, stage files individually, and never bypass checks. Pull requests should explain the conceptual change, list added or restructured nodes/edges, and include screenshots for dashboard or figure changes. Link relevant issues and use a merge commit rather than squash-merging.
 
 ## Security & Generated Content
 

@@ -114,9 +114,10 @@ re-opening the body*:
 - **`regrounding=self`** — the concept cannot be adequately grounded with its current prerequisites
   at all (it needs restructuring, not just one more edge).
 
-**The Korean companion — `nodes/<id>.ko.md`.** Filling a body also authors its **full Korean
-version**, as a companion file (like the figure `<id>.svg`: subsidiary to the node, **no
-frontmatter, never a node**). It mirrors the English body one-to-one:
+**Optional Korean companion — `nodes/<id>.ko.md`.** The English node is canonical. When a Korean
+translation is requested or already exists, author or update its **full Korean version** in the same
+pass. The companion is like the figure `<id>.svg`: subsidiary to the node, **no frontmatter, never a
+node**. It mirrors the English body one-to-one:
 
 - **Headings**: `# <한국어 제목>` · `## 요약` (= `## Summary`) · `## 상세 설명`
   (= `## Grounded explanation`); any other `##` section mirrors likewise (a paper node mirrors
@@ -128,8 +129,8 @@ frontmatter, never a node**). It mirrors the English body one-to-one:
 - **Terminology**: translate the prose; on first use keep the established English term in
   parentheses — `문맥 교환(context switch)` — then use the Korean form. LaTeX, code, and
   identifiers stay verbatim.
-- Re-author the English body → re-author the companion **in the same pass**, so the two never
-  drift (the summary rule, applied to the translation).
+- Re-author the English body → re-author any existing or requested companion **in the same pass**, so
+  the two never drift (the summary rule, applied to the translation).
 
 ### `lock` — settle the structure, **folded**
 

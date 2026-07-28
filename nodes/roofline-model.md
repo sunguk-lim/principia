@@ -4,13 +4,13 @@ title: Roofline Model
 summary: The roofline model is a single picture that predicts the fastest a computation could possibly run on a given chip, and — more usefully — which limit is holding it back.
 type: concept
 tags: [ml/llm/inference]
-prereqs: [memory-hierarchy]
+prereqs: [arithmetic-intensity, memory-hierarchy]
 sources:
   - "Williams, Waterman & Patterson, 'Roofline: An Insightful Visual Performance Model' (CACM 2009)"
   - "etc/llm_parallelism_strategies.jsx — ChunkedPrefill and MemoryMovement panels (memory-bound vs compute-bound, weight-load amortization)"
 status: explained
 created: 2026-06-23
-updated: 2026-06-23
+updated: 2026-07-28
 ---
 
 # Roofline Model
@@ -19,8 +19,8 @@ updated: 2026-06-23
 
 The roofline model is a single picture that predicts the *fastest a computation
 could possibly run* on a given chip, and — more usefully — *which limit is holding it
-back*. From [[memory-hierarchy]] we already have the two numbers that matter: a
-computation's **arithmetic intensity** (operations performed per byte dragged up from
+back*. From [[memory-hierarchy]] and [[arithmetic-intensity]] we already have the two
+numbers that matter: a computation's intensity (operations performed per byte dragged up from
 the slow main memory) and the machine's **balance point** (how many operations the
 hardware can do in the time it takes to fetch one byte). The roofline model takes the
 hardware's two hard ceilings — its peak operation rate and its peak memory bandwidth —
@@ -35,8 +35,9 @@ optimize anything, *which* lever can possibly move you — and which cannot.
 
 ### What the concept *is*: turning two ceilings into one performance envelope
 
-From [[memory-hierarchy]] we already have the moving parts. A computation has an
-**arithmetic intensity** — its floating-point operations performed divided by the bytes
+From [[memory-hierarchy]] we already have the hardware substrate, and
+[[arithmetic-intensity]] supplies the workload quantity — its floating-point operations
+performed divided by the bytes
 it must read from and write to the slow main memory (call those operations *FLOPs*, for
 floating-point operations, and call the rate of doing them *FLOP/s*, FLOPs per second).
 And the machine has a **balance point** — the ratio of its peak FLOP/s to its peak
@@ -157,6 +158,7 @@ not to the one that is already maxed out.
 
 ## Prerequisites
 
+- [[arithmetic-intensity]]
 - [[memory-hierarchy]]
 
 ## Sources

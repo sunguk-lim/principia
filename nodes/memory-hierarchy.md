@@ -4,14 +4,14 @@ title: Memory Hierarchy
 summary: A processor keeps data in a ladder of stores (bigger = slower), so a computation's speed is set by its operations-per-byte ratio versus the balance point of the (machine, number-format) pair it runs on.
 type: concept
 tags: [os/memory]
-prereqs: [arithmetic, numeric-precision-formats]
+prereqs: [arithmetic, arithmetic-intensity, numeric-precision-formats]
 sources:
   - "Harris & Patterson, Computer Organization and Design (memory hierarchy)"
   - "NVIDIA A100 / H100 architecture whitepapers (HBM, L2, SRAM bandwidths)"
   - "Williams, Waterman & Patterson, 'Roofline: An Insightful Visual Performance Model' (CACM 2009)"
 status: explained
 created: 2026-06-23
-updated: 2026-07-03
+updated: 2026-07-28
 ---
 
 # Memory Hierarchy
@@ -27,8 +27,8 @@ host's **DRAM** further away. Each step *down* the ladder holds far more data bu
 cheaper than fetching that number from a distant level. So for many programs the limit
 is not how many `+ − × ÷` operations you can do per second, but how many *bytes* you
 can drag up the ladder per second. Whether a computation is **memory-bound** (waiting
-on bytes) or **compute-bound** (waiting on arithmetic) is decided by a single ratio —
-operations performed per byte moved — compared against the balance point of the
+on bytes) or **compute-bound** (waiting on arithmetic) is decided by
+[[arithmetic-intensity]] — operations performed per byte moved — compared against the balance point of the
 machine *and the number format it runs*, taken together as one pair.
 
 ## Grounded explanation
@@ -136,7 +136,7 @@ about it — both plain counts:
 - **FLOPs** — how many `+ − × ÷` operations the computation performs.
 - **Bytes moved** — how many bytes it must read from / write to the slow level (HBM).
 
-Their ratio is the computation's **arithmetic intensity**:
+Their ratio is the computation's [[arithmetic-intensity]]:
 
 ```
 arithmetic intensity = FLOPs ÷ bytes moved   (operations per byte).
@@ -210,6 +210,7 @@ bandwidths is the scoreboard those techniques are playing against.
 ## Prerequisites
 
 - [[arithmetic]]
+- [[arithmetic-intensity]]
 - [[numeric-precision-formats]]
 
 ## Sources

@@ -23,12 +23,13 @@ This skill is **the workflow**: *how* an install runs, step by step — the life
 table, and the ordered checklist. Two things it does **not** restate (single source of truth):
 
 - **Authoring rules** — closed-world law, the Depth rule, the `sync`/`lock` discipline, the
-  `explain()` decomposition — are canonical in **`brain/protocols/EXPLAIN.md`**.
-- **Reference** — commands, node schema, taxonomy — is in **`brain/README.md`**.
+  `explain()` decomposition — are canonical in **`protocols/EXPLAIN.md`**.
+- **Reference** — system design, node schema/taxonomy, and commands — lives in
+  **`docs/architecture.md`**, **`docs/node-model.md`**, and **`docs/cli-reference.md`**.
 
-> **brain.py is the engine; the LLM is the author.** `brain.py` records / validates / indexes /
+> **brain.py is the engine; the LLM is the author.** `brain.py` records / validates / catalogs /
 > renders — it never reasons; **you** supply every argument (`id`, `--title`, `--requires`,
-> `--tags`) and the entire node body. The full model is `README.md` → *The two layers*. The `audit`
+> `--tags`) and the entire node body. The full model is `docs/architecture.md` → *Two layers*. The `audit`
 > gate is the one correctness check that does **not** depend on your judgment, so it is non-negotiable.
 
 ## When to invoke
@@ -55,7 +56,7 @@ both at once.
 |---|---|---|---|
 | **compose** | LLM · *decides structure* (no write) | recurse `get_children` + `already_have` → the **add-queue**: every node **and** its edges, **nothing created yet** | skill |
 | **scaffold** (`add` / `remove`) | LLM decides → CLI records · *structure* | **C / D** · create/delete the **queued** nodes with their declared edges (`--requires` from compose) | live |
-| **sync** | LLM · *content* | **U** (returns ∅) · fill each stub's prose (closed-world) **+ its full Korean companion body `nodes/<id>.ko.md`** (format: `EXPLAIN.md` → *The Korean companion*) — the **only pass that unfolds a body**, so it also writes that body's **folded metadata**: a one-line **`summary:`** (the folded view) and **typed `review:` feedback** (`missing-prereq=<id>`, `unused-prereq=<id>`, `overlaps=<id>`, `mislink=<id>`, `regrounding=self`) for `lock`. **Never reshapes** the graph. | skill \* |
+| **sync** | LLM · *content* | **U** (returns ∅) · fill each stub's canonical English prose (closed-world) and update an optional Korean companion when requested or already present (format: `EXPLAIN.md` → *Optional Korean companion*) — the **only pass that unfolds a body**, so it also writes that body's **folded metadata**: a one-line **`summary:`** (the folded view) and **typed `review:` feedback** (`missing-prereq=<id>`, `unused-prereq=<id>`, `overlaps=<id>`, `mislink=<id>`, `regrounding=self`) for `lock`. **Never reshapes** the graph. | skill \* |
 | **lock** | LLM · *structure* | **R → U/D** · **FOLDED** — reads only metadata (the `review:` feedback **+** the skeleton **+** node `summary`s), **never a body**. *Progressive disclosure:* title → summary → rare body peek. **Re-indexes** each node from feedback **+** `reground` (missing edges) **+** `reground --prune` (wrong / homonym edges) **+** a skeleton/summary dedup: declare its correct prereq set via one **`reindex`** (**adds + prunes** in one diff), plus **scaffold** a missing node, **merge** a duplicate, or **demote** a stranded axiom (changed nodes re-enter `sync`, so the lifecycle **loops until settled**); reviewable diff, `audit`-gated | skill \* |
 | **audit** | `brain.py` · *validate* | **R** · closed-world + body-links ⊆ prereqs + tags + YAML — the commit gate | live |
 | **feedback** | `brain.py` · *list* | **R** · list pending `review:` notes — the deterministic worklist `lock` consumes (like the frontier) | live |
@@ -154,10 +155,11 @@ come from each node's already-decided `children`.
    Then `uv run python brain.py missing` is a **sanity check** — it should come back **empty**, since
    the queue was composed closed. A non-empty result means *compose missed something*, not a cue to
    patch reactively.
-3. **Author each body (`sync`)** per `protocols/EXPLAIN.md` (closed-world, Depth, and the folded
-   `summary:`+`review:` the pass must leave), **and its Korean companion `nodes/<id>.ko.md`**
-   (format: `EXPLAIN.md` → *The Korean companion*). Record any structural issue you hit while reading the
-   prose — **never reshape the graph while filling**:
+3. **Author each canonical English body (`sync`)** per `protocols/EXPLAIN.md` (closed-world, Depth,
+   and the folded `summary:`+`review:` the pass must leave). If a Korean companion is requested or
+   already present, author or update `nodes/<id>.ko.md` in the same pass (format: `EXPLAIN.md` →
+   *Optional Korean companion*). Record any structural issue you hit while reading the prose —
+   **never reshape the graph while filling**:
    `uv run python brain.py review <id> --add missing-prereq=… | overlaps=… | unused-prereq=… | mislink=… | regrounding=self`.
 4. **Ground-check (`reground`) — now the rare safety-net** (compose already reused existing nodes via
    `already_have`, so this is usually empty), **run before audit so each node leaves `add` fully
@@ -215,7 +217,7 @@ ingest(paper P):
 **Sourcing:** always fetch and ground in the real paper (web), and cite it in `sources:`
 (e.g. `arxiv:2407.08608`) — do not rely on memory, especially for recent papers. A paper node uses a
 richer template — *Problem · Key idea · Contributions · Key equations · Builds on (papers) ·
-Prerequisites · Sources* — plus `authors:` and `year:` frontmatter (schema in `README.md`).
+Prerequisites · Sources* — plus `authors:` and `year:` frontmatter (schema in `docs/node-model.md`).
 
 ## Invariants
 
@@ -231,10 +233,11 @@ Prerequisites · Sources* — plus `authors:` and `year:` frontmatter (schema in
 **The rules each step obeys (canonical elsewhere — do not restate, follow the pointer):**
 - Closed-world law · Depth rule · `sync`-only-unfolder / progressive disclosure · ground-on-insertion
   · scope (durable concepts only) → **`protocols/EXPLAIN.md`**.
-- Engine-vs-policy (two layers) · one-hierarchical-tag-per-node · node schema → **`README.md`**.
+- Engine-vs-policy (two layers) → **`docs/architecture.md`**; one-hierarchical-tag-per-node and node
+  schema → **`docs/node-model.md`**.
 
-**Definition of done:** the requested concept(s) are installed and explained closed-world,
-**every explained node has its Korean companion `nodes/<id>.ko.md`** (audit's missing-ko hint is empty),
+**Definition of done:** the requested concept(s) are installed and explained closed-world; any
+requested or existing Korean companion mirrors its English node and passes the same link checks;
 **`reground <id>` comes back empty** (fully grounded — no prose-parked edge left for `lock` to find),
 `brain.py audit` is clean, `MANIFEST.md` (and `web/graph.html` when relevant) are regenerated, the
 **diff graph is rendered (`graph --diff <base> --out web/graph-diff.html`) and reviewed** (both the

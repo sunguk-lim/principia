@@ -1,39 +1,226 @@
-<svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How the graph grows: a concept enters as a root and grows its prerequisite tree toward axioms; a second concept grows its own tree but reuses an already-existing prerequisite (the gold shared node).">
-  <!-- Standalone mirror of the viewer's #lifecycleSvg (web/graph.template.html, "How it grows"
-       help pane). White card baked in so the dark text reads in both GitHub light/dark themes. -->
-  <rect x="0.5" y="0.5" width="639" height="379" rx="10" fill="#ffffff" stroke="#dde3ee"/>
-  <text x="320" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#2b3656" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">a closed-world concept graph — trees share prerequisites</text>
-  <!-- action call-outs (the mechanism driving each phase) -->
-  <text x="320" y="52" text-anchor="middle" font-size="17" font-weight="800" fill="#2f6fe0" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" opacity="0">scaffold + sync<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.08;0.42;0.45;1" dur="10s" repeatCount="indefinite"/></text>
-  <text x="320" y="52" text-anchor="middle" font-size="17" font-weight="800" fill="#2f6fe0" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" opacity="0">scaffold + sync<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.49;0.64;0.66;1" dur="10s" repeatCount="indefinite"/></text>
-  <text x="320" y="52" text-anchor="middle" font-size="17" font-weight="800" fill="#c98a00" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" opacity="0">lock · reuse<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.66;0.69;1" dur="10s" repeatCount="indefinite"/></text>
-  <!-- tree-1 edges -->
-  <line x1="135" y1="72" x2="75"  y2="185" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="128" stroke-dashoffset="128"><animate attributeName="stroke-dashoffset" values="128;128;0;0" keyTimes="0;0.10;0.16;1" dur="10s" repeatCount="indefinite"/></line>
-  <line x1="135" y1="72" x2="300" y2="185" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="200" stroke-dashoffset="200"><animate attributeName="stroke-dashoffset" values="200;200;0;0" keyTimes="0;0.10;0.16;1" dur="10s" repeatCount="indefinite"/></line>
-  <line x1="75"  y1="185" x2="75"  y2="292" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="107" stroke-dashoffset="107"><animate attributeName="stroke-dashoffset" values="107;107;0;0" keyTimes="0;0.20;0.26;1" dur="10s" repeatCount="indefinite"/></line>
-  <line x1="300" y1="185" x2="300" y2="292" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="107" stroke-dashoffset="107"><animate attributeName="stroke-dashoffset" values="107;107;0;0" keyTimes="0;0.20;0.26;1" dur="10s" repeatCount="indefinite"/></line>
-  <!-- tree-2 edges -->
-  <line x1="510" y1="72" x2="575" y2="185" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="130" stroke-dashoffset="130"><animate attributeName="stroke-dashoffset" values="130;130;0;0" keyTimes="0;0.50;0.56;1" dur="10s" repeatCount="indefinite"/></line>
-  <line x1="575" y1="185" x2="575" y2="292" stroke="#9aa7c2" stroke-width="3" stroke-dasharray="107" stroke-dashoffset="107"><animate attributeName="stroke-dashoffset" values="107;107;0;0" keyTimes="0;0.58;0.64;1" dur="10s" repeatCount="indefinite"/></line>
-  <!-- reuse edge: tree-2 root → shared depth-2 node -->
-  <line x1="510" y1="72" x2="300" y2="185" stroke="#e0a800" stroke-width="3.5" stroke-dasharray="239" stroke-dashoffset="239"><animate attributeName="stroke-dashoffset" values="239;239;0;0" keyTimes="0;0.68;0.75;1" dur="10s" repeatCount="indefinite"/></line>
-  <!-- tree-1 nodes -->
-  <circle cx="135" cy="72" r="0" fill="#4a82f0" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.04;0.05;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;30;24;24" keyTimes="0;0.04;0.08;0.12;1" dur="10s" repeatCount="indefinite"/></circle>
-  <circle cx="75"  cy="185" r="0" fill="#7ba8f5" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.14;0.15;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;20;16;16" keyTimes="0;0.14;0.18;0.22;1" dur="10s" repeatCount="indefinite"/></circle>
-  <circle cx="75"  cy="292" r="0" fill="#b9d2ff" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.24;0.25;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;16;12;12" keyTimes="0;0.24;0.28;0.32;1" dur="10s" repeatCount="indefinite"/></circle>
-  <circle cx="300" cy="292" r="0" fill="#b9d2ff" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.24;0.25;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;16;12;12" keyTimes="0;0.24;0.28;0.32;1" dur="10s" repeatCount="indefinite"/></circle>
-  <!-- SHARED node at depth 2 (turns gold when tree-2 reuses it) -->
-  <circle cx="300" cy="185" r="0" fill="#b9c2d6" stroke="#b8860b" stroke-width="0" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.14;0.15;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;23;18;18" keyTimes="0;0.14;0.18;0.22;1" dur="10s" repeatCount="indefinite"/><animate attributeName="fill" values="#b9c2d6;#b9c2d6;#f6bd16;#f6bd16" keyTimes="0;0.68;0.74;1" dur="10s" repeatCount="indefinite"/><animate attributeName="stroke-width" values="0;0;0;4;4" keyTimes="0;0.67;0.69;0.74;1" dur="10s" repeatCount="indefinite"/></circle>
-  <!-- tree-2 nodes -->
-  <circle cx="510" cy="72" r="0" fill="#25b48a" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.46;0.47;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;30;24;24" keyTimes="0;0.46;0.50;0.54;1" dur="10s" repeatCount="indefinite"/></circle>
-  <circle cx="575" cy="185" r="0" fill="#5fcaa8" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.54;0.55;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;20;16;16" keyTimes="0;0.54;0.58;0.62;1" dur="10s" repeatCount="indefinite"/></circle>
-  <circle cx="575" cy="292" r="0" fill="#aee6d4" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.62;0.63;1" dur="10s" repeatCount="indefinite"/><animate attributeName="r" values="0;0;16;12;12" keyTimes="0;0.62;0.66;0.70;1" dur="10s" repeatCount="indefinite"/></circle>
-  <!-- depth labels -->
-  <text x="624" y="76"  text-anchor="end" font-size="11" fill="#aeb8cc" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">depth 1 · root</text>
-  <text x="624" y="189" text-anchor="end" font-size="11" fill="#aeb8cc" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">depth 2</text>
-  <text x="624" y="296" text-anchor="end" font-size="11" fill="#aeb8cc" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">depth 3 · axioms</text>
-  <!-- captions -->
-  <text x="320" y="366" text-anchor="middle" font-size="14" fill="#51607a" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" opacity="0">(1) a concept grows its prerequisite tree — 3 levels, toward axioms<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.06;0.10;0.42;0.45;1" dur="10s" repeatCount="indefinite"/></text>
-  <text x="320" y="366" text-anchor="middle" font-size="14" fill="#51607a" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" opacity="0">(2) a second concept grows its own tree<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.50;0.63;0.65;1" dur="10s" repeatCount="indefinite"/></text>
-  <text x="320" y="366" text-anchor="middle" font-size="14" fill="#a06a00" font-weight="600" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" opacity="0">(3) ...reusing a depth-2 node from the first (shared prerequisite)<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.70;0.74;1" dur="10s" repeatCount="indefinite"/></text>
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Principia makes knowledge compound</title>
+  <desc id="desc">An existing knowledge graph accepts a new concept whose links point to prerequisites already in Principia. The concept becomes part of the graph, then supports the next addition. The connected graph advances as one unit and returns to an equivalent view, showing an endless cycle of accumulated, reusable knowledge.</desc>
+
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f9ff"/>
+      <stop offset="0.55" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef9f5"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfbff"/>
+      <stop offset="1" stop-color="#f1faf7"/>
+    </linearGradient>
+    <linearGradient id="incoming" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8d79ec"/>
+      <stop offset="1" stop-color="#6252d8"/>
+    </linearGradient>
+    <linearGradient id="viewport-fade" gradientUnits="userSpaceOnUse" x1="850" y1="0" x2="950" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <mask id="graph-window">
+      <rect x="75" y="260" width="875" height="245" fill="url(#viewport-fade)"/>
+    </mask>
+    <filter id="shadow" x="-55%" y="-55%" width="210%" height="230%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#263963" flood-opacity="0.14"/>
+    </filter>
+
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .eyebrow { font-size: 12px; font-weight: 850; letter-spacing: 1.7px; }
+      .small-label { font-size: 12px; font-weight: 800; letter-spacing: .8px; }
+      .edge {
+        fill: none;
+        stroke: #91a6a1;
+        stroke-width: 3.2;
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+      }
+      .new-edge {
+        stroke: #6b59dd;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+      }
+      .animated-layer { animation: animated-layer 16s linear infinite; }
+      .canonical-overlay { opacity: 0; animation: canonical-overlay 16s linear infinite; }
+      .static-canonical { display: none; }
+      .phase-ground { opacity: 0; animation: phase-ground 16s ease-in-out infinite; }
+      .phase-learn { opacity: 0; animation: phase-learn 16s ease-in-out infinite; }
+      .phase-advance { opacity: 0; animation: phase-advance 16s ease-in-out infinite; }
+      .phase-compound { opacity: 0; animation: phase-compound 16s ease-in-out infinite; }
+
+      @keyframes animated-layer {
+        0%, 86% { opacity: 1; }
+        94%, 100% { opacity: 0; }
+      }
+      @keyframes canonical-overlay {
+        0%, 86% { opacity: 0; }
+        94%, 100% { opacity: 1; }
+      }
+      @keyframes phase-ground {
+        0%, 4%, 18%, 40%, 54%, 100% { opacity: 0; transform: translateY(4px); }
+        7%, 15%, 43%, 51% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes phase-learn {
+        0%, 16%, 27%, 52%, 63%, 100% { opacity: 0; transform: translateY(4px); }
+        19%, 24%, 55%, 60% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes phase-advance {
+        0%, 25%, 40%, 61%, 76%, 100% { opacity: 0; transform: translateY(4px); }
+        29%, 37%, 65%, 73% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes phase-compound {
+        0%, 74%, 98%, 100% { opacity: 0; transform: translateY(4px); }
+        79%, 94% { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .animated-layer, .canonical-overlay,
+        .phase-ground, .phase-learn,
+        .phase-advance, .phase-compound { display: none; }
+        .static-canonical { display: inline; }
+      }
+    </style>
+
+    <!-- A settled node has one meaning: knowledge already available in Principia. -->
+    <g id="node-existing">
+      <circle r="31" fill="#eef7f4" stroke="#5f9c90" stroke-width="2.5" filter="url(#shadow)"/>
+      <rect x="-10" y="-13" width="20" height="26" rx="3.5" fill="#ffffff" stroke="#39796e" stroke-width="2"/>
+      <path d="M-5 -6h10M-5 0h10M-5 6h7" stroke="#39796e" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- This style is temporary: after grounding, the node becomes ordinary existing knowledge. -->
+    <g id="node-new">
+      <circle r="38" fill="#6b59dd" opacity=".10"/>
+      <circle r="31" fill="url(#incoming)" stroke="#ffffff" stroke-width="5" filter="url(#shadow)"/>
+      <path d="M-9 0h18M0 -9v18" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Exact four-node geometry shared by the first and last frames. -->
+    <g id="canonical-state">
+      <g class="edge">
+        <line x1="390" y1="430" x2="530" y2="300"/>
+        <line x1="390" y1="430" x2="670" y2="430"/>
+        <line x1="530" y1="300" x2="670" y2="430"/>
+        <line x1="530" y1="300" x2="810" y2="300"/>
+        <line x1="670" y1="430" x2="810" y2="300"/>
+      </g>
+      <g transform="translate(390 430)"><use href="#node-existing"/></g>
+      <g transform="translate(530 300)"><use href="#node-existing"/></g>
+      <g transform="translate(670 430)"><use href="#node-existing"/></g>
+      <g transform="translate(810 300)"><use href="#node-existing"/></g>
+    </g>
+  </defs>
+
+  <rect x="1" y="1" width="1198" height="628" rx="28" fill="url(#canvas)" stroke="#dfe5f2" stroke-width="2"/>
+  <circle cx="1118" cy="74" r="106" fill="#7352df" opacity=".04"/>
+  <circle cx="72" cy="608" r="108" fill="#1da180" opacity=".04"/>
+
+  <rect x="50" y="38" width="251" height="28" rx="14" fill="#e9edff"/>
+  <text x="175.5" y="57" text-anchor="middle" class="eyebrow" fill="#5064d6">PRINCIPIA · KNOWLEDGE GRAPH</text>
+  <text x="50" y="108" font-size="34" font-weight="860" fill="#17213b">Knowledge compounds.</text>
+  <text x="50" y="142" font-size="16.5" font-weight="560" fill="#657188">Each new concept is grounded in what the graph already knows—then becomes a foundation for what comes next.</text>
+
+  <rect x="50" y="178" width="1100" height="408" rx="26" fill="url(#panel)" stroke="#dce3f0"/>
+
+  <circle cx="87" cy="214" r="9" fill="#eef7f4" stroke="#5f9c90" stroke-width="2"/>
+  <text x="105" y="218" class="small-label" fill="#39796e">EXISTING KNOWLEDGE</text>
+  <circle cx="287" cy="214" r="9" fill="#6b59dd"/>
+  <path d="M283 214h8M287 210v8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="305" y="218" class="small-label" fill="#6153c9">NEW CONCEPT</text>
+  <line x1="949" y1="214" x2="992" y2="214" class="edge"/>
+  <text x="1006" y="218" class="small-label" fill="#687b77">PREREQUISITE LINK</text>
+
+  <g class="animated-layer" mask="url(#graph-window)">
+    <!-- Both insertions translate this complete connected graph. No row or edge moves independently. -->
+    <g>
+      <animateTransform attributeName="transform" type="translate"
+        values="0 0;0 0;140 0;140 0;280 0;280 0"
+        keyTimes="0;.28;.38;.64;.74;1" dur="16s" repeatCount="indefinite"/>
+
+      <g class="edge">
+        <!-- The original knowledge remains connected throughout the cycle. -->
+        <line x1="390" y1="430" x2="530" y2="300"/>
+        <line x1="390" y1="430" x2="670" y2="430"/>
+        <line x1="530" y1="300" x2="670" y2="430"/>
+        <line x1="530" y1="300" x2="810" y2="300"/>
+        <line x1="670" y1="430" x2="810" y2="300"/>
+
+        <!-- First addition: the new concept points to two existing prerequisites. -->
+        <line class="new-edge" pathLength="1" x1="250" y1="300" x2="390" y2="430" opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.07;.10;1" dur="16s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.07;.16;1" dur="16s" repeatCount="indefinite"/>
+          <animate attributeName="stroke" values="#6b59dd;#6b59dd;#91a6a1;#91a6a1" keyTimes="0;.18;.25;1" dur="16s" repeatCount="indefinite"/>
+        </line>
+        <line class="new-edge" pathLength="1" x1="250" y1="300" x2="530" y2="300" opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.07;.10;1" dur="16s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.07;.16;1" dur="16s" repeatCount="indefinite"/>
+          <animate attributeName="stroke" values="#6b59dd;#6b59dd;#91a6a1;#91a6a1" keyTimes="0;.18;.25;1" dur="16s" repeatCount="indefinite"/>
+        </line>
+
+        <!-- Second addition builds on the graph produced by the first. -->
+        <line class="new-edge" pathLength="1" x1="110" y1="430" x2="250" y2="300" opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.43;.46;1" dur="16s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.43;.52;1" dur="16s" repeatCount="indefinite"/>
+          <animate attributeName="stroke" values="#6b59dd;#6b59dd;#91a6a1;#91a6a1" keyTimes="0;.54;.61;1" dur="16s" repeatCount="indefinite"/>
+        </line>
+        <line class="new-edge" pathLength="1" x1="110" y1="430" x2="390" y2="430" opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.43;.46;1" dur="16s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.43;.52;1" dur="16s" repeatCount="indefinite"/>
+          <animate attributeName="stroke" values="#6b59dd;#6b59dd;#91a6a1;#91a6a1" keyTimes="0;.54;.61;1" dur="16s" repeatCount="indefinite"/>
+        </line>
+      </g>
+
+      <!-- The second new concept becomes ordinary reusable knowledge. -->
+      <g transform="translate(110 430)" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.43;.48;1" dur="16s" repeatCount="indefinite"/>
+        <use href="#node-new">
+          <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.54;.61;1" dur="16s" repeatCount="indefinite"/>
+        </use>
+        <use href="#node-existing" opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.54;.61;1" dur="16s" repeatCount="indefinite"/>
+        </use>
+      </g>
+
+      <!-- The first new concept becomes ordinary reusable knowledge. -->
+      <g transform="translate(250 300)" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.07;.12;1" dur="16s" repeatCount="indefinite"/>
+        <use href="#node-new">
+          <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.18;.25;1" dur="16s" repeatCount="indefinite"/>
+        </use>
+        <use href="#node-existing" opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.18;.25;1" dur="16s" repeatCount="indefinite"/>
+        </use>
+      </g>
+
+      <g transform="translate(390 430)"><use href="#node-existing"/></g>
+      <g transform="translate(530 300)"><use href="#node-existing"/></g>
+      <g transform="translate(670 430)"><use href="#node-existing"/></g>
+      <g transform="translate(810 300)"><use href="#node-existing"/></g>
+    </g>
+  </g>
+
+  <!-- The identical canonical view closes the loop without a visual jump. -->
+  <use class="canonical-overlay" href="#canonical-state"/>
+  <use class="static-canonical" href="#canonical-state"/>
+
+  <g class="phase-ground">
+    <rect x="455" y="238" width="290" height="30" rx="15" fill="#ece9ff"/>
+    <text x="600" y="258.5" text-anchor="middle" class="small-label" fill="#6153c9">GROUND · CONNECT A NEW CONCEPT</text>
+  </g>
+  <g class="phase-learn">
+    <rect x="427" y="238" width="346" height="30" rx="15" fill="#e8f6f1"/>
+    <text x="600" y="258.5" text-anchor="middle" class="small-label" fill="#2f7e6d">LEARN · MAKE IT EXISTING KNOWLEDGE</text>
+  </g>
+  <g class="phase-advance">
+    <rect x="422" y="238" width="356" height="30" rx="15" fill="#edf1ff"/>
+    <text x="600" y="258.5" text-anchor="middle" class="small-label" fill="#5368ce">ADVANCE · MOVE TO THE NEXT FRONTIER</text>
+  </g>
+  <g class="phase-compound">
+    <rect x="454" y="238" width="292" height="30" rx="15" fill="#e8f6f1"/>
+    <text x="600" y="258.5" text-anchor="middle" class="small-label" fill="#2f7e6d">REPEAT · KNOWLEDGE COMPOUNDS</text>
+  </g>
+
 </svg>

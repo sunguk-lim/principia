@@ -11,7 +11,7 @@ description: >
 # lock — settle the graph (launcher + invariants)
 
 This skill is the **entry point and operating principles**. The full `sync`/`lock` protocol is
-canonical in `brain/protocols/EXPLAIN.md` → *"The two authoring passes"*; the tools it drives are
+canonical in `protocols/EXPLAIN.md` → *"The two authoring passes"*; the tools it drives are
 `brain.py` commands. Do not duplicate the protocol here.
 
 > **`lock` is an EXPLICIT procedure, not a vibe.** Every step is either a named `brain.py` command

@@ -391,7 +391,7 @@ def rebuild_manifest() -> None:
     missing = compute_missing()
     n_axioms = sum(1 for m in nodes.values() if m.get("type") == "axiom")
 
-    lines = ["# 🧠 Learning Brain — Concept Graph", "",
+    lines = ["# Principia — Concept Graph", "",
              f"_Last rebuilt: {today()}_", "",
              f"**{len(nodes)}** nodes · **{n_axioms}** axioms · "
              f"**{len(missing)}** on the frontier", ""]

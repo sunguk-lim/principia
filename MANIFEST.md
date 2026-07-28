@@ -2,7 +2,7 @@
 
 _Last rebuilt: 2026-07-28_
 
-**288** nodes · **3** axioms · **0** on the frontier
+**289** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
@@ -108,6 +108,7 @@ _Last rebuilt: 2026-07-28_
 - [All-gather](nodes/all-gather.md)
 - [All-reduce](nodes/all-reduce.md)
 - [All-to-all](nodes/all-to-all.md)
+- [Arithmetic Intensity](nodes/arithmetic-intensity.md)
 - [Atomic Operation](nodes/atomic-operation.md)
 - [Attention Sink](nodes/attention-sink.md)
 - [B-Tree / B+-Tree](nodes/b-tree.md)
@@ -483,6 +484,6 @@ _Last rebuilt: 2026-07-28_
 
   - **os/virtualization** (8) — [Capabilities](nodes/capabilities.md), [Cgroup](nodes/cgroup.md), [Container](nodes/container.md), [Container Runtime](nodes/container-runtime.md), [Hypervisor](nodes/hypervisor.md), [Namespace](nodes/namespace.md), [Real-Time OS](nodes/real-time-os.md), [seccomp](nodes/seccomp.md)
 
-### parallel-computing (19)
+### parallel-computing (20)
 
-[All-gather](nodes/all-gather.md), [All-reduce](nodes/all-reduce.md), [All-to-all](nodes/all-to-all.md), [Barrier](nodes/barrier.md), [Broadcast](nodes/broadcast.md), [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md), [Collective operation](nodes/collective-operation.md), [Communicator](nodes/communicator.md), [Gather](nodes/gather.md), [Message passing](nodes/message-passing.md), [MPI Datatype](nodes/mpi-datatype.md), [Parallel process](nodes/parallel-process.md), [Rank](nodes/rank.md), [Reduce](nodes/reduce.md), [Reduce-scatter](nodes/reduce-scatter.md), [Reduction operation](nodes/reduction-operation.md), [Root process](nodes/root-process.md), [Scan (prefix)](nodes/scan.md), [Scatter](nodes/scatter.md)
+[All-gather](nodes/all-gather.md), [All-reduce](nodes/all-reduce.md), [All-to-all](nodes/all-to-all.md), [Arithmetic Intensity](nodes/arithmetic-intensity.md), [Barrier](nodes/barrier.md), [Broadcast](nodes/broadcast.md), [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md), [Collective operation](nodes/collective-operation.md), [Communicator](nodes/communicator.md), [Gather](nodes/gather.md), [Message passing](nodes/message-passing.md), [MPI Datatype](nodes/mpi-datatype.md), [Parallel process](nodes/parallel-process.md), [Rank](nodes/rank.md), [Reduce](nodes/reduce.md), [Reduce-scatter](nodes/reduce-scatter.md), [Reduction operation](nodes/reduction-operation.md), [Root process](nodes/root-process.md), [Scan (prefix)](nodes/scan.md), [Scatter](nodes/scatter.md)

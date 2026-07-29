@@ -38,12 +38,14 @@ Principia requires Python 3, [`uv`](https://docs.astral.sh/uv/), Git, and a brow
 repository root:
 
 ```bash
-uv run python brain.py audit
-uv run python brain.py tree onnx-runtime
-uv run python brain.py graph
+uv run principia audit
+uv run principia tree onnx-runtime
+uv run principia graph
 ```
 
 Open `web/graph.html` directly to explore the self-contained dashboard.
+Principia discovers the nearest `principia.toml` automatically; use
+`uv run principia --workspace /path/to/graph audit` to target another graph.
 
 To add knowledge with the bundled Claude Code workflow:
 
@@ -58,7 +60,8 @@ Start with the [getting-started guide](docs/getting-started.md) for the full fir
 | Path | Role |
 |---|---|
 | `nodes/` | Source of truth: concepts, optional translations, and figures |
-| `brain.py` | Standard-library graph engine and CLI |
+| `brain.py` | Standard-library graph engine behind the `principia` command |
+| `principia.toml` | Workspace paths for nodes and generated outputs |
 | `docs/` | Product, architecture, data-model, and CLI documentation |
 | `protocols/` | Canonical authoring and visual rules |
 | `.claude/skills/` | Agent workflows for installing, settling, and illustrating concepts |
@@ -77,7 +80,7 @@ hand.
 | [Getting started](docs/getting-started.md) | Run, inspect, extend, and render Principia |
 | [Architecture](docs/architecture.md) | Understand the graph, layers, lifecycle, and generated views |
 | [Node model](docs/node-model.md) | Author frontmatter, links, summaries, types, and taxonomy |
-| [CLI reference](docs/cli-reference.md) | Use every `brain.py` command safely |
+| [CLI reference](docs/cli-reference.md) | Use every `principia` command safely |
 | [Repository guidelines](AGENTS.md) | Contribute and verify changes |
 
 Authoring policy lives in [`protocols/EXPLAIN.md`](protocols/EXPLAIN.md); visual policy lives in

@@ -10,7 +10,7 @@ The script is the GRAPH ENGINE (store nodes, walk dependencies, show the
 frontier). The reasoning — choosing prerequisites and writing the grounded
 explanations — is done by the human/assistant editing the node bodies.
 
-Run with:  uv run python brain.py <command> [args]
+Run with:  uv run principia <command> [args]
 
 A uv-style interface for a "concept package manager":
   add <id> [--type concept|paper|axiom] [--requires a,b,c]
@@ -43,16 +43,64 @@ import json
 import re
 import subprocess
 import sys
+import tomllib
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+PACKAGE_ROOT = Path(__file__).resolve().parent
+ROOT = PACKAGE_ROOT
 NODES = ROOT / "nodes"
 SPECS = ROOT / "specs"
 MANIFEST = ROOT / "MANIFEST.md"
 WEB = ROOT / "web"
+DASHBOARD = WEB / "graph.html"
 
 TYPES = ["concept", "paper", "axiom"]
 STATUSES = ["stub", "explained"]
+
+
+def _workspace_path(root: Path, value: str) -> Path:
+    """Resolve a configured workspace path relative to its workspace root."""
+    path = Path(value).expanduser()
+    return path.resolve() if path.is_absolute() else (root / path).resolve()
+
+
+def find_workspace(start: Path | None = None) -> Path:
+    """Find the nearest Principia workspace at or above ``start``."""
+    current = (start or Path.cwd()).expanduser().resolve()
+    if current.is_file():
+        current = current.parent
+    candidates = (current, *current.parents)
+    for candidate in candidates:
+        if (candidate / "principia.toml").is_file():
+            return candidate
+    for candidate in candidates:
+        if (candidate / "nodes").is_dir():
+            return candidate
+    raise FileNotFoundError(
+        "No Principia workspace found. Run inside a graph directory or pass "
+        "--workspace PATH."
+    )
+
+
+def configure_workspace(explicit: str = "") -> None:
+    """Configure graph paths from a workspace and its optional principia.toml."""
+    root = Path(explicit).expanduser().resolve() if explicit else find_workspace()
+    if not root.is_dir():
+        raise FileNotFoundError(f"Workspace is not a directory: {root}")
+
+    config_path = root / "principia.toml"
+    config = tomllib.loads(config_path.read_text(encoding="utf-8")) if config_path.exists() else {}
+    graph = config.get("graph", {})
+    if not isinstance(graph, dict):
+        raise ValueError(f"[graph] must be a table in {config_path}")
+
+    global ROOT, NODES, SPECS, MANIFEST, WEB, DASHBOARD
+    ROOT = root
+    NODES = _workspace_path(root, str(graph.get("nodes", "nodes")))
+    SPECS = _workspace_path(root, str(graph.get("specs", "specs")))
+    MANIFEST = _workspace_path(root, str(graph.get("manifest", "MANIFEST.md")))
+    DASHBOARD = _workspace_path(root, str(graph.get("dashboard", "web/graph.html")))
+    WEB = DASHBOARD.parent
 
 BODY_TEMPLATE = (
     "## Summary\n\n_One-paragraph, plain explanation._\n\n"
@@ -1101,17 +1149,20 @@ def cmd_graph(args) -> None:
         from web import render            # lazy: keeps the engine importable without the web pkg
     except ImportError as e:               # pragma: no cover
         sys.exit(f"Cannot load web/render.py: {e}")
-    out = Path(args.out) if args.out else (WEB / "graph.html")
+    out = Path(args.out) if args.out else DASHBOARD
     data = None
     base = getattr(args, "diff", "")
     if base:                                    # visual diff mode: annotate nodes/edges by status
         before = nodes_at_ref(base)
         after = nodes_at_ref(args.head) if getattr(args, "head", "") else all_nodes()
         d = compute_diff(before, after)
-        data = render.build_diff_graph_data(before, after, d, parse_list, split_tag)
+        data = render.build_diff_graph_data(
+            before, after, d, parse_list, split_tag, workspace_root=ROOT
+        )
     try:
         n_nodes, n_edges = render.write_graph(all_nodes(), parse_list, split_tag,
-                                              out, fragment=args.fragment, data=data)
+                                              out, fragment=args.fragment, data=data,
+                                              workspace_root=ROOT)
     except FileNotFoundError as e:
         sys.exit(str(e))
     print(f"Wrote {out}  ({n_nodes} nodes, {n_edges} edges){' (diff)' if base else ''}")
@@ -1220,6 +1271,12 @@ def cmd_diff(args) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="A recursive concept graph.")
+    parser.add_argument(
+        "--workspace",
+        default="",
+        metavar="PATH",
+        help="Principia graph root (default: discover from the current directory).",
+    )
     sub = parser.add_subparsers(dest="command", required=True)
 
     def add_node_args(p):
@@ -1346,6 +1403,10 @@ def main() -> None:
     p_diff.set_defaults(func=cmd_diff)
 
     args = parser.parse_args()
+    try:
+        configure_workspace(args.workspace)
+    except (FileNotFoundError, OSError, tomllib.TOMLDecodeError, ValueError) as error:
+        parser.error(str(error))
     args.func(args)
 
 

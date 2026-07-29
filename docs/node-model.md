@@ -73,7 +73,7 @@ Each node has one hierarchical home, for example `os/memory` or `ml/llm/inferenc
 view:
 
 ```bash
-uv run python brain.py list --tag ml/model-portability
+uv run principia list --tag ml/model-portability
 ```
 
 The generated manifest and dashboard roll these paths up into broader fields.

@@ -10,7 +10,7 @@ matches what you are trying to do.
 | Run Principia and inspect the graph | [Getting started](getting-started.md) |
 | Understand the system design | [Architecture](architecture.md) |
 | Author or validate a concept node | [Node model](node-model.md) |
-| Use `brain.py` | [CLI reference](cli-reference.md) |
+| Use the `principia` command | [CLI reference](cli-reference.md) |
 | Contribute code or documentation | [Repository guidelines](../AGENTS.md) |
 
 ## Canonical Sources

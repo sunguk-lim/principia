@@ -1,6 +1,7 @@
 # Python bytecode
 __pycache__/
 *.pyc
+*.egg-info/
 
 # draw-brain-figure workflow scratch (per-node render cache)
 .draw-cache/

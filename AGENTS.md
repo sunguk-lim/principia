@@ -2,18 +2,18 @@
 
 ## Project Structure & Module Organization
 
-This repository is a closed-world concept graph. `nodes/` is the source of truth: each concept uses `nodes/<id>.md`, with an optional Korean companion (`<id>.ko.md`) and SVG figure (`<id>.svg`). Human-facing reference lives in `docs/`; authoring and visual rules live in `protocols/`; figure specifications live in `specs/`. `brain.py` provides the standard-library-only graph CLI, and `web/` contains the dashboard. Treat `MANIFEST.md` and `web/graph.html` as generated outputs, not hand-edited sources.
+This repository is a closed-world concept graph. `nodes/` is the source of truth: each concept uses `nodes/<id>.md`, with an optional Korean companion (`<id>.ko.md`) and SVG figure (`<id>.svg`). Human-facing reference lives in `docs/`; authoring and visual rules live in `protocols/`; figure specifications live in `specs/`. The `principia` command exposes the standard-library engine in `brain.py`, and `web/` contains the dashboard. Treat `MANIFEST.md` and `web/graph.html` as generated outputs, not hand-edited sources.
 
 ## Build, Test, and Development Commands
 
 Run commands from the repository root with Python 3 through `uv`:
 
 ```bash
-uv run python brain.py audit       # validate schemas, links, and graph closure
-uv run python brain.py missing     # show unresolved prerequisites
-uv run python brain.py manifest    # rebuild MANIFEST.md
-uv run python brain.py graph       # rebuild web/graph.html
-uv run python brain.py tree <id>   # inspect a concept's dependency tree
+uv run principia audit       # validate schemas, links, and graph closure
+uv run principia missing     # show unresolved prerequisites
+uv run principia manifest    # rebuild MANIFEST.md
+uv run principia graph       # rebuild web/graph.html
+uv run principia tree <id>   # inspect a concept's dependency tree
 ```
 
 After changing `nodes/`, run `audit`, then regenerate both derived files. After changing `web/graph.template.html`, regenerate the graph. Open `web/graph.html` directly in a browser; it is self-contained and requires no server.
@@ -24,7 +24,7 @@ Use four-space indentation and standard Python conventions in `.py` files. Keep 
 
 ## Testing Guidelines
 
-There is no separate unit-test suite in this checkout. `uv run python brain.py audit` is the required correctness gate and must pass before submission. For graph changes, also inspect `uv run python brain.py diff <base>` and the regenerated dashboard. Verify generated files are committed whenever their sources change.
+There is no separate unit-test suite in this checkout. `uv run principia audit` is the required correctness gate and must pass before submission. For graph changes, also inspect `uv run principia diff <base>` and the regenerated dashboard. Verify generated files are committed whenever their sources change.
 
 ## Commit & Pull Request Guidelines
 

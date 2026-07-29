@@ -56,7 +56,7 @@ each operation, which keeps it portable and easy to inspect.
 | Path | Responsibility |
 |---|---|
 | `nodes/` | Knowledge data and optional node assets |
-| `brain.py` | Deterministic graph engine and CLI |
+| `brain.py` | Deterministic graph engine behind the `principia` command |
 | `protocols/` | Canonical authoring and visual policy |
 | `.claude/skills/` | Agent workflows that apply the policy |
 | `specs/` | Persistent figure-design specifications |

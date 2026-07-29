@@ -21,7 +21,7 @@ TITLE = "Principia — Concept Graph"
 DOC_BASE_FALLBACK = "https://github.com/sunguk-lim/principia/blob/main/nodes"
 
 
-def doc_base() -> str:
+def doc_base(workspace_root: Path | None = None) -> str:
     """GitHub blob base for node docs: ``<repo web URL>/blob/main/nodes``.
 
     Derived from the ``origin`` remote so a fork links to its own copy; falls back to
@@ -30,7 +30,8 @@ def doc_base() -> str:
     """
     try:
         url = subprocess.run(
-            ["git", "-C", str(HERE.parent), "remote", "get-url", "origin"],
+            ["git", "-C", str(workspace_root or HERE.parent),
+             "remote", "get-url", "origin"],
             capture_output=True, text=True, check=True,
         ).stdout.strip()
     except (OSError, subprocess.CalledProcessError):
@@ -45,7 +46,8 @@ def doc_base() -> str:
     return f"https://github.com/{slug}/blob/main/nodes"
 
 
-def build_graph_data(nodes: dict, parse_list, split_tag) -> dict:
+def build_graph_data(nodes: dict, parse_list, split_tag,
+                     workspace_root: Path | None = None) -> dict:
     """Project the node graph into {nodes, edges} for the visualization.
 
     Each node carries its title/type/status, its first tag + the tag's root, the
@@ -96,10 +98,12 @@ def build_graph_data(nodes: dict, parse_list, split_tag) -> dict:
         })
     node_list.sort(key=lambda n: n["id"])
     edge_list = [{"s": i, "t": p} for i in sorted(prereqs) for p in prereqs[i]]
-    return {"nodes": node_list, "edges": edge_list, "docBase": doc_base()}
+    return {"nodes": node_list, "edges": edge_list,
+            "docBase": doc_base(workspace_root)}
 
 
-def build_diff_graph_data(before: dict, after: dict, diff: dict, parse_list, split_tag) -> dict:
+def build_diff_graph_data(before: dict, after: dict, diff: dict, parse_list, split_tag,
+                          workspace_root: Path | None = None) -> dict:
     """Graph payload for the VISUAL diff: the `after` graph plus any removed nodes/edges, with
     every node and edge tagged `diff` ∈ {added, removed, restructured, unchanged} for the dashboard
     to colour. Layout/levels come from the after graph; removed items are appended (level 0).
@@ -107,7 +111,7 @@ def build_diff_graph_data(before: dict, after: dict, diff: dict, parse_list, spl
     `diff` is brain.compute_diff(before, after). The dashboard defaults to the affected subgraph
     (changed nodes + 1-hop) — the full payload is present but scoped in the UI.
     """
-    data = build_graph_data(after, parse_list, split_tag)
+    data = build_graph_data(after, parse_list, split_tag, workspace_root)
     added_n = {x["id"] for x in diff["nodesAdded"]}
     restr_n = {x["id"] for x in diff["restructured"]}
     for n in data["nodes"]:
@@ -155,13 +159,14 @@ def render_html(data: dict, fragment: bool = False) -> str:
 
 
 def write_graph(nodes: dict, parse_list, split_tag, out: Path,
-                fragment: bool = False, data: dict | None = None) -> tuple[int, int]:
+                fragment: bool = False, data: dict | None = None,
+                workspace_root: Path | None = None) -> tuple[int, int]:
     """Build + render + write to `out`; return (node_count, edge_count).
 
     `data` may be a precomputed payload (e.g. build_diff_graph_data's) — when given, `nodes`
     is ignored and the payload is rendered as-is.
     """
     if data is None:
-        data = build_graph_data(nodes, parse_list, split_tag)
+        data = build_graph_data(nodes, parse_list, split_tag, workspace_root)
     Path(out).write_text(render_html(data, fragment), encoding="utf-8")
     return len(data["nodes"]), len(data["edges"])

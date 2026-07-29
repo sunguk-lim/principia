@@ -1,0 +1,5 @@
+[graph]
+nodes = "nodes"
+specs = "specs"
+manifest = "MANIFEST.md"
+dashboard = "web/graph.html"

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "principia-knowledge"
+version = "0.1.0"
+description = "A graph-native, closed-world knowledge system"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+principia = "brain:main"
+
+[tool.setuptools]
+py-modules = ["brain"]
+packages = ["web"]
+
+[tool.setuptools.package-data]
+web = ["graph.template.html"]

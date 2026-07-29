@@ -1,12 +1,14 @@
 # CLI Reference
 
-Run every command from the repository root:
+Run commands from a Principia workspace or any directory beneath it:
 
 ```bash
-uv run python brain.py <command> [options]
+uv run principia <command> [options]
 ```
 
-Use `uv run python brain.py <command> --help` for the complete option list.
+The CLI discovers the nearest `principia.toml`. To target a different graph, use
+`uv run principia --workspace /path/to/graph <command>`. Run
+`uv run principia <command> --help` for the complete option list.
 
 ## Inspect
 
@@ -22,10 +24,10 @@ Use `uv run python brain.py <command> --help` for the complete option list.
 Useful examples:
 
 ```bash
-uv run python brain.py show onnx-runtime
-uv run python brain.py tree onnx-runtime
-uv run python brain.py list --tag observability
-uv run python brain.py diff HEAD~1 --context
+uv run principia show onnx-runtime
+uv run principia tree onnx-runtime
+uv run principia list --tag observability
+uv run principia diff HEAD~1 --context
 ```
 
 ## Create and Update
@@ -42,7 +44,7 @@ uv run python brain.py diff HEAD~1 --context
 Example scaffold:
 
 ```bash
-uv run python brain.py add onnx-runtime \
+uv run principia add onnx-runtime \
   --title "ONNX Runtime" \
   --requires onnx,graph-optimization,execution-provider,graph \
   --tags ml/model-portability \
@@ -69,9 +71,9 @@ dependent-node safeguard; use it only when intentionally repairing all affected 
 `audit` is the required correctness gate:
 
 ```bash
-uv run python brain.py audit
-uv run python brain.py manifest
-uv run python brain.py graph
+uv run principia audit
+uv run principia manifest
+uv run principia graph
 ```
 
 `graph --diff <base>` renders a visual structural comparison. `--fragment` emits embeddable markup,
@@ -91,10 +93,10 @@ These commands identify candidates; the agent still judges semantic identity and
 ## Standard Change Sequence
 
 ```bash
-uv run python brain.py audit
-uv run python brain.py manifest
-uv run python brain.py graph
-uv run python brain.py diff <base>
+uv run principia audit
+uv run principia manifest
+uv run principia graph
+uv run principia diff <base>
 ```
 
 See [Getting started](getting-started.md) for the first-use workflow and

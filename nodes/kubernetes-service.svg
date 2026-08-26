@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="1040" viewBox="0 0 560 1040"
+     role="img" aria-labelledby="title desc">
+  <title id="title">A Kubernetes Service keeps one address while its backend Pods change</title>
+  <desc id="desc">Two vertical states show the same checkout Service at 10.96.0.20 port 80. Before a rollout its backends are Pods A and B; afterward they are Pods B and C. A highlighted request is routed to one current Pod in each state.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#D89016"/>
+    </marker>
+    <style>
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .eyebrow { font-size: 17px; font-weight: 700; letter-spacing: 1.5px; fill: #60768A; }
+      .headline { font-size: 29px; font-weight: 750; }
+      .subtitle { font-size: 17px; fill: #536B7E; }
+      .label { font-size: 19px; font-weight: 700; }
+      .value { font-size: 16px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .small { font-size: 16px; fill: #536B7E; }
+      .client { fill: #F2F5F7; stroke: #8EA1B0; stroke-width: 2; }
+      .service { fill: #E7F1FF; stroke: #3977B8; stroke-width: 3; }
+      .pool { fill: #F0FAF7; stroke: #76A99B; stroke-width: 2; }
+      .pod { fill: #FFFFFF; stroke: #43927F; stroke-width: 2; }
+      .selected { fill: #FFF5D7; stroke: #D89016; stroke-width: 4; }
+      .route { fill: none; stroke: #D89016; stroke-width: 4; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="560" height="1040" fill="#FFFFFF"/>
+  <text x="28" y="48" class="headline">Stable address, changing Pods</text>
+  <text x="28" y="77" class="subtitle">The Service stays; its backends can be replaced.</text>
+
+  <text x="28" y="122" class="eyebrow">BEFORE ROLLOUT</text>
+  <rect x="64" y="145" width="432" height="68" rx="17" class="client"/>
+  <text x="280" y="174" text-anchor="middle" class="label">Client</text>
+  <text x="280" y="198" text-anchor="middle" class="small">connects to checkout:80</text>
+  <path d="M280 213 L280 252" class="route"/>
+  <text x="300" y="240" class="small">DNS resolves</text>
+
+  <rect x="100" y="260" width="360" height="88" rx="20" class="service"/>
+  <text x="280" y="293" text-anchor="middle" class="label">Service · checkout</text>
+  <text x="280" y="322" text-anchor="middle" class="value">10.96.0.20:80</text>
+  <text x="280" y="342" text-anchor="middle" class="small">stable virtual address</text>
+  <path d="M280 348 L280 387" class="route"/>
+  <text x="300" y="375" class="small">steers request</text>
+
+  <rect x="28" y="395" width="504" height="130" rx="22" class="pool"/>
+  <text x="48" y="423" class="small">current endpoints</text>
+  <rect x="48" y="438" width="222" height="68" rx="13" class="pod"/>
+  <text x="159" y="466" text-anchor="middle" class="label">Pod A</text>
+  <text x="159" y="490" text-anchor="middle" class="value">10.42.1.8:8080</text>
+  <rect x="290" y="438" width="222" height="68" rx="13" class="selected"/>
+  <text x="401" y="466" text-anchor="middle" class="label">Pod B</text>
+  <text x="401" y="490" text-anchor="middle" class="value">10.42.1.9:8080</text>
+
+  <line x1="28" y1="558" x2="532" y2="558" stroke="#DCE4EA" stroke-width="2"/>
+
+  <text x="28" y="602" class="eyebrow">AFTER ROLLOUT</text>
+  <rect x="64" y="625" width="432" height="68" rx="17" class="client"/>
+  <text x="280" y="654" text-anchor="middle" class="label">Client</text>
+  <text x="280" y="678" text-anchor="middle" class="small">still uses checkout:80</text>
+  <path d="M280 693 L280 732" class="route"/>
+  <text x="300" y="720" class="small">DNS resolves</text>
+
+  <rect x="100" y="740" width="360" height="88" rx="20" class="service"/>
+  <text x="280" y="773" text-anchor="middle" class="label">Service · checkout</text>
+  <text x="280" y="802" text-anchor="middle" class="value">10.96.0.20:80</text>
+  <text x="280" y="822" text-anchor="middle" class="small">unchanged</text>
+  <path d="M280 828 L280 867" class="route"/>
+  <text x="300" y="855" class="small">steers request</text>
+
+  <rect x="28" y="875" width="504" height="130" rx="22" class="pool"/>
+  <text x="48" y="903" class="small">updated endpoints</text>
+  <rect x="48" y="918" width="222" height="68" rx="13" class="pod"/>
+  <text x="159" y="946" text-anchor="middle" class="label">Pod B</text>
+  <text x="159" y="970" text-anchor="middle" class="value">10.42.1.9:8080</text>
+  <rect x="290" y="918" width="222" height="68" rx="13" class="selected"/>
+  <text x="401" y="946" text-anchor="middle" class="label">Pod C</text>
+  <text x="401" y="970" text-anchor="middle" class="value">10.42.2.14:8080</text>
+</svg>

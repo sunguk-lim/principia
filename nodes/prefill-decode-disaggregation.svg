@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Prefill-decode disaggregation separates unlike workloads and transfers the KV cache</title>
+  <desc id="desc">The upper panel shows a long prefill delaying decode tokens in one worker. The lower panel separates a blue prefill pool from a teal decode pool and sends an amber KV cache between them so decode can continue independently.</desc>
+  <defs>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#D89016"/>
+    </marker>
+    <style>
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 31px; font-weight: 760; }
+      .subtitle { font-size: 18px; fill: #536B7E; }
+      .eyebrow { font-size: 18px; font-weight: 750; letter-spacing: 1.4px; fill: #60768A; }
+      .label { font-size: 21px; font-weight: 730; }
+      .small { font-size: 18px; fill: #536B7E; }
+      .tiny { font-size: 17px; font-weight: 650; }
+      .mixed { fill: #F4F6F8; stroke: #8EA1B0; stroke-width: 2.5; }
+      .prefillPool { fill: #E7F1FF; stroke: #3977B8; stroke-width: 3; }
+      .decodePool { fill: #E9F7F3; stroke: #2F8A78; stroke-width: 3; }
+      .prefill { fill: #76A8DE; stroke: #3977B8; stroke-width: 2; }
+      .decode { fill: #83C7B8; stroke: #2F8A78; stroke-width: 2; }
+      .kv { fill: #FFF1C7; stroke: #D89016; stroke-width: 3; }
+      .kvCell { fill: #FFD879; stroke: #D89016; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect width="720" height="720" fill="#FFFFFF"/>
+  <text x="34" y="48" class="headline">Separate the phases, hand off the state</text>
+  <text x="34" y="77" class="subtitle">Prefill and decode stop competing for the same worker.</text>
+
+  <text x="34" y="120" class="eyebrow">CO-LOCATED · COUPLED</text>
+  <rect x="34" y="138" width="652" height="176" rx="22" class="mixed"/>
+  <text x="58" y="171" class="label">One worker · one scheduler</text>
+  <line x1="70" y1="225" x2="650" y2="225" stroke="#B9C4CD" stroke-width="3"/>
+  <rect x="72" y="195" width="352" height="60" rx="13" class="prefill"/>
+  <text x="248" y="220" text-anchor="middle" class="label">long prefill</text>
+  <text x="248" y="244" text-anchor="middle" class="tiny">many prompt tokens</text>
+  <rect x="444" y="203" width="54" height="44" rx="10" class="decode"/>
+  <rect x="508" y="203" width="54" height="44" rx="10" class="decode"/>
+  <rect x="572" y="203" width="54" height="44" rx="10" class="decode"/>
+  <text x="535" y="279" text-anchor="middle" class="small">next tokens wait</text>
+  <text x="58" y="294" class="small">One large prompt stretches the step for every active decode.</text>
+
+  <line x1="34" y1="345" x2="686" y2="345" stroke="#DCE4EA" stroke-width="2"/>
+  <text x="34" y="382" class="eyebrow">DISAGGREGATED · INDEPENDENT</text>
+
+  <rect x="34" y="405" width="272" height="236" rx="22" class="prefillPool"/>
+  <text x="170" y="441" text-anchor="middle" class="label">Prefill pool</text>
+  <text x="170" y="467" text-anchor="middle" class="small">compute-heavy · tune TTFT</text>
+  <rect x="64" y="492" width="212" height="42" rx="10" class="prefill"/>
+  <text x="170" y="519" text-anchor="middle" class="tiny">prompt tokens × many</text>
+  <text x="170" y="563" text-anchor="middle" class="small">builds request state</text>
+  <rect x="126" y="578" width="88" height="44" rx="8" class="kv"/>
+  <rect x="136" y="588" width="14" height="10" class="kvCell"/><rect x="154" y="588" width="14" height="10" class="kvCell"/>
+  <rect x="172" y="588" width="14" height="10" class="kvCell"/><rect x="190" y="588" width="14" height="10" class="kvCell"/>
+  <rect x="136" y="602" width="14" height="10" class="kvCell"/><rect x="154" y="602" width="14" height="10" class="kvCell"/>
+  <rect x="172" y="602" width="14" height="10" class="kvCell"/><rect x="190" y="602" width="14" height="10" class="kvCell"/>
+
+  <rect x="414" y="405" width="272" height="236" rx="22" class="decodePool"/>
+  <text x="550" y="441" text-anchor="middle" class="label">Decode pool</text>
+  <text x="550" y="467" text-anchor="middle" class="small">memory-heavy · tune ITL</text>
+  <rect x="464" y="492" width="172" height="42" rx="10" class="decode"/>
+  <text x="550" y="519" text-anchor="middle" class="tiny">cache installed</text>
+  <text x="550" y="563" text-anchor="middle" class="small">steady token steps</text>
+  <rect x="474" y="584" width="40" height="38" rx="9" class="decode"/>
+  <rect x="530" y="584" width="40" height="38" rx="9" class="decode"/>
+  <rect x="586" y="584" width="40" height="38" rx="9" class="decode"/>
+
+  <path d="M306 557 L410 557" fill="none" stroke="#D89016" stroke-width="5" marker-end="url(#arrowAmber)"/>
+  <rect x="329" y="527" width="58" height="42" rx="7" class="kv"/>
+  <rect x="338" y="536" width="12" height="9" class="kvCell"/><rect x="354" y="536" width="12" height="9" class="kvCell"/>
+  <rect x="370" y="536" width="8" height="9" class="kvCell"/><rect x="338" y="549" width="12" height="9" class="kvCell"/>
+  <rect x="354" y="549" width="12" height="9" class="kvCell"/><rect x="370" y="549" width="8" height="9" class="kvCell"/>
+  <text x="358" y="594" text-anchor="middle" class="tiny">KV handoff</text>
+
+  <text x="34" y="680" class="small">Prompt burst scales left. Output length scales right. The transfer link is the new cost.</text>
+</svg>

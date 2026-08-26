@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-07-28_
+_Last rebuilt: 2026-08-26_
 
-**289** nodes · **3** axioms · **0** on the frontier
+**292** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (82)
+## 🌳 Parent (root) nodes — top-level, required by nothing (81)
 
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
@@ -15,7 +15,6 @@ _Last rebuilt: 2026-07-28_
 - [clone()](nodes/clone.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
 - [Conjugate Prior](nodes/conjugate-prior.md)
-- [Container Networking](nodes/container-networking.md)
 - [Container Runtime](nodes/container-runtime.md)
 - [Content-Addressable Memory](nodes/content-addressable-memory.md)
 - [Context Parallelism](nodes/context-parallelism.md)
@@ -44,9 +43,9 @@ _Last rebuilt: 2026-07-28_
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
 - [Hypervisor](nodes/hypervisor.md)
 - [Init Process](nodes/init-process.md)
-- [IP Routing](nodes/ip-routing.md)
 - [k6](nodes/k6.md)
 - [Kernel Module](nodes/kernel-module.md)
+- [Kubernetes Service](nodes/kubernetes-service.md)
 - [KV-Cache Quantization](nodes/kv-quantization.md)
 - [Log-Normal Distribution](nodes/log-normal-distribution.md)
 - [LoRA (Low-Rank Adaptation)](nodes/lora.md)
@@ -234,6 +233,8 @@ _Last rebuilt: 2026-07-28_
 - [Key–Value Mapping](nodes/key-value.md)
 - [Key–Value Store (key-value database)](nodes/key-value-store.md)
 - [Knowledge Graph](nodes/knowledge-graph.md)
+- [Kubernetes Pod](nodes/kubernetes-pod.md)
+- [Kubernetes Service](nodes/kubernetes-service.md)
 - [KV-cache](nodes/kv-cache.md)
 - [KV-Cache Quantization](nodes/kv-quantization.md)
 - [Laplacian (∇²f)](nodes/laplacian.md)
@@ -244,6 +245,7 @@ _Last rebuilt: 2026-07-28_
 - [Linear independence](nodes/linear-independence.md)
 - [Linked List](nodes/linked-list.md)
 - [Calling LLMs from SQL](nodes/llm-from-sql.md)
+- [Load Balancing](nodes/load-balancing.md)
 - [Load Testing](nodes/load-testing.md)
 - [Log-Normal Distribution](nodes/log-normal-distribution.md)
 - [Log Record](nodes/log-record.md)
@@ -452,9 +454,9 @@ _Last rebuilt: 2026-07-28_
 
   - **ml/model-portability** (7) — [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md)
 
-### networking (14)
+### networking (16)
 
-- **networking** (11) — [Container Networking](nodes/container-networking.md), [DNS](nodes/dns.md), [HTTP](nodes/http.md), [IP Routing](nodes/ip-routing.md), [MAC vs IP Addressing](nodes/mac-vs-ip.md), [Netfilter (iptables/NAT)](nodes/netfilter.md), [Network Stack](nodes/network-stack.md), [Socket Buffer (sk_buff)](nodes/sk-buff.md), [Socket](nodes/socket.md), [TCP](nodes/tcp.md), [UDP](nodes/udp.md)
+- **networking** (13) — [Container Networking](nodes/container-networking.md), [DNS](nodes/dns.md), [HTTP](nodes/http.md), [IP Routing](nodes/ip-routing.md), [Kubernetes Service](nodes/kubernetes-service.md), [Load Balancing](nodes/load-balancing.md), [MAC vs IP Addressing](nodes/mac-vs-ip.md), [Netfilter (iptables/NAT)](nodes/netfilter.md), [Network Stack](nodes/network-stack.md), [Socket Buffer (sk_buff)](nodes/sk-buff.md), [Socket](nodes/socket.md), [TCP](nodes/tcp.md), [UDP](nodes/udp.md)
 
   - **networking/performance** (3) — [k6](nodes/k6.md), [Latency Percentiles (Tail Latency)](nodes/latency-percentile.md), [Load Testing](nodes/load-testing.md)
 
@@ -472,7 +474,7 @@ _Last rebuilt: 2026-07-28_
 
   - **observability/tracing** (4) — [Context Propagation](nodes/context-propagation.md), [Distributed Tracing](nodes/distributed-tracing.md), [Telemetry Context](nodes/telemetry-context.md), [Trace Span](nodes/trace-span.md)
 
-### os (49)
+### os (50)
 
   - **os/filesystem** (8) — [Block Layer](nodes/block-layer.md), [Dentry](nodes/dentry.md), [Hard Link](nodes/hard-link.md), [Inode](nodes/inode.md), [OverlayFS](nodes/overlayfs.md), [Page Cache](nodes/page-cache.md), [Virtual File System](nodes/vfs.md), [Writeback](nodes/writeback.md)
 
@@ -482,7 +484,7 @@ _Last rebuilt: 2026-07-28_
 
   - **os/process** (8) — [clone()](nodes/clone.md), [Context Switch](nodes/context-switch.md), [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md), [Fork and Exec](nodes/fork-exec.md), [Global Interpreter Lock](nodes/gil.md), [Process](nodes/process.md), [Scheduler](nodes/scheduler.md), [Thread](nodes/thread.md)
 
-  - **os/virtualization** (8) — [Capabilities](nodes/capabilities.md), [Cgroup](nodes/cgroup.md), [Container](nodes/container.md), [Container Runtime](nodes/container-runtime.md), [Hypervisor](nodes/hypervisor.md), [Namespace](nodes/namespace.md), [Real-Time OS](nodes/real-time-os.md), [seccomp](nodes/seccomp.md)
+  - **os/virtualization** (9) — [Capabilities](nodes/capabilities.md), [Cgroup](nodes/cgroup.md), [Container](nodes/container.md), [Container Runtime](nodes/container-runtime.md), [Hypervisor](nodes/hypervisor.md), [Kubernetes Pod](nodes/kubernetes-pod.md), [Namespace](nodes/namespace.md), [Real-Time OS](nodes/real-time-os.md), [seccomp](nodes/seccomp.md)
 
 ### parallel-computing (20)
 

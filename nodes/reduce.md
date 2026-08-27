@@ -1,7 +1,7 @@
 ---
 id: reduce
 title: Reduce
-summary: Reduce is the collective-operation in which every process contributes a value and they are all combined by a reduction-operation (e.g.
+summary: Reduce combines one value from every process with an associative reduction operation and stores the single result at a designated root process.
 type: concept
 tags: [parallel-computing]
 prereqs: [collective-operation, root-process, reduction-operation]

@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="680" height="340" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="680" height="340" font-family="'Iowan Old Style',Palatino,Georgia,serif" role="img" aria-labelledby="title desc">
+  <title id="title">Gather concept diagram</title>
+  <desc id="desc">Gather is the collective-operation in which every process sends its chunk to the root-process, which collects them into one buffer.</desc>
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>

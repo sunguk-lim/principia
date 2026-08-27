@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 426" width="760" height="426" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 426" width="760" height="426" font-family="'Iowan Old Style',Palatino,Georgia,serif" role="img" aria-labelledby="title desc">
+  <title id="title">Mixture-of-Experts (MoE) concept diagram</title>
+  <desc id="desc">A Mixture-of-Experts (MoE) layer replaces the transformer&#x27;s single feed-forward block with many of them — each a small neural-network FFN with its own weights, called an expert —…</desc>
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>

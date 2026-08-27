@@ -2,7 +2,7 @@
 
 A brain node teaches one concept. **This is the primary protocol** for writing a node's
 explanation (its prose body). A figure is an *optional, subsidiary* aid — see
-`VISUAL_PROTOCOLS.md`, which covers figure mechanics only and is subordinate to this file.
+`VISUAL_PROTOCOLS.md`, which covers visual design and figure mechanics and is subordinate to this file.
 
 ## The entry point — a simple request prompt
 
@@ -284,6 +284,54 @@ Figures help most when the meaning involves:
 - **change over steps / time** — a process unfolding, a running state, a schedule;
 - …but also any **relationship, comparison, or process** that a visual scaffold makes click faster
   than prose alone.
+
+### Design the visual explanation before drawing the figure
+
+A technically complete diagram is not automatically an explanation. Before choosing panels, SVG
+blocks, or animation phases, write the figure's **visual thesis**: one sentence naming the problem,
+the decisive transformation, and the payoff. A useful form is:
+
+> Because `<problem>`, `<concept>` changes `<before>` into `<after>` by `<decisive action>`, so
+> `<payoff>`.
+
+Name the **audience** and the figure's **single job**. “Teach the whole node” is not a job; “make the
+reader see why reuse changes the bottleneck” is. Ground the visual language in the subject's own world:
+its real shapes, materials, instruments, spatial relations, operations, and characteristic motion.
+Generic boxes and arrows are valid only when boxes and routes encode those facts; they are not a
+default aesthetic. If replacing the concept's labels would let the same composition explain an
+unrelated node, the design is templated rather than derived.
+
+Choose one **traced object** the reader can follow through that sentence. It may be a value, request,
+token, region, or other concrete instance from the node's worked example. The object keeps its
+identity across every view; changing examples between panels makes the reader reconstruct the story
+instead of learning the concept.
+
+Reveal the thesis progressively, in this order:
+
+1. **Intuition — what and why.** One dominant picture makes the problem and payoff recognizable with
+   few words. It assumes no knowledge of the target concept, but it must not use an analogy whose
+   mapping to the real mechanism is hidden.
+2. **Mechanism — how.** The same picture and traced object expose the decisive transformation through
+   one small, non-degenerate worked instance. Introduce only the technical names needed to follow it.
+3. **Precision — where the simplification stops.** Exact shapes, values, equations, boundaries, or
+   substrate labels qualify the mechanism. Precision may live in a later act, a subordinate panel, or
+   the prose; do not crowd it into the intuitive first view merely to make the figure exhaustive.
+
+These are **levels of disclosure, not three mandatory panels**. A simple concept may express all three
+in one static composition; a changing mechanism may use three clock-aligned acts. Every later level
+must refine the same visual model rather than replace it with an unrelated diagram.
+
+Treat the decisive transformation as the figure's **signature moment**: the one use of dominant scale,
+contrast, or motion that the reader should remember. Keep supporting elements quiet. Structure,
+spacing, colour, scale, and rhythm must each encode a true relationship or yield to neutral restraint;
+decoration that carries no meaning competes with the explanation.
+
+Before rendering, state the intended answers to the **comprehension test**: after seeing the figure,
+an unfamiliar reader should be able to say (1) what problem exists, (2) what changed, (3) what caused
+the change, and (4) why the result is useful. If the figure cannot support those answers, revise the
+visual thesis or traced object before polishing its mechanics. After rendering, inspect every dwell
+and transition at mobile and laptop fit-to-screen sizes, then make a subtraction pass: remove one
+non-essential label, ornament, panel, or motion and keep it removed unless comprehension worsens.
 
 **The one guardrail (so a figure *adds*, not decorates):** don't draw what a single sentence,
 equation, or table **fully** conveys — a bare number, a one-line rule, or a clean derivation belongs

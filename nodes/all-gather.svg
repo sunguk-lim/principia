@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" font-family="'Iowan Old Style',Palatino,Georgia,serif" role="img" aria-labelledby="title desc">
+  <title id="title">All-gather concept diagram</title>
+  <desc id="desc">All-gather is gather followed by broadcast: every process contributes its chunk, the chunks are collected into the full buffer, and then every process — not just the root —…</desc>
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>

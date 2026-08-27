@@ -1,312 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1660 852" width="1660" height="852">
-<rect x="0" y="0" width="1660" height="852" fill="#FCF9F2"/>
-<text x="40.0" y="46.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="30" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">SIMT — divergence &amp; reconvergence in a single warp</text>
-<text x="40.0" y="74.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="400" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">The grid IS time: 32 lanes (columns) × 4 cycles (rows) — splits read down the axis.</text>
-<rect x="1000.0" y="24.0" width="24.0" height="24.0" rx="5" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2.5"/>
-<text x="1031.0" y="43.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">path A (i&lt;16)</text>
-<rect x="1000.0" y="57.0" width="24.0" height="24.0" rx="5" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2.5"/>
-<text x="1031.0" y="76.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">path B (i≥16)</text>
-<rect x="1213.0" y="24.0" width="24.0" height="24.0" rx="5" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2.5"/>
-<text x="1244.0" y="43.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">executing</text>
-<rect x="1213.0" y="57.0" width="24.0" height="24.0" rx="5" fill="#3F9B86" fill-opacity="0.16" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2.5" stroke-dasharray="4 3"/>
-<text x="1244.0" y="76.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">masked (dashed)</text>
-<rect x="1426.0" y="24.0" width="24.0" height="24.0" rx="5" fill="#E8A02E" fill-opacity="1.0" stroke="#a86a12" stroke-opacity="1.0" stroke-width="2.5"/>
-<text x="1457.0" y="43.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">mask transition</text>
-<rect x="1426.0" y="57.0" width="24.0" height="24.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2.5"/>
-<text x="1457.0" y="76.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">input / scaffold</text>
-<rect x="353.0" y="120.0" width="637.0" height="38.0" rx="8" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.9" stroke-width="2"/>
-<text x="673.0" y="145.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#3F9B86" fill-opacity="1.0" text-anchor="middle" style="">PATH A · lanes 0–15 · i&lt;16 TRUE</text>
-<rect x="993.0" y="120.0" width="637.0" height="38.0" rx="8" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.9" stroke-width="2"/>
-<text x="1313.0" y="145.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#D85A30" fill-opacity="1.0" text-anchor="middle" style="">PATH B · lanes 16–31 · i&lt;16 FALSE</text>
-<text x="373.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">0</text>
-<line x1="373.0" y1="185.0" x2="373.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="533.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">4</text>
-<line x1="533.0" y1="185.0" x2="533.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="693.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">8</text>
-<line x1="693.0" y1="185.0" x2="693.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="853.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">12</text>
-<line x1="853.0" y1="185.0" x2="853.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="973.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">15</text>
-<line x1="973.0" y1="185.0" x2="973.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="1013.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">16</text>
-<line x1="1013.0" y1="185.0" x2="1013.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="1173.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">20</text>
-<line x1="1173.0" y1="185.0" x2="1173.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="1333.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">24</text>
-<line x1="1333.0" y1="185.0" x2="1333.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="1493.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">28</text>
-<line x1="1493.0" y1="185.0" x2="1493.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="1613.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="">31</text>
-<line x1="1613.0" y1="185.0" x2="1613.0" y2="191.0" stroke="#C79A3E" stroke-width="1.5" stroke-opacity="1.0"/>
-<text x="340.0" y="180.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#6b6b6b" fill-opacity="1.0" text-anchor="end" style="">lane i →</text>
-<rect x="344.0" y="196.0" width="1298.0" height="504.0" rx="12" fill="none" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="3"/>
-<text x="339.0" y="448.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#8a6a1e" fill-opacity="1.0" text-anchor="middle" style="" transform="rotate(-90 339.0 448.0)">WARP · 32 lanes · lockstep</text>
-<line x1="993.0" y1="200.0" x2="993.0" y2="696.0" stroke="#2b2b2b" stroke-width="1.6" stroke-opacity="0.5" stroke-dasharray="3 4"/>
-<text x="340.0" y="236.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="end" style="">a[i] = 10·(i+1)</text>
-<text x="340.0" y="284.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="end" style="">b[i] = i+1</text>
-<rect x="356.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="373.0" y="236.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">10</text>
-<rect x="356.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="373.0" y="284.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">1</text>
-<rect x="396.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="413.0" y="236.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">20</text>
-<rect x="396.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="413.0" y="284.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">2</text>
-<rect x="436.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="453.0" y="236.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">30</text>
-<rect x="436.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="453.0" y="284.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">3</text>
-<rect x="476.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="476.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="516.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="516.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="556.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="556.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="596.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="596.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="636.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="636.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="676.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="676.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="716.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="716.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="756.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="756.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="796.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="796.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="836.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="836.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="876.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="876.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="916.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="916.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="956.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="973.0" y="236.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">160</text>
-<rect x="956.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="973.0" y="284.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">16</text>
-<rect x="996.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1013.0" y="236.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">170</text>
-<rect x="996.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1013.0" y="284.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">17</text>
-<rect x="1036.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1053.0" y="236.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">180</text>
-<rect x="1036.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1053.0" y="284.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">18</text>
-<rect x="1076.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1076.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1116.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1116.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1156.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1156.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1196.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1196.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1236.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1236.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1276.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1276.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1316.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1316.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1356.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1356.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1396.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1396.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1436.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1436.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1476.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1476.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1516.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1516.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1556.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1556.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1596.0" y="210.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1613.0" y="236.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">320</text>
-<rect x="1596.0" y="258.0" width="34.0" height="40.0" rx="5" fill="#FBF0DB" fill-opacity="1.0" stroke="#C79A3E" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1613.0" y="284.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">32</text>
-<rect x="356.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<text x="373.0" y="356.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">11</text>
-<rect x="396.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<text x="413.0" y="356.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">22</text>
-<rect x="436.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<text x="453.0" y="356.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">33</text>
-<rect x="476.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="516.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="556.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="596.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="636.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="676.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="716.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="756.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="796.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="836.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="876.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="916.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="956.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<text x="973.0" y="356.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">176</text>
-<rect x="996.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1013.0" y="356.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">187</text>
-<rect x="1036.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1053.0" y="356.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">198</text>
-<rect x="1076.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1116.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1156.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1196.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1236.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1276.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1316.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1356.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1396.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1436.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1476.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1516.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1556.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1596.0" y="324.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1613.0" y="356.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">352</text>
-<rect x="356.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<text x="373.0" y="472.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">11</text>
-<rect x="396.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<text x="413.0" y="472.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">22</text>
-<rect x="436.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<text x="453.0" y="472.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">33</text>
-<rect x="476.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="516.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="556.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="596.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="636.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="676.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="716.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="756.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="796.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="836.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="876.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="916.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="956.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<text x="973.0" y="472.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">176</text>
-<rect x="996.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="1013.0" y="472.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="font-style:italic;">187</text>
-<rect x="1036.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="1053.0" y="472.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="font-style:italic;">198</text>
-<rect x="1076.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1116.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1156.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1196.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1236.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1276.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1316.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1356.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1396.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1436.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1476.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1516.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1556.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="1596.0" y="440.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="1613.0" y="472.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="font-style:italic;">352</text>
-<rect x="356.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="373.0" y="550.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="font-style:italic;">11</text>
-<rect x="396.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="413.0" y="550.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="font-style:italic;">22</text>
-<rect x="436.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="453.0" y="550.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="font-style:italic;">33</text>
-<rect x="476.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="516.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="556.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="596.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="636.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="676.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="716.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="756.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="796.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="836.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="876.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="916.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<rect x="956.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="0.15" stroke="#3F9B86" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="973.0" y="550.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="middle" style="font-style:italic;">176</text>
-<rect x="996.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1013.0" y="550.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">153</text>
-<rect x="1036.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1053.0" y="550.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">162</text>
-<rect x="1076.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1116.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1156.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1196.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1236.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1276.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1316.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1356.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1396.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1436.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1476.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1516.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1556.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1596.0" y="518.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<text x="1613.0" y="550.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">288</text>
-<rect x="356.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="396.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="436.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="476.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="516.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="556.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="596.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="636.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="676.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="716.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="756.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="796.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="836.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="876.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="916.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="956.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#3F9B86" fill-opacity="1.0" stroke="#3F9B86" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="996.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1036.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1076.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1116.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1156.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1196.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1236.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1276.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1316.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1356.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1396.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1436.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1476.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1516.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1556.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="1596.0" y="636.0" width="34.0" height="52.0" rx="6" fill="#D85A30" fill-opacity="1.0" stroke="#D85A30" stroke-opacity="1.0" stroke-width="2"/>
-<rect x="24.0" y="324.0" width="112.0" height="32.0" rx="8" fill="#2b2b2b" fill-opacity="1.0" stroke="none" stroke-opacity="1.0" stroke-width="0"/>
-<text x="80.0" y="346.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">STEP 1/4</text>
-<rect x="144.0" y="324.0" width="178.0" height="32.0" rx="8" fill="none" fill-opacity="1.0" stroke="#2b2b2b" stroke-opacity="1.0" stroke-width="1.8"/>
-<text x="233.0" y="346.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">c = a + b</text>
-<text x="24.0" y="378.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">shared ADD · 0 lanes idle</text>
-<rect x="24.0" y="440.0" width="112.0" height="32.0" rx="8" fill="#2b2b2b" fill-opacity="1.0" stroke="none" stroke-opacity="1.0" stroke-width="0"/>
-<text x="80.0" y="462.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">STEP 2/4</text>
-<rect x="144.0" y="440.0" width="178.0" height="32.0" rx="8" fill="none" fill-opacity="1.0" stroke="#2b2b2b" stroke-opacity="1.0" stroke-width="1.8"/>
-<text x="233.0" y="462.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">c = a + b</text>
-<text x="24.0" y="494.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">pass A · 16 on, 16 masked</text>
-<rect x="24.0" y="518.0" width="112.0" height="32.0" rx="8" fill="#2b2b2b" fill-opacity="1.0" stroke="none" stroke-opacity="1.0" stroke-width="0"/>
-<text x="80.0" y="540.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">STEP 3/4</text>
-<rect x="144.0" y="518.0" width="178.0" height="32.0" rx="8" fill="none" fill-opacity="1.0" stroke="#2b2b2b" stroke-opacity="1.0" stroke-width="1.8"/>
-<text x="233.0" y="540.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">c = a − b</text>
-<text x="24.0" y="572.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">pass B · masks flipped</text>
-<rect x="24.0" y="636.0" width="112.0" height="32.0" rx="8" fill="#2b2b2b" fill-opacity="1.0" stroke="none" stroke-opacity="1.0" stroke-width="0"/>
-<text x="80.0" y="658.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" fill-opacity="1.0" text-anchor="middle" style="">STEP 4/4</text>
-<rect x="144.0" y="636.0" width="178.0" height="32.0" rx="8" fill="none" fill-opacity="1.0" stroke="#2b2b2b" stroke-opacity="1.0" stroke-width="1.8"/>
-<text x="233.0" y="658.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="middle" style="">next instr</text>
-<text x="24.0" y="690.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="600" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">reconverged · full width</text>
-<rect x="763.0" y="390.0" width="460.0" height="36.0" rx="18" fill="#E8A02E" fill-opacity="0.96" stroke="#a86a12" stroke-opacity="1.0" stroke-width="2"/>
-<text x="993.0" y="414.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#3a2409" fill-opacity="1.0" text-anchor="middle" style="">BRANCH  ▸  predicate  i &lt; 16 ?</text>
-<text x="673.0" y="413.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#3F9B86" fill-opacity="1.0" text-anchor="middle" style="">TRUE → stay ON</text>
-<text x="1313.0" y="413.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#D85A30" fill-opacity="1.0" text-anchor="middle" style="">FALSE → mask OFF</text>
-<line x1="673.0" y1="378.0" x2="673.0" y2="389.0" stroke="#3F9B86" stroke-width="2.5" stroke-opacity="1.0"/>
-<line x1="1313.0" y1="427.0" x2="1313.0" y2="438.0" stroke="#D85A30" stroke-width="2.5" stroke-opacity="1.0" stroke-dasharray="4 3"/>
-<rect x="763.0" y="585.0" width="460.0" height="36.0" rx="18" fill="#E8A02E" fill-opacity="0.96" stroke="#a86a12" stroke-opacity="1.0" stroke-width="2"/>
-<text x="993.0" y="609.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#3a2409" fill-opacity="1.0" text-anchor="middle" style="">RECONVERGE  ◂  masks clear, warp full-width</text>
-<line x1="1313.0" y1="572.0" x2="1313.0" y2="584.0" stroke="#D85A30" stroke-width="2.5" stroke-opacity="1.0" stroke-dasharray="4 3"/>
-<line x1="673.0" y1="622.0" x2="673.0" y2="634.0" stroke="#3F9B86" stroke-width="2.5" stroke-opacity="1.0"/>
-<text x="40.0" y="726.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">Invariant (WARP):</text>
-<text x="214.0" y="726.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="500" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">“the 32 threads always retire instructions together as one warp” — masked lanes no-op to hold lockstep.</text>
-<text x="40.0" y="757.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">Divergence cost:</text>
-<text x="214.0" y="757.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="500" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">the branch spends 2 cycles (rows 2+3) vs 1 for an agreeing warp — count the rows.</text>
-<text x="40.0" y="788.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">Worst case:</text>
-<text x="214.0" y="788.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="500" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">if all 32 lanes disagreed it serializes up to 32 one-wide passes — see [[warp]].</text>
-<text x="40.0" y="819.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="#2b2b2b" fill-opacity="1.0" text-anchor="start" style="">SIMT vs SIMD:</text>
-<text x="214.0" y="819.0" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="500" fill="#6b6b6b" fill-opacity="1.0" text-anchor="start" style="">SIMD needs this masking hand-written; here the hardware does it — no vector register is drawn.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="700" viewBox="0 0 720 700" role="img" aria-labelledby="title desc">
+  <title id="title">SIMT turns scalar thread code into one lockstep warp and handles divergence with masks</title>
+  <desc id="desc">The programmer writes scalar code for thread i, and hardware bundles 32 threads into one warp. Cycle 1 issues ADD to all 32 lanes. At a branch where i is less than 16, cycle 2 executes the ADD arm on lanes 0 through 15 while lanes 16 through 31 are masked. Cycle 3 flips the masks and executes SUB on lanes 16 through 31. Cycle 4 reconverges all 32 lanes on the next shared instruction. The divergent branch costs two serialized cycles rather than one aligned cycle.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 27px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #536B7E; }
+      .stage { font-size: 16px; font-weight: 700; letter-spacing: .3px; }
+      .label { font-size: 17px; font-weight: 650; }
+      .small { font-size: 15px; fill: #536B7E; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; font-weight: 650; }
+      .neutral { fill: #F3F5F6; stroke: #9BA8B2; stroke-width: 1.5; }
+      .groupA { fill: #DDF3EE; stroke: #3F9B86; stroke-width: 2.5; }
+      .groupB { fill: #FBE3DD; stroke: #D85A30; stroke-width: 2.5; }
+      .maskedA { fill: #F5FAF8; stroke: #3F9B86; stroke-width: 2; stroke-dasharray: 7 5; }
+      .maskedB { fill: #FCF7F5; stroke: #D85A30; stroke-width: 2; stroke-dasharray: 7 5; }
+      .cost { fill: #FFF1C7; stroke: #D89016; stroke-width: 2.5; }
+      .flow { fill: none; stroke: #7B8D9B; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L9 5 L0 10 Z" fill="#7B8D9B"/></marker>
+  </defs>
+
+  <rect width="720" height="700" fill="#FFFFFF"/>
+  <text x="28" y="42" class="headline">Write one thread; hardware runs 32 in lockstep</text>
+  <text x="28" y="70" class="subtitle">SIMT keeps scalar programming while one warp shares each issued instruction</text>
+
+  <rect x="28" y="94" width="300" height="108" rx="11" class="neutral"/>
+  <text x="48" y="120" class="stage">PROGRAMMER WRITES SCALAR CODE</text>
+  <text x="48" y="148" class="mono">c[i] = a[i] + b[i]</text>
+  <text x="48" y="174" class="mono">if (i &lt; 16) ADD</text>
+  <text x="48" y="195" class="mono">else SUB</text>
+  <path d="M342 148 H384" class="flow"/>
+  <rect x="400" y="94" width="292" height="108" rx="11" class="cost"/>
+  <text x="546" y="120" text-anchor="middle" class="stage">HARDWARE BUNDLES THREADS</text>
+  <text x="546" y="156" text-anchor="middle" class="headline">32 threads = 1 warp</text>
+  <text x="546" y="184" text-anchor="middle" class="small">one instruction · private registers/data</text>
+
+  <text x="310" y="231" text-anchor="middle" class="stage">LANES 0–15 · i&lt;16</text>
+  <text x="570" y="231" text-anchor="middle" class="stage">LANES 16–31 · i≥16</text>
+  <g aria-label="Four SIMT execution cycles with two lane groups">
+    <text x="28" y="266" class="stage">CYCLE 1</text><text x="28" y="289" class="small">ADD · full warp</text>
+    <rect x="190" y="245" width="240" height="60" rx="9" class="groupA"/>
+    <text x="310" y="269" text-anchor="middle" class="small">ADD active · 16 lanes</text><text x="310" y="294" text-anchor="middle" class="label">i0: 11 … i15: 176</text>
+    <rect x="450" y="245" width="240" height="60" rx="9" class="groupB"/>
+    <text x="570" y="269" text-anchor="middle" class="small">ADD active · 16 lanes</text><text x="570" y="294" text-anchor="middle" class="label">i16: 187 … i31: 352</text>
+
+    <text x="28" y="346" class="stage">CYCLE 2</text><text x="28" y="369" class="small">branch · ADD arm</text>
+    <rect x="190" y="325" width="240" height="60" rx="9" class="groupA"/>
+    <text x="310" y="349" text-anchor="middle" class="small">executing ADD arm</text><text x="310" y="374" text-anchor="middle" class="label">i0: 11 … i15: 176</text>
+    <rect x="450" y="325" width="240" height="60" rx="9" class="maskedB"/>
+    <text x="570" y="349" text-anchor="middle" class="small">MASKED · 16 lanes</text><text x="570" y="374" text-anchor="middle" class="label">ADD result discarded</text>
+
+    <text x="28" y="426" class="stage">CYCLE 3</text><text x="28" y="449" class="small">branch · SUB arm</text>
+    <rect x="190" y="405" width="240" height="60" rx="9" class="maskedA"/>
+    <text x="310" y="429" text-anchor="middle" class="small">MASKED · 16 lanes</text><text x="310" y="454" text-anchor="middle" class="label">hold prior ADD result</text>
+    <rect x="450" y="405" width="240" height="60" rx="9" class="groupB"/>
+    <text x="570" y="429" text-anchor="middle" class="small">executing SUB arm</text><text x="570" y="454" text-anchor="middle" class="label">i16: 153 … i31: 288</text>
+
+    <text x="28" y="506" class="stage">CYCLE 4</text><text x="28" y="529" class="small">next instruction</text>
+    <rect x="190" y="485" width="240" height="60" rx="9" class="groupA"/>
+    <text x="310" y="509" text-anchor="middle" class="small">RECONVERGED</text><text x="310" y="534" text-anchor="middle" class="label">all 16 active</text>
+    <rect x="450" y="485" width="240" height="60" rx="9" class="groupB"/>
+    <text x="570" y="509" text-anchor="middle" class="small">RECONVERGED</text><text x="570" y="534" text-anchor="middle" class="label">all 16 active</text>
+  </g>
+
+  <rect x="54" y="574" width="612" height="54" rx="10" class="cost"/>
+  <text x="360" y="598" text-anchor="middle" class="small">divergent branch</text>
+  <text x="360" y="620" text-anchor="middle" class="label">ADD arm 1 cycle + SUB arm 1 cycle = 2 serialized cycles</text>
+  <rect x="54" y="645" width="612" height="40" rx="10" class="neutral"/>
+  <text x="360" y="670" text-anchor="middle" class="label">One instruction per warp cycle; masked lanes no-op, then all 32 reconverge.</text>
 </svg>

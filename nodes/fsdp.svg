@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 384" width="720" height="384" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 384" width="720" height="384" font-family="'Iowan Old Style',Palatino,Georgia,serif" role="img" aria-labelledby="title desc">
+  <title id="title">FSDP / ZeRO concept diagram</title>
+  <desc id="desc">FSDP (Fully Sharded Data Parallel, a.k.a.</desc>
   <defs>
     <style>
       .bg{fill:#FBFAF7}

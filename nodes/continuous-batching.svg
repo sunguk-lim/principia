@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">Continuous batching refills finished sequence slots between decode steps</title>
+  <desc id="desc">A fixed batch leaves the slots of short requests empty while request D waits. A continuous batch admits D as soon as A finishes, keeping useful work in the batch while the long request B continues.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 31px; font-weight: 760; }
+      .subtitle { font-size: 18px; fill: #536B7E; }
+      .eyebrow { font-size: 18px; font-weight: 750; letter-spacing: 1.2px; fill: #60768A; }
+      .label { font-size: 18px; font-weight: 700; }
+      .small { font-size: 17px; fill: #536B7E; }
+      .panel { fill: #F4F6F8; stroke: #9AAAB7; stroke-width: 2.5; }
+      .slot { fill: #FFFFFF; stroke: #C9D3DB; stroke-width: 1.5; }
+      .a { fill: #DDEBFA; stroke: #3977B8; stroke-width: 2; }
+      .b { fill: #DDF2EC; stroke: #2F8A78; stroke-width: 2; }
+      .c { fill: #EDE5F7; stroke: #7656A5; stroke-width: 2; }
+      .d { fill: #FFF1C7; stroke: #D89016; stroke-width: 3; }
+      .empty { fill: #FFFFFF; stroke: #B8C4CD; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+  <rect width="720" height="720" fill="#FFFFFF"/>
+  <text x="32" y="48" class="headline">Refill the batch between token steps</text>
+  <text x="32" y="77" class="subtitle">Each request keeps its own KV cache, so membership can change safely.</text>
+
+  <text x="32" y="116" class="eyebrow">FIXED MEMBERSHIP</text>
+  <rect x="32" y="132" width="656" height="216" rx="20" class="panel"/>
+  <text x="54" y="163" class="small">decode step →</text>
+  <g class="small" text-anchor="middle"><text x="245" y="163">1</text><text x="315" y="163">2</text><text x="385" y="163">3</text><text x="455" y="163">4</text><text x="525" y="163">5</text><text x="595" y="163">6</text></g>
+  <g class="label" text-anchor="middle"><text x="82" y="207">slot 1</text><text x="82" y="253">slot 2</text><text x="82" y="299">slot 3</text></g>
+  <g>
+    <rect x="210" y="181" width="64" height="36" rx="8" class="a"/><rect x="280" y="181" width="64" height="36" rx="8" class="a"/>
+    <rect x="350" y="181" width="64" height="36" rx="8" class="empty"/><rect x="420" y="181" width="64" height="36" rx="8" class="empty"/><rect x="490" y="181" width="64" height="36" rx="8" class="empty"/><rect x="560" y="181" width="64" height="36" rx="8" class="empty"/>
+    <rect x="210" y="227" width="64" height="36" rx="8" class="b"/><rect x="280" y="227" width="64" height="36" rx="8" class="b"/><rect x="350" y="227" width="64" height="36" rx="8" class="b"/><rect x="420" y="227" width="64" height="36" rx="8" class="b"/><rect x="490" y="227" width="64" height="36" rx="8" class="b"/><rect x="560" y="227" width="64" height="36" rx="8" class="b"/>
+    <rect x="210" y="273" width="64" height="36" rx="8" class="c"/><rect x="280" y="273" width="64" height="36" rx="8" class="c"/><rect x="350" y="273" width="64" height="36" rx="8" class="c"/><rect x="420" y="273" width="64" height="36" rx="8" class="empty"/><rect x="490" y="273" width="64" height="36" rx="8" class="empty"/><rect x="560" y="273" width="64" height="36" rx="8" class="empty"/>
+  </g>
+  <g class="label" text-anchor="middle"><text x="242" y="205">A</text><text x="312" y="205">A</text><text x="242" y="251">B</text><text x="312" y="251">B</text><text x="382" y="251">B</text><text x="452" y="251">B</text><text x="522" y="251">B</text><text x="592" y="251">B</text><text x="242" y="297">C</text><text x="312" y="297">C</text><text x="382" y="297">C</text></g>
+  <rect x="54" y="312" width="112" height="29" rx="8" class="d"/><text x="110" y="333" text-anchor="middle" class="label">D waits</text>
+  <text x="184" y="333" class="small">finished slots stay empty until B ends</text>
+
+  <text x="32" y="391" class="eyebrow">CONTINUOUS MEMBERSHIP</text>
+  <rect x="32" y="407" width="656" height="236" rx="20" fill="#EEF7F4" stroke="#2F8A78" stroke-width="2.5"/>
+  <text x="54" y="438" class="small">decode step →</text>
+  <g class="small" text-anchor="middle"><text x="245" y="438">1</text><text x="315" y="438">2</text><text x="385" y="438">3</text><text x="455" y="438">4</text><text x="525" y="438">5</text><text x="595" y="438">6</text></g>
+  <g class="label" text-anchor="middle"><text x="82" y="482">slot 1</text><text x="82" y="528">slot 2</text><text x="82" y="574">slot 3</text></g>
+  <g>
+    <rect x="210" y="456" width="64" height="36" rx="8" class="a"/><rect x="280" y="456" width="64" height="36" rx="8" class="a"/><rect x="350" y="456" width="64" height="36" rx="8" class="d"/><rect x="420" y="456" width="64" height="36" rx="8" class="d"/><rect x="490" y="456" width="64" height="36" rx="8" class="d"/><rect x="560" y="456" width="64" height="36" rx="8" class="d"/>
+    <rect x="210" y="502" width="64" height="36" rx="8" class="b"/><rect x="280" y="502" width="64" height="36" rx="8" class="b"/><rect x="350" y="502" width="64" height="36" rx="8" class="b"/><rect x="420" y="502" width="64" height="36" rx="8" class="b"/><rect x="490" y="502" width="64" height="36" rx="8" class="b"/><rect x="560" y="502" width="64" height="36" rx="8" class="b"/>
+    <rect x="210" y="548" width="64" height="36" rx="8" class="c"/><rect x="280" y="548" width="64" height="36" rx="8" class="c"/><rect x="350" y="548" width="64" height="36" rx="8" class="c"/><rect x="420" y="548" width="64" height="36" rx="8" class="empty"/><rect x="490" y="548" width="64" height="36" rx="8" class="empty"/><rect x="560" y="548" width="64" height="36" rx="8" class="empty"/>
+  </g>
+  <g class="label" text-anchor="middle"><text x="242" y="480">A</text><text x="312" y="480">A</text><text x="382" y="480">D</text><text x="452" y="480">D</text><text x="522" y="480">D</text><text x="592" y="480">D</text><text x="242" y="526">B</text><text x="312" y="526">B</text><text x="382" y="526">B</text><text x="452" y="526">B</text><text x="522" y="526">B</text><text x="592" y="526">B</text><text x="242" y="572">C</text><text x="312" y="572">C</text><text x="382" y="572">C</text></g>
+  <text x="404" y="620" class="small">A ends → evict A → admit D</text>
+  <text x="32" y="686" class="subtitle">The long request still runs, but a short request no longer leaves a dead slot behind.</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">Three-dimensional parallelism splits tensors, layers, and data along independent nested axes</title>
+  <desc id="desc">Two data-parallel replicas each contain four pipeline stages, and every stage contains eight tensor-parallel GPU shards. The nested structure makes eight times four times two equal sixty-four GPUs and places the most frequent communication inside the smallest, fastest group.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 31px; font-weight: 760; }
+      .subtitle { font-size: 18px; fill: #536B7E; }
+      .eyebrow { font-size: 18px; font-weight: 750; letter-spacing: 1.1px; fill: #60768A; }
+      .label { font-size: 20px; font-weight: 730; }
+      .small { font-size: 17px; fill: #536B7E; }
+      .replicaA { fill: #F2F7FC; stroke: #3977B8; stroke-width: 3; }
+      .replicaB { fill: #F0F8F5; stroke: #2F8A78; stroke-width: 3; }
+      .stage { fill: #FFFFFF; stroke: #AAB8C3; stroke-width: 1.7; }
+      .gpuA { fill: #76A8DE; stroke: #3977B8; stroke-width: 1.4; }
+      .gpuB { fill: #83C7B8; stroke: #2F8A78; stroke-width: 1.4; }
+      .focus { fill: #FFD879; stroke: #D89016; stroke-width: 3; }
+      .tp-link { fill: none; stroke: #D89016; stroke-width: 2.4; marker-start: url(#tp-left); marker-end: url(#tp-right); }
+      .pp-link { fill: none; stroke: #7A5CB0; stroke-width: 2.3; marker-end: url(#pp-arrow); }
+      .dp-link { fill: none; stroke: #3977B8; stroke-width: 3.2; marker-start: url(#dp-arrow); marker-end: url(#dp-arrow); }
+      .comm { fill: #F3F5F6; stroke: #9BA8B2; stroke-width: 1.5; }
+    </style>
+    <marker id="tp-left" markerWidth="7" markerHeight="7" refX="0.5" refY="3.5" orient="auto"><path d="M6 0 L0 3.5 L6 7 Z" fill="#D89016"/></marker>
+    <marker id="tp-right" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><path d="M0 0 L6 3.5 L0 7 Z" fill="#D89016"/></marker>
+    <marker id="pp-arrow" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><path d="M0 0 L6 3.5 L0 7 Z" fill="#7A5CB0"/></marker>
+    <marker id="dp-arrow" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto-start-reverse"><path d="M0 0 L7 4 L0 8 Z" fill="#3977B8"/></marker>
+  </defs>
+  <rect width="720" height="720" fill="#FFFFFF"/>
+  <text x="32" y="48" class="headline">Split three different things</text>
+  <text x="32" y="77" class="subtitle">matrix shards inside layer stages inside whole-model replicas</text>
+  <text x="360" y="116" text-anchor="middle" class="eyebrow">DP · SPLIT THE BATCH ACROSS TWO REPLICAS</text>
+
+  <rect x="48" y="140" width="286" height="430" rx="22" class="replicaA"/>
+  <rect x="386" y="140" width="286" height="430" rx="22" class="replicaB"/>
+  <text x="191" y="174" text-anchor="middle" class="label">Replica 0 · batch half A</text>
+  <text x="529" y="174" text-anchor="middle" class="label">Replica 1 · batch half B</text>
+
+  <g class="label" text-anchor="middle"><text x="27" y="229">S0</text><text x="27" y="321">S1</text><text x="27" y="413">S2</text><text x="27" y="505">S3</text></g>
+  <g>
+    <rect x="68" y="193" width="246" height="70" rx="12" class="stage"/><rect x="68" y="285" width="246" height="70" rx="12" class="stage"/><rect x="68" y="377" width="246" height="70" rx="12" class="stage"/><rect x="68" y="469" width="246" height="70" rx="12" class="stage"/>
+    <rect x="406" y="193" width="246" height="70" rx="12" class="stage"/><rect x="406" y="285" width="246" height="70" rx="12" class="stage"/><rect x="406" y="377" width="246" height="70" rx="12" class="stage"/><rect x="406" y="469" width="246" height="70" rx="12" class="stage"/>
+  </g>
+  <g>
+    <g id="rowA"><rect x="80" y="212" width="22" height="32" rx="5" class="gpuA"/><rect x="108" y="212" width="22" height="32" rx="5" class="gpuA"/><rect x="136" y="212" width="22" height="32" rx="5" class="gpuA"/><rect x="164" y="212" width="22" height="32" rx="5" class="gpuA"/><rect x="192" y="212" width="22" height="32" rx="5" class="gpuA"/><rect x="220" y="212" width="22" height="32" rx="5" class="gpuA"/><rect x="248" y="212" width="22" height="32" rx="5" class="gpuA"/><rect x="276" y="212" width="22" height="32" rx="5" class="gpuA"/></g>
+    <use href="#rowA" transform="translate(0 92)"/><use href="#rowA" transform="translate(0 184)"/><use href="#rowA" transform="translate(0 276)"/>
+    <rect x="276" y="212" width="22" height="32" rx="5" class="focus"/>
+    <g id="rowB"><rect x="418" y="212" width="22" height="32" rx="5" class="gpuB"/><rect x="446" y="212" width="22" height="32" rx="5" class="gpuB"/><rect x="474" y="212" width="22" height="32" rx="5" class="gpuB"/><rect x="502" y="212" width="22" height="32" rx="5" class="gpuB"/><rect x="530" y="212" width="22" height="32" rx="5" class="gpuB"/><rect x="558" y="212" width="22" height="32" rx="5" class="gpuB"/><rect x="586" y="212" width="22" height="32" rx="5" class="gpuB"/><rect x="614" y="212" width="22" height="32" rx="5" class="gpuB"/></g>
+    <use href="#rowB" transform="translate(0 92)"/><use href="#rowB" transform="translate(0 184)"/><use href="#rowB" transform="translate(0 276)"/>
+  </g>
+
+  <g aria-label="Frequent tensor-parallel all-reduce inside every stage">
+    <path d="M84 252 H294" class="tp-link"/><path d="M84 344 H294" class="tp-link"/><path d="M84 436 H294" class="tp-link"/><path d="M84 528 H294" class="tp-link"/>
+    <path d="M422 252 H632" class="tp-link"/><path d="M422 344 H632" class="tp-link"/><path d="M422 436 H632" class="tp-link"/><path d="M422 528 H632" class="tp-link"/>
+  </g>
+  <g aria-label="Pipeline activations forward and gradients backward between adjacent stages">
+    <path d="M306 263 V282 M316 285 V266 M306 355 V374 M316 377 V358 M306 447 V466 M316 469 V450" class="pp-link"/>
+    <path d="M644 263 V282 M654 285 V266 M644 355 V374 M654 377 V358 M644 447 V466 M654 469 V450" class="pp-link"/>
+  </g>
+  <path d="M334 555 H386" class="dp-link" aria-label="Data-parallel gradient synchronization between whole replicas once per training step"/>
+
+  <rect x="28" y="579" width="210" height="58" rx="10" class="comm"/>
+  <text x="133" y="603" text-anchor="middle" class="label">TP · all-reduce</text>
+  <text x="133" y="626" text-anchor="middle" class="small">every layer · fastest links</text>
+  <rect x="255" y="579" width="210" height="58" rx="10" class="comm"/>
+  <text x="360" y="603" text-anchor="middle" class="label">PP · adjacent sends</text>
+  <text x="360" y="626" text-anchor="middle" class="small">act ↓ · grad ↑ · medium links</text>
+  <rect x="482" y="579" width="210" height="58" rx="10" class="comm"/>
+  <text x="587" y="603" text-anchor="middle" class="label">DP · all-reduce</text>
+  <text x="587" y="626" text-anchor="middle" class="small">once per step · outer links</text>
+
+  <rect x="88" y="650" width="544" height="54" rx="14" fill="#FFF1C7" stroke="#D89016" stroke-width="3"/>
+  <text x="360" y="684" text-anchor="middle" class="headline">8 TP × 4 PP × 2 DP = 64 GPUs</text>
+</svg>

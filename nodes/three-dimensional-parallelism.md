@@ -26,6 +26,8 @@ within a layer, across layers, across samples — they **multiply**: the total G
 the hardware, putting the chattiest axis on the fastest links. This is the strategy behind
 Megatron-LM and DeepSpeed.
 
+![3D parallelism nests eight tensor shards inside four pipeline stages, then replicates the whole structure twice for 64 GPUs.](three-dimensional-parallelism.svg)
+
 ## Grounded explanation
 
 Each of the three prerequisite strategies hits its own wall when used alone. [[tensor-parallelism]]

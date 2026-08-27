@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" font-family="'Iowan Old Style',Palatino,Georgia,serif" role="img" aria-labelledby="title desc">
+  <title id="title">Grouped-query attention (GQA / MQA) concept diagram</title>
+  <desc id="desc">Standard multi-head-attention gives every query head its own key/value head — so the kv-cache stores one K,V per head.</desc>
   <defs>
     <style>
       .bg{fill:#FBFAF7}

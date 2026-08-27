@@ -1,7 +1,7 @@
 ---
 id: scan
 title: Scan (prefix)
-summary: Scan (inclusive prefix scan) is the collective-operation in which every process contributes a value and process i receives the reduction-operation of values 0 … i — a running…
+summary: Inclusive scan gives process i the reduction of contributions from process 0 through i, producing one running-prefix result per process.
 type: concept
 tags: [parallel-computing]
 prereqs: [collective-operation, reduction-operation]

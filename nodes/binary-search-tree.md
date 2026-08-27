@@ -1,7 +1,7 @@
 ---
 id: binary-search-tree
 title: Binary Search Tree
-summary: A binary search tree (BST) stores ordered data not as a contiguous array but as a branching structure of linked nodes, arranged so that the same halving idea behind binary-search…
+summary: A binary search tree stores ordered keys in linked nodes so lookup, insertion, and deletion follow left-smaller/right-larger paths without shifting an array.
 type: concept
 tags: [algorithms]
 prereqs: [binary-search]

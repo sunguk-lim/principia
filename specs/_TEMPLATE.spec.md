@@ -5,6 +5,68 @@
 > oversight. Derived FROM `nodes/<id>.md`; governed by `protocols/VISUAL_PROTOCOLS.md`
 > (mechanism/dataflow protocol) and `protocols/EXPLAIN.md`.
 
+## Visual teaching contract
+
+Complete this section before choosing a genre, inventorying entities, or drawing SVG.
+
+**Audience:** `<who is unfamiliar with this concept, and what prerequisites may the figure rely on?>`
+
+**Single job:** `<the one understanding this figure must deliver; not “teach the whole node”>`
+
+**Visual thesis — one sentence:**
+
+> Because `<problem>`, `<concept>` changes `<before>` into `<after>` by `<decisive action>`, so
+> `<payoff>`.
+
+**Traced object:** `<one concrete value/request/token/region from the worked instance>`
+
+**Subject visual vocabulary:** `<real shapes, materials, instruments, spatial relations, operations,
+and characteristic motion available from this concept>`
+
+**Signature moment:** `<the one concept-specific event receiving dominant scale, contrast, or motion>`
+
+**Anti-template test:** `<what makes this composition unable to explain an unrelated concept by merely
+changing its labels?>`
+
+Plan every visual channel before rendering. Write `neutral — no semantic job` rather than inventing
+meaning for an unused channel:
+
+| channel | fact encoded | planned treatment |
+|---|---|---|
+| **Form** | `<entity/type/shape>` | `<treatment>` |
+| **Space** | `<containment/order/relationship>` | `<treatment>` |
+| **Scale** | `<magnitude/importance>` | `<treatment>` |
+| **Colour** | `<one identity dimension>` | `<treatment>` |
+| **Rhythm** | `<sequence/recurrence/dwell importance>` | `<treatment>` |
+
+State how one visual model becomes progressively more precise. These are disclosure levels, not
+necessarily separate panels:
+
+| level | what the reader sees | words/notation introduced | what remains unchanged |
+|---|---|---|---|
+| **Intuition — what and why** | `<dominant picture showing problem + payoff>` | `<few short labels>` | `<traced object, identity, layout>` |
+| **Mechanism — how** | `<decisive transformation on the same object>` | `<essential technical names>` | `<same visual model and mapping>` |
+| **Precision — limits/exactness** | `<exact shapes, values, equation, boundary, or substrate>` | `<minimum qualifying detail>` | `<same thesis and traced result>` |
+
+**Comprehension test — intended answers from the figure alone:**
+
+1. What problem exists? — `<answer>`
+2. What changes? — `<answer>`
+3. What causes the change? — `<answer>`
+4. Why is the result useful? — `<answer>`
+
+**First-view constraints:** State how the intuitive view remains legible when the whole figure is fit
+to a mobile screen and a laptop window. List any detail deliberately deferred to the mechanism,
+precision, caption, or node prose.
+
+**Plan critique:** `<which initially plausible but generic choice was rejected or revised, and why?>`
+
+**Rendered critique:** Record findings from the static fallback, every dwell, and representative
+mid-transit frames at mobile and laptop fit-to-screen sizes. Name the element removed during the
+mandatory subtraction pass; restore it only if a specific comprehension answer becomes weaker.
+
+**Reduced-motion result:** `<how the static fallback/storyboard preserves the thesis and exact result>`
+
 ## Genre & spine
 
 Pick the concept's defining shape; it IS the layout:
@@ -61,8 +123,8 @@ hierarchy that number lives in IS the spine, decided before any two-axis analysi
 
 ## Figure trigger (EXPLAIN.md)
 
-State whether drawing is warranted and why. Name the load-bearing ideas that are
-*irreducibly visual*, each tagged with its visual kind:
+State whether drawing is warranted and why. Name the load-bearing ideas whose understanding
+materially benefits from visual expression, each tagged with its visual kind:
 - **SHAPE/structure** — <what spatial arrangement carries meaning?>
 - **FLOW/routing** — <what path/movement carries meaning?>
 - **CHANGE over steps** — <what unfolding process carries meaning?> (for a static

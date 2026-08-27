@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="420" height="220" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="420" height="220" font-family="'Iowan Old Style',Palatino,Georgia,serif" role="img" aria-labelledby="title desc">
+  <title id="title">Low-rank factorization concept diagram</title>
+  <desc id="desc">Approximating a large matrix W (d×d) by the product of two thin matrices B (d×r) and A (r×d) with r ≪ d.</desc>
   <style>
     .bg{fill:#FBFAF7}
     .mat{fill:#FBF0DB;stroke:#C79A3E;stroke-width:1}

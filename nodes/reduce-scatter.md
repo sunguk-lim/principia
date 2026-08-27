@@ -1,7 +1,7 @@
 ---
 id: reduce-scatter
 title: Reduce-scatter
-summary: "Reduce-scatter is reduce followed by scatter: every process holds a vector of the same length; the vectors are reduced element-wise (slice j of every process is combined into one…"
+summary: Reduce-scatter reduces equal-length vectors element-wise and distributes reduced slice j only to process j.
 type: concept
 tags: [parallel-computing]
 prereqs: [reduce, scatter, reduction-operation]

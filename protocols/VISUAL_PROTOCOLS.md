@@ -1,11 +1,11 @@
-# Visual protocols — subsidiary (figure mechanics only)
+# Visual protocols — visual explanation and figure mechanics
 
 > **Primary guidance is in `EXPLAIN.md`.** A node is taught by its **prose**, grounded in prerequisite
 > nodes (the closed-world law) and the four explanation principles — all in `EXPLAIN.md`, which is
-> **authoritative**. A **figure is optional and subsidiary**: draw one only when something is
-> *irreducibly visual*. This file covers only how to draw that figure. Where a block contract below
-> restates an explanation principle (worked instance, teach the why, concept spine, coordinated
-> levels), `EXPLAIN.md` governs — here they apply to the figure case.
+> **authoritative**. A **figure is optional and subsidiary**: draw one when it materially improves
+> understanding. This file governs how to design that visual explanation and then render it. Where a
+> contract below restates an explanation principle (worked instance, teach the why, concept spine,
+> coordinated levels), `EXPLAIN.md` governs — here those principles apply to the figure case.
 
 **Every rule here is universal.** State and apply each as a *general principle*. Any example is only an
 *illustration* — it must never *narrow* the rule, and it must never name a specific concept you happen to
@@ -14,12 +14,12 @@ annotates the condition** under which it applies (e.g. "when the figure has a me
 an *unannotated* case-specific rule is overfitting and is banned. Otherwise generalize — record the
 **principle**, not the incident.
 
-**Organization.** A figure is a **composition of building blocks**, not an instance of a concept
-category. §0 decides whether to draw at all. §1 is the catalog: for each fact the figure must express,
-the block that renders it, with its contract and known failure modes. §2 gives the composition laws that
-bind the assembled blocks into one figure. Legacy tags — `(rule n)` for the old global rules, `(AP-n)`
-for the old anti-patterns, `(conv n)` for the old mechanism conventions — mark where each numbered rule
-now lives, so committed specs citing those numbers still resolve.
+**Organization.** §0 designs the explanation and decides whether to draw. A figure is then a
+**composition of building blocks**, not an instance of a concept category. §1 is the catalog: for each
+fact the figure must express, the block that renders it, with its contract and known failure modes. §2
+gives the composition laws that bind the assembled blocks into one figure. Legacy tags — `(rule n)` for
+the old global rules, `(AP-n)` for the old anti-patterns, `(conv n)` for the old mechanism conventions —
+mark where each numbered rule now lives, so committed specs citing those numbers still resolve.
 
 **Craft stance (AP-1, AP-7).** Draw from your own understanding of the mechanism. A source figure is an
 optional craft reference: if you use one, **render it and study every frame** — never reason from its
@@ -27,18 +27,83 @@ code or a single frame — and never copy it 1:1. That includes its *numeric sho
 numbers, silent rounding, implicit results — the figure still owes the full derive-on-canvas treatment)
 and its *structural undercounting* (a drawing that lumps regions its own prose distinguishes).
 
-## §0 — Draw at all?
+## §0 — Design the visual explanation
 
-Draw when the meaning is irreducibly visual: most strongly **SHAPE/structure**, **FLOW/routing**, or
-**CHANGE over steps** — but also any relationship, comparison, or process a visual scaffold makes click.
+Do not begin with entities, panels, or SVG. Begin with the **visual thesis** required by
+`EXPLAIN.md`: problem → decisive transformation → payoff. Choose one concrete **traced object** that
+experiences that transformation and remains identifiable from the first view to the exact result.
+
+### Ground the direction in the subject
+
+State the audience and the figure's **single job**, then inventory the subject's own visual vocabulary:
+real shapes, materials, instruments, spatial relations, operations, and characteristic motion. Build
+from that vocabulary. Do not start from a house style, a familiar dashboard arrangement, or a generic
+box-and-arrow canvas and pour the concept into it.
+
+Choose one **signature moment** that embodies the thesis. Spend the strongest scale contrast, accent,
+or orchestrated motion there and keep the surrounding system disciplined. The signature must be a real
+conceptual event—not decorative spectacle. If the concept name and labels can be swapped for an
+unrelated topic without changing the composition, fail the **anti-template test** and redesign.
+
+Plan the visual language before rendering. For each channel—**form, space, scale, colour, and rhythm**—
+name the fact it communicates. A channel with no semantic job stays neutral. Structure is information:
+a panel means a distinct view, a divider means a boundary, numbering means true order, proximity means
+relationship, and repetition means recurrence. Never use these devices as decoration.
+
+Build one visual model through three levels of disclosure:
+
+| level | reader question | visual obligation |
+|---|---|---|
+| **Intuition** | What is this for? | One dominant picture exposes the problem and payoff; labels are short nouns or verbs, not explanatory paragraphs. |
+| **Mechanism** | How does it cause that change? | The same traced object moves through one non-degenerate worked instance; the decisive action is visible, not merely captioned. |
+| **Precision** | Where is the simplified picture exact or limited? | Add the minimum shapes, values, equations, boundaries, or substrate facts needed to make the model technically honest. |
+
+The levels may be a static composition, successive acts on one master clock, or a dominant panel with
+subordinate detail. **Progressive disclosure is refinement, not replacement**: preserve layout,
+identity, and the traced object wherever possible so the reader never has to learn a second visual
+language. A metaphor is allowed only when the real entities and mapping become explicit by the
+mechanism level; a charming but unmapped metaphor is decoration.
+
+Words only anchor what the visual already communicates. Use plain, concept-recognizable nouns and
+active verbs; keep an action's name consistent across acts. A label labels, a worked value demonstrates,
+and a caption explains one causal implication—no element quietly performs two jobs. If a paragraph is
+needed inside the canvas, the spatial explanation has failed; move the paragraph to the node prose and
+redesign the figure around the relation it was compensating for.
+
+Apply the **first-view test** before adding precision: at fit-to-screen mobile and laptop sizes, can a
+reader identify the problem, transformation, and payoff without reading the node prose? Apply the
+**comprehension test** after the full figure: can an unfamiliar reader explain what changed, what caused
+it, and why it matters? If either answer is no, revise the thesis or visual model; additional labels and
+animation polish do not repair a missing explanation.
+
+Work in two critique gates:
+
+1. **Plan critique, before SVG:** compare the proposed direction with the node and its worked instance.
+   Replace any choice that could have been made for any concept, and verify that the signature moment
+   proves the thesis rather than merely attracting attention.
+2. **Rendered critique, before acceptance:** render the static fallback, every dwell, and representative
+   mid-transit frames at mobile and laptop fit-to-screen sizes. Check comprehension, hierarchy,
+   occlusion, and continuity from the images—not the SVG source. Then subtract one non-essential label,
+   ornament, panel, or motion; restore it only if a named comprehension-test answer becomes weaker.
+
+Honor reduced-motion viewing. The static fallback or a static storyboard must preserve the visual
+thesis and exact result without requiring motion; animation may reveal causality, never own the only
+copy of the meaning.
+
+### Draw at all?
+
+Draw when a visual materially improves understanding: most strongly **SHAPE/structure**,
+**FLOW/routing**, or **CHANGE over steps** — but also any relationship, comparison, or process a visual
+scaffold makes click.
 Guardrail: what a single sentence, equation, or table FULLY conveys stays text (a bare number, a one-line
 rule, a clean derivation).
 
-For a mechanism, write its **complete step-list FIRST** (conv step-0): every phase, state, and
-data-movement — forward *and* backward, every collective, every transfer (who moves what, to where, then
-what is freed) — from your understanding of how it works. The figure must show **all** of it (n/a is
-valid for a backward half the node's own prose never asserts — do not invent one). A partial mechanism
-reads as wrong and is the single biggest cause of rework.
+For a mechanism, after fixing the visual thesis, write its **complete step-list before entity inventory
+or rendering** (conv step-0): every phase, state, and data-movement — forward *and* backward, every
+collective, every transfer (who moves what, to where, then what is freed) — from your understanding of
+how it works. The figure must show **all** of it (n/a is valid for a backward half the node's own prose
+never asserts — do not invent one). A partial mechanism reads as wrong and is the single biggest cause
+of rework.
 
 ## §1 — Building blocks
 

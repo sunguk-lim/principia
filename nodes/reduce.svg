@@ -1,69 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="640" viewBox="0 0 720 640" role="img" aria-labelledby="title desc">
+  <title id="title">Reduce combines values through a balanced tree and stores the result only at the root</title>
+  <desc id="desc">Processes P0 through P3 contribute 3, 5, 2, and 7. In the first parallel tree step, 3 plus 5 produces partial 8 while 2 plus 7 simultaneously produces partial 9. In the second step, 8 plus 9 produces 17. The computed value 17 is delivered to root P0; P1 through P3 receive no reduction result.</desc>
   <defs>
-    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
     <style>
-      .bg{fill:#FBFAF7}
-      .title{fill:#1B1A17;font-size:16px;font-weight:600}
-      .sub{fill:#5A564E;font-size:11.5px;font-style:italic;font-family:sans-serif}
-      .rowlab{fill:#8A857C;font-size:11px;font-family:sans-serif;font-style:italic}
-      .off{fill:#B8B3AA;fill-opacity:0.10;stroke:#C9C4BB;stroke-width:1}
-      .rank{fill:#8A857C;font-size:11px;font-family:sans-serif}
-      .cap{fill:#5A564E;font-size:12.5px;font-family:sans-serif}
-      .lbl{font-size:15px;font-weight:600;font-family:sans-serif}
-      .combine{fill:#5A564E;fill-opacity:0.05;stroke:#B0ABA2;stroke-width:1}
-      .clab{fill:#8A857C;font-size:11px;font-family:sans-serif;letter-spacing:1px}
-      .eq{font-size:15px;font-weight:600;font-family:sans-serif}
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 27px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #536B7E; }
+      .stage { font-size: 16px; font-weight: 700; letter-spacing: .3px; }
+      .label { font-size: 17px; font-weight: 650; }
+      .value { font-size: 21px; font-weight: 700; }
+      .small { font-size: 15px; fill: #536B7E; }
+      .blue { fill: #DDEAFF; stroke: #3977B8; stroke-width: 2; }
+      .teal { fill: #DDF3EE; stroke: #3F9B86; stroke-width: 2; }
+      .coral { fill: #FBE3DD; stroke: #D85A30; stroke-width: 2; }
+      .purple { fill: #EEE4FA; stroke: #7A5CB0; stroke-width: 2; }
+      .partial { fill: #FFF1C7; stroke: #D89016; stroke-width: 2.5; }
+      .inactive { fill: #F3F5F6; stroke: #B3BEC6; stroke-width: 1.5; }
+      .flow { fill: none; stroke: #7B8D9B; stroke-width: 2.5; marker-end: url(#arrow); }
     </style>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L8 4.5 L0 9 Z" fill="#7B8D9B"/>
+    </marker>
   </defs>
-  <rect class="bg" x="0" y="0" width="680" height="420" rx="6"/>
 
-  <text class="title" x="32" y="30">Reduce</text>
-  <text class="sub" x="100" y="30">all values combined by an operation (e.g. SUM); result stored at the root  ·  all → one, computed</text>
+  <rect width="720" height="640" fill="#FFFFFF"/>
+  <text x="28" y="42" class="headline">Reduce combines in a tree; one root gets the result</text>
+  <text x="28" y="70" class="subtitle">Associativity lets independent partials form in parallel instead of serially</text>
 
-  <!-- before: each process holds a value -->
-  <text class="rowlab" x="32" y="92">before</text>
-  <rect x="68"  y="70" width="84" height="40" rx="6" fill="#534AB7" fill-opacity="0.14" stroke="#534AB7" stroke-width="1.2"/>
-  <rect x="228" y="70" width="84" height="40" rx="6" fill="#1D9E75" fill-opacity="0.14" stroke="#1D9E75" stroke-width="1.2"/>
-  <rect x="388" y="70" width="84" height="40" rx="6" fill="#D85A30" fill-opacity="0.14" stroke="#D85A30" stroke-width="1.2"/>
-  <rect x="548" y="70" width="84" height="40" rx="6" fill="#D4537E" fill-opacity="0.14" stroke="#D4537E" stroke-width="1.2"/>
-  <text class="lbl" x="110" y="95" text-anchor="middle" fill="#534AB7">3</text>
-  <text class="lbl" x="270" y="95" text-anchor="middle" fill="#1D9E75">5</text>
-  <text class="lbl" x="430" y="95" text-anchor="middle" fill="#D85A30">2</text>
-  <text class="lbl" x="590" y="95" text-anchor="middle" fill="#D4537E">7</text>
-  <text class="rank" x="110" y="126" text-anchor="middle">P0  (root)</text>
-  <text class="rank" x="270" y="126" text-anchor="middle">P1</text>
-  <text class="rank" x="430" y="126" text-anchor="middle">P2</text>
-  <text class="rank" x="590" y="126" text-anchor="middle">P3</text>
+  <text x="28" y="111" class="stage">CONTRIBUTIONS</text>
+  <g aria-label="Four process contributions">
+    <rect x="55" y="126" width="130" height="58" rx="10" class="blue"/>
+    <text x="120" y="151" text-anchor="middle" class="small">P0 · root</text><text x="120" y="176" text-anchor="middle" class="value">3</text>
+    <rect x="215" y="126" width="130" height="58" rx="10" class="teal"/>
+    <text x="280" y="151" text-anchor="middle" class="small">P1</text><text x="280" y="176" text-anchor="middle" class="value">5</text>
+    <rect x="375" y="126" width="130" height="58" rx="10" class="coral"/>
+    <text x="440" y="151" text-anchor="middle" class="small">P2</text><text x="440" y="176" text-anchor="middle" class="value">2</text>
+    <rect x="535" y="126" width="130" height="58" rx="10" class="purple"/>
+    <text x="600" y="151" text-anchor="middle" class="small">P3</text><text x="600" y="176" text-anchor="middle" class="value">7</text>
+  </g>
 
-  <!-- converge on the combine box (color-matched) -->
-  <path d="M110 112 C 160 140, 270 150, 300 196" fill="none" stroke="#534AB7" stroke-width="1.6" opacity="0.6" marker-end="url(#ah)"/>
-  <path d="M270 112 C 300 140, 320 150, 326 196" fill="none" stroke="#1D9E75" stroke-width="1.6" opacity="0.6" marker-end="url(#ah)"/>
-  <path d="M430 112 C 400 140, 360 150, 354 196" fill="none" stroke="#D85A30" stroke-width="1.6" opacity="0.6" marker-end="url(#ah)"/>
-  <path d="M590 112 C 540 140, 410 150, 380 196" fill="none" stroke="#D4537E" stroke-width="1.6" opacity="0.6" marker-end="url(#ah)"/>
+  <text x="360" y="226" text-anchor="middle" class="stage">STEP 1 · PARALLEL PAIRS</text>
+  <path d="M120 184 C120 214 168 215 184 239" class="flow"/>
+  <path d="M280 184 C280 214 232 215 216 239" class="flow"/>
+  <path d="M440 184 C440 214 488 215 504 239" class="flow"/>
+  <path d="M600 184 C600 214 552 215 536 239" class="flow"/>
+  <g aria-label="Parallel partial sums">
+    <rect x="120" y="246" width="160" height="58" rx="10" class="partial"/>
+    <text x="200" y="270" text-anchor="middle" class="small">left partial</text><text x="200" y="295" text-anchor="middle" class="value">3 + 5 = 8</text>
+    <rect x="440" y="246" width="160" height="58" rx="10" class="partial"/>
+    <text x="520" y="270" text-anchor="middle" class="small">right partial</text><text x="520" y="295" text-anchor="middle" class="value">2 + 7 = 9</text>
+  </g>
 
-  <!-- combine box -->
-  <text class="clab" x="340" y="184" text-anchor="middle">SUM  (⊕)</text>
-  <rect class="combine" x="250" y="196" width="180" height="46" rx="8"/>
-  <text class="eq" x="340" y="224" text-anchor="middle">
-    <tspan fill="#534AB7">3</tspan><tspan fill="#5A564E"> + </tspan><tspan fill="#1D9E75">5</tspan><tspan fill="#5A564E"> + </tspan><tspan fill="#D85A30">2</tspan><tspan fill="#5A564E"> + </tspan><tspan fill="#D4537E">7</tspan><tspan fill="#5A564E"> = </tspan><tspan fill="#BA7517">17</tspan>
-  </text>
+  <text x="28" y="346" class="stage">STEP 2 · COMBINE THE PARTIALS</text>
+  <path d="M200 304 C200 332 300 333 330 359" class="flow"/>
+  <path d="M520 304 C520 332 420 333 390 359" class="flow"/>
+  <rect x="270" y="366" width="180" height="64" rx="11" class="partial"/>
+  <text x="360" y="391" text-anchor="middle" class="small">computed result</text>
+  <text x="360" y="420" text-anchor="middle" class="value">8 + 9 = 17</text>
 
-  <!-- result drops to the root (amber = computed) -->
-  <path d="M300 244 C 230 280, 150 285, 112 296" fill="none" stroke="#BA7517" stroke-width="1.8" opacity="0.7" marker-end="url(#ah)"/>
-
-  <!-- after: root holds the computed result -->
-  <text class="rowlab" x="32" y="320">after</text>
-  <rect x="68"  y="298" width="84" height="40" rx="6" fill="#BA7517" fill-opacity="0.16" stroke="#BA7517" stroke-width="1.3"/>
-  <rect class="off" x="228" y="298" width="84" height="40" rx="6"/>
-  <rect class="off" x="388" y="298" width="84" height="40" rx="6"/>
-  <rect class="off" x="548" y="298" width="84" height="40" rx="6"/>
-  <text class="lbl" x="110" y="323" text-anchor="middle" fill="#BA7517">17</text>
-  <text class="rank" x="110" y="354" text-anchor="middle">P0</text>
-  <text class="rank" x="270" y="354" text-anchor="middle">P1</text>
-  <text class="rank" x="430" y="354" text-anchor="middle">P2</text>
-  <text class="rank" x="590" y="354" text-anchor="middle">P3</text>
-
-  <text class="cap" x="340" y="392" text-anchor="middle">every value flows in and is combined by ⊕  →  only the root holds the result 17 (amber = computed, not moved)</text>
+  <text x="28" y="469" class="stage">ROOT RESULT ONLY</text>
+  <path d="M360 430 C360 467 205 469 136 493" class="flow"/>
+  <g aria-label="Only P0 receives the result">
+    <rect x="55" y="500" width="130" height="58" rx="10" class="partial"/>
+    <text x="120" y="524" text-anchor="middle" class="small">P0 · root</text><text x="120" y="550" text-anchor="middle" class="value">17</text>
+    <rect x="215" y="500" width="130" height="58" rx="10" class="inactive"/>
+    <text x="280" y="524" text-anchor="middle" class="small">P1</text><text x="280" y="549" text-anchor="middle" class="label">—</text>
+    <rect x="375" y="500" width="130" height="58" rx="10" class="inactive"/>
+    <text x="440" y="524" text-anchor="middle" class="small">P2</text><text x="440" y="549" text-anchor="middle" class="label">—</text>
+    <rect x="535" y="500" width="130" height="58" rx="10" class="inactive"/>
+    <text x="600" y="524" text-anchor="middle" class="small">P3</text><text x="600" y="549" text-anchor="middle" class="label">—</text>
+  </g>
+  <text x="440" y="584" text-anchor="middle" class="small">P1–P3 receive no result</text>
+  <rect x="55" y="596" width="610" height="34" rx="9" class="inactive"/>
+  <text x="360" y="618" text-anchor="middle" class="label">4 ranks → 2 parallel tree steps → one computed value at P0</text>
 </svg>

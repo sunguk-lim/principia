@@ -1,76 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 430" width="680" height="430" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="700" viewBox="0 0 720 700" role="img" aria-labelledby="title desc">
+  <title id="title">Inclusive scan builds every prefix through two parallel offset rounds</title>
+  <desc id="desc">Processes P0 through P3 start with 3, 5, 2, and 7. In parallel round 1 with offset 1, each process after P0 adds the previous row's value one position left, producing 3, 8, 7, and 9. In round 2 with offset 2, P2 and P3 add values two positions left from the previous row, producing final inclusive prefixes 3, 8, 10, and 17. Every process receives its own prefix result.</desc>
   <defs>
-    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
     <style>
-      .bg{fill:#FBFAF7}
-      .title{fill:#1B1A17;font-size:16px;font-weight:600}
-      .sub{fill:#5A564E;font-size:11.5px;font-style:italic;font-family:sans-serif}
-      .rowlab{fill:#8A857C;font-size:11px;font-family:sans-serif;font-style:italic}
-      .rank{fill:#8A857C;font-size:11px;font-family:sans-serif}
-      .cap{fill:#5A564E;font-size:12px;font-family:sans-serif}
-      .lbl{font-size:15px;font-weight:600;font-family:sans-serif}
-      .eq{font-size:10px;font-weight:600;font-family:sans-serif}
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 27px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #536B7E; }
+      .stage { font-size: 16px; font-weight: 700; letter-spacing: .3px; }
+      .label { font-size: 17px; font-weight: 650; }
+      .value { font-size: 20px; font-weight: 700; }
+      .small { font-size: 15px; fill: #536B7E; }
+      .blue { fill: #DDEAFF; stroke: #3977B8; stroke-width: 2; }
+      .teal { fill: #DDF3EE; stroke: #3F9B86; stroke-width: 2; }
+      .coral { fill: #FBE3DD; stroke: #D85A30; stroke-width: 2; }
+      .purple { fill: #EEE4FA; stroke: #7A5CB0; stroke-width: 2; }
+      .computed { fill: #FFF1C7; stroke-width: 2.5; }
+      .blue-stroke { stroke: #3977B8; }
+      .teal-stroke { stroke: #3F9B86; }
+      .coral-stroke { stroke: #D85A30; }
+      .purple-stroke { stroke: #7A5CB0; }
+      .neutral { fill: #F3F5F6; stroke: #9BA8B2; stroke-width: 1.5; }
+      .flow { fill: none; stroke: #7B8D9B; stroke-width: 2.5; marker-end: url(#arrow); }
     </style>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L8 4.5 L0 9 Z" fill="#7B8D9B"/>
+    </marker>
   </defs>
-  <rect class="bg" x="0" y="0" width="680" height="430" rx="6"/>
 
-  <text class="title" x="32" y="30">Scan  (inclusive prefix)</text>
-  <text class="sub" x="218" y="30">process i receives the reduction of values 0 … i  ·  a running total</text>
+  <rect width="720" height="700" fill="#FFFFFF"/>
+  <text x="28" y="42" class="headline">Scan builds every prefix in parallel rounds</text>
+  <text x="28" y="70" class="subtitle">Each round doubles how far information has propagated</text>
 
-  <!-- before: each process holds a value -->
-  <text class="rowlab" x="32" y="92">before</text>
-  <rect x="68"  y="70" width="84" height="40" rx="6" fill="#534AB7" fill-opacity="0.14" stroke="#534AB7" stroke-width="1.2"/>
-  <rect x="228" y="70" width="84" height="40" rx="6" fill="#1D9E75" fill-opacity="0.14" stroke="#1D9E75" stroke-width="1.2"/>
-  <rect x="388" y="70" width="84" height="40" rx="6" fill="#D85A30" fill-opacity="0.14" stroke="#D85A30" stroke-width="1.2"/>
-  <rect x="548" y="70" width="84" height="40" rx="6" fill="#D4537E" fill-opacity="0.14" stroke="#D4537E" stroke-width="1.2"/>
-  <text class="lbl" x="110" y="95" text-anchor="middle" fill="#534AB7">3</text>
-  <text class="lbl" x="270" y="95" text-anchor="middle" fill="#1D9E75">5</text>
-  <text class="lbl" x="430" y="95" text-anchor="middle" fill="#D85A30">2</text>
-  <text class="lbl" x="590" y="95" text-anchor="middle" fill="#D4537E">7</text>
-  <text class="rank" x="110" y="126" text-anchor="middle">P0</text>
-  <text class="rank" x="270" y="126" text-anchor="middle">P1</text>
-  <text class="rank" x="430" y="126" text-anchor="middle">P2</text>
-  <text class="rank" x="590" y="126" text-anchor="middle">P3</text>
+  <text x="28" y="111" class="stage">INPUTS</text>
+  <text x="195" y="143" text-anchor="middle" class="label">P0</text>
+  <text x="305" y="143" text-anchor="middle" class="label">P1</text>
+  <text x="415" y="143" text-anchor="middle" class="label">P2</text>
+  <text x="525" y="143" text-anchor="middle" class="label">P3</text>
+  <g aria-label="Initial process values">
+    <rect x="140" y="157" width="110" height="58" rx="9" class="blue"/><text x="195" y="194" text-anchor="middle" class="value">3</text>
+    <rect x="250" y="157" width="110" height="58" rx="9" class="teal"/><text x="305" y="194" text-anchor="middle" class="value">5</text>
+    <rect x="360" y="157" width="110" height="58" rx="9" class="coral"/><text x="415" y="194" text-anchor="middle" class="value">2</text>
+    <rect x="470" y="157" width="110" height="58" rx="9" class="purple"/><text x="525" y="194" text-anchor="middle" class="value">7</text>
+  </g>
 
-  <!-- triangular flow: P_i accumulates contributions from sources 0..i -->
-  <!-- source P0 (purple) -> i = 0,1,2,3 -->
-  <path d="M110 112 L110 286" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <path d="M118 112 L262 286" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <path d="M124 112 L422 286" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <path d="M130 112 L582 286" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <!-- source P1 (teal) -> i = 1,2,3 -->
-  <path d="M270 112 L270 286" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <path d="M280 112 L430 286" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <path d="M286 112 L590 286" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <!-- source P2 (coral) -> i = 2,3 -->
-  <path d="M430 112 L430 286" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <path d="M440 112 L598 286" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
-  <!-- source P3 (pink) -> i = 3 -->
-  <path d="M590 112 L590 286" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.45" marker-end="url(#ah)"/>
+  <text x="28" y="249" class="stage">ROUND 1</text>
+  <text x="28" y="272" class="small">read 1 lane left</text>
+  <path d="M195 215 V282" class="flow"/><path d="M305 215 V282" class="flow"/><path d="M415 215 V282" class="flow"/><path d="M525 215 V282" class="flow"/>
+  <g aria-label="First parallel prefix round with offset one">
+    <rect x="140" y="290" width="110" height="68" rx="9" class="computed blue-stroke"/>
+    <text x="195" y="316" text-anchor="middle" class="small">carry</text><text x="195" y="346" text-anchor="middle" class="value">3</text>
+    <rect x="250" y="290" width="110" height="68" rx="9" class="computed teal-stroke"/>
+    <text x="305" y="316" text-anchor="middle" class="small">3 + 5</text><text x="305" y="346" text-anchor="middle" class="value">= 8</text>
+    <rect x="360" y="290" width="110" height="68" rx="9" class="computed coral-stroke"/>
+    <text x="415" y="316" text-anchor="middle" class="small">5 + 2</text><text x="415" y="346" text-anchor="middle" class="value">= 7</text>
+    <rect x="470" y="290" width="110" height="68" rx="9" class="computed purple-stroke"/>
+    <text x="525" y="316" text-anchor="middle" class="small">2 + 7</text><text x="525" y="346" text-anchor="middle" class="value">= 9</text>
+  </g>
 
-  <!-- after: each process holds its prefix reduction -->
-  <text class="rowlab" x="32" y="312">after</text>
-  <rect x="68"  y="290" width="84" height="40" rx="6" fill="#534AB7" fill-opacity="0.14" stroke="#534AB7" stroke-width="1.2"/>
-  <rect x="228" y="290" width="84" height="40" rx="6" fill="#BA7517" fill-opacity="0.16" stroke="#BA7517" stroke-width="1.3"/>
-  <rect x="388" y="290" width="84" height="40" rx="6" fill="#BA7517" fill-opacity="0.16" stroke="#BA7517" stroke-width="1.3"/>
-  <rect x="548" y="290" width="84" height="40" rx="6" fill="#BA7517" fill-opacity="0.16" stroke="#BA7517" stroke-width="1.3"/>
-  <text class="lbl" x="110" y="315" text-anchor="middle" fill="#534AB7">3</text>
-  <text class="lbl" x="270" y="315" text-anchor="middle" fill="#BA7517">8</text>
-  <text class="lbl" x="430" y="315" text-anchor="middle" fill="#BA7517">10</text>
-  <text class="lbl" x="590" y="315" text-anchor="middle" fill="#BA7517">17</text>
+  <text x="28" y="393" class="stage">ROUND 2</text>
+  <text x="28" y="416" class="small">read 2 lanes left</text>
+  <path d="M195 358 V428" class="flow"/><path d="M305 358 V428" class="flow"/><path d="M415 358 V428" class="flow"/><path d="M525 358 V428" class="flow"/>
+  <g aria-label="Second parallel prefix round with offset two and final outputs">
+    <rect x="140" y="436" width="110" height="72" rx="9" class="computed blue-stroke"/>
+    <text x="195" y="462" text-anchor="middle" class="small">P0 · carry</text><text x="195" y="494" text-anchor="middle" class="value">3</text>
+    <rect x="250" y="436" width="110" height="72" rx="9" class="computed teal-stroke"/>
+    <text x="305" y="462" text-anchor="middle" class="small">P1 · carry</text><text x="305" y="494" text-anchor="middle" class="value">8</text>
+    <rect x="360" y="436" width="110" height="72" rx="9" class="computed coral-stroke"/>
+    <text x="415" y="462" text-anchor="middle" class="small">P2 · 3 + 7</text><text x="415" y="494" text-anchor="middle" class="value">= 10</text>
+    <rect x="470" y="436" width="110" height="72" rx="9" class="computed purple-stroke"/>
+    <text x="525" y="462" text-anchor="middle" class="small">P3 · 8 + 9</text><text x="525" y="494" text-anchor="middle" class="value">= 17</text>
+  </g>
 
-  <!-- prefix equations (the staircase) -->
-  <text class="eq" x="110" y="350" text-anchor="middle"><tspan fill="#534AB7">3</tspan></text>
-  <text class="eq" x="270" y="350" text-anchor="middle"><tspan fill="#534AB7">3</tspan><tspan fill="#5A564E">+</tspan><tspan fill="#1D9E75">5</tspan><tspan fill="#5A564E">=</tspan><tspan fill="#BA7517">8</tspan></text>
-  <text class="eq" x="430" y="350" text-anchor="middle"><tspan fill="#534AB7">3</tspan><tspan fill="#5A564E">+</tspan><tspan fill="#1D9E75">5</tspan><tspan fill="#5A564E">+</tspan><tspan fill="#D85A30">2</tspan><tspan fill="#5A564E">=</tspan><tspan fill="#BA7517">10</tspan></text>
-  <text class="eq" x="590" y="350" text-anchor="middle"><tspan fill="#534AB7">3</tspan><tspan fill="#5A564E">+</tspan><tspan fill="#1D9E75">5</tspan><tspan fill="#5A564E">+</tspan><tspan fill="#D85A30">2</tspan><tspan fill="#5A564E">+</tspan><tspan fill="#D4537E">7</tspan><tspan fill="#5A564E">=</tspan><tspan fill="#BA7517">17</tspan></text>
-  <text class="rank" x="110" y="372" text-anchor="middle">P0</text>
-  <text class="rank" x="270" y="372" text-anchor="middle">P1</text>
-  <text class="rank" x="430" y="372" text-anchor="middle">P2</text>
-  <text class="rank" x="590" y="372" text-anchor="middle">P3</text>
-
-  <text class="cap" x="340" y="402" text-anchor="middle">P_i combines the values of P0 … P_i (the triangular fan above)  →  a running prefix total.</text>
-  <text class="cap" x="340" y="420" text-anchor="middle">P0's prefix is just its own value (purple); the rest are computed (amber). Reduce would give only the last, 17.</text>
+  <rect x="104" y="538" width="512" height="44" rx="10" class="neutral"/>
+  <text x="360" y="566" text-anchor="middle" class="label">inclusive outputs: [3, 8, 10, 17]</text>
+  <text x="360" y="611" text-anchor="middle" class="stage">READ THE PREVIOUS ROW, THEN UPDATE TOGETHER</text>
+  <text x="360" y="637" text-anchor="middle" class="small">After offset 1, each value covers 2 ranks; after offset 2, it covers 4.</text>
+  <rect x="104" y="656" width="512" height="34" rx="9" class="neutral"/>
+  <text x="360" y="678" text-anchor="middle" class="label">Reduce keeps only 17; scan keeps every prefix.</text>
 </svg>

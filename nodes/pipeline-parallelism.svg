@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" font-family="'Iowan Old Style',Palatino,Georgia,serif" role="img" aria-labelledby="title desc">
+  <title id="title">Pipeline parallelism concept diagram</title>
+  <desc id="desc">Pipeline parallelism splits a neural-network by layers — each GPU holds a contiguous block of layers (a stage) — and pushes the data through the stages like an assembly line.</desc>
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -7,14 +9,14 @@
       .bg{fill:#FBFAF7}
       .title{fill:#1B1A17;font-size:16px;font-weight:600}
       .sub{fill:#5A564E;font-size:11px;font-style:italic;font-family:sans-serif}
-      .note{fill:#8A857C;font-size:9.5px;font-family:sans-serif}
+      .note{fill:#8A857C;font-size:11px;font-family:sans-serif}
       .stage{fill:#5A564E;fill-opacity:0.05;stroke:#B0ABA2;stroke-width:1}
-      .stt{fill:#6F6A61;font-size:9.5px;font-weight:600;font-family:sans-serif}
-      .rowlab{fill:#6F6A61;font-size:10px;font-weight:700;font-family:sans-serif}
+      .stt{fill:#6F6A61;font-size:11px;font-weight:600;font-family:sans-serif}
+      .rowlab{fill:#6F6A61;font-size:11px;font-weight:700;font-family:sans-serif}
       .gridbg{fill:#F1EEE8}
       .gl{stroke:#D8D4CC;stroke-width:0.5}
-      .cell{font-size:9px;font-weight:700;font-family:sans-serif}
-      .leg{font-size:9px;font-family:sans-serif}
+      .cell{font-size:11px;font-weight:700;font-family:sans-serif}
+      .leg{font-size:11px;font-family:sans-serif}
       .cap{fill:#5A564E;font-size:11px;font-family:sans-serif}
     </style>
   </defs>
@@ -101,5 +103,5 @@
   <text class="leg" x="290" y="241" fill="#6F6A61">bright = forward · dim+slash = backward · empty = bubble (idle)</text>
 
   <text class="cap" x="360" y="266" text-anchor="middle">Follow µb0 (blue) diagonally: F0 flows GPU0→1→2→3 (forward), then B0 flows GPU3→2→1→0 (backward).</text>
-  <text class="cap" x="360" y="284" text-anchor="middle">The idle triangles are the bubble; more micro-batches make it proportionally smaller. Only activations cross stages — point-to-point, no all-reduce.</text>
+  <text class="cap" x="360" y="284" text-anchor="middle">The bubble shrinks with more micro-batches. Activations go forward and gradients return backward — point-to-point, no all-reduce.</text>
 </svg>

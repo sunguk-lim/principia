@@ -1,4 +1,4 @@
-<svg viewBox="0 0 680 655" role="img" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 680 655" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc">
 <style>
 text{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
 .th{font-weight:600;font-size:15px;fill:#1B1A17}
@@ -9,7 +9,8 @@ text{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
 .c-amber{fill:#FBF0DB;stroke:#C79A3E}
 </style>
 <rect x="0" y="0" width="680" height="655" fill="#FBFAF7"/>
-        <title>Atlas of the six operators with shapes and elements</title>
+  <title id="title">Atlas of the six operators with shapes and elements</title>
+  <desc id="desc">Gradient, divergence, curl, Laplacian, Jacobian, Hessian — six names, one machine: take the del-operator $\\nabla$, combine it with a field through a product, then optionally…</desc>
         <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
         <text class="th" x="16" y="26">The full picture: every input, output, and element</text>
         <text class="ts" x="16" y="46">Shape = how many cells; elements = the actual partial derivatives. All six operators.</text>

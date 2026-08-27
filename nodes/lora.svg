@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 220" width="470" height="220" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 220" width="470" height="220" font-family="'Iowan Old Style',Palatino,Georgia,serif" role="img" aria-labelledby="title desc">
+  <title id="title">LoRA (Low-Rank Adaptation) concept diagram</title>
+  <desc id="desc">LoRA (Low-Rank Adaptation) adapts a large pretrained model to a new task by freezing the original weight matrix W and learning only a small low-rank update ΔW = B·A.</desc>
   <style>
     .bg{fill:#FBFAF7}
     .mat{fill:#FBF0DB;stroke:#C79A3E;stroke-width:1}

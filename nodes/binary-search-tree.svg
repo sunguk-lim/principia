@@ -1,123 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" width="940" height="560" font-family="'Iowan Old Style',Palatino,Georgia,serif">
-<defs>
-<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-<path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-</marker>
-<style>
-.title{fill:#1B1A17;font-size:17px;font-weight:600}
-.sub{fill:#5A564E;font-size:11.5px;font-style:italic;font-family:sans-serif}
-.lab{fill:#8A857C;font-size:10.5px;font-family:sans-serif;letter-spacing:.5px}
-.cap{fill:#5A564E;font-size:12.5px;font-family:sans-serif}
-.foot{fill:#8A857C;font-size:11px;font-family:sans-serif;font-style:italic}
-.key{font-size:18px;font-weight:600;font-family:sans-serif}
-.reglab{fill:#8A857C;font-size:10px;font-family:sans-serif;letter-spacing:.5px}
-.regval{font-size:16px;font-weight:600;font-family:sans-serif}
-.step{fill:#8A857C;font-size:11px;font-family:sans-serif;letter-spacing:1px}
-.cmp{font-size:15px;font-weight:700;font-family:sans-serif}
-.legt{fill:#5A564E;font-size:10.5px;font-family:sans-serif}
-.pankey{font-size:13px;font-weight:600;font-family:sans-serif}
-.cell{font-size:14px;font-weight:600;font-family:sans-serif}
-</style>
-</defs>
-<rect x="0" y="0" width="940" height="560" rx="8" fill="#FBFAF7"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="700" viewBox="0 0 720 700" role="img" aria-labelledby="title desc">
+  <title id="title">A binary search tree routes lookup and insertion through left-smaller and right-larger links</title>
+  <desc id="desc">A tree built from 5, 3, 8, 1, and 4 has root 5, children 3 and 8, and children 1 and 4 beneath 3. Looking up 4 follows 5 to 3 to 4 and succeeds in three comparisons. Inserting 6 follows 5 to 8 to an empty left link, where one new node is attached without moving existing nodes. The final in-order traversal is 1, 3, 4, 5, 6, 8.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 27px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #536B7E; }
+      .stage { font-size: 16px; font-weight: 700; letter-spacing: .3px; }
+      .label { font-size: 17px; font-weight: 650; }
+      .value { font-size: 20px; font-weight: 700; }
+      .small { font-size: 15px; fill: #536B7E; }
+      .node { fill: #F3F5F6; stroke: #7B8D9B; stroke-width: 2; }
+      .found { fill: #FFF1C7; stroke: #D89016; stroke-width: 3; }
+      .new { fill: #DDF3EE; stroke: #3F9B86; stroke-width: 3; }
+      .neutral { fill: #F3F5F6; stroke: #9BA8B2; stroke-width: 1.5; }
+      .lookup-card { fill: #FFF1C7; stroke: #D89016; stroke-width: 2.5; }
+      .insert-card { fill: #DDF3EE; stroke: #3F9B86; stroke-width: 2.5; }
+      .edge { fill: none; stroke: #9BA8B2; stroke-width: 2.5; }
+      .lookup { fill: none; stroke: #D89016; stroke-width: 5; }
+      .insert { fill: none; stroke: #3F9B86; stroke-width: 4; stroke-dasharray: 8 6; }
+      .lookup-text { fill: #9B620E; font-size: 15px; font-weight: 700; }
+      .insert-text { fill: #2D7565; font-size: 15px; font-weight: 700; }
+    </style>
+  </defs>
 
-<text class="title" x="32" y="34">Binary search tree — descend-loop register view</text>
-<text class="sub" x="32" y="52">one comparison routes the walk and discards a whole branch · O(log n) when balanced</text>
-<text class="step" x="790" y="34">STEP 4/5</text>
-<text class="lab" x="32" y="464">LEGEND</text>
-<rect x="32" y="472" width="13" height="13" rx="3" fill="#3F9B86" fill-opacity="0.85" stroke="#3F9B86" stroke-width="1.2"/>
-<text class="legt" x="50" y="483">left / smaller</text>
-<rect x="152.0" y="472" width="13" height="13" rx="3" fill="#5B7FA6" fill-opacity="0.85" stroke="#5B7FA6" stroke-width="1.2"/>
-<text class="legt" x="170.0" y="483">right / larger</text>
-<rect x="272.0" y="472" width="13" height="13" rx="3" fill="#C79A3E" fill-opacity="0.85" stroke="#C79A3E" stroke-width="1.2"/>
-<text class="legt" x="290.0" y="483">idle node</text>
-<rect x="362.0" y="472" width="13" height="13" rx="3" fill="#E8A02E" fill-opacity="0.85" stroke="#E8A02E" stroke-width="1.2"/>
-<text class="legt" x="380.0" y="483">key event (FOUND / new)</text>
-<g opacity="0.6"><line x1="536.0" y1="479" x2="562.0" y2="479" stroke="#8A857C" stroke-width="1.4" stroke-dasharray="4 4"/><rect x="566.0" y="472" width="13" height="13" fill="none" stroke="#8A857C" stroke-width="1.4"/><text class="legt" x="584.0" y="483">empty link</text></g>
-<line x1="233.0" y1="112.0" x2="177.0" y2="168.0" stroke="#C79A3E" stroke-width="1.7" opacity="1.0"/>
-<line x1="267.0" y1="112.0" x2="323.0" y2="168.0" stroke="#C79A3E" stroke-width="1.7" opacity="0.22"/>
-<line x1="148.3" y1="206.0" x2="121.7" y2="254.0" stroke="#C79A3E" stroke-width="1.7" opacity="0.22"/>
-<line x1="172.5" y1="205.5" x2="202.5" y2="254.5" stroke="#C79A3E" stroke-width="1.7" opacity="1.0"/>
-<g opacity="1.0"><circle cx="250" cy="95" r="24" fill="#FBF0DB" stroke="#C79A3E" stroke-width="1.7"/><text class="key" x="250" y="101" text-anchor="middle" fill="#1B1A17">5</text></g>
-<g opacity="1.0"><circle cx="160" cy="185" r="24" fill="#3F9B86" stroke="#3F9B86" stroke-width="1.7"/><text class="key" x="160" y="191" text-anchor="middle" fill="#1B1A17">3</text></g>
-<g opacity="0.22"><circle cx="340" cy="185" r="24" fill="#5B7FA6" stroke="#5B7FA6" stroke-width="1.7"/><text class="key" x="340" y="191" text-anchor="middle" fill="#1B1A17">8</text></g>
-<g opacity="0.22"><circle cx="110" cy="275" r="24" fill="#3F9B86" stroke="#3F9B86" stroke-width="1.7"/><text class="key" x="110" y="281" text-anchor="middle" fill="#1B1A17">1</text></g>
-<g opacity="1.0"><circle cx="215" cy="275" r="29" fill="none" stroke="#E8A02E" stroke-width="2.4" opacity="0.95"/><circle cx="215" cy="275" r="24" fill="#3F9B86" stroke="#3F9B86" stroke-width="2.6"/><text class="key" x="215" y="281" text-anchor="middle" fill="#1B1A17">4</text></g>
-<text class="lab" x="250" y="61" text-anchor="middle">root · entry</text>
-<g><rect x="253" y="267" width="40" height="22" rx="11" fill="#E8A02E" fill-opacity="0.18" stroke="#E8A02E" stroke-width="1.6"/><text class="cell" x="273" y="283" text-anchor="middle" fill="#1B1A17">4</text><text class="lab" x="273" y="262" text-anchor="middle">want</text></g>
-<text class="lab" x="470" y="124">DESCEND-LOOP REGISTER  ·  one row = one loop turn</text>
-<text class="sub" x="470" y="140">LOOKUP 4 · turn 3: at 4, 4=4 → FOUND (3 compares, one per level)</text>
-<text class="reglab" x="505.0" y="162" text-anchor="middle">cur (node)</text>
-<text class="reglab" x="580.0" y="162" text-anchor="middle">want</text>
-<text class="reglab" x="648.0" y="162" text-anchor="middle">cur ? want</text>
-<text class="reglab" x="741.0" y="162" text-anchor="middle">branch dropped</text>
-<text class="reglab" x="440" y="162" text-anchor="middle">d</text>
-<text class="reglab" x="440" y="199.0" text-anchor="middle" opacity="1.0">0</text>
-<g opacity="1.0">
-<rect x="470" y="172" width="70" height="38" rx="5" fill="#FBF0DB" stroke="#C79A3E" stroke-width="1.3"/>
-<text class="regval" x="505.0" y="196.0" text-anchor="middle" fill="#1B1A17">5</text>
-</g>
-<g opacity="1.0">
-<rect x="550" y="172" width="60" height="38" rx="5" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="1.3"/>
-<text class="regval" x="580.0" y="196.0" text-anchor="middle" fill="#1B1A17">4</text>
-</g>
-<g opacity="1.0">
-<rect x="620" y="172" width="56" height="38" rx="5" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="1.3"/>
-<text class="cmp" x="648.0" y="196.0" text-anchor="middle" fill="#1B1A17">&lt;</text>
-</g>
-<g opacity="1.0">
-<rect x="686" y="172" width="110" height="38" rx="5" fill="#EAF0F5" stroke="#5B7FA6" stroke-width="1.3"/>
-<text class="regval" x="741.0" y="196.0" text-anchor="middle" fill="#1B1A17">right {8}</text>
-</g>
-<path d="M440 212 q -14 8 0 16" fill="none" stroke="#8A857C" stroke-width="1.3" marker-end="url(#ah)" opacity="0.7"/>
-<text class="reglab" x="440" y="245.0" text-anchor="middle" opacity="1.0">1</text>
-<g opacity="1.0">
-<rect x="470" y="218" width="70" height="38" rx="5" fill="#3F9B86" stroke="#3F9B86" stroke-width="1.3"/>
-<text class="regval" x="505.0" y="242.0" text-anchor="middle" fill="#1B1A17">3</text>
-</g>
-<g opacity="1.0">
-<rect x="550" y="218" width="60" height="38" rx="5" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="1.3"/>
-<text class="regval" x="580.0" y="242.0" text-anchor="middle" fill="#1B1A17">4</text>
-</g>
-<g opacity="1.0">
-<rect x="620" y="218" width="56" height="38" rx="5" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="1.3"/>
-<text class="cmp" x="648.0" y="242.0" text-anchor="middle" fill="#1B1A17">&gt;</text>
-</g>
-<g opacity="1.0">
-<rect x="686" y="218" width="110" height="38" rx="5" fill="#E4F0EC" stroke="#3F9B86" stroke-width="1.3"/>
-<text class="regval" x="741.0" y="242.0" text-anchor="middle" fill="#1B1A17">left {1}</text>
-</g>
-<path d="M440 258 q -14 8 0 16" fill="none" stroke="#8A857C" stroke-width="1.3" marker-end="url(#ah)" opacity="0.7"/>
-<text class="reglab" x="440" y="291.0" text-anchor="middle" opacity="1.0">2</text>
-<g opacity="1.0">
-<rect x="470" y="264" width="70" height="38" rx="5" fill="#E8A02E" stroke="#E8A02E" stroke-width="1.3"/>
-<text class="regval" x="505.0" y="288.0" text-anchor="middle" fill="#1B1A17">4</text>
-<rect x="467" y="261" width="76" height="44" rx="7" fill="none" stroke="#E8A02E" stroke-width="2.2" opacity="0.9"/>
-</g>
-<g opacity="1.0">
-<rect x="550" y="264" width="60" height="38" rx="5" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="1.3"/>
-<text class="regval" x="580.0" y="288.0" text-anchor="middle" fill="#1B1A17">4</text>
-</g>
-<g opacity="1.0">
-<rect x="620" y="264" width="56" height="38" rx="5" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="1.3"/>
-<text class="cmp" x="648.0" y="288.0" text-anchor="middle" fill="#1B1A17">=</text>
-<rect x="617" y="261" width="62" height="44" rx="7" fill="none" stroke="#E8A02E" stroke-width="2.4"/>
-</g>
-<g opacity="1.0">
-<rect x="686" y="264" width="110" height="38" rx="5" fill="#EFE9DD" stroke="#C9C2B4" stroke-width="1.3"/>
-<text class="regval" x="741.0" y="288.0" text-anchor="middle" fill="#1B1A17">— FOUND</text>
-</g>
-<text class="lab" x="470" y="392">IN-ORDER READ  →  emits sorted, no sort step</text>
-<rect x="470" y="400" width="40" height="34" rx="5" fill="#FBF0DB" fill-opacity="0.5" stroke="#C79A3E" stroke-width="1.4" opacity="1.0"/>
-<text class="cell" x="490.0" y="422" text-anchor="middle" fill="#1B1A17">1</text>
-<rect x="516" y="400" width="40" height="34" rx="5" fill="#FBF0DB" fill-opacity="0.5" stroke="#C79A3E" stroke-width="1.4" opacity="1.0"/>
-<text class="cell" x="536.0" y="422" text-anchor="middle" fill="#1B1A17">3</text>
-<rect x="562" y="400" width="40" height="34" rx="5" fill="#FBF0DB" fill-opacity="0.5" stroke="#C79A3E" stroke-width="1.4" opacity="1.0"/>
-<text class="cell" x="582.0" y="422" text-anchor="middle" fill="#1B1A17">4</text>
-<rect x="608" y="400" width="40" height="34" rx="5" fill="#FBF0DB" fill-opacity="0.5" stroke="#C79A3E" stroke-width="1.4" opacity="1.0"/>
-<text class="cell" x="628.0" y="422" text-anchor="middle" fill="#1B1A17">5</text>
-<rect x="654" y="400" width="40" height="34" rx="5" fill="#E8A02E" fill-opacity="0.5" stroke="#E8A02E" stroke-width="1.4" opacity="1.0"/>
-<text class="cell" x="674.0" y="422" text-anchor="middle" fill="#1B1A17">8</text>
-<text class="cap" x="32" y="372">4=4 → FOUND (gold). Cost = tree height = 3 compares for n=5 (~log2 n), not 5. In-order sweep (left·node·right) emits 1 3 4 5 8 already sorted.</text>
-<text class="foot" x="32" y="538">Trade-off: sorted array = fast lookup, slow insert (up to n shifts). Balanced BST = both ~log n. Degenerate chain = O(n) — balance it.</text>
+  <rect width="720" height="700" fill="#FFFFFF"/>
+  <text x="28" y="42" class="headline">A BST turns comparisons into left or right links</text>
+  <text x="28" y="70" class="subtitle">Lookup discards a branch; insertion fills one empty link without shifting nodes</text>
+  <rect x="82" y="91" width="556" height="42" rx="10" class="neutral"/>
+  <text x="360" y="118" text-anchor="middle" class="label">every left subtree &lt; node &lt; every right subtree</text>
+
+  <text x="28" y="163" class="stage">ONE ORDERED TREE · TWO WALKS</text>
+  <g aria-label="Binary search tree after inserting 6">
+    <path d="M341 203 L249 258 M379 203 L471 258 M212 297 L168 352 M248 297 L292 352 M471 297 L438 352" class="edge"/>
+    <path d="M341 203 L249 258 M248 297 L292 352" class="lookup"/>
+    <path d="M379 203 L471 258 M471 297 L438 352" class="insert"/>
+
+    <circle cx="360" cy="180" r="29" class="node"/><text x="360" y="187" text-anchor="middle" class="value">5</text>
+    <text x="360" y="146" text-anchor="middle" class="small">root</text>
+    <circle cx="230" cy="280" r="29" class="node"/><text x="230" y="287" text-anchor="middle" class="value">3</text>
+    <circle cx="490" cy="280" r="29" class="node"/><text x="490" y="287" text-anchor="middle" class="value">8</text>
+    <circle cx="150" cy="375" r="29" class="node"/><text x="150" y="382" text-anchor="middle" class="value">1</text>
+    <circle cx="310" cy="375" r="29" class="found"/><text x="310" y="382" text-anchor="middle" class="value">4</text>
+    <text x="310" y="418" text-anchor="middle" class="lookup-text">FOUND</text>
+    <circle cx="420" cy="375" r="29" class="new"/><text x="420" y="382" text-anchor="middle" class="value">6</text>
+    <text x="420" y="418" text-anchor="middle" class="insert-text">NEW LINK</text>
+
+    <text x="274" y="222" class="lookup-text">4 &lt; 5</text>
+    <text x="267" y="326" class="lookup-text">4 &gt; 3</text>
+    <text x="415" y="222" class="insert-text">6 &gt; 5</text>
+    <text x="425" y="326" class="insert-text">6 &lt; 8</text>
+    <text x="90" y="285" class="small">smaller ←</text>
+    <text x="550" y="285" class="small">→ larger</text>
+  </g>
+
+  <g aria-label="Lookup and insertion steps">
+    <rect x="40" y="451" width="300" height="111" rx="11" class="lookup-card"/>
+    <text x="60" y="480" class="stage">LOOK UP 4</text>
+    <text x="60" y="507" class="label">5 → 3 → 4</text>
+    <text x="60" y="533" class="small">three comparisons · one node per level</text>
+    <text x="60" y="554" class="small">each comparison discards a whole branch</text>
+
+    <rect x="380" y="451" width="300" height="111" rx="11" class="insert-card"/>
+    <text x="400" y="480" class="stage">INSERT 6</text>
+    <text x="400" y="507" class="label">5 → 8 → empty left link</text>
+    <text x="400" y="533" class="small">attach one new node</text>
+    <text x="400" y="554" class="small">every existing node stays where it was</text>
+  </g>
+
+  <rect x="80" y="588" width="560" height="46" rx="10" class="neutral"/>
+  <text x="360" y="617" text-anchor="middle" class="label">in-order after insert: [1, 3, 4, 5, 6, 8]</text>
+  <text x="360" y="661" text-anchor="middle" class="stage">COST FOLLOWS HEIGHT</text>
+  <text x="360" y="685" text-anchor="middle" class="small">Balanced: about log₂(n) levels · sorted insertions can degenerate into an O(n) chain.</text>
 </svg>

@@ -1,140 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 430" width="680" height="430" font-family="'Iowan Old Style',Palatino,Georgia,serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 790" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">All-to-all transposes source rows into personalized destination rows</title>
+  <desc id="desc">Before all-to-all, each of four source processes owns a row containing one different chunk for each destination. The collective transposes that source-by-destination matrix. Afterward, each destination process owns one row containing exactly one chunk from every source. The highlighted chunk a2 moves from source P0's destination-2 column to destination P2's source-P0 column. Values are moved, not combined.</desc>
   <defs>
-    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
     <style>
-      .bg{fill:#FBFAF7}
-      .title{fill:#1B1A17;font-size:16px;font-weight:600}
-      .sub{fill:#5A564E;font-size:11.5px;font-style:italic;font-family:sans-serif}
-      .rowlab{fill:#8A857C;font-size:11px;font-family:sans-serif;font-style:italic}
-      .rank{fill:#8A857C;font-size:11px;font-family:sans-serif}
-      .cap{fill:#5A564E;font-size:12px;font-family:sans-serif}
-      .host{fill:#B8B3AA;fill-opacity:0.06;stroke:#C9C4BB;stroke-width:1}
-      .cl{font-size:10px;font-weight:600;font-family:sans-serif}
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 27px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #536B7E; }
+      .stage { font-size: 17px; font-weight: 700; letter-spacing: .3px; }
+      .axis { font-size: 15px; font-weight: 650; fill: #536B7E; }
+      .label { font-size: 17px; font-weight: 650; }
+      .cell { font-size: 16px; font-weight: 700; }
+      .small { font-size: 15px; fill: #536B7E; }
+      .blue { fill: #DDEAFF; stroke: #3977B8; stroke-width: 2; }
+      .teal { fill: #DDF3EE; stroke: #3F9B86; stroke-width: 2; }
+      .coral { fill: #FBE3DD; stroke: #D85A30; stroke-width: 2; }
+      .purple { fill: #EEE4FA; stroke: #7A5CB0; stroke-width: 2; }
+      .trace { stroke: #D89016; stroke-width: 4; }
+      .rule { fill: #FFF1C7; stroke: #D89016; stroke-width: 2.5; }
+      .neutral { fill: #F3F5F6; stroke: #9BA8B2; stroke-width: 1.5; }
     </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L9 5 L0 10 Z" fill="#7B8D9B"/>
+    </marker>
   </defs>
-  <rect class="bg" x="0" y="0" width="680" height="430" rx="6"/>
 
-  <text class="title" x="32" y="30">All-to-all</text>
-  <text class="sub" x="132" y="30">each process sends a different chunk to every other — a full transpose  ·  all → all</text>
+  <rect width="720" height="780" fill="#FFFFFF"/>
+  <text x="28" y="42" class="headline">All-to-all transposes personalized pieces</text>
+  <text x="28" y="70" class="subtitle">All-to-all moves a source×destination matrix into destination×source order</text>
 
-  <!-- ===== BEFORE: each process holds a row, coloured by its source ===== -->
-  <text class="rowlab" x="32" y="100">before</text>
-  <!-- P0 row (purple) -->
-  <rect class="host" x="52"  y="78" width="116" height="36" rx="6"/>
-  <rect x="59"  y="82" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
-  <rect x="85"  y="82" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
-  <rect x="111" y="82" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
-  <rect x="137" y="82" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
-  <text class="cl" x="71"  y="99" text-anchor="middle" fill="#534AB7">a0</text>
-  <text class="cl" x="97"  y="99" text-anchor="middle" fill="#534AB7">a1</text>
-  <text class="cl" x="123" y="99" text-anchor="middle" fill="#534AB7">a2</text>
-  <text class="cl" x="149" y="99" text-anchor="middle" fill="#534AB7">a3</text>
-  <!-- P1 row (teal) -->
-  <rect class="host" x="212" y="78" width="116" height="36" rx="6"/>
-  <rect x="219" y="82" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
-  <rect x="245" y="82" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
-  <rect x="271" y="82" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
-  <rect x="297" y="82" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
-  <text class="cl" x="231" y="99" text-anchor="middle" fill="#1D9E75">b0</text>
-  <text class="cl" x="257" y="99" text-anchor="middle" fill="#1D9E75">b1</text>
-  <text class="cl" x="283" y="99" text-anchor="middle" fill="#1D9E75">b2</text>
-  <text class="cl" x="309" y="99" text-anchor="middle" fill="#1D9E75">b3</text>
-  <!-- P2 row (coral) -->
-  <rect class="host" x="372" y="78" width="116" height="36" rx="6"/>
-  <rect x="379" y="82" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
-  <rect x="405" y="82" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
-  <rect x="431" y="82" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
-  <rect x="457" y="82" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
-  <text class="cl" x="391" y="99" text-anchor="middle" fill="#D85A30">c0</text>
-  <text class="cl" x="417" y="99" text-anchor="middle" fill="#D85A30">c1</text>
-  <text class="cl" x="443" y="99" text-anchor="middle" fill="#D85A30">c2</text>
-  <text class="cl" x="469" y="99" text-anchor="middle" fill="#D85A30">c3</text>
-  <!-- P3 row (pink) -->
-  <rect class="host" x="532" y="78" width="116" height="36" rx="6"/>
-  <rect x="539" y="82" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
-  <rect x="565" y="82" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
-  <rect x="591" y="82" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
-  <rect x="617" y="82" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
-  <text class="cl" x="551" y="99" text-anchor="middle" fill="#D4537E">d0</text>
-  <text class="cl" x="577" y="99" text-anchor="middle" fill="#D4537E">d1</text>
-  <text class="cl" x="603" y="99" text-anchor="middle" fill="#D4537E">d2</text>
-  <text class="cl" x="629" y="99" text-anchor="middle" fill="#D4537E">d3</text>
-  <text class="rank" x="110" y="130" text-anchor="middle">P0</text>
-  <text class="rank" x="270" y="130" text-anchor="middle">P1</text>
-  <text class="rank" x="430" y="130" text-anchor="middle">P2</text>
-  <text class="rank" x="590" y="130" text-anchor="middle">P3</text>
+  <text x="28" y="112" class="stage">1 · BEFORE — EACH SOURCE OWNS ONE OUTGOING ROW</text>
+  <text x="28" y="138" class="small">Cell ij is the piece sent from source Pᵢ to destination Pⱼ.</text>
+  <text x="360" y="168" text-anchor="middle" class="axis">destination →</text>
+  <text x="210" y="192" text-anchor="middle" class="axis">P0</text>
+  <text x="310" y="192" text-anchor="middle" class="axis">P1</text>
+  <text x="410" y="192" text-anchor="middle" class="axis">P2</text>
+  <text x="510" y="192" text-anchor="middle" class="axis">P3</text>
+  <text x="91" y="285" text-anchor="middle" class="axis" transform="rotate(-90 91 285)">source →</text>
 
-  <!-- ===== FLOW: chunk (i→j) goes from Pi to Pj — a transpose ===== -->
-  <!-- source P0 (purple) -->
-  <path d="M71 116 L71 296"   fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M97 116 L231 296"  fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M123 116 L391 296" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M149 116 L551 296" fill="none" stroke="#534AB7" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <!-- source P1 (teal) -->
-  <path d="M231 116 L97 296"  fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M257 116 L257 296" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M283 116 L417 296" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M309 116 L577 296" fill="none" stroke="#1D9E75" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <!-- source P2 (coral) -->
-  <path d="M391 116 L123 296" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M417 116 L283 296" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M443 116 L443 296" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M469 116 L603 296" fill="none" stroke="#D85A30" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <!-- source P3 (pink) -->
-  <path d="M551 116 L149 296" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M577 116 L309 296" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M603 116 L469 296" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
-  <path d="M629 116 L629 296" fill="none" stroke="#D4537E" stroke-width="1.1" opacity="0.4" marker-end="url(#ah)"/>
+  <g aria-label="Outgoing source by destination matrix">
+    <text x="135" y="225" text-anchor="end" class="label">P0</text>
+    <rect x="160" y="202" width="100" height="46" class="blue"/><rect x="260" y="202" width="100" height="46" class="blue"/><rect x="360" y="202" width="100" height="46" class="blue trace"/><rect x="460" y="202" width="100" height="46" class="blue"/>
+    <text x="210" y="231" text-anchor="middle" class="cell">a₀</text><text x="310" y="231" text-anchor="middle" class="cell">a₁</text><text x="410" y="231" text-anchor="middle" class="cell">a₂</text><text x="510" y="231" text-anchor="middle" class="cell">a₃</text>
 
-  <!-- ===== AFTER: each process holds a column — one chunk from every source ===== -->
-  <text class="rowlab" x="32" y="322">after</text>
-  <!-- P0 column: a0 b0 c0 d0 -->
-  <rect class="host" x="52"  y="300" width="116" height="36" rx="6"/>
-  <rect x="59"  y="304" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
-  <rect x="85"  y="304" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
-  <rect x="111" y="304" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
-  <rect x="137" y="304" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
-  <text class="cl" x="71"  y="321" text-anchor="middle" fill="#534AB7">a0</text>
-  <text class="cl" x="97"  y="321" text-anchor="middle" fill="#1D9E75">b0</text>
-  <text class="cl" x="123" y="321" text-anchor="middle" fill="#D85A30">c0</text>
-  <text class="cl" x="149" y="321" text-anchor="middle" fill="#D4537E">d0</text>
-  <!-- P1 column: a1 b1 c1 d1 -->
-  <rect class="host" x="212" y="300" width="116" height="36" rx="6"/>
-  <rect x="219" y="304" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
-  <rect x="245" y="304" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
-  <rect x="271" y="304" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
-  <rect x="297" y="304" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
-  <text class="cl" x="231" y="321" text-anchor="middle" fill="#534AB7">a1</text>
-  <text class="cl" x="257" y="321" text-anchor="middle" fill="#1D9E75">b1</text>
-  <text class="cl" x="283" y="321" text-anchor="middle" fill="#D85A30">c1</text>
-  <text class="cl" x="309" y="321" text-anchor="middle" fill="#D4537E">d1</text>
-  <!-- P2 column: a2 b2 c2 d2 -->
-  <rect class="host" x="372" y="300" width="116" height="36" rx="6"/>
-  <rect x="379" y="304" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
-  <rect x="405" y="304" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
-  <rect x="431" y="304" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
-  <rect x="457" y="304" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
-  <text class="cl" x="391" y="321" text-anchor="middle" fill="#534AB7">a2</text>
-  <text class="cl" x="417" y="321" text-anchor="middle" fill="#1D9E75">b2</text>
-  <text class="cl" x="443" y="321" text-anchor="middle" fill="#D85A30">c2</text>
-  <text class="cl" x="469" y="321" text-anchor="middle" fill="#D4537E">d2</text>
-  <!-- P3 column: a3 b3 c3 d3 -->
-  <rect class="host" x="532" y="300" width="116" height="36" rx="6"/>
-  <rect x="539" y="304" width="24" height="26" rx="3" fill="#534AB7" fill-opacity="0.18" stroke="#534AB7"/>
-  <rect x="565" y="304" width="24" height="26" rx="3" fill="#1D9E75" fill-opacity="0.18" stroke="#1D9E75"/>
-  <rect x="591" y="304" width="24" height="26" rx="3" fill="#D85A30" fill-opacity="0.18" stroke="#D85A30"/>
-  <rect x="617" y="304" width="24" height="26" rx="3" fill="#D4537E" fill-opacity="0.18" stroke="#D4537E"/>
-  <text class="cl" x="551" y="321" text-anchor="middle" fill="#534AB7">a3</text>
-  <text class="cl" x="577" y="321" text-anchor="middle" fill="#1D9E75">b3</text>
-  <text class="cl" x="603" y="321" text-anchor="middle" fill="#D85A30">c3</text>
-  <text class="cl" x="629" y="321" text-anchor="middle" fill="#D4537E">d3</text>
-  <text class="rank" x="110" y="352" text-anchor="middle">P0</text>
-  <text class="rank" x="270" y="352" text-anchor="middle">P1</text>
-  <text class="rank" x="430" y="352" text-anchor="middle">P2</text>
-  <text class="rank" x="590" y="352" text-anchor="middle">P3</text>
+    <text x="135" y="271" text-anchor="end" class="label">P1</text>
+    <rect x="160" y="248" width="100" height="46" class="teal"/><rect x="260" y="248" width="100" height="46" class="teal"/><rect x="360" y="248" width="100" height="46" class="teal"/><rect x="460" y="248" width="100" height="46" class="teal"/>
+    <text x="210" y="277" text-anchor="middle" class="cell">b₀</text><text x="310" y="277" text-anchor="middle" class="cell">b₁</text><text x="410" y="277" text-anchor="middle" class="cell">b₂</text><text x="510" y="277" text-anchor="middle" class="cell">b₃</text>
 
-  <text class="cap" x="340" y="388" text-anchor="middle">letter = source process (colour),  digit = destination.  chunk "x j" travels from its source to P j —</text>
-  <text class="cap" x="340" y="406" text-anchor="middle">so each process's row of outgoing chunks becomes a column of incoming ones:  a transpose.</text>
+    <text x="135" y="317" text-anchor="end" class="label">P2</text>
+    <rect x="160" y="294" width="100" height="46" class="coral"/><rect x="260" y="294" width="100" height="46" class="coral"/><rect x="360" y="294" width="100" height="46" class="coral"/><rect x="460" y="294" width="100" height="46" class="coral"/>
+    <text x="210" y="323" text-anchor="middle" class="cell">c₀</text><text x="310" y="323" text-anchor="middle" class="cell">c₁</text><text x="410" y="323" text-anchor="middle" class="cell">c₂</text><text x="510" y="323" text-anchor="middle" class="cell">c₃</text>
+
+    <text x="135" y="363" text-anchor="end" class="label">P3</text>
+    <rect x="160" y="340" width="100" height="46" class="purple"/><rect x="260" y="340" width="100" height="46" class="purple"/><rect x="360" y="340" width="100" height="46" class="purple"/><rect x="460" y="340" width="100" height="46" class="purple"/>
+    <text x="210" y="369" text-anchor="middle" class="cell">d₀</text><text x="310" y="369" text-anchor="middle" class="cell">d₁</text><text x="410" y="369" text-anchor="middle" class="cell">d₂</text><text x="510" y="369" text-anchor="middle" class="cell">d₃</text>
+  </g>
+
+  <path d="M360 398 V437" fill="none" stroke="#7B8D9B" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="110" y="410" width="188" height="54" rx="10" class="rule"/>
+  <text x="204" y="433" text-anchor="middle" class="axis">trace one piece</text>
+  <text x="204" y="454" text-anchor="middle" class="label">a₂: P0 → P2</text>
+  <rect x="422" y="410" width="188" height="54" rx="10" class="neutral"/>
+  <text x="516" y="433" text-anchor="middle" class="axis">collective rule</text>
+  <text x="516" y="454" text-anchor="middle" class="label">transpose, never sum</text>
+
+  <text x="28" y="505" class="stage">2 · AFTER — EACH DESTINATION OWNS ONE PERSONALIZED ROW</text>
+  <text x="28" y="531" class="small">Pⱼ receives the j-th piece from every source—not every piece.</text>
+  <text x="360" y="561" text-anchor="middle" class="axis">source →</text>
+  <text x="210" y="585" text-anchor="middle" class="axis">P0</text>
+  <text x="310" y="585" text-anchor="middle" class="axis">P1</text>
+  <text x="410" y="585" text-anchor="middle" class="axis">P2</text>
+  <text x="510" y="585" text-anchor="middle" class="axis">P3</text>
+  <text x="91" y="678" text-anchor="middle" class="axis" transform="rotate(-90 91 678)">destination →</text>
+
+  <g aria-label="Incoming destination by source matrix">
+    <text x="135" y="618" text-anchor="end" class="label">P0</text>
+    <rect x="160" y="595" width="100" height="46" class="blue"/><rect x="260" y="595" width="100" height="46" class="teal"/><rect x="360" y="595" width="100" height="46" class="coral"/><rect x="460" y="595" width="100" height="46" class="purple"/>
+    <text x="210" y="624" text-anchor="middle" class="cell">a₀</text><text x="310" y="624" text-anchor="middle" class="cell">b₀</text><text x="410" y="624" text-anchor="middle" class="cell">c₀</text><text x="510" y="624" text-anchor="middle" class="cell">d₀</text>
+
+    <text x="135" y="664" text-anchor="end" class="label">P1</text>
+    <rect x="160" y="641" width="100" height="46" class="blue"/><rect x="260" y="641" width="100" height="46" class="teal"/><rect x="360" y="641" width="100" height="46" class="coral"/><rect x="460" y="641" width="100" height="46" class="purple"/>
+    <text x="210" y="670" text-anchor="middle" class="cell">a₁</text><text x="310" y="670" text-anchor="middle" class="cell">b₁</text><text x="410" y="670" text-anchor="middle" class="cell">c₁</text><text x="510" y="670" text-anchor="middle" class="cell">d₁</text>
+
+    <text x="135" y="710" text-anchor="end" class="label">P2</text>
+    <rect x="160" y="687" width="100" height="46" class="blue trace"/><rect x="260" y="687" width="100" height="46" class="teal"/><rect x="360" y="687" width="100" height="46" class="coral"/><rect x="460" y="687" width="100" height="46" class="purple"/>
+    <text x="210" y="716" text-anchor="middle" class="cell">a₂</text><text x="310" y="716" text-anchor="middle" class="cell">b₂</text><text x="410" y="716" text-anchor="middle" class="cell">c₂</text><text x="510" y="716" text-anchor="middle" class="cell">d₂</text>
+
+    <text x="135" y="756" text-anchor="end" class="label">P3</text>
+    <rect x="160" y="733" width="100" height="46" class="blue"/><rect x="260" y="733" width="100" height="46" class="teal"/><rect x="360" y="733" width="100" height="46" class="coral"/><rect x="460" y="733" width="100" height="46" class="purple"/>
+    <text x="210" y="762" text-anchor="middle" class="cell">a₃</text><text x="310" y="762" text-anchor="middle" class="cell">b₃</text><text x="410" y="762" text-anchor="middle" class="cell">c₃</text><text x="510" y="762" text-anchor="middle" class="cell">d₃</text>
+  </g>
 </svg>

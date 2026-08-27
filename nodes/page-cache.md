@@ -1,7 +1,7 @@
 ---
 id: page-cache
 title: Page Cache
-summary: The page cache is the kernel's use of otherwise-idle RAM to hold recently or frequently used file data, kept in page-sized units (4 KB blocks), so that file I/O issued through the…
+summary: The page cache keeps file pages in otherwise-idle RAM so repeated reads avoid disk and writes can return before dirty data is flushed durably.
 type: concept
 tags: [os/filesystem]
 prereqs: [page, vfs, inode, system-call]

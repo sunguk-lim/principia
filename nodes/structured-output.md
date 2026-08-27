@@ -1,7 +1,7 @@
 ---
 id: structured-output
 title: Structured Output
-summary: Structured output (a.k.a.
+summary: Structured output constrains token generation with a grammar by masking illegal logits to negative infinity and renormalizing probability over the legal tokens.
 type: concept
 tags: [ml/llm/reasoning]
 prereqs: [softmax, probability-distribution]
@@ -25,7 +25,7 @@ those tokens can never be picked, while the allowed tokens keep their *relative*
 likelihoods. The result is **guaranteed-valid** output — never a parse failure —
 without otherwise overriding the model's preferences.
 
-![Static 7-panel walk of grammar-constrained decoding, grouped into 3 acts: a 4-state grammar automaton (S0→S3) as the spine, a 4-token vocabulary strip whose gold ring marks the current legal set, and a detail panel deriving one full digit decision — raw logits (2.0, 1.0, 3.0, 0.0) → unconstrained softmax favoring the illegal closer (0.644) → a dashed red counterfactual branch showing the invalid output it would produce → mask to −∞ → renormalized distribution (0, 1.000, 0, 0) → sampled token joining the growing output spine, which completes as valid JSON.|960](structured-output.svg)
+![A grammar state expects a digit. Among five vocabulary tokens, the illegal closer has the largest raw probability. Masking leaves legal digits 7 and 4, whose probabilities renormalize to 0.622 and 0.378 while preserving their relative preference; sampling 7 advances the grammar toward valid JSON.](structured-output.svg)
 
 ## Grounded explanation
 
@@ -84,8 +84,8 @@ because no structurally illegal token was ever reachable.
 
 ### A worked instance
 
-Tiny vocabulary of 4 tokens: `{"x":`, the digit `7`, the brace `}`, and the word
-`cat`. The required structure (our trivial grammar) is exactly three steps:
+Tiny vocabulary of 5 tokens: `{"x":`, the digits `7` and `4`, the brace `}`, and
+the word `cat`. The required structure (our trivial grammar) is exactly three steps:
 
 1. emit the opener `{"x":`
 2. emit a single **digit**
@@ -98,51 +98,54 @@ token *must be a digit*. Suppose the model's raw logits at this step are:
 |-------|-----------|
 | `{"x":` | 2.0 |
 | `7` | 1.0 |
+| `4` | 0.5 |
 | `}` | 3.0 |
 | `cat` | 0.0 |
 
 **Unconstrained [[softmax]].** Exponentiate: $e^{2.0}=7.389$, $e^{1.0}=2.718$,
-$e^{3.0}=20.086$, $e^{0.0}=1.000$. Their sum is $31.193$. Dividing each by the
+$e^{0.5}=1.649$, $e^{3.0}=20.086$, $e^{0.0}=1.000$. Their sum is $32.842$. Dividing each by the
 sum:
 
 | token | probability |
 |-------|-------------|
-| `{"x":` | $7.389/31.193 = 0.237$ |
-| `7` | $2.718/31.193 = 0.087$ |
-| `}` | $20.086/31.193 = 0.644$ |
-| `cat` | $1.000/31.193 = 0.032$ |
+| `{"x":` | $7.389/32.842 = 0.225$ |
+| `7` | $2.718/32.842 = 0.083$ |
+| `4` | $1.649/32.842 = 0.050$ |
+| `}` | $20.086/32.842 = 0.612$ |
+| `cat` | $1.000/32.842 = 0.030$ |
 
-Left to itself the model would most likely emit `}` (0.644) — which is *illegal*
+Left to itself the model would most likely emit `}` (0.612) — which is *illegal*
 here (a digit is required), and would produce `{"x":}`, broken JSON. The
-desired digit `7` has only an 8.7% chance. This instance is **non-degenerate**:
+preferred legal digit `7` has only an 8.3% chance. This instance is **non-degenerate**:
 the illegal token is the *favorite*, so masking has real work to do.
 
-**Mask.** The legal set at step 2 is just the digit `7`. The engine overwrites
-the other three logits with $-\infty$:
+**Mask.** The legal set at step 2 contains the digits `7` and `4`. The engine
+leaves both legal logits untouched and overwrites the other three with $-\infty$:
 
 | token | logit after mask |
 |-------|------------------|
 | `{"x":` | $-\infty$ |
 | `7` | 1.0 |
+| `4` | 0.5 |
 | `}` | $-\infty$ |
 | `cat` | $-\infty$ |
 
 **Renormalized [[softmax]].** Now $e^{-\infty}=0$ for the three masked tokens,
-and $e^{1.0}=2.718$ for `7`. The sum is $0+2.718+0+0=2.718$. Dividing:
+while $e^{1.0}=2.718$ for `7` and $e^{0.5}=1.649$ for `4`. The legal total is
+$2.718+1.649=4.367$. Dividing:
 
 | token | probability |
 |-------|-------------|
-| `{"x":` | $0/2.718 = 0$ |
-| `7` | $2.718/2.718 = 1.000$ |
-| `}` | $0/2.718 = 0$ |
-| `cat` | $0/2.718 = 0$ |
+| `{"x":` | $0/4.367 = 0$ |
+| `7` | $2.718/4.367 = 0.622$ |
+| `4` | $1.649/4.367 = 0.378$ |
+| `}` | $0/4.367 = 0$ |
+| `cat` | $0/4.367 = 0$ |
 
-The distribution collapsed onto `7` with probability 1. Sampling now *must* yield
-`7`. Compare the before/after for the illegal favorite `}`: it fell from 0.644 to
-exactly 0, and its mass was redistributed onto the lone legal token. (Had two
-digits been legal, say `7` and `4`, masking would keep *both* and renormalize over
-the pair — the model's preference between them surviving intact; here only `7` was
-in the vocabulary, so it took all the mass.)
+The illegal favorite `}` falls from 0.612 to exactly 0. Its probability mass is
+redistributed across the two legal digits, and their preference is preserved:
+`7` remains more likely than `4`, with the ratio $0.622/0.378$ matching
+$e^{1.0}/e^{0.5}$. Suppose sampling chooses the more likely digit `7`.
 
 The engine then advances: digit emitted, so the legal set for step 3 becomes just
 `}`. The output `{"x":7}` is assembled token by token and is valid by

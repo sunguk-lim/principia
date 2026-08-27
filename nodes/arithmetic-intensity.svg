@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="640" viewBox="0 0 720 640" role="img" aria-labelledby="title desc">
+  <title id="title">Arithmetic intensity is useful numerical work divided by bytes crossing a named memory boundary</title>
+  <desc id="desc">FP32 values b and c cross from HBM to compute and result a crosses back, totaling twelve bytes per element. One multiply and one add produce two FLOPs, so the arithmetic intensity is two divided by twelve, about 0.17 FLOP per byte. Reusing resident data raises work without repeating the crossing.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #183047; }
+      .headline { font-size: 31px; font-weight: 760; }
+      .subtitle { font-size: 18px; fill: #536B7E; }
+      .eyebrow { font-size: 18px; font-weight: 750; letter-spacing: 1.2px; fill: #60768A; }
+      .label { font-size: 21px; font-weight: 730; }
+      .small { font-size: 18px; fill: #536B7E; }
+      .memory { fill: #E7F1FF; stroke: #3977B8; stroke-width: 3; }
+      .compute { fill: #E9F7F3; stroke: #2F8A78; stroke-width: 3; }
+      .byte { fill: #76A8DE; stroke: #3977B8; stroke-width: 1.5; }
+      .op { fill: #83C7B8; stroke: #2F8A78; stroke-width: 2; }
+      .accent { fill: #FFF1C7; stroke: #D89016; stroke-width: 3; }
+    </style>
+    <marker id="blueArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#3977B8"/></marker>
+    <marker id="amberArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#D89016"/></marker>
+  </defs>
+  <rect width="720" height="640" fill="#FFFFFF"/>
+  <text x="32" y="48" class="headline">How much work does each byte buy?</text>
+  <text x="32" y="77" class="subtitle">Name one boundary. Count work. Count traffic across that boundary.</text>
+
+  <rect x="32" y="118" width="224" height="354" rx="22" class="memory"/>
+  <text x="144" y="153" text-anchor="middle" class="label">HBM memory</text>
+  <text x="144" y="181" text-anchor="middle" class="small">FP32 · 4 bytes each</text>
+  <text x="62" y="228" class="label">read bᵢ</text>
+  <g><rect x="62" y="244" width="32" height="32" class="byte"/><rect x="98" y="244" width="32" height="32" class="byte"/><rect x="134" y="244" width="32" height="32" class="byte"/><rect x="170" y="244" width="32" height="32" class="byte"/></g>
+  <text x="62" y="324" class="label">read cᵢ</text>
+  <g><rect x="62" y="340" width="32" height="32" class="byte"/><rect x="98" y="340" width="32" height="32" class="byte"/><rect x="134" y="340" width="32" height="32" class="byte"/><rect x="170" y="340" width="32" height="32" class="byte"/></g>
+  <text x="62" y="420" class="label">write aᵢ</text>
+  <g><rect x="62" y="436" width="32" height="32" class="accent"/><rect x="98" y="436" width="32" height="32" class="accent"/><rect x="134" y="436" width="32" height="32" class="accent"/><rect x="170" y="436" width="32" height="32" class="accent"/></g>
+
+  <line x1="286" y1="112" x2="286" y2="485" stroke="#D89016" stroke-width="5"/>
+  <text x="286" y="510" text-anchor="middle" class="eyebrow">CHOSEN BOUNDARY</text>
+  <path d="M206 260 L384 260" fill="none" stroke="#3977B8" stroke-width="4" marker-end="url(#blueArrow)"/>
+  <path d="M206 356 L384 356" fill="none" stroke="#3977B8" stroke-width="4" marker-end="url(#blueArrow)"/>
+  <path d="M384 452 L206 452" fill="none" stroke="#D89016" stroke-width="4" marker-end="url(#amberArrow)"/>
+  <text x="294" y="239" text-anchor="middle" class="small">4 B</text><text x="294" y="335" text-anchor="middle" class="small">4 B</text><text x="294" y="431" text-anchor="middle" class="small">4 B</text>
+
+  <rect x="384" y="118" width="304" height="354" rx="22" class="compute"/>
+  <text x="536" y="153" text-anchor="middle" class="label">Compute</text>
+  <text x="536" y="181" text-anchor="middle" class="small">aᵢ = bᵢ + s × cᵢ</text>
+  <rect x="430" y="244" width="90" height="62" rx="14" class="op"/><text x="475" y="283" text-anchor="middle" class="headline">×</text>
+  <rect x="552" y="244" width="90" height="62" rx="14" class="op"/><text x="597" y="283" text-anchor="middle" class="headline">+</text>
+  <text x="536" y="343" text-anchor="middle" class="label">2 FLOPs</text>
+  <text x="536" y="377" text-anchor="middle" class="small">one multiply + one add</text>
+  <rect x="416" y="401" width="240" height="50" rx="12" class="accent"/>
+  <text x="536" y="433" text-anchor="middle" class="label">12 bytes crossed</text>
+
+  <rect x="70" y="548" width="580" height="62" rx="15" class="accent"/>
+  <text x="360" y="574" text-anchor="middle" class="label">I = 2 FLOPs ÷ 12 bytes ≈ 0.17 FLOP/byte</text>
+  <text x="360" y="600" text-anchor="middle" class="small">Reuse raises work without making the same data cross again.</text>
+</svg>

@@ -32,6 +32,8 @@ step after step. This is only possible because decoding already proceeds one tok
 per step **and** each sequence carries its **own independent [[kv-cache]]**, so
 sequences at different lengths can share a batch and join or leave between steps.
 
+![Continuous batching replaces finished requests between decode steps so queued work fills newly available batch slots.](continuous-batching.svg)
+
 ## Grounded explanation
 
 **What a batch is and why we want one.** Decoding emits one token per step. At each

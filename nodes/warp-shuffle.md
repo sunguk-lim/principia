@@ -101,15 +101,14 @@ Let each lane *k* hold a value `v[k]`. The reduction runs five rounds with halvi
 
 — that is, lane *k* adds to its own value the value currently held by lane *k + offset*.
 
-The invariant that makes it correct: **after the round with offset *d*, lane *k* holds the sum of
-the original values in lanes *k* through *k + (2·d − 1)*** — a contiguous block of `2d` original
-values, anchored at lane *k*. Walk it through. Before any round, lane *k* holds just `v[k]` (a block
-of 1). Round with offset 16: lane *k* adds lane *k+16*'s value; lane 0 now holds `v[0]+v[16]`, and
-in general the block size doubles from 1 to 2 — but written as the invariant, after the *last*
-round (offset 1) lane 0 holds the sum of lanes 0 through 31, i.e. **all 32 values**. Each halving
-of the offset exactly doubles the span of original values that lane 0's running sum covers: it
-covers 16-wide reach after offset 16, then the offsets 8, 4, 2, 1 fill in and stitch the halves
-together, until lane 0's block spans the entire warp. Lane 0 holds the answer. (If we had used
+The invariant that makes it correct: **after processing an offset *d*, lane *k* holds the sum of
+the original lanes whose indices are `k` plus every in-range subset sum of the offsets processed
+so far.** Because those offsets are powers of two, each round doubles the number of original
+values represented. Walk lane 0 through it: after offset 16 it represents lanes `{0,16}`; after
+offset 8, `{0,8,16,24}`; after offset 4, every multiple of 4; after offset 2, every even lane;
+and after offset 1, every lane from 0 through 31. The intermediate sets are strided rather than
+contiguous, but the last round makes the stride one, so lane 0 holds the sum of **all 32 values**.
+(If we had used
 `__shfl_xor_sync` with the same halving masks instead, the symmetry of the butterfly would leave the
 *identical* total sitting in **all 32 lanes**, not just lane 0 — that is the one functional
 difference of the XOR variant.)
@@ -165,8 +164,8 @@ ends with the answer); each number below is derived from the previous round, no 
 
 After five shuffles lane 0 holds **528** — the sum of all 32 values — computed entirely in
 registers, with no shared-memory write, no bank to worry about, and no `__syncthreads()`. Each round
-exactly doubled the span of the partial sum (lane 0's running total covered 2, then 4, 8, 16, and
-finally all 32 original values), which is why 5 = log₂(32) rounds suffice. Had the rounds used
+exactly doubled the number of original lane values represented (2, then 4, 8, 16, and finally all
+32), which is why 5 = log₂(32) rounds suffice. Had the rounds used
 `__shfl_xor_sync` with masks 16, 8, 4, 2, 1 instead, the same `528` would sit in *all* 32 lanes at
 the end rather than only lane 0 — the butterfly's symmetry being the one behavioral difference from
 the down-shift version.

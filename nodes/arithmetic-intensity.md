@@ -25,6 +25,8 @@ supports little work; a high value means transferred data is reused for many ope
 The number is meaningful only when the operation-counting convention and the memory
 boundary are stated.
 
+![Arithmetic intensity compares numerical work with the bytes that cross one explicitly named memory boundary.](arithmetic-intensity.svg)
+
 ## Grounded explanation
 
 ### The quantity: work divided by traffic

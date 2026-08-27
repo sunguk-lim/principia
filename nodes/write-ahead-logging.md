@@ -1,7 +1,7 @@
 ---
 id: write-ahead-logging
 title: Write-Ahead Logging (WAL)
-summary: Write-Ahead Logging is the mechanism that delivers a transaction's Durability despite deferred writeback — its defining "write-ahead" invariant is that before any modified data page is allowed to reach disk, a record of the change is first appended to a sequential log, and at COMMIT that log (not the scattered data pages) is forced to stable storage with fsync and waited on; the data pages stay dirty in the page-cache and are flushed lazily by ordinary writeback, so per-commit durability costs one fast sequential block-layer write instead of many slow random ones, and a crash is recovered by replaying the log (REDO committed changes, ignore uncommitted).
+summary: Write-Ahead Logging delivers transaction durability despite deferred writeback by forcing log records to stable storage before acknowledging COMMIT; recovery redoes committed effects and undoes any uncommitted effects that reached data pages.
 type: concept
 tags: [databases/storage]
 prereqs: [transaction, page-cache, writeback, block-layer]
@@ -33,8 +33,8 @@ written lazily by ordinary [[writeback]]; only the *log* is forced at commit. Th
 cheap because the log is a **sequential append** — one contiguous [[block-layer]] write,
 fast — whereas the dirty data pages are **scattered** across the disk and would cost
 many slow random writes. On restart after a crash, the engine **replays the log**: it
-**REDO**es committed changes whose data pages never got flushed and **ignores** the
-uncommitted ones, reconstructing the last committed state.
+**REDO**es committed changes whose data pages never got flushed and **UNDO**es any
+uncommitted changes that had reached data pages, reconstructing the last committed state.
 
 ## Grounded explanation
 

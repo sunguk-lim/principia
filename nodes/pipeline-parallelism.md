@@ -51,8 +51,8 @@ pipeline parallelism splits the model **depth-wise**:
 
 The contrast across the three strategies is the communication pattern: **data
 parallelism** all-reduces *gradients* once per step; **tensor parallelism** all-reduces
-*activations* once per layer; **pipeline parallelism** sends *activations* point-to-point
-between adjacent stages, with no collective. It is what lets a model too deep for one GPU
+*activations* once per layer; **pipeline parallelism** sends *activations forward* and
+*gradients backward* point-to-point between adjacent stages, with no collective. It is what lets a model too deep for one GPU
 be trained at all — at the cost of the bubble and of storing in-flight activations.
 
 ## Prerequisites

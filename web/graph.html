@@ -451,68 +451,70 @@
     if (changedSet.has(e.s)) changedPlus.add(e.t);
     if (changedSet.has(e.t)) changedPlus.add(e.s);
   }
-  const atlasPos = new Map(), atlasGroups = [], overviewPos = new Map(), overviewGroups = [], dagPos = new Map(), diffPos = new Map();
+  const overviewPos = new Map(), dagPos = new Map(), diffPos = new Map();
   let focusRoot = null;
   const expandedRoots = new Set();
 
   // ---- layouts -------------------------------------------------------------
-  function computeAtlas() {
-    atlasPos.clear(); atlasGroups.length = 0;
-    const COLS = 2, COL_W = 1320, GAP_Y = 80;
-    const BAND_GAP = 285, ROW_GAP = 30, PAD_X = 34, HEADER = 82, PAD_B = 28;
-    const columnsY = Array(COLS).fill(0);
-    const orderedRoots = [...roots].sort((a, b) => {
-      const ca = nodes.filter(n => n.root === a).length, cb = nodes.filter(n => n.root === b).length;
-      return cb - ca || a.localeCompare(b);
-    });
-    for (const root of orderedRoots) {
-      const members = nodes.filter(n => n.root === root);
-      const bands = Array.from({ length: 4 }, () => []);
-      const bandFor = level => Math.min(3, Math.floor(level / 5));
-      for (const n of members) bands[bandFor(n.level)].push(n);
-      for (const arr of bands) arr.sort((a, b) => a.level - b.level || a.title.localeCompare(b.title));
-      const maxRows = Math.max(1, ...bands.map(arr => arr.length));
-      const groupW = 4 * BAND_GAP + 100;
-      const groupH = HEADER + maxRows * ROW_GAP + PAD_B;
-      let col = 0;
-      for (let i = 1; i < COLS; i++) if (columnsY[i] < columnsY[col]) col = i;
-      const gx = col * COL_W, gy = columnsY[col];
-      bands.forEach((arr, bi) => {
-        arr.forEach((n, ri) => atlasPos.set(n.id, {
-          x: gx + PAD_X + bi * BAND_GAP,
-          y: gy + HEADER + ri * ROW_GAP
-        }));
-      });
-      atlasGroups.push({ root, x: gx, y: gy, w: groupW, h: groupH, count: members.length,
-        minLevel: Math.min(...members.map(n => n.level)), maxLevel: Math.max(...members.map(n => n.level)) });
-      columnsY[col] += groupH + GAP_Y;
-    }
-  }
-
   function computeOverview() {
-    overviewPos.clear(); overviewGroups.length = 0;
-    const orderedRoots = [...roots].sort((a, b) => {
-      const ca = nodes.filter(n => n.root === a).length, cb = nodes.filter(n => n.root === b).length;
-      return cb - ca || a.localeCompare(b);
+    overviewPos.clear();
+    const ordered = [...nodes].sort((a, b) => a.id.localeCompare(b.id));
+    let seed = 2166136261;
+    for (const n of ordered) for (const ch of n.id) seed = Math.imul(seed ^ ch.charCodeAt(0), 16777619) >>> 0;
+    const random = () => ((seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0) / 4294967296);
+    const state = new Map(), degree = new Map(ordered.map(n => [n.id, 1]));
+    for (const e of edges) {
+      degree.set(e.s, (degree.get(e.s) || 1) + 1);
+      degree.set(e.t, (degree.get(e.t) || 1) + 1);
+    }
+    ordered.forEach(n => {
+      const angle = random() * Math.PI * 2, radius = 90 + 430 * Math.sqrt(random());
+      state.set(n.id, { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius, vx: 0, vy: 0, fx: 0, fy: 0 });
     });
-    const cols = orderedRoots.length <= 6 ? 3 : 4;
-    const gapX = 390, gapY = 320;
-    orderedRoots.forEach((root, index) => {
-      const members = nodes.filter(n => n.root === root).sort((a, b) =>
-        b.dependents - a.dependents || a.level - b.level || a.title.localeCompare(b.title));
-      const col = index % cols, row = Math.floor(index / cols);
-      const x = col * gapX + (row % 2 ? gapX * .28 : 0), y = row * gapY;
-      overviewGroups.push({ root, x, y, count: members.length });
-      members.forEach((n, i) => {
-        if (i === 0) { overviewPos.set(n.id, { x, y }); return; }
-        const angle = i * 2.399963229728653;
-        const radius = 38 + 27 * Math.sqrt(i);
-        overviewPos.set(n.id, {
-          x: x + Math.cos(angle) * radius,
-          y: y + Math.sin(angle) * radius * .82
-        });
-      });
-    });
+    const linked = edges.filter(e => state.has(e.s) && state.has(e.t));
+    for (let iteration = 0; iteration < 420; iteration++) {
+      const cooling = .35 + .65 * (1 - iteration / 420);
+      const points = ordered.map(n => state.get(n.id));
+      for (const p of points) { p.fx = -p.x * .0012; p.fy = -p.y * .0012; }
+      for (let i = 0; i < ordered.length; i++) {
+        const a = points[i], da = Math.sqrt(degree.get(ordered[i].id));
+        for (let j = i + 1; j < ordered.length; j++) {
+          const b = points[j];
+          let dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+          if (d2 < .01) { dx = .1; dy = .1; d2 = .02; }
+          d2 = Math.max(100, d2);
+          const weight = 72 * (1 + .08 * da * Math.sqrt(degree.get(ordered[j].id))) / d2;
+          const fx = dx * weight, fy = dy * weight;
+          a.fx += fx; a.fy += fy; b.fx -= fx; b.fy -= fy;
+        }
+      }
+      for (const e of linked) {
+        const a = state.get(e.s), b = state.get(e.t);
+        const dx = b.x - a.x, dy = b.y - a.y, distance = Math.hypot(dx, dy) || 1;
+        const ideal = 68 + Math.min(28, Math.abs(byId.get(e.s).level - byId.get(e.t).level) * 4);
+        const force = (distance - ideal) * .012;
+        const fx = dx / distance * force, fy = dy / distance * force;
+        a.fx += fx; a.fy += fy; b.fx -= fx; b.fy -= fy;
+      }
+      for (const p of points) {
+        p.vx = (p.vx + p.fx * cooling) * .74;
+        p.vy = (p.vy + p.fy * cooling) * .74;
+        const speed = Math.hypot(p.vx, p.vy);
+        if (speed > 8) { p.vx *= 8 / speed; p.vy *= 8 / speed; }
+        p.x += p.vx; p.y += p.vy;
+      }
+    }
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const p of state.values()) {
+      minX = Math.min(minX, p.x); minY = Math.min(minY, p.y);
+      maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y);
+    }
+    const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+    const scale = Math.min(1500 / Math.max(1, maxX - minX), 900 / Math.max(1, maxY - minY));
+    for (const n of ordered) {
+      const p = state.get(n.id);
+      overviewPos.set(n.id, { x: (p.x - cx) * scale, y: (p.y - cy) * scale });
+    }
   }
 
   function computeDag() {
@@ -522,8 +524,7 @@
     for (const n of nodes) byLevel.get(n.level).push(n.id);
     const GAPX = 64, GAPY = 120;
     for (const [l, arr] of byLevel) {
-      arr.sort((a, b) => byId.get(a).root.localeCompare(byId.get(b).root)
-                      || byId.get(a).title.localeCompare(byId.get(b).title));
+      arr.sort((a, b) => byId.get(a).title.localeCompare(byId.get(b).title));
       arr.forEach((id, i) => dagPos.set(id, { x: i * GAPX, y: (maxL - l) * GAPY }));
     }
     for (let pass = 0; pass < 10; pass++) {
@@ -569,7 +570,7 @@
   }
 
   const P = id => ((DIFF && active.changedOnly && diffPos.has(id)) ? diffPos.get(id)
-                   : (layout === "overview" ? overviewPos : layout === "atlas" ? atlasPos : dagPos).get(id));
+                   : (layout === "overview" ? overviewPos : dagPos).get(id));
 
   // ---- filtering / selection ----------------------------------------------
   function visible(n) {
@@ -666,9 +667,8 @@
         dashed = e.diff === "removed";
       } else {
         // unchanged edges: in BEFORE they ARE the graph's structure → show them; in AFTER keep faint so added (green) pop
-        const sameRoot = a.root === b.root;
         const touchesLens = focusRoot && (a.root === focusRoot || b.root === focusRoot);
-        const overviewAlpha = focusRoot ? (touchesLens ? (sameRoot ? .32 : .22) : .025) : (sameRoot ? .17 : .085);
+        const overviewAlpha = focusRoot ? (touchesLens ? .24 : .025) : .11;
         const uAlpha = DIFF ? (phase === "before" ? 0.5 : 0.15) : (layout === "overview" ? overviewAlpha : .12);
         ctx.strokeStyle = hot ? "rgba(225,232,255,0.65)" : `rgba(150,165,210,${uAlpha})`;
         ctx.lineWidth = (DIFF && phase === "before" ? 1.3 : 1) / view.k;
@@ -718,24 +718,6 @@
 
     ctx.restore();
 
-    // Field names remain legible at every overview zoom level; node names use semantic zoom.
-    if (layout === "overview") {
-      ctx.textBaseline = "alphabetic";
-      for (const g of overviewGroups) {
-        if (!nodes.some(n => n.root === g.root && visible(n))) continue;
-        ctx.globalAlpha = focusRoot && g.root !== focusRoot ? .28 : 1;
-        const sx = view.x + g.x * view.k, sy = view.y + g.y * view.k;
-        ctx.font = "600 12px ui-sans-serif, system-ui, sans-serif";
-        ctx.fillStyle = rootColor[g.root] || "#f8fafc";
-        ctx.fillText(g.root.replaceAll("-", " ").toUpperCase(), sx - 8, sy - 48);
-        const labelWidth = ctx.measureText(g.root.replaceAll("-", " ").toUpperCase()).width;
-        ctx.font = "500 11px ui-monospace, monospace";
-        ctx.fillStyle = "#94a3b8";
-        ctx.fillText(String(g.count), sx - 4 + labelWidth, sy - 48);
-      }
-      ctx.globalAlpha = 1;
-    }
-
     // Labels are drawn in screen space. The overview prioritizes hubs; semantic
     // zoom reveals every node name once its fixed spacing can support them without collisions.
     // When something is hovered/selected, only that node's chain is labelled (bright);
@@ -750,8 +732,6 @@
       if (focus && !focus.has(n.id)) continue;          // focus mode: only the chain is named
       if (layout === "overview" && focusRoot && !focus && n.root !== focusRoot && !searchHit(n)) continue;
       if (layout === "overview" && !focusRoot && !focus && !searchHit(n) && n.dependents < 4) continue;
-      if (layout === "atlas" && view.k < 0.18 && !focus && !searchHit(n)) continue;
-      if (layout === "atlas" && view.k < 0.28 && !focus && !searchHit(n) && n.dependents < 6) continue;
       const p = P(n.id); if (!p) continue;
       const sx = view.x + p.x * view.k, sy = view.y + p.y * view.k;
       if (sx < -40 || sx > W + 160 || sy < -16 || sy > H + 16) continue;   // off-screen cull
@@ -763,8 +743,8 @@
       const lx = c.sx + rWorld(c.n) * view.k + 4, ly = c.sy;
       const w = ctx.measureText(c.n.title).width;
       const box = [lx - 1, ly - 7, lx + w + 1, ly + 7];
-      const allNames = layout === "atlas" && view.k >= 0.65;
-      const forced = !!focus || c.hit || c.chg || allNames;  // semantic zoom: every field-map name appears
+      const allNames = layout === "dag" && view.k >= 0.65;
+      const forced = !!focus || c.hit || c.chg || allNames;
       if (!forced) {
         let clash = false;
         for (const q of placed) {
@@ -802,13 +782,6 @@
     if (!vis.length) return;
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
     for (const p of vis) { minX = Math.min(minX, p.x); minY = Math.min(minY, p.y); maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y); }
-    if (layout === "atlas") {
-      for (const g of atlasGroups) {
-        if (!nodes.some(n => n.root === g.root && visible(n))) continue;
-        minX = Math.min(minX, g.x); minY = Math.min(minY, g.y);
-        maxX = Math.max(maxX, g.x + g.w); maxY = Math.max(maxY, g.y + g.h);
-      }
-    }
     // Clear the panels only when the viewport is wide enough to afford it; on a
     // narrow canvas, ignore them and use the full width (better to overlap than to shrink to nothing).
     const padL = !isMobile() && r.width > 760 ? 308 : 12;           // explorer
@@ -843,22 +816,6 @@
       if (d < rWorld(n) + 5 / view.k && d < bd) { bd = d; best = n; }
     }
     return best;
-  }
-  function groupAt(sx, sy) {
-    if (layout !== "atlas") return null;
-    const w = screenToWorld(sx, sy);
-    return atlasGroups.find(g => w.x >= g.x && w.x <= g.x + g.w && w.y >= g.y && w.y <= g.y + g.h) || null;
-  }
-  function fitToGroup(root) {
-    const g = atlasGroups.find(x => x.root === root); if (!g) return;
-    const r = cv.getBoundingClientRect();
-    const padT = isMobile() ? document.getElementById("topbar").getBoundingClientRect().height + 12 : 62;
-    const availH = Math.max(180, r.height - padT - 44);
-    const fitted = Math.min((r.width - 32) / g.w, (availH - 24) / g.h);
-    view.k = Math.max(0.6, Math.min(fitted, 1.35));
-    view.x = r.width / 2 - (g.x + g.w / 2) * view.k;
-    view.y = padT + availH / 2 - (g.y + g.h / 2) * view.k;
-    userAdjusted = true; schedule();
   }
   const pointers = new Map();
   let gestureMoved = false, gesturePinched = false, gestureDistance = 0, lastPrimary = null, pinch = null;
@@ -933,10 +890,7 @@
       const sx = e.clientX - r.left, sy = e.clientY - r.top;
       const n = nodeAt(sx, sy);
       if (n) select(n.id);
-      else {
-        const g = groupAt(sx, sy);
-        if (g) fitToGroup(g.root); else select(null);
-      }
+      else select(null);
     }
     pointers.delete(e.pointerId);
     if (pointers.size < 2) pinch = null;
@@ -1244,7 +1198,6 @@
 
   // ---- boot ----------------------------------------------------------------
   computeOverview();
-  computeAtlas();
   computeDag();
   if (DIFF) computeDiffLayout();
   buildLegend();

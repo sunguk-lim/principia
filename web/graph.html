@@ -217,7 +217,7 @@
 </style>
 
 <div id="app">
-  <canvas id="cv" role="img" aria-label="Interactive Principia knowledge graph. Use Explore to browse fields and concept names, then select a concept to trace its dependencies."></canvas>
+  <canvas id="cv" role="img" aria-label="Interactive Principia knowledge graph. Use knowledge lenses to browse the connected graph, then select a concept to trace its dependencies."></canvas>
   <header id="topbar">
     <span class="brand">
       <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
@@ -269,7 +269,7 @@
     <button class="btn" id="zoomInBtn" aria-label="Zoom in">+</button>
     <button class="btn" id="zoomOutBtn" aria-label="Zoom out">−</button>
   </div>
-  <div id="hint">select a field to reveal its concepts · select a node to trace dependencies</div>
+  <div id="hint">use a lens to explore the whole graph · select a node to trace dependencies</div>
 
   <div id="help-overlay">
     <div id="help-card">
@@ -414,8 +414,8 @@
   const leafCount = {};
   for (const n of nodes) if (n.tag) leafCount[n.tag] = (leafCount[n.tag] || 0) + 1;
 
-  // Colour: HUE identifies the root field; LIGHTNESS distinguishes sub-fields within it
-  // (every ml/* reads as one purple family, but each sub-field gets its own shade).
+  // Colour identifies an exploratory lens, not a boundary; lightness distinguishes paths within it.
+  // Every ml/* reads as one purple family while cross-lens edges keep the graph visibly connected.
   const ROOT_HUE = { algorithms: 215, gpu: 150, math: 45, ml: 265,
                      networking: 190, os: 25, "parallel-computing": 0 };
   const hueFor = r => {
@@ -496,7 +496,7 @@
       return cb - ca || a.localeCompare(b);
     });
     const cols = orderedRoots.length <= 6 ? 3 : 4;
-    const gapX = 520, gapY = 430;
+    const gapX = 390, gapY = 320;
     orderedRoots.forEach((root, index) => {
       const members = nodes.filter(n => n.root === root).sort((a, b) =>
         b.dependents - a.dependents || a.level - b.level || a.title.localeCompare(b.title));
@@ -667,7 +667,9 @@
       } else {
         // unchanged edges: in BEFORE they ARE the graph's structure → show them; in AFTER keep faint so added (green) pop
         const sameRoot = a.root === b.root;
-        const uAlpha = DIFF ? (phase === "before" ? 0.5 : 0.15) : (layout === "overview" ? (sameRoot ? .18 : .045) : .12);
+        const touchesLens = focusRoot && (a.root === focusRoot || b.root === focusRoot);
+        const overviewAlpha = focusRoot ? (touchesLens ? (sameRoot ? .32 : .22) : .025) : (sameRoot ? .17 : .085);
+        const uAlpha = DIFF ? (phase === "before" ? 0.5 : 0.15) : (layout === "overview" ? overviewAlpha : .12);
         ctx.strokeStyle = hot ? "rgba(225,232,255,0.65)" : `rgba(150,165,210,${uAlpha})`;
         ctx.lineWidth = (DIFF && phase === "before" ? 1.3 : 1) / view.k;
       }
@@ -684,7 +686,8 @@
       if (!visible(n)) continue;
       const p = P(n.id); if (!p) continue;
       const changed = DIFF && n.diff && n.diff !== "unchanged";
-      const dim = (related && !related.has(n.id)) || (hov && !hov.has(n.id));
+      const outsideLens = focusRoot && n.root !== focusRoot && !(related && related.has(n.id));
+      const dim = outsideLens || (related && !related.has(n.id)) || (hov && !hov.has(n.id));
       ctx.globalAlpha = dim ? 0.13 : ((DIFF && phase === "after" && !changed) ? 0.4 : 1);   // fade unchanged only in AFTER; before-graph stays fully visible
       let r = rWorld(n);
       if (DIFF) r = Math.max(r, (n.diffRoot ? 16 : changed ? 10 : 6) / view.k);   // diff: root concept largest, others legible
@@ -720,6 +723,7 @@
       ctx.textBaseline = "alphabetic";
       for (const g of overviewGroups) {
         if (!nodes.some(n => n.root === g.root && visible(n))) continue;
+        ctx.globalAlpha = focusRoot && g.root !== focusRoot ? .28 : 1;
         const sx = view.x + g.x * view.k, sy = view.y + g.y * view.k;
         ctx.font = "600 12px ui-sans-serif, system-ui, sans-serif";
         ctx.fillStyle = rootColor[g.root] || "#f8fafc";
@@ -729,6 +733,7 @@
         ctx.fillStyle = "#94a3b8";
         ctx.fillText(String(g.count), sx - 4 + labelWidth, sy - 48);
       }
+      ctx.globalAlpha = 1;
     }
 
     // Labels are drawn in screen space. The overview prioritizes hubs; semantic
@@ -743,7 +748,8 @@
     for (const n of nodes) {
       if (!visible(n)) continue;
       if (focus && !focus.has(n.id)) continue;          // focus mode: only the chain is named
-      if (layout === "overview" && !focus && !searchHit(n) && n.dependents < 4) continue;
+      if (layout === "overview" && focusRoot && !focus && n.root !== focusRoot && !searchHit(n)) continue;
+      if (layout === "overview" && !focusRoot && !focus && !searchHit(n) && n.dependents < 4) continue;
       if (layout === "atlas" && view.k < 0.18 && !focus && !searchHit(n)) continue;
       if (layout === "atlas" && view.k < 0.28 && !focus && !searchHit(n) && n.dependents < 6) continue;
       const p = P(n.id); if (!p) continue;
@@ -1093,20 +1099,19 @@
   function showField(root, closeExplorer = true) {
     focusRoot = root;
     expandedRoots.add(root);
-    active.tags.clear();
-    leavesUnder(root).forEach(tag => active.tags.add(tag));
-    layout = "atlas";
-    setLayoutButton("");
-    select(null); buildLegend(); fit();
+    allTags.forEach(tag => active.tags.add(tag));
+    layout = "overview";
+    setLayoutButton("overview");
+    select(null); buildLegend(); fitToLens(root);
     if (isMobile() && closeExplorer) setLegendOpen(false);
   }
   function buildLegend() {
     legendEl.innerHTML =
       `<button class="drawer-close" type="button" data-panel-close="legend" aria-label="Close explorer">×</button>` +
       (DIFF ? diffLegendHtml() : ``) +
-      `<h4>Explore knowledge</h4>` +
+      `<h4>Knowledge lenses</h4>` +
       `<button class="explorer-all${focusRoot ? "" : " active"}" type="button" data-overview="1">`
-      + `<span>All fields</span><span>${nodes.length}</span></button>` + fieldRows();
+      + `<span>Whole graph</span><span>${nodes.length}</span></button>` + fieldRows();
   }
   legendEl.addEventListener("click", e => {
     if (e.target.closest("[data-panel-close]")) { setLegendOpen(false); return; }
@@ -1123,6 +1128,25 @@
       if (isMobile()) setLegendOpen(false);
     }
   });
+  function fitToLens(root) {
+    const points = nodes.filter(n => n.root === root && visible(n)).map(n => overviewPos.get(n.id)).filter(Boolean);
+    if (!points.length) return;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const p of points) {
+      minX = Math.min(minX, p.x); minY = Math.min(minY, p.y);
+      maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y);
+    }
+    const r = cv.getBoundingClientRect();
+    const padL = !isMobile() && r.width > 900 ? 308 : 16;
+    const padR = !isMobile() && !detailsEl.classList.contains("hidden") ? 298 : 16;
+    const padT = isMobile() ? document.getElementById("topbar").getBoundingClientRect().height + 12 : 62;
+    const padB = 44, availW = Math.max(160, r.width - padL - padR), availH = Math.max(160, r.height - padT - padB);
+    const margin = 64, w = Math.max(1, maxX - minX), h = Math.max(1, maxY - minY);
+    view.k = Math.max(.35, Math.min((availW - margin) / w, (availH - margin) / h, 1.25));
+    view.x = padL + availW / 2 - (minX + maxX) / 2 * view.k;
+    view.y = padT + availH / 2 - (minY + maxY) / 2 * view.k;
+    userAdjusted = false; schedule();
+  }
   function fitToNode(id) {
     const p = P(id); if (!p) return;
     const r = cv.getBoundingClientRect();

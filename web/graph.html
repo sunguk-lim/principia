@@ -9,10 +9,10 @@
 <style>
   html, body { height: 100%; margin: 0; }
   #app {
-    --bg: #0f1420; --panel: #161c2bdd; --panel-solid: #161c2b; --line: #283250;
-    --txt: #e3e9f5; --muted: #8b97b1; --accent: #ffd166;
+    --bg: #0f172a; --panel: #111a2ddd; --panel-solid: #111a2d; --line: #334155;
+    --txt: #f8fafc; --muted: #a8b3c5; --accent: #22c55e;
     position: fixed; inset: 0; background: var(--bg); color: var(--txt);
-    font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; overflow: hidden;
+    font: 14px/1.5 "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif; overflow: hidden;
   }
   #cv { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
   #cv.grabbing { cursor: grabbing; }
@@ -23,7 +23,8 @@
     pointer-events: none;
   }
   #topbar > * { pointer-events: auto; }
-  .brand { font-weight: 700; font-size: 14px; letter-spacing: .2px; }
+  .brand { display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;letter-spacing:.1px; }
+  .brand-mark { width:20px;height:20px;color:var(--accent);flex:none; }
   #stats { color: var(--muted); font-variant-numeric: tabular-nums; }
   #stats b { color: var(--txt); font-weight: 600; }
   .spacer { flex: 1; }
@@ -36,16 +37,20 @@
     background: var(--panel-solid); color: var(--txt); border: 1px solid var(--line);
     border-radius: 8px; padding: 6px 9px; font: inherit; outline: none;
   }
-  input:focus, select:focus { border-color: #3d4d7a; }
+  input:focus, select:focus { border-color: var(--accent); }
   #search { width: 150px; }
   .btn { cursor: pointer; }
+  button, input, select { touch-action: manipulation; }
   .btn:hover { border-color: #3d4d7a; }
-  .btn:focus-visible, .seg button:focus-visible, .drawer-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn:focus-visible, .seg button:focus-visible, .drawer-close:focus-visible,
+  .explorer-all:focus-visible, .field-head:focus-visible, .field-node:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
   .panel {
     position: absolute; z-index: 4; background: var(--panel); backdrop-filter: blur(6px);
     border: 1px solid var(--line); border-radius: 12px; padding: 12px;
   }
-  #legend { top: 56px; left: 14px; width: 210px; max-height: calc(100% - 72px); overflow-y: auto; }
+  #legend { top: 56px; left: 14px; width: 280px; max-height: calc(100% - 72px); overflow-y: auto; }
   #legend h4 { margin: 0 0 8px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
   .fbar { display: flex; gap: 6px; align-items: center; margin: 0 0 8px; }
   .fbtn { cursor: pointer; font-size: 11px; padding: 2px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); }
@@ -60,6 +65,21 @@
   .chip .sw { width: 11px; height: 11px; border-radius: 50%; flex: none; }
   .chip .nm { flex: 1; }
   .chip .ct { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .explorer-all, .field-head, .field-node { width:100%;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer; }
+  .explorer-all { display:flex;justify-content:space-between;align-items:center;padding:9px 10px;margin-bottom:6px;border-radius:8px;color:var(--muted); }
+  .explorer-all:hover, .explorer-all.active { background:#1e293b;color:var(--txt); }
+  .field-section { border-top:1px solid rgba(71,85,105,.55); }
+  .field-head { display:grid;grid-template-columns:12px 1fr auto 16px;align-items:center;gap:8px;padding:10px 8px;border-radius:8px; }
+  .field-head:hover, .field-head.active { background:#1e293b; }
+  .field-head .sw { width:9px;height:9px;border-radius:50%; }
+  .field-head .field-name { font-weight:600;text-transform:capitalize; }
+  .field-head .field-count, .field-head .caret { color:var(--muted);font-size:12px; }
+  .field-nodes { display:flex;flex-direction:column;padding:0 0 8px 20px; }
+  .field-node { display:grid;grid-template-columns:8px minmax(0,1fr) auto;align-items:center;gap:8px;min-height:34px;padding:5px 8px;border-radius:7px;color:#dbe4f0; }
+  .field-node:hover, .field-node:focus-visible { background:#1e293b;color:#fff; }
+  .field-node .dot { width:6px;height:6px;border-radius:50%; }
+  .field-node .level { color:var(--muted);font:11px/1.2 "JetBrains Mono",ui-monospace,monospace; }
+  .field-empty { padding:12px 8px;color:var(--muted); }
   .insights { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px; }
   .insights .row { display: flex; justify-content: space-between; gap: 8px; padding: 2px 6px; border-radius: 6px; cursor: pointer; }
   .insights .row:hover { background: #1f2740; }
@@ -96,7 +116,7 @@
   .close:hover { color: var(--txt); }
   .drawer-close { display: none; }
   #panelBackdrop { display: none; }
-  #zoomControls { position: absolute; z-index: 6; left: 264px; bottom: 52px; display: flex; flex-direction: column; gap: 6px; }
+  #zoomControls { position: absolute; z-index: 6; left: 334px; bottom: 52px; display: flex; flex-direction: column; gap: 6px; }
   #zoomControls .btn { width: 38px; height: 38px; padding: 0; font-size: 20px; font-weight: 700; }
   #hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 4; color: var(--muted); font-size: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; }
   #helpBtn { font-weight: 700; }
@@ -152,11 +172,11 @@
   .lc-loop { margin-top: 5px; padding: 5px 10px; border: 1px dashed #e0b34d; border-radius: 8px; background: #fdf6e3; color: #a06a00; font-weight: 600; text-align: center; font-size: 12px; }
   .lc-note { color: #8b97b1; font-style: italic; }
   .ac-you { color: #51607a; font-weight: 600; } .ac-llm { color: #7262fd; font-weight: 600; } .ac-cli { color: #1f9d78; font-weight: 600; } .ac-git { color: #b8860b; font-weight: 600; }
-  @media (max-width: 720px) {
+  @media (max-width: 900px) {
     #topbar { display: block; padding: 8px; }
     #stats, .spacer { display: none; }
-    .brand { display: block; margin-bottom: 6px; line-height: 20px; }
-    .controls { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, auto); gap: 6px; }
+    .brand { display:flex;margin-bottom:6px;line-height:20px; }
+    .controls { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, auto); gap: 8px; }
     .mobile-only { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
     #search { width: auto; min-width: 0; min-height: 30px; }
     .secondary-controls {
@@ -168,18 +188,12 @@
     .secondary-controls.open { display: flex; }
     .secondary-controls > * { min-height: 38px; }
     #fitBtn { display: none; }
-    #legend {
-      display: block; top: 0; bottom: 0; left: 0; width: min(84vw, 320px);
-      max-height: none; box-sizing: border-box; border-radius: 0 14px 14px 0;
-      padding: 52px 14px 18px; z-index: 13; transform: translateX(-105%);
-      transition: transform .2s ease; box-shadow: 12px 0 36px rgba(0,0,0,.4);
-    }
+    #legend { display:block;top:78px;bottom:0;left:0;width:100%;max-height:none;box-sizing:border-box;
+      border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 12px max(20px,env(safe-area-inset-bottom));
+      z-index:11;transform:translateX(-105%);transition:transform .18s ease;background:var(--bg);box-shadow:none; }
     #legend.mobile-open { transform: translateX(0); }
-    .drawer-close {
-      display: inline-flex; align-items: center; justify-content: center; position: absolute;
-      top: 8px; right: 10px; width: 40px; height: 40px; border: 0; border-radius: 8px;
-      background: transparent; color: var(--muted); font: inherit; font-size: 24px; line-height: 1; cursor: pointer;
-    }
+    .drawer-close { display:none; }
+    .field-head, .field-node, .explorer-all { min-height:44px; }
     #details {
       top: auto; right: 0; bottom: 0; left: 0; width: auto; max-height: min(72dvh, 620px);
       box-sizing: border-box; border-radius: 16px 16px 0 0; z-index: 13;
@@ -197,18 +211,28 @@
     }
     #help-card { width: calc(100% - 24px); max-height: calc(100% - 24px); padding: 16px; box-sizing: border-box; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    #legend { transition: none; }
+  }
 </style>
 
 <div id="app">
-  <canvas id="cv" role="img" aria-label="Interactive knowledge map. Fields group related concepts; dependency depth runs from foundations to advanced concepts."></canvas>
+  <canvas id="cv" role="img" aria-label="Interactive Principia knowledge graph. Use Explore to browse fields and concept names, then select a concept to trace its dependencies."></canvas>
   <header id="topbar">
-    <span class="brand">🧠 Concept Graph</span>
+    <span class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 17 9 7l6 3 4-5M5 17l10-7 4 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="5" cy="17" r="2" fill="currentColor"/><circle cx="9" cy="7" r="2" fill="currentColor"/>
+        <circle cx="15" cy="10" r="2" fill="currentColor"/><circle cx="19" cy="5" r="2" fill="currentColor"/><circle cx="19" cy="17" r="2" fill="currentColor"/>
+      </svg>
+      Principia
+    </span>
     <span id="stats"></span>
     <span class="spacer"></span>
     <div class="controls">
-      <input id="search" type="text" placeholder="search concepts…" autocomplete="off" />
-      <button class="btn mobile-only" id="filtersBtn" aria-controls="legend" aria-expanded="false">Filters</button>
-      <button class="btn mobile-only" id="mobileFitBtn">Fit</button>
+      <input id="search" type="text" aria-label="Search concepts" placeholder="search concepts…" autocomplete="off" />
+      <button class="btn mobile-only" id="filtersBtn" aria-controls="legend" aria-expanded="false">Explore</button>
+      <button class="btn mobile-only" id="mobileFitBtn">Map</button>
       <button class="btn mobile-only" id="moreBtn" aria-controls="moreMenu" aria-expanded="false">More</button>
       <div class="secondary-controls" id="moreMenu">
         <span class="seg" id="phaseToggle" title="blink the graph: its state before vs after this change" style="display:none">
@@ -216,8 +240,8 @@
           <button data-phase="after" class="active">After ▶</button>
         </span>
         <span class="seg" id="layoutToggle">
-          <button data-layout="atlas" class="active">Field Map</button>
-          <button data-layout="dag">Dependency Layers</button>
+          <button data-layout="overview" class="active">Overview</button>
+          <button data-layout="dag">Dependencies</button>
         </span>
         <select id="typeFilter" title="type">
           <option value="all">all types</option>
@@ -245,7 +269,7 @@
     <button class="btn" id="zoomInBtn" aria-label="Zoom in">+</button>
     <button class="btn" id="zoomOutBtn" aria-label="Zoom out">−</button>
   </div>
-  <div id="hint">fields at a glance · zoom for every name · tap a node to trace its chain</div>
+  <div id="hint">select a field to reveal its concepts · select a node to trace dependencies</div>
 
   <div id="help-overlay">
     <div id="help-card">
@@ -256,7 +280,7 @@
       </div>
 
       <div class="hpane hidden" id="pane-lifecycle">
-        <h3>🔄 The lifecycle — a concept enters, the graph settles</h3>
+        <h3>The lifecycle — a concept enters, the graph settles</h3>
         <p class="hsub"><b>It starts with a prompt.</b> The graph's <b>one entry point</b> is a plain-language request (<i>"explain X"</i>) — everything below is the agent + <code>brain.py</code> turning that single ask into nodes &amp; edges. <b>An agentic graph database:</b> each row is a CRUD <b>tool-call</b> — <code>command</code>(typed args) <b>→</b> result (<code>∅</code> = a mutation returns nothing) — issued by a <b>subject</b>. Loop: the <span class="ac-llm">LLM</span> turns a <i>prompt</i> into a <i>tool-call</i> → <span class="ac-cli">brain.py</span> runs it on the graph → <span class="ac-git">git</span> versions. <span class="lc-crud c">C</span> create · <span class="lc-crud r">R</span> read · <span class="lc-crud u">U</span> update · <span class="lc-crud d">D</span> delete. <b>Compose</b> the whole sub-graph first, then <b>scaffold</b> + <b>sync</b> per node; <b>ground-check</b> &amp; <b>lock</b> are the rare settle-loop. ▸ rows unfold.</p>
         <div class="lc">
           <div class="lc-row entry"><span class="dot you"></span><span class="lc-crud x">ENTRY</span><b>prompt</b><span class="lc-d lc-sig">the one entry point — a plain request <i>"explain X"</i> <b>→</b> prompt</span><span class="lc-a a-you">you</span></div>
@@ -413,7 +437,7 @@
   const nodeColor = n => DIFF ? (DIFF_NODE[n.diff] || DIFF_NODE.unchanged)
                               : (colorOf[n.tag] || rootColor[n.root] || "#8b97b1");
 
-  let layout = "atlas";
+  let layout = "overview";
   let phase = "after";   // diff blink-compare: "after" (added shown) ⇄ "before" (added hidden, removed shown)
   const view = { x: 0, y: 0, k: 1 };
   let hoverId = null, selId = null, userAdjusted = false, hoverSet = null, helpOpen = false;
@@ -427,8 +451,9 @@
     if (changedSet.has(e.s)) changedPlus.add(e.t);
     if (changedSet.has(e.t)) changedPlus.add(e.s);
   }
-  const collapsed = new Set();   // tag prefixes whose children are hidden in the legend tree
-  const atlasPos = new Map(), atlasGroups = [], dagPos = new Map(), diffPos = new Map();
+  const atlasPos = new Map(), atlasGroups = [], overviewPos = new Map(), overviewGroups = [], dagPos = new Map(), diffPos = new Map();
+  let focusRoot = null;
+  const expandedRoots = new Set();
 
   // ---- layouts -------------------------------------------------------------
   function computeAtlas() {
@@ -462,6 +487,32 @@
         minLevel: Math.min(...members.map(n => n.level)), maxLevel: Math.max(...members.map(n => n.level)) });
       columnsY[col] += groupH + GAP_Y;
     }
+  }
+
+  function computeOverview() {
+    overviewPos.clear(); overviewGroups.length = 0;
+    const orderedRoots = [...roots].sort((a, b) => {
+      const ca = nodes.filter(n => n.root === a).length, cb = nodes.filter(n => n.root === b).length;
+      return cb - ca || a.localeCompare(b);
+    });
+    const cols = orderedRoots.length <= 6 ? 3 : 4;
+    const gapX = 520, gapY = 430;
+    orderedRoots.forEach((root, index) => {
+      const members = nodes.filter(n => n.root === root).sort((a, b) =>
+        b.dependents - a.dependents || a.level - b.level || a.title.localeCompare(b.title));
+      const col = index % cols, row = Math.floor(index / cols);
+      const x = col * gapX + (row % 2 ? gapX * .28 : 0), y = row * gapY;
+      overviewGroups.push({ root, x, y, count: members.length });
+      members.forEach((n, i) => {
+        if (i === 0) { overviewPos.set(n.id, { x, y }); return; }
+        const angle = i * 2.399963229728653;
+        const radius = 38 + 27 * Math.sqrt(i);
+        overviewPos.set(n.id, {
+          x: x + Math.cos(angle) * radius,
+          y: y + Math.sin(angle) * radius * .82
+        });
+      });
+    });
   }
 
   function computeDag() {
@@ -518,7 +569,7 @@
   }
 
   const P = id => ((DIFF && active.changedOnly && diffPos.has(id)) ? diffPos.get(id)
-                   : (layout === "atlas" ? atlasPos : dagPos).get(id));
+                   : (layout === "overview" ? overviewPos : layout === "atlas" ? atlasPos : dagPos).get(id));
 
   // ---- filtering / selection ----------------------------------------------
   function visible(n) {
@@ -601,26 +652,6 @@
     ctx.translate(view.x, view.y); ctx.scale(view.k, view.k);
     const hov = hoverSet;   // hovered node + all its ancestors (prereqs) and descendants (dependents)
 
-    if (layout === "atlas") {
-      for (const g of atlasGroups) {
-        const enabled = nodes.some(n => n.root === g.root && visible(n));
-        if (!enabled) continue;
-        ctx.globalAlpha = 1;
-        ctx.fillStyle = "rgba(22,28,43,.72)";
-        ctx.strokeStyle = "rgba(139,151,177,.28)";
-        ctx.lineWidth = 1.5 / view.k;
-        ctx.beginPath(); ctx.roundRect(g.x, g.y, g.w, g.h, 18 / view.k); ctx.fill(); ctx.stroke();
-        ctx.font = `600 ${12 / view.k}px ui-sans-serif, system-ui, sans-serif`;
-        ctx.fillStyle = rootColor[g.root] || "#e3e9f5";
-        ctx.fillText(`${g.root.replaceAll("-", " ")} · ${g.count}`, g.x + 16 / view.k, g.y + 24 / view.k);
-        if (view.k >= 0.24) {
-          ctx.font = `400 ${11 / view.k}px ui-sans-serif, system-ui, sans-serif`;
-          ctx.fillStyle = "#8b97b1";
-          ctx.fillText(`foundation  →  core  →  applied  →  frontier`, g.x + 16 / view.k, g.y + 45 / view.k);
-        }
-      }
-    }
-
     // edges
     ctx.lineWidth = 1 / view.k;
     for (const e of edges) {
@@ -635,14 +666,15 @@
         dashed = e.diff === "removed";
       } else {
         // unchanged edges: in BEFORE they ARE the graph's structure → show them; in AFTER keep faint so added (green) pop
-        const uAlpha = DIFF ? (phase === "before" ? 0.5 : 0.15) : 0.10;
+        const sameRoot = a.root === b.root;
+        const uAlpha = DIFF ? (phase === "before" ? 0.5 : 0.15) : (layout === "overview" ? (sameRoot ? .18 : .045) : .12);
         ctx.strokeStyle = hot ? "rgba(225,232,255,0.65)" : `rgba(150,165,210,${uAlpha})`;
         ctx.lineWidth = (DIFF && phase === "before" ? 1.3 : 1) / view.k;
       }
       if (dashed) ctx.setLineDash([5 / view.k, 3 / view.k]);
       ctx.beginPath(); ctx.moveTo(pa.x, pa.y); ctx.lineTo(pb.x, pb.y); ctx.stroke();
       if (dashed) ctx.setLineDash([]);
-      if ((layout === "dag" || layout === "atlas") && (hot || view.k > 0.65)) {
+      if (layout !== "overview" && (hot || view.k > 0.65)) {
         ctx.fillStyle = ctx.strokeStyle; drawArrow(pa, pb, rWorld(b));
       }
     }
@@ -683,7 +715,23 @@
 
     ctx.restore();
 
-    // Labels are drawn in screen space. The field-map overview prioritizes hubs; semantic
+    // Field names remain legible at every overview zoom level; node names use semantic zoom.
+    if (layout === "overview") {
+      ctx.textBaseline = "alphabetic";
+      for (const g of overviewGroups) {
+        if (!nodes.some(n => n.root === g.root && visible(n))) continue;
+        const sx = view.x + g.x * view.k, sy = view.y + g.y * view.k;
+        ctx.font = "600 12px ui-sans-serif, system-ui, sans-serif";
+        ctx.fillStyle = rootColor[g.root] || "#f8fafc";
+        ctx.fillText(g.root.replaceAll("-", " ").toUpperCase(), sx - 8, sy - 48);
+        const labelWidth = ctx.measureText(g.root.replaceAll("-", " ").toUpperCase()).width;
+        ctx.font = "500 11px ui-monospace, monospace";
+        ctx.fillStyle = "#94a3b8";
+        ctx.fillText(String(g.count), sx - 4 + labelWidth, sy - 48);
+      }
+    }
+
+    // Labels are drawn in screen space. The overview prioritizes hubs; semantic
     // zoom reveals every node name once its fixed spacing can support them without collisions.
     // When something is hovered/selected, only that node's chain is labelled (bright);
     // its members are "forced" and bypass the overlap test so the whole chain stays legible.
@@ -695,6 +743,7 @@
     for (const n of nodes) {
       if (!visible(n)) continue;
       if (focus && !focus.has(n.id)) continue;          // focus mode: only the chain is named
+      if (layout === "overview" && !focus && !searchHit(n) && n.dependents < 4) continue;
       if (layout === "atlas" && view.k < 0.18 && !focus && !searchHit(n)) continue;
       if (layout === "atlas" && view.k < 0.28 && !focus && !searchHit(n) && n.dependents < 6) continue;
       const p = P(n.id); if (!p) continue;
@@ -736,7 +785,7 @@
 
   let raf = null;
   function schedule() { if (!raf) raf = requestAnimationFrame(() => { raf = null; draw(); }); }
-  const mobileQuery = window.matchMedia("(max-width: 720px)");
+  const mobileQuery = window.matchMedia("(max-width: 900px)");
   const isMobile = () => mobileQuery.matches;
 
   // ---- fit -----------------------------------------------------------------
@@ -756,7 +805,7 @@
     }
     // Clear the panels only when the viewport is wide enough to afford it; on a
     // narrow canvas, ignore them and use the full width (better to overlap than to shrink to nothing).
-    const padL = !isMobile() && r.width > 760 ? 238 : 12;           // legend
+    const padL = !isMobile() && r.width > 760 ? 308 : 12;           // explorer
     const padR = (!isMobile() && !detailsEl.classList.contains("hidden") && r.width > 920) ? 298 : 16;
     const padT = isMobile() ? document.getElementById("topbar").getBoundingClientRect().height + 8 : 52;
     const padB = 40;                                                 // hint
@@ -910,7 +959,7 @@
   function syncMobileChrome() {
     const legendOpen = isMobile() && legendEl.classList.contains("mobile-open");
     const detailsOpen = isMobile() && !detailsEl.classList.contains("hidden");
-    panelBackdrop.classList.toggle("open", legendOpen || detailsOpen);
+    panelBackdrop.classList.toggle("open", detailsOpen);
     filtersBtn.setAttribute("aria-expanded", String(legendOpen));
     moreBtn.setAttribute("aria-expanded", String(moreMenu.classList.contains("open")));
   }
@@ -929,7 +978,7 @@
     schedule();
   }
   function nodeLinkHtml(id) {
-    const n = byId.get(id); if (!n) return `<span class="nlink">${id} ⚠️</span>`;
+    const n = byId.get(id); if (!n) return `<span class="nlink">Missing: ${id}</span>`;
     return `<span class="nlink" data-go="${id}" style="border-left:3px solid ${nodeColor(n)}">${n.title}</span>`;
   }
   function renderDetails() {
@@ -940,14 +989,14 @@
     const ch = chainToAxiom(selId);
     const rm = computeRoadmap(selId);
     const meta = [`<span class="tag" style="background:${nodeColor(n)};color:#0b0f17">${n.tag || "untagged"}</span>`];
-    if (n.type === "axiom") meta.push(`<span class="tag axiom">🛑 axiom</span>`);
+    if (n.type === "axiom") meta.push(`<span class="tag axiom">axiom</span>`);
     else meta.push(`<span class="tag">${n.type}</span>`);
     if (n.status === "stub") meta.push(`<span class="tag stub">stub</span>`);
     meta.push(`<span class="tag">L${n.level}</span>`);
     detailsEl.innerHTML =
       `<span class="close" data-close="1">×</span>` +
       `<div class="title">${n.title}</div>` +
-      `<div class="path">${n.id} · <a class="doclink" href="${docBase}/${n.id}.md" target="_blank" rel="noopener">📄 Open document →</a></div>` +
+      `<div class="path">${n.id} · <a class="doclink" href="${docBase}/${n.id}.md" target="_blank" rel="noopener">Open document →</a></div>` +
       `<div class="meta">${meta.join("")}</div>` +
       (n.summary ? `<div style="margin:7px 0 3px;line-height:1.45;color:#c5cfe0">${n.summary}</div>` : ``) +
       `<div style="color:var(--muted)">${pr.length} prerequisite(s) · depended on by ${dp.length}</div>` +
@@ -960,8 +1009,8 @@
         ? `<ol class="roadmap">${rm.map(id => {
             const nn = byId.get(id), tgt = id === selId;
             return `<li class="rstep${tgt ? " tgt" : ""}" style="border-left:3px solid ${nodeColor(nn)}">` +
-              `<span class="rtitle" data-go="${id}">${nn.title}${tgt ? " ★" : ""}</span>` +
-              `<a class="rdoc" href="${docBase}/${id}.md" target="_blank" rel="noopener" title="Open document in new tab">📄</a>` +
+              `<span class="rtitle" data-go="${id}">${nn.title}${tgt ? " — current" : ""}</span>` +
+              `<a class="rdoc" href="${docBase}/${id}.md" target="_blank" rel="noopener" title="Open document in new tab">Open</a>` +
               `</li>`;
           }).join("")}</ol>`
         : `<div style="color:var(--muted)">already a leaf — nothing to stack beneath it</div>`) +
@@ -995,24 +1044,24 @@
     return on === 0 ? "off" : (on === lv.length ? "on" : "partial");
   };
   function fieldRows() {
-    const out = [];
-    (function walk(kids, depth) {
-      for (const seg of Object.keys(kids).sort()) {
-        const node = kids[seg], prefix = node.path;
-        const hasKids = Object.keys(node.kids).length > 0;
-        const open = !collapsed.has(prefix), root = prefix.split("/")[0];
-        const sw = hasKids ? rootColor[root] : (colorOf[prefix] || rootColor[root]);
-        const caret = hasKids
-          ? `<span class="cv" data-caret="${prefix}">${open ? "▾" : "▸"}</span>`
-          : `<span class="cv-sp"></span>`;
-        out.push(`<div class="chip ${stateOf(prefix)}" data-prefix="${prefix}" `
-          + `style="padding-left:${6 + depth * 13}px">${caret}`
-          + `<span class="sw" style="background:${sw}"></span>`
-          + `<span class="nm">${seg}</span><span class="ct">${countUnder(prefix)}</span></div>`);
-        if (hasKids && open) walk(node.kids, depth + 1);
-      }
-    })(fieldTree, 0);
-    return out.join("");
+    const query = active.query;
+    return [...roots].sort().map(root => {
+      const members = nodes.filter(n => n.root === root)
+        .sort((a, b) => a.level - b.level || a.title.localeCompare(b.title));
+      const matches = query ? members.filter(n => searchHit(n)) : members;
+      if (query && !matches.length) return "";
+      const open = expandedRoots.has(root) || focusRoot === root || !!query;
+      const rows = open ? `<div class="field-nodes">${matches.map(n =>
+        `<button class="field-node" type="button" data-go="${n.id}">`
+        + `<span class="dot" style="background:${nodeColor(n)}"></span>`
+        + `<span>${n.title}</span><span class="level">L${n.level}</span></button>`).join("")}</div>` : "";
+      return `<section class="field-section">`
+        + `<button class="field-head${focusRoot === root ? " active" : ""}" type="button" data-field="${root}" aria-expanded="${open}">`
+        + `<span class="sw" style="background:${rootColor[root]}"></span>`
+        + `<span class="field-name">${root.replaceAll("-", " ")}</span>`
+        + `<span class="field-count">${members.length}</span><span class="caret">${open ? "−" : "+"}</span></button>`
+        + rows + `</section>`;
+    }).join("") || `<div class="field-empty">No concepts match “${active.query}”.</div>`;
   }
   function diffLegendHtml() {
     const c = DATA.diffCounts || {};
@@ -1029,50 +1078,50 @@
       + `${active.changedOnly ? "◉ changed + 1-hop" : "○ full graph"}</span></div>`
       + `<div class="fhint" style="margin-top:6px">↑ use the <b>Before / After</b> toggle up top to blink the change</div>`;
   }
+  function setLayoutButton(mode) {
+    document.querySelectorAll("#layoutToggle button[data-layout]").forEach(button =>
+      button.classList.toggle("active", button.dataset.layout === mode));
+  }
+  function showOverview() {
+    focusRoot = null;
+    allTags.forEach(tag => active.tags.add(tag));
+    layout = "overview";
+    setLayoutButton("overview");
+    select(null); buildLegend(); fit();
+    if (isMobile()) setLegendOpen(false);
+  }
+  function showField(root, closeExplorer = true) {
+    focusRoot = root;
+    expandedRoots.add(root);
+    active.tags.clear();
+    leavesUnder(root).forEach(tag => active.tags.add(tag));
+    layout = "atlas";
+    setLayoutButton("");
+    select(null); buildLegend(); fit();
+    if (isMobile() && closeExplorer) setLegendOpen(false);
+  }
   function buildLegend() {
-    const top5 = [...nodes].sort((a, b) => b.dependents - a.dependents).slice(0, 5);
-    const maxL = Math.max(0, ...nodes.map(n => n.level));
-    const deepest = nodes.filter(n => n.level === maxL).sort((a, b) => b.dependents - a.dependents)[0];
     legendEl.innerHTML =
-      `<button class="drawer-close" type="button" data-panel-close="legend" aria-label="Close filters">×</button>` +
+      `<button class="drawer-close" type="button" data-panel-close="legend" aria-label="Close explorer">×</button>` +
       (DIFF ? diffLegendHtml() : ``) +
-      `<h4>Fields</h4>` +
-      `<div class="fbar"><span class="fbtn" data-fall="all">all on</span>` +
-      `<span class="fbtn" data-fall="none">all off</span>` +
-      `<span class="fhint">click row · ▸ expand</span></div>` +
-      fieldRows() +
-      `<div class="insights">
-         <h4>Most depended-on</h4>
-         ${top5.map(n => `<div class="row" data-go="${n.id}"><span>${n.title}</span><span class="v">${n.dependents}</span></div>`).join("")}
-         <h4 style="margin-top:10px">Deepest chain</h4>
-         <div class="row" data-go="${deepest ? deepest.id : ""}"><span>${deepest ? deepest.title : "—"}</span><span class="v">${maxL} levels</span></div>
-       </div>`;
+      `<h4>Explore knowledge</h4>` +
+      `<button class="explorer-all${focusRoot ? "" : " active"}" type="button" data-overview="1">`
+      + `<span>All fields</span><span>${nodes.length}</span></button>` + fieldRows();
   }
   legendEl.addEventListener("click", e => {
     if (e.target.closest("[data-panel-close]")) { setLegendOpen(false); return; }
     const ds = e.target.closest("[data-diffscope]");
     if (ds) { active.changedOnly = !active.changedOnly; buildLegend(); fit(); return; }
-    const fall = e.target.closest("[data-fall]");
-    if (fall) {                                     // all on / all off
-      if (fall.dataset.fall === "all") allTags.forEach(t => active.tags.add(t));
-      else active.tags.clear();
-      buildLegend(); schedule(); return;
-    }
-    const caret = e.target.closest("[data-caret]");
-    if (caret) {                                    // expand / collapse a subtree
-      const p = caret.dataset.caret;
-      collapsed.has(p) ? collapsed.delete(p) : collapsed.add(p);
-      buildLegend(); return;
-    }
-    const row = e.target.closest("[data-prefix]");
-    if (row) {                                      // toggle the whole subtree's leaves
-      const lv = leavesUnder(row.dataset.prefix);
-      const allOn = lv.every(t => active.tags.has(t));
-      lv.forEach(t => allOn ? active.tags.delete(t) : active.tags.add(t));
-      buildLegend(); schedule(); return;
-    }
+    if (e.target.closest("[data-overview]")) { showOverview(); return; }
+    const field = e.target.closest("[data-field]")?.dataset.field;
+    if (field) { showField(field); return; }
     const go = e.target.closest("[data-go]")?.dataset.go;
-    if (go) { select(go); fitToNode(go); }
+    if (go) {
+      const n = byId.get(go);
+      if (n && focusRoot !== n.root) showField(n.root, false);
+      select(go); fitToNode(go);
+      if (isMobile()) setLegendOpen(false);
+    }
   });
   function fitToNode(id) {
     const p = P(id); if (!p) return;
@@ -1095,9 +1144,10 @@
   // ---- controls ------------------------------------------------------------
   document.getElementById("layoutToggle").addEventListener("click", e => {
     const b = e.target.closest("button[data-layout]"); if (!b) return;
-    const next = b.dataset.layout; if (next === layout) return;
-    [...e.currentTarget.children].forEach(c => c.classList.toggle("active", c === b));
-    layout = next;
+    const next = b.dataset.layout;
+    if (next === "overview") { showOverview(); return; }
+    if (next === layout) return;
+    layout = next; setLayoutButton(next);
     fit();
   });
   const phaseToggle = document.getElementById("phaseToggle");
@@ -1108,12 +1158,14 @@
     [...e.currentTarget.children].forEach(c => c.classList.toggle("active", c === b));
     schedule();
   });
-  document.getElementById("search").addEventListener("input", e => { active.query = e.target.value.trim().toLowerCase(); schedule(); });
+  document.getElementById("search").addEventListener("input", e => {
+    active.query = e.target.value.trim().toLowerCase(); buildLegend(); schedule();
+  });
   document.getElementById("typeFilter").addEventListener("change", e => { active.type = e.target.value; schedule(); });
   document.getElementById("statusFilter").addEventListener("change", e => { active.status = e.target.value; schedule(); });
   document.getElementById("hideAxioms").addEventListener("change", e => { active.hideAxioms = e.target.checked; schedule(); });
   document.getElementById("fitBtn").addEventListener("click", fit);
-  document.getElementById("mobileFitBtn").addEventListener("click", fit);
+  document.getElementById("mobileFitBtn").addEventListener("click", () => { setLegendOpen(false); fit(); });
   document.getElementById("zoomInBtn").addEventListener("click", () => {
     const r = cv.getBoundingClientRect(); zoomAt(r.width / 2, r.height / 2, view.k * 1.25);
   });
@@ -1167,11 +1219,13 @@
   });
 
   // ---- boot ----------------------------------------------------------------
+  computeOverview();
   computeAtlas();
   computeDag();
   if (DIFF) computeDiffLayout();
   buildLegend();
   buildStats();
+  if (isMobile()) setLegendOpen(true);
   resize();
   fit();
   // The artifact iframe can lay out late; re-fit once sizes settle, and on any

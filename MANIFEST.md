@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-02_
 
-**325** nodes · **3** axioms · **0** on the frontier
+**327** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (90)
+## 🌳 Parent (root) nodes — top-level, required by nothing (92)
 
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
@@ -70,6 +70,7 @@ _Last rebuilt: 2026-09-02_
 - [OpenTelemetry](nodes/opentelemetry.md)
 - [PCI Express](nodes/pci-express.md)
 - [pgai](nodes/pgai.md)
+- [Positional Encoding](nodes/positional-encoding.md)
 - [Post-Training Quantization](nodes/post-training-quantization.md)
 - [Posterior Consistency](nodes/posterior-consistency.md)
 - [Predecessor Query](nodes/predecessor-query.md)
@@ -78,6 +79,7 @@ _Last rebuilt: 2026-09-02_
 - [Real-Time OS](nodes/real-time-os.md)
 - [Redis (in-memory data-structure store)](nodes/redis.md)
 - [Register Pressure](nodes/register-pressure.md)
+- [Regularization](nodes/regularization.md)
 - [RMSNorm](nodes/rmsnorm.md)
 - [Scan (prefix)](nodes/scan.md)
 - [SIMT](nodes/simt.md)
@@ -338,6 +340,7 @@ _Last rebuilt: 2026-09-02_
 - [pgai Vectorizer](nodes/pgai-vectorizer.md)
 - [pgvector](nodes/pgvector.md)
 - [Pipeline parallelism](nodes/pipeline-parallelism.md)
+- [Positional Encoding](nodes/positional-encoding.md)
 - [Post-Training Quantization](nodes/post-training-quantization.md)
 - [Posterior Consistency](nodes/posterior-consistency.md)
 - [PostgreSQL](nodes/postgresql.md)
@@ -362,6 +365,7 @@ _Last rebuilt: 2026-09-02_
 - [Reduce-scatter](nodes/reduce-scatter.md)
 - [Reduction operation](nodes/reduction-operation.md)
 - [Register Pressure](nodes/register-pressure.md)
+- [Regularization](nodes/regularization.md)
 - [Relational Model](nodes/relational-model.md)
 - [Reparameterization Trick](nodes/reparameterization-trick.md)
 - [Replication](nodes/replication.md)
@@ -478,15 +482,15 @@ _Last rebuilt: 2026-09-02_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (72)
+### ml (74)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
-  - **ml/deep-learning** (15) — [Autoencoder](nodes/autoencoder.md), [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
+  - **ml/deep-learning** (16) — [Autoencoder](nodes/autoencoder.md), [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
 
   - **ml/information-retrieval** (9) — [BM25](nodes/bm25.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 
-    - **ml/llm/architecture** (11) — [Attention Sink](nodes/attention-sink.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [State Space Model](nodes/state-space-model.md)
+    - **ml/llm/architecture** (12) — [Attention Sink](nodes/attention-sink.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Positional Encoding](nodes/positional-encoding.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [State Space Model](nodes/state-space-model.md)
 
     - **ml/llm/inference** (16) — [Chunked Prefill](nodes/chunked-prefill.md), [Context Window](nodes/context-window.md), [Continuous Batching](nodes/continuous-batching.md), [KV-cache](nodes/kv-cache.md), [KV-Cache Quantization](nodes/kv-quantization.md), [Numeric Precision Formats](nodes/numeric-precision-formats.md), [Paged attention](nodes/paged-attention.md), [Post-Training Quantization](nodes/post-training-quantization.md), [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md), [Prefill vs Decode](nodes/prefill-vs-decode.md), [Prefix Caching](nodes/prefix-caching.md), [Quantization](nodes/quantization.md), [Roofline Model](nodes/roofline-model.md), [Speculative Decoding](nodes/speculative-decoding.md), [vLLM](nodes/vllm.md), [Weight-Load Amortization](nodes/weight-load-amortization.md)
 

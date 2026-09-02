@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-02_
 
-**294** nodes · **3** axioms · **0** on the frontier
+**308** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (83)
+## 🌳 Parent (root) nodes — top-level, required by nothing (87)
 
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
@@ -14,6 +14,7 @@ _Last rebuilt: 2026-09-02_
 - [Chunked Prefill](nodes/chunked-prefill.md)
 - [clone()](nodes/clone.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
+- [Concept Drift](nodes/concept-drift.md)
 - [Conjugate Prior](nodes/conjugate-prior.md)
 - [Container Runtime](nodes/container-runtime.md)
 - [Content-Addressable Memory](nodes/content-addressable-memory.md)
@@ -39,7 +40,6 @@ _Last rebuilt: 2026-09-02_
 - [Grouped-query attention (GQA / MQA)](nodes/gqa.md)
 - [Graph Memory](nodes/graph-memory.md)
 - [Hard Link](nodes/hard-link.md)
-- [Heap](nodes/heap.md)
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
 - [Hypervisor](nodes/hypervisor.md)
 - [Init Process](nodes/init-process.md)
@@ -54,6 +54,8 @@ _Last rebuilt: 2026-09-02_
 - [Mamba](nodes/mamba.md)
 - [Maximum A Posteriori](nodes/maximum-a-posteriori.md)
 - [Memory Coalescing](nodes/memory-coalescing.md)
+- [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
+- [Model Calibration](nodes/model-calibration.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [MongoDB](nodes/mongodb.md)
 - [MPI Datatype](nodes/mpi-datatype.md)
@@ -61,9 +63,11 @@ _Last rebuilt: 2026-09-02_
 - [NCCL](nodes/nccl.md)
 - [Netfilter (iptables/NAT)](nodes/netfilter.md)
 - [Nonparametric Skew](nodes/nonparametric-skew.md)
+- [NUMA Locality](nodes/numa-locality.md)
 - [ONNX Runtime](nodes/onnx-runtime.md)
 - [OOM Killer](nodes/oom-killer.md)
 - [OpenTelemetry](nodes/opentelemetry.md)
+- [PCI Express](nodes/pci-express.md)
 - [pgai](nodes/pgai.md)
 - [Post-Training Quantization](nodes/post-training-quantization.md)
 - [Posterior Consistency](nodes/posterior-consistency.md)
@@ -136,7 +140,9 @@ _Last rebuilt: 2026-09-02_
 - [Communicator](nodes/communicator.md)
 - [Computation graph](nodes/computation-graph.md)
 - [Compute Capability](nodes/compute-capability.md)
+- [Concept Drift](nodes/concept-drift.md)
 - [Concurrency Control](nodes/concurrency-control.md)
+- [Conditional Probability](nodes/conditional-probability.md)
 - [Conjugate Prior](nodes/conjugate-prior.md)
 - [Container](nodes/container.md)
 - [Container Networking](nodes/container-networking.md)
@@ -193,6 +199,7 @@ _Last rebuilt: 2026-09-02_
 - [Fine-tuning](nodes/fine-tuning.md)
 - [First-Class Function](nodes/first-class-function.md)
 - [FlashAttention](nodes/flash-attention.md)
+- [Flow Network](nodes/flow-network.md)
 - [Fused Multiply-Add](nodes/fma.md)
 - [Fork and Exec](nodes/fork-exec.md)
 - [FSDP / ZeRO](nodes/fsdp.md)
@@ -225,6 +232,7 @@ _Last rebuilt: 2026-09-02_
 - [Intermediate representation](nodes/intermediate-representation.md)
 - [Interpreter](nodes/interpreter.md)
 - [Interrupt](nodes/interrupt.md)
+- [I/O Interconnect](nodes/io-interconnect.md)
 - [IP Routing](nodes/ip-routing.md)
 - [Jacobian (J)](nodes/jacobian.md)
 - [JIT vs AOT Compilation](nodes/jit-vs-aot-compilation.md)
@@ -265,10 +273,13 @@ _Last rebuilt: 2026-09-02_
 - [Measurement](nodes/measurement.md)
 - [Memory Coalescing](nodes/memory-coalescing.md)
 - [Memory Hierarchy](nodes/memory-hierarchy.md)
+- [Memory-Mapped I/O](nodes/memory-mapped-io.md)
 - [Message passing](nodes/message-passing.md)
 - [Metatable](nodes/metatable.md)
+- [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
 - [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md)
 - [Memory Management Unit](nodes/mmu.md)
+- [Model Calibration](nodes/model-calibration.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [Moment Generating Function](nodes/moment-generating-function.md)
 - [Moment Skewness](nodes/moment-skewness.md)
@@ -285,6 +296,9 @@ _Last rebuilt: 2026-09-02_
 - [Neural network](nodes/neural-network.md)
 - [Nonparametric Skew](nodes/nonparametric-skew.md)
 - [Normal Distribution](nodes/normal-distribution.md)
+- [NUMA Architecture](nodes/numa-architecture.md)
+- [NUMA Locality](nodes/numa-locality.md)
+- [NUMA Memory Policy](nodes/numa-memory-policy.md)
 - [Numeric Precision Formats](nodes/numeric-precision-formats.md)
 - [NVLink](nodes/nvlink.md)
 - [Observability](nodes/observability.md)
@@ -305,6 +319,7 @@ _Last rebuilt: 2026-09-02_
 - [Paged attention](nodes/paged-attention.md)
 - [Parallel process](nodes/parallel-process.md)
 - [Partial derivative](nodes/partial-derivative.md)
+- [PCI Express](nodes/pci-express.md)
 - [pgai](nodes/pgai.md)
 - [pgai Vectorizer](nodes/pgai-vectorizer.md)
 - [pgvector](nodes/pgvector.md)
@@ -319,6 +334,7 @@ _Last rebuilt: 2026-09-02_
 - [Probability](nodes/probability.md)
 - [Probability Distribution](nodes/probability-distribution.md)
 - [Process](nodes/process.md)
+- [Processor Affinity](nodes/processor-affinity.md)
 - [PTX (Parallel Thread Execution)](nodes/ptx.md)
 - [Quantization](nodes/quantization.md)
 - [Query Planning & Optimization](nodes/query-planning.md)
@@ -333,6 +349,7 @@ _Last rebuilt: 2026-09-02_
 - [Register Pressure](nodes/register-pressure.md)
 - [Relational Model](nodes/relational-model.md)
 - [Replication](nodes/replication.md)
+- [Residual Network](nodes/residual-network.md)
 - [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md)
 - [Ring Attention](nodes/ring-attention.md)
 - [RMSNorm](nodes/rmsnorm.md)
@@ -346,6 +363,7 @@ _Last rebuilt: 2026-09-02_
 - [seccomp](nodes/seccomp.md)
 - [Sharding (Horizontal Partitioning)](nodes/sharding.md)
 - [Shared Memory](nodes/shared-memory.md)
+- [Shortest Path](nodes/shortest-path.md)
 - [SIMT](nodes/simt.md)
 - [Socket Buffer (sk_buff)](nodes/sk-buff.md)
 - [Skewness](nodes/skewness.md)
@@ -398,9 +416,9 @@ _Last rebuilt: 2026-09-02_
 
 ## 🏷️ By field (cut the graph) — 10 top-level / 38 leaf fields
 
-### algorithms (15)
+### algorithms (19)
 
-[Binary Search](nodes/binary-search.md), [Binary Search Tree](nodes/binary-search-tree.md), [Deque](nodes/deque.md), [Dynamic Array](nodes/dynamic-array.md), [Graph (Adjacency List)](nodes/graph.md), [Hash Map](nodes/hash-map.md), [Hash Set](nodes/hash-set.md), [Heap](nodes/heap.md), [Key–Value Mapping](nodes/key-value.md), [Linked List](nodes/linked-list.md), [Predecessor Query](nodes/predecessor-query.md), [Queue](nodes/queue.md), [Stack](nodes/stack.md), [Trie](nodes/trie.md), [Union-Find](nodes/union-find.md)
+[Binary Search](nodes/binary-search.md), [Binary Search Tree](nodes/binary-search-tree.md), [Deque](nodes/deque.md), [Dynamic Array](nodes/dynamic-array.md), [Flow Network](nodes/flow-network.md), [Graph (Adjacency List)](nodes/graph.md), [Hash Map](nodes/hash-map.md), [Hash Set](nodes/hash-set.md), [Heap](nodes/heap.md), [Key–Value Mapping](nodes/key-value.md), [Linked List](nodes/linked-list.md), [Minimum-Cost Flow](nodes/minimum-cost-flow.md), [Predecessor Query](nodes/predecessor-query.md), [Queue](nodes/queue.md), [Residual Network](nodes/residual-network.md), [Shortest Path](nodes/shortest-path.md), [Stack](nodes/stack.md), [Trie](nodes/trie.md), [Union-Find](nodes/union-find.md)
 
 ### databases (23)
 
@@ -430,21 +448,21 @@ _Last rebuilt: 2026-09-02_
 
   - **languages/semantics** (6) — [Closure](nodes/closure.md), [Coroutine](nodes/coroutine.md), [Dynamic Typing](nodes/dynamic-typing.md), [First-Class Function](nodes/first-class-function.md), [Lexical Scoping](nodes/lexical-scoping.md), [Metatable](nodes/metatable.md)
 
-### math (57)
+### math (58)
 
   - **math/calculus** (18) — [Convexity](nodes/convexity.md), [Curl (∇×F)](nodes/curl.md), [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md), [Del operator (∇)](nodes/del-operator.md), [Derivative](nodes/derivative.md), [Differential (Total Derivative)](nodes/differential.md), [Differential operators](nodes/differential-operators.md), [Directional Derivative](nodes/directional-derivative.md), [Divergence (∇·F)](nodes/divergence.md), [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md), [Exponential function](nodes/exponential-function.md), [Gradient](nodes/gradient.md), [Hessian (H)](nodes/hessian.md), [Jacobian (J)](nodes/jacobian.md), [Laplacian (∇²f)](nodes/laplacian.md), [Partial derivative](nodes/partial-derivative.md), [Scalar Field](nodes/scalar-field.md), [Vector Field](nodes/vector-field.md)
 
   - **math/linear-algebra** (11) — [Arithmetic (+ − × ÷)](nodes/arithmetic.md), [Cosine Similarity](nodes/cosine-similarity.md), [Cross Product](nodes/cross-product.md), [Linear independence](nodes/linear-independence.md), [Low-rank factorization](nodes/low-rank-factorization.md), [Matrix multiplication](nodes/matrix-multiplication.md), [Matrix rank](nodes/matrix-rank.md), [Matrix Trace](nodes/matrix-trace.md), [Symmetric-Antisymmetric Decomposition](nodes/symmetric-antisymmetric-decomposition.md), [Tensor](nodes/tensor.md), [Vector dot product](nodes/vector-dot-product.md)
 
-  - **math/probability** (27) — [Bayes' Rule](nodes/bayes-rule.md), [Bernoulli Distribution](nodes/bernoulli-distribution.md), [Beta Distribution](nodes/beta-distribution.md), [Change of Variables](nodes/change-of-variables.md), [Conjugate Prior](nodes/conjugate-prior.md), [Convex Transformation Order](nodes/convex-transformation-order.md), [Cromwell's Rule](nodes/cromwell-rule.md), [Cumulative Distribution Function](nodes/cumulative-distribution-function.md), [Empirical Bayes](nodes/empirical-bayes.md), [Expectation](nodes/expectation.md), [Expectation-Maximization](nodes/expectation-maximization.md), [Full Bayesian Inference](nodes/full-bayesian-inference.md), [Geometric Distribution](nodes/geometric-distribution.md), [Hierarchical Bayes](nodes/hierarchical-bayes.md), [Likelihood](nodes/likelihood.md), [Log-Normal Distribution](nodes/log-normal-distribution.md), [Maximum A Posteriori](nodes/maximum-a-posteriori.md), [Maximum Likelihood Estimation](nodes/maximum-likelihood-estimation.md), [Moment Generating Function](nodes/moment-generating-function.md), [Moment Skewness](nodes/moment-skewness.md), [Nonparametric Skew](nodes/nonparametric-skew.md), [Normal Distribution](nodes/normal-distribution.md), [Posterior Consistency](nodes/posterior-consistency.md), [Probability](nodes/probability.md), [Probability Distribution](nodes/probability-distribution.md), [Random Variable](nodes/random-variable.md), [Skewness](nodes/skewness.md)
+  - **math/probability** (28) — [Bayes' Rule](nodes/bayes-rule.md), [Bernoulli Distribution](nodes/bernoulli-distribution.md), [Beta Distribution](nodes/beta-distribution.md), [Change of Variables](nodes/change-of-variables.md), [Conditional Probability](nodes/conditional-probability.md), [Conjugate Prior](nodes/conjugate-prior.md), [Convex Transformation Order](nodes/convex-transformation-order.md), [Cromwell's Rule](nodes/cromwell-rule.md), [Cumulative Distribution Function](nodes/cumulative-distribution-function.md), [Empirical Bayes](nodes/empirical-bayes.md), [Expectation](nodes/expectation.md), [Expectation-Maximization](nodes/expectation-maximization.md), [Full Bayesian Inference](nodes/full-bayesian-inference.md), [Geometric Distribution](nodes/geometric-distribution.md), [Hierarchical Bayes](nodes/hierarchical-bayes.md), [Likelihood](nodes/likelihood.md), [Log-Normal Distribution](nodes/log-normal-distribution.md), [Maximum A Posteriori](nodes/maximum-a-posteriori.md), [Maximum Likelihood Estimation](nodes/maximum-likelihood-estimation.md), [Moment Generating Function](nodes/moment-generating-function.md), [Moment Skewness](nodes/moment-skewness.md), [Nonparametric Skew](nodes/nonparametric-skew.md), [Normal Distribution](nodes/normal-distribution.md), [Posterior Consistency](nodes/posterior-consistency.md), [Probability](nodes/probability.md), [Probability Distribution](nodes/probability-distribution.md), [Random Variable](nodes/random-variable.md), [Skewness](nodes/skewness.md)
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (62)
+### ml (64)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
-  - **ml/deep-learning** (10) — [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Neural network](nodes/neural-network.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md)
+  - **ml/deep-learning** (12) — [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md)
 
   - **ml/information-retrieval** (4) — [Knowledge Graph](nodes/knowledge-graph.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 
@@ -478,15 +496,15 @@ _Last rebuilt: 2026-09-02_
 
   - **observability/tracing** (4) — [Context Propagation](nodes/context-propagation.md), [Distributed Tracing](nodes/distributed-tracing.md), [Telemetry Context](nodes/telemetry-context.md), [Trace Span](nodes/trace-span.md)
 
-### os (50)
+### os (57)
 
   - **os/filesystem** (8) — [Block Layer](nodes/block-layer.md), [Dentry](nodes/dentry.md), [Hard Link](nodes/hard-link.md), [Inode](nodes/inode.md), [OverlayFS](nodes/overlayfs.md), [Page Cache](nodes/page-cache.md), [Virtual File System](nodes/vfs.md), [Writeback](nodes/writeback.md)
 
-  - **os/kernel** (12) — [Boot Process](nodes/boot-process.md), [Device Driver](nodes/device-driver.md), [Direct Memory Access](nodes/dma.md), [File Descriptor](nodes/file-descriptor.md), [glibc Wrapper](nodes/glibc-wrapper.md), [Init Process](nodes/init-process.md), [Interrupt](nodes/interrupt.md), [Kernel](nodes/kernel.md), [Kernel Module](nodes/kernel-module.md), [Kernel Thread](nodes/kernel-thread.md), [System Call](nodes/system-call.md), [User Mode vs Kernel Mode](nodes/user-mode-vs-kernel-mode.md)
+  - **os/kernel** (15) — [Boot Process](nodes/boot-process.md), [Device Driver](nodes/device-driver.md), [Direct Memory Access](nodes/dma.md), [File Descriptor](nodes/file-descriptor.md), [glibc Wrapper](nodes/glibc-wrapper.md), [Init Process](nodes/init-process.md), [Interrupt](nodes/interrupt.md), [I/O Interconnect](nodes/io-interconnect.md), [Kernel](nodes/kernel.md), [Kernel Module](nodes/kernel-module.md), [Kernel Thread](nodes/kernel-thread.md), [Memory-Mapped I/O](nodes/memory-mapped-io.md), [PCI Express](nodes/pci-express.md), [System Call](nodes/system-call.md), [User Mode vs Kernel Mode](nodes/user-mode-vs-kernel-mode.md)
 
-  - **os/memory** (13) — [Address Space Layout](nodes/address-space-layout.md), [Content-Addressable Memory](nodes/content-addressable-memory.md), [Copy-on-Write](nodes/copy-on-write.md), [Demand Paging](nodes/demand-paging.md), [Memory Hierarchy](nodes/memory-hierarchy.md), [Memory Management Unit](nodes/mmu.md), [OOM Killer](nodes/oom-killer.md), [Page](nodes/page.md), [Page Fault](nodes/page-fault.md), [Page Table](nodes/page-table.md), [Swap](nodes/swap.md), [Translation Lookaside Buffer](nodes/tlb.md), [Virtual Memory](nodes/virtual-memory.md)
+  - **os/memory** (16) — [Address Space Layout](nodes/address-space-layout.md), [Content-Addressable Memory](nodes/content-addressable-memory.md), [Copy-on-Write](nodes/copy-on-write.md), [Demand Paging](nodes/demand-paging.md), [Memory Hierarchy](nodes/memory-hierarchy.md), [Memory Management Unit](nodes/mmu.md), [NUMA Architecture](nodes/numa-architecture.md), [NUMA Locality](nodes/numa-locality.md), [NUMA Memory Policy](nodes/numa-memory-policy.md), [OOM Killer](nodes/oom-killer.md), [Page](nodes/page.md), [Page Fault](nodes/page-fault.md), [Page Table](nodes/page-table.md), [Swap](nodes/swap.md), [Translation Lookaside Buffer](nodes/tlb.md), [Virtual Memory](nodes/virtual-memory.md)
 
-  - **os/process** (8) — [clone()](nodes/clone.md), [Context Switch](nodes/context-switch.md), [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md), [Fork and Exec](nodes/fork-exec.md), [Global Interpreter Lock](nodes/gil.md), [Process](nodes/process.md), [Scheduler](nodes/scheduler.md), [Thread](nodes/thread.md)
+  - **os/process** (9) — [clone()](nodes/clone.md), [Context Switch](nodes/context-switch.md), [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md), [Fork and Exec](nodes/fork-exec.md), [Global Interpreter Lock](nodes/gil.md), [Process](nodes/process.md), [Processor Affinity](nodes/processor-affinity.md), [Scheduler](nodes/scheduler.md), [Thread](nodes/thread.md)
 
   - **os/virtualization** (9) — [Capabilities](nodes/capabilities.md), [Cgroup](nodes/cgroup.md), [Container](nodes/container.md), [Container Runtime](nodes/container-runtime.md), [Hypervisor](nodes/hypervisor.md), [Kubernetes Pod](nodes/kubernetes-pod.md), [Namespace](nodes/namespace.md), [Real-Time OS](nodes/real-time-os.md), [seccomp](nodes/seccomp.md)
 

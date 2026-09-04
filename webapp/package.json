@@ -1,0 +1,23 @@
+{
+  "name": "principia-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build:data": "python3 scripts/build-data.py",
+    "build:ui": "node scripts/build.mjs",
+    "build": "npm run build:ui && npm run build:data",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cytoscape": "3.34.2",
+    "marked": "18.0.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.18",
+    "esbuild": "0.28.2",
+    "typescript": "6.0.3"
+  }
+}

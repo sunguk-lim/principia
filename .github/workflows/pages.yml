@@ -1,10 +1,14 @@
-name: Deploy dashboard to Pages
+name: Deploy Principia web app to Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - 'web/**'
+      - 'nodes/**'
+      - 'brain.py'
+      - 'web/render.py'
+      - 'web/graph.html'
+      - 'webapp/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -25,11 +29,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Make the graph the landing page
-        run: cp web/graph.html web/index.html
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: webapp/package-lock.json
+      - name: Build shared graph frontend
+        working-directory: webapp
+        run: npm ci && npm run typecheck && npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: web
+          path: web/dist
       - id: deployment
         uses: actions/deploy-pages@v4

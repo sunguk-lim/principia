@@ -13,3 +13,7 @@ __pycache__/
 
 # generated graph-diff artifact (regenerate: brain.py graph --diff <base>)
 graph-diff.html
+
+# Modern web app build artifacts
+webapp/node_modules/
+web/dist/

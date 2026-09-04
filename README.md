@@ -44,6 +44,18 @@ uv run principia graph
 ```
 
 Open `web/graph.html` directly to explore the self-contained dashboard.
+
+For a private local reading view with searchable nodes, full Markdown pages, notes, and progress
+statuses, run:
+
+```bash
+uv run principia-app --port 8876
+```
+
+Then open <http://127.0.0.1:8876>. Reading state is stored separately from the graph in
+`~/.local/share/principia/status.sqlite3`; set `PRINCIPIA_STATUS_DB` to use another path. The local
+app also links to the unchanged self-contained dashboard as its **Open static mirror** view.
+
 Principia discovers the nearest `principia.toml` automatically; use
 `uv run principia --workspace /path/to/graph audit` to target another graph.
 

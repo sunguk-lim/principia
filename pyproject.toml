@@ -8,14 +8,22 @@ version = "0.1.0"
 description = "A graph-native, closed-world knowledge system"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "fastapi>=0.116,<1",
+    "markdown-it-py>=4,<5",
+    "uvicorn>=0.35,<1",
+]
+
+[dependency-groups]
+dev = ["httpx>=0.28,<1"]
 
 [project.scripts]
 principia = "brain:main"
+principia-app = "principia_app.server:main"
 
 [tool.setuptools]
 py-modules = ["brain"]
-packages = ["web"]
+packages = ["web", "principia_app"]
 
 [tool.setuptools.package-data]
 web = ["graph.template.html"]

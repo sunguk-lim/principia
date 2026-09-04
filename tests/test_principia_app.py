@@ -24,10 +24,20 @@ class PrincipiaAppTests(unittest.TestCase):
     def tearDownClass(cls):
         cls.tmp.cleanup()
 
-    def test_node_list_is_searchable(self):
+    def test_node_list_is_searchable_and_home_is_graph_first(self):
         response = self.client.get("/api/nodes", params={"q": "quantization"})
         self.assertEqual(response.status_code, 200)
         self.assertTrue(any(n["slug"] == "post-training-quantization" for n in response.json()))
+        home = self.client.get("/")
+        self.assertIn('src="/graph"', home.text)
+        self.assertIn("Interactive Principia knowledge graph", home.text)
+
+    def test_integrated_graph_bridges_selection_without_changing_mirror(self):
+        response = self.client.get("/graph")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('id="cv"', response.text)
+        self.assertIn("principia-node-selected", response.text)
+        self.assertIn('const docBase = "/nodes";', response.text)
 
     def test_node_content_renders_markdown_and_wikilinks(self):
         response = self.client.get("/api/nodes/post-training-quantization")

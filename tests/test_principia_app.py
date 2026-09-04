@@ -32,12 +32,20 @@ class PrincipiaAppTests(unittest.TestCase):
         self.assertIn('src="/graph"', home.text)
         self.assertIn("Interactive Principia knowledge graph", home.text)
 
-    def test_integrated_graph_bridges_selection_without_changing_mirror(self):
+    def test_integrated_graph_bridges_selection_and_shows_roadmap_status(self):
+        self.client.put(
+            "/api/status/post-training-quantization",
+            json={"status": "in_progress", "custom_label": "", "note": "Study next"},
+        )
         response = self.client.get("/graph")
         self.assertEqual(response.status_code, 200)
         self.assertIn('id="cv"', response.text)
         self.assertIn("principia-node-selected", response.text)
+        self.assertIn("principia-status-updated", response.text)
         self.assertIn('const docBase = "/nodes";', response.text)
+        self.assertIn('"post-training-quantization": {"slug": "post-training-quantization", "status": "in_progress"', response.text)
+        self.assertIn("privateStatusLabel(id)", response.text)
+        self.assertIn("study-status", response.text)
 
     def test_node_content_renders_markdown_and_wikilinks(self):
         response = self.client.get("/api/nodes/post-training-quantization")

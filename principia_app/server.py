@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import sqlite3
@@ -174,6 +175,12 @@ def put_status(slug: str, update: StatusUpdate) -> dict[str, str]:
 @app.get("/graph", response_class=HTMLResponse)
 def integrated_graph() -> HTMLResponse:
     source = STATIC_MIRROR.read_text(encoding="utf-8")
+    with _db() as conn:
+        rows = conn.execute(
+            "SELECT slug, status, custom_label, note, updated_at FROM node_status"
+        ).fetchall()
+    private_status = {row["slug"]: dict(row) for row in rows}
+
     select_line = "    selId = (id && byId.has(id)) ? id : null;"
     bridge = (
         select_line
@@ -182,11 +189,49 @@ def integrated_graph() -> HTMLResponse:
     if select_line not in source:
         raise HTTPException(500, "Graph integration marker not found")
     source = source.replace(select_line, bridge, 1)
-    source = source.replace(
-        'const docBase = DATA.docBase || "";',
-        'const docBase = "/nodes";',
-        1,
-    )
+
+    doc_base = 'const docBase = DATA.docBase || "";'
+    status_script = f"""const docBase = "/nodes";
+  const PRIVATE_STATUS = {json.dumps(private_status, ensure_ascii=False).replace("</", "<\\/")};
+  const privateStatusLabel = id => {{
+    const record = PRIVATE_STATUS[id];
+    if (!record) return "Not started";
+    if (record.status === "custom") return record.custom_label || "Custom";
+    return ({{not_started:"Not started",in_progress:"In progress",blocked:"Blocked",done:"Done"}})[record.status] || "Not started";
+  }};
+  const privateStatusClass = id => "study-" + ((PRIVATE_STATUS[id] || {{status:"not_started"}}).status || "not_started");"""
+    if doc_base not in source:
+        raise HTTPException(500, "Graph document-link marker not found")
+    source = source.replace(doc_base, status_script, 1)
+
+    roadmap_title = '<span class="rtitle" data-go="${id}">${nn.title}${tgt ? " — current" : ""}</span>` +'
+    roadmap_status = roadmap_title + '\n              `<span class="study-status ${privateStatusClass(id)}">${privateStatusLabel(id)}</span>` +'
+    if roadmap_title not in source:
+        raise HTTPException(500, "Graph roadmap marker not found")
+    source = source.replace(roadmap_title, roadmap_status, 1)
+
+    css_marker = "  .rstep.tgt { background: #243056; font-weight: 600; }"
+    css = css_marker + """
+  .study-status { flex-shrink:0;padding:2px 6px;border-radius:999px;border:1px solid #566278;color:#cbd5e1;font-size:10px;line-height:1.25;white-space:nowrap; }
+  .study-in_progress { border-color:#e6a417;color:#ffd166;background:#6b4f142e; }
+  .study-blocked { border-color:#e5484d;color:#ff8e95;background:#6b1b1f35; }
+  .study-done { border-color:#2fbf87;color:#65e6b3;background:#164c3938; }
+  .study-custom { border-color:#8b9cff;color:#bcc5ff;background:#32396b45; }"""
+    if css_marker not in source:
+        raise HTTPException(500, "Graph roadmap-style marker not found")
+    source = source.replace(css_marker, css, 1)
+
+    end_marker = "})();\n</script>"
+    listener = """  window.addEventListener("message", event => {
+    if (event.origin !== window.location.origin || event.data?.type !== "principia-status-updated") return;
+    PRIVATE_STATUS[event.data.slug] = event.data.status;
+    if (selId) renderDetails();
+  });
+})();
+</script>"""
+    if end_marker not in source:
+        raise HTTPException(500, "Graph script marker not found")
+    source = source.replace(end_marker, listener, 1)
     return HTMLResponse(source)
 
 
@@ -214,7 +259,7 @@ async function loadList(q=''){const data=await fetch('/api/nodes?q='+encodeURICo
 async function openNode(slug){current=slug;const n=await fetch('/api/nodes/'+slug).then(r=>r.json());const s=n.status;inspector.hidden=false;inspector.innerHTML=`<button class="close" id="closeInspector" aria-label="Close">×</button><div class="slug">${esc(n.slug)}</div><h2>${esc(n.title)}</h2><p class="summary">${esc(n.summary)}</p><div class="status-card"><strong>Private progress</strong><label>Status</label><select id="status"><option value="not_started">Not started</option><option value="in_progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option><option value="custom">Custom</option></select><div id="customWrap"><label>Custom label</label><input id="custom" maxlength="80" value="${esc(s.custom_label)}"></div><label>Private note</label><textarea id="note" maxlength="4000">${esc(s.note)}</textarea><button id="save">Save</button><span class="saved" id="saved"></span><div class="count" id="updated">${s.updated_at?'Updated '+esc(s.updated_at):'Not updated yet'}</div></div><article class="content">${n.html}</article>`;document.querySelector('#status').value=s.status;toggleCustom();document.querySelector('#status').onchange=toggleCustom;document.querySelector('#save').onclick=saveStatus;document.querySelector('#closeInspector').onclick=showGraph;sidebar.classList.remove('open');await loadList(search.value);history.replaceState(null,'','/nodes/'+slug);}
 function showGraph(){inspector.hidden=true;current='';sidebar.classList.remove('open');history.replaceState(null,'','/');loadList(search.value);}
 function toggleCustom(){document.querySelector('#customWrap').style.display=document.querySelector('#status').value==='custom'?'block':'none';}
-async function saveStatus(){const payload={status:document.querySelector('#status').value,custom_label:document.querySelector('#custom').value,note:document.querySelector('#note').value};const r=await fetch('/api/status/'+current,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(!r.ok){document.querySelector('#saved').textContent='Could not save';return}const s=await r.json();document.querySelector('#saved').textContent='Saved';document.querySelector('#updated').textContent='Updated '+s.updated_at;setTimeout(()=>document.querySelector('#saved').textContent='',1800);}
+async function saveStatus(){const payload={status:document.querySelector('#status').value,custom_label:document.querySelector('#custom').value,note:document.querySelector('#note').value};const r=await fetch('/api/status/'+current,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(!r.ok){document.querySelector('#saved').textContent='Could not save';return}const s=await r.json();document.querySelector('#graph').contentWindow.postMessage({type:'principia-status-updated',slug:current,status:s},location.origin);document.querySelector('#saved').textContent='Saved';document.querySelector('#updated').textContent='Updated '+s.updated_at;setTimeout(()=>document.querySelector('#saved').textContent='',1800);}
 window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data?.type==='principia-node-selected'&&e.data.slug)openNode(e.data.slug)});
 let timer;search.oninput=()=>{clearTimeout(timer);timer=setTimeout(()=>loadList(search.value),120)};document.querySelector('#graphBtn').onclick=showGraph;document.querySelector('#mobileGraphBtn').onclick=showGraph;document.querySelector('#menuBtn').onclick=()=>sidebar.classList.toggle('open');loadList();const linked=location.pathname.match(/^\/nodes\/([a-z0-9][a-z0-9-]*)$/);if(linked)openNode(linked[1]);
 </script></body></html>'''

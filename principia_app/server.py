@@ -173,7 +173,7 @@ def put_status(slug: str, update: StatusUpdate) -> dict[str, str]:
 
 @app.get("/static-mirror")
 def static_mirror() -> FileResponse:
-    return FileResponse(STATIC_MIRROR, media_type="text/html", filename="principia-graph.html")
+    return FileResponse(STATIC_MIRROR, media_type="text/html")
 
 
 def main() -> None:

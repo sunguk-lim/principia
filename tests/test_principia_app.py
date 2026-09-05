@@ -9,7 +9,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from principia_app.server import GRAPH_DATA, LEGACY_GRAPH, ROOT, create_app
+from principia_app.server import GRAPH_DATA, LEGACY_GRAPH, ROOT, create_app, filter_principia_codex_sessions
 
 
 class PrincipiaAppTests(unittest.TestCase):
@@ -52,6 +52,31 @@ class PrincipiaAppTests(unittest.TestCase):
     def test_invalid_status_and_node_are_rejected(self) -> None:
         self.assertEqual(self.client.put("/api/status/missing-node", json={"status": "done"}).status_code, 404)
         self.assertEqual(self.client.put("/api/status/quantization", json={"status": "custom"}).status_code, 422)
+
+    def test_codex_catalog_only_exposes_principia_sessions(self) -> None:
+        catalog = {
+            "hosts": [{
+                "label": "Local Codex",
+                "sessions": [
+                    {
+                        "threadId": "principia-thread",
+                        "name": "principia",
+                        "cwd": str(ROOT),
+                        "status": "notLoaded",
+                        "source": "cli",
+                        "gitBranch": "main",
+                        "updatedAt": 20,
+                        "canContinue": True,
+                        "sessionKey": "must-not-leak",
+                    },
+                    {"threadId": "other-thread", "name": "other", "cwd": str(ROOT.parent), "updatedAt": 30},
+                ],
+            }]
+        }
+        sessions = filter_principia_codex_sessions(catalog)
+        self.assertEqual([session["threadId"] for session in sessions], ["principia-thread"])
+        self.assertNotIn("sessionKey", sessions[0])
+        self.assertEqual(sessions[0]["host"], "Local Codex")
 
     def test_legacy_graph_remains_byte_identical(self) -> None:
         response = self.client.get("/legacy-graph")

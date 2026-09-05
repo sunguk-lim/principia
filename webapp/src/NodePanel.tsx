@@ -12,6 +12,7 @@ interface Props {
   onClose: () => void;
   onSelect: (id: string) => void;
   onSave: (id: string, value: StudyStatus) => Promise<void>;
+  onOpenCodex?: () => void;
 }
 
 function markdown(body: string): string {
@@ -21,7 +22,7 @@ function markdown(body: string): string {
   return marked.parse(linked, { gfm: true }) as string;
 }
 
-export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSave }: Props) {
+export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSave, onOpenCodex }: Props) {
   const initial = statuses[node.id] || emptyStatus();
   const [draft, setDraft] = useState<StudyStatus>(initial);
   const [saving, setSaving] = useState(false);
@@ -35,7 +36,7 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
     try { await onSave(node.id, draft); } finally { setSaving(false); }
   };
   return <aside className="node-panel">
-    <header className="panel-head"><div><span className="eyebrow">{node.root} · level {node.level}</span><h2>{node.title}</h2></div><button className="icon-button" onClick={onClose} aria-label="Close">×</button></header>
+    <header className="panel-head"><div><span className="eyebrow">{node.root} · level {node.level}</span><h2>{node.title}</h2></div><div className="panel-actions">{onOpenCodex && <button className="ask-codex" onClick={onOpenCodex}>Ask Codex</button>}<button className="icon-button" onClick={onClose} aria-label="Close">×</button></div></header>
     <p className="summary">{node.summary}</p>
     <section className="study-card relationship-card">
       <div className="section-heading"><div><span className="eyebrow">Direct relationships</span><strong>Arrows lead toward prerequisites</strong></div></div>

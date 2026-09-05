@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { GraphCanvas } from "./GraphCanvas";
 import { NodePanel } from "./NodePanel";
+import { CodexPanel, type CodexCatalog } from "./CodexPanel";
 import { loadStatuses, saveStatus } from "./status-store";
 import { emptyStatus, statusLabel, type GraphData, type GraphNode, type StatusMap, type StoreMode, type StudyStatus } from "./types";
 
@@ -16,6 +17,20 @@ export default function App() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [menuOpen, setMenuOpen] = useState(false);
   const [focusDepth, setFocusDepth] = useState<1 | 2>(1);
+  const [codexCatalog, setCodexCatalog] = useState<CodexCatalog | null>(null);
+  const [codexOpen, setCodexOpen] = useState(false);
+  const [codexRefreshing, setCodexRefreshing] = useState(false);
+
+  const refreshCodex = async () => {
+    setCodexRefreshing(true);
+    try {
+      const response = await fetch("/api/codex/sessions");
+      if (response.ok) setCodexCatalog(await response.json());
+    } catch { /* Static builds intentionally have no private Codex API. */ }
+    finally { setCodexRefreshing(false); }
+  };
+
+  useEffect(() => { void refreshCodex(); }, []);
 
   useEffect(() => {
     Promise.all([
@@ -47,18 +62,18 @@ export default function App() {
 
   if (!data) return <div className="loading"><div className="orb" /><strong>Assembling the knowledge graph…</strong></div>;
   return <div className="shell">
-    <header className="topbar"><button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)}>Explore</button><div className="wordmark"><span className="mark">P</span><div><strong>Principia</strong><small>Knowledge that compounds</small></div></div><div className="top-stats"><span><b>{data.nodes.length}</b> concepts</span><span><b>{data.edges.length}</b> connections</span><span className="progress"><i style={{ width: `${Math.round(done / data.nodes.length * 100)}%` }} /><b>{done}</b> studied</span></div></header>
+    <header className="topbar"><button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)}>Explore</button><div className="wordmark"><span className="mark">P</span><div><strong>Principia</strong><small>Knowledge that compounds</small></div></div><div className="top-stats"><span><b>{data.nodes.length}</b> concepts</span><span><b>{data.edges.length}</b> connections</span><span className="progress"><i style={{ width: `${Math.round(done / data.nodes.length * 100)}%` }} /><b>{done}</b> studied</span></div>{codexCatalog?.available && <button className="codex-launch" onClick={() => setCodexOpen(true)}><i/>Codex <b>{codexCatalog.sessions.length}</b></button>}</header>
     <aside className={`explorer ${menuOpen ? "open" : ""}`}><div className="explorer-head"><span className="eyebrow">Explore</span><button className="close-mobile" onClick={() => setMenuOpen(false)}>×</button><h1>Choose what to learn next.</h1><p>Follow prerequisites from foundations to the concepts that depend on them.</p></div>
       <input className="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Search concepts, fields, ideas…" />
       <div className="filter-row"><select value={root} onChange={e => setRoot(e.target.value)}><option value="all">All fields</option>{roots.map(value => <option key={value}>{value}</option>)}</select><select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}><option value="all">All progress</option><option value="not_started">Not started</option><option value="in_progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option><option value="custom">Custom</option></select></div>
       <div className="study-summary"><span><b>{active}</b> in progress</span><span><b>{done}</b> done</span><span><b>{visibleNodes.length}</b> visible</span></div>
       <div className="node-list">{visibleNodes.slice(0, 160).map(node => <button key={node.id} className={`node-row ${node.id === selectedId ? "active" : ""}`} onClick={() => selectNode(node.id)}><i style={{ background: ROOT_COLORS[node.root] || "#8b9cff" }} /><span><strong>{node.title}</strong><small>{node.root} · L{node.level}</small></span><em className={statuses[node.id]?.status || "not_started"}>{statusLabel(statuses[node.id] || emptyStatus())}</em></button>)}</div>
     </aside>
-    <main className={`graph-stage ${selected ? "panel-open" : ""}`}><GraphCanvas data={data} statuses={statuses} selectedId={selectedId} visibleIds={visibleIds} focusDepth={focusDepth} onSelect={selectNode} onClear={() => setSelectedId(null)} />
+    <main className={`graph-stage ${selected || codexOpen ? "panel-open" : ""}`}><GraphCanvas data={data} statuses={statuses} selectedId={selectedId} visibleIds={visibleIds} focusDepth={focusDepth} onSelect={selectNode} onClear={() => setSelectedId(null)} />
       {selected && <div className="relationship-toolbar"><div><span className="eyebrow">Relationship focus</span><strong>{selected.title}</strong></div><div className="depth-toggle"><button className={focusDepth === 1 ? "active" : ""} onClick={() => setFocusDepth(1)}>Direct</button><button className={focusDepth === 2 ? "active" : ""} onClick={() => setFocusDepth(2)}>2 steps</button><button onClick={() => setSelectedId(null)}>Overview</button></div></div>}
       <div className={`graph-hud ${selected ? "focused" : ""}`}><span>{selected ? "Arrows point from a concept to what it requires" : "Hover to preview relationships · select to focus"}</span>{selected ? <div className="relation-legend"><i className="prerequisite"/>Prerequisite <i className="dependent"/>Dependent <i className="context"/>Context</div> : <div className="legend"><i className="not_started"/>Not started<i className="in_progress"/>In progress<i className="blocked"/>Blocked<i className="done"/>Done</div>}</div>
     </main>
-    {selected && <NodePanel key={selected.id + (statuses[selected.id]?.updated_at || "")} node={selected} byId={byId} statuses={statuses} mode={mode} onClose={() => setSelectedId(null)} onSelect={selectNode} onSave={save} />}
+    {codexOpen && codexCatalog ? <CodexPanel catalog={codexCatalog} selected={selected} refreshing={codexRefreshing} onRefresh={refreshCodex} onClose={() => setCodexOpen(false)} /> : selected && <NodePanel key={selected.id + (statuses[selected.id]?.updated_at || "")} node={selected} byId={byId} statuses={statuses} mode={mode} onClose={() => setSelectedId(null)} onSelect={selectNode} onSave={save} onOpenCodex={codexCatalog?.available ? () => setCodexOpen(true) : undefined} />}
     {menuOpen && <button className="scrim" aria-label="Close explorer" onClick={() => setMenuOpen(false)} />}
   </div>;
 }

@@ -26,6 +26,8 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
   const [draft, setDraft] = useState<StudyStatus>(initial);
   const [saving, setSaving] = useState(false);
   const roadmap = useMemo(() => learningRoadmap(node.id, byId), [node.id, byId]);
+  const prerequisites = useMemo(() => node.prereqs.map(id => byId.get(id)).filter((item): item is GraphNode => Boolean(item)), [node, byId]);
+  const dependents = useMemo(() => [...byId.values()].filter(item => item.prereqs.includes(node.id)).sort((a, b) => a.title.localeCompare(b.title)), [node.id, byId]);
   const next = nextStudyNode(roadmap, statuses);
 
   const save = async () => {
@@ -35,6 +37,11 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
   return <aside className="node-panel">
     <header className="panel-head"><div><span className="eyebrow">{node.root} · level {node.level}</span><h2>{node.title}</h2></div><button className="icon-button" onClick={onClose} aria-label="Close">×</button></header>
     <p className="summary">{node.summary}</p>
+    <section className="study-card relationship-card">
+      <div className="section-heading"><div><span className="eyebrow">Direct relationships</span><strong>Arrows lead toward prerequisites</strong></div></div>
+      <div className="relation-group"><span className="relation-label prerequisite">Requires · {prerequisites.length}</span><div className="relation-chips">{prerequisites.length ? prerequisites.map(item => <button key={item.id} onClick={() => onSelect(item.id)}>{item.title}</button>) : <span className="empty-relation">Foundation node</span>}</div></div>
+      <div className="relation-group"><span className="relation-label dependent">Unlocks · {dependents.length}</span><div className="relation-chips">{dependents.length ? dependents.map(item => <button key={item.id} onClick={() => onSelect(item.id)}>{item.title}</button>) : <span className="empty-relation">No direct dependents</span>}</div></div>
+    </section>
     <section className="study-card">
       <div className="section-heading"><div><span className="eyebrow">Learning roadmap</span><strong>{roadmap.length} concepts</strong></div>{next && <button className="next-button" onClick={() => onSelect(next.id)}>Study next</button>}</div>
       <div className="roadmap">{roadmap.map((item, index) => <button key={item.id} className={`roadmap-row ${item.id === node.id ? "current" : ""}`} onClick={() => onSelect(item.id)}><span className="roadmap-index">{index + 1}</span><span className="roadmap-title">{item.title}</span><span className={`status-pill ${statuses[item.id]?.status || "not_started"}`}>{statusLabel(statuses[item.id])}</span></button>)}</div>

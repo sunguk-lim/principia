@@ -15,6 +15,7 @@ export default function App() {
   const [root, setRoot] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [focusDepth, setFocusDepth] = useState<1 | 2>(1);
 
   useEffect(() => {
     Promise.all([
@@ -53,7 +54,10 @@ export default function App() {
       <div className="study-summary"><span><b>{active}</b> in progress</span><span><b>{done}</b> done</span><span><b>{visibleNodes.length}</b> visible</span></div>
       <div className="node-list">{visibleNodes.slice(0, 160).map(node => <button key={node.id} className={`node-row ${node.id === selectedId ? "active" : ""}`} onClick={() => selectNode(node.id)}><i style={{ background: ROOT_COLORS[node.root] || "#8b9cff" }} /><span><strong>{node.title}</strong><small>{node.root} · L{node.level}</small></span><em className={statuses[node.id]?.status || "not_started"}>{statusLabel(statuses[node.id] || emptyStatus())}</em></button>)}</div>
     </aside>
-    <main className="graph-stage"><GraphCanvas data={data} statuses={statuses} selectedId={selectedId} visibleIds={visibleIds} onSelect={selectNode} /><div className="graph-hud"><span>Drag to pan · pinch or scroll to zoom</span><div className="legend"><i className="not_started"/>Not started<i className="in_progress"/>In progress<i className="blocked"/>Blocked<i className="done"/>Done</div></div></main>
+    <main className={`graph-stage ${selected ? "panel-open" : ""}`}><GraphCanvas data={data} statuses={statuses} selectedId={selectedId} visibleIds={visibleIds} focusDepth={focusDepth} onSelect={selectNode} onClear={() => setSelectedId(null)} />
+      {selected && <div className="relationship-toolbar"><div><span className="eyebrow">Relationship focus</span><strong>{selected.title}</strong></div><div className="depth-toggle"><button className={focusDepth === 1 ? "active" : ""} onClick={() => setFocusDepth(1)}>Direct</button><button className={focusDepth === 2 ? "active" : ""} onClick={() => setFocusDepth(2)}>2 steps</button><button onClick={() => setSelectedId(null)}>Overview</button></div></div>}
+      <div className={`graph-hud ${selected ? "focused" : ""}`}><span>{selected ? "Arrows point from a concept to what it requires" : "Hover to preview relationships · select to focus"}</span>{selected ? <div className="relation-legend"><i className="prerequisite"/>Prerequisite <i className="dependent"/>Dependent <i className="context"/>Context</div> : <div className="legend"><i className="not_started"/>Not started<i className="in_progress"/>In progress<i className="blocked"/>Blocked<i className="done"/>Done</div>}</div>
+    </main>
     {selected && <NodePanel key={selected.id + (statuses[selected.id]?.updated_at || "")} node={selected} byId={byId} statuses={statuses} mode={mode} onClose={() => setSelectedId(null)} onSelect={selectNode} onSave={save} />}
     {menuOpen && <button className="scrim" aria-label="Close explorer" onClick={() => setMenuOpen(false)} />}
   </div>;

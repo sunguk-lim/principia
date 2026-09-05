@@ -7,9 +7,18 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
+from starlette.requests import Request
 
-from principia_app.server import GRAPH_DATA, LEGACY_GRAPH, ROOT, create_app, filter_principia_codex_sessions
+from principia_app.server import (
+    GRAPH_DATA,
+    LEGACY_GRAPH,
+    ROOT,
+    create_app,
+    filter_principia_codex_sessions,
+    require_private_client,
+)
 
 
 class PrincipiaAppTests(unittest.TestCase):
@@ -77,6 +86,12 @@ class PrincipiaAppTests(unittest.TestCase):
         self.assertEqual([session["threadId"] for session in sessions], ["principia-thread"])
         self.assertNotIn("sessionKey", sessions[0])
         self.assertEqual(sessions[0]["host"], "Local Codex")
+
+    def test_codex_catalog_rejects_non_tailscale_clients(self) -> None:
+        request = Request({"type": "http", "method": "GET", "path": "/", "headers": [], "client": ("192.168.1.20", 1234)})
+        with self.assertRaises(HTTPException) as raised:
+            require_private_client(request)
+        self.assertEqual(raised.exception.status_code, 403)
 
     def test_legacy_graph_remains_byte_identical(self) -> None:
         response = self.client.get("/legacy-graph")

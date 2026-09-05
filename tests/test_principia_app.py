@@ -6,6 +6,7 @@ import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import AsyncMock, patch
 
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
@@ -14,9 +15,8 @@ from starlette.requests import Request
 from principia_app.server import (
     GRAPH_DATA,
     LEGACY_GRAPH,
-    ROOT,
+    build_copilot_prompt,
     create_app,
-    filter_principia_codex_sessions,
     require_private_client,
 )
 
@@ -62,32 +62,30 @@ class PrincipiaAppTests(unittest.TestCase):
         self.assertEqual(self.client.put("/api/status/missing-node", json={"status": "done"}).status_code, 404)
         self.assertEqual(self.client.put("/api/status/quantization", json={"status": "custom"}).status_code, 422)
 
-    def test_codex_catalog_only_exposes_principia_sessions(self) -> None:
-        catalog = {
-            "hosts": [{
-                "label": "Local Codex",
-                "sessions": [
-                    {
-                        "threadId": "principia-thread",
-                        "name": "principia",
-                        "cwd": str(ROOT),
-                        "status": "notLoaded",
-                        "source": "cli",
-                        "gitBranch": "main",
-                        "updatedAt": 20,
-                        "canContinue": True,
-                        "sessionKey": "must-not-leak",
-                    },
-                    {"threadId": "other-thread", "name": "other", "cwd": str(ROOT.parent), "updatedAt": 30},
-                ],
-            }]
-        }
-        sessions = filter_principia_codex_sessions(catalog)
-        self.assertEqual([session["threadId"] for session in sessions], ["principia-thread"])
-        self.assertNotIn("sessionKey", sessions[0])
-        self.assertEqual(sessions[0]["host"], "Local Codex")
+    def test_copilot_prompt_contains_only_selected_graph_context(self) -> None:
+        prompt = build_copilot_prompt("Why use lower precision?", "post-training-quantization")
+        payload = json.loads(prompt.split("\n\n", 1)[1])
+        self.assertEqual(payload["question"], "Why use lower precision?")
+        self.assertEqual(payload["selectedConcept"]["title"], "Post-Training Quantization")
+        self.assertIn("Tensor", payload["selectedConcept"]["prerequisites"])
+        self.assertIn("Quantization", payload["selectedConcept"]["prerequisites"])
+        self.assertNotIn("threadId", prompt)
 
-    def test_codex_catalog_rejects_non_tailscale_clients(self) -> None:
+    def test_private_copilot_message_returns_only_projected_answer(self) -> None:
+        result = {"answer": "Lower precision reduces memory and compute.", "model": "gpt-test", "durationMs": 12}
+        with patch("principia_app.server.run_copilot_turn", new=AsyncMock(return_value=result)):
+            response = self.client.post("/api/copilot/message", json={
+                "message": "Why?",
+                "conversation_id": "test-chat-1234",
+                "node_id": "quantization",
+            })
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), result)
+        self.assertEqual(self.client.post("/api/copilot/message", json={
+            "message": "Why?", "conversation_id": "bad", "node_id": "quantization"
+        }).status_code, 422)
+
+    def test_copilot_rejects_non_tailscale_clients(self) -> None:
         request = Request({"type": "http", "method": "GET", "path": "/", "headers": [], "client": ("192.168.1.20", 1234)})
         with self.assertRaises(HTTPException) as raised:
             require_private_client(request)

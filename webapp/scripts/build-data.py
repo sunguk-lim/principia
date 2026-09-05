@@ -34,6 +34,8 @@ def main() -> None:
         node["hasFigure"] = (brain.NODES / f"{node_id}.svg").is_file()
 
     output = ROOT / "web" / "dist"
+    if output.exists():
+        shutil.rmtree(output)
     data_dir = output / "data"
     assets_dir = output / "node-assets"
     data_dir.mkdir(parents=True, exist_ok=True)

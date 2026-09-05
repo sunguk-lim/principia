@@ -6,7 +6,7 @@
   "scripts": {
     "build:data": "python3 scripts/build-data.py",
     "build:ui": "node scripts/build.mjs",
-    "build": "npm run build:ui && npm run build:data",
+    "build": "npm run build:data && npm run build:ui",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

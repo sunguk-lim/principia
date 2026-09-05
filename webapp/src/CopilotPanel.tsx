@@ -21,10 +21,19 @@ interface Props {
 const MESSAGE_KEY = "principia-copilot-messages-v1";
 const CONVERSATION_KEY = "principia-copilot-conversation-v1";
 
+function newConversationId(): string {
+  if (typeof globalThis.crypto?.randomUUID === "function") return globalThis.crypto.randomUUID();
+  if (typeof globalThis.crypto?.getRandomValues === "function") {
+    const bytes = globalThis.crypto.getRandomValues(new Uint8Array(16));
+    return `chat-${Array.from(bytes, byte => byte.toString(16).padStart(2, "0")).join("")}`;
+  }
+  return `chat-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+}
+
 function conversationId(): string {
   let id = localStorage.getItem(CONVERSATION_KEY);
   if (!id) {
-    id = crypto.randomUUID();
+    id = newConversationId();
     localStorage.setItem(CONVERSATION_KEY, id);
   }
   return id;
@@ -75,7 +84,7 @@ export function CopilotPanel({ status, selected, onClose }: Props) {
   };
 
   const newChat = () => {
-    localStorage.setItem(CONVERSATION_KEY, crypto.randomUUID());
+    localStorage.setItem(CONVERSATION_KEY, newConversationId());
     setMessages([]);
     setDraft("");
     setError("");

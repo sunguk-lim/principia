@@ -1,8 +1,8 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-02_
+_Last rebuilt: 2026-09-08_
 
-**331** nodes · **3** axioms · **0** on the frontier
+**332** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
@@ -44,6 +44,7 @@ _Last rebuilt: 2026-09-02_
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
 - [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md)
 - [Hypervisor](nodes/hypervisor.md)
+- [Inference Cost Break-Even](nodes/inference-cost-break-even.md)
 - [Init Process](nodes/init-process.md)
 - [k6](nodes/k6.md)
 - [Kernel Module](nodes/kernel-module.md)
@@ -77,7 +78,6 @@ _Last rebuilt: 2026-09-02_
 - [Posterior Consistency](nodes/posterior-consistency.md)
 - [Predecessor Query](nodes/predecessor-query.md)
 - [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md)
-- [Prefix Caching](nodes/prefix-caching.md)
 - [Real-Time OS](nodes/real-time-os.md)
 - [Redis (in-memory data-structure store)](nodes/redis.md)
 - [Register Pressure](nodes/register-pressure.md)
@@ -243,6 +243,7 @@ _Last rebuilt: 2026-09-02_
 - [HTTP](nodes/http.md)
 - [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md)
 - [Hypervisor](nodes/hypervisor.md)
+- [Inference Cost Break-Even](nodes/inference-cost-break-even.md)
 - [Init Process](nodes/init-process.md)
 - [Inode](nodes/inode.md)
 - [Intermediate representation](nodes/intermediate-representation.md)
@@ -488,7 +489,7 @@ _Last rebuilt: 2026-09-02_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (76)
+### ml (77)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
@@ -498,7 +499,7 @@ _Last rebuilt: 2026-09-02_
 
     - **ml/llm/architecture** (12) — [Attention Sink](nodes/attention-sink.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Positional Encoding](nodes/positional-encoding.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [State Space Model](nodes/state-space-model.md)
 
-    - **ml/llm/inference** (16) — [Chunked Prefill](nodes/chunked-prefill.md), [Context Window](nodes/context-window.md), [Continuous Batching](nodes/continuous-batching.md), [KV-cache](nodes/kv-cache.md), [KV-Cache Quantization](nodes/kv-quantization.md), [Numeric Precision Formats](nodes/numeric-precision-formats.md), [Paged attention](nodes/paged-attention.md), [Post-Training Quantization](nodes/post-training-quantization.md), [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md), [Prefill vs Decode](nodes/prefill-vs-decode.md), [Prefix Caching](nodes/prefix-caching.md), [Quantization](nodes/quantization.md), [Roofline Model](nodes/roofline-model.md), [Speculative Decoding](nodes/speculative-decoding.md), [vLLM](nodes/vllm.md), [Weight-Load Amortization](nodes/weight-load-amortization.md)
+    - **ml/llm/inference** (17) — [Chunked Prefill](nodes/chunked-prefill.md), [Context Window](nodes/context-window.md), [Continuous Batching](nodes/continuous-batching.md), [Inference Cost Break-Even](nodes/inference-cost-break-even.md), [KV-cache](nodes/kv-cache.md), [KV-Cache Quantization](nodes/kv-quantization.md), [Numeric Precision Formats](nodes/numeric-precision-formats.md), [Paged attention](nodes/paged-attention.md), [Post-Training Quantization](nodes/post-training-quantization.md), [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md), [Prefill vs Decode](nodes/prefill-vs-decode.md), [Prefix Caching](nodes/prefix-caching.md), [Quantization](nodes/quantization.md), [Roofline Model](nodes/roofline-model.md), [Speculative Decoding](nodes/speculative-decoding.md), [vLLM](nodes/vllm.md), [Weight-Load Amortization](nodes/weight-load-amortization.md)
 
     - **ml/llm/reasoning** (4) — [Chain-of-Thought](nodes/chain-of-thought.md), [Structured Output](nodes/structured-output.md), [Test-Time Compute](nodes/test-time-compute.md), [Tree-Search Decoding](nodes/tree-search-decoding.md)
 

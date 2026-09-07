@@ -18,6 +18,7 @@ await build({
   outdir: resolve(out, "assets"),
   entryNames: "app",
   assetNames: "[name]-[hash]",
+  loader: { ".woff2": "file", ".woff": "file", ".ttf": "file" },
   jsx: "automatic",
 });
 

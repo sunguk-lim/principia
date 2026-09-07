@@ -1,8 +1,8 @@
-import { marked } from "marked";
 import { useMemo, useState } from "react";
 import type { GraphNode, StatusMap, StudyStatus, StoreMode } from "./types";
 import { emptyStatus, statusLabel } from "./types";
 import { learningRoadmap, nextStudyNode } from "./graph-utils";
+import { renderMarkdown } from "./markdown";
 
 interface Props {
   node: GraphNode;
@@ -13,13 +13,6 @@ interface Props {
   onSelect: (id: string) => void;
   onSave: (id: string, value: StudyStatus) => Promise<void>;
   onOpenCopilot?: () => void;
-}
-
-function markdown(body: string): string {
-  const linked = body
-    .replace(/\[\[([a-z0-9][a-z0-9-]*)(?:\|([^\]]+))?\]\]/g, (_m, id, label) => `[${label || id.replaceAll("-", " ")}](#node=${id})`)
-    .replace(/\]\(([a-z0-9][a-z0-9-]*\.svg)\)/g, "](./node-assets/$1)");
-  return marked.parse(linked, { gfm: true }) as string;
 }
 
 export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSave, onOpenCopilot }: Props) {
@@ -54,6 +47,6 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
       <button className="primary-button" disabled={saving || (draft.status === "custom" && !draft.custom_label.trim())} onClick={save}>{saving ? "Saving…" : "Save progress"}</button>
     </section>
     {node.hasFigure && <img className="node-figure" src={`./node-assets/${node.id}.svg`} alt={`${node.title} diagram`} />}
-    <article className="markdown" onClick={e => { const anchor=(e.target as HTMLElement).closest("a"); const match=anchor?.getAttribute("href")?.match(/^#node=(.+)$/); if(match){e.preventDefault();onSelect(match[1])}}} dangerouslySetInnerHTML={{ __html: markdown(node.body) }} />
+    <article className="markdown" onClick={e => { const anchor=(e.target as HTMLElement).closest("a"); const match=anchor?.getAttribute("href")?.match(/^#node=(.+)$/); if(match){e.preventDefault();onSelect(match[1])}}} dangerouslySetInnerHTML={{ __html: renderMarkdown(node.body) }} />
   </aside>;
 }

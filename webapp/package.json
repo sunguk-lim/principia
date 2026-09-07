@@ -7,15 +7,18 @@
     "build:data": "python3 scripts/build-data.py",
     "build:ui": "node scripts/build.mjs",
     "build": "npm run build:data && npm run build:ui",
+    "test": "node scripts/test.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "cytoscape": "3.34.2",
+    "katex": "^0.18.5",
     "marked": "18.0.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@types/node": "^26.4.1",
     "@types/react": "19.2.18",
     "esbuild": "0.28.2",
     "typescript": "6.0.3"

@@ -4,7 +4,7 @@ title: Python Break Statement
 summary: Python's break statement exits the nearest enclosing for or while loop, still running intervening finally blocks and suppressing that loop's else clause.
 type: concept
 tags: [languages/python]
-prereqs: []
+prereqs: [python-loop]
 sources: [https://docs.python.org/3/reference/simple_stmts.html#the-break-statement]
 status: explained
 created: 2026-09-10
@@ -15,7 +15,7 @@ updated: 2026-09-10
 
 ## Summary
 
-Python’s **`break` statement** terminates the nearest syntactically enclosing `for` or `while` loop. Execution continues after that loop, not after every enclosing loop or function.
+Python’s **`break` statement** terminates the nearest syntactically enclosing [[python-loop]]. Execution continues after that loop, not after every enclosing loop or function.
 
 ## Grounded explanation
 
@@ -35,6 +35,10 @@ In nested loops, `break` exits only the innermost loop containing it. To leave m
 If `break` transfers control out of a `try` statement with a `finally` clause, Python executes the `finally` clause before leaving the loop. Iterator cleanup beyond ordinary reference handling depends on the iterator or context manager; `break` is not a universal resource-release operation.
 
 Use `break` when a loop’s stopping condition is discovered inside its body, such as finding the first match or satisfying a convergence criterion. Test empty input, a match on the first and last iterations, no match, nested control flow, and cleanup paths. Prefer a direct bounded loop condition when it states the termination rule more clearly.
+
+## Prerequisites
+
+- [[python-loop]]
 
 ## Sources
 

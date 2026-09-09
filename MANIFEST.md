@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-10_
 
-**402** nodes · **3** axioms · **0** on the frontier
+**403** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (136)
+## 🌳 Parent (root) nodes — top-level, required by nothing (137)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -128,6 +128,7 @@ _Last rebuilt: 2026-09-10_
 - [Speculative Decoding](nodes/speculative-decoding.md)
 - [Subject-Driven Generation](nodes/subject-driven-generation.md)
 - [Supervised Contrastive Learning](nodes/supervised-contrastive-learning.md)
+- [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
 - [Temporal Data Leakage](nodes/temporal-data-leakage.md)
 - [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 - [Tensor Core](nodes/tensor-core.md)
@@ -515,6 +516,7 @@ _Last rebuilt: 2026-09-10_
 - [Swap](nodes/swap.md)
 - [Symmetric-Antisymmetric Decomposition](nodes/symmetric-antisymmetric-decomposition.md)
 - [System Call](nodes/system-call.md)
+- [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
 - [TCP](nodes/tcp.md)
 - [Telemetry Context](nodes/telemetry-context.md)
 - [Telemetry Metric](nodes/telemetry-metric.md)
@@ -557,7 +559,7 @@ _Last rebuilt: 2026-09-10_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 42 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 43 leaf fields
 
 ### algorithms (21)
 
@@ -603,7 +605,7 @@ _Last rebuilt: 2026-09-10_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (122)
+### ml (123)
 
   - **ml/agents** (5) — [Agent Memory](nodes/agent-memory.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -624,6 +626,8 @@ _Last rebuilt: 2026-09-10_
     - **ml/llm/training** (8) — [Context Parallelism](nodes/context-parallelism.md), [Data parallelism](nodes/data-parallelism.md), [Expert parallelism (MoE)](nodes/expert-parallelism.md), [FSDP / ZeRO](nodes/fsdp.md), [Pipeline parallelism](nodes/pipeline-parallelism.md), [Tensor parallelism](nodes/tensor-parallelism.md), [3D Parallelism](nodes/three-dimensional-parallelism.md), [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
   - **ml/model-portability** (7) — [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md)
+
+  - **ml/representation-learning** (1) — [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
 
   - **ml/training** (8) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md), [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md), [Gaussian Mixture Model](nodes/gaussian-mixture-model.md), [Label Smoothing](nodes/label-smoothing.md), [Representation Alignment](nodes/representation-alignment.md), [Reward Hacking](nodes/reward-hacking.md), [Subject-Driven Generation](nodes/subject-driven-generation.md)
 

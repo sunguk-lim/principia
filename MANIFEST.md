@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-09_
 
-**347** nodes · **3** axioms · **0** on the frontier
+**352** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (104)
+## 🌳 Parent (root) nodes — top-level, required by nothing (108)
 
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
 - [Active Learning](nodes/active-learning.md)
@@ -46,6 +46,7 @@ _Last rebuilt: 2026-09-09_
 - [GraphRAG](nodes/graph-rag.md)
 - [Hard Link](nodes/hard-link.md)
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
+- [Huber Loss](nodes/huber-loss.md)
 - [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md)
 - [Hypervisor](nodes/hypervisor.md)
 - [Inference Cost Break-Even](nodes/inference-cost-break-even.md)
@@ -54,6 +55,7 @@ _Last rebuilt: 2026-09-09_
 - [Kernel Module](nodes/kernel-module.md)
 - [Kubernetes Service](nodes/kubernetes-service.md)
 - [KV-Cache Quantization](nodes/kv-quantization.md)
+- [LLM as a Judge](nodes/llm-as-a-judge.md)
 - [Local Feature Attribution](nodes/local-feature-attribution.md)
 - [Log-Normal Distribution](nodes/log-normal-distribution.md)
 - [LoRA (Low-Rank Adaptation)](nodes/lora.md)
@@ -62,7 +64,9 @@ _Last rebuilt: 2026-09-09_
 - [Mamba](nodes/mamba.md)
 - [Maximum A Posteriori](nodes/maximum-a-posteriori.md)
 - [Memory Coalescing](nodes/memory-coalescing.md)
+- [Metamorphic Testing](nodes/metamorphic-testing.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
+- [ML System Freshness](nodes/ml-system-freshness.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [MongoDB](nodes/mongodb.md)
 - [MPI Datatype](nodes/mpi-datatype.md)
@@ -88,7 +92,6 @@ _Last rebuilt: 2026-09-09_
 - [Real-Time OS](nodes/real-time-os.md)
 - [Redis (in-memory data-structure store)](nodes/redis.md)
 - [Register Pressure](nodes/register-pressure.md)
-- [Regularization](nodes/regularization.md)
 - [Reservoir Sampling](nodes/reservoir-sampling.md)
 - [RMSNorm](nodes/rmsnorm.md)
 - [Scan (prefix)](nodes/scan.md)
@@ -102,6 +105,7 @@ _Last rebuilt: 2026-09-09_
 - [TensorRT](nodes/tensorrt.md)
 - [Thread Synchronization](nodes/thread-synchronization.md)
 - [3D Parallelism](nodes/three-dimensional-parallelism.md)
+- [Tiny-Subset Overfit Test](nodes/tiny-subset-overfit-test.md)
 - [Translation Lookaside Buffer](nodes/tlb.md)
 - [Tree-Search Decoding](nodes/tree-search-decoding.md)
 - [Trie](nodes/trie.md)
@@ -257,6 +261,7 @@ _Last rebuilt: 2026-09-09_
 - [Hessian (H)](nodes/hessian.md)
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
 - [HTTP](nodes/http.md)
+- [Huber Loss](nodes/huber-loss.md)
 - [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md)
 - [Hypervisor](nodes/hypervisor.md)
 - [Inference Cost Break-Even](nodes/inference-cost-break-even.md)
@@ -292,6 +297,7 @@ _Last rebuilt: 2026-09-09_
 - [Likelihood](nodes/likelihood.md)
 - [Linear independence](nodes/linear-independence.md)
 - [Linked List](nodes/linked-list.md)
+- [LLM as a Judge](nodes/llm-as-a-judge.md)
 - [Calling LLMs from SQL](nodes/llm-from-sql.md)
 - [Load Balancing](nodes/load-balancing.md)
 - [Load Testing](nodes/load-testing.md)
@@ -314,9 +320,11 @@ _Last rebuilt: 2026-09-09_
 - [Memory Hierarchy](nodes/memory-hierarchy.md)
 - [Memory-Mapped I/O](nodes/memory-mapped-io.md)
 - [Message passing](nodes/message-passing.md)
+- [Metamorphic Testing](nodes/metamorphic-testing.md)
 - [Metatable](nodes/metatable.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
 - [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md)
+- [ML System Freshness](nodes/ml-system-freshness.md)
 - [Memory Management Unit](nodes/mmu.md)
 - [Model Calibration](nodes/model-calibration.md)
 - [MoE Routing](nodes/moe-routing.md)
@@ -444,6 +452,7 @@ _Last rebuilt: 2026-09-09_
 - [Thread](nodes/thread.md)
 - [Thread Synchronization](nodes/thread-synchronization.md)
 - [3D Parallelism](nodes/three-dimensional-parallelism.md)
+- [Tiny-Subset Overfit Test](nodes/tiny-subset-overfit-test.md)
 - [Translation Lookaside Buffer](nodes/tlb.md)
 - [Trace Span](nodes/trace-span.md)
 - [Transaction (ACID)](nodes/transaction.md)
@@ -516,13 +525,13 @@ _Last rebuilt: 2026-09-09_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (87)
+### ml (92)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
   - **ml/deep-learning** (19) — [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
 
-  - **ml/evaluation** (5) — [Dataset Lineage](nodes/dataset-lineage.md), [Local Feature Attribution](nodes/local-feature-attribution.md), [Permutation Feature Importance](nodes/permutation-feature-importance.md), [Precision and Recall](nodes/precision-recall.md), [Temporal Data Leakage](nodes/temporal-data-leakage.md)
+  - **ml/evaluation** (10) — [Dataset Lineage](nodes/dataset-lineage.md), [Huber Loss](nodes/huber-loss.md), [LLM as a Judge](nodes/llm-as-a-judge.md), [Local Feature Attribution](nodes/local-feature-attribution.md), [Metamorphic Testing](nodes/metamorphic-testing.md), [ML System Freshness](nodes/ml-system-freshness.md), [Permutation Feature Importance](nodes/permutation-feature-importance.md), [Precision and Recall](nodes/precision-recall.md), [Temporal Data Leakage](nodes/temporal-data-leakage.md), [Tiny-Subset Overfit Test](nodes/tiny-subset-overfit-test.md)
 
   - **ml/feature-engineering** (1) — [Feature Hashing](nodes/feature-hashing.md)
 

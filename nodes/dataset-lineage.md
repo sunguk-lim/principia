@@ -35,6 +35,8 @@ Train A-only, B-only and combined variants under controlled settings, evaluating
 
 An exact input version and transformation record support reproduction only while their referenced artifacts remain retrievable. A version identifier without retained content is a broken pointer. Repeated execution may also differ when dependencies or nondeterministic operations are uncontrolled.
 
+Transforming before storage and transforming after storage are both compatible with lineage. The important distinction is whether a training run identifies the exact derived data and transformation used. Keeping raw versions allows reprocessing; retaining derived versions avoids repeated expensive work. Neither ordering alone guarantees reproducibility. Choose based on retention constraints and measured transformation cost, not the ETL or ELT label.
+
 Use lineage to locate affected downstream outputs, compare versions and narrow investigations. Validate content separately. A complete lineage graph can faithfully document a consistently wrong labeling policy. Conversely, a quality failure does not by itself identify which missing lineage field caused it.
 
 ## Sources

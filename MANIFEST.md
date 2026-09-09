@@ -2,12 +2,13 @@
 
 _Last rebuilt: 2026-09-09_
 
-**342** nodes · **3** axioms · **0** on the frontier
+**347** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (101)
+## 🌳 Parent (root) nodes — top-level, required by nothing (104)
 
+- [Activation Checkpointing](nodes/activation-checkpointing.md)
 - [Active Learning](nodes/active-learning.md)
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
@@ -17,7 +18,6 @@ _Last rebuilt: 2026-09-09_
 - [Class-Weighted Loss](nodes/class-weighted-loss.md)
 - [clone()](nodes/clone.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
-- [Concept Drift](nodes/concept-drift.md)
 - [Conjugate Prior](nodes/conjugate-prior.md)
 - [Container Runtime](nodes/container-runtime.md)
 - [Content-Addressable Memory](nodes/content-addressable-memory.md)
@@ -25,7 +25,6 @@ _Last rebuilt: 2026-09-09_
 - [Convex Transformation Order](nodes/convex-transformation-order.md)
 - [Cromwell's Rule](nodes/cromwell-rule.md)
 - [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md)
-- [Dataset Lineage](nodes/dataset-lineage.md)
 - [Deque](nodes/deque.md)
 - [Directional Derivative](nodes/directional-derivative.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
@@ -44,6 +43,7 @@ _Last rebuilt: 2026-09-09_
 - [GPUDirect (P2P/RDMA)](nodes/gpudirect.md)
 - [Grouped-query attention (GQA / MQA)](nodes/gqa.md)
 - [Graph Memory](nodes/graph-memory.md)
+- [GraphRAG](nodes/graph-rag.md)
 - [Hard Link](nodes/hard-link.md)
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
 - [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md)
@@ -54,6 +54,7 @@ _Last rebuilt: 2026-09-09_
 - [Kernel Module](nodes/kernel-module.md)
 - [Kubernetes Service](nodes/kubernetes-service.md)
 - [KV-Cache Quantization](nodes/kv-quantization.md)
+- [Local Feature Attribution](nodes/local-feature-attribution.md)
 - [Log-Normal Distribution](nodes/log-normal-distribution.md)
 - [LoRA (Low-Rank Adaptation)](nodes/lora.md)
 - [Lua](nodes/lua.md)
@@ -75,6 +76,7 @@ _Last rebuilt: 2026-09-09_
 - [OpenTelemetry](nodes/opentelemetry.md)
 - [Out-of-Core Processing](nodes/out-of-core-processing.md)
 - [PCI Express](nodes/pci-express.md)
+- [Permutation Feature Importance](nodes/permutation-feature-importance.md)
 - [pgai](nodes/pgai.md)
 - [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md)
 - [Positional Encoding](nodes/positional-encoding.md)
@@ -95,6 +97,7 @@ _Last rebuilt: 2026-09-09_
 - [Speculative Decoding](nodes/speculative-decoding.md)
 - [Stochastic Differential Equation](nodes/stochastic-differential-equation.md)
 - [Structured Output](nodes/structured-output.md)
+- [Temporal Data Leakage](nodes/temporal-data-leakage.md)
 - [Tensor Core](nodes/tensor-core.md)
 - [TensorRT](nodes/tensorrt.md)
 - [Thread Synchronization](nodes/thread-synchronization.md)
@@ -122,6 +125,7 @@ _Last rebuilt: 2026-09-09_
 
 ## 🔷 Concepts
 
+- [Activation Checkpointing](nodes/activation-checkpointing.md)
 - [Active Learning](nodes/active-learning.md)
 - [Address Space Layout](nodes/address-space-layout.md)
 - [Agent Memory](nodes/agent-memory.md)
@@ -245,6 +249,7 @@ _Last rebuilt: 2026-09-09_
 - [Graph (Adjacency List)](nodes/graph.md)
 - [Graph Memory](nodes/graph-memory.md)
 - [Graph optimization](nodes/graph-optimization.md)
+- [GraphRAG](nodes/graph-rag.md)
 - [Hard Link](nodes/hard-link.md)
 - [Hash Map](nodes/hash-map.md)
 - [Hash Set](nodes/hash-set.md)
@@ -290,6 +295,7 @@ _Last rebuilt: 2026-09-09_
 - [Calling LLMs from SQL](nodes/llm-from-sql.md)
 - [Load Balancing](nodes/load-balancing.md)
 - [Load Testing](nodes/load-testing.md)
+- [Local Feature Attribution](nodes/local-feature-attribution.md)
 - [Log-Normal Distribution](nodes/log-normal-distribution.md)
 - [Log Record](nodes/log-record.md)
 - [LoRA (Low-Rank Adaptation)](nodes/lora.md)
@@ -354,6 +360,7 @@ _Last rebuilt: 2026-09-09_
 - [Parallel process](nodes/parallel-process.md)
 - [Partial derivative](nodes/partial-derivative.md)
 - [PCI Express](nodes/pci-express.md)
+- [Permutation Feature Importance](nodes/permutation-feature-importance.md)
 - [pgai](nodes/pgai.md)
 - [pgai Vectorizer](nodes/pgai-vectorizer.md)
 - [pgvector](nodes/pgvector.md)
@@ -428,6 +435,7 @@ _Last rebuilt: 2026-09-09_
 - [Telemetry Context](nodes/telemetry-context.md)
 - [Telemetry Metric](nodes/telemetry-metric.md)
 - [Telemetry Signal](nodes/telemetry-signal.md)
+- [Temporal Data Leakage](nodes/temporal-data-leakage.md)
 - [Tensor](nodes/tensor.md)
 - [Tensor Core](nodes/tensor-core.md)
 - [Tensor parallelism](nodes/tensor-parallelism.md)
@@ -508,17 +516,17 @@ _Last rebuilt: 2026-09-09_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (82)
+### ml (87)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
   - **ml/deep-learning** (19) — [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
 
-  - **ml/evaluation** (2) — [Dataset Lineage](nodes/dataset-lineage.md), [Precision and Recall](nodes/precision-recall.md)
+  - **ml/evaluation** (5) — [Dataset Lineage](nodes/dataset-lineage.md), [Local Feature Attribution](nodes/local-feature-attribution.md), [Permutation Feature Importance](nodes/permutation-feature-importance.md), [Precision and Recall](nodes/precision-recall.md), [Temporal Data Leakage](nodes/temporal-data-leakage.md)
 
   - **ml/feature-engineering** (1) — [Feature Hashing](nodes/feature-hashing.md)
 
-  - **ml/information-retrieval** (9) — [BM25](nodes/bm25.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
+  - **ml/information-retrieval** (10) — [BM25](nodes/bm25.md), [GraphRAG](nodes/graph-rag.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 
     - **ml/llm/architecture** (12) — [Attention Sink](nodes/attention-sink.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Positional Encoding](nodes/positional-encoding.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [State Space Model](nodes/state-space-model.md)
 
@@ -530,7 +538,7 @@ _Last rebuilt: 2026-09-09_
 
   - **ml/model-portability** (7) — [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md)
 
-  - **ml/training** (1) — [Active Learning](nodes/active-learning.md)
+  - **ml/training** (2) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md)
 
 ### networking (16)
 

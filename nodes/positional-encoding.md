@@ -5,10 +5,10 @@ summary: Positional encoding injects token order into otherwise position-agnosti
 type: concept
 tags: [ml/llm/architecture]
 prereqs: [embedding, transformer-attention]
-sources: [https://arxiv.org/abs/1706.03762]
+sources: [https://arxiv.org/abs/1706.03762, https://arxiv.org/abs/2010.11929]
 status: explained
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-09-10
 ---
 
 # Positional Encoding
@@ -63,6 +63,14 @@ The unordered token inventory is identical, but the four vectors are not a mere 
 
 Not every positional method adds a vector to the input. Relative methods modify an attention score according to the offset between query position $t$ and key position $s$; rotary methods transform queries and keys by position-dependent rotations so their dot product depends on $t-s$. These are different implementations of the same requirement: expose order or distance to a computation that otherwise sees token content but no position.
 
+### Resolution and grid extrapolation
+
+For image patches, position is a two-dimensional grid rather than only a text sequence. With fixed patch size, doubling both image dimensions produces four times as many token positions. A learned table trained on one grid has no learned entries for the new grid.
+
+The Vision Transformer work handles transfer to higher resolution by interpolating pretrained positional embeddings to the target two-dimensional grid. Interpolation preserves a smooth coordinate prior but does not prove that a model will generalize to unseen resolution or aspect ratio. Absolute tables, relative offsets, rotary methods, and coordinate-based functions have different extrapolation behavior, and all remain coupled to the visual features and grids seen during training.
+
+Diagnose resolution failures rather than assuming position is the sole cause. Compare native and interpolated positions while holding the image encoder, patch size, sampler, and conditioning fixed. Probe synthetic geometry and repeated-pattern tasks; measure layout, anatomy, duplication, quality, memory, and latency across resolutions and aspect ratios. If mixed-resolution adaptation is needed, evaluate it separately from the zero-shot encoding change.
+
 ## Prerequisites
 
 - [[embedding]]
@@ -70,4 +78,5 @@ Not every positional method adds a vector to the input. Relative methods modify 
 
 ## Sources
 
-- Vaswani et al., “Attention Is All You Need,” §3.5 — the position-agnostic attention motivation and learned or sinusoidal positional encodings.
+- [Vaswani et al., “Attention Is All You Need”](https://arxiv.org/abs/1706.03762), §3.5: motivates learned and sinusoidal positions for otherwise position-agnostic attention.
+- [Dosovitskiy et al., “An Image is Worth 16×16 Words”](https://arxiv.org/abs/2010.11929): represents images as patch sequences and interpolates positional embeddings when transferring to higher resolution.

@@ -5,7 +5,7 @@ summary: A diffusion noise schedule controls how signal-to-noise ratio changes a
 type: concept
 tags: [ml/deep-learning]
 prereqs: [denoising-diffusion-probabilistic-model, probability-distribution, expectation]
-sources: [https://arxiv.org/abs/2006.11239, https://arxiv.org/abs/2102.09672]
+sources: [https://arxiv.org/abs/2006.11239, https://arxiv.org/abs/2102.09672, https://arxiv.org/abs/2403.03206]
 status: explained
 created: 2026-09-10
 updated: 2026-09-10
@@ -35,6 +35,14 @@ A visual defect such as weak global shape does not uniquely diagnose one schedul
 
 Validate empirical mean, variance, and SNR across timesteps; check the terminal distribution; and compare schedules at matched model, data, compute, sampler, and objective. Report structure and texture measures separately when that distinction motivates the change.
 
+### Timestep sampling and resolution
+
+Uniformly drawing $t$ does not distribute optimization effort uniformly over difficulty or SNR. In rectified-flow training, changing the timestep density $\pi(t)$ is equivalent to a time-dependent loss weighting. The Stable Diffusion 3 study evaluates logit-normal sampling, whose location and scale can emphasize intermediate or endpoint regions, rather than establishing that the middle is always optimal.
+
+The same study also shifts sampled timesteps for higher image resolutions. That is an empirical schedule design tied to its latent representation and training setup—not proof that zero-mean pixel noise universally becomes weaker as $1/\sqrt n$. Pixels are correlated, denoisers use spatial context, and latent variance, frequency content, patching, and normalization change with resolution.
+
+For a resolution change, measure latent variance and frequency spectra, denoising loss and gradient norm by timestep, and sample sensitivity by SNR. Compare schedule or sampling changes while holding the position mechanism, latent encoder, data distribution, objective parameterization, and sampler fixed. Confirm that a training-time density change remains compatible with inference-time integration.
+
 ## Prerequisites
 
 - [[denoising-diffusion-probabilistic-model]]
@@ -45,3 +53,4 @@ Validate empirical mean, variance, and SNR across timesteps; check the terminal 
 
 - [Ho, Jain, and Abbeel, “Denoising Diffusion Probabilistic Models”](https://arxiv.org/abs/2006.11239): defines the forward noising process and cumulative coefficients used for direct timestep sampling.
 - [Nichol and Dhariwal, “Improved Denoising Diffusion Probabilistic Models”](https://arxiv.org/abs/2102.09672): studies schedule and reverse-variance modifications affecting density modeling, sample quality, and sampling cost.
+- [Esser et al., “Scaling Rectified Flow Transformers for High-Resolution Image Synthesis”](https://arxiv.org/abs/2403.03206): derives timestep-density weighting and evaluates logit-normal sampling and resolution-dependent timestep shifts.

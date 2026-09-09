@@ -1,18 +1,19 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-08_
+_Last rebuilt: 2026-09-09_
 
-**332** nodes · **3** axioms · **0** on the frontier
+**335** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (94)
+## 🌳 Parent (root) nodes — top-level, required by nothing (95)
 
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
 - [Boot Process](nodes/boot-process.md)
 - [Causal Structure Learning](nodes/causal-structure-learning.md)
 - [Chunked Prefill](nodes/chunked-prefill.md)
+- [Class-Weighted Loss](nodes/class-weighted-loss.md)
 - [clone()](nodes/clone.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
 - [Concept Drift](nodes/concept-drift.md)
@@ -58,7 +59,6 @@ _Last rebuilt: 2026-09-08_
 - [Maximum A Posteriori](nodes/maximum-a-posteriori.md)
 - [Memory Coalescing](nodes/memory-coalescing.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
-- [Model Calibration](nodes/model-calibration.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [MongoDB](nodes/mongodb.md)
 - [MPI Datatype](nodes/mpi-datatype.md)
@@ -82,6 +82,7 @@ _Last rebuilt: 2026-09-08_
 - [Redis (in-memory data-structure store)](nodes/redis.md)
 - [Register Pressure](nodes/register-pressure.md)
 - [Regularization](nodes/regularization.md)
+- [Reservoir Sampling](nodes/reservoir-sampling.md)
 - [RMSNorm](nodes/rmsnorm.md)
 - [Scan (prefix)](nodes/scan.md)
 - [SIMT](nodes/simt.md)
@@ -144,6 +145,7 @@ _Last rebuilt: 2026-09-08_
 - [Chain-of-Thought](nodes/chain-of-thought.md)
 - [Change of Variables](nodes/change-of-variables.md)
 - [Chunked Prefill](nodes/chunked-prefill.md)
+- [Class-Weighted Loss](nodes/class-weighted-loss.md)
 - [clone()](nodes/clone.md)
 - [Closure](nodes/closure.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
@@ -351,6 +353,7 @@ _Last rebuilt: 2026-09-08_
 - [Post-Training Quantization](nodes/post-training-quantization.md)
 - [Posterior Consistency](nodes/posterior-consistency.md)
 - [PostgreSQL](nodes/postgresql.md)
+- [Precision and Recall](nodes/precision-recall.md)
 - [Predecessor Query](nodes/predecessor-query.md)
 - [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md)
 - [Prefill vs Decode](nodes/prefill-vs-decode.md)
@@ -376,6 +379,7 @@ _Last rebuilt: 2026-09-08_
 - [Relational Model](nodes/relational-model.md)
 - [Reparameterization Trick](nodes/reparameterization-trick.md)
 - [Replication](nodes/replication.md)
+- [Reservoir Sampling](nodes/reservoir-sampling.md)
 - [Residual Network](nodes/residual-network.md)
 - [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md)
 - [Ring Attention](nodes/ring-attention.md)
@@ -445,7 +449,7 @@ _Last rebuilt: 2026-09-08_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 38 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 39 leaf fields
 
 ### algorithms (20)
 
@@ -479,21 +483,23 @@ _Last rebuilt: 2026-09-08_
 
   - **languages/semantics** (6) — [Closure](nodes/closure.md), [Coroutine](nodes/coroutine.md), [Dynamic Typing](nodes/dynamic-typing.md), [First-Class Function](nodes/first-class-function.md), [Lexical Scoping](nodes/lexical-scoping.md), [Metatable](nodes/metatable.md)
 
-### math (68)
+### math (69)
 
   - **math/calculus** (20) — [Convexity](nodes/convexity.md), [Curl (∇×F)](nodes/curl.md), [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md), [Definite Integral](nodes/definite-integral.md), [Del operator (∇)](nodes/del-operator.md), [Derivative](nodes/derivative.md), [Differential (Total Derivative)](nodes/differential.md), [Differential Equation](nodes/differential-equation.md), [Differential operators](nodes/differential-operators.md), [Directional Derivative](nodes/directional-derivative.md), [Divergence (∇·F)](nodes/divergence.md), [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md), [Exponential function](nodes/exponential-function.md), [Gradient](nodes/gradient.md), [Hessian (H)](nodes/hessian.md), [Jacobian (J)](nodes/jacobian.md), [Laplacian (∇²f)](nodes/laplacian.md), [Partial derivative](nodes/partial-derivative.md), [Scalar Field](nodes/scalar-field.md), [Vector Field](nodes/vector-field.md)
 
   - **math/linear-algebra** (11) — [Arithmetic (+ − × ÷)](nodes/arithmetic.md), [Cosine Similarity](nodes/cosine-similarity.md), [Cross Product](nodes/cross-product.md), [Linear independence](nodes/linear-independence.md), [Low-rank factorization](nodes/low-rank-factorization.md), [Matrix multiplication](nodes/matrix-multiplication.md), [Matrix rank](nodes/matrix-rank.md), [Matrix Trace](nodes/matrix-trace.md), [Symmetric-Antisymmetric Decomposition](nodes/symmetric-antisymmetric-decomposition.md), [Tensor](nodes/tensor.md), [Vector dot product](nodes/vector-dot-product.md)
 
-  - **math/probability** (36) — [Bayes' Rule](nodes/bayes-rule.md), [Bernoulli Distribution](nodes/bernoulli-distribution.md), [Beta Distribution](nodes/beta-distribution.md), [Brownian Motion](nodes/brownian-motion.md), [Change of Variables](nodes/change-of-variables.md), [Conditional Independence](nodes/conditional-independence.md), [Conditional Probability](nodes/conditional-probability.md), [Conjugate Prior](nodes/conjugate-prior.md), [Convex Transformation Order](nodes/convex-transformation-order.md), [Cromwell's Rule](nodes/cromwell-rule.md), [Cumulative Distribution Function](nodes/cumulative-distribution-function.md), [Empirical Bayes](nodes/empirical-bayes.md), [Expectation](nodes/expectation.md), [Expectation-Maximization](nodes/expectation-maximization.md), [Full Bayesian Inference](nodes/full-bayesian-inference.md), [Geometric Distribution](nodes/geometric-distribution.md), [Hierarchical Bayes](nodes/hierarchical-bayes.md), [Itô Integral](nodes/ito-integral.md), [Kullback–Leibler Divergence](nodes/kl-divergence.md), [Latent-Variable Model](nodes/latent-variable-model.md), [Likelihood](nodes/likelihood.md), [Log-Normal Distribution](nodes/log-normal-distribution.md), [Maximum A Posteriori](nodes/maximum-a-posteriori.md), [Maximum Likelihood Estimation](nodes/maximum-likelihood-estimation.md), [Moment Generating Function](nodes/moment-generating-function.md), [Moment Skewness](nodes/moment-skewness.md), [Nonparametric Skew](nodes/nonparametric-skew.md), [Normal Distribution](nodes/normal-distribution.md), [Posterior Consistency](nodes/posterior-consistency.md), [Probability](nodes/probability.md), [Probability Distribution](nodes/probability-distribution.md), [Random Variable](nodes/random-variable.md), [Skewness](nodes/skewness.md), [Stochastic Differential Equation](nodes/stochastic-differential-equation.md), [Stochastic Process](nodes/stochastic-process.md), [Variational Inference](nodes/variational-inference.md)
+  - **math/probability** (37) — [Bayes' Rule](nodes/bayes-rule.md), [Bernoulli Distribution](nodes/bernoulli-distribution.md), [Beta Distribution](nodes/beta-distribution.md), [Brownian Motion](nodes/brownian-motion.md), [Change of Variables](nodes/change-of-variables.md), [Conditional Independence](nodes/conditional-independence.md), [Conditional Probability](nodes/conditional-probability.md), [Conjugate Prior](nodes/conjugate-prior.md), [Convex Transformation Order](nodes/convex-transformation-order.md), [Cromwell's Rule](nodes/cromwell-rule.md), [Cumulative Distribution Function](nodes/cumulative-distribution-function.md), [Empirical Bayes](nodes/empirical-bayes.md), [Expectation](nodes/expectation.md), [Expectation-Maximization](nodes/expectation-maximization.md), [Full Bayesian Inference](nodes/full-bayesian-inference.md), [Geometric Distribution](nodes/geometric-distribution.md), [Hierarchical Bayes](nodes/hierarchical-bayes.md), [Itô Integral](nodes/ito-integral.md), [Kullback–Leibler Divergence](nodes/kl-divergence.md), [Latent-Variable Model](nodes/latent-variable-model.md), [Likelihood](nodes/likelihood.md), [Log-Normal Distribution](nodes/log-normal-distribution.md), [Maximum A Posteriori](nodes/maximum-a-posteriori.md), [Maximum Likelihood Estimation](nodes/maximum-likelihood-estimation.md), [Moment Generating Function](nodes/moment-generating-function.md), [Moment Skewness](nodes/moment-skewness.md), [Nonparametric Skew](nodes/nonparametric-skew.md), [Normal Distribution](nodes/normal-distribution.md), [Posterior Consistency](nodes/posterior-consistency.md), [Probability](nodes/probability.md), [Probability Distribution](nodes/probability-distribution.md), [Random Variable](nodes/random-variable.md), [Reservoir Sampling](nodes/reservoir-sampling.md), [Skewness](nodes/skewness.md), [Stochastic Differential Equation](nodes/stochastic-differential-equation.md), [Stochastic Process](nodes/stochastic-process.md), [Variational Inference](nodes/variational-inference.md)
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (77)
+### ml (79)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
-  - **ml/deep-learning** (18) — [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
+  - **ml/deep-learning** (19) — [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
+
+  - **ml/evaluation** (1) — [Precision and Recall](nodes/precision-recall.md)
 
   - **ml/information-retrieval** (9) — [BM25](nodes/bm25.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 

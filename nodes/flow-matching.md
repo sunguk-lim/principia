@@ -23,7 +23,9 @@ Let $p_t$ be a path of densities and let $u_t(x)$ be a velocity satisfying the c
 
 $$\partial_t p_t(x)+\nabla\cdot\bigl(p_t(x)u_t(x)\bigr)=0.$$
 
-A parameterized field $v_\theta(t,x)$ is trained to match a target field associated with [[conditional-probability]] paths. Conditional flow matching makes this regression practical without simulating the learned differential equation during every training example.
+A parameterized field $v_\theta(t,x)$ is trained to match a target field associated with [[conditional-probability]] paths. Conditional flow matching samples a conditioning endpoint $Z$ and regresses a tractable conditional velocity $u_t(x\mid Z)$. Under the construction in Lipman et al., the conditional target has the same expected parameter gradient as regression against the marginal velocity, weighted by the posterior distribution of $Z$ given the intermediate state. Training therefore uses Monte Carlo samples instead of explicitly evaluating an integral over the full data distribution; it is not generally an $O(N)$ scan at every update.
+
+The choice of conditional coupling still matters. Independently pairing base and data samples can create curved or crossing paths and high target variance. Transport-informed couplings may straighten paths and reduce solver work, but add their own approximation and batching cost. Test unbiasedness on a toy mixture whose marginal velocity is calculable, then measure target variance, path curvature, and endpoint error.
 
 After training, sampling draws $X_0$ from the base [[probability-distribution]] and solves
 

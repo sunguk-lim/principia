@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-09_
 
-**335** nodes · **3** axioms · **0** on the frontier
+**337** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (95)
+## 🌳 Parent (root) nodes — top-level, required by nothing (97)
 
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
@@ -24,6 +24,7 @@ _Last rebuilt: 2026-09-09_
 - [Convex Transformation Order](nodes/convex-transformation-order.md)
 - [Cromwell's Rule](nodes/cromwell-rule.md)
 - [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md)
+- [Dataset Lineage](nodes/dataset-lineage.md)
 - [Deque](nodes/deque.md)
 - [Directional Derivative](nodes/directional-derivative.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
@@ -70,6 +71,7 @@ _Last rebuilt: 2026-09-09_
 - [ONNX Runtime](nodes/onnx-runtime.md)
 - [OOM Killer](nodes/oom-killer.md)
 - [OpenTelemetry](nodes/opentelemetry.md)
+- [Out-of-Core Processing](nodes/out-of-core-processing.md)
 - [PCI Express](nodes/pci-express.md)
 - [pgai](nodes/pgai.md)
 - [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md)
@@ -184,6 +186,7 @@ _Last rebuilt: 2026-09-09_
 - [Data parallelism](nodes/data-parallelism.md)
 - [Database Index](nodes/database-index.md)
 - [Database Trigger](nodes/database-trigger.md)
+- [Dataset Lineage](nodes/dataset-lineage.md)
 - [Definite Integral](nodes/definite-integral.md)
 - [Del operator (∇)](nodes/del-operator.md)
 - [Demand Paging](nodes/demand-paging.md)
@@ -335,6 +338,7 @@ _Last rebuilt: 2026-09-09_
 - [OpenTelemetry](nodes/opentelemetry.md)
 - [OpenTelemetry Collector](nodes/opentelemetry-collector.md)
 - [Operator set](nodes/operator-set.md)
+- [Out-of-Core Processing](nodes/out-of-core-processing.md)
 - [OverlayFS](nodes/overlayfs.md)
 - [Page](nodes/page.md)
 - [Page Cache](nodes/page-cache.md)
@@ -455,7 +459,7 @@ _Last rebuilt: 2026-09-09_
 
 [Binary Search](nodes/binary-search.md), [Binary Search Tree](nodes/binary-search-tree.md), [Deque](nodes/deque.md), [Directed Acyclic Graph](nodes/directed-acyclic-graph.md), [Dynamic Array](nodes/dynamic-array.md), [Flow Network](nodes/flow-network.md), [Graph (Adjacency List)](nodes/graph.md), [Hash Map](nodes/hash-map.md), [Hash Set](nodes/hash-set.md), [Heap](nodes/heap.md), [Key–Value Mapping](nodes/key-value.md), [Linked List](nodes/linked-list.md), [Minimum-Cost Flow](nodes/minimum-cost-flow.md), [Predecessor Query](nodes/predecessor-query.md), [Queue](nodes/queue.md), [Residual Network](nodes/residual-network.md), [Shortest Path](nodes/shortest-path.md), [Stack](nodes/stack.md), [Trie](nodes/trie.md), [Union-Find](nodes/union-find.md)
 
-### databases (23)
+### databases (24)
 
   - **databases/distributed** (3) — [Leader Election](nodes/leader-election.md), [Replication](nodes/replication.md), [Sharding (Horizontal Partitioning)](nodes/sharding.md)
 
@@ -465,7 +469,7 @@ _Last rebuilt: 2026-09-09_
 
   - **databases/relational-database** (5) — [Database Trigger](nodes/database-trigger.md), [PostgreSQL](nodes/postgresql.md), [Query Planning & Optimization](nodes/query-planning.md), [Relational Model](nodes/relational-model.md), [SQL (Structured Query Language)](nodes/sql.md)
 
-  - **databases/storage** (3) — [B-Tree / B+-Tree](nodes/b-tree.md), [Database Index](nodes/database-index.md), [Write-Ahead Logging (WAL)](nodes/write-ahead-logging.md)
+  - **databases/storage** (4) — [B-Tree / B+-Tree](nodes/b-tree.md), [Database Index](nodes/database-index.md), [Out-of-Core Processing](nodes/out-of-core-processing.md), [Write-Ahead Logging (WAL)](nodes/write-ahead-logging.md)
 
   - **databases/transactions** (4) — [Concurrency Control](nodes/concurrency-control.md), [Multi-Version Concurrency Control](nodes/mvcc.md), [Transaction (ACID)](nodes/transaction.md), [Transaction Isolation](nodes/transaction-isolation.md)
 
@@ -493,13 +497,13 @@ _Last rebuilt: 2026-09-09_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (79)
+### ml (80)
 
   - **ml/agents** (2) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md)
 
   - **ml/deep-learning** (19) — [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
 
-  - **ml/evaluation** (1) — [Precision and Recall](nodes/precision-recall.md)
+  - **ml/evaluation** (2) — [Dataset Lineage](nodes/dataset-lineage.md), [Precision and Recall](nodes/precision-recall.md)
 
   - **ml/information-retrieval** (9) — [BM25](nodes/bm25.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 

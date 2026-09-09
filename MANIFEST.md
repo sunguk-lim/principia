@@ -2,7 +2,7 @@
 
 _Last rebuilt: 2026-09-10_
 
-**400** nodes · **3** axioms · **0** on the frontier
+**401** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
@@ -334,6 +334,7 @@ _Last rebuilt: 2026-09-10_
 - [KV-Cache Quantization](nodes/kv-quantization.md)
 - [Label Smoothing](nodes/label-smoothing.md)
 - [Laplacian (∇²f)](nodes/laplacian.md)
+- [Late-Interaction Retrieval](nodes/late-interaction-retrieval.md)
 - [Latency Percentiles (Tail Latency)](nodes/latency-percentile.md)
 - [Latent-Variable Model](nodes/latent-variable-model.md)
 - [Leader Election](nodes/leader-election.md)
@@ -600,7 +601,7 @@ _Last rebuilt: 2026-09-10_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (120)
+### ml (121)
 
   - **ml/agents** (5) — [Agent Memory](nodes/agent-memory.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -610,7 +611,7 @@ _Last rebuilt: 2026-09-10_
 
   - **ml/feature-engineering** (1) — [Feature Hashing](nodes/feature-hashing.md)
 
-  - **ml/information-retrieval** (11) — [BM25](nodes/bm25.md), [GraphRAG](nodes/graph-rag.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Multimodal Retrieval-Augmented Generation](nodes/multimodal-rag.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
+  - **ml/information-retrieval** (12) — [BM25](nodes/bm25.md), [GraphRAG](nodes/graph-rag.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Late-Interaction Retrieval](nodes/late-interaction-retrieval.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Multimodal Retrieval-Augmented Generation](nodes/multimodal-rag.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 
     - **ml/llm/architecture** (13) — [Attention Sink](nodes/attention-sink.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Joint Attention](nodes/joint-attention.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Positional Encoding](nodes/positional-encoding.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [State Space Model](nodes/state-space-model.md)
 

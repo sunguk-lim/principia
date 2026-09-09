@@ -4,7 +4,7 @@ title: Multimodal Retrieval-Augmented Generation
 summary: Multimodal RAG retrieves evidence represented as text, images, pages, or other modalities and supplies the selected evidence to a model capable of interpreting it.
 type: concept
 tags: [ml/information-retrieval]
-prereqs: [retrieval-augmented-generation, embedding, vector-database]
+prereqs: [retrieval-augmented-generation, embedding, vector-database, late-interaction-retrieval]
 sources: [https://arxiv.org/abs/2407.01449]
 status: explained
 created: 2026-09-10
@@ -21,7 +21,7 @@ updated: 2026-09-10
 
 A visually rich document can lose information when flattened into extracted text. One alternative renders each page as an image, computes one or more [[embedding]] vectors with a vision-language encoder, stores them in a [[vector-database]], and retrieves pages for a query. A multimodal generator then answers from the selected page images and query.
 
-ColPali is one concrete design: it embeds document-page images into multiple vectors and uses late interaction between query and page vectors. That preserves token- or patch-level matching signals without requiring one pooled vector to represent the whole page. It is an example, not the definition of multimodal RAG.
+ColPali is one concrete design: it embeds document-page images into multiple vectors and uses [[late-interaction-retrieval]] between query and page vectors. That preserves token- or patch-level matching signals without requiring one pooled vector to represent the whole page. It is an example, not the definition of multimodal RAG.
 
 “Local” describes deployment location, not correctness, privacy, or security by itself. Model files, telemetry, document parsing, caches, and network configuration still define data exposure. Likewise, retrieving the correct page does not prove the answer is faithful to it.
 

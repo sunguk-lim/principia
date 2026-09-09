@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-10_
 
-**359** nodes · **3** axioms · **0** on the frontier
+**366** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (114)
+## 🌳 Parent (root) nodes — top-level, required by nothing (117)
 
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
 - [Active Learning](nodes/active-learning.md)
@@ -28,16 +28,17 @@ _Last rebuilt: 2026-09-10_
 - [CUDA Stream](nodes/cuda-stream.md)
 - [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md)
 - [Deque](nodes/deque.md)
+- [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md)
 - [Directional Derivative](nodes/directional-derivative.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
 - [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md)
 - [Empirical Bayes](nodes/empirical-bayes.md)
-- [Expectation-Maximization](nodes/expectation-maximization.md)
 - [Expert parallelism (MoE)](nodes/expert-parallelism.md)
 - [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md)
 - [Feature Hashing](nodes/feature-hashing.md)
 - [FSDP / ZeRO](nodes/fsdp.md)
 - [Full Bayesian Inference](nodes/full-bayesian-inference.md)
+- [Gaussian Mixture Model](nodes/gaussian-mixture-model.md)
 - [Geometric Distribution](nodes/geometric-distribution.md)
 - [GigaThread Engine](nodes/gigathread.md)
 - [Global Interpreter Lock](nodes/gil.md)
@@ -73,6 +74,7 @@ _Last rebuilt: 2026-09-10_
 - [MoE Routing](nodes/moe-routing.md)
 - [MongoDB](nodes/mongodb.md)
 - [MPI Datatype](nodes/mpi-datatype.md)
+- [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md)
 - [Multi-Armed Bandit](nodes/multi-armed-bandit.md)
 - [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md)
 - [NCCL](nodes/nccl.md)
@@ -83,10 +85,12 @@ _Last rebuilt: 2026-09-10_
 - [OOM Killer](nodes/oom-killer.md)
 - [OpenTelemetry](nodes/opentelemetry.md)
 - [Out-of-Core Processing](nodes/out-of-core-processing.md)
+- [PATH Environment Variable](nodes/path-environment-variable.md)
 - [PCI Express](nodes/pci-express.md)
 - [Permutation Feature Importance](nodes/permutation-feature-importance.md)
 - [pgai](nodes/pgai.md)
 - [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md)
+- [Pipeline Bottleneck Localization](nodes/pipeline-bottleneck-localization.md)
 - [Positional Encoding](nodes/positional-encoding.md)
 - [Post-Training Quantization](nodes/post-training-quantization.md)
 - [Posterior Consistency](nodes/posterior-consistency.md)
@@ -104,7 +108,6 @@ _Last rebuilt: 2026-09-10_
 - [Socket Buffer (sk_buff)](nodes/sk-buff.md)
 - [Speculative Decoding](nodes/speculative-decoding.md)
 - [Stochastic Differential Equation](nodes/stochastic-differential-equation.md)
-- [Structured Output](nodes/structured-output.md)
 - [Supervised Contrastive Learning](nodes/supervised-contrastive-learning.md)
 - [Temporal Data Leakage](nodes/temporal-data-leakage.md)
 - [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
@@ -123,7 +126,7 @@ _Last rebuilt: 2026-09-10_
 - [Weight-Load Amortization](nodes/weight-load-amortization.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (8)
+## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (7)
 
 - [Arithmetic (+ − × ÷)](nodes/arithmetic.md)
 - [Dynamic Typing](nodes/dynamic-typing.md)
@@ -131,7 +134,6 @@ _Last rebuilt: 2026-09-10_
 - [First-Class Function](nodes/first-class-function.md)
 - [Interpreter](nodes/interpreter.md)
 - [Lexical Scoping](nodes/lexical-scoping.md)
-- [Python Break Statement](nodes/python-break-statement.md)
 - [Set (membership)](nodes/set.md)
 
 ## 🔷 Concepts
@@ -212,6 +214,7 @@ _Last rebuilt: 2026-09-10_
 - [Definite Integral](nodes/definite-integral.md)
 - [Del operator (∇)](nodes/del-operator.md)
 - [Demand Paging](nodes/demand-paging.md)
+- [Denoising Diffusion Probabilistic Model](nodes/denoising-diffusion-probabilistic-model.md)
 - [Dentry](nodes/dentry.md)
 - [Deque](nodes/deque.md)
 - [Derivative](nodes/derivative.md)
@@ -219,6 +222,7 @@ _Last rebuilt: 2026-09-10_
 - [Differential (Total Derivative)](nodes/differential.md)
 - [Differential Equation](nodes/differential-equation.md)
 - [Differential operators](nodes/differential-operators.md)
+- [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md)
 - [Directed Acyclic Graph](nodes/directed-acyclic-graph.md)
 - [Directional Derivative](nodes/directional-derivative.md)
 - [Distributed Tracing](nodes/distributed-tracing.md)
@@ -250,6 +254,7 @@ _Last rebuilt: 2026-09-10_
 - [Full Bayesian Inference](nodes/full-bayesian-inference.md)
 - [Garbage Collection](nodes/garbage-collection.md)
 - [Gather](nodes/gather.md)
+- [Gaussian Mixture Model](nodes/gaussian-mixture-model.md)
 - [Geometric Distribution](nodes/geometric-distribution.md)
 - [GigaThread Engine](nodes/gigathread.md)
 - [Global Interpreter Lock](nodes/gil.md)
@@ -342,6 +347,7 @@ _Last rebuilt: 2026-09-10_
 - [Moment Skewness](nodes/moment-skewness.md)
 - [MongoDB](nodes/mongodb.md)
 - [MPI Datatype](nodes/mpi-datatype.md)
+- [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md)
 - [Multi-Armed Bandit](nodes/multi-armed-bandit.md)
 - [Multi-Head Attention](nodes/multi-head-attention.md)
 - [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md)
@@ -378,12 +384,14 @@ _Last rebuilt: 2026-09-10_
 - [Paged attention](nodes/paged-attention.md)
 - [Parallel process](nodes/parallel-process.md)
 - [Partial derivative](nodes/partial-derivative.md)
+- [PATH Environment Variable](nodes/path-environment-variable.md)
 - [PCI Express](nodes/pci-express.md)
 - [Permutation Feature Importance](nodes/permutation-feature-importance.md)
 - [pgai](nodes/pgai.md)
 - [pgai Vectorizer](nodes/pgai-vectorizer.md)
 - [pgvector](nodes/pgvector.md)
 - [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md)
+- [Pipeline Bottleneck Localization](nodes/pipeline-bottleneck-localization.md)
 - [Pipeline parallelism](nodes/pipeline-parallelism.md)
 - [Positional Encoding](nodes/positional-encoding.md)
 - [Post-Training Quantization](nodes/post-training-quantization.md)
@@ -401,6 +409,7 @@ _Last rebuilt: 2026-09-10_
 - [PTX (Parallel Thread Execution)](nodes/ptx.md)
 - [Python Break Statement](nodes/python-break-statement.md)
 - [Python Descriptor](nodes/python-descriptor.md)
+- [Python Loop](nodes/python-loop.md)
 - [Quantization](nodes/quantization.md)
 - [Query Planning & Optimization](nodes/query-planning.md)
 - [Queue](nodes/queue.md)
@@ -519,9 +528,9 @@ _Last rebuilt: 2026-09-10_
 
 [Atomic Operation](nodes/atomic-operation.md), [Bank Conflict](nodes/bank-conflict.md), [Compute Capability](nodes/compute-capability.md), [CPU vs GPU](nodes/cpu-vs-gpu.md), [Cubin and Fatbinary](nodes/cubin.md), [CUDA Kernel](nodes/cuda-kernel.md), [CUDA Stream](nodes/cuda-stream.md), [CUDA Thread Hierarchy](nodes/cuda-thread-hierarchy.md), [Fused Multiply-Add](nodes/fma.md), [GigaThread Engine](nodes/gigathread.md), [GPU Data Flow](nodes/gpu-data-flow.md), [GPU Memory Spaces](nodes/gpu-memory-spaces.md), [GPUDirect (P2P/RDMA)](nodes/gpudirect.md), [JIT vs AOT Compilation](nodes/jit-vs-aot-compilation.md), [Memory Coalescing](nodes/memory-coalescing.md), [NCCL](nodes/nccl.md), [NVLink](nodes/nvlink.md), [Occupancy](nodes/occupancy.md), [PTX (Parallel Thread Execution)](nodes/ptx.md), [Register Pressure](nodes/register-pressure.md), [SASS (GPU Machine Code)](nodes/sass.md), [Shared Memory](nodes/shared-memory.md), [SIMT](nodes/simt.md), [Streaming Multiprocessor](nodes/streaming-multiprocessor.md), [Tensor Core](nodes/tensor-core.md), [TensorRT](nodes/tensorrt.md), [Thread Synchronization](nodes/thread-synchronization.md), [Warp](nodes/warp.md), [Warp Shuffle](nodes/warp-shuffle.md)
 
-### languages (14)
+### languages (15)
 
-  - **languages/python** (3) — [Python Break Statement](nodes/python-break-statement.md), [Python Descriptor](nodes/python-descriptor.md), [Python TypedDict](nodes/typed-dict.md)
+  - **languages/python** (4) — [Python Break Statement](nodes/python-break-statement.md), [Python Descriptor](nodes/python-descriptor.md), [Python Loop](nodes/python-loop.md), [Python TypedDict](nodes/typed-dict.md)
 
   - **languages/runtime** (3) — [Bytecode Virtual Machine](nodes/bytecode-vm.md), [Garbage Collection](nodes/garbage-collection.md), [Interpreter](nodes/interpreter.md)
 
@@ -539,11 +548,11 @@ _Last rebuilt: 2026-09-10_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (96)
+### ml (100)
 
-  - **ml/agents** (3) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
+  - **ml/agents** (4) — [Agent Memory](nodes/agent-memory.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
-  - **ml/deep-learning** (20) — [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Supervised Contrastive Learning](nodes/supervised-contrastive-learning.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
+  - **ml/deep-learning** (22) — [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Denoising Diffusion Probabilistic Model](nodes/denoising-diffusion-probabilistic-model.md), [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Gradient descent](nodes/gradient-descent.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Softmax](nodes/softmax.md), [Supervised Contrastive Learning](nodes/supervised-contrastive-learning.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
 
   - **ml/evaluation** (11) — [Confusion Matrix](nodes/confusion-matrix.md), [Dataset Lineage](nodes/dataset-lineage.md), [Huber Loss](nodes/huber-loss.md), [LLM as a Judge](nodes/llm-as-a-judge.md), [Local Feature Attribution](nodes/local-feature-attribution.md), [Metamorphic Testing](nodes/metamorphic-testing.md), [ML System Freshness](nodes/ml-system-freshness.md), [Permutation Feature Importance](nodes/permutation-feature-importance.md), [Precision and Recall](nodes/precision-recall.md), [Temporal Data Leakage](nodes/temporal-data-leakage.md), [Tiny-Subset Overfit Test](nodes/tiny-subset-overfit-test.md)
 
@@ -561,7 +570,7 @@ _Last rebuilt: 2026-09-10_
 
   - **ml/model-portability** (7) — [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md)
 
-  - **ml/training** (3) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md), [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md)
+  - **ml/training** (4) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md), [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md), [Gaussian Mixture Model](nodes/gaussian-mixture-model.md)
 
 ### networking (16)
 
@@ -569,11 +578,11 @@ _Last rebuilt: 2026-09-10_
 
   - **networking/performance** (3) — [k6](nodes/k6.md), [Latency Percentiles (Tail Latency)](nodes/latency-percentile.md), [Load Testing](nodes/load-testing.md)
 
-### observability (13)
+### observability (14)
 
   - **observability/collection** (1) — [OpenTelemetry Collector](nodes/opentelemetry-collector.md)
 
-  - **observability/fundamentals** (4) — [Event](nodes/event.md), [Measurement](nodes/measurement.md), [Observability](nodes/observability.md), [Telemetry Signal](nodes/telemetry-signal.md)
+  - **observability/fundamentals** (5) — [Event](nodes/event.md), [Measurement](nodes/measurement.md), [Observability](nodes/observability.md), [Pipeline Bottleneck Localization](nodes/pipeline-bottleneck-localization.md), [Telemetry Signal](nodes/telemetry-signal.md)
 
   - **observability/instrumentation** (1) — [Observability Instrumentation](nodes/observability-instrumentation.md)
 
@@ -583,7 +592,7 @@ _Last rebuilt: 2026-09-10_
 
   - **observability/tracing** (4) — [Context Propagation](nodes/context-propagation.md), [Distributed Tracing](nodes/distributed-tracing.md), [Telemetry Context](nodes/telemetry-context.md), [Trace Span](nodes/trace-span.md)
 
-### os (57)
+### os (58)
 
   - **os/filesystem** (8) — [Block Layer](nodes/block-layer.md), [Dentry](nodes/dentry.md), [Hard Link](nodes/hard-link.md), [Inode](nodes/inode.md), [OverlayFS](nodes/overlayfs.md), [Page Cache](nodes/page-cache.md), [Virtual File System](nodes/vfs.md), [Writeback](nodes/writeback.md)
 
@@ -591,7 +600,7 @@ _Last rebuilt: 2026-09-10_
 
   - **os/memory** (16) — [Address Space Layout](nodes/address-space-layout.md), [Content-Addressable Memory](nodes/content-addressable-memory.md), [Copy-on-Write](nodes/copy-on-write.md), [Demand Paging](nodes/demand-paging.md), [Memory Hierarchy](nodes/memory-hierarchy.md), [Memory Management Unit](nodes/mmu.md), [NUMA Architecture](nodes/numa-architecture.md), [NUMA Locality](nodes/numa-locality.md), [NUMA Memory Policy](nodes/numa-memory-policy.md), [OOM Killer](nodes/oom-killer.md), [Page](nodes/page.md), [Page Fault](nodes/page-fault.md), [Page Table](nodes/page-table.md), [Swap](nodes/swap.md), [Translation Lookaside Buffer](nodes/tlb.md), [Virtual Memory](nodes/virtual-memory.md)
 
-  - **os/process** (9) — [clone()](nodes/clone.md), [Context Switch](nodes/context-switch.md), [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md), [Fork and Exec](nodes/fork-exec.md), [Global Interpreter Lock](nodes/gil.md), [Process](nodes/process.md), [Processor Affinity](nodes/processor-affinity.md), [Scheduler](nodes/scheduler.md), [Thread](nodes/thread.md)
+  - **os/process** (10) — [clone()](nodes/clone.md), [Context Switch](nodes/context-switch.md), [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md), [Fork and Exec](nodes/fork-exec.md), [Global Interpreter Lock](nodes/gil.md), [PATH Environment Variable](nodes/path-environment-variable.md), [Process](nodes/process.md), [Processor Affinity](nodes/processor-affinity.md), [Scheduler](nodes/scheduler.md), [Thread](nodes/thread.md)
 
   - **os/virtualization** (9) — [Capabilities](nodes/capabilities.md), [Cgroup](nodes/cgroup.md), [Container](nodes/container.md), [Container Runtime](nodes/container-runtime.md), [Hypervisor](nodes/hypervisor.md), [Kubernetes Pod](nodes/kubernetes-pod.md), [Namespace](nodes/namespace.md), [Real-Time OS](nodes/real-time-os.md), [seccomp](nodes/seccomp.md)
 

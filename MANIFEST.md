@@ -2,7 +2,7 @@
 
 _Last rebuilt: 2026-09-10_
 
-**403** nodes · **3** axioms · **0** on the frontier
+**404** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
@@ -50,6 +50,7 @@ _Last rebuilt: 2026-09-10_
 - [Global Interpreter Lock](nodes/gil.md)
 - [glibc Wrapper](nodes/glibc-wrapper.md)
 - [GPU Data Flow](nodes/gpu-data-flow.md)
+- [GPU Tile Programming](nodes/gpu-tile-programming.md)
 - [GPUDirect (P2P/RDMA)](nodes/gpudirect.md)
 - [Grouped-query attention (GQA / MQA)](nodes/gqa.md)
 - [Graph Memory](nodes/graph-memory.md)
@@ -123,7 +124,6 @@ _Last rebuilt: 2026-09-10_
 - [RMSNorm](nodes/rmsnorm.md)
 - [Scan (prefix)](nodes/scan.md)
 - [Score-Based Generative Model](nodes/score-based-generative-model.md)
-- [SIMT](nodes/simt.md)
 - [Socket Buffer (sk_buff)](nodes/sk-buff.md)
 - [Speculative Decoding](nodes/speculative-decoding.md)
 - [Subject-Driven Generation](nodes/subject-driven-generation.md)
@@ -290,6 +290,7 @@ _Last rebuilt: 2026-09-10_
 - [glibc Wrapper](nodes/glibc-wrapper.md)
 - [GPU Data Flow](nodes/gpu-data-flow.md)
 - [GPU Memory Spaces](nodes/gpu-memory-spaces.md)
+- [GPU Tile Programming](nodes/gpu-tile-programming.md)
 - [GPUDirect (P2P/RDMA)](nodes/gpudirect.md)
 - [Grouped-query attention (GQA / MQA)](nodes/gqa.md)
 - [Gradient](nodes/gradient.md)
@@ -559,7 +560,7 @@ _Last rebuilt: 2026-09-10_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 43 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 44 leaf fields
 
 ### algorithms (21)
 
@@ -581,9 +582,11 @@ _Last rebuilt: 2026-09-10_
 
   - **databases/vector** (4) — [Calling LLMs from SQL](nodes/llm-from-sql.md), [pgai](nodes/pgai.md), [pgai Vectorizer](nodes/pgai-vectorizer.md), [pgvector](nodes/pgvector.md)
 
-### gpu (29)
+### gpu (30)
 
-[Atomic Operation](nodes/atomic-operation.md), [Bank Conflict](nodes/bank-conflict.md), [Compute Capability](nodes/compute-capability.md), [CPU vs GPU](nodes/cpu-vs-gpu.md), [Cubin and Fatbinary](nodes/cubin.md), [CUDA Kernel](nodes/cuda-kernel.md), [CUDA Stream](nodes/cuda-stream.md), [CUDA Thread Hierarchy](nodes/cuda-thread-hierarchy.md), [Fused Multiply-Add](nodes/fma.md), [GigaThread Engine](nodes/gigathread.md), [GPU Data Flow](nodes/gpu-data-flow.md), [GPU Memory Spaces](nodes/gpu-memory-spaces.md), [GPUDirect (P2P/RDMA)](nodes/gpudirect.md), [JIT vs AOT Compilation](nodes/jit-vs-aot-compilation.md), [Memory Coalescing](nodes/memory-coalescing.md), [NCCL](nodes/nccl.md), [NVLink](nodes/nvlink.md), [Occupancy](nodes/occupancy.md), [PTX (Parallel Thread Execution)](nodes/ptx.md), [Register Pressure](nodes/register-pressure.md), [SASS (GPU Machine Code)](nodes/sass.md), [Shared Memory](nodes/shared-memory.md), [SIMT](nodes/simt.md), [Streaming Multiprocessor](nodes/streaming-multiprocessor.md), [Tensor Core](nodes/tensor-core.md), [TensorRT](nodes/tensorrt.md), [Thread Synchronization](nodes/thread-synchronization.md), [Warp](nodes/warp.md), [Warp Shuffle](nodes/warp-shuffle.md)
+- **gpu** (29) — [Atomic Operation](nodes/atomic-operation.md), [Bank Conflict](nodes/bank-conflict.md), [Compute Capability](nodes/compute-capability.md), [CPU vs GPU](nodes/cpu-vs-gpu.md), [Cubin and Fatbinary](nodes/cubin.md), [CUDA Kernel](nodes/cuda-kernel.md), [CUDA Stream](nodes/cuda-stream.md), [CUDA Thread Hierarchy](nodes/cuda-thread-hierarchy.md), [Fused Multiply-Add](nodes/fma.md), [GigaThread Engine](nodes/gigathread.md), [GPU Data Flow](nodes/gpu-data-flow.md), [GPU Memory Spaces](nodes/gpu-memory-spaces.md), [GPUDirect (P2P/RDMA)](nodes/gpudirect.md), [JIT vs AOT Compilation](nodes/jit-vs-aot-compilation.md), [Memory Coalescing](nodes/memory-coalescing.md), [NCCL](nodes/nccl.md), [NVLink](nodes/nvlink.md), [Occupancy](nodes/occupancy.md), [PTX (Parallel Thread Execution)](nodes/ptx.md), [Register Pressure](nodes/register-pressure.md), [SASS (GPU Machine Code)](nodes/sass.md), [Shared Memory](nodes/shared-memory.md), [SIMT](nodes/simt.md), [Streaming Multiprocessor](nodes/streaming-multiprocessor.md), [Tensor Core](nodes/tensor-core.md), [TensorRT](nodes/tensorrt.md), [Thread Synchronization](nodes/thread-synchronization.md), [Warp](nodes/warp.md), [Warp Shuffle](nodes/warp-shuffle.md)
+
+  - **gpu/programming-models** (1) — [GPU Tile Programming](nodes/gpu-tile-programming.md)
 
 ### languages (23)
 

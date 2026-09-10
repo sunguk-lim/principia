@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-10_
 
-**408** nodes · **3** axioms · **0** on the frontier
+**411** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (139)
+## 🌳 Parent (root) nodes — top-level, required by nothing (142)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -76,6 +76,7 @@ _Last rebuilt: 2026-09-10_
 - [Lua](nodes/lua.md)
 - [MAC vs IP Addressing](nodes/mac-vs-ip.md)
 - [Mamba](nodes/mamba.md)
+- [MapReduce](nodes/mapreduce.md)
 - [Maximum A Posteriori](nodes/maximum-a-posteriori.md)
 - [Memory Coalescing](nodes/memory-coalescing.md)
 - [Metamorphic Testing](nodes/metamorphic-testing.md)
@@ -109,9 +110,11 @@ _Last rebuilt: 2026-09-10_
 - [Progressive Model Rollout](nodes/progressive-model-rollout.md)
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
 - [Python Break Statement](nodes/python-break-statement.md)
+- [Python Shallow and Deep Copying](nodes/python-copying.md)
 - [Python Language Governance](nodes/python-governance.md)
 - [Python Membership Test](nodes/python-membership-test.md)
 - [Python Profiling](nodes/python-profiling.md)
+- [Python Special Method](nodes/python-special-method.md)
 - [Python Underscore Conventions](nodes/python-underscore-conventions.md)
 - [Calling a PyTorch Module](nodes/pytorch-module-call.md)
 - [Reactive User Interface](nodes/reactive-user-interface.md)
@@ -367,6 +370,7 @@ _Last rebuilt: 2026-09-10_
 - [Lua](nodes/lua.md)
 - [MAC vs IP Addressing](nodes/mac-vs-ip.md)
 - [Mamba](nodes/mamba.md)
+- [MapReduce](nodes/mapreduce.md)
 - [Matrix Multiplication](nodes/matrix-multiplication.md)
 - [Matrix rank](nodes/matrix-rank.md)
 - [Matrix Trace](nodes/matrix-trace.md)
@@ -456,11 +460,13 @@ _Last rebuilt: 2026-09-10_
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
 - [PTX (Parallel Thread Execution)](nodes/ptx.md)
 - [Python Break Statement](nodes/python-break-statement.md)
+- [Python Shallow and Deep Copying](nodes/python-copying.md)
 - [Python Descriptor](nodes/python-descriptor.md)
 - [Python Language Governance](nodes/python-governance.md)
 - [Python Loop](nodes/python-loop.md)
 - [Python Membership Test](nodes/python-membership-test.md)
 - [Python Profiling](nodes/python-profiling.md)
+- [Python Special Method](nodes/python-special-method.md)
 - [Python Underscore Conventions](nodes/python-underscore-conventions.md)
 - [Calling a PyTorch Module](nodes/pytorch-module-call.md)
 - [Quantization](nodes/quantization.md)
@@ -572,9 +578,9 @@ _Last rebuilt: 2026-09-10_
 
 [Binary Search](nodes/binary-search.md), [Binary Search Tree](nodes/binary-search-tree.md), [Deque](nodes/deque.md), [Directed Acyclic Graph](nodes/directed-acyclic-graph.md), [Dynamic Array](nodes/dynamic-array.md), [Flow Network](nodes/flow-network.md), [Graph (Adjacency List)](nodes/graph.md), [Hash Map](nodes/hash-map.md), [Hash Set](nodes/hash-set.md), [Heap](nodes/heap.md), [Key–Value Mapping](nodes/key-value.md), [Linked List](nodes/linked-list.md), [Minimum-Cost Flow](nodes/minimum-cost-flow.md), [Multi-Armed Bandit](nodes/multi-armed-bandit.md), [Predecessor Query](nodes/predecessor-query.md), [Queue](nodes/queue.md), [Residual Network](nodes/residual-network.md), [Shortest Path](nodes/shortest-path.md), [Stack](nodes/stack.md), [Trie](nodes/trie.md), [Union-Find](nodes/union-find.md)
 
-### databases (25)
+### databases (26)
 
-  - **databases/distributed** (3) — [Leader Election](nodes/leader-election.md), [Replication](nodes/replication.md), [Sharding (Horizontal Partitioning)](nodes/sharding.md)
+  - **databases/distributed** (4) — [Leader Election](nodes/leader-election.md), [MapReduce](nodes/mapreduce.md), [Replication](nodes/replication.md), [Sharding (Horizontal Partitioning)](nodes/sharding.md)
 
   - **databases/document-database** (2) — [Document Data Model](nodes/document-model.md), [MongoDB](nodes/mongodb.md)
 
@@ -594,9 +600,9 @@ _Last rebuilt: 2026-09-10_
 
   - **gpu/programming-models** (1) — [GPU Tile Programming](nodes/gpu-tile-programming.md)
 
-### languages (23)
+### languages (25)
 
-  - **languages/python** (10) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Break Statement](nodes/python-break-statement.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
+  - **languages/python** (12) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Break Statement](nodes/python-break-statement.md), [Python Shallow and Deep Copying](nodes/python-copying.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Special Method](nodes/python-special-method.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
 
   - **languages/runtime** (4) — [Bytecode Virtual Machine](nodes/bytecode-vm.md), [Garbage Collection](nodes/garbage-collection.md), [Interpreter](nodes/interpreter.md), [Read–Eval–Print Loop](nodes/read-eval-print-loop.md)
 

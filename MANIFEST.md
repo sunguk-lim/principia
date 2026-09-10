@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-11_
 
-**413** nodes · **3** axioms · **0** on the frontier
+**414** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (144)
+## 🌳 Parent (root) nodes — top-level, required by nothing (145)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -82,6 +82,7 @@ _Last rebuilt: 2026-09-11_
 - [Maximum A Posteriori](nodes/maximum-a-posteriori.md)
 - [Memory Coalescing](nodes/memory-coalescing.md)
 - [Metamorphic Testing](nodes/metamorphic-testing.md)
+- [MicroPython](nodes/micropython.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
 - [ML System Freshness](nodes/ml-system-freshness.md)
 - [Modularity Resolution Limit](nodes/modularity-resolution-limit.md)
@@ -153,7 +154,7 @@ _Last rebuilt: 2026-09-11_
 - [Weight-Load Amortization](nodes/weight-load-amortization.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (7)
+## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (8)
 
 - [Arithmetic (+ − × ÷)](nodes/arithmetic.md)
 - [Dynamic Typing](nodes/dynamic-typing.md)
@@ -161,6 +162,7 @@ _Last rebuilt: 2026-09-11_
 - [First-Class Function](nodes/first-class-function.md)
 - [Interpreter](nodes/interpreter.md)
 - [Lexical Scoping](nodes/lexical-scoping.md)
+- [MicroPython](nodes/micropython.md)
 - [Set (membership)](nodes/set.md)
 
 ## 🔷 Concepts
@@ -387,6 +389,7 @@ _Last rebuilt: 2026-09-11_
 - [Message passing](nodes/message-passing.md)
 - [Metamorphic Testing](nodes/metamorphic-testing.md)
 - [Metatable](nodes/metatable.md)
+- [MicroPython](nodes/micropython.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
 - [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md)
 - [ML System Freshness](nodes/ml-system-freshness.md)
@@ -604,11 +607,11 @@ _Last rebuilt: 2026-09-11_
 
   - **gpu/programming-models** (1) — [GPU Tile Programming](nodes/gpu-tile-programming.md)
 
-### languages (25)
+### languages (26)
 
   - **languages/python** (12) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Break Statement](nodes/python-break-statement.md), [Python Shallow and Deep Copying](nodes/python-copying.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Special Method](nodes/python-special-method.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
 
-  - **languages/runtime** (4) — [Bytecode Virtual Machine](nodes/bytecode-vm.md), [Garbage Collection](nodes/garbage-collection.md), [Interpreter](nodes/interpreter.md), [Read–Eval–Print Loop](nodes/read-eval-print-loop.md)
+  - **languages/runtime** (5) — [Bytecode Virtual Machine](nodes/bytecode-vm.md), [Garbage Collection](nodes/garbage-collection.md), [Interpreter](nodes/interpreter.md), [MicroPython](nodes/micropython.md), [Read–Eval–Print Loop](nodes/read-eval-print-loop.md)
 
   - **languages/scripting** (1) — [Lua](nodes/lua.md)
 

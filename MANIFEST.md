@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-10_
 
-**406** nodes · **3** axioms · **0** on the frontier
+**408** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (138)
+## 🌳 Parent (root) nodes — top-level, required by nothing (139)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -55,7 +55,6 @@ _Last rebuilt: 2026-09-10_
 - [GPUDirect (P2P/RDMA)](nodes/gpudirect.md)
 - [Grouped-query attention (GQA / MQA)](nodes/gqa.md)
 - [Graph Memory](nodes/graph-memory.md)
-- [GraphRAG](nodes/graph-rag.md)
 - [Hard Link](nodes/hard-link.md)
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
 - [Huber Loss](nodes/huber-loss.md)
@@ -73,6 +72,7 @@ _Last rebuilt: 2026-09-10_
 - [Local Feature Attribution](nodes/local-feature-attribution.md)
 - [Local LLM Inference](nodes/local-llm-inference.md)
 - [Log-Normal Distribution](nodes/log-normal-distribution.md)
+- [Lost in the Middle](nodes/lost-in-the-middle.md)
 - [Lua](nodes/lua.md)
 - [MAC vs IP Addressing](nodes/mac-vs-ip.md)
 - [Mamba](nodes/mamba.md)
@@ -81,6 +81,7 @@ _Last rebuilt: 2026-09-10_
 - [Metamorphic Testing](nodes/metamorphic-testing.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
 - [ML System Freshness](nodes/ml-system-freshness.md)
+- [Modularity Resolution Limit](nodes/modularity-resolution-limit.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [MongoDB](nodes/mongodb.md)
 - [MPI Datatype](nodes/mpi-datatype.md)
@@ -361,6 +362,7 @@ _Last rebuilt: 2026-09-10_
 - [Log Record](nodes/log-record.md)
 - [LoRA (Low-Rank Adaptation)](nodes/lora.md)
 - [Loss function](nodes/loss-function.md)
+- [Lost in the Middle](nodes/lost-in-the-middle.md)
 - [Low-rank factorization](nodes/low-rank-factorization.md)
 - [Lua](nodes/lua.md)
 - [MAC vs IP Addressing](nodes/mac-vs-ip.md)
@@ -382,6 +384,7 @@ _Last rebuilt: 2026-09-10_
 - [ML System Freshness](nodes/ml-system-freshness.md)
 - [Memory Management Unit](nodes/mmu.md)
 - [Model Calibration](nodes/model-calibration.md)
+- [Modularity Resolution Limit](nodes/modularity-resolution-limit.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [Moment Generating Function](nodes/moment-generating-function.md)
 - [Moment Skewness](nodes/moment-skewness.md)
@@ -611,7 +614,7 @@ _Last rebuilt: 2026-09-10_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (125)
+### ml (127)
 
   - **ml/agents** (5) — [Agent Memory](nodes/agent-memory.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -621,7 +624,7 @@ _Last rebuilt: 2026-09-10_
 
   - **ml/feature-engineering** (2) — [Categorical Data Encoding](nodes/categorical-data-encoding.md), [Feature Hashing](nodes/feature-hashing.md)
 
-  - **ml/information-retrieval** (12) — [BM25](nodes/bm25.md), [GraphRAG](nodes/graph-rag.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Late-Interaction Retrieval](nodes/late-interaction-retrieval.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Multimodal Retrieval-Augmented Generation](nodes/multimodal-rag.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
+  - **ml/information-retrieval** (14) — [BM25](nodes/bm25.md), [GraphRAG](nodes/graph-rag.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Late-Interaction Retrieval](nodes/late-interaction-retrieval.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Lost in the Middle](nodes/lost-in-the-middle.md), [Modularity Resolution Limit](nodes/modularity-resolution-limit.md), [Multimodal Retrieval-Augmented Generation](nodes/multimodal-rag.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 
     - **ml/llm/architecture** (13) — [Attention Sink](nodes/attention-sink.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Joint Attention](nodes/joint-attention.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Positional Encoding](nodes/positional-encoding.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [State Space Model](nodes/state-space-model.md)
 

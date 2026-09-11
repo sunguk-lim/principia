@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-12_
 
-**424** nodes · **3** axioms · **0** on the frontier
+**425** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (154)
+## 🌳 Parent (root) nodes — top-level, required by nothing (155)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -128,6 +128,7 @@ _Last rebuilt: 2026-09-12_
 - [Python Special Method](nodes/python-special-method.md)
 - [Python Underscore Conventions](nodes/python-underscore-conventions.md)
 - [Calling a PyTorch Module](nodes/pytorch-module-call.md)
+- [Quantile Regression](nodes/quantile-regression.md)
 - [Reactive User Interface](nodes/reactive-user-interface.md)
 - [Read–Eval–Print Loop](nodes/read-eval-print-loop.md)
 - [Real-Time OS](nodes/real-time-os.md)
@@ -495,6 +496,7 @@ _Last rebuilt: 2026-09-12_
 - [Python Special Method](nodes/python-special-method.md)
 - [Python Underscore Conventions](nodes/python-underscore-conventions.md)
 - [Calling a PyTorch Module](nodes/pytorch-module-call.md)
+- [Quantile Regression](nodes/quantile-regression.md)
 - [Quantization](nodes/quantization.md)
 - [Query Planning & Optimization](nodes/query-planning.md)
 - [Queue](nodes/queue.md)
@@ -599,7 +601,7 @@ _Last rebuilt: 2026-09-12_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 46 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 47 leaf fields
 
 ### algorithms (21)
 
@@ -649,7 +651,7 @@ _Last rebuilt: 2026-09-12_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (137)
+### ml (138)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -672,6 +674,8 @@ _Last rebuilt: 2026-09-12_
     - **ml/llm/training** (8) — [Context Parallelism](nodes/context-parallelism.md), [Data parallelism](nodes/data-parallelism.md), [Expert parallelism (MoE)](nodes/expert-parallelism.md), [FSDP / ZeRO](nodes/fsdp.md), [Pipeline parallelism](nodes/pipeline-parallelism.md), [Tensor parallelism](nodes/tensor-parallelism.md), [3D Parallelism](nodes/three-dimensional-parallelism.md), [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
   - **ml/model-portability** (7) — [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md)
+
+  - **ml/regression** (1) — [Quantile Regression](nodes/quantile-regression.md)
 
   - **ml/representation-learning** (1) — [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
 

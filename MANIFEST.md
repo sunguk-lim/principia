@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-11_
 
-**419** nodes · **3** axioms · **0** on the frontier
+**420** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (149)
+## 🌳 Parent (root) nodes — top-level, required by nothing (150)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -115,6 +115,7 @@ _Last rebuilt: 2026-09-11_
 - [Progressive Diffusion Distillation](nodes/progressive-diffusion-distillation.md)
 - [Progressive Model Rollout](nodes/progressive-model-rollout.md)
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
+- [Python Assertion](nodes/python-assertion.md)
 - [Python Break Statement](nodes/python-break-statement.md)
 - [Python Shallow and Deep Copying](nodes/python-copying.md)
 - [Python Language Governance](nodes/python-governance.md)
@@ -475,6 +476,7 @@ _Last rebuilt: 2026-09-11_
 - [Progressive Model Rollout](nodes/progressive-model-rollout.md)
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
 - [PTX (Parallel Thread Execution)](nodes/ptx.md)
+- [Python Assertion](nodes/python-assertion.md)
 - [Python Break Statement](nodes/python-break-statement.md)
 - [Python Shallow and Deep Copying](nodes/python-copying.md)
 - [Python Descriptor](nodes/python-descriptor.md)
@@ -617,9 +619,9 @@ _Last rebuilt: 2026-09-11_
 
   - **gpu/programming-models** (1) — [GPU Tile Programming](nodes/gpu-tile-programming.md)
 
-### languages (26)
+### languages (27)
 
-  - **languages/python** (12) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Break Statement](nodes/python-break-statement.md), [Python Shallow and Deep Copying](nodes/python-copying.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Special Method](nodes/python-special-method.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
+  - **languages/python** (13) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Assertion](nodes/python-assertion.md), [Python Break Statement](nodes/python-break-statement.md), [Python Shallow and Deep Copying](nodes/python-copying.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Special Method](nodes/python-special-method.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
 
   - **languages/runtime** (5) — [Bytecode Virtual Machine](nodes/bytecode-vm.md), [Garbage Collection](nodes/garbage-collection.md), [Interpreter](nodes/interpreter.md), [MicroPython](nodes/micropython.md), [Read–Eval–Print Loop](nodes/read-eval-print-loop.md)
 

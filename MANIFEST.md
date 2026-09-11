@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-12_
 
-**425** nodes · **3** axioms · **0** on the frontier
+**426** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (155)
+## 🌳 Parent (root) nodes — top-level, required by nothing (156)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -128,6 +128,7 @@ _Last rebuilt: 2026-09-12_
 - [Python Special Method](nodes/python-special-method.md)
 - [Python Underscore Conventions](nodes/python-underscore-conventions.md)
 - [Calling a PyTorch Module](nodes/pytorch-module-call.md)
+- [Quantile-Quantile Plot](nodes/quantile-quantile-plot.md)
 - [Quantile Regression](nodes/quantile-regression.md)
 - [Reactive User Interface](nodes/reactive-user-interface.md)
 - [Read–Eval–Print Loop](nodes/read-eval-print-loop.md)
@@ -496,6 +497,7 @@ _Last rebuilt: 2026-09-12_
 - [Python Special Method](nodes/python-special-method.md)
 - [Python Underscore Conventions](nodes/python-underscore-conventions.md)
 - [Calling a PyTorch Module](nodes/pytorch-module-call.md)
+- [Quantile-Quantile Plot](nodes/quantile-quantile-plot.md)
 - [Quantile Regression](nodes/quantile-regression.md)
 - [Quantization](nodes/quantization.md)
 - [Query Planning & Optimization](nodes/query-planning.md)
@@ -639,7 +641,7 @@ _Last rebuilt: 2026-09-12_
 
   - **languages/semantics** (8) — [Closure](nodes/closure.md), [Coroutine](nodes/coroutine.md), [Dynamic Typing](nodes/dynamic-typing.md), [First-Class Function](nodes/first-class-function.md), [Lexical Scoping](nodes/lexical-scoping.md), [Metatable](nodes/metatable.md), [Object-Oriented Inheritance](nodes/object-oriented-inheritance.md), [Static Type Checking](nodes/static-type-checking.md)
 
-### math (75)
+### math (76)
 
   - **math/calculus** (20) — [Convexity](nodes/convexity.md), [Curl (∇×F)](nodes/curl.md), [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md), [Definite Integral](nodes/definite-integral.md), [Del operator (∇)](nodes/del-operator.md), [Derivative](nodes/derivative.md), [Differential (Total Derivative)](nodes/differential.md), [Differential Equation](nodes/differential-equation.md), [Differential operators](nodes/differential-operators.md), [Directional Derivative](nodes/directional-derivative.md), [Divergence (∇·F)](nodes/divergence.md), [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md), [Exponential function](nodes/exponential-function.md), [Gradient](nodes/gradient.md), [Hessian (H)](nodes/hessian.md), [Jacobian (J)](nodes/jacobian.md), [Laplacian (∇²f)](nodes/laplacian.md), [Partial derivative](nodes/partial-derivative.md), [Scalar Field](nodes/scalar-field.md), [Vector Field](nodes/vector-field.md)
 
@@ -647,7 +649,7 @@ _Last rebuilt: 2026-09-12_
 
   - **math/optimization** (1) — [Linear Programming](nodes/linear-programming.md)
 
-  - **math/probability** (39) — [Bayes' Rule](nodes/bayes-rule.md), [Bayes' Theorem](nodes/bayes-theorem.md), [Bernoulli Distribution](nodes/bernoulli-distribution.md), [Beta Distribution](nodes/beta-distribution.md), [Brownian Motion](nodes/brownian-motion.md), [Change of Variables](nodes/change-of-variables.md), [Conditional Independence](nodes/conditional-independence.md), [Conditional Probability](nodes/conditional-probability.md), [Conjugate Prior](nodes/conjugate-prior.md), [Convex Transformation Order](nodes/convex-transformation-order.md), [Cromwell's Rule](nodes/cromwell-rule.md), [Cumulative Distribution Function](nodes/cumulative-distribution-function.md), [Empirical Bayes](nodes/empirical-bayes.md), [Expectation](nodes/expectation.md), [Expectation-Maximization](nodes/expectation-maximization.md), [Full Bayesian Inference](nodes/full-bayesian-inference.md), [Geometric Distribution](nodes/geometric-distribution.md), [Hierarchical Bayes](nodes/hierarchical-bayes.md), [Itô Integral](nodes/ito-integral.md), [Kullback–Leibler Divergence](nodes/kl-divergence.md), [Latent-Variable Model](nodes/latent-variable-model.md), [Likelihood](nodes/likelihood.md), [Log-Normal Distribution](nodes/log-normal-distribution.md), [Maximum A Posteriori](nodes/maximum-a-posteriori.md), [Maximum Likelihood Estimation](nodes/maximum-likelihood-estimation.md), [Moment Generating Function](nodes/moment-generating-function.md), [Moment Skewness](nodes/moment-skewness.md), [Nonparametric Skew](nodes/nonparametric-skew.md), [Normal Distribution](nodes/normal-distribution.md), [Posterior Consistency](nodes/posterior-consistency.md), [Probability](nodes/probability.md), [Probability Distribution](nodes/probability-distribution.md), [Random Variable](nodes/random-variable.md), [Reservoir Sampling](nodes/reservoir-sampling.md), [Score Function](nodes/score-function.md), [Skewness](nodes/skewness.md), [Stochastic Differential Equation](nodes/stochastic-differential-equation.md), [Stochastic Process](nodes/stochastic-process.md), [Variational Inference](nodes/variational-inference.md)
+  - **math/probability** (40) — [Bayes' Rule](nodes/bayes-rule.md), [Bayes' Theorem](nodes/bayes-theorem.md), [Bernoulli Distribution](nodes/bernoulli-distribution.md), [Beta Distribution](nodes/beta-distribution.md), [Brownian Motion](nodes/brownian-motion.md), [Change of Variables](nodes/change-of-variables.md), [Conditional Independence](nodes/conditional-independence.md), [Conditional Probability](nodes/conditional-probability.md), [Conjugate Prior](nodes/conjugate-prior.md), [Convex Transformation Order](nodes/convex-transformation-order.md), [Cromwell's Rule](nodes/cromwell-rule.md), [Cumulative Distribution Function](nodes/cumulative-distribution-function.md), [Empirical Bayes](nodes/empirical-bayes.md), [Expectation](nodes/expectation.md), [Expectation-Maximization](nodes/expectation-maximization.md), [Full Bayesian Inference](nodes/full-bayesian-inference.md), [Geometric Distribution](nodes/geometric-distribution.md), [Hierarchical Bayes](nodes/hierarchical-bayes.md), [Itô Integral](nodes/ito-integral.md), [Kullback–Leibler Divergence](nodes/kl-divergence.md), [Latent-Variable Model](nodes/latent-variable-model.md), [Likelihood](nodes/likelihood.md), [Log-Normal Distribution](nodes/log-normal-distribution.md), [Maximum A Posteriori](nodes/maximum-a-posteriori.md), [Maximum Likelihood Estimation](nodes/maximum-likelihood-estimation.md), [Moment Generating Function](nodes/moment-generating-function.md), [Moment Skewness](nodes/moment-skewness.md), [Nonparametric Skew](nodes/nonparametric-skew.md), [Normal Distribution](nodes/normal-distribution.md), [Posterior Consistency](nodes/posterior-consistency.md), [Probability](nodes/probability.md), [Probability Distribution](nodes/probability-distribution.md), [Quantile-Quantile Plot](nodes/quantile-quantile-plot.md), [Random Variable](nodes/random-variable.md), [Reservoir Sampling](nodes/reservoir-sampling.md), [Score Function](nodes/score-function.md), [Skewness](nodes/skewness.md), [Stochastic Differential Equation](nodes/stochastic-differential-equation.md), [Stochastic Process](nodes/stochastic-process.md), [Variational Inference](nodes/variational-inference.md)
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 

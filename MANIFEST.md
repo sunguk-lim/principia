@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-12_
 
-**423** nodes · **3** axioms · **0** on the frontier
+**424** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (153)
+## 🌳 Parent (root) nodes — top-level, required by nothing (154)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -32,6 +32,7 @@ _Last rebuilt: 2026-09-12_
 - [Cromwell's Rule](nodes/cromwell-rule.md)
 - [CUDA Stream](nodes/cuda-stream.md)
 - [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md)
+- [Cyclical Feature Encoding](nodes/cyclical-feature-encoding.md)
 - [Deque](nodes/deque.md)
 - [Determinant](nodes/determinant.md)
 - [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md)
@@ -252,6 +253,7 @@ _Last rebuilt: 2026-09-12_
 - [Cumulative Distribution Function](nodes/cumulative-distribution-function.md)
 - [Curl (∇×F)](nodes/curl.md)
 - [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md)
+- [Cyclical Feature Encoding](nodes/cyclical-feature-encoding.md)
 - [Data parallelism](nodes/data-parallelism.md)
 - [Database Index](nodes/database-index.md)
 - [Database Trigger](nodes/database-trigger.md)
@@ -647,7 +649,7 @@ _Last rebuilt: 2026-09-12_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (136)
+### ml (137)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -657,7 +659,7 @@ _Last rebuilt: 2026-09-12_
 
   - **ml/evaluation** (15) — [Confusion Matrix](nodes/confusion-matrix.md), [Dataset Lineage](nodes/dataset-lineage.md), [Huber Loss](nodes/huber-loss.md), [Image Preference Modeling](nodes/image-preference-modeling.md), [LLM as a Judge](nodes/llm-as-a-judge.md), [Local Feature Attribution](nodes/local-feature-attribution.md), [Metamorphic Testing](nodes/metamorphic-testing.md), [ML System Freshness](nodes/ml-system-freshness.md), [Permutation Feature Importance](nodes/permutation-feature-importance.md), [Precision and Recall](nodes/precision-recall.md), [Progressive Model Rollout](nodes/progressive-model-rollout.md), [ROC Curve](nodes/roc-curve.md), [Temporal Data Leakage](nodes/temporal-data-leakage.md), [Text–Image Attribute Binding](nodes/text-image-attribute-binding.md), [Tiny-Subset Overfit Test](nodes/tiny-subset-overfit-test.md)
 
-  - **ml/feature-engineering** (2) — [Categorical Data Encoding](nodes/categorical-data-encoding.md), [Feature Hashing](nodes/feature-hashing.md)
+  - **ml/feature-engineering** (3) — [Categorical Data Encoding](nodes/categorical-data-encoding.md), [Cyclical Feature Encoding](nodes/cyclical-feature-encoding.md), [Feature Hashing](nodes/feature-hashing.md)
 
   - **ml/information-retrieval** (14) — [BM25](nodes/bm25.md), [GraphRAG](nodes/graph-rag.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Late-Interaction Retrieval](nodes/late-interaction-retrieval.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Lost in the Middle](nodes/lost-in-the-middle.md), [Modularity Resolution Limit](nodes/modularity-resolution-limit.md), [Multimodal Retrieval-Augmented Generation](nodes/multimodal-rag.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 

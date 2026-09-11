@@ -40,7 +40,7 @@ A simple unweighted mean would have been $4$ and would give the single-example c
 
 Local work reduces communication rounds, but it also creates a tension absent from a single combined dataset. Clients can have different label frequencies, feature distributions, hardware, and availability. With many local steps, their models can move in incompatible directions before averaging; with very few, communication becomes expensive. Practical systems must choose client sampling, local-step count, update deadlines, aggregation weights, privacy protections, and evaluation slices for their actual population rather than assuming that a global validation score represents every client.
 
-Evaluate a federated system against a centralized or local-only baseline with the same model budget. Measure overall and per-client-group quality, convergence rounds and bytes transferred, dropout tolerance, fairness across heterogeneous clients, and privacy or security properties under the stated threat model. Keeping raw examples local is an architectural boundary; it is not evidence that the resulting learning process is automatically private, unbiased, or robust.
+Evaluate a federated system against a centralized or local-only baseline with the same model budget. Measure overall and per-client-group quality, convergence rounds and bytes transferred, tolerance of unavailable clients, fairness across heterogeneous clients, and privacy or security properties under the stated threat model. Keeping raw examples local is an architectural boundary; it is not evidence that the resulting learning process is automatically private, unbiased, or robust.
 
 ## Prerequisites
 

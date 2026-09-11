@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-11_
+_Last rebuilt: 2026-09-12_
 
-**422** nodes · **3** axioms · **0** on the frontier
+**417** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (152)
+## 🌳 Parent (root) nodes — top-level, required by nothing (147)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -38,14 +38,12 @@ _Last rebuilt: 2026-09-11_
 - [Directional Derivative](nodes/directional-derivative.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
 - [DoRA](nodes/dora.md)
-- [Double descent](nodes/double-descent.md)
-- [DropBlock](nodes/dropblock.md)
-- [Dropout](nodes/dropout.md)
 - [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md)
 - [Empirical Bayes](nodes/empirical-bayes.md)
 - [Expert parallelism (MoE)](nodes/expert-parallelism.md)
 - [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md)
 - [Feature Hashing](nodes/feature-hashing.md)
+- [Federated Learning](nodes/federated-learning.md)
 - [FSDP / ZeRO](nodes/fsdp.md)
 - [Full Bayesian Inference](nodes/full-bayesian-inference.md)
 - [Gaussian Mixture Model](nodes/gaussian-mixture-model.md)
@@ -87,9 +85,7 @@ _Last rebuilt: 2026-09-11_
 - [Metamorphic Testing](nodes/metamorphic-testing.md)
 - [MicroPython](nodes/micropython.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
-- [Mixed-precision training](nodes/mixed-precision-training.md)
 - [ML System Freshness](nodes/ml-system-freshness.md)
-- [Model Context Protocol](nodes/model-context-protocol.md)
 - [Modularity Resolution Limit](nodes/modularity-resolution-limit.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [MongoDB](nodes/mongodb.md)
@@ -117,7 +113,6 @@ _Last rebuilt: 2026-09-11_
 - [Progressive Diffusion Distillation](nodes/progressive-diffusion-distillation.md)
 - [Progressive Model Rollout](nodes/progressive-model-rollout.md)
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
-- [Python Assertion](nodes/python-assertion.md)
 - [Python Break Statement](nodes/python-break-statement.md)
 - [Python Shallow and Deep Copying](nodes/python-copying.md)
 - [Python Language Governance](nodes/python-governance.md)
@@ -161,7 +156,7 @@ _Last rebuilt: 2026-09-11_
 - [Weight-Load Amortization](nodes/weight-load-amortization.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (9)
+## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (8)
 
 - [Arithmetic (+ − × ÷)](nodes/arithmetic.md)
 - [Dynamic Typing](nodes/dynamic-typing.md)
@@ -170,7 +165,6 @@ _Last rebuilt: 2026-09-11_
 - [Interpreter](nodes/interpreter.md)
 - [Lexical Scoping](nodes/lexical-scoping.md)
 - [MicroPython](nodes/micropython.md)
-- [Model Context Protocol](nodes/model-context-protocol.md)
 - [Set (membership)](nodes/set.md)
 
 ## 🔷 Concepts
@@ -278,9 +272,6 @@ _Last rebuilt: 2026-09-11_
 - [DNS](nodes/dns.md)
 - [Document Data Model](nodes/document-model.md)
 - [DoRA](nodes/dora.md)
-- [Double descent](nodes/double-descent.md)
-- [DropBlock](nodes/dropblock.md)
-- [Dropout](nodes/dropout.md)
 - [Dynamic Array](nodes/dynamic-array.md)
 - [Dynamic Typing](nodes/dynamic-typing.md)
 - [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md)
@@ -293,6 +284,7 @@ _Last rebuilt: 2026-09-11_
 - [Exponential function](nodes/exponential-function.md)
 - [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md)
 - [Feature Hashing](nodes/feature-hashing.md)
+- [Federated Learning](nodes/federated-learning.md)
 - [File Descriptor](nodes/file-descriptor.md)
 - [Fine-tuning](nodes/fine-tuning.md)
 - [First-Class Function](nodes/first-class-function.md)
@@ -403,12 +395,10 @@ _Last rebuilt: 2026-09-11_
 - [Metatable](nodes/metatable.md)
 - [MicroPython](nodes/micropython.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
-- [Mixed-precision training](nodes/mixed-precision-training.md)
 - [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md)
 - [ML System Freshness](nodes/ml-system-freshness.md)
 - [Memory Management Unit](nodes/mmu.md)
 - [Model Calibration](nodes/model-calibration.md)
-- [Model Context Protocol](nodes/model-context-protocol.md)
 - [Modularity Resolution Limit](nodes/modularity-resolution-limit.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [Moment Generating Function](nodes/moment-generating-function.md)
@@ -480,7 +470,6 @@ _Last rebuilt: 2026-09-11_
 - [Progressive Model Rollout](nodes/progressive-model-rollout.md)
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
 - [PTX (Parallel Thread Execution)](nodes/ptx.md)
-- [Python Assertion](nodes/python-assertion.md)
 - [Python Break Statement](nodes/python-break-statement.md)
 - [Python Shallow and Deep Copying](nodes/python-copying.md)
 - [Python Descriptor](nodes/python-descriptor.md)
@@ -595,7 +584,7 @@ _Last rebuilt: 2026-09-11_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 46 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 45 leaf fields
 
 ### algorithms (21)
 
@@ -623,9 +612,9 @@ _Last rebuilt: 2026-09-11_
 
   - **gpu/programming-models** (1) — [GPU Tile Programming](nodes/gpu-tile-programming.md)
 
-### languages (27)
+### languages (26)
 
-  - **languages/python** (13) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Assertion](nodes/python-assertion.md), [Python Break Statement](nodes/python-break-statement.md), [Python Shallow and Deep Copying](nodes/python-copying.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Special Method](nodes/python-special-method.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
+  - **languages/python** (12) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Break Statement](nodes/python-break-statement.md), [Python Shallow and Deep Copying](nodes/python-copying.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Special Method](nodes/python-special-method.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
 
   - **languages/runtime** (5) — [Bytecode Virtual Machine](nodes/bytecode-vm.md), [Garbage Collection](nodes/garbage-collection.md), [Interpreter](nodes/interpreter.md), [MicroPython](nodes/micropython.md), [Read–Eval–Print Loop](nodes/read-eval-print-loop.md)
 
@@ -645,13 +634,11 @@ _Last rebuilt: 2026-09-11_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (135)
+### ml (131)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
-  - **ml/ai-systems** (1) — [Model Context Protocol](nodes/model-context-protocol.md)
-
-  - **ml/deep-learning** (36) — [Adaptive Layer Normalization](nodes/adaptive-layer-normalization.md), [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Denoising Diffusion Probabilistic Model](nodes/denoising-diffusion-probabilistic-model.md), [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md), [Diffusion Transformer](nodes/diffusion-transformer.md), [DoRA](nodes/dora.md), [Double descent](nodes/double-descent.md), [DropBlock](nodes/dropblock.md), [Dropout](nodes/dropout.md), [Embedding](nodes/embedding.md), [Fine-tuning](nodes/fine-tuning.md), [Flow Matching](nodes/flow-matching.md), [Gradient descent](nodes/gradient-descent.md), [Knowledge Distillation](nodes/knowledge-distillation.md), [Layer Normalization](nodes/layer-normalization.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixed-precision training](nodes/mixed-precision-training.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Calling a PyTorch Module](nodes/pytorch-module-call.md), [Receptive Field](nodes/receptive-field.md), [Reflow](nodes/reflow.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Score-Based Generative Model](nodes/score-based-generative-model.md), [Softmax](nodes/softmax.md), [Supervised Contrastive Learning](nodes/supervised-contrastive-learning.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
+  - **ml/deep-learning** (33) — [Adaptive Layer Normalization](nodes/adaptive-layer-normalization.md), [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Denoising Diffusion Probabilistic Model](nodes/denoising-diffusion-probabilistic-model.md), [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md), [Diffusion Transformer](nodes/diffusion-transformer.md), [DoRA](nodes/dora.md), [Embedding](nodes/embedding.md), [Federated Learning](nodes/federated-learning.md), [Fine-tuning](nodes/fine-tuning.md), [Flow Matching](nodes/flow-matching.md), [Gradient descent](nodes/gradient-descent.md), [Knowledge Distillation](nodes/knowledge-distillation.md), [Layer Normalization](nodes/layer-normalization.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Calling a PyTorch Module](nodes/pytorch-module-call.md), [Receptive Field](nodes/receptive-field.md), [Reflow](nodes/reflow.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Score-Based Generative Model](nodes/score-based-generative-model.md), [Softmax](nodes/softmax.md), [Supervised Contrastive Learning](nodes/supervised-contrastive-learning.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
 
   - **ml/evaluation** (15) — [Confusion Matrix](nodes/confusion-matrix.md), [Dataset Lineage](nodes/dataset-lineage.md), [Huber Loss](nodes/huber-loss.md), [Image Preference Modeling](nodes/image-preference-modeling.md), [LLM as a Judge](nodes/llm-as-a-judge.md), [Local Feature Attribution](nodes/local-feature-attribution.md), [Metamorphic Testing](nodes/metamorphic-testing.md), [ML System Freshness](nodes/ml-system-freshness.md), [Permutation Feature Importance](nodes/permutation-feature-importance.md), [Precision and Recall](nodes/precision-recall.md), [Progressive Model Rollout](nodes/progressive-model-rollout.md), [ROC Curve](nodes/roc-curve.md), [Temporal Data Leakage](nodes/temporal-data-leakage.md), [Text–Image Attribute Binding](nodes/text-image-attribute-binding.md), [Tiny-Subset Overfit Test](nodes/tiny-subset-overfit-test.md)
 

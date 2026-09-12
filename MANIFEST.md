@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-12_
 
-**427** nodes · **3** axioms · **0** on the frontier
+**429** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (157)
+## 🌳 Parent (root) nodes — top-level, required by nothing (158)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -16,6 +16,7 @@ _Last rebuilt: 2026-09-12_
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
 - [Bayes' Theorem](nodes/bayes-theorem.md)
+- [Bellman Equation](nodes/bellman-equation.md)
 - [Boot Process](nodes/boot-process.md)
 - [Categorical Data Encoding](nodes/categorical-data-encoding.md)
 - [Causal Structure Learning](nodes/causal-structure-learning.md)
@@ -200,6 +201,7 @@ _Last rebuilt: 2026-09-12_
 - [Barrier](nodes/barrier.md)
 - [Bayes' Rule](nodes/bayes-rule.md)
 - [Bayes' Theorem](nodes/bayes-theorem.md)
+- [Bellman Equation](nodes/bellman-equation.md)
 - [Bernoulli Distribution](nodes/bernoulli-distribution.md)
 - [Beta Distribution](nodes/beta-distribution.md)
 - [Binary Search](nodes/binary-search.md)
@@ -396,6 +398,7 @@ _Last rebuilt: 2026-09-12_
 - [MAC vs IP Addressing](nodes/mac-vs-ip.md)
 - [Mamba](nodes/mamba.md)
 - [MapReduce](nodes/mapreduce.md)
+- [Markov Decision Process](nodes/markov-decision-process.md)
 - [Matrix Multiplication](nodes/matrix-multiplication.md)
 - [Matrix rank](nodes/matrix-rank.md)
 - [Matrix Trace](nodes/matrix-trace.md)
@@ -605,7 +608,7 @@ _Last rebuilt: 2026-09-12_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 47 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 48 leaf fields
 
 ### algorithms (21)
 
@@ -655,7 +658,7 @@ _Last rebuilt: 2026-09-12_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (139)
+### ml (141)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -680,6 +683,8 @@ _Last rebuilt: 2026-09-12_
   - **ml/model-portability** (7) — [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md)
 
   - **ml/regression** (1) — [Quantile Regression](nodes/quantile-regression.md)
+
+  - **ml/reinforcement-learning** (2) — [Bellman Equation](nodes/bellman-equation.md), [Markov Decision Process](nodes/markov-decision-process.md)
 
   - **ml/representation-learning** (1) — [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
 

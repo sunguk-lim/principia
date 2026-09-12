@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-12_
+_Last rebuilt: 2026-09-13_
 
-**433** nodes · **3** axioms · **0** on the frontier
+**434** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (160)
+## 🌳 Parent (root) nodes — top-level, required by nothing (161)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -67,6 +67,7 @@ _Last rebuilt: 2026-09-12_
 - [Hypervisor](nodes/hypervisor.md)
 - [Init Process](nodes/init-process.md)
 - [Joint Attention](nodes/joint-attention.md)
+- [K-means clustering](nodes/k-means-clustering.md)
 - [k6](nodes/k6.md)
 - [Kernel Module](nodes/kernel-module.md)
 - [Knowledge Distillation](nodes/knowledge-distillation.md)
@@ -356,6 +357,7 @@ _Last rebuilt: 2026-09-12_
 - [Jacobian (J)](nodes/jacobian.md)
 - [JIT vs AOT Compilation](nodes/jit-vs-aot-compilation.md)
 - [Joint Attention](nodes/joint-attention.md)
+- [K-means clustering](nodes/k-means-clustering.md)
 - [k6](nodes/k6.md)
 - [Kernel](nodes/kernel.md)
 - [Kernel Module](nodes/kernel-module.md)
@@ -664,7 +666,7 @@ _Last rebuilt: 2026-09-12_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (145)
+### ml (146)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -696,7 +698,7 @@ _Last rebuilt: 2026-09-12_
 
   - **ml/speech** (2) — [RNN Transducer](nodes/rnnt.md), [Token-and-Duration Transducer](nodes/token-and-duration-transducer.md)
 
-  - **ml/training** (8) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md), [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md), [Gaussian Mixture Model](nodes/gaussian-mixture-model.md), [Label Smoothing](nodes/label-smoothing.md), [Representation Alignment](nodes/representation-alignment.md), [Reward Hacking](nodes/reward-hacking.md), [Subject-Driven Generation](nodes/subject-driven-generation.md)
+  - **ml/training** (9) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md), [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md), [Gaussian Mixture Model](nodes/gaussian-mixture-model.md), [K-means clustering](nodes/k-means-clustering.md), [Label Smoothing](nodes/label-smoothing.md), [Representation Alignment](nodes/representation-alignment.md), [Reward Hacking](nodes/reward-hacking.md), [Subject-Driven Generation](nodes/subject-driven-generation.md)
 
 ### networking (16)
 

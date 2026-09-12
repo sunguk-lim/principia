@@ -2,7 +2,7 @@
 
 _Last rebuilt: 2026-09-12_
 
-**429** nodes · **3** axioms · **0** on the frontier
+**430** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
@@ -16,7 +16,6 @@ _Last rebuilt: 2026-09-12_
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
 - [Bayes' Theorem](nodes/bayes-theorem.md)
-- [Bellman Equation](nodes/bellman-equation.md)
 - [Boot Process](nodes/boot-process.md)
 - [Categorical Data Encoding](nodes/categorical-data-encoding.md)
 - [Causal Structure Learning](nodes/causal-structure-learning.md)
@@ -93,6 +92,7 @@ _Last rebuilt: 2026-09-12_
 - [Mixed-precision training](nodes/mixed-precision-training.md)
 - [ML System Freshness](nodes/ml-system-freshness.md)
 - [Model Context Protocol](nodes/model-context-protocol.md)
+- [Model-Free Learning](nodes/model-free-learning.md)
 - [Modularity Resolution Limit](nodes/modularity-resolution-limit.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [MongoDB](nodes/mongodb.md)
@@ -419,6 +419,7 @@ _Last rebuilt: 2026-09-12_
 - [Memory Management Unit](nodes/mmu.md)
 - [Model Calibration](nodes/model-calibration.md)
 - [Model Context Protocol](nodes/model-context-protocol.md)
+- [Model-Free Learning](nodes/model-free-learning.md)
 - [Modularity Resolution Limit](nodes/modularity-resolution-limit.md)
 - [MoE Routing](nodes/moe-routing.md)
 - [Moment Generating Function](nodes/moment-generating-function.md)
@@ -658,7 +659,7 @@ _Last rebuilt: 2026-09-12_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (141)
+### ml (142)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -684,7 +685,7 @@ _Last rebuilt: 2026-09-12_
 
   - **ml/regression** (1) — [Quantile Regression](nodes/quantile-regression.md)
 
-  - **ml/reinforcement-learning** (2) — [Bellman Equation](nodes/bellman-equation.md), [Markov Decision Process](nodes/markov-decision-process.md)
+  - **ml/reinforcement-learning** (3) — [Bellman Equation](nodes/bellman-equation.md), [Markov Decision Process](nodes/markov-decision-process.md), [Model-Free Learning](nodes/model-free-learning.md)
 
   - **ml/representation-learning** (1) — [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
 

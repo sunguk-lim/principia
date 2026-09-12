@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-12_
 
-**430** nodes · **3** axioms · **0** on the frontier
+**432** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (158)
+## 🌳 Parent (root) nodes — top-level, required by nothing (159)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -157,6 +157,7 @@ _Last rebuilt: 2026-09-12_
 - [3D Parallelism](nodes/three-dimensional-parallelism.md)
 - [Tiny-Subset Overfit Test](nodes/tiny-subset-overfit-test.md)
 - [Translation Lookaside Buffer](nodes/tlb.md)
+- [Token-and-Duration Transducer](nodes/token-and-duration-transducer.md)
 - [Tree-Search Decoding](nodes/tree-search-decoding.md)
 - [Trie](nodes/trie.md)
 - [Python TypedDict](nodes/typed-dict.md)
@@ -532,6 +533,7 @@ _Last rebuilt: 2026-09-12_
 - [Reward Hacking](nodes/reward-hacking.md)
 - [Ring Attention](nodes/ring-attention.md)
 - [RMSNorm](nodes/rmsnorm.md)
+- [RNN Transducer](nodes/rnnt.md)
 - [ROC Curve](nodes/roc-curve.md)
 - [Roofline Model](nodes/roofline-model.md)
 - [Root process](nodes/root-process.md)
@@ -584,6 +586,7 @@ _Last rebuilt: 2026-09-12_
 - [3D Parallelism](nodes/three-dimensional-parallelism.md)
 - [Tiny-Subset Overfit Test](nodes/tiny-subset-overfit-test.md)
 - [Translation Lookaside Buffer](nodes/tlb.md)
+- [Token-and-Duration Transducer](nodes/token-and-duration-transducer.md)
 - [Trace Span](nodes/trace-span.md)
 - [Transaction (ACID)](nodes/transaction.md)
 - [Transaction Isolation](nodes/transaction-isolation.md)
@@ -609,7 +612,7 @@ _Last rebuilt: 2026-09-12_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 48 leaf fields
+## 🏷️ By field (cut the graph) — 10 top-level / 49 leaf fields
 
 ### algorithms (21)
 
@@ -659,7 +662,7 @@ _Last rebuilt: 2026-09-12_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (142)
+### ml (144)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -688,6 +691,8 @@ _Last rebuilt: 2026-09-12_
   - **ml/reinforcement-learning** (3) — [Bellman Equation](nodes/bellman-equation.md), [Markov Decision Process](nodes/markov-decision-process.md), [Model-Free Learning](nodes/model-free-learning.md)
 
   - **ml/representation-learning** (1) — [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
+
+  - **ml/speech** (2) — [RNN Transducer](nodes/rnnt.md), [Token-and-Duration Transducer](nodes/token-and-duration-transducer.md)
 
   - **ml/training** (8) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md), [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md), [Gaussian Mixture Model](nodes/gaussian-mixture-model.md), [Label Smoothing](nodes/label-smoothing.md), [Representation Alignment](nodes/representation-alignment.md), [Reward Hacking](nodes/reward-hacking.md), [Subject-Driven Generation](nodes/subject-driven-generation.md)
 

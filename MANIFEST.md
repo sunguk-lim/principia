@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-13_
 
-**434** nodes · **3** axioms · **0** on the frontier
+**435** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (161)
+## 🌳 Parent (root) nodes — top-level, required by nothing (162)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -29,6 +29,7 @@ _Last rebuilt: 2026-09-13_
 - [Content-Addressable Memory](nodes/content-addressable-memory.md)
 - [Context Parallelism](nodes/context-parallelism.md)
 - [Convex Transformation Order](nodes/convex-transformation-order.md)
+- [Crawl Frontier](nodes/crawl-frontier.md)
 - [Cromwell's Rule](nodes/cromwell-rule.md)
 - [CUDA Stream](nodes/cuda-stream.md)
 - [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md)
@@ -252,6 +253,7 @@ _Last rebuilt: 2026-09-13_
 - [Coroutine](nodes/coroutine.md)
 - [Cosine Similarity](nodes/cosine-similarity.md)
 - [CPU vs GPU](nodes/cpu-vs-gpu.md)
+- [Crawl Frontier](nodes/crawl-frontier.md)
 - [Cromwell's Rule](nodes/cromwell-rule.md)
 - [Cross Product](nodes/cross-product.md)
 - [Cubin and Fatbinary](nodes/cubin.md)
@@ -616,7 +618,7 @@ _Last rebuilt: 2026-09-13_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 10 top-level / 49 leaf fields
+## 🏷️ By field (cut the graph) — 11 top-level / 50 leaf fields
 
 ### algorithms (21)
 
@@ -637,6 +639,10 @@ _Last rebuilt: 2026-09-13_
   - **databases/transactions** (4) — [Concurrency Control](nodes/concurrency-control.md), [Multi-Version Concurrency Control](nodes/mvcc.md), [Transaction (ACID)](nodes/transaction.md), [Transaction Isolation](nodes/transaction-isolation.md)
 
   - **databases/vector** (4) — [Calling LLMs from SQL](nodes/llm-from-sql.md), [pgai](nodes/pgai.md), [pgai Vectorizer](nodes/pgai-vectorizer.md), [pgvector](nodes/pgvector.md)
+
+### distributed-systems (1)
+
+  - **distributed-systems/web** (1) — [Crawl Frontier](nodes/crawl-frontier.md)
 
 ### gpu (30)
 

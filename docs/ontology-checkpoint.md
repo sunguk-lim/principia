@@ -80,3 +80,21 @@ restart the completed Letters historical backfill or alter its ledger.
   with editorial work. No dependencies intentionally changed.
 - No deployment. Next: live Neo4j compatibility/sync verification, then browser and
   status-saving review. Four lessons are reviewed, not the entire 435-concept catalog.
+
+## Stage 5 — live reader save verification (2026-09-14)
+
+- Found and fixed uncaught save failures in both progress actions. A visible alert
+  now reports failure, the draft stays intact, and retry remains available.
+- Mark understood now saves the current note draft instead of reverting to the
+  previously persisted note.
+- Verified in headless installed Chrome using an isolated browser profile and
+  intercepted status API: failed save, retained draft, successful completion with
+  the draft note, lesson navigation, and no uncaught page errors. No real study
+  status was modified. Inspected the resulting reader screenshot.
+- Frontend: 9 tests, typecheck, full production build passed. Python: 13 tests
+  passed; graph audit clean at 435 concepts. Existing warnings unchanged.
+- Language review: no language selector exists in the current React reader;
+  earlier Korean text-splitting test does not imply bilingual UI support.
+- The old Java and Neo4j archives were both truncated. Java has now downloaded
+  successfully and matches the publisher's SHA-256. Neo4j download is continuing;
+  no database or production service changes yet. Existing uv.lock preserved.

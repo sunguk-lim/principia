@@ -20,6 +20,7 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
   const initial = statuses[node.id] || emptyStatus();
   const [draft, setDraft] = useState<StudyStatus>(initial);
   const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
   const [step, setStep] = useState(0);
   const steps = useMemo(() => lessonSteps(node.lesson || node.body), [node]);
   const roadmapResult = useMemo(() => {
@@ -31,13 +32,18 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
   const dependents = useMemo(() => [...byId.values()].filter(item => item.prereqs.includes(node.id)).sort((a, b) => a.title.localeCompare(b.title)), [node.id, byId]);
   const next = nextStudyNode(roadmap, statuses);
 
-  const save = async () => {
+  const persist = async (value: StudyStatus) => {
     setSaving(true);
-    try { await onSave(node.id, draft); } finally { setSaving(false); }
+    setSaveError("");
+    try { await onSave(node.id, value); }
+    catch (error) { setSaveError(error instanceof Error ? error.message : "Could not save progress. Please try again."); }
+    finally { setSaving(false); }
   };
+  const save = () => persist(draft);
   return <aside className="node-panel">
     <header className="panel-head"><div><span className="eyebrow">{node.root} · level {node.level}</span><h2>{node.title}</h2></div><div className="panel-actions">{onOpenCopilot && <button className="ask-codex" onClick={onOpenCopilot}>Ask Copilot</button>}<button className="icon-button" onClick={onClose} aria-label="Close">×</button></div></header>
     <p className="summary">{node.summary}</p>
+    {saveError && <p role="alert">Progress was not saved: {saveError}</p>}
     {!!node.aliases?.length && <p className="alias-line">Also known as: {node.aliases.join(" · ")}</p>}
     <section className="study-card lesson-card">
       <span className="eyebrow">{node.lessonReviewed ? "Core lesson" : "Guided reading"} · Step {step + 1} of {steps.length} · ~{steps[step].minutes} min</span>
@@ -45,7 +51,7 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
       <progress aria-label="Reading progress" value={step + 1} max={steps.length} />
       <h3>{steps[step].title}</h3>
       <article className="markdown" onClick={e => { const anchor=(e.target as HTMLElement).closest("a"); const match=anchor?.getAttribute("href")?.match(/^#node=(.+)$/); if(match){e.preventDefault();onSelect(match[1])}}} dangerouslySetInnerHTML={{__html: renderMarkdown(steps[step].body)}} />
-      <div className="lesson-navigation"><button disabled={step === 0} onClick={() => setStep(step - 1)}>Previous</button>{step < steps.length - 1 ? <button className="primary-button" onClick={() => setStep(step + 1)}>Continue</button> : <button className="primary-button" disabled={saving || initial.status === "done"} onClick={async () => { setSaving(true); try { await onSave(node.id, {...initial, status: "done", custom_label: ""}); } finally {setSaving(false);} }}>{initial.status === "done" ? "Completed" : saving ? "Saving…" : "Mark understood"}</button>}</div>
+      <div className="lesson-navigation"><button disabled={step === 0} onClick={() => setStep(step - 1)}>Previous</button>{step < steps.length - 1 ? <button className="primary-button" onClick={() => setStep(step + 1)}>Continue</button> : <button className="primary-button" disabled={saving || initial.status === "done"} onClick={() => persist({...draft, status: "done", custom_label: ""})}>{initial.status === "done" ? "Completed" : saving ? "Saving…" : "Mark understood"}</button>}</div>
       {!node.lessonReviewed && <p className="reading-note">The existing explanation is divided into reading steps. A concise editorial review is still pending.</p>}
     </section>
     <details className="study-card relationship-card"><summary>Prerequisites and connections</summary>

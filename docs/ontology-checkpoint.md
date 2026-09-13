@@ -98,3 +98,25 @@ restart the completed Letters historical backfill or alter its ledger.
 - The old Java and Neo4j archives were both truncated. Java has now downloaded
   successfully and matches the publisher's SHA-256. Neo4j download is continuing;
   no database or production service changes yet. Existing uv.lock preserved.
+
+## Stage 6 — live Neo4j and device persistence verified (2026-09-14)
+
+- Completed and checksum-verified Neo4j Community 5.26.30 and Temurin Java
+  21.0.12.1 downloads; extracted under the existing local installation directory.
+  Compatibility reference: https://neo4j.com/docs/operations-manual/current/installation/requirements/
+- Ran an isolated database bound to 127.0.0.1:17474, with Bolt disabled and no
+  production service configuration changes. Used 512 MB maximum heap / 128 MB page cache.
+- Existing transactional HTTP integration works against this release without a
+  Python driver. Synced 435 concepts / 980 relationships (979 REQUIRES + 1 optional).
+- Repeated sync returned identical projection metadata. Compared Neo4j prerequisite
+  traversal with an independent Markdown adjacency traversal for ALL 435 concepts:
+  exact parity, including each target itself. Snapshot digest:
+  f90ed714b64b10159d8ddd146ed52dd927922d3ef0c010f31ba1a7a1ec15b6c8.
+- Separate isolated Chrome context at 820×1180 verified device note persistence
+  across reload; screenshot inspected. No user browser profile or real notes touched.
+- Test-only HTTP and Neo4j processes stopped after verification. Installation and
+  projection remain on disk; no always-on database service claimed.
+- Remaining release scope: decide/implement production lifecycle for the optional
+  projection, review upstream differences before publication, and deploy. The reader
+  currently serves English articles; Korean language selection is not implemented.
+  Only four core lessons are editorially reviewed. No push/deployment in this stage.

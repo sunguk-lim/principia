@@ -37,8 +37,10 @@ typed `review` notes for the structural settle pass.
 
 ## Edges and the Closed World
 
-A body reference such as `[[tensor]]` is a graph edge. Every body wikilink must resolve to an existing
-node and appear in the owning node's `prereqs` list. `brain.py audit` enforces both conditions.
+A body reference such as `[[tensor]]` must resolve to an existing canonical node. It must be in
+the owning node's prerequisite closure (direct or inherited), or be an explicit optional relation
+in `ontology/catalog.json`. `brain.py audit` enforces this rule. A link alone does not make a
+concept required learning.
 
 Declare only direct prerequisites. A node inherits deeper grounding through those prerequisites;
 copying transitive dependencies into every node makes the graph noisy and harder to maintain.
@@ -80,3 +82,42 @@ The generated manifest and dashboard roll these paths up into broader fields.
 
 For prose and decomposition rules, follow [`protocols/EXPLAIN.md`](../protocols/EXPLAIN.md). For
 figures, follow [`protocols/VISUAL_PROTOCOLS.md`](../protocols/VISUAL_PROTOCOLS.md).
+
+## Canonical identity and typed relationships
+
+Markdown remains authoritative; `ontology/catalog.json` supplies aliases, objectives,
+`prerequisiteReasons`, optional `relations`, and normalized-label `disambiguations`.
+Resolve a proposed name before creating a node:
+
+```bash
+uv run python -m principia_app.ontology resolve "FlashAttention"
+```
+
+A synonym belongs in `aliases` on the existing concept, not in a new node. Distinct meanings
+sharing a label require a disambiguation entry. Similarity is a review hint, never proof of identity.
+
+Only `prereqs` produce `REQUIRES` edges and required roadmap steps. Record a concise reason
+for each reviewed prerequisite: what part of the learning objective needs it? Optional types are
+`ALTERNATIVE_TO`, `CONTRASTS_WITH`, and `APPLIES_TO`; each record has `type`, `target`, and
+an explanatory `reason`. They never expand the required roadmap. Current storage is directed;
+reverse relationships are not inserted automatically. No generic `SIMILAR_TO` type is supported.
+
+## Short learning steps
+
+Keep the full reference article in `nodes/<id>.md`. A reviewed core lesson lives in
+`lessons/<id>.md`, under the same canonical identity, without frontmatter. Aim for one objective
+and 250–500 words (roughly 2–4 minutes), adjusting for mathematical difficulty instead of padding.
+Use: Meaning → Mechanism → One example → Check your understanding (with a brief answer).
+Keep advanced derivations and implementation detail in the full article. Split only genuinely
+independent learning objectives, not synonyms or arbitrary paragraph chunks.
+
+At present, lesson-file presence sets `lessonReviewed`; create these files only after editorial
+review. This is a convention, not an independent review-signoff mechanism.
+
+## Legacy command limitations
+
+`merge` does not reconcile catalog metadata or lessons; do not use it for ontology consolidation
+until those references are migrated together. `reindex` strips removed prerequisite links even
+when they could become optional relations; review both language bodies afterward. `reground`
+produces lexical candidates, not proof of a missing prerequisite: comparisons and applications
+must not be promoted automatically. After any identity/edge edit, audit the complete projection.

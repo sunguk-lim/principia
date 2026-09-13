@@ -12,6 +12,9 @@ import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal
+from urllib.error import URLError
+
+from principia_app import neo4j
 
 import uvicorn
 from fastapi import FastAPI, HTTPException, Request
@@ -181,11 +184,34 @@ def create_app(db_path: Path | None = None, web_dist: Path = WEB_DIST) -> FastAP
             "graph": GRAPH_DATA.is_file(),
             "statusStore": "sqlite",
             "copilot": bool(shutil.which("openclaw")),
+            "ontologyIndexConfigured": bool(os.environ.get("PRINCIPIA_NEO4J_URL")),
         }
 
     @app.get("/api/graph")
     def graph_data() -> FileResponse:
         return FileResponse(GRAPH_DATA, media_type="application/json")
+
+    def current_projection() -> dict:
+        if not os.environ.get("PRINCIPIA_NEO4J_URL"):
+            raise HTTPException(503, "Ontology index is not configured; browser roadmaps remain available")
+        try:
+            return neo4j.ensure_current(ROOT)
+        except (URLError, OSError, RuntimeError, ValueError):
+            raise HTTPException(503, "Ontology index unavailable; browser roadmaps remain available") from None
+
+    @app.get("/api/ontology")
+    def ontology_status() -> dict:
+        return current_projection()
+
+    @app.get("/api/ontology/prerequisites/{slug}")
+    def ontology_prerequisites(slug: str) -> dict:
+        require_node(slug)
+        projection = current_projection()
+        try:
+            ids = neo4j.prerequisite_ids(slug)
+        except (URLError, OSError, RuntimeError, ValueError):
+            raise HTTPException(503, "Ontology index unavailable; browser roadmaps remain available") from None
+        return {"target": slug, "includesTarget": True, "ids": ids, "digest": projection["digest"]}
 
     @app.get("/api/status")
     def list_statuses() -> dict[str, dict[str, str]]:

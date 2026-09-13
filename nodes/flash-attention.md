@@ -4,7 +4,7 @@ title: FlashAttention
 summary: FlashAttention computes the exact same output as ordinary transformer-attention, but reorganizes the work so a GPU moves far less data.
 type: concept
 tags: [ml/llm/architecture]
-prereqs: [transformer-attention, softmax, online-softmax]
+prereqs: [transformer-attention, online-softmax]
 sources: ["FlashAttention (Dao et al., 2022), arXiv:2205.14135"]
 status: explained
 created: 2026-06-23
@@ -19,8 +19,8 @@ FlashAttention computes the **exact same** output as ordinary [[transformer-atte
 reorganizes the work so a GPU moves far less data. The naive method builds the whole $n \times n$
 matrix of attention scores in memory; FlashAttention instead **streams** the keys and values in small
 **tiles** and keeps a tiny **running summary**, so it never stores the full score matrix. The trick
-that makes this possible is [[online-softmax]] — an incremental, streaming form of [[softmax]]. Same answer — but memory
-traffic drops from $O(n^2)$ to $O(n)$, a large speedup that makes long context affordable.
+that makes this possible is [[online-softmax]] — an incremental, streaming form of [[softmax]]. The same mathematical operation uses less memory traffic and avoids quadratic intermediate
+storage; dense attention arithmetic remains quadratic.
 
 ![FlashAttention streams two score tiles through SRAM, merging each into the running `(m, ℓ, O)` carry. The exact output is written to HBM once; the full N × N score matrix is never stored there.|720](flash-attention.svg)
 
@@ -72,9 +72,10 @@ yet the whole score row never existed at once.
 **Why it matters.** A GPU has a small, fast on-chip memory (**SRAM**) and a large, slow off-chip memory
 (**HBM**); the bottleneck is traffic between them. The naive method writes and reads the full
 $n \times n$ score matrix in HBM — $O(n^2)$ traffic. FlashAttention keeps only the current tile plus the
-small summary $(m, \ell, O)$ in SRAM and never writes the score matrix, so it moves $O(n)$ data. (In
+small summary $(m, \ell, O)$ in SRAM and never writes the full score matrix. Total memory traffic
+depends on tile sizes, head dimension, and SRAM capacity; it is not universally linear. (In
 full, both inputs are tiled: an outer loop over blocks of queries wraps an inner loop that streams the
-key/value tiles.) The output is bit-for-bit the same as [[transformer-attention]]; only *where* the
+key/value tiles.) The output is mathematically equivalent to [[transformer-attention]], subject to floating-point rounding; only *where* the
 computation happens and *how* [[softmax]] is staged change.
 
 ## Prerequisites

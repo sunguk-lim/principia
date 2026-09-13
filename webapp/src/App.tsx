@@ -40,7 +40,7 @@ export default function App() {
     const needle = query.trim().toLowerCase();
     return data.nodes.filter(node => {
       const study = statuses[node.id]?.status || "not_started";
-      return (root === "all" || node.root === root) && (statusFilter === "all" || study === statusFilter) && (!needle || `${node.title} ${node.id} ${node.summary} ${node.tags.join(" ")}`.toLowerCase().includes(needle));
+      return (root === "all" || node.root === root) && (statusFilter === "all" || study === statusFilter) && (!needle || `${node.title} ${node.id} ${(node.aliases || []).join(" ")} ${node.summary} ${node.tags.join(" ")}`.toLowerCase().includes(needle));
     });
   }, [data, query, root, statusFilter, statuses]);
   const visibleIds = useMemo(() => new Set(visibleNodes.map(node => node.id)), [visibleNodes]);
@@ -49,6 +49,15 @@ export default function App() {
   const active = Object.values(statuses).filter(value => value.status === "in_progress").length;
 
   const selectNode = (id: string) => { setSelectedId(id); setMenuOpen(false); };
+
+  useEffect(() => {
+    const readHash = () => {
+      const match = window.location.hash.match(/^#node=(.+)$/);
+      if (match && byId.has(match[1])) setSelectedId(match[1]);
+    };
+    readHash(); window.addEventListener("hashchange", readHash);
+    return () => window.removeEventListener("hashchange", readHash);
+  }, [byId]);
   const save = async (id: string, value: StudyStatus) => {
     const saved = await saveStatus(id, value, statuses);
     setStatuses(current => ({ ...current, [id]: saved }));

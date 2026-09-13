@@ -1033,8 +1033,8 @@ def cmd_audit(_args) -> None:
 
     `sync` only checks that frontmatter `prereqs` resolve. `audit` also reads each
     node BODY and enforces the closed-world law at the symbol level: every `[[link]]`
-    in the prose must be a declared prerequisite (no dead links, no "see-also" links
-    to non-prerequisites). The Korean companion body (`nodes/<id>.ko.md`) is held to
+    in the prose must resolve through prerequisite closure or an explicit optional
+    typed relation (no dead links). The Korean companion body (`nodes/<id>.ko.md`) is held to
     the same law; an orphan companion is an error, a missing one only a hint.
     It also flags untagged nodes and prints the tag taxonomy.
     Exits non-zero if anything is wrong, so it can gate commits/CI.
@@ -1042,6 +1042,12 @@ def cmd_audit(_args) -> None:
     nodes = all_nodes()
     ids = set(nodes)
     problems = 0
+    from principia_app.ontology import catalog, validate, allowed_links
+    ontology = catalog(ROOT)
+    ontology_errors = validate(nodes, ontology)
+    for error in ontology_errors:
+        print(f"  ❌ {error}")
+    problems += len(ontology_errors)
 
     missing = sorted(compute_missing())
     if missing:
@@ -1069,27 +1075,28 @@ def cmd_audit(_args) -> None:
                             print(f"  ⚠️  {nid}: invalid frontmatter YAML "
                                   "(unquoted ': ' in a list item — quote it)")
         prereqs = set(parse_list(nodes[nid].get("prereqs", "")))
+        declared_links = allowed_links(nid, nodes, ontology)
         links = set(link_re.findall(body))
         dead = sorted(l for l in links if l not in ids)
-        leak = sorted(l for l in links if l in ids and l not in prereqs and l != nid)
+        leak = sorted(l for l in links if l in ids and l not in declared_links and l != nid)
         if dead:
             problems += len(dead)
             print(f"  ❌ {nid}: dead body links {dead}")
         if leak:
             problems += len(leak)
-            print(f"  ⚠️  {nid}: body links not in prereqs {leak}")
+            print(f"  ⚠️  {nid}: body links without a declared relationship {leak}")
         # The Korean companion body obeys the same closed-world law.
         ko = NODES / f"{nid}.ko.md"
         if ko.exists():
             klinks = set(link_re.findall(ko.read_text(encoding="utf-8")))
             kdead = sorted(l for l in klinks if l not in ids)
-            kleak = sorted(l for l in klinks if l in ids and l not in prereqs and l != nid)
+            kleak = sorted(l for l in klinks if l in ids and l not in declared_links and l != nid)
             if kdead:
                 problems += len(kdead)
                 print(f"  ❌ {nid}.ko: dead body links {kdead}")
             if kleak:
                 problems += len(kleak)
-                print(f"  ⚠️  {nid}.ko: body links not in prereqs {kleak}")
+                print(f"  ⚠️  {nid}.ko: body links without a declared relationship {kleak}")
         elif nodes[nid].get("status") == "explained":
             missing_ko.append(nid)
         # HINT only (not a problem): a declared prereq never linked in an explained body
@@ -1136,7 +1143,7 @@ def cmd_audit(_args) -> None:
         print(f"❌ audit: {problems} issue(s) across {len(nodes)} nodes.")
         sys.exit(1)
     print(f"✅ audit clean — {len(nodes)} nodes: closed world, "
-          "body links ⊆ prereqs, all tagged.")
+          "body links have declared relationships, all tagged.")
 
 
 def cmd_graph(args) -> None:

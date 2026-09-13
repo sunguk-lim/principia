@@ -17,9 +17,21 @@ grounded sub-graph. A node exists because a prompt — directly, or by recursion
 Explain a concept using **ONLY** concepts that already exist as prerequisite nodes, linked as
 `[[id]]`. If a prerequisite is missing, **archive it first — recursively — until you reach axioms**
 (`type: axiom`, no prerequisites). `brain.py audit` enforces this: the world must stay **closed**
-(every referenced prerequisite resolves, and body links ⊆ declared prereqs). The reasoning —
+(every link resolves through prerequisite closure or an explicit optional typed relation). The reasoning —
 choosing prerequisites and writing the grounded explanation — is yours; `brain.py` only stores,
 resolves, and validates the graph.
+
+**Required learning versus optional context.** Only concepts necessary for the learning objective
+belong in `prereqs`. Inherited foundations may be linked without copying transitive edges. Declare
+comparisons, alternatives, and applications in `ontology/catalog.json`, using the types documented
+in `docs/node-model.md`; they are optional and do not enter the required roadmap. Resolve aliases
+before adding a concept. A mention or lexical match alone never establishes a prerequisite.
+
+**Core lesson and reference article.** Preserve the full node article. Put its reviewed, single-objective
+learning step in `lessons/<id>.md`: meaning, mechanism, one example, and an understanding check.
+Aim for comparable learning effort (usually 250–500 words), not identical word counts. Advanced
+material stays in the reference article. Lesson existence currently signals review, so do not save
+unreviewed drafts there. See `docs/node-model.md` for metadata and legacy-command limitations.
 
 **An axiom is provisional — the law cuts upward too.** `type: axiom` marks a *chosen* recursion floor:
 *where we currently stop*, not a claim that nothing lies beneath. So the descent's stop condition has
@@ -182,7 +194,7 @@ removes, strips dropped `[[links]]`):
   for an axiom → concept), then re-`sync` the body.
 
 Clear each `review:` note you resolve. After every structural change the **closed-world law must
-still hold** — run `audit` (body links ⊆ prereqs, no dead links, world closed).
+still hold** — run `audit` (declared relationships, no dead links, world closed).
 
 **Convergence.** `lock` and `sync` iterate: a scaffold from `lock` needs a `sync`, which may emit new
 feedback, which `lock` acts on again. Stop when no feedback is pending and `lock` makes no new change

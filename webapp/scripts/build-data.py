@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 import brain  # noqa: E402
+from principia_app.ontology import enrich  # noqa: E402
 from web import render  # noqa: E402
 
 
@@ -32,6 +33,8 @@ def main() -> None:
         node["tags"] = brain.parse_list(meta.get("tags", ""))
         node["body"] = body_from((brain.NODES / f"{node_id}.md").read_text(encoding="utf-8"))
         node["hasFigure"] = (brain.NODES / f"{node_id}.svg").is_file()
+
+    enrich(data, metadata, ROOT)
 
     output = ROOT / "web" / "dist"
     if output.exists():

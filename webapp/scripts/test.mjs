@@ -10,7 +10,7 @@ const output = join(temporary, "markdown.test.mjs");
 
 try {
   await build({
-    entryPoints: [resolve(root, "src/markdown.test.ts")],
+    entryPoints: [resolve(root, "src/tests.ts")],
     bundle: true,
     platform: "node",
     format: "esm",

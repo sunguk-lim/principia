@@ -4,7 +4,7 @@ title: Online Softmax
 summary: Online softmax (also called streaming softmax) computes a numerically-stable softmax over a long list of values while seeing them one block at a time, in a single pass — never…
 type: concept
 tags: [ml/llm/architecture]
-prereqs: [softmax, probability-distribution]
+prereqs: [softmax]
 sources: ["FlashAttention (Dao et al., 2022), arXiv:2205.14135"]
 status: explained
 created: 2026-06-23
@@ -19,8 +19,8 @@ updated: 2026-06-24
 [[softmax]] over a long list of values while seeing them **one block at a time, in a single
 pass** — never holding the whole list at once. It keeps a small **running summary** as blocks
 arrive and, whenever a later block reveals a value larger than anything seen so far, **rebases**
-the summary with one cheap multiplication. After the final block the result is *exactly* the
-ordinary [[softmax]] over the full list. This is the engine inside FlashAttention, ring
+the summary with one cheap multiplication. After the final block the normalizer matches ordinary [[softmax]] mathematically.
+Producing all individual probabilities still requires retaining or revisiting the scores. This is the engine inside FlashAttention, ring
 attention, and paged attention.
 
 ## Grounded explanation

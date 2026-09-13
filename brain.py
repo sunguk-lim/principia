@@ -1033,8 +1033,8 @@ def cmd_audit(_args) -> None:
 
     `sync` only checks that frontmatter `prereqs` resolve. `audit` also reads each
     node BODY and enforces the closed-world law at the symbol level: every `[[link]]`
-    in the prose must be a declared prerequisite (no dead links, no "see-also" links
-    to non-prerequisites). The Korean companion body (`nodes/<id>.ko.md`) is held to
+    in the prose must resolve through prerequisite closure or an explicit optional
+    typed relation (no dead links). The Korean companion body (`nodes/<id>.ko.md`) is held to
     the same law; an orphan companion is an error, a missing one only a hint.
     It also flags untagged nodes and prints the tag taxonomy.
     Exits non-zero if anything is wrong, so it can gate commits/CI.

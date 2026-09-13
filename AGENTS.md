@@ -20,11 +20,11 @@ After changing `nodes/`, run `audit`, then regenerate both derived files. After 
 
 ## Coding Style & Naming Conventions
 
-Use four-space indentation and standard Python conventions in `.py` files. Keep the runtime dependency-free unless a change clearly requires otherwise. Name concept IDs and files in lowercase kebab-case, such as `page-cache.md`. Node frontmatter must match `docs/node-model.md`; declare one hierarchical tag and ensure every body `[[wikilink]]` appears in `prereqs`. Follow `protocols/EXPLAIN.md` for prose and `protocols/VISUAL_PROTOCOLS.md` for figures.
+Use four-space indentation and standard Python conventions in `.py` files. Keep the runtime dependency-free unless a change clearly requires otherwise. Name concept IDs and files in lowercase kebab-case, such as `page-cache.md`. Node frontmatter must match `docs/node-model.md`; declare one hierarchical tag and ensure every body `[[wikilink]]` resolves through the prerequisite closure or an explicit typed relation in `ontology/catalog.json`. Follow `protocols/EXPLAIN.md` for prose and `protocols/VISUAL_PROTOCOLS.md` for figures.
 
 ## Testing Guidelines
 
-There is no separate unit-test suite in this checkout. `uv run principia audit` is the required correctness gate and must pass before submission. For graph changes, also inspect `uv run principia diff <base>` and the regenerated dashboard. Verify generated files are committed whenever their sources change.
+Run Python regression tests with `uv run --group dev python -m unittest discover -s tests -v`; frontend tests live in `webapp` (`npm test`). `uv run principia audit` is the required correctness gate and must pass before submission. For graph changes, also inspect `uv run principia diff <base>` and the regenerated dashboard. Verify generated files are committed whenever their sources change.
 
 ## Commit & Pull Request Guidelines
 

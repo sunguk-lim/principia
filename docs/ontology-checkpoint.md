@@ -51,3 +51,15 @@ restart the completed Letters historical backfill or alter its ledger.
 - Next: reconcile typed-relation authoring rules, then reviewed short lessons;
   retain browser/save-state review as a release gate. Stage 1 Python/audit
   results remain applicable: no Python or ontology data changed in this stage.
+
+## Stage 3 — authoring contract reconciled (2026-09-13)
+
+- Updated repository guidance, node model, and explanation protocol to distinguish
+  prerequisite closure from optional typed relationships; added identity admission
+  and short-lesson authoring instructions.
+- Documented verified legacy limitations: merge ignores catalog/lessons, reindex
+  strips removed links, and reground lexical matches require editorial judgment.
+- Corrected the audit docstring; no runtime behavior or node data changed.
+- Full graph audit and git diff --check passed.
+- Next: write/review the four attention-sequence lessons, then verify lesson links
+  and Neo4j integration. Whole-catalog editorial review remains incomplete.

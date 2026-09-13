@@ -4,7 +4,7 @@ title: FlashAttention
 summary: FlashAttention computes the exact same output as ordinary transformer-attention, but reorganizes the work so a GPU moves far less data.
 type: concept
 tags: [ml/llm/architecture]
-prereqs: [transformer-attention, softmax, online-softmax]
+prereqs: [transformer-attention, online-softmax]
 sources: ["FlashAttention (Dao et al., 2022), arXiv:2205.14135"]
 status: explained
 created: 2026-06-23

@@ -1,14 +1,21 @@
 import type { GraphNode, StatusMap } from "./types";
 
-export function learningRoadmap(target: string, byId: Map<string, GraphNode>): GraphNode[] {
+export function learningRoadmap(target: string, byId: Map<string, GraphNode>, statuses: StatusMap = {}): GraphNode[] {
   const seen = new Set<string>();
+  const active = new Set<string>();
   const ordered: GraphNode[] = [];
   const visit = (id: string) => {
+    if (active.has(id)) throw new Error(`Prerequisite cycle at ${id}`);
     if (seen.has(id)) return;
-    seen.add(id);
     const node = byId.get(id);
-    if (!node) return;
+    if (!node) throw new Error(`Missing prerequisite ${id}`);
+    // A learned concept supplies its prerequisites for this goal; do not force
+    // the learner to repeat the entire ancestry underneath it.
+    if (statuses[id]?.status === "done") { seen.add(id); return; }
+    active.add(id);
     node.prereqs.forEach(visit);
+    active.delete(id);
+    seen.add(id);
     ordered.push(node);
   };
   visit(target);
@@ -16,7 +23,7 @@ export function learningRoadmap(target: string, byId: Map<string, GraphNode>): G
 }
 
 export function nextStudyNode(roadmap: GraphNode[], statuses: StatusMap): GraphNode | undefined {
-  return roadmap.find(node => node.type !== "axiom" && statuses[node.id]?.status !== "done");
+  return roadmap.find(node => statuses[node.id]?.status !== "done");
 }
 
 export function statusColor(status?: string): string {

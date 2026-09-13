@@ -1,0 +1,202 @@
+"""Deterministic identity, relation, and learning-quality checks.
+
+Markdown remains authoritative. ontology/catalog.json adds reviewed identity and
+relation metadata; Neo4j and the browser consume the same validated projection.
+"""
+from __future__ import annotations
+
+import argparse
+import difflib
+import hashlib
+import json
+import re
+import unicodedata
+from pathlib import Path
+
+import brain
+
+RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO"}
+
+
+def normalize(label: str) -> str:
+    return " ".join(re.findall(r"\w+", unicodedata.normalize("NFKC", label).casefold()))
+
+
+def catalog(root: Path) -> dict:
+    path = root / "ontology" / "catalog.json"
+    return json.loads(path.read_text()) if path.exists() else {"concepts": {}, "disambiguations": {}}
+
+
+def identities(nodes: dict, extra: dict) -> dict[str, list[str]]:
+    index: dict[str, set[str]] = {}
+    for nid, node in nodes.items():
+        for name in [nid, node.get("title", nid), *extra.get("concepts", {}).get(nid, {}).get("aliases", [])]:
+            index.setdefault(normalize(name), set()).add(nid)
+    return {key: sorted(value) for key, value in sorted(index.items())}
+
+
+def relations(nodes: dict, extra: dict) -> list[dict]:
+    result = []
+    for nid, meta in sorted(nodes.items()):
+        record = extra.get("concepts", {}).get(nid, {})
+        for target in brain.parse_list(meta.get("prereqs", "")):
+            reason = record.get("prerequisiteReasons", {}).get(target, "")
+            result.append({"s": nid, "t": target, "type": "REQUIRES", "reason": reason,
+                           "reviewed": bool(reason)})
+        for relation in record.get("relations", []):
+            result.append({"s": nid, "t": relation["target"], "type": relation["type"],
+                           "reason": relation["reason"], "reviewed": True})
+    return result
+
+
+def allowed_links(nid: str, nodes: dict, extra: dict) -> set[str]:
+    inherited = set()
+    pending = list(brain.parse_list(nodes[nid].get("prereqs", "")))
+    while pending:
+        target = pending.pop()
+        if target not in inherited and target in nodes:
+            inherited.add(target)
+            pending.extend(brain.parse_list(nodes[target].get("prereqs", "")))
+    return inherited | {
+        item["target"] for item in extra.get("concepts", {}).get(nid, {}).get("relations", [])
+    }
+
+
+def validate(nodes: dict, extra: dict) -> list[str]:
+    errors = []
+    for nid, record in extra.get("concepts", {}).items():
+        if nid not in nodes:
+            errors.append(f"Unknown catalog concept: {nid}")
+            continue
+        for alias in record.get("aliases", []):
+            if not isinstance(alias, str) or not normalize(alias):
+                errors.append(f"{nid}: empty or invalid alias")
+        for target, reason in record.get("prerequisiteReasons", {}).items():
+            if target not in brain.parse_list(nodes[nid].get("prereqs", "")) or not reason.strip():
+                errors.append(f"{nid}: invalid prerequisite rationale for {target}")
+        seen = set()
+        for r in record.get("relations", []):
+            key = (r.get("type"), r.get("target"))
+            if (key in seen or r.get("type") not in RELATIONS or r.get("target") not in nodes
+                    or r.get("target") == nid or not r.get("reason", "").strip()):
+                errors.append(f"{nid}: invalid or duplicate relation {key}")
+            seen.add(key)
+    index = identities(nodes, extra)
+    disambiguations = extra.get("disambiguations", {})
+    for label, matches in index.items():
+        if len(matches) > 1 and sorted(disambiguations.get(label, [])) != matches:
+            errors.append(f"Identity collision needs disambiguation: {label}: {matches}")
+    for label, matches in disambiguations.items():
+        if normalize(label) != label or len(set(matches)) < 2 or sorted(matches) != index.get(label):
+            errors.append(f"Invalid disambiguation: {label}")
+    # A required-learning cycle has no valid first step. Never silently truncate it.
+    visited, active = set(), []
+    def visit(nid):
+        if nid in active:
+            errors.append("Prerequisite cycle: " + " -> ".join(active[active.index(nid):] + [nid]))
+            return
+        if nid in visited:
+            return
+        active.append(nid)
+        for target in brain.parse_list(nodes[nid].get("prereqs", "")):
+            if target not in nodes:
+                errors.append(f"{nid}: missing prerequisite {target}")
+            else:
+                visit(target)
+        active.pop()
+        visited.add(nid)
+    for nid in sorted(nodes):
+        visit(nid)
+    return sorted(set(errors))
+
+
+def admission(label: str, nodes: dict, extra: dict) -> dict:
+    key = normalize(label)
+    index = identities(nodes, extra)
+    exact = index.get(key, [])
+    candidates = []
+    if not exact:
+        scores = {}
+        for term, ids in index.items():
+            score = difflib.SequenceMatcher(None, key, term).ratio()
+            if score >= .72:
+                for nid in ids:
+                    scores[nid] = max(scores.get(nid, 0), score)
+        candidates = [{"id": nid, "score": round(score, 3)}
+                      for nid, score in sorted(scores.items(), key=lambda x: (-x[1], x[0]))[:8]]
+    return {"label": label, "normalized": key, "exact": exact, "candidates": candidates,
+            "decision": "resolve" if len(exact) == 1 else "disambiguate" if exact else
+                        "review" if candidates else "new-candidate"}
+
+
+def body(text: str) -> str:
+    return re.sub(r"\A---\n.*?\n---\n", "", text, count=1, flags=re.S)
+
+
+def enrich(data: dict, nodes: dict, root: Path) -> dict:
+    extra = catalog(root)
+    errors = validate(nodes, extra)
+    if errors:
+        raise ValueError("\n".join(errors))
+    data["relations"] = relations(nodes, extra)
+    data["identityIndex"] = identities(nodes, extra)
+    for node in data["nodes"]:
+        nid = node["id"]
+        record = extra.get("concepts", {}).get(nid, {})
+        node["aliases"] = record.get("aliases", [])
+        node["objective"] = record.get("objective", node.get("summary", ""))
+        node["prerequisiteReasons"] = record.get("prerequisiteReasons", {})
+        node["relations"] = [r for r in data["relations"] if r["s"] == nid and r["type"] != "REQUIRES"]
+        lesson = root / "lessons" / f"{nid}.md"
+        node["lesson"] = lesson.read_text() if lesson.exists() else ""
+        node["lessonReviewed"] = lesson.exists()
+    return data
+
+
+def report(nodes: dict, root: Path) -> dict:
+    extra = catalog(root)
+    entries = []
+    for nid, node in sorted(nodes.items()):
+        text = body((brain.NODES / f"{nid}.md").read_text())
+        words = len(text.split())
+        prereqs = brain.parse_list(node.get("prereqs", ""))
+        reasons = extra.get("concepts", {}).get(nid, {}).get("prerequisiteReasons", {})
+        entries.append({"id": nid, "words": words, "needsShortLesson": not (root / "lessons" / f"{nid}.md").exists(),
+                        "unreviewedPrerequisites": [p for p in prereqs if p not in reasons]})
+    return {"canonicalConcepts": len(nodes), "errors": validate(nodes, extra),
+            "reviewedLessons": sum(not e["needsShortLesson"] for e in entries),
+            "longArticles": sum(e["words"] > 500 for e in entries), "concepts": entries}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("command", choices=["audit", "report", "resolve", "export"])
+    parser.add_argument("label", nargs="?")
+    parser.add_argument("--workspace", default="")
+    args = parser.parse_args()
+    brain.configure_workspace(args.workspace)
+    nodes, extra = brain.all_nodes(), catalog(brain.ROOT)
+    if args.command == "resolve":
+        if not args.label:
+            parser.error("resolve requires a label")
+        result = admission(args.label, nodes, extra)
+    elif args.command == "export":
+        errors = validate(nodes, extra)
+        if errors:
+            raise SystemExit("\n".join(errors))
+        result = {"concepts": [{"id": i, "title": n.get("title", i), "summary": n.get("summary", ""),
+                                 "domain": brain.parse_list(n.get("tags", ""))[0],
+                                 "aliases": extra.get("concepts", {}).get(i, {}).get("aliases", [])}
+                                for i, n in sorted(nodes.items())], "relations": relations(nodes, extra)}
+        result["digest"] = hashlib.sha256(json.dumps(result, sort_keys=True).encode()).hexdigest()
+    else:
+        result = report(nodes, brain.ROOT)
+        if args.command == "audit":
+            result.pop("concepts")
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+    if result.get("errors"):
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()

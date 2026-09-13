@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "disambiguations": {},
+  "concepts": {
+    "softmax": {
+      "aliases": ["softmax function"],
+      "objective": "Turn scores into normalized weights and explain why shifting every score preserves them.",
+      "prerequisiteReasons": {
+        "exponential-function": "Exponentiating each score produces positive weights.",
+        "arithmetic": "Dividing by the sum normalizes the weights.",
+        "probability-distribution": "The resulting weights are nonnegative and sum to one."
+      }
+    },
+    "online-softmax": {
+      "aliases": ["streaming softmax", "online softmax normalizer"],
+      "objective": "Update a stable softmax normalizer when a new block changes the maximum.",
+      "prerequisiteReasons": {
+        "softmax": "The streaming recurrence preserves the same softmax denominator."
+      },
+      "relations": [
+        {"type": "APPLIES_TO", "target": "flash-attention", "reason": "The running normalizer can be fused with a weighted value accumulator to stream attention tiles."}
+      ]
+    },
+    "transformer-attention": {
+      "aliases": ["scaled dot-product attention"],
+      "objective": "Explain how query-key scores select a weighted combination of value vectors.",
+      "prerequisiteReasons": {
+        "softmax": "Each score row becomes normalized weights over values.",
+        "vector-dot-product": "A query-key dot product provides a compatibility score.",
+        "matrix-multiplication": "Matrix products compute all scores and weighted outputs efficiently."
+      }
+    },
+    "flash-attention": {
+      "aliases": ["Flash Attention", "FlashAttention"],
+      "objective": "Explain why tiling and online normalization avoid storing the full attention matrix.",
+      "prerequisiteReasons": {
+        "transformer-attention": "Defines the attention computation whose result the tiled algorithm preserves.",
+        "online-softmax": "Explains how partial normalizers and weighted outputs combine across tiles."
+      }
+    },
+    "t-sne": {
+      "aliases": ["t-distributed stochastic neighbor embedding"]
+    }
+  }
+}

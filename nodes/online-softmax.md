@@ -4,7 +4,7 @@ title: Online Softmax
 summary: Online softmax (also called streaming softmax) computes a numerically-stable softmax over a long list of values while seeing them one block at a time, in a single pass — never…
 type: concept
 tags: [ml/llm/architecture]
-prereqs: [softmax, probability-distribution]
+prereqs: [softmax]
 sources: ["FlashAttention (Dao et al., 2022), arXiv:2205.14135"]
 status: explained
 created: 2026-06-23

@@ -30,6 +30,21 @@ class PrincipiaAppTests(unittest.TestCase):
     def tearDown(self) -> None:
         self.temp.cleanup()
 
+    def test_optional_ontology_outage_does_not_break_graph_or_notes(self) -> None:
+        with patch.dict("os.environ", {"PRINCIPIA_NEO4J_URL": ""}):
+            self.assertEqual(self.client.get("/api/ontology").status_code, 503)
+            self.assertEqual(self.client.get("/api/graph").status_code, 200)
+            self.assertEqual(self.client.get("/api/status").status_code, 200)
+        with patch.dict("os.environ", {"PRINCIPIA_NEO4J_URL": "http://127.0.0.1:17474"}):
+            with patch("principia_app.server.neo4j.ensure_current", side_effect=OSError("offline")):
+                self.assertEqual(self.client.get("/api/ontology").status_code, 503)
+                self.assertTrue(self.client.get("/api/health").json()["ok"])
+            with patch("principia_app.server.neo4j.ensure_current", return_value={"digest": "test"}):
+                with patch("principia_app.server.neo4j.prerequisite_ids", return_value=["softmax"]):
+                    result = self.client.get("/api/ontology/prerequisites/softmax")
+                    self.assertEqual(result.json()["ids"], ["softmax"])
+                    self.assertEqual(result.json()["digest"], "test")
+
     def test_generated_graph_is_the_shared_source_for_frontend_and_server(self) -> None:
         generated = json.loads(GRAPH_DATA.read_text())
         served = self.client.get("/api/graph")

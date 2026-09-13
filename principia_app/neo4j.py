@@ -10,12 +10,26 @@ import argparse
 import hashlib
 import json
 import os
+import threading
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 import brain
 from principia_app.ontology import catalog, relations, validate
+
+_projection_lock = threading.Lock()
+
+
+def ensure_current(root) -> dict:
+    """Refresh the derived index from the source when its content changes."""
+    with _projection_lock:
+        brain.configure_workspace(str(root))
+        nodes = brain.all_nodes()
+        extra = catalog(brain.ROOT)
+        expected = snapshot(nodes, extra)["digest"]
+        current = status()
+        return current if current.get("digest") == expected else sync(nodes, extra)
 
 
 def endpoint() -> str:

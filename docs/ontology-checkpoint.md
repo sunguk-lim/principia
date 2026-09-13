@@ -120,3 +120,24 @@ restart the completed Letters historical backfill or alter its ledger.
   projection, review upstream differences before publication, and deploy. The reader
   currently serves English articles; Korean language selection is not implemented.
   Only four core lessons are editorially reviewed. No push/deployment in this stage.
+
+## Stage 7 — production integration prepared (2026-09-14)
+
+- Merged latest upstream including web-text-extraction, preserving all 436 concepts.
+  Regenerated the conflicted derived graph rather than choosing either old version.
+- Neo4j installed in a stable per-user directory with a dedicated launchd service;
+  loopback HTTP only, Bolt disabled, usage reporting disabled. Installation is
+  separate from Principia and private SQLite study data.
+- Added optional private ontology status/ancestry endpoints that refresh the
+  projection from current source. Unconfigured/unavailable database returns 503
+  without affecting graph or notes. Documented lifecycle and snapshot semantics.
+- Synced 436 concepts / 982 typed relationships; repeated sync stable, all 436
+  prerequisite ancestry sets exactly match independent source traversal.
+- Live development API verified for status and web-text-extraction prerequisites.
+- 14 Python tests, 9 frontend tests, typecheck, full build, graph audit, generated
+  outputs, and diff checks passed. Chrome save/navigation checks passed against
+  this build. Tablet note reload verified with the isolated test SQLite database.
+- Pages trigger now includes lesson/catalog/ontology-export edits. Screenshot at
+  docs/images/ontology-reader.png uses isolated synthetic study state.
+- No concepts removed; graph diff removes two redundant direct prerequisite edges.
+  uv.lock and original-worktree identity files remain untouched.

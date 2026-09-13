@@ -26,7 +26,7 @@ export function lessonSteps(markdown: string, targetWords = 220): LessonStep[] {
     }
     content += token.raw;
     words += count;
-    const delimiters = token.raw.match(/\$\$/g)?.length || 0;
+    const delimiters = token.type === "code" ? 0 : token.raw.match(/\$\$/g)?.length || 0;
     if (delimiters % 2) mathOpen = !mathOpen;
   }
   flush();

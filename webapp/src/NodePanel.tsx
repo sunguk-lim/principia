@@ -56,7 +56,7 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
     </details>
     <details className="study-card"><summary>Learning roadmap · {roadmap.length} steps remaining</summary>
       {roadmapResult.error && <p role="alert">This roadmap needs repair: {roadmapResult.error}</p>}
-      <div className="section-heading"><div><span className="eyebrow">Required learning only</span><strong>{roadmap.length ? "Foundations → your goal" : "You have completed this goal"}</strong></div>{next && <button className="next-button" onClick={() => onSelect(next.id)}>Study next</button>}</div>
+      <div className="section-heading"><div><span className="eyebrow">Required learning only</span><strong>{roadmapResult.error ? "Roadmap unavailable" : roadmap.length ? "Foundations → your goal" : "You have completed this goal"}</strong></div>{next && <button className="next-button" onClick={() => onSelect(next.id)}>Study next</button>}</div>
       <div className="roadmap">{roadmap.map((item, index) => <button key={item.id} className={`roadmap-row ${item.id === node.id ? "current" : ""}`} onClick={() => onSelect(item.id)}><span className="roadmap-index">{index + 1}</span><span className="roadmap-title">{item.title}</span><span className={`status-pill ${statuses[item.id]?.status || "not_started"}`}>{statusLabel(statuses[item.id])}</span></button>)}</div>
     </details>
     <details className="study-card"><summary>Notes and progress</summary><div className="section-heading"><div><span className="eyebrow">Private study state</span><strong>{mode === "server" ? "Saved privately" : "Stored on this device"}</strong></div></div>

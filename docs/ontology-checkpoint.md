@@ -19,8 +19,9 @@ This is an implementation checkpoint, not a deployed release.
 
 ## Next stages, in order
 
-1. Add focused roadmap and lesson-splitting tests; review UI handling of errors,
-   completion state, equations/code blocks and language selection.
+1. Focused roadmap and lesson-splitting tests completed (Stage 2 below).
+   Browser interaction verification, save-error handling, and actual language
+   selection remain to be checked before release.
 2. Reconcile authoring docs/protocols with typed relations. Review remaining
    commands that still assume every body link is a direct prerequisite.
 3. Write and review the small attention lesson sequence. Currently **zero**
@@ -34,3 +35,19 @@ This is an implementation checkpoint, not a deployed release.
 Keep stages bounded, commit each verified checkpoint, and update this document
 with exact evidence and next action before any quota interruption. Do not
 restart the completed Letters historical backfill or alter its ledger.
+
+## Stage 2 — reading and roadmap regression checkpoint (2026-09-13)
+
+- Six new frontend cases cover shared prerequisite deduplication, optional
+  relationship exclusion, learned-ancestry pruning, completed goals, cycles,
+  missing dependencies, intact Markdown blocks, literal math delimiters in
+  code, empty input, and Korean text (some cases cover multiple conditions).
+- Reproduced and fixed code-block `$$` incorrectly opening a math block and
+  swallowing subsequent lesson headings.
+- Roadmap errors no longer display the false claim that a goal is completed.
+- `npm test`: 9/9 pass. `npm run typecheck` and `npm run build:ui` pass.
+- Korean text preservation is tested; a language selector is NOT verified.
+- No live browser test, deployment, Neo4j setup, or source article edits.
+- Next: reconcile typed-relation authoring rules, then reviewed short lessons;
+  retain browser/save-state review as a release gate. Stage 1 Python/audit
+  results remain applicable: no Python or ontology data changed in this stage.

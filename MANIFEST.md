@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-13_
+_Last rebuilt: 2026-09-14_
 
-**435** nodes · **3** axioms · **0** on the frontier
+**436** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (162)
+## 🌳 Parent (root) nodes — top-level, required by nothing (163)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -168,6 +168,7 @@ _Last rebuilt: 2026-09-13_
 - [Variational Autoencoder](nodes/variational-autoencoder.md)
 - [vLLM](nodes/vllm.md)
 - [Warp Shuffle](nodes/warp-shuffle.md)
+- [Web Text Extraction](nodes/web-text-extraction.md)
 - [Weight-Load Amortization](nodes/weight-load-amortization.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
@@ -613,12 +614,13 @@ _Last rebuilt: 2026-09-13_
 - [vLLM](nodes/vllm.md)
 - [Warp](nodes/warp.md)
 - [Warp Shuffle](nodes/warp-shuffle.md)
+- [Web Text Extraction](nodes/web-text-extraction.md)
 - [Weight-Load Amortization](nodes/weight-load-amortization.md)
 - [Write-Ahead Logging (WAL)](nodes/write-ahead-logging.md)
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 11 top-level / 50 leaf fields
+## 🏷️ By field (cut the graph) — 11 top-level / 51 leaf fields
 
 ### algorithms (21)
 
@@ -672,11 +674,13 @@ _Last rebuilt: 2026-09-13_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (146)
+### ml (147)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
   - **ml/ai-systems** (1) — [Model Context Protocol](nodes/model-context-protocol.md)
+
+  - **ml/data** (1) — [Web Text Extraction](nodes/web-text-extraction.md)
 
   - **ml/deep-learning** (38) — [Adaptive Layer Normalization](nodes/adaptive-layer-normalization.md), [Autoencoder](nodes/autoencoder.md), [Causal Structure Learning](nodes/causal-structure-learning.md), [Class-Weighted Loss](nodes/class-weighted-loss.md), [Concept Drift](nodes/concept-drift.md), [Denoising Diffusion Probabilistic Model](nodes/denoising-diffusion-probabilistic-model.md), [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md), [Diffusion Transformer](nodes/diffusion-transformer.md), [DoRA](nodes/dora.md), [Double descent](nodes/double-descent.md), [DropBlock](nodes/dropblock.md), [Dropout](nodes/dropout.md), [Embedding](nodes/embedding.md), [Federated Learning](nodes/federated-learning.md), [Fine-tuning](nodes/fine-tuning.md), [Flow Matching](nodes/flow-matching.md), [Gradient descent](nodes/gradient-descent.md), [Knowledge Distillation](nodes/knowledge-distillation.md), [Layer Normalization](nodes/layer-normalization.md), [LoRA (Low-Rank Adaptation)](nodes/lora.md), [Loss function](nodes/loss-function.md), [Mixed-precision training](nodes/mixed-precision-training.md), [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md), [Model Calibration](nodes/model-calibration.md), [Momentum](nodes/momentum.md), [Neural network](nodes/neural-network.md), [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md), [Calling a PyTorch Module](nodes/pytorch-module-call.md), [Receptive Field](nodes/receptive-field.md), [Reflow](nodes/reflow.md), [Regularization](nodes/regularization.md), [Reparameterization Trick](nodes/reparameterization-trick.md), [RMSNorm](nodes/rmsnorm.md), [Score-Based Generative Model](nodes/score-based-generative-model.md), [Softmax](nodes/softmax.md), [Supervised Contrastive Learning](nodes/supervised-contrastive-learning.md), [Transformer attention](nodes/transformer-attention.md), [Variational Autoencoder](nodes/variational-autoencoder.md)
 

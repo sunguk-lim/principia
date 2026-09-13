@@ -63,3 +63,20 @@ restart the completed Letters historical backfill or alter its ledger.
 - Full graph audit and git diff --check passed.
 - Next: write/review the four attention-sequence lessons, then verify lesson links
   and Neo4j integration. Whole-catalog editorial review remains incomplete.
+
+## Stage 4 — first reviewed lesson sequence (2026-09-13)
+
+- Added four core lessons: softmax, online-softmax, transformer-attention,
+  flash-attention. Each is 200–214 whitespace-delimited words with one objective,
+  mechanism, worked example, understanding check, and public primary reference.
+  Kept these shorter than the guideline because formulas add reading effort.
+- Preserved full articles; corrected FlashAttention's linear-traffic/bitwise-equality
+  claims and clarified that online normalization alone cannot emit all probabilities
+  after discarding scores.
+- Verified every lesson wikilink against allowed prerequisite/optional relations.
+- Graph audit passed; manifest/legacy graph regeneration produced no tracked changes.
+- All 13 Python tests passed; existing SQLite/deprecation warnings remain.
+- uv generated a lockfile change during verification; inspect separately, not staged
+  with editorial work. No dependencies intentionally changed.
+- No deployment. Next: live Neo4j compatibility/sync verification, then browser and
+  status-saving review. Four lessons are reviewed, not the entire 435-concept catalog.

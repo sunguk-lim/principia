@@ -19,8 +19,8 @@ updated: 2026-06-24
 [[softmax]] over a long list of values while seeing them **one block at a time, in a single
 pass** — never holding the whole list at once. It keeps a small **running summary** as blocks
 arrive and, whenever a later block reveals a value larger than anything seen so far, **rebases**
-the summary with one cheap multiplication. After the final block the result is *exactly* the
-ordinary [[softmax]] over the full list. This is the engine inside FlashAttention, ring
+the summary with one cheap multiplication. After the final block the normalizer matches ordinary [[softmax]] mathematically.
+Producing all individual probabilities still requires retaining or revisiting the scores. This is the engine inside FlashAttention, ring
 attention, and paged attention.
 
 ## Grounded explanation

@@ -259,3 +259,22 @@ restart the completed Letters historical backfill or alter its ledger.
   OS-internals detours rather than database foundations.
 - Full validation passed: 20 Python tests, ontology audit, 10 frontend tests,
   typecheck, production data build, production UI build, and whitespace check.
+
+## Stage 15 — globally reduced learner projection (2026-09-14)
+
+- The static reader and Neo4j projection now use a deterministic transitive
+  reduction of required-learning relationships. A direct edge is hidden only
+  when another required route already entails the same concept, so every
+  prerequisite closure is preserved. Markdown keeps all source links and full
+  articles for reference.
+- The catalog contains 976 source prerequisite links but only 704 required
+  learner edges: 272 redundant direct arcs no longer inflate the graph, direct
+  prerequisite lists, or relationship focus view.
+- `post-training-quantization` is covered by regression tests: its source
+  article still links `quantization`, while the learner sees only the direct
+  foundations not already implied by another selected prerequisite.
+- The audit now reports source links, learner edges, and suppressed redundancy
+  separately. This reduction is structural; it does not claim the remaining
+  955 unreviewed learning rationales have received editorial adjudication.
+- Full validation passed: 22 Python tests, 10 frontend tests, typecheck,
+  production data build, production UI build, and ontology audit.

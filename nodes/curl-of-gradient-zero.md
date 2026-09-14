@@ -4,7 +4,7 @@ title: Curl of a Gradient is Zero
 summary: "For any scalar function $f$, the curl of its gradient is always the zero vector: $\\nabla \\times (\\nabla f) = 0$."
 type: concept
 tags: [math/calculus]
-prereqs: [curl, gradient, hessian, partial-derivative, vector-field, differential-operators]
+prereqs: [curl, gradient, hessian, partial-derivative, vector-field]
 sources: [etc/differential-operators-summary.html]
 status: explained
 created: 2026-06-23

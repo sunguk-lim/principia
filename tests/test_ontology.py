@@ -106,6 +106,20 @@ class OntologyTests(unittest.TestCase):
             evidence = prerequisite_evidence({"a": self.nodes["a"], "b": self.nodes["b"]}, root)
         self.assertEqual(evidence, [{"concept": "b", "prerequisite": "a", "bodyLink": True, "reviewedReason": False}])
 
+    def test_contextual_operator_overview_does_not_enter_identity_roadmap(self):
+        nodes = {
+            "curl": {"title": "Curl", "prereqs": "[]"},
+            "gradient": {"title": "Gradient", "prereqs": "[]"},
+            "identity": {"title": "Curl of a gradient", "prereqs": "[curl, gradient]"},
+            "overview": {"title": "Differential operators", "prereqs": "[curl]"},
+        }
+        extra = {"concepts": {"identity": {"relations": [{
+            "type": "USES", "target": "overview", "reason": "Contextual family overview."
+        }]}}}
+        required = {(edge["s"], edge["t"]) for edge in relations(nodes, extra) if edge["type"] == "REQUIRES"}
+        self.assertEqual(required, {("identity", "curl"), ("identity", "gradient"), ("overview", "curl")})
+
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -38,6 +38,11 @@
         {"type": "CONTRASTS_WITH", "target": "hierarchical-bayes", "reason": "Both learn shared prior structure from data, but empirical Bayes plugs in estimated hyperparameters while hierarchical Bayes retains them as uncertain variables in the joint posterior."}
       ]
     },
+    "curl-of-gradient-zero": {
+      "relations": [
+        {"type": "USES", "target": "differential-operators", "reason": "The operator-family overview helps place the identity among related vector-calculus rules, but understanding the cancellation only requires the specific curl, gradient, Hessian, partial-derivative, and vector-field mechanisms."}
+      ]
+    },
     "write-ahead-logging": {
       "prerequisiteReasons": {
         "transaction": "Defines the atomicity and durability promises that WAL implements across a crash.",

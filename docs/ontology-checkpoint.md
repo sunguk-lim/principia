@@ -278,3 +278,10 @@ restart the completed Letters historical backfill or alter its ledger.
   955 unreviewed learning rationales have received editorial adjudication.
 - Full validation passed: 22 Python tests, 10 frontend tests, typecheck,
   production data build, production UI build, and ontology audit.
+
+## Stage 16 — calculus identity roadmap correction (2026-09-15)
+
+- Reviewed the complete `curl-of-gradient-zero` article and its `curl`, `gradient`, `hessian`, `partial-derivative`, `vector-field`, and `differential-operators` dependencies. The identity's mechanism is cancellation of symmetric mixed partials by curl; the operator-family survey only places that mechanism in broader context.
+- Reclassified the direct Differential Operators link as `USES`, retaining the source article link and adding an explicit rationale. Optional context remains outside required learner traversal. No identity candidate was merged: complete-content comparisons of RNN-T/TDT and the two zero identities found distinct objectives and mechanisms.
+- Its required ancestor closure fell from 19 to 16, removing `differential-operators`, `divergence`, and `laplacian`. The globally reduced learner projection changed from 704 to 705 direct required edges: dropping the umbrella edge exposes the direct `curl` and `hessian` requirements that it had transitively suppressed; reachability now reflects the narrower objective.
+- Full validation passed: 23 Python tests, ontology audit, 10 frontend tests, typecheck, production data build, production UI build, and whitespace check. This remains a bounded review, not a claim that catalog-wide identity or prerequisite review is complete.

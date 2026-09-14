@@ -141,3 +141,10 @@ restart the completed Letters historical backfill or alter its ledger.
   docs/images/ontology-reader.png uses isolated synthetic study state.
 - No concepts removed; graph diff removes two redundant direct prerequisite edges.
   uv.lock and original-worktree identity files remain untouched.
+
+## Stage 8 — linear foundations remaster (2026-09-14)
+
+- Platform PR #53 deployed; private ontology verified at 436 concepts / 982 relations.
+- Added reviewed dot-product and matrix-multiplication core lessons, with defined notation, worked arithmetic and understanding checks. Full articles and graph preserved.
+- Audit and data build pass; six reviewed lessons now exist. Whole-catalog editorial consolidation remains incomplete.
+- Next editorial sequence: probability foundations supporting softmax; review prerequisite necessity separately from mere mentions.

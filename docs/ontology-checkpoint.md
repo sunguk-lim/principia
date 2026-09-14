@@ -195,3 +195,17 @@ restart the completed Letters historical backfill or alter its ledger.
 - This establishes that the remaining consolidation requires editorial judgment
   of learning necessity, not a destructive text cleanup. The evidence pass is
   local and consumes no model tokens when rerun.
+
+## Stage 11 — application edges removed from required database paths (2026-09-14)
+
+- Reviewed the complete `pgai` and `llm-from-sql` articles. Both describe
+  retrieval-augmented generation as an application assembled from their
+  capabilities, rather than knowledge required to understand those concepts.
+- Reclassified both direct RAG edges as `APPLIES_TO`, with explicit rationale.
+  Kept the source links and full reference prose intact.
+- Measured effect: pgai's required ancestor set dropped from 64 to 60 concepts;
+  Calling LLMs from SQL dropped from 19 to 13. Removed detours are RAG-specific
+  (`retrieval-augmented-generation`, `vector-database`, `context-window`, and
+  `transformer-attention` where applicable), not deleted knowledge.
+- Full validation passed: 18 Python tests, ontology audit, Neo4j sync, 10
+  frontend tests, typecheck, and production builds.

@@ -4,7 +4,7 @@ title: Calling LLMs from SQL
 summary: "Calling LLMs from SQL exposes model inference as ordinary [[sql]] functions — a generative call like ai.openai_chat_complete(model, prompt) and an [[embedding]] call like ai.openai_embed(model, text) — so a language model runs per row inside a query: the same SELECT/UPDATE that reads a table can classify, summarize, or embed its rows, and because retrieval is also just [[sql]], the whole retrieve-then-generate loop of [[retrieval-augmented-generation]] can be assembled in one statement instead of an external application pipeline."
 type: concept
 tags: [databases/vector]
-prereqs: [sql, retrieval-augmented-generation, embedding]
+prereqs: [sql, embedding]
 sources:
   - "https://github.com/timescale/pgai — pgai: call LLM and embedding models (OpenAI, Ollama, Cohere, …) directly from SQL"
   - "https://github.com/timescale/pgai/blob/main/docs/model_calling/openai.md — pgai model-calling functions (chat completion, embeddings) as SQL"

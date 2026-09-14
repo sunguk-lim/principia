@@ -8,6 +8,25 @@
     "bayes-theorem": {
       "canonicalId": "bayes-rule"
     },
+    "pgai": {
+      "prerequisiteReasons": {
+        "pgvector": "Explains the in-database vector storage and similarity search that pgai composes.",
+        "pgai-vectorizer": "Explains the managed pipeline that keeps source rows and embeddings synchronized.",
+        "llm-from-sql": "Explains the SQL-callable model operations that complete pgai's in-database workflow."
+      },
+      "relations": [
+        {"type": "APPLIES_TO", "target": "retrieval-augmented-generation", "reason": "RAG is a major application assembled from pgai's capabilities, not required background for understanding the suite's composition."}
+      ]
+    },
+    "llm-from-sql": {
+      "prerequisiteReasons": {
+        "sql": "Explains the query expressions and functions through which the model calls are composed.",
+        "embedding": "Explains the vector output returned by SQL-callable embedding functions."
+      },
+      "relations": [
+        {"type": "APPLIES_TO", "target": "retrieval-augmented-generation", "reason": "RAG is one workflow assembled from SQL model calls and retrieval, not required theory for understanding model functions in SQL."}
+      ]
+    },
     "softmax": {
       "aliases": ["softmax function"],
       "objective": "Turn scores into normalized weights and explain why shifting every score preserves them.",

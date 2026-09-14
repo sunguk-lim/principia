@@ -209,3 +209,19 @@ restart the completed Letters historical backfill or alter its ledger.
   `transformer-attention` where applicable), not deleted knowledge.
 - Full validation passed: 18 Python tests, ontology audit, Neo4j sync, 10
   frontend tests, typecheck, and production builds.
+
+## Stage 12 — prompt-caching identity resolution (2026-09-14)
+
+- Reviewed the complete `prefix-caching`, `prompt-caching`, and `kv-cache`
+  articles. `prefix-caching` and `prompt-caching` describe the same
+  cross-request reuse of a shared KV prefix; `kv-cache` remains a distinct
+  within-sequence mechanism.
+- Kept both source articles, made `prefix-caching` canonical, and registered
+  “prompt caching” as an alias. The reader and Neo4j projection resolve the
+  legacy title to that one learning entity.
+- The ontology now has 436 source concepts, 434 canonical learning entities,
+  and two resolved entities. This does not claim a completed semantic review of
+  the full catalog; remaining candidate decisions require the same full-content
+  comparison.
+- Full validation passed: 18 Python tests, ontology audit, Neo4j sync, 10
+  frontend tests, typecheck, and production builds.

@@ -1,10 +1,15 @@
 import type { GraphNode, StatusMap } from "./types";
 
+export function canonicalNodeId(id: string, byId: Map<string, GraphNode>): string {
+  return byId.get(id)?.canonicalId || id;
+}
+
 export function learningRoadmap(target: string, byId: Map<string, GraphNode>, statuses: StatusMap = {}): GraphNode[] {
   const seen = new Set<string>();
   const active = new Set<string>();
   const ordered: GraphNode[] = [];
   const visit = (id: string) => {
+    id = canonicalNodeId(id, byId);
     if (active.has(id)) throw new Error(`Prerequisite cycle at ${id}`);
     if (seen.has(id)) return;
     const node = byId.get(id);

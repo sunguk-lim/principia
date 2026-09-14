@@ -9,13 +9,16 @@ import argparse
 import difflib
 import hashlib
 import json
+import math
 import re
 import unicodedata
 from pathlib import Path
 
 import brain
 
-RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO"}
+# Optional semantic relationships.  They preserve useful explanatory context
+# without adding a required-learning step to a roadmap.
+RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO", "USES"}
 
 
 def normalize(label: str) -> str:
@@ -27,26 +30,83 @@ def catalog(root: Path) -> dict:
     return json.loads(path.read_text()) if path.exists() else {"concepts": {}, "disambiguations": {}}
 
 
+def canonical_id(nid: str, nodes: dict, extra: dict) -> str:
+    """Return the canonical identity for a preserved source node.
+
+    ``canonicalId`` is deliberately non-destructive: the old article remains in
+    Git, but the ontology and learner resolve it to its canonical concept.
+    Validation rejects chains, cycles, and unknown targets, so consumers never
+    need to guess which identity to use.
+    """
+    target = extra.get("concepts", {}).get(nid, {}).get("canonicalId", nid)
+    return target if isinstance(target, str) and target else nid
+
+
+def canonical_ids(nodes: dict, extra: dict) -> dict[str, str]:
+    return {nid: canonical_id(nid, nodes, extra) for nid in nodes}
+
+
 def identities(nodes: dict, extra: dict) -> dict[str, list[str]]:
     index: dict[str, set[str]] = {}
     for nid, node in nodes.items():
+        canonical = canonical_id(nid, nodes, extra)
         for name in [nid, node.get("title", nid), *extra.get("concepts", {}).get(nid, {}).get("aliases", [])]:
-            index.setdefault(normalize(name), set()).add(nid)
+            index.setdefault(normalize(name), set()).add(canonical)
     return {key: sorted(value) for key, value in sorted(index.items())}
 
 
 def relations(nodes: dict, extra: dict) -> list[dict]:
+    """Return the learner-facing, typed relationship projection.
+
+    Markdown keeps every author reference, including direct prerequisite links
+    that are useful to an article reader.  The learning graph need not repeat a
+    requirement when another direct requirement already entails it.  We remove
+    only such *transitively redundant* ``REQUIRES`` arcs here: reachability is
+    unchanged, and optional typed context remains visible separately.
+    """
     result = []
+    seen = set()
     for nid, meta in sorted(nodes.items()):
         record = extra.get("concepts", {}).get(nid, {})
+        source = canonical_id(nid, nodes, extra)
         for target in brain.parse_list(meta.get("prereqs", "")):
             reason = record.get("prerequisiteReasons", {}).get(target, "")
-            result.append({"s": nid, "t": target, "type": "REQUIRES", "reason": reason,
-                           "reviewed": bool(reason)})
+            edge = {"s": source, "t": canonical_id(target, nodes, extra), "type": "REQUIRES", "reason": reason,
+                    "reviewed": bool(reason)}
+            key = (edge["s"], edge["t"], edge["type"])
+            if edge["s"] != edge["t"] and key not in seen:
+                seen.add(key)
+                result.append(edge)
         for relation in record.get("relations", []):
-            result.append({"s": nid, "t": relation["target"], "type": relation["type"],
-                           "reason": relation["reason"], "reviewed": True})
-    return result
+            edge = {"s": source, "t": canonical_id(relation["target"], nodes, extra), "type": relation["type"],
+                    "reason": relation["reason"], "reviewed": True}
+            key = (edge["s"], edge["t"], edge["type"])
+            if edge["s"] != edge["t"] and key not in seen:
+                seen.add(key)
+                result.append(edge)
+
+    required = [edge for edge in result if edge["type"] == "REQUIRES"]
+    graph: dict[str, set[str]] = {}
+    for edge in required:
+        graph.setdefault(edge["s"], set()).add(edge["t"])
+
+    def reaches(start: str, target: str, ignored: tuple[str, str], seen: set[str] | None = None) -> bool:
+        if seen is None:
+            seen = set()
+        if start in seen:
+            return False
+        seen.add(start)
+        for next_id in graph.get(start, set()):
+            if (start, next_id) == ignored:
+                continue
+            if next_id == target or reaches(next_id, target, ignored, seen.copy()):
+                return True
+        return False
+
+    redundant = {(edge["s"], edge["t"]) for edge in required
+                 if reaches(edge["s"], edge["t"], (edge["s"], edge["t"]))}
+    return [edge for edge in result
+            if edge["type"] != "REQUIRES" or (edge["s"], edge["t"]) not in redundant]
 
 
 def allowed_links(nid: str, nodes: dict, extra: dict) -> set[str]:
@@ -68,6 +128,12 @@ def validate(nodes: dict, extra: dict) -> list[str]:
         if nid not in nodes:
             errors.append(f"Unknown catalog concept: {nid}")
             continue
+        canonical = record.get("canonicalId")
+        if canonical is not None:
+            if not isinstance(canonical, str) or canonical not in nodes or canonical == nid:
+                errors.append(f"{nid}: invalid canonical identity")
+            elif extra.get("concepts", {}).get(canonical, {}).get("canonicalId"):
+                errors.append(f"{nid}: canonical identity must not point to another alias")
         for alias in record.get("aliases", []):
             if not isinstance(alias, str) or not normalize(alias):
                 errors.append(f"{nid}: empty or invalid alias")
@@ -133,6 +199,82 @@ def body(text: str) -> str:
     return re.sub(r"\A---\n.*?\n---\n", "", text, count=1, flags=re.S)
 
 
+_FINGERPRINT_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "how", "in", "is", "it",
+    "of", "on", "or", "that", "the", "this", "to", "with", "you", "your",
+}
+
+
+def content_tokens(nid: str, root: Path) -> set[str]:
+    """Read a complete node locally and return durable identity-bearing terms.
+
+    This is deliberately deterministic and local: it is a screening pass over
+    every article, not an LLM assertion that two concepts are identical.
+    """
+    text = body((root / "nodes" / f"{nid}.md").read_text(encoding="utf-8"))
+    return {token for token in re.findall(r"[a-z0-9]{3,}", text.casefold())
+            if token not in _FINGERPRINT_STOPWORDS}
+
+
+def identity_candidates(nodes: dict, root: Path, threshold: float = 0.2) -> list[dict]:
+    """Rank possible duplicate entities from complete local node content.
+
+    TF-IDF cosine similarity identifies review candidates. It never creates an
+    alias, redirect, or merge automatically.
+    """
+    documents = {nid: content_tokens(nid, root) for nid in nodes}
+    document_frequency: dict[str, int] = {}
+    for terms in documents.values():
+        for term in terms:
+            document_frequency[term] = document_frequency.get(term, 0) + 1
+    count = len(documents)
+    weighted = {
+        nid: {term: math.log((count + 1) / (document_frequency[term] + 1)) + 1 for term in terms}
+        for nid, terms in documents.items()
+    }
+    norms = {nid: math.sqrt(sum(weight * weight for weight in weights.values())) for nid, weights in weighted.items()}
+    inverted: dict[str, list[str]] = {}
+    for nid, terms in documents.items():
+        for term in terms:
+            inverted.setdefault(term, []).append(nid)
+    dot: dict[tuple[str, str], float] = {}
+    for term, ids in inverted.items():
+        if len(ids) > 80:  # generic terms create noise, not identity evidence.
+            continue
+        for offset, first in enumerate(ids):
+            for second in ids[offset + 1:]:
+                key = (first, second) if first < second else (second, first)
+                dot[key] = dot.get(key, 0.0) + weighted[first][term] * weighted[second][term]
+    candidates = []
+    for (first, second), value in dot.items():
+        score = value / (norms[first] * norms[second])
+        if score >= threshold:
+            candidates.append({"first": first, "second": second, "score": round(score, 3)})
+    return sorted(candidates, key=lambda item: (-item["score"], item["first"], item["second"]))
+
+
+def prerequisite_evidence(nodes: dict, root: Path) -> list[dict]:
+    """Collect local, reproducible evidence for each declared prerequisite.
+
+    A body link is evidence that an edge participates in the explanation, not
+    proof that it is required for the learner. Missing body evidence is a high
+    value review target, not permission to delete an edge automatically.
+    """
+    extra = catalog(root)
+    result = []
+    for nid, node in sorted(nodes.items()):
+        text = body((root / "nodes" / f"{nid}.md").read_text(encoding="utf-8"))
+        reasons = extra.get("concepts", {}).get(nid, {}).get("prerequisiteReasons", {})
+        for target in brain.parse_list(node.get("prereqs", "")):
+            result.append({
+                "concept": nid,
+                "prerequisite": target,
+                "bodyLink": f"[[{target}]]" in text,
+                "reviewedReason": bool(reasons.get(target, "").strip()),
+            })
+    return result
+
+
 def enrich(data: dict, nodes: dict, root: Path) -> dict:
     extra = catalog(root)
     errors = validate(nodes, extra)
@@ -140,9 +282,46 @@ def enrich(data: dict, nodes: dict, root: Path) -> dict:
         raise ValueError("\n".join(errors))
     data["relations"] = relations(nodes, extra)
     data["identityIndex"] = identities(nodes, extra)
+    canonical = canonical_ids(nodes, extra)
+    # The source graph stays complete in Markdown for reference and audit.  The
+    # browser receives the canonical, transitively reduced learning projection
+    # so a learner never sees aliases or redundant direct requirements as extra
+    # study stops.
+    canonical_edges = [{"s": edge["s"], "t": edge["t"]}
+                       for edge in data["relations"] if edge["type"] == "REQUIRES"]
+    data["edges"] = canonical_edges
+    required_by_source: dict[str, list[str]] = {}
+    for edge in canonical_edges:
+        required_by_source.setdefault(edge["s"], []).append(edge["t"])
+
+    canonical_nodes = {nid for nid, target in canonical.items() if nid == target}
+    required_by_source = {nid: sorted(set(required_by_source.get(nid, [])))
+                          for nid in canonical_nodes}
+    dependents = {nid: 0 for nid in canonical_nodes}
+    for targets in required_by_source.values():
+        for target in targets:
+            if target in dependents:
+                dependents[target] += 1
+    levels: dict[str, int] = {}
+
+    def level(nid: str, active: frozenset[str] = frozenset()) -> int:
+        if nid in levels:
+            return levels[nid]
+        if nid in active:  # validation has already reported the real error
+            return 0
+        targets = required_by_source.get(nid, [])
+        levels[nid] = 0 if not targets else 1 + max(level(target, active | {nid}) for target in targets)
+        return levels[nid]
+
     for node in data["nodes"]:
         nid = node["id"]
         record = extra.get("concepts", {}).get(nid, {})
+        node["canonicalId"] = canonical_id(nid, nodes, extra)
+        node["isCanonical"] = node["canonicalId"] == nid
+        node["prereqs"] = required_by_source.get(node["canonicalId"], []) if node["isCanonical"] else []
+        node["deps"] = len(node["prereqs"])
+        node["dependents"] = dependents.get(nid, 0) if node["isCanonical"] else 0
+        node["level"] = level(node["canonicalId"]) if node["isCanonical"] else level(node["canonicalId"])
         node["aliases"] = record.get("aliases", [])
         node["objective"] = record.get("objective", node.get("summary", ""))
         node["prerequisiteReasons"] = record.get("prerequisiteReasons", {})
@@ -163,14 +342,24 @@ def report(nodes: dict, root: Path) -> dict:
         reasons = extra.get("concepts", {}).get(nid, {}).get("prerequisiteReasons", {})
         entries.append({"id": nid, "words": words, "needsShortLesson": not (root / "lessons" / f"{nid}.md").exists(),
                         "unreviewedPrerequisites": [p for p in prereqs if p not in reasons]})
-    return {"canonicalConcepts": len(nodes), "errors": validate(nodes, extra),
+    canonical = canonical_ids(nodes, extra)
+    evidence = prerequisite_evidence(nodes, root)
+    learner_prerequisites = sum(edge["type"] == "REQUIRES" for edge in relations(nodes, extra))
+    return {"sourceConcepts": len(nodes), "canonicalConcepts": len(set(canonical.values())),
+            "resolvedEntities": sum(nid != target for nid, target in canonical.items()), "errors": validate(nodes, extra),
             "reviewedLessons": sum(not e["needsShortLesson"] for e in entries),
-            "longArticles": sum(e["words"] > 500 for e in entries), "concepts": entries}
+            "longArticles": sum(e["words"] > 500 for e in entries),
+            "sourcePrerequisiteLinks": len(evidence),
+            "prerequisiteEdges": learner_prerequisites,
+            "suppressedRedundantPrerequisites": len(evidence) - learner_prerequisites,
+            "unlinkedPrerequisiteEdges": sum(not edge["bodyLink"] for edge in evidence),
+            "unreviewedPrerequisiteEdges": sum(not edge["reviewedReason"] for edge in evidence),
+            "concepts": entries}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["audit", "report", "resolve", "export"])
+    parser.add_argument("command", choices=["audit", "report", "resolve", "candidates", "edge-evidence", "export"])
     parser.add_argument("label", nargs="?")
     parser.add_argument("--workspace", default="")
     args = parser.parse_args()
@@ -180,11 +369,17 @@ def main():
         if not args.label:
             parser.error("resolve requires a label")
         result = admission(args.label, nodes, extra)
+    elif args.command == "candidates":
+        result = {"method": "local complete-node TF-IDF screening; editorial review required",
+                  "candidates": identity_candidates(nodes, brain.ROOT)}
+    elif args.command == "edge-evidence":
+        result = {"method": "complete-node body-link evidence; editorial review required",
+                  "edges": prerequisite_evidence(nodes, brain.ROOT)}
     elif args.command == "export":
         errors = validate(nodes, extra)
         if errors:
             raise SystemExit("\n".join(errors))
-        result = {"concepts": [{"id": i, "title": n.get("title", i), "summary": n.get("summary", ""),
+        result = {"concepts": [{"id": i, "canonicalId": canonical_id(i, nodes, extra), "title": n.get("title", i), "summary": n.get("summary", ""),
                                  "domain": brain.parse_list(n.get("tags", ""))[0],
                                  "aliases": extra.get("concepts", {}).get(i, {}).get("aliases", [])}
                                 for i, n in sorted(nodes.items())], "relations": relations(nodes, extra)}

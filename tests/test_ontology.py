@@ -1,6 +1,9 @@
 import unittest
 
-from principia_app.ontology import admission, allowed_links, relations, validate
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+from principia_app.ontology import admission, allowed_links, enrich, identities, identity_candidates, prerequisite_evidence, relations, validate
 
 
 class OntologyTests(unittest.TestCase):
@@ -30,6 +33,40 @@ class OntologyTests(unittest.TestCase):
         required = [r["t"] for r in relations(self.nodes, extra) if r["type"] == "REQUIRES"]
         self.assertEqual(required, ["a"])
 
+    def test_contrast_relation_preserves_distinct_concepts(self):
+        extra = {"concepts": {"a": {"relations": [
+            {"type": "CONTRASTS_WITH", "target": "c", "reason": "Same problem, different mechanism."}
+        ]}}}
+        self.assertEqual(validate(self.nodes, extra), [])
+        contrast = [r for r in relations(self.nodes, extra) if r["type"] == "CONTRASTS_WITH"]
+        self.assertEqual(contrast, [{"s": "a", "t": "c", "type": "CONTRASTS_WITH",
+                                     "reason": "Same problem, different mechanism.", "reviewed": True}])
+
+    def test_uses_relation_is_optional_context(self):
+        extra = {"concepts": {"a": {"relations": [
+            {"type": "USES", "target": "c", "reason": "Uses the target's cost model."}
+        ]}}}
+        self.assertEqual(validate(self.nodes, extra), [])
+        self.assertEqual(allowed_links("a", self.nodes, extra), {"c"})
+        required = [r for r in relations(self.nodes, extra) if r["type"] == "REQUIRES"]
+        self.assertEqual(required, [{"s": "b", "t": "a", "type": "REQUIRES", "reason": "", "reviewed": False}])
+
+    def test_transitively_redundant_requirement_is_hidden_from_learner_graph(self):
+        self.nodes["c"]["prereqs"] = "[a, b]"
+        required = {(r["s"], r["t"]) for r in relations(self.nodes, {}) if r["type"] == "REQUIRES"}
+        self.assertEqual(required, {("b", "a"), ("c", "b")})
+
+    def test_enriched_reader_graph_uses_reduced_requirements(self):
+        self.nodes["c"]["prereqs"] = "[a, b]"
+        data = {"nodes": [{"id": nid} for nid in self.nodes], "edges": []}
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "lessons").mkdir()
+            enrich(data, self.nodes, root)
+        by_id = {node["id"]: node for node in data["nodes"]}
+        self.assertEqual(by_id["c"]["prereqs"], ["b"])
+        self.assertEqual({(edge["s"], edge["t"]) for edge in data["edges"]}, {("b", "a"), ("c", "b")})
+
     def test_cycle_is_rejected(self):
         self.nodes["a"]["prereqs"] = "[b]"
         self.assertTrue(any("Prerequisite cycle" in e for e in validate(self.nodes, {})))
@@ -37,6 +74,37 @@ class OntologyTests(unittest.TestCase):
     def test_missing_prerequisite_is_rejected(self):
         self.nodes["a"]["prereqs"] = "[missing]"
         self.assertTrue(any("missing prerequisite" in e for e in validate(self.nodes, {})))
+
+    def test_preserved_duplicate_resolves_to_one_canonical_identity(self):
+        self.nodes["b"]["title"] = "Alpha theorem"
+        extra = {"concepts": {"a": {"aliases": ["Alpha theorem"]}, "b": {"canonicalId": "a"}}}
+        self.assertEqual(validate(self.nodes, extra), [])
+        self.assertEqual(identities(self.nodes, extra)["alpha theorem"], ["a"])
+        self.assertEqual([edge for edge in relations(self.nodes, extra) if edge["s"] == "a" and edge["t"] == "a"], [])
+
+    def test_canonical_identity_cannot_chain(self):
+        extra = {"concepts": {"a": {"canonicalId": "b"}, "b": {"canonicalId": "c"}}}
+        self.assertTrue(any("must not point" in e for e in validate(self.nodes, extra)))
+
+    def test_content_candidates_read_complete_node_bodies(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "nodes").mkdir()
+            (root / "nodes" / "a.md").write_text("Shared unique mechanism evidence", encoding="utf-8")
+            (root / "nodes" / "b.md").write_text("Shared unique mechanism evidence", encoding="utf-8")
+            (root / "nodes" / "c.md").write_text("Different unrelated topic", encoding="utf-8")
+            pairs = identity_candidates(self.nodes, root, threshold=0.1)
+        self.assertEqual(pairs[0]["first"], "a")
+        self.assertEqual(pairs[0]["second"], "b")
+
+    def test_prerequisite_evidence_reads_only_node_body(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "nodes").mkdir()
+            (root / "nodes" / "a.md").write_text("---\nprereqs: []\n---\n", encoding="utf-8")
+            (root / "nodes" / "b.md").write_text("---\nprereqs: [a]\n---\nUses [[a]] in the explanation.", encoding="utf-8")
+            evidence = prerequisite_evidence({"a": self.nodes["a"], "b": self.nodes["b"]}, root)
+        self.assertEqual(evidence, [{"concept": "b", "prerequisite": "a", "bodyLink": True, "reviewedReason": False}])
 
 
 if __name__ == "__main__":

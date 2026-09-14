@@ -23,6 +23,12 @@ test("learned prerequisites prune their ancestry and completed goals need no ste
   assert.deepEqual(learningRoadmap("goal", nodes, {base: done}).map(n => n.id), ["goal"]);
   assert.deepEqual(learningRoadmap("goal", nodes, {goal: done}), []);
 });
+test("resolved aliases do not create a second roadmap stop", () => {
+  const canonical = node("canonical", ["base"]);
+  const alias = node("alias");
+  alias.canonicalId = "canonical";
+  assert.deepEqual(learningRoadmap("alias", graph(alias, canonical, node("base"))).map(n => n.id), ["base", "canonical"]);
+});
 test("roadmaps expose cycles and missing dependencies", () => {
   assert.throws(() => learningRoadmap("a", graph(node("a", ["b"]), node("b", ["a"]))), /cycle/);
   assert.throws(() => learningRoadmap("a", graph(node("a", ["missing"]))), /Missing prerequisite/);

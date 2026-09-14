@@ -61,11 +61,13 @@ export function GraphCanvas({ data, statuses, selectedId, visibleIds, focusDepth
 
   useEffect(() => {
     if (!host.current) return;
+    const nodes = data.nodes.filter(node => node.isCanonical !== false);
+    const ids = new Set(nodes.map(node => node.id));
     const cy = cytoscape({
       container: host.current,
       elements: [
-        ...data.nodes.map(node => ({ data: { id: node.id, label: node.title, root: node.root, rootColor: rootColor(node.root), type: node.type, level: node.level } })),
-        ...data.edges.map((edge, index) => ({ data: { id: `e${index}`, source: edge.s, target: edge.t } })),
+        ...nodes.map(node => ({ data: { id: node.id, label: node.title, root: node.root, rootColor: rootColor(node.root), type: node.type, level: node.level } })),
+        ...data.edges.filter(edge => ids.has(edge.s) && ids.has(edge.t)).map((edge, index) => ({ data: { id: `e${index}`, source: edge.s, target: edge.t } })),
       ],
       minZoom: .08, maxZoom: 3.2, wheelSensitivity: .18,
       style: [

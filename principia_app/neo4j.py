@@ -87,7 +87,7 @@ def sync(nodes: dict, extra: dict) -> dict:
         MATCH (canonical:PrincipiaConcept {key: $digest + ':' + c.canonicalId})
         MERGE (alias)-[:RESOLVES_TO]->(canonical)""",
         "parameters": {"concepts": data["concepts"], "digest": digest}})
-    for kind in ["REQUIRES", "ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO"]:
+    for kind in ["REQUIRES", "ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO", "USES"]:
         statements.append({"statement": f"""UNWIND $edges AS e
             MATCH (s:PrincipiaConcept {{key: $digest + ':' + e.s}})
             MATCH (t:PrincipiaConcept {{key: $digest + ':' + e.t}})

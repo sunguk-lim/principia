@@ -16,7 +16,9 @@ from pathlib import Path
 
 import brain
 
-RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO"}
+# Optional semantic relationships.  They preserve useful explanatory context
+# without adding a required-learning step to a roadmap.
+RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO", "USES"}
 
 
 def normalize(label: str) -> str:

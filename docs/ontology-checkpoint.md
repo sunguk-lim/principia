@@ -225,3 +225,21 @@ restart the completed Letters historical backfill or alter its ledger.
   comparison.
 - Full validation passed: 18 Python tests, ontology audit, Neo4j sync, 10
   frontend tests, typecheck, and production builds.
+
+## Stage 13 — optional mechanism context and database-path correction (2026-09-14)
+
+- Added `USES` as a directed optional relationship. It records a mechanism or
+  cost model that enriches an explanation without making it a required roadmap
+  step. `USES`, like the other optional relation types, never enters
+  prerequisite traversal.
+- Reclassified Write-Ahead Logging's block-layer I/O cost model as `USES`:
+  durability and crash recovery require transactions, cached pages, and deferred
+  writeback; low-level sequential-versus-scattered I/O economics remains an
+  optional explanation. WAL's required ancestor set fell from 30 to 25.
+- Corrected Database Index's prerequisite from `key-value-store` to the atomic
+  `key-value` mapping. A durable, distributed key-value database is a distinct
+  primary architecture, not background required to understand a secondary index
+  entry. The distinction is retained as `CONTRASTS_WITH`; Database Index's
+  required ancestor set fell from 31 to 25 and Query Planning's from 34 to 28.
+- Full validation passed: 11 Python ontology tests, audit, 10 frontend tests,
+  typecheck, production data build, production UI build, and whitespace check.

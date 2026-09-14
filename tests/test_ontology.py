@@ -42,6 +42,15 @@ class OntologyTests(unittest.TestCase):
         self.assertEqual(contrast, [{"s": "a", "t": "c", "type": "CONTRASTS_WITH",
                                      "reason": "Same problem, different mechanism.", "reviewed": True}])
 
+    def test_uses_relation_is_optional_context(self):
+        extra = {"concepts": {"a": {"relations": [
+            {"type": "USES", "target": "c", "reason": "Uses the target's cost model."}
+        ]}}}
+        self.assertEqual(validate(self.nodes, extra), [])
+        self.assertEqual(allowed_links("a", self.nodes, extra), {"c"})
+        required = [r for r in relations(self.nodes, extra) if r["type"] == "REQUIRES"]
+        self.assertEqual(required, [{"s": "b", "t": "a", "type": "REQUIRES", "reason": "", "reviewed": False}])
+
     def test_cycle_is_rejected(self):
         self.nodes["a"]["prereqs"] = "[b]"
         self.assertTrue(any("Prerequisite cycle" in e for e in validate(self.nodes, {})))

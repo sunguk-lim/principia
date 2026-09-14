@@ -104,8 +104,10 @@ source record; its title and aliases resolve to the canonical concept in the ont
 
 Only `prereqs` produce `REQUIRES` edges and required roadmap steps. Record a concise reason
 for each reviewed prerequisite: what part of the learning objective needs it? Optional types are
-`ALTERNATIVE_TO`, `CONTRASTS_WITH`, and `APPLIES_TO`; each record has `type`, `target`, and
-an explanatory `reason`. They never expand the required roadmap. Current storage is directed;
+`ALTERNATIVE_TO`, `CONTRASTS_WITH`, `APPLIES_TO`, and `USES`. `USES` records a mechanism or
+cost model that enriches an explanation without being required background for its learning
+objective. Each record has `type`, `target`, and an explanatory `reason`. They never expand the
+required roadmap. Current storage is directed;
 reverse relationships are not inserted automatically. No generic `SIMILAR_TO` type is supported.
 
 ## Short learning steps

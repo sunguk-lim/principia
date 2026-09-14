@@ -1,6 +1,6 @@
 import unittest
 
-from principia_app.ontology import admission, allowed_links, relations, validate
+from principia_app.ontology import admission, allowed_links, identities, relations, validate
 
 
 class OntologyTests(unittest.TestCase):
@@ -37,6 +37,17 @@ class OntologyTests(unittest.TestCase):
     def test_missing_prerequisite_is_rejected(self):
         self.nodes["a"]["prereqs"] = "[missing]"
         self.assertTrue(any("missing prerequisite" in e for e in validate(self.nodes, {})))
+
+    def test_preserved_duplicate_resolves_to_one_canonical_identity(self):
+        self.nodes["b"]["title"] = "Alpha theorem"
+        extra = {"concepts": {"a": {"aliases": ["Alpha theorem"]}, "b": {"canonicalId": "a"}}}
+        self.assertEqual(validate(self.nodes, extra), [])
+        self.assertEqual(identities(self.nodes, extra)["alpha theorem"], ["a"])
+        self.assertEqual([edge for edge in relations(self.nodes, extra) if edge["s"] == "a" and edge["t"] == "a"], [])
+
+    def test_canonical_identity_cannot_chain(self):
+        extra = {"concepts": {"a": {"canonicalId": "b"}, "b": {"canonicalId": "c"}}}
+        self.assertTrue(any("must not point" in e for e in validate(self.nodes, extra)))
 
 
 if __name__ == "__main__":

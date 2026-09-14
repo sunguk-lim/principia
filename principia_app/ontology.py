@@ -27,25 +27,52 @@ def catalog(root: Path) -> dict:
     return json.loads(path.read_text()) if path.exists() else {"concepts": {}, "disambiguations": {}}
 
 
+def canonical_id(nid: str, nodes: dict, extra: dict) -> str:
+    """Return the canonical identity for a preserved source node.
+
+    ``canonicalId`` is deliberately non-destructive: the old article remains in
+    Git, but the ontology and learner resolve it to its canonical concept.
+    Validation rejects chains, cycles, and unknown targets, so consumers never
+    need to guess which identity to use.
+    """
+    target = extra.get("concepts", {}).get(nid, {}).get("canonicalId", nid)
+    return target if isinstance(target, str) and target else nid
+
+
+def canonical_ids(nodes: dict, extra: dict) -> dict[str, str]:
+    return {nid: canonical_id(nid, nodes, extra) for nid in nodes}
+
+
 def identities(nodes: dict, extra: dict) -> dict[str, list[str]]:
     index: dict[str, set[str]] = {}
     for nid, node in nodes.items():
+        canonical = canonical_id(nid, nodes, extra)
         for name in [nid, node.get("title", nid), *extra.get("concepts", {}).get(nid, {}).get("aliases", [])]:
-            index.setdefault(normalize(name), set()).add(nid)
+            index.setdefault(normalize(name), set()).add(canonical)
     return {key: sorted(value) for key, value in sorted(index.items())}
 
 
 def relations(nodes: dict, extra: dict) -> list[dict]:
     result = []
+    seen = set()
     for nid, meta in sorted(nodes.items()):
         record = extra.get("concepts", {}).get(nid, {})
+        source = canonical_id(nid, nodes, extra)
         for target in brain.parse_list(meta.get("prereqs", "")):
             reason = record.get("prerequisiteReasons", {}).get(target, "")
-            result.append({"s": nid, "t": target, "type": "REQUIRES", "reason": reason,
-                           "reviewed": bool(reason)})
+            edge = {"s": source, "t": canonical_id(target, nodes, extra), "type": "REQUIRES", "reason": reason,
+                    "reviewed": bool(reason)}
+            key = (edge["s"], edge["t"], edge["type"])
+            if edge["s"] != edge["t"] and key not in seen:
+                seen.add(key)
+                result.append(edge)
         for relation in record.get("relations", []):
-            result.append({"s": nid, "t": relation["target"], "type": relation["type"],
-                           "reason": relation["reason"], "reviewed": True})
+            edge = {"s": source, "t": canonical_id(relation["target"], nodes, extra), "type": relation["type"],
+                    "reason": relation["reason"], "reviewed": True}
+            key = (edge["s"], edge["t"], edge["type"])
+            if edge["s"] != edge["t"] and key not in seen:
+                seen.add(key)
+                result.append(edge)
     return result
 
 
@@ -68,6 +95,12 @@ def validate(nodes: dict, extra: dict) -> list[str]:
         if nid not in nodes:
             errors.append(f"Unknown catalog concept: {nid}")
             continue
+        canonical = record.get("canonicalId")
+        if canonical is not None:
+            if not isinstance(canonical, str) or canonical not in nodes or canonical == nid:
+                errors.append(f"{nid}: invalid canonical identity")
+            elif extra.get("concepts", {}).get(canonical, {}).get("canonicalId"):
+                errors.append(f"{nid}: canonical identity must not point to another alias")
         for alias in record.get("aliases", []):
             if not isinstance(alias, str) or not normalize(alias):
                 errors.append(f"{nid}: empty or invalid alias")
@@ -143,6 +176,8 @@ def enrich(data: dict, nodes: dict, root: Path) -> dict:
     for node in data["nodes"]:
         nid = node["id"]
         record = extra.get("concepts", {}).get(nid, {})
+        node["canonicalId"] = canonical_id(nid, nodes, extra)
+        node["isCanonical"] = node["canonicalId"] == nid
         node["aliases"] = record.get("aliases", [])
         node["objective"] = record.get("objective", node.get("summary", ""))
         node["prerequisiteReasons"] = record.get("prerequisiteReasons", {})
@@ -163,7 +198,9 @@ def report(nodes: dict, root: Path) -> dict:
         reasons = extra.get("concepts", {}).get(nid, {}).get("prerequisiteReasons", {})
         entries.append({"id": nid, "words": words, "needsShortLesson": not (root / "lessons" / f"{nid}.md").exists(),
                         "unreviewedPrerequisites": [p for p in prereqs if p not in reasons]})
-    return {"canonicalConcepts": len(nodes), "errors": validate(nodes, extra),
+    canonical = canonical_ids(nodes, extra)
+    return {"sourceConcepts": len(nodes), "canonicalConcepts": len(set(canonical.values())),
+            "resolvedEntities": sum(nid != target for nid, target in canonical.items()), "errors": validate(nodes, extra),
             "reviewedLessons": sum(not e["needsShortLesson"] for e in entries),
             "longArticles": sum(e["words"] > 500 for e in entries), "concepts": entries}
 
@@ -184,7 +221,7 @@ def main():
         errors = validate(nodes, extra)
         if errors:
             raise SystemExit("\n".join(errors))
-        result = {"concepts": [{"id": i, "title": n.get("title", i), "summary": n.get("summary", ""),
+        result = {"concepts": [{"id": i, "canonicalId": canonical_id(i, nodes, extra), "title": n.get("title", i), "summary": n.get("summary", ""),
                                  "domain": brain.parse_list(n.get("tags", ""))[0],
                                  "aliases": extra.get("concepts", {}).get(i, {}).get("aliases", [])}
                                 for i, n in sorted(nodes.items())], "relations": relations(nodes, extra)}

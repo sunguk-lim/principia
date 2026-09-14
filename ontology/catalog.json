@@ -2,6 +2,12 @@
   "schemaVersion": 1,
   "disambiguations": {},
   "concepts": {
+    "bayes-rule": {
+      "aliases": ["Bayes theorem", "Bayes' theorem"]
+    },
+    "bayes-theorem": {
+      "canonicalId": "bayes-rule"
+    },
     "softmax": {
       "aliases": ["softmax function"],
       "objective": "Turn scores into normalized weights and explain why shifting every score preserves them.",

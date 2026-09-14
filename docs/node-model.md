@@ -96,6 +96,12 @@ uv run python -m principia_app.ontology resolve "FlashAttention"
 A synonym belongs in `aliases` on the existing concept, not in a new node. Distinct meanings
 sharing a label require a disambiguation entry. Similarity is a review hint, never proof of identity.
 
+When a previously published node is proven to duplicate another node, preserve its article and
+set `canonicalId` on that node's catalog record. The duplicate becomes a resolvable historical
+source record; its title and aliases resolve to the canonical concept in the ontology projection.
+`canonicalId` must point directly to a canonical node (never another alias). Do not use the legacy
+`merge` command for this workflow because it deletes the preserved source record.
+
 Only `prereqs` produce `REQUIRES` edges and required roadmap steps. Record a concise reason
 for each reviewed prerequisite: what part of the learning objective needs it? Optional types are
 `ALTERNATIVE_TO`, `CONTRASTS_WITH`, and `APPLIES_TO`; each record has `type`, `target`, and

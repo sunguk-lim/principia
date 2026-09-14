@@ -148,3 +148,20 @@ restart the completed Letters historical backfill or alter its ledger.
 - Added reviewed dot-product and matrix-multiplication core lessons, with defined notation, worked arithmetic and understanding checks. Full articles and graph preserved.
 - Audit and data build pass; six reviewed lessons now exist. Whole-catalog editorial consolidation remains incomplete.
 - Next editorial sequence: probability foundations supporting softmax; review prerequisite necessity separately from mere mentions.
+
+## Stage 9 — global canonical identity resolution (2026-09-14)
+
+- Added non-destructive `canonicalId` support to the ontology catalog. A duplicate
+  source article is retained in Git, but its title and aliases resolve to one
+  canonical learning entity; direct canonical chains are rejected.
+- Resolved the first confirmed global duplicate: `bayes-theorem` now resolves to
+  canonical `bayes-rule`. Both source nodes remain present in the repository and
+  Neo4j; `Bayes theorem` and `Bayes' theorem` resolve to `bayes-rule`.
+- The ontology now reports 436 source concepts, 435 canonical concepts, and one
+  resolved entity. Neo4j contains a `RESOLVES_TO` relationship and prerequisite
+  lookup through `bayes-theorem` returns the canonical Bayes roadmap.
+- Full verification passed: 16 Python tests, ontology audit, Neo4j sync, 9
+  frontend tests, typecheck, production build, and generated artifacts.
+- This is the first verified entity-resolution result, not a claim that the
+  entire catalog has been content-reviewed. Next: create deterministic global
+  content fingerprints and review the resulting cross-subject candidates.

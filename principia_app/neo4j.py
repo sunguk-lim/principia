@@ -16,7 +16,7 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 import brain
-from principia_app.ontology import catalog, relations, validate
+from principia_app.ontology import canonical_id, catalog, relations, validate
 
 _projection_lock = threading.Lock()
 
@@ -60,7 +60,8 @@ def snapshot(nodes: dict, extra: dict) -> dict:
     errors = validate(nodes, extra)
     if errors:
         raise ValueError("\n".join(errors))
-    concepts = [{"id": nid, "title": n.get("title", nid), "summary": n.get("summary", ""),
+    concepts = [{"id": nid, "canonicalId": canonical_id(nid, nodes, extra),
+                 "title": n.get("title", nid), "summary": n.get("summary", ""),
                  "domain": brain.parse_list(n.get("tags", ""))[0],
                  "aliases": extra.get("concepts", {}).get(nid, {}).get("aliases", []),
                  "sources": brain.parse_list(n.get("sources", ""))}
@@ -78,8 +79,14 @@ def sync(nodes: dict, extra: dict) -> dict:
     statements = [{"statement": """UNWIND $concepts AS c
         MERGE (n:PrincipiaConcept {key: $digest + ':' + c.id})
         SET n.id=c.id, n.title=c.title, n.summary=c.summary, n.domain=c.domain,
-            n.aliases=c.aliases, n.sources=c.sources, n.snapshot=$digest""",
+            n.aliases=c.aliases, n.sources=c.sources, n.canonicalId=c.canonicalId, n.snapshot=$digest""",
         "parameters": {"concepts": data["concepts"], "digest": digest}}]
+    statements.append({"statement": """UNWIND $concepts AS c
+        WITH c WHERE c.id <> c.canonicalId
+        MATCH (alias:PrincipiaConcept {key: $digest + ':' + c.id})
+        MATCH (canonical:PrincipiaConcept {key: $digest + ':' + c.canonicalId})
+        MERGE (alias)-[:RESOLVES_TO]->(canonical)""",
+        "parameters": {"concepts": data["concepts"], "digest": digest}})
     for kind in ["REQUIRES", "ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO"]:
         statements.append({"statement": f"""UNWIND $edges AS e
             MATCH (s:PrincipiaConcept {{key: $digest + ':' + e.s}})
@@ -101,7 +108,8 @@ def status() -> dict:
 def prerequisite_ids(target: str) -> list[str]:
     # Traverses only required learning, never comparison/application relationships.
     rows = query("""MATCH (p:PrincipiaProjection {id:'current'}),
-        (n:PrincipiaConcept {id:$target}) WHERE n.snapshot=p.digest
+        (requested:PrincipiaConcept {id:$target}) WHERE requested.snapshot=p.digest
+        MATCH (n:PrincipiaConcept {id:requested.canonicalId, snapshot:p.digest})
         MATCH (n)-[:REQUIRES*0..]->(dependency:PrincipiaConcept)
         RETURN DISTINCT dependency.id ORDER BY dependency.id""", target=target)
     return [row[0] for row in rows]

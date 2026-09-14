@@ -55,7 +55,11 @@ class PrincipiaAppTests(unittest.TestCase):
         self.assertGreater(len(generated["edges"]), 600)
         node = next(item for item in generated["nodes"] if item["id"] == "post-training-quantization")
         self.assertIn("Post-training quantization", node["body"])
-        self.assertIn("quantization", node["prereqs"])
+        # Quantization remains in the full reference article, but a direct
+        # learner edge is omitted when another selected prerequisite already
+        # entails it.
+        self.assertNotIn("quantization", node["prereqs"])
+        self.assertIn("tensor", node["prereqs"])
 
     def test_home_is_the_compiled_react_app(self) -> None:
         response = self.client.get("/")
@@ -83,7 +87,7 @@ class PrincipiaAppTests(unittest.TestCase):
         self.assertEqual(payload["question"], "Why use lower precision?")
         self.assertEqual(payload["selectedConcept"]["title"], "Post-Training Quantization")
         self.assertIn("Tensor", payload["selectedConcept"]["prerequisites"])
-        self.assertIn("Quantization", payload["selectedConcept"]["prerequisites"])
+        self.assertNotIn("Quantization", payload["selectedConcept"]["prerequisites"])
         self.assertNotIn("threadId", prompt)
 
     def test_private_copilot_message_returns_only_projected_answer(self) -> None:

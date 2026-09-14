@@ -344,11 +344,14 @@ def report(nodes: dict, root: Path) -> dict:
                         "unreviewedPrerequisites": [p for p in prereqs if p not in reasons]})
     canonical = canonical_ids(nodes, extra)
     evidence = prerequisite_evidence(nodes, root)
+    learner_prerequisites = sum(edge["type"] == "REQUIRES" for edge in relations(nodes, extra))
     return {"sourceConcepts": len(nodes), "canonicalConcepts": len(set(canonical.values())),
             "resolvedEntities": sum(nid != target for nid, target in canonical.items()), "errors": validate(nodes, extra),
             "reviewedLessons": sum(not e["needsShortLesson"] for e in entries),
             "longArticles": sum(e["words"] > 500 for e in entries),
-            "prerequisiteEdges": len(evidence),
+            "sourcePrerequisiteLinks": len(evidence),
+            "prerequisiteEdges": learner_prerequisites,
+            "suppressedRedundantPrerequisites": len(evidence) - learner_prerequisites,
             "unlinkedPrerequisiteEdges": sum(not edge["bodyLink"] for edge in evidence),
             "unreviewedPrerequisiteEdges": sum(not edge["reviewedReason"] for edge in evidence),
             "concepts": entries}

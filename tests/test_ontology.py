@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from principia_app.ontology import admission, allowed_links, identities, identity_candidates, prerequisite_evidence, relations, validate
+from principia_app.ontology import admission, allowed_links, enrich, identities, identity_candidates, prerequisite_evidence, relations, validate
 
 
 class OntologyTests(unittest.TestCase):
@@ -50,6 +50,22 @@ class OntologyTests(unittest.TestCase):
         self.assertEqual(allowed_links("a", self.nodes, extra), {"c"})
         required = [r for r in relations(self.nodes, extra) if r["type"] == "REQUIRES"]
         self.assertEqual(required, [{"s": "b", "t": "a", "type": "REQUIRES", "reason": "", "reviewed": False}])
+
+    def test_transitively_redundant_requirement_is_hidden_from_learner_graph(self):
+        self.nodes["c"]["prereqs"] = "[a, b]"
+        required = {(r["s"], r["t"]) for r in relations(self.nodes, {}) if r["type"] == "REQUIRES"}
+        self.assertEqual(required, {("b", "a"), ("c", "b")})
+
+    def test_enriched_reader_graph_uses_reduced_requirements(self):
+        self.nodes["c"]["prereqs"] = "[a, b]"
+        data = {"nodes": [{"id": nid} for nid in self.nodes], "edges": []}
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "lessons").mkdir()
+            enrich(data, self.nodes, root)
+        by_id = {node["id"]: node for node in data["nodes"]}
+        self.assertEqual(by_id["c"]["prereqs"], ["b"])
+        self.assertEqual({(edge["s"], edge["t"]) for edge in data["edges"]}, {("b", "a"), ("c", "b")})
 
     def test_cycle_is_rejected(self):
         self.nodes["a"]["prereqs"] = "[b]"

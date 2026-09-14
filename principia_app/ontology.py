@@ -56,6 +56,14 @@ def identities(nodes: dict, extra: dict) -> dict[str, list[str]]:
 
 
 def relations(nodes: dict, extra: dict) -> list[dict]:
+    """Return the learner-facing, typed relationship projection.
+
+    Markdown keeps every author reference, including direct prerequisite links
+    that are useful to an article reader.  The learning graph need not repeat a
+    requirement when another direct requirement already entails it.  We remove
+    only such *transitively redundant* ``REQUIRES`` arcs here: reachability is
+    unchanged, and optional typed context remains visible separately.
+    """
     result = []
     seen = set()
     for nid, meta in sorted(nodes.items()):
@@ -76,7 +84,29 @@ def relations(nodes: dict, extra: dict) -> list[dict]:
             if edge["s"] != edge["t"] and key not in seen:
                 seen.add(key)
                 result.append(edge)
-    return result
+
+    required = [edge for edge in result if edge["type"] == "REQUIRES"]
+    graph: dict[str, set[str]] = {}
+    for edge in required:
+        graph.setdefault(edge["s"], set()).add(edge["t"])
+
+    def reaches(start: str, target: str, ignored: tuple[str, str], seen: set[str] | None = None) -> bool:
+        if seen is None:
+            seen = set()
+        if start in seen:
+            return False
+        seen.add(start)
+        for next_id in graph.get(start, set()):
+            if (start, next_id) == ignored:
+                continue
+            if next_id == target or reaches(next_id, target, ignored, seen.copy()):
+                return True
+        return False
+
+    redundant = {(edge["s"], edge["t"]) for edge in required
+                 if reaches(edge["s"], edge["t"], (edge["s"], edge["t"]))}
+    return [edge for edge in result
+            if edge["type"] != "REQUIRES" or (edge["s"], edge["t"]) not in redundant]
 
 
 def allowed_links(nid: str, nodes: dict, extra: dict) -> set[str]:
@@ -253,22 +283,45 @@ def enrich(data: dict, nodes: dict, root: Path) -> dict:
     data["relations"] = relations(nodes, extra)
     data["identityIndex"] = identities(nodes, extra)
     canonical = canonical_ids(nodes, extra)
-    # The source graph stays complete for reference and audit. The learner graph
-    # collapses resolved aliases onto their canonical concept, so an alias never
-    # becomes an additional roadmap stop.
-    seen_edges = set()
-    canonical_edges = []
-    for edge in data["edges"]:
-        source, target = canonical[edge["s"]], canonical[edge["t"]]
-        if source != target and (source, target) not in seen_edges:
-            seen_edges.add((source, target))
-            canonical_edges.append({"s": source, "t": target})
+    # The source graph stays complete in Markdown for reference and audit.  The
+    # browser receives the canonical, transitively reduced learning projection
+    # so a learner never sees aliases or redundant direct requirements as extra
+    # study stops.
+    canonical_edges = [{"s": edge["s"], "t": edge["t"]}
+                       for edge in data["relations"] if edge["type"] == "REQUIRES"]
     data["edges"] = canonical_edges
+    required_by_source: dict[str, list[str]] = {}
+    for edge in canonical_edges:
+        required_by_source.setdefault(edge["s"], []).append(edge["t"])
+
+    canonical_nodes = {nid for nid, target in canonical.items() if nid == target}
+    required_by_source = {nid: sorted(set(required_by_source.get(nid, [])))
+                          for nid in canonical_nodes}
+    dependents = {nid: 0 for nid in canonical_nodes}
+    for targets in required_by_source.values():
+        for target in targets:
+            if target in dependents:
+                dependents[target] += 1
+    levels: dict[str, int] = {}
+
+    def level(nid: str, active: frozenset[str] = frozenset()) -> int:
+        if nid in levels:
+            return levels[nid]
+        if nid in active:  # validation has already reported the real error
+            return 0
+        targets = required_by_source.get(nid, [])
+        levels[nid] = 0 if not targets else 1 + max(level(target, active | {nid}) for target in targets)
+        return levels[nid]
+
     for node in data["nodes"]:
         nid = node["id"]
         record = extra.get("concepts", {}).get(nid, {})
         node["canonicalId"] = canonical_id(nid, nodes, extra)
         node["isCanonical"] = node["canonicalId"] == nid
+        node["prereqs"] = required_by_source.get(node["canonicalId"], []) if node["isCanonical"] else []
+        node["deps"] = len(node["prereqs"])
+        node["dependents"] = dependents.get(nid, 0) if node["isCanonical"] else 0
+        node["level"] = level(node["canonicalId"]) if node["isCanonical"] else level(node["canonicalId"])
         node["aliases"] = record.get("aliases", [])
         node["objective"] = record.get("objective", node.get("summary", ""))
         node["prerequisiteReasons"] = record.get("prerequisiteReasons", {})

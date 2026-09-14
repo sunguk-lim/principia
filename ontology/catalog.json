@@ -58,6 +58,15 @@
         {"type": "CONTRASTS_WITH", "target": "key-value-store", "reason": "An index is a secondary value-to-row-location structure inside a relational database; a key-value store is a primary database architecture with durable, networked, key-only access."}
       ]
     },
+    "b-tree": {
+      "prerequisiteReasons": {
+        "binary-search-tree": "Establishes the ordered branching search mechanism that a B-tree generalizes to high fan-out."
+      },
+      "relations": [
+        {"type": "USES", "target": "page", "reason": "A production B-tree sizes a node to a fixed storage page; this substrate detail enriches the fan-out explanation but is not required to understand the search-tree mechanism."},
+        {"type": "USES", "target": "block-layer", "reason": "The block layer's per-I/O cost model explains why high fan-out is valuable on storage, but a learner can understand the B-tree mechanism without first learning OS I/O internals."}
+      ]
+    },
     "softmax": {
       "aliases": ["softmax function"],
       "objective": "Turn scores into normalized weights and explain why shifting every score preserves them.",

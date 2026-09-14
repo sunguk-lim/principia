@@ -243,3 +243,19 @@ restart the completed Letters historical backfill or alter its ledger.
   required ancestor set fell from 31 to 25 and Query Planning's from 34 to 28.
 - Full validation passed: 11 Python ontology tests, audit, 10 frontend tests,
   typecheck, production data build, production UI build, and whitespace check.
+
+## Stage 14 — storage-substrate detours removed from required paths (2026-09-14)
+
+- Reviewed the complete B-tree article. Its required learning objective is the
+  high-fan-out generalization of a binary search tree; virtual-memory pages and
+  OS block-layer internals explain *why the production cost model matters*, but
+  are not necessary prior knowledge for that mechanism.
+- Reclassified B-tree's `page` and `block-layer` dependencies as optional
+  `USES` relationships with explicit reasons. The full article, examples, and
+  source links remain unchanged.
+- Measured effect: B-tree's required ancestry fell from 22 to 3 concepts,
+  Database Index from 31 to 6, Query Planning from 34 to 9, PostgreSQL from 44
+  to 38, pgvector from 56 to 50, and pgai from 60 to 54. These changes remove
+  OS-internals detours rather than database foundations.
+- Full validation passed: 20 Python tests, ontology audit, 10 frontend tests,
+  typecheck, production data build, production UI build, and whitespace check.

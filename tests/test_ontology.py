@@ -33,6 +33,15 @@ class OntologyTests(unittest.TestCase):
         required = [r["t"] for r in relations(self.nodes, extra) if r["type"] == "REQUIRES"]
         self.assertEqual(required, ["a"])
 
+    def test_contrast_relation_preserves_distinct_concepts(self):
+        extra = {"concepts": {"a": {"relations": [
+            {"type": "CONTRASTS_WITH", "target": "c", "reason": "Same problem, different mechanism."}
+        ]}}}
+        self.assertEqual(validate(self.nodes, extra), [])
+        contrast = [r for r in relations(self.nodes, extra) if r["type"] == "CONTRASTS_WITH"]
+        self.assertEqual(contrast, [{"s": "a", "t": "c", "type": "CONTRASTS_WITH",
+                                     "reason": "Same problem, different mechanism.", "reviewed": True}])
+
     def test_cycle_is_rejected(self):
         self.nodes["a"]["prereqs"] = "[b]"
         self.assertTrue(any("Prerequisite cycle" in e for e in validate(self.nodes, {})))

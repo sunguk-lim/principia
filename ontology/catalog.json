@@ -33,6 +33,11 @@
     "prompt-caching": {
       "canonicalId": "prefix-caching"
     },
+    "empirical-bayes": {
+      "relations": [
+        {"type": "CONTRASTS_WITH", "target": "hierarchical-bayes", "reason": "Both learn shared prior structure from data, but empirical Bayes plugs in estimated hyperparameters while hierarchical Bayes retains them as uncertain variables in the joint posterior."}
+      ]
+    },
     "softmax": {
       "aliases": ["softmax function"],
       "objective": "Turn scores into normalized weights and explain why shifting every score preserves them.",

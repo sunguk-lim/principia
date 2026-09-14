@@ -40,9 +40,11 @@ class PrincipiaAppTests(unittest.TestCase):
                 self.assertEqual(self.client.get("/api/ontology").status_code, 503)
                 self.assertTrue(self.client.get("/api/health").json()["ok"])
             with patch("principia_app.server.neo4j.ensure_current", return_value={"digest": "test"}):
-                with patch("principia_app.server.neo4j.prerequisite_ids", return_value=["softmax"]):
-                    result = self.client.get("/api/ontology/prerequisites/softmax")
-                    self.assertEqual(result.json()["ids"], ["softmax"])
+                projected = {"target": "softmax", "requiredIds": ["softmax"],
+                             "requiredEdges": [], "optionalEdges": []}
+                with patch("principia_app.server.neo4j.learning_subgraph", return_value=projected):
+                    result = self.client.get("/api/ontology/learning-subgraph/softmax")
+                    self.assertEqual(result.json()["requiredIds"], ["softmax"])
                     self.assertEqual(result.json()["digest"], "test")
 
     def test_generated_graph_is_the_shared_source_for_frontend_and_server(self) -> None:
@@ -55,10 +57,9 @@ class PrincipiaAppTests(unittest.TestCase):
         self.assertGreater(len(generated["edges"]), 600)
         node = next(item for item in generated["nodes"] if item["id"] == "post-training-quantization")
         self.assertIn("Post-training quantization", node["body"])
-        # Quantization remains in the full reference article, but a direct
-        # learner edge is omitted when another selected prerequisite already
-        # entails it.
-        self.assertNotIn("quantization", node["prereqs"])
+        # The revised ontology preserves every reviewed direct prerequisite;
+        # goal-specific retrieval performs the traversal in Neo4j.
+        self.assertIn("quantization", node["prereqs"])
         self.assertIn("tensor", node["prereqs"])
 
     def test_home_is_the_compiled_react_app(self) -> None:
@@ -87,7 +88,7 @@ class PrincipiaAppTests(unittest.TestCase):
         self.assertEqual(payload["question"], "Why use lower precision?")
         self.assertEqual(payload["selectedConcept"]["title"], "Post-Training Quantization")
         self.assertIn("Tensor", payload["selectedConcept"]["prerequisites"])
-        self.assertNotIn("Quantization", payload["selectedConcept"]["prerequisites"])
+        self.assertIn("Quantization", payload["selectedConcept"]["prerequisites"])
         self.assertNotIn("threadId", prompt)
 
     def test_private_copilot_message_returns_only_projected_answer(self) -> None:

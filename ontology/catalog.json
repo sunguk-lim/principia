@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "disambiguations": {},
   "concepts": {
     "bayes-rule": {
@@ -14,18 +14,14 @@
         "pgai-vectorizer": "Explains the managed pipeline that keeps source rows and embeddings synchronized.",
         "llm-from-sql": "Explains the SQL-callable model operations that complete pgai's in-database workflow."
       },
-      "relations": [
-        {"type": "APPLIES_TO", "target": "retrieval-augmented-generation", "reason": "RAG is a major application assembled from pgai's capabilities, not required background for understanding the suite's composition."}
-      ]
+      "relations": []
     },
     "llm-from-sql": {
       "prerequisiteReasons": {
         "sql": "Explains the query expressions and functions through which the model calls are composed.",
         "embedding": "Explains the vector output returned by SQL-callable embedding functions."
       },
-      "relations": [
-        {"type": "APPLIES_TO", "target": "retrieval-augmented-generation", "reason": "RAG is one workflow assembled from SQL model calls and retrieval, not required theory for understanding model functions in SQL."}
-      ]
+      "relations": []
     },
     "prefix-caching": {
       "aliases": ["prompt caching"]
@@ -38,20 +34,14 @@
         {"type": "CONTRASTS_WITH", "target": "hierarchical-bayes", "reason": "Both learn shared prior structure from data, but empirical Bayes plugs in estimated hyperparameters while hierarchical Bayes retains them as uncertain variables in the joint posterior."}
       ]
     },
-    "curl-of-gradient-zero": {
-      "relations": [
-        {"type": "USES", "target": "differential-operators", "reason": "The operator-family overview helps place the identity among related vector-calculus rules, but understanding the cancellation only requires the specific curl, gradient, Hessian, partial-derivative, and vector-field mechanisms."}
-      ]
-    },
+    "curl-of-gradient-zero": {},
     "write-ahead-logging": {
       "prerequisiteReasons": {
         "transaction": "Defines the atomicity and durability promises that WAL implements across a crash.",
         "page-cache": "Explains why changed data can remain only in volatile memory at commit time.",
         "writeback": "Explains deferred page flushing and the force-to-stable-storage operation used for the log at commit."
       },
-      "relations": [
-        {"type": "USES", "target": "block-layer", "reason": "The sequential-log-versus-scattered-page performance explanation uses the block layer's I/O cost model, but that model is not required to understand WAL's durability and recovery mechanism."}
-      ]
+      "relations": []
     },
     "database-index": {
       "prerequisiteReasons": {
@@ -67,10 +57,7 @@
       "prerequisiteReasons": {
         "binary-search-tree": "Establishes the ordered branching search mechanism that a B-tree generalizes to high fan-out."
       },
-      "relations": [
-        {"type": "USES", "target": "page", "reason": "A production B-tree sizes a node to a fixed storage page; this substrate detail enriches the fan-out explanation but is not required to understand the search-tree mechanism."},
-        {"type": "USES", "target": "block-layer", "reason": "The block layer's per-I/O cost model explains why high fan-out is valuable on storage, but a learner can understand the B-tree mechanism without first learning OS I/O internals."}
-      ]
+      "relations": []
     },
     "softmax": {
       "aliases": ["softmax function"],
@@ -87,9 +74,7 @@
       "prerequisiteReasons": {
         "softmax": "The streaming recurrence preserves the same softmax denominator."
       },
-      "relations": [
-        {"type": "APPLIES_TO", "target": "flash-attention", "reason": "The running normalizer can be fused with a weighted value accumulator to stream attention tiles."}
-      ]
+      "relations": []
     },
     "transformer-attention": {
       "aliases": ["scaled dot-product attention"],

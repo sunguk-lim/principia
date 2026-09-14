@@ -1,9 +1,11 @@
 import unittest
+from unittest.mock import patch
 
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from principia_app.ontology import admission, allowed_links, enrich, identities, identity_candidates, prerequisite_evidence, relations, validate
+from principia_app.neo4j import MAX_NODE_WORDS, learning_subgraph, semantic_sections
 
 
 class OntologyTests(unittest.TestCase):
@@ -42,21 +44,18 @@ class OntologyTests(unittest.TestCase):
         self.assertEqual(contrast, [{"s": "a", "t": "c", "type": "CONTRASTS_WITH",
                                      "reason": "Same problem, different mechanism.", "reviewed": True}])
 
-    def test_uses_relation_is_optional_context(self):
+    def test_unsupported_relation_is_rejected(self):
         extra = {"concepts": {"a": {"relations": [
             {"type": "USES", "target": "c", "reason": "Uses the target's cost model."}
         ]}}}
-        self.assertEqual(validate(self.nodes, extra), [])
-        self.assertEqual(allowed_links("a", self.nodes, extra), {"c"})
-        required = [r for r in relations(self.nodes, extra) if r["type"] == "REQUIRES"]
-        self.assertEqual(required, [{"s": "b", "t": "a", "type": "REQUIRES", "reason": "", "reviewed": False}])
+        self.assertTrue(any("invalid" in error for error in validate(self.nodes, extra)))
 
-    def test_transitively_redundant_requirement_is_hidden_from_learner_graph(self):
+    def test_direct_requirements_are_preserved_for_goal_retrieval(self):
         self.nodes["c"]["prereqs"] = "[a, b]"
         required = {(r["s"], r["t"]) for r in relations(self.nodes, {}) if r["type"] == "REQUIRES"}
-        self.assertEqual(required, {("b", "a"), ("c", "b")})
+        self.assertEqual(required, {("b", "a"), ("c", "a"), ("c", "b")})
 
-    def test_enriched_reader_graph_uses_reduced_requirements(self):
+    def test_enriched_reader_graph_is_an_overview_not_a_goal_roadmap(self):
         self.nodes["c"]["prereqs"] = "[a, b]"
         data = {"nodes": [{"id": nid} for nid in self.nodes], "edges": []}
         with TemporaryDirectory() as temporary:
@@ -64,8 +63,19 @@ class OntologyTests(unittest.TestCase):
             (root / "lessons").mkdir()
             enrich(data, self.nodes, root)
         by_id = {node["id"]: node for node in data["nodes"]}
-        self.assertEqual(by_id["c"]["prereqs"], ["b"])
-        self.assertEqual({(edge["s"], edge["t"]) for edge in data["edges"]}, {("b", "a"), ("c", "b")})
+        self.assertEqual(by_id["c"]["prereqs"], ["a", "b"])
+        self.assertEqual({(edge["s"], edge["t"]) for edge in data["edges"]}, {("b", "a"), ("c", "a"), ("c", "b")})
+
+    def test_legacy_source_id_resolves_to_first_semantic_entity_for_roadmap(self):
+        with patch("principia_app.neo4j.query", side_effect=[
+            [["ent-goal"]], [["ent-prerequisite"], ["ent-goal"]],
+            [["ent-goal", "ent-prerequisite", "Required mechanism"]],
+        ]) as mocked:
+            result = learning_subgraph("legacy-source")
+        self.assertEqual(result["target"], "legacy-source")
+        self.assertEqual(result["requiredIds"], ["ent-prerequisite", "ent-goal"])
+        self.assertEqual(result["requiredEdges"][0]["reason"], "Required mechanism")
+        self.assertEqual(mocked.call_args_list[0].kwargs["reference"], "legacy-source")
 
     def test_cycle_is_rejected(self):
         self.nodes["a"]["prereqs"] = "[b]"
@@ -106,7 +116,7 @@ class OntologyTests(unittest.TestCase):
             evidence = prerequisite_evidence({"a": self.nodes["a"], "b": self.nodes["b"]}, root)
         self.assertEqual(evidence, [{"concept": "b", "prerequisite": "a", "bodyLink": True, "reviewedReason": False}])
 
-    def test_contextual_operator_overview_does_not_enter_identity_roadmap(self):
+    def test_legacy_uses_relation_is_not_accepted(self):
         nodes = {
             "curl": {"title": "Curl", "prereqs": "[]"},
             "gradient": {"title": "Gradient", "prereqs": "[]"},
@@ -116,8 +126,39 @@ class OntologyTests(unittest.TestCase):
         extra = {"concepts": {"identity": {"relations": [{
             "type": "USES", "target": "overview", "reason": "Contextual family overview."
         }]}}}
-        required = {(edge["s"], edge["t"]) for edge in relations(nodes, extra) if edge["type"] == "REQUIRES"}
-        self.assertEqual(required, {("identity", "curl"), ("identity", "gradient"), ("overview", "curl")})
+        self.assertTrue(any("invalid" in error for error in validate(nodes, extra)))
+
+    def test_semantic_sections_use_authored_boundaries_not_word_count(self):
+        long_mechanism = " ".join(["mechanism"] * (MAX_NODE_WORDS + 20))
+        body = """# Example
+
+## Summary
+
+The overview.
+
+## Grounded explanation
+
+**1 — The mechanism.** First semantic unit.
+
+{long_mechanism}
+
+**Why it matters.** Second semantic unit.
+
+## Prerequisites
+
+- [[a]]
+
+## Sources
+
+- A source
+""".format(long_mechanism=long_mechanism)
+        sections = semantic_sections("example", "example", body)
+        self.assertEqual([section["heading"] for section in sections], [
+            "Overview", "1 — The mechanism", "Why it matters",
+        ])
+        self.assertGreater(sections[1]["wordCount"], MAX_NODE_WORDS)
+        self.assertNotIn("[[a]]", "\n".join(section["content"] for section in sections))
+        self.assertNotIn("A source", "\n".join(section["content"] for section in sections))
 
 
 

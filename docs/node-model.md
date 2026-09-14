@@ -106,13 +106,12 @@ source record; its title and aliases resolve to the canonical concept in the ont
 `canonicalId` must point directly to a canonical node (never another alias). Do not use the legacy
 `merge` command for this workflow because it deletes the preserved source record.
 
+The closed ontology edge vocabulary is `REQUIRES`, `ALTERNATIVE_TO`, and `CONTRASTS_WITH`.
 Only `prereqs` produce `REQUIRES` edges and required roadmap steps. Record a concise reason
-for each reviewed prerequisite: what part of the learning objective needs it? Optional types are
-`ALTERNATIVE_TO`, `CONTRASTS_WITH`, `APPLIES_TO`, and `USES`. `USES` records a mechanism or
-cost model that enriches an explanation without being required background for its learning
-objective. Each record has `type`, `target`, and an explanatory `reason`. They never expand the
-required roadmap. Current storage is directed;
-reverse relationships are not inserted automatically. No generic `SIMILAR_TO` type is supported.
+for each reviewed prerequisite: what part of the learning objective needs it? The optional types
+never expand the required roadmap. Each record has `type`, `target`, and an explanatory `reason`.
+Current storage is directed; reverse relationships are not inserted automatically. No generic
+`SIMILAR_TO` type is supported.
 
 ## Short learning steps
 
@@ -125,6 +124,31 @@ independent learning objectives, not synonyms or arbitrary paragraph chunks.
 
 At present, lesson-file presence sets `lessonReviewed`; create these files only after editorial
 review. This is a convention, not an independent review-signoff mechanism.
+
+## Semantic-node projection
+
+The Neo4j learner projection is built from **semantic units**, not from a word-count or a
+paragraph-packing algorithm. A unit is an independently learnable objective: a named mechanism,
+derivation, decision rule, or worked method. It has its own resolved entity signature, explanation,
+and placement in the existing closed `REQUIRES` vocabulary.
+
+When authoring a large source article, make those boundaries explicit with an `###` heading or an
+authored numbered mechanism label such as `**1 — Normalize the scores.**`. Do not add a boundary
+solely because text reached a length limit. Keep each resulting explanation at or below 280 words;
+if it cannot be concise without losing one objective, give the next objective its own named boundary
+and direct prerequisite placement.
+
+Run the semantic audit before publishing a Neo4j projection:
+
+```bash
+uv run python -m principia_app.neo4j semantic-audit
+```
+
+The audit lists every authored unit that still needs rewriting. `neo4j sync` refuses to publish
+while any unit is over the limit, so a syntactic split cannot silently become a learner node.
+The entity signature uses canonical name, semantic objective, kind, and domain; the current prose
+hash is retained separately for content traceability. Editing an explanation therefore updates the
+same semantic entity rather than creating a new concept from a Markdown filename.
 
 ## Legacy command limitations
 

@@ -16,9 +16,10 @@ from pathlib import Path
 
 import brain
 
-# Optional semantic relationships.  They preserve useful explanatory context
-# without adding a required-learning step to a roadmap.
-RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO", "USES"}
+# The authored ontology uses a deliberately closed vocabulary.  Synonyms live
+# in ``aliases`` on the canonical concept rather than as an edge.  Only
+# ``REQUIRES`` participates in a retrieved learning path.
+RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH"}
 
 
 def normalize(label: str) -> str:
@@ -56,13 +57,12 @@ def identities(nodes: dict, extra: dict) -> dict[str, list[str]]:
 
 
 def relations(nodes: dict, extra: dict) -> list[dict]:
-    """Return the learner-facing, typed relationship projection.
+    """Return the complete canonical ontology relationship set.
 
-    Markdown keeps every author reference, including direct prerequisite links
-    that are useful to an article reader.  The learning graph need not repeat a
-    requirement when another direct requirement already entails it.  We remove
-    only such *transitively redundant* ``REQUIRES`` arcs here: reachability is
-    unchanged, and optional typed context remains visible separately.
+    This deliberately does *not* build one global learner roadmap.  Neo4j
+    retrieves a goal-specific subgraph from these direct facts.  Markdown body
+    links remain article references; only front-matter prerequisites and the
+    reviewed closed-vocabulary relations become ontology edges.
     """
     result = []
     seen = set()
@@ -85,28 +85,7 @@ def relations(nodes: dict, extra: dict) -> list[dict]:
                 seen.add(key)
                 result.append(edge)
 
-    required = [edge for edge in result if edge["type"] == "REQUIRES"]
-    graph: dict[str, set[str]] = {}
-    for edge in required:
-        graph.setdefault(edge["s"], set()).add(edge["t"])
-
-    def reaches(start: str, target: str, ignored: tuple[str, str], seen: set[str] | None = None) -> bool:
-        if seen is None:
-            seen = set()
-        if start in seen:
-            return False
-        seen.add(start)
-        for next_id in graph.get(start, set()):
-            if (start, next_id) == ignored:
-                continue
-            if next_id == target or reaches(next_id, target, ignored, seen.copy()):
-                return True
-        return False
-
-    redundant = {(edge["s"], edge["t"]) for edge in required
-                 if reaches(edge["s"], edge["t"], (edge["s"], edge["t"]))}
-    return [edge for edge in result
-            if edge["type"] != "REQUIRES" or (edge["s"], edge["t"]) not in redundant]
+    return result
 
 
 def allowed_links(nid: str, nodes: dict, extra: dict) -> set[str]:
@@ -283,10 +262,8 @@ def enrich(data: dict, nodes: dict, root: Path) -> dict:
     data["relations"] = relations(nodes, extra)
     data["identityIndex"] = identities(nodes, extra)
     canonical = canonical_ids(nodes, extra)
-    # The source graph stays complete in Markdown for reference and audit.  The
-    # browser receives the canonical, transitively reduced learning projection
-    # so a learner never sees aliases or redundant direct requirements as extra
-    # study stops.
+    # The static browser receives the canonical overview. Goal-specific learning
+    # paths are retrieved from Neo4j on demand; this overview is not a roadmap.
     canonical_edges = [{"s": edge["s"], "t": edge["t"]}
                        for edge in data["relations"] if edge["type"] == "REQUIRES"]
     data["edges"] = canonical_edges

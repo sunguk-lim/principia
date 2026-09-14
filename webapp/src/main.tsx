@@ -5,4 +5,8 @@ import "katex/dist/katex.min.css";
 import "./styles.css";
 
 createRoot(document.getElementById("root")!).render(<StrictMode><App /></StrictMode>);
-if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("./sw.js");
+// This is a private live graph.  Do not let an offline app shell hide a fresh
+// Neo4j-backed deployment or a study-progress update behind stale assets.
+if ("serviceWorker" in navigator) navigator.serviceWorker.getRegistrations().then(registrations => {
+  registrations.forEach(registration => registration.unregister());
+});

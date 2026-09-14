@@ -67,6 +67,16 @@ def require_node(slug: str) -> None:
         raise HTTPException(404, "Node not found")
 
 
+def require_study_entity(entity_id: str) -> None:
+    """Validate an opaque Neo4j entity key without consulting Markdown."""
+    if re.fullmatch(r"ent-[0-9a-f]{20}", entity_id):
+        return
+    # Preserve the old status API for existing source-node clients; arbitrary
+    # keys are never accepted.
+    if not SLUG.fullmatch(entity_id) or not (NODES_DIR / f"{entity_id}.md").is_file():
+        raise HTTPException(404, "Entity not found")
+
+
 def require_private_client(request: Request) -> None:
     host = request.client.host if request.client else ""
     if host == "testclient":
@@ -203,15 +213,54 @@ def create_app(db_path: Path | None = None, web_dist: Path = WEB_DIST) -> FastAP
     def ontology_status() -> dict:
         return current_projection()
 
-    @app.get("/api/ontology/prerequisites/{slug}")
-    def ontology_prerequisites(slug: str) -> dict:
+    # The phone reader uses these endpoints exclusively.  Unlike the legacy
+    # browser dataset, they do not read graph.json or Markdown at request time.
+    @app.get("/api/neo4j/graph")
+    def neo4j_graph() -> dict:
+        current_projection()
+        try:
+            return neo4j.reader_graph()
+        except (URLError, OSError, RuntimeError, ValueError):
+            raise HTTPException(503, "Neo4j reader graph is unavailable") from None
+
+    @app.get("/api/neo4j/entities/{entity_id}")
+    def neo4j_entity(entity_id: str) -> dict:
+        current_projection()
+        try:
+            result = neo4j.entity_content(entity_id)
+        except (URLError, OSError, RuntimeError, ValueError):
+            raise HTTPException(503, "Neo4j entity content is unavailable") from None
+        if result is None:
+            raise HTTPException(404, "Entity not found")
+        return result
+
+    @app.get("/api/neo4j/roadmap/{entity_id}")
+    def neo4j_roadmap(entity_id: str) -> dict:
+        current_projection()
+        try:
+            result = neo4j.learning_subgraph(entity_id)
+        except (URLError, OSError, RuntimeError, ValueError):
+            raise HTTPException(503, "Neo4j roadmap is unavailable") from None
+        if result is None:
+            raise HTTPException(404, "Entity not found")
+        return result
+
+    @app.get("/api/ontology/learning-subgraph/{slug}")
+    def ontology_learning_subgraph(slug: str) -> dict:
         require_node(slug)
         projection = current_projection()
         try:
-            ids = neo4j.prerequisite_ids(slug)
+            result = neo4j.learning_subgraph(slug)
         except (URLError, OSError, RuntimeError, ValueError):
             raise HTTPException(503, "Ontology index unavailable; browser roadmaps remain available") from None
-        return {"target": slug, "includesTarget": True, "ids": ids, "digest": projection["digest"]}
+        return {**result, "digest": projection["digest"]}
+
+    @app.get("/api/ontology/prerequisites/{slug}")
+    def ontology_prerequisites(slug: str) -> dict:
+        """Compatibility endpoint; clients should use ``learning-subgraph``."""
+        result = ontology_learning_subgraph(slug)
+        return {"target": result["target"], "includesTarget": True,
+                "ids": result["requiredIds"], "digest": result["digest"]}
 
     @app.get("/api/status")
     def list_statuses() -> dict[str, dict[str, str]]:
@@ -223,12 +272,12 @@ def create_app(db_path: Path | None = None, web_dist: Path = WEB_DIST) -> FastAP
 
     @app.get("/api/status/{slug}")
     def get_status(slug: str) -> dict[str, str]:
-        require_node(slug)
+        require_study_entity(slug)
         return read_status(slug)
 
     @app.put("/api/status/{slug}")
     def put_status(slug: str, update: StatusUpdate) -> dict[str, str]:
-        require_node(slug)
+        require_study_entity(slug)
         custom_label = update.custom_label.strip()
         if update.status == "custom" and not custom_label:
             raise HTTPException(422, "A custom status needs a label")

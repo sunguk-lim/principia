@@ -93,6 +93,10 @@ Resolve a proposed name before creating a node:
 uv run python -m principia_app.ontology resolve "FlashAttention"
 ```
 
+`brain.py add` performs the same exact canonical/alias collision check before it
+writes a file. A collision is rejected; near-name candidates are printed for
+editorial review because spelling resemblance alone cannot prove identity.
+
 A synonym belongs in `aliases` on the existing concept, not in a new node. Distinct meanings
 sharing a label require a disambiguation entry. Similarity is a review hint, never proof of identity.
 

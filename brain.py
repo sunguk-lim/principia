@@ -283,6 +283,18 @@ def cmd_new(args) -> None:
         sys.exit(f"Node already exists: {path}")
 
     title = args.title or args.id
+    # A new filename is not proof of a new concept. Check the proposed learner
+    # label against canonical titles and reviewed aliases before any file is
+    # written. Importing here avoids the module-level ontology -> brain cycle.
+    from principia_app.ontology import admission, catalog
+    identity = admission(title, all_nodes(), catalog(ROOT))
+    if identity["exact"]:
+        sys.exit("Identity collision: " + repr(title) + " already resolves to "
+                 + ", ".join(identity["exact"]) + ". Add an alias or explicit "
+                 "disambiguation instead of creating another node.")
+    if identity["candidates"]:
+        print("Identity review candidates for " + repr(title) + ": "
+              + ", ".join(f"{item['id']} ({item['score']:.2f})" for item in identity["candidates"]))
     raw_prereqs = args.prereqs or getattr(args, "requires", "")
     prereqs = parse_list(raw_prereqs) if args.type != "axiom" else []
     sources = parse_list(args.sources)

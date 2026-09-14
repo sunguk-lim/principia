@@ -221,6 +221,28 @@ def identity_candidates(nodes: dict, root: Path, threshold: float = 0.2) -> list
     return sorted(candidates, key=lambda item: (-item["score"], item["first"], item["second"]))
 
 
+def prerequisite_evidence(nodes: dict, root: Path) -> list[dict]:
+    """Collect local, reproducible evidence for each declared prerequisite.
+
+    A body link is evidence that an edge participates in the explanation, not
+    proof that it is required for the learner. Missing body evidence is a high
+    value review target, not permission to delete an edge automatically.
+    """
+    extra = catalog(root)
+    result = []
+    for nid, node in sorted(nodes.items()):
+        text = body((root / "nodes" / f"{nid}.md").read_text(encoding="utf-8"))
+        reasons = extra.get("concepts", {}).get(nid, {}).get("prerequisiteReasons", {})
+        for target in brain.parse_list(node.get("prereqs", "")):
+            result.append({
+                "concept": nid,
+                "prerequisite": target,
+                "bodyLink": f"[[{target}]]" in text,
+                "reviewedReason": bool(reasons.get(target, "").strip()),
+            })
+    return result
+
+
 def enrich(data: dict, nodes: dict, root: Path) -> dict:
     extra = catalog(root)
     errors = validate(nodes, extra)
@@ -266,15 +288,20 @@ def report(nodes: dict, root: Path) -> dict:
         entries.append({"id": nid, "words": words, "needsShortLesson": not (root / "lessons" / f"{nid}.md").exists(),
                         "unreviewedPrerequisites": [p for p in prereqs if p not in reasons]})
     canonical = canonical_ids(nodes, extra)
+    evidence = prerequisite_evidence(nodes, root)
     return {"sourceConcepts": len(nodes), "canonicalConcepts": len(set(canonical.values())),
             "resolvedEntities": sum(nid != target for nid, target in canonical.items()), "errors": validate(nodes, extra),
             "reviewedLessons": sum(not e["needsShortLesson"] for e in entries),
-            "longArticles": sum(e["words"] > 500 for e in entries), "concepts": entries}
+            "longArticles": sum(e["words"] > 500 for e in entries),
+            "prerequisiteEdges": len(evidence),
+            "unlinkedPrerequisiteEdges": sum(not edge["bodyLink"] for edge in evidence),
+            "unreviewedPrerequisiteEdges": sum(not edge["reviewedReason"] for edge in evidence),
+            "concepts": entries}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["audit", "report", "resolve", "candidates", "export"])
+    parser.add_argument("command", choices=["audit", "report", "resolve", "candidates", "edge-evidence", "export"])
     parser.add_argument("label", nargs="?")
     parser.add_argument("--workspace", default="")
     args = parser.parse_args()
@@ -287,6 +314,9 @@ def main():
     elif args.command == "candidates":
         result = {"method": "local complete-node TF-IDF screening; editorial review required",
                   "candidates": identity_candidates(nodes, brain.ROOT)}
+    elif args.command == "edge-evidence":
+        result = {"method": "complete-node body-link evidence; editorial review required",
+                  "edges": prerequisite_evidence(nodes, brain.ROOT)}
     elif args.command == "export":
         errors = validate(nodes, extra)
         if errors:

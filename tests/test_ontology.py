@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from principia_app.ontology import admission, allowed_links, identities, identity_candidates, relations, validate
+from principia_app.ontology import admission, allowed_links, identities, identity_candidates, prerequisite_evidence, relations, validate
 
 
 class OntologyTests(unittest.TestCase):
@@ -62,6 +62,15 @@ class OntologyTests(unittest.TestCase):
             pairs = identity_candidates(self.nodes, root, threshold=0.1)
         self.assertEqual(pairs[0]["first"], "a")
         self.assertEqual(pairs[0]["second"], "b")
+
+    def test_prerequisite_evidence_reads_only_node_body(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "nodes").mkdir()
+            (root / "nodes" / "a.md").write_text("---\nprereqs: []\n---\n", encoding="utf-8")
+            (root / "nodes" / "b.md").write_text("---\nprereqs: [a]\n---\nUses [[a]] in the explanation.", encoding="utf-8")
+            evidence = prerequisite_evidence({"a": self.nodes["a"], "b": self.nodes["b"]}, root)
+        self.assertEqual(evidence, [{"concept": "b", "prerequisite": "a", "bodyLink": True, "reviewedReason": False}])
 
 
 if __name__ == "__main__":

@@ -183,3 +183,15 @@ restart the completed Letters historical backfill or alter its ledger.
 - Remaining work: editorially review the globally ranked candidates and then
   reclassify only justified prerequisite edges. No broad automatic merge is
   permitted from similarity scores.
+
+## Stage 10 — complete prerequisite evidence baseline (2026-09-14)
+
+- Added a deterministic edge-evidence pass. It reads every full node body and
+  records whether each declared prerequisite is explicitly linked in the
+  explanation, separately from whether its learning rationale has been reviewed.
+- Baseline: all 981 prerequisite edges are linked in source bodies; none can be
+  removed mechanically as a frontmatter-only artifact. 972 edges still lack a
+  concise, reviewed statement of why the learning objective requires them.
+- This establishes that the remaining consolidation requires editorial judgment
+  of learning necessity, not a destructive text cleanup. The evidence pass is
+  local and consumes no model tokens when rerun.

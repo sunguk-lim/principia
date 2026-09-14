@@ -165,3 +165,21 @@ restart the completed Letters historical backfill or alter its ledger.
 - This is the first verified entity-resolution result, not a claim that the
   entire catalog has been content-reviewed. Next: create deterministic global
   content fingerprints and review the resulting cross-subject candidates.
+
+## Stage 9 — global content screening and canonical reader routing (2026-09-14)
+
+- Added a local complete-node TF-IDF screen. It reads all 436 Markdown articles
+  on disk and ranks potential identity candidates without an LLM call; results
+  are review hints and never create a redirect automatically.
+- The reader graph now collapses resolved aliases: source nodes remain in the
+  reference projection, but alias nodes are excluded from the default learner
+  graph, and alias links/roadmaps resolve to their canonical concept.
+- The Bayes resolution reduces the learner graph to 435 visible concepts and
+  979 learner edges while retaining 436 source records and 980 typed Neo4j
+  relationships. A dedicated frontend regression test proves an alias cannot
+  become a second roadmap step.
+- Full verification passed: 17 Python tests, ontology audit, Neo4j sync, 10
+  frontend tests, typecheck, production data build, and production UI build.
+- Remaining work: editorially review the globally ranked candidates and then
+  reclassify only justified prerequisite edges. No broad automatic merge is
+  permitted from similarity scores.

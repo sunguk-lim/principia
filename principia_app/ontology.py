@@ -9,6 +9,7 @@ import argparse
 import difflib
 import hashlib
 import json
+import math
 import re
 import unicodedata
 from pathlib import Path
@@ -166,6 +167,60 @@ def body(text: str) -> str:
     return re.sub(r"\A---\n.*?\n---\n", "", text, count=1, flags=re.S)
 
 
+_FINGERPRINT_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "how", "in", "is", "it",
+    "of", "on", "or", "that", "the", "this", "to", "with", "you", "your",
+}
+
+
+def content_tokens(nid: str, root: Path) -> set[str]:
+    """Read a complete node locally and return durable identity-bearing terms.
+
+    This is deliberately deterministic and local: it is a screening pass over
+    every article, not an LLM assertion that two concepts are identical.
+    """
+    text = body((root / "nodes" / f"{nid}.md").read_text(encoding="utf-8"))
+    return {token for token in re.findall(r"[a-z0-9]{3,}", text.casefold())
+            if token not in _FINGERPRINT_STOPWORDS}
+
+
+def identity_candidates(nodes: dict, root: Path, threshold: float = 0.2) -> list[dict]:
+    """Rank possible duplicate entities from complete local node content.
+
+    TF-IDF cosine similarity identifies review candidates. It never creates an
+    alias, redirect, or merge automatically.
+    """
+    documents = {nid: content_tokens(nid, root) for nid in nodes}
+    document_frequency: dict[str, int] = {}
+    for terms in documents.values():
+        for term in terms:
+            document_frequency[term] = document_frequency.get(term, 0) + 1
+    count = len(documents)
+    weighted = {
+        nid: {term: math.log((count + 1) / (document_frequency[term] + 1)) + 1 for term in terms}
+        for nid, terms in documents.items()
+    }
+    norms = {nid: math.sqrt(sum(weight * weight for weight in weights.values())) for nid, weights in weighted.items()}
+    inverted: dict[str, list[str]] = {}
+    for nid, terms in documents.items():
+        for term in terms:
+            inverted.setdefault(term, []).append(nid)
+    dot: dict[tuple[str, str], float] = {}
+    for term, ids in inverted.items():
+        if len(ids) > 80:  # generic terms create noise, not identity evidence.
+            continue
+        for offset, first in enumerate(ids):
+            for second in ids[offset + 1:]:
+                key = (first, second) if first < second else (second, first)
+                dot[key] = dot.get(key, 0.0) + weighted[first][term] * weighted[second][term]
+    candidates = []
+    for (first, second), value in dot.items():
+        score = value / (norms[first] * norms[second])
+        if score >= threshold:
+            candidates.append({"first": first, "second": second, "score": round(score, 3)})
+    return sorted(candidates, key=lambda item: (-item["score"], item["first"], item["second"]))
+
+
 def enrich(data: dict, nodes: dict, root: Path) -> dict:
     extra = catalog(root)
     errors = validate(nodes, extra)
@@ -173,6 +228,18 @@ def enrich(data: dict, nodes: dict, root: Path) -> dict:
         raise ValueError("\n".join(errors))
     data["relations"] = relations(nodes, extra)
     data["identityIndex"] = identities(nodes, extra)
+    canonical = canonical_ids(nodes, extra)
+    # The source graph stays complete for reference and audit. The learner graph
+    # collapses resolved aliases onto their canonical concept, so an alias never
+    # becomes an additional roadmap stop.
+    seen_edges = set()
+    canonical_edges = []
+    for edge in data["edges"]:
+        source, target = canonical[edge["s"]], canonical[edge["t"]]
+        if source != target and (source, target) not in seen_edges:
+            seen_edges.add((source, target))
+            canonical_edges.append({"s": source, "t": target})
+    data["edges"] = canonical_edges
     for node in data["nodes"]:
         nid = node["id"]
         record = extra.get("concepts", {}).get(nid, {})
@@ -207,7 +274,7 @@ def report(nodes: dict, root: Path) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["audit", "report", "resolve", "export"])
+    parser.add_argument("command", choices=["audit", "report", "resolve", "candidates", "export"])
     parser.add_argument("label", nargs="?")
     parser.add_argument("--workspace", default="")
     args = parser.parse_args()
@@ -217,6 +284,9 @@ def main():
         if not args.label:
             parser.error("resolve requires a label")
         result = admission(args.label, nodes, extra)
+    elif args.command == "candidates":
+        result = {"method": "local complete-node TF-IDF screening; editorial review required",
+                  "candidates": identity_candidates(nodes, brain.ROOT)}
     elif args.command == "export":
         errors = validate(nodes, extra)
         if errors:

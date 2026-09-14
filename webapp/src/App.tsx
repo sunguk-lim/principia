@@ -4,6 +4,7 @@ import { NodePanel } from "./NodePanel";
 import { CopilotPanel, type CopilotStatus } from "./CopilotPanel";
 import { loadStatuses, saveStatus } from "./status-store";
 import { emptyStatus, statusLabel, type GraphData, type GraphNode, type StatusMap, type StoreMode, type StudyStatus } from "./types";
+import { canonicalNodeId } from "./graph-utils";
 
 const ROOT_COLORS: Record<string,string> = { ml:"#8b9cff", math:"#f4c95d", os:"#55d6be", gpu:"#ff8a65", databases:"#d48cff", algorithms:"#65a8ff", networking:"#ff6b91", observability:"#7ee787", languages:"#c9a0ff", "parallel-computing":"#55c2ff" };
 
@@ -33,31 +34,33 @@ export default function App() {
     ]).then(([graph, study]) => { setData(graph); setStatuses(study.statuses); setMode(study.mode); }).catch(error => console.error(error));
   }, []);
 
-  const byId = useMemo(() => new Map((data?.nodes || []).map(node => [node.id, node])), [data]);
-  const roots = useMemo(() => [...new Set((data?.nodes || []).map(node => node.root))].sort(), [data]);
+  const allById = useMemo(() => new Map((data?.nodes || []).map(node => [node.id, node])), [data]);
+  const canonicalNodes = useMemo(() => (data?.nodes || []).filter(node => node.isCanonical !== false), [data]);
+  const byId = useMemo(() => new Map(canonicalNodes.map(node => [node.id, node])), [canonicalNodes]);
+  const roots = useMemo(() => [...new Set(canonicalNodes.map(node => node.root))].sort(), [canonicalNodes]);
   const visibleNodes = useMemo(() => {
     if (!data) return [];
     const needle = query.trim().toLowerCase();
-    return data.nodes.filter(node => {
+    return canonicalNodes.filter(node => {
       const study = statuses[node.id]?.status || "not_started";
       return (root === "all" || node.root === root) && (statusFilter === "all" || study === statusFilter) && (!needle || `${node.title} ${node.id} ${(node.aliases || []).join(" ")} ${node.summary} ${node.tags.join(" ")}`.toLowerCase().includes(needle));
     });
-  }, [data, query, root, statusFilter, statuses]);
+  }, [canonicalNodes, query, root, statusFilter, statuses]);
   const visibleIds = useMemo(() => new Set(visibleNodes.map(node => node.id)), [visibleNodes]);
   const selected = selectedId ? byId.get(selectedId) || null : null;
   const done = Object.values(statuses).filter(value => value.status === "done").length;
   const active = Object.values(statuses).filter(value => value.status === "in_progress").length;
 
-  const selectNode = (id: string) => { setSelectedId(id); setMenuOpen(false); };
+  const selectNode = (id: string) => { setSelectedId(canonicalNodeId(id, allById)); setMenuOpen(false); };
 
   useEffect(() => {
     const readHash = () => {
       const match = window.location.hash.match(/^#node=(.+)$/);
-      if (match && byId.has(match[1])) setSelectedId(match[1]);
+      if (match && allById.has(match[1])) selectNode(match[1]);
     };
     readHash(); window.addEventListener("hashchange", readHash);
     return () => window.removeEventListener("hashchange", readHash);
-  }, [byId]);
+  }, [allById]);
   const save = async (id: string, value: StudyStatus) => {
     const saved = await saveStatus(id, value, statuses);
     setStatuses(current => ({ ...current, [id]: saved }));
@@ -65,7 +68,7 @@ export default function App() {
 
   if (!data) return <div className="loading"><div className="orb" /><strong>Assembling the knowledge graph…</strong></div>;
   return <div className="shell">
-    <header className="topbar"><button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)}>Explore</button><div className="wordmark"><span className="mark">P</span><div><strong>Principia</strong><small>Knowledge that compounds</small></div></div><div className="top-stats"><span><b>{data.nodes.length}</b> concepts</span><span><b>{data.edges.length}</b> connections</span><span className="progress"><i style={{ width: `${Math.round(done / data.nodes.length * 100)}%` }} /><b>{done}</b> studied</span></div>{copilotStatus?.available && <button className="codex-launch" onClick={() => setCopilotOpen(true)}><i/>Copilot</button>}</header>
+    <header className="topbar"><button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)}>Explore</button><div className="wordmark"><span className="mark">P</span><div><strong>Principia</strong><small>Knowledge that compounds</small></div></div><div className="top-stats"><span><b>{canonicalNodes.length}</b> concepts</span><span><b>{data.edges.length}</b> connections</span><span className="progress"><i style={{ width: `${Math.round(done / canonicalNodes.length * 100)}%` }} /><b>{done}</b> studied</span></div>{copilotStatus?.available && <button className="codex-launch" onClick={() => setCopilotOpen(true)}><i/>Copilot</button>}</header>
     <aside className={`explorer ${menuOpen ? "open" : ""}`}><div className="explorer-head"><span className="eyebrow">Explore</span><button className="close-mobile" onClick={() => setMenuOpen(false)}>×</button><h1>Choose what to learn next.</h1><p>Follow prerequisites from foundations to the concepts that depend on them.</p></div>
       <input className="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Search concepts, fields, ideas…" />
       <div className="filter-row"><select value={root} onChange={e => setRoot(e.target.value)}><option value="all">All fields</option>{roots.map(value => <option key={value}>{value}</option>)}</select><select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}><option value="all">All progress</option><option value="not_started">Not started</option><option value="in_progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option><option value="custom">Custom</option></select></div>

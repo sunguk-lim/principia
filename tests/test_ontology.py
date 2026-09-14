@@ -1,6 +1,9 @@
 import unittest
 
-from principia_app.ontology import admission, allowed_links, identities, relations, validate
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+from principia_app.ontology import admission, allowed_links, identities, identity_candidates, relations, validate
 
 
 class OntologyTests(unittest.TestCase):
@@ -48,6 +51,17 @@ class OntologyTests(unittest.TestCase):
     def test_canonical_identity_cannot_chain(self):
         extra = {"concepts": {"a": {"canonicalId": "b"}, "b": {"canonicalId": "c"}}}
         self.assertTrue(any("must not point" in e for e in validate(self.nodes, extra)))
+
+    def test_content_candidates_read_complete_node_bodies(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "nodes").mkdir()
+            (root / "nodes" / "a.md").write_text("Shared unique mechanism evidence", encoding="utf-8")
+            (root / "nodes" / "b.md").write_text("Shared unique mechanism evidence", encoding="utf-8")
+            (root / "nodes" / "c.md").write_text("Different unrelated topic", encoding="utf-8")
+            pairs = identity_candidates(self.nodes, root, threshold=0.1)
+        self.assertEqual(pairs[0]["first"], "a")
+        self.assertEqual(pairs[0]["second"], "b")
 
 
 if __name__ == "__main__":

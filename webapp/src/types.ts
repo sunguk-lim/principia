@@ -22,6 +22,8 @@ export interface GraphNode {
   prereqs: string[];
   body: string;
   hasFigure: boolean;
+  canonicalId?: string;
+  isCanonical?: boolean;
   aliases?: string[];
   objective?: string;
   lesson?: string;

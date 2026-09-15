@@ -4,7 +4,7 @@ title: Write-Ahead Logging (WAL)
 summary: Write-Ahead Logging delivers transaction durability despite deferred writeback by forcing log records to stable storage before acknowledging COMMIT; recovery redoes committed effects and undoes any uncommitted effects that reached data pages.
 type: concept
 tags: [databases/storage]
-prereqs: [transaction, page-cache, writeback]
+prereqs: [transaction, page-cache, writeback, block-layer]
 sources:
   - "https://www.postgresql.org/docs/current/wal-intro.html — PostgreSQL: Write-Ahead Logging (WAL)"
   - "C. Mohan et al., 'ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging' (ACM TODS, 1992)"

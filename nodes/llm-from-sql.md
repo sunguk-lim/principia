@@ -1,7 +1,7 @@
 ---
 id: llm-from-sql
 title: Calling LLMs from SQL
-summary: "Calling LLMs from SQL exposes model inference as ordinary [[sql]] functions — a generative call like ai.openai_chat_complete(model, prompt) and an [[embedding]] call like ai.openai_embed(model, text) — so a language model runs per row inside a query: the same SELECT/UPDATE that reads a table can classify, summarize, or embed its rows, and because retrieval is also just [[sql]], the whole retrieve-then-generate loop of [[retrieval-augmented-generation]] can be assembled in one statement instead of an external application pipeline."
+summary: "Calling LLMs from SQL exposes model inference as ordinary [[sql]] functions — a generative call like ai.openai_chat_complete(model, prompt) and an [[embedding]] call like ai.openai_embed(model, text) — so a language model runs per row inside a query: the same SELECT/UPDATE that reads a table can classify, summarize, or embed its rows, and because retrieval is also just [[sql]], the whole retrieve-then-generate loop of retrieval-augmented generation can be assembled in one statement instead of an external application pipeline."
 type: concept
 tags: [databases/vector]
 prereqs: [sql, embedding]
@@ -26,7 +26,7 @@ a large language model and returns its text answer — and `ai.openai_embed(mode
 functions, they compose with everything [[sql]] already does: a single `SELECT` or
 `UPDATE` can run a model **once per row**, so the same statement that reads a table can
 classify, summarize, translate, or embed its rows. And since the *retrieval* half of
-[[retrieval-augmented-generation]] is itself a [[sql]] query, the entire
+retrieval-augmented generation is itself a [[sql]] query, the entire
 retrieve-then-generate loop can be written in one statement — the model call moves *into*
 the query rather than sitting in an external pipeline that shuttles rows out to a service
 and back.
@@ -35,7 +35,7 @@ and back.
 
 ### What "a model as a SQL function" means
 
-A language model, in the sense [[retrieval-augmented-generation]] uses, is a function
+A language model, in the sense retrieval-augmented generation uses, is a function
 from a text prompt to generated text: you hand it a prompt and it produces a reply,
 grounded in whatever context the prompt contains. Normally that function is reached over
 the network by application code. **Calling LLMs from SQL** relocates the *call site*: the
@@ -44,7 +44,7 @@ Ollama running locally, Cohere, …) and return the result as a [[sql]] value. T
 matter, corresponding to the two model outputs the retrieval stack needs:
 
 - **Generation** — `ai.openai_chat_complete(model, prompt)` returns the model's text
-  completion. This is the generative language model of [[retrieval-augmented-generation]],
+  completion. This is the generative language model of retrieval-augmented generation,
   now callable in a query.
 - **Embedding** — `ai.openai_embed(model, text)` returns an [[embedding]]: the dense
   meaning-vector of the input text. This is the *same* operation that must turn documents
@@ -68,11 +68,11 @@ boundary twice. Making the model a [[sql]] function collapses it:
 - **Composability with [[sql]].** A model call is an expression, so it slots into
   `WHERE`, `SELECT`, `UPDATE`, joins, and aggregates. You can classify only the rows a
   filter selects, or write generated text straight into a column.
-- **RAG in one place.** [[retrieval-augmented-generation]] is *retrieve the top-`k`
+- **RAG in one place.** Retrieval-augmented generation is *retrieve the top-`k`
   relevant chunks, then generate an answer conditioned on them.* When retrieval is a
   [[sql]] similarity query and generation is a [[sql]] function, both halves live in the
   database: one statement can select the nearest chunks, concatenate them into a prompt,
-  and pass that prompt to the generative call — the whole loop [[retrieval-augmented-generation]]
+  and pass that prompt to the generative call — the whole retrieval-augmented generation loop
   describes, without an external orchestrator.
 
 The costs are real and worth stating: each call is a **network request to a model
@@ -115,7 +115,7 @@ Here the model call returns an [[embedding]] and the `UPDATE` stores it in a `ve
 column, so the very rows a similarity search will later rank are populated by a [[sql]]
 statement. Put the two together — an inner query that retrieves the nearest chunks by
 [[embedding]] similarity, an outer generative call fed those chunks as its prompt — and
-[[retrieval-augmented-generation]] is expressed as a single [[sql]] query. That collapse
+retrieval-augmented generation is expressed as a single [[sql]] query. That collapse
 of the retrieve-then-generate pipeline into the query itself is what "calling LLMs from
 SQL" contributes.
 
@@ -124,7 +124,7 @@ SQL" contributes.
 - [[sql]] — the interface and the composition medium: model inference is exposed as
   [[sql]] functions that evaluate per row, so they slot into `SELECT`/`UPDATE`/`WHERE`
   and the engine applies the model across a table without hand-written iteration.
-- [[retrieval-augmented-generation]] — supplies the generative language model (prompt →
+- Retrieval-augmented generation supplies the generative language model (prompt →
   text) that the chat-completion call invokes, and the flagship reason to want model
   calls in [[sql]]: its retrieve-then-generate loop becomes a single in-database query
   when both halves are [[sql]].

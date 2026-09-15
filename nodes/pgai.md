@@ -4,7 +4,7 @@ title: pgai
 summary: "pgai is a suite of PostgreSQL extensions that turns the database itself into an AI-application platform — defined not by one feature but by how it composes three: [[pgvector]] stores and similarity-searches embeddings in a column, the [[pgai-vectorizer]] keeps those embeddings automatically in sync with the source table, and [[llm-from-sql]] calls generative and embedding models as SQL functions; assembled, they let the full retrieve-then-generate loop of [[retrieval-augmented-generation]] run inside one database — no separate vector store, no external embedding pipeline, no application-side model orchestration."
 type: concept
 tags: [databases/vector]
-prereqs: [pgvector, pgai-vectorizer, llm-from-sql]
+prereqs: [pgvector, pgai-vectorizer, llm-from-sql, retrieval-augmented-generation]
 sources:
   - "https://github.com/timescale/pgai — pgai: tools to build RAG, semantic search, and other AI applications with PostgreSQL"
   - "https://github.com/timescale/pgai/blob/main/docs/vectorizer/overview.md — pgai Vectorizer overview"

@@ -25,7 +25,8 @@
       "prerequisiteReasons": {
         "pgvector": "Explains the in-database vector storage and similarity search that pgai composes.",
         "pgai-vectorizer": "Explains the managed pipeline that keeps source rows and embeddings synchronized.",
-        "llm-from-sql": "Explains the SQL-callable model operations that complete pgai's in-database workflow."
+        "llm-from-sql": "Explains the SQL-callable model operations that complete pgai's in-database workflow.",
+        "retrieval-augmented-generation": "Defines the retrieve-then-generate application architecture that pgai assembles inside PostgreSQL."
       },
       "relations": []
     },
@@ -76,7 +77,8 @@
       "prerequisiteReasons": {
         "transaction": "Defines the atomicity and durability promises that WAL implements across a crash.",
         "page-cache": "Explains why changed data can remain only in volatile memory at commit time.",
-        "writeback": "Explains deferred page flushing and the force-to-stable-storage operation used for the log at commit."
+        "writeback": "Explains deferred page flushing and the force-to-stable-storage operation used for the log at commit.",
+        "block-layer": "Defines why forcing one sequential log append is cheaper than forcing scattered dirty data pages at commit."
       },
       "relations": []
     },
@@ -96,7 +98,9 @@
     },
     "b-tree": {
       "prerequisiteReasons": {
-        "binary-search-tree": "Establishes the ordered branching search mechanism that a B-tree generalizes to high fan-out."
+        "binary-search-tree": "Establishes the ordered branching search mechanism that a B-tree generalizes to high fan-out.",
+        "block-layer": "Defines the per-request storage cost that makes high fan-out and sequential range scans necessary.",
+        "page": "Defines the fixed-size unit a B-tree node is sized to occupy, so one node visit is one storage read."
       },
       "relations": []
     },

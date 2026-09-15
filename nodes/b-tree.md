@@ -4,7 +4,7 @@ title: B-Tree / B+-Tree
 summary: A balanced search tree generalized from binary to high fan-out — each node holds dozens-to-hundreds of keys and is sized to one disk block, so the tree is only 3-4 levels deep and a lookup costs 3-4 disk reads instead of the ~20+ a binary search tree would; the B+-tree variant keeps all data in leaves linked in a chain so range scans walk the chain without re-descending.
 type: concept
 tags: [databases/storage]
-prereqs: [binary-search-tree]
+prereqs: [binary-search-tree, block-layer, page]
 sources: ["Comer 1979, \"The Ubiquitous B-Tree\", ACM Computing Surveys 11(2); PostgreSQL docs — Index Types / B-tree (https://www.postgresql.org/docs/current/indexes-types.html)"]
 status: explained
 created: 2026-06-30

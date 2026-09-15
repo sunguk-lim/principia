@@ -306,3 +306,9 @@ restart the completed Letters historical backfill or alter its ledger.
 - Restored those source links and represented the six contextual relationships as closed-vocabulary `USES` or `APPLIES_TO` edges. The projection and TypeScript schema carry both types, while roadmap traversal continues to follow only `REQUIRES`; regression coverage now asserts that `USES` never becomes a required path step.
 - Measured against the current checkpoint: required source links fell 979 → 975 and learner `REQUIRES` edges 976 → 972; optional typed context rose 2 → 8. Required ancestor closures fell pgai 63 → 54, WAL 30 → 25, and B-tree 22 → 3. The canonical learner set remains 434 entities; no identity resolution changed.
 - Validation passed: 30 Python tests, ontology audit (zero errors, zero unreviewed prerequisite rationales), 10 frontend tests, typecheck, production data/UI build, and whitespace check. This corrects a bounded regression; it is not a new claim of whole-catalog prerequisite adjudication.
+
+## Stage 20 — reasoned semantic-review gate (2026-09-16)
+
+- Strengthened the complete semantic-review manifest: every hash-pinned decision must now carry a non-empty editorial reason. A blank or omitted reason makes the semantic audit fail before a Neo4j projection can sync.
+- This preserves the existing 1,281 reviewed candidates and 434 canonical learning entities; no source article, identity alias, typed relationship, learner edge, or roadmap closure changed. Current graph audit remains 975 source prerequisite links, 972 required learner edges, and zero unreviewed prerequisite rationales.
+- Added a regression test for reasonless decisions and reconciled the authoring contract with the enforced projection gate. This is an audit-integrity stage, not a claim of new editorial review.

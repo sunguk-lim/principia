@@ -253,8 +253,9 @@ def semantic_audit(nodes: dict, extra: dict) -> dict:
     decisions = _resolution_manifest(brain.ROOT)
     seen = set()
     for item in decisions:
-        key, decision = item.get("candidateKey"), item.get("decision")
-        if key in seen or key not in by_key or decision not in RESOLUTION_DECISIONS:
+        key, decision, reason = item.get("candidateKey"), item.get("decision"), item.get("reason")
+        if (key in seen or key not in by_key or decision not in RESOLUTION_DECISIONS
+                or not isinstance(reason, str) or not reason.strip()):
             raise ValueError(f"Invalid semantic resolution decision: {key}")
         seen.add(key)
         candidate = by_key[key]

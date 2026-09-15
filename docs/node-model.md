@@ -144,8 +144,8 @@ Use the semantic audit to create an authored review queue:
 uv run python -m principia_app.neo4j semantic-audit
 ```
 
-The audit reports authored semantic candidates and their source context. It does not create nodes,
-relationships, or a publication gate. There is no fixed word limit: an explanation should be as
+The audit reports authored semantic candidates and their source context. It does not create nodes
+or relationships; however, projection sync requires a complete, reasoned decision record. There is no fixed word limit: an explanation should be as
 concise as its objective permits, while preserving necessary equations, examples, and distinctions.
 The entity signature uses canonical name, kind, and domain; the current prose hash is retained
 separately for content traceability. Editing an explanation therefore updates the same resolved
@@ -153,8 +153,8 @@ entity rather than creating a new concept from a Markdown filename.
 
 ### Semantic-review decision record
 
-The audit is a *queue*, not a migration. For every candidate accepted for review, record one
-explicit decision before changing the graph:
+The audit is a *queue*, not a migration. For every candidate, record one explicit, non-empty
+editorial reason with its decision before changing the graph or syncing the projection:
 
 | Decision | Meaning | Graph effect |
 | --- | --- | --- |

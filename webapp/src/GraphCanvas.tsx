@@ -62,11 +62,12 @@ export function GraphCanvas({ data, statuses, selectedId, visibleIds, focusDepth
   useEffect(() => {
     if (!host.current) return;
     const nodes = data.nodes.filter(node => node.isCanonical !== false);
+    const largeGraph = nodes.length > 1000;
     const ids = new Set(nodes.map(node => node.id));
     const cy = cytoscape({
       container: host.current,
       elements: [
-        ...nodes.map(node => ({ data: { id: node.id, label: node.title, root: node.root, rootColor: rootColor(node.root), type: node.type, level: node.level } })),
+        ...nodes.map(node => ({ data: { id: node.id, statusId: node.statusId || node.id, label: node.title, root: node.root, rootColor: rootColor(node.root), type: node.type, level: node.level } })),
         ...data.edges.filter(edge => ids.has(edge.s) && ids.has(edge.t)).map((edge, index) => ({ data: { id: `e${index}`, source: edge.s, target: edge.t } })),
       ],
       minZoom: .08, maxZoom: 3.2, wheelSensitivity: .18,
@@ -84,7 +85,13 @@ export function GraphCanvas({ data, statuses, selectedId, visibleIds, focusDepth
         { selector: "edge.prerequisite-edge", style: { opacity: 1, width: 3, "line-color": "#f5b942", "target-arrow-color": "#f5b942", "arrow-scale": .95, "z-index": 15 } },
         { selector: "edge.dependent-edge", style: { opacity: 1, width: 3, "line-color": "#55c2ff", "target-arrow-color": "#55c2ff", "arrow-scale": .95, "z-index": 15 } },
       ],
-      layout: { name: "cose", animate: false, randomize: true, nodeRepulsion: () => 5600, idealEdgeLength: () => 48, edgeElasticity: () => 80, nestingFactor: 1.2, gravity: .3, numIter: 1000, initialTemp: 180, coolingFactor: .96, minTemp: 1 },
+      // A force-directed layout blocks the main thread on a 2,000+ node
+      // projection, leaving a phone with an empty canvas.  Use an immediate
+      // overview grid at that scale; selection still fits the actual local
+      // prerequisite/dependent neighbourhood.
+      layout: largeGraph
+        ? { name: "grid", fit: true, padding: 24, avoidOverlap: true, condense: true }
+        : { name: "cose", animate: false, randomize: true, nodeRepulsion: () => 5600, idealEdgeLength: () => 48, edgeElasticity: () => 80, nestingFactor: 1.2, gravity: .3, numIter: 1000, initialTemp: 180, coolingFactor: .96, minTemp: 1 },
     });
     cy.on("tap", "node", event => selectRef.current(event.target.id()));
     cy.on("tap", event => { if (event.target === cy) clearRef.current(); });
@@ -109,8 +116,9 @@ export function GraphCanvas({ data, statuses, selectedId, visibleIds, focusDepth
     const cy = graph.current; if (!cy) return;
     cy.nodes().forEach(node => {
       node.toggleClass("filtered", !visibleIds.has(node.id()));
-      node.style("border-color", statusColor(statuses[node.id()]?.status));
-      node.style("border-width", statuses[node.id()]?.status && statuses[node.id()]?.status !== "not_started" ? 4 : 1.5);
+      const status = statuses[String(node.data("statusId"))];
+      node.style("border-color", statusColor(status?.status));
+      node.style("border-width", status?.status && status.status !== "not_started" ? 4 : 1.5);
     });
     cy.edges().forEach(edge => { edge.toggleClass("filtered", !visibleIds.has(edge.source().id()) || !visibleIds.has(edge.target().id())); });
   }, [visibleIds, statuses]);

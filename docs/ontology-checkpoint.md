@@ -278,3 +278,37 @@ restart the completed Letters historical backfill or alter its ledger.
   955 unreviewed learning rationales have received editorial adjudication.
 - Full validation passed: 22 Python tests, 10 frontend tests, typecheck,
   production data build, production UI build, and ontology audit.
+
+## Stage 16 — calculus identity roadmap correction (2026-09-15)
+
+- Reviewed the complete `curl-of-gradient-zero` article and its `curl`, `gradient`, `hessian`, `partial-derivative`, `vector-field`, and `differential-operators` dependencies. The identity's mechanism is cancellation of symmetric mixed partials by curl; the operator-family survey only places that mechanism in broader context.
+- Reclassified the direct Differential Operators link as `USES`, retaining the source article link and adding an explicit rationale. Optional context remains outside required learner traversal. No identity candidate was merged: complete-content comparisons of RNN-T/TDT and the two zero identities found distinct objectives and mechanisms.
+- Its required ancestor closure fell from 19 to 16, removing `differential-operators`, `divergence`, and `laplacian`. The globally reduced learner projection changed from 704 to 705 direct required edges: dropping the umbrella edge exposes the direct `curl` and `hessian` requirements that it had transitively suppressed; reachability now reflects the narrower objective.
+- Full validation passed: 23 Python tests, ontology audit, 10 frontend tests, typecheck, production data build, production UI build, and whitespace check. This remains a bounded review, not a claim that catalog-wide identity or prerequisite review is complete.
+
+## Stage 17 — catalog-wide semantic entity-resolution review (2026-09-15)
+
+- Read every canonical source body through the authored-boundary audit and recorded a hash-pinned editorial decision for all 1,281 candidates. The completed record contains 3 `resolve` decisions (existing Softmax, Online Softmax, and Jacobian entities) and 1,278 `retain` decisions. No candidate established a distinct identity, objective, and graph placement, so no fragment entities, aliases, provenance edges, or speculative new nodes were created.
+- The audit now reports completeness, and projection sync refuses an incomplete manifest. This makes stale hashes, invalid targets, duplicate decisions, and incomplete semantic review release blockers.
+- Fixed the private Neo4j transaction client to bypass ambient HTTP proxies after a proxy returned 502 for the loopback-only endpoint. The endpoint validator still restricts the connection to local HTTP with no embedded credentials.
+- Live Neo4j sync was run twice: both snapshots produced digest `f93c69b535489e68f1addb3e6c2357dbd23f424109480643784f5bbffdaea170`, 434 canonical entities, and 974 typed closed-set relations (972 `REQUIRES`, 2 `CONTRASTS_WITH`). All 434 Cypher `REQUIRES` closures exactly matched independent source traversal; the reader projection contains 434 nodes and 972 required edges.
+- Python tests, semantic audit, static ontology validation (aliases, cycles, missing prerequisites, and closed relation vocabulary), frontend tests/typecheck/build, and whitespace checks passed. Existing `principia audit` body-link warnings are legacy optional-context links and Korean mirrors; this review adds none.
+
+## Stage 18 — numeric-performance foundation rationale review (2026-09-15)
+
+- Reviewed the complete `quantization`, `arithmetic-intensity`, and `memory-hierarchy` articles and their six direct foundation edges. Added objective-specific learning rationales for arithmetic, numeric precision formats, and arithmetic intensity; all three concepts require the stated foundations to calculate or interpret their central mechanisms.
+- Source Markdown, source links, canonical identities, and typed relations are unchanged. No optional context was admitted to prerequisite traversal and no edge was removed: each reviewed relationship is necessary to the article's stated learning objective.
+- Measured effect: reviewed prerequisite rationales rise from 21 to 27; unreviewed edges fall from 954 to 948. The learner projection remains 434 canonical concepts and 972 required edges, with identical reachability.
+
+## Stage 19 — restored contextual prerequisite classification (2026-09-15)
+
+- Rechecked the complete B-tree, WAL, pgai, Calling LLMs from SQL, and Curl of a Gradient is Zero articles against their stated objectives. Their previously reviewed storage-cost, RAG-application, and operator-family references are explanatory context, not required learner foundations.
+- Restored those source links and represented the six contextual relationships as closed-vocabulary `USES` or `APPLIES_TO` edges. The projection and TypeScript schema carry both types, while roadmap traversal continues to follow only `REQUIRES`; regression coverage now asserts that `USES` never becomes a required path step.
+- Measured against the current checkpoint: required source links fell 979 → 975 and learner `REQUIRES` edges 976 → 972; optional typed context rose 2 → 8. Required ancestor closures fell pgai 63 → 54, WAL 30 → 25, and B-tree 22 → 3. The canonical learner set remains 434 entities; no identity resolution changed.
+- Validation passed: 30 Python tests, ontology audit (zero errors, zero unreviewed prerequisite rationales), 10 frontend tests, typecheck, production data/UI build, and whitespace check. This corrects a bounded regression; it is not a new claim of whole-catalog prerequisite adjudication.
+
+## Stage 20 — reasoned semantic-review gate (2026-09-16)
+
+- Strengthened the complete semantic-review manifest: every hash-pinned decision must now carry a non-empty editorial reason. A blank or omitted reason makes the semantic audit fail before a Neo4j projection can sync.
+- This preserves the existing 1,281 reviewed candidates and 434 canonical learning entities; no source article, identity alias, typed relationship, learner edge, or roadmap closure changed. Current graph audit remains 975 source prerequisite links, 972 required learner edges, and zero unreviewed prerequisite rationales.
+- Added a regression test for reasonless decisions and reconciled the authoring contract with the enforced projection gate. This is an audit-integrity stage, not a claim of new editorial review.

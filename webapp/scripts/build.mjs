@@ -31,5 +31,5 @@ writeFileSync(resolve(out, "manifest.webmanifest"), JSON.stringify({
   name: "Principia Knowledge Graph", short_name: "Principia", start_url: "./", display: "standalone",
   background_color: "#080b12", theme_color: "#080b12", description: "A graph-native learning workspace"
 }, null, 2));
-const cacheVersion = createHash("sha256").update(readFileSync(resolve(out, "assets/app.js"))).update(readFileSync(resolve(out, "data/graph.json"))).digest("hex").slice(0, 12);
-writeFileSync(resolve(out, "sw.js"), `const CACHE='principia-${cacheVersion}';self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./','./index.html','./assets/app.js','./assets/app.css','./data/graph.json']))));self.addEventListener('fetch',e=>{if(e.request.method==='GET')e.respondWith(fetch(e.request).then(r=>{const x=r.clone();caches.open(CACHE).then(c=>c.put(e.request,x));return r}).catch(()=>caches.match(e.request)))})`);
+const cacheVersion = createHash("sha256").update(readFileSync(resolve(out, "assets/app.js"))).digest("hex").slice(0, 12);
+writeFileSync(resolve(out, "sw.js"), `const CACHE='principia-${cacheVersion}';self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./','./index.html','./assets/app.js','./assets/app.css']))));self.addEventListener('fetch',e=>{if(e.request.method==='GET'&&!new URL(e.request.url).pathname.startsWith('/api/'))e.respondWith(fetch(e.request).then(r=>{const x=r.clone();caches.open(CACHE).then(c=>c.put(e.request,x));return r}).catch(()=>caches.match(e.request)))})`);

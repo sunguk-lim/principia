@@ -106,13 +106,12 @@ source record; its title and aliases resolve to the canonical concept in the ont
 `canonicalId` must point directly to a canonical node (never another alias). Do not use the legacy
 `merge` command for this workflow because it deletes the preserved source record.
 
+The closed ontology edge vocabulary is `REQUIRES`, `ALTERNATIVE_TO`, and `CONTRASTS_WITH`.
 Only `prereqs` produce `REQUIRES` edges and required roadmap steps. Record a concise reason
-for each reviewed prerequisite: what part of the learning objective needs it? Optional types are
-`ALTERNATIVE_TO`, `CONTRASTS_WITH`, `APPLIES_TO`, and `USES`. `USES` records a mechanism or
-cost model that enriches an explanation without being required background for its learning
-objective. Each record has `type`, `target`, and an explanatory `reason`. They never expand the
-required roadmap. Current storage is directed;
-reverse relationships are not inserted automatically. No generic `SIMILAR_TO` type is supported.
+for each reviewed prerequisite: what part of the learning objective needs it? The optional types
+never expand the required roadmap. Each record has `type`, `target`, and an explanatory `reason`.
+Current storage is directed; reverse relationships are not inserted automatically. No generic
+`SIMILAR_TO` type is supported.
 
 ## Short learning steps
 
@@ -125,6 +124,49 @@ independent learning objectives, not synonyms or arbitrary paragraph chunks.
 
 At present, lesson-file presence sets `lessonReviewed`; create these files only after editorial
 review. This is a convention, not an independent review-signoff mechanism.
+
+## Semantic extraction and Neo4j projection
+
+Neo4j stores **resolved semantic entities**, not files, headings, paragraphs, or reading pages.
+One independently learnable concept has one entity signature. Its source IDs, aliases, source hash,
+and content hash are properties used for traceability; none of them is an ontology edge.
+
+The baseline projection resolves every canonical source concept to one entity. A semantic split is
+an editorial operation, not an indexing side effect: extract candidate concepts from a source,
+resolve each candidate against existing entities, and create a new entity only when it is genuinely
+distinct. Every accepted entity needs its own name, learning objective, explanation, and reviewed
+placement using the existing closed vocabulary. Similar text, a Markdown heading, and text length
+are review signals—not identity evidence.
+
+Use the semantic audit to create an authored review queue:
+
+```bash
+uv run python -m principia_app.neo4j semantic-audit
+```
+
+The audit reports authored semantic candidates and their source context. It does not create nodes
+or relationships; however, projection sync requires a complete, reasoned decision record. There is no fixed word limit: an explanation should be as
+concise as its objective permits, while preserving necessary equations, examples, and distinctions.
+The entity signature uses canonical name, kind, and domain; the current prose hash is retained
+separately for content traceability. Editing an explanation therefore updates the same resolved
+entity rather than creating a new concept from a Markdown filename.
+
+### Semantic-review decision record
+
+The audit is a *queue*, not a migration. For every candidate, record one explicit, non-empty
+editorial reason with its decision before changing the graph or syncing the projection:
+
+| Decision | Meaning | Graph effect |
+| --- | --- | --- |
+| `resolve` | The candidate explains an existing entity. | No new entity or edge. |
+| `retain` | The candidate is supporting explanation, example, or derivation inside its source entity. | No new entity or edge. |
+| `new` | The candidate is a separately learnable concept with its own objective. | Author one new node, resolve its signature, and add only reviewed closed-vocabulary relations. |
+| `reject` | The candidate is a heading, repetition, or non-learning material. | No graph effect. |
+
+`new` requires a unique canonical name, objective, independently readable explanation, source
+anchors/content hash, identity-collision check, and a reviewed `REQUIRES` placement. It must not
+be used merely because a section is long. A source article may resolve entirely to its existing
+entity; semantic extraction does not imply a numerical expansion of the graph.
 
 ## Legacy command limitations
 

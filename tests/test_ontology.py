@@ -45,11 +45,13 @@ class OntologyTests(unittest.TestCase):
         self.assertEqual(contrast, [{"s": "a", "t": "c", "type": "CONTRASTS_WITH",
                                      "reason": "Same problem, different mechanism.", "reviewed": True}])
 
-    def test_unsupported_relation_is_rejected(self):
+    def test_uses_relation_is_optional_context(self):
         extra = {"concepts": {"a": {"relations": [
             {"type": "USES", "target": "c", "reason": "Uses the target's cost model."}
         ]}}}
-        self.assertTrue(any("invalid" in error for error in validate(self.nodes, extra)))
+        self.assertEqual(validate(self.nodes, extra), [])
+        required = [r for r in relations(self.nodes, extra) if r["type"] == "REQUIRES"]
+        self.assertEqual(required, [{"s": "b", "t": "a", "type": "REQUIRES", "reason": "", "reviewed": False}])
 
     def test_direct_requirements_are_preserved_for_goal_retrieval(self):
         self.nodes["c"]["prereqs"] = "[a, b]"
@@ -117,7 +119,7 @@ class OntologyTests(unittest.TestCase):
             evidence = prerequisite_evidence({"a": self.nodes["a"], "b": self.nodes["b"]}, root)
         self.assertEqual(evidence, [{"concept": "b", "prerequisite": "a", "bodyLink": True, "reviewedReason": False}])
 
-    def test_legacy_uses_relation_is_not_accepted(self):
+    def test_uses_relation_does_not_enter_required_traversal(self):
         nodes = {
             "curl": {"title": "Curl", "prereqs": "[]"},
             "gradient": {"title": "Gradient", "prereqs": "[]"},
@@ -127,7 +129,9 @@ class OntologyTests(unittest.TestCase):
         extra = {"concepts": {"identity": {"relations": [{
             "type": "USES", "target": "overview", "reason": "Contextual family overview."
         }]}}}
-        self.assertTrue(any("invalid" in error for error in validate(nodes, extra)))
+        self.assertEqual(validate(nodes, extra), [])
+        required = {(edge["s"], edge["t"]) for edge in relations(nodes, extra) if edge["type"] == "REQUIRES"}
+        self.assertEqual(required, {("identity", "curl"), ("identity", "gradient"), ("overview", "curl")})
 
     def test_semantic_sections_use_authored_boundaries_not_word_count(self):
         long_mechanism = " ".join(["mechanism"] * 500)

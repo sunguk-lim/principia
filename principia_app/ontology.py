@@ -19,7 +19,7 @@ import brain
 # The authored ontology uses a deliberately closed vocabulary.  Synonyms live
 # in ``aliases`` on the canonical concept rather than as an edge.  Only
 # ``REQUIRES`` participates in a retrieved learning path.
-RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH"}
+RELATIONS = {"ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO", "USES"}
 
 
 def normalize(label: str) -> str:

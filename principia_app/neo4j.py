@@ -20,7 +20,7 @@ import brain
 from principia_app.ontology import canonical_id, catalog, relations, validate
 
 _lock = threading.Lock()
-EDGE_KINDS = ("REQUIRES", "ALTERNATIVE_TO", "CONTRASTS_WITH")
+EDGE_KINDS = ("REQUIRES", "ALTERNATIVE_TO", "CONTRASTS_WITH", "APPLIES_TO", "USES")
 RESOLUTION_DECISIONS = {"resolve", "retain", "new", "reject"}
 
 
@@ -313,7 +313,7 @@ def ensure_current(root: Path) -> dict:
 def reader_graph() -> dict:
     entities = query("MATCH (p:PrincipiaProjection {id:'current'}), (e:PrincipiaEntity {snapshot:p.digest}) RETURN e.entityId,e.canonicalName,e.summary,e.type,e.domain,e.aliases,e.canonicalSourceId ORDER BY e.canonicalName")
     required = query("MATCH (p:PrincipiaProjection {id:'current'}), (s:PrincipiaEntity {snapshot:p.digest})-[:REQUIRES {snapshot:p.digest}]->(t:PrincipiaEntity {snapshot:p.digest}) RETURN s.entityId,t.entityId")
-    optional = query("MATCH (p:PrincipiaProjection {id:'current'}), (s:PrincipiaEntity {snapshot:p.digest})-[r:ALTERNATIVE_TO|CONTRASTS_WITH {snapshot:p.digest}]->(t:PrincipiaEntity {snapshot:p.digest}) RETURN s.entityId,t.entityId,type(r),r.reason")
+    optional = query("MATCH (p:PrincipiaProjection {id:'current'}), (s:PrincipiaEntity {snapshot:p.digest})-[r:ALTERNATIVE_TO|CONTRASTS_WITH|APPLIES_TO|USES {snapshot:p.digest}]->(t:PrincipiaEntity {snapshot:p.digest}) RETURN s.entityId,t.entityId,type(r),r.reason")
     prerequisites = {row[0]: [] for row in entities}; contextual = {row[0]: [] for row in entities}
     for source, target in required: prerequisites[source].append(target)
     for source, target, kind, reason in optional: contextual[source].append({"t": target, "type": kind, "reason": reason or ""})

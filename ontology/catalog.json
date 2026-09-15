@@ -25,17 +25,20 @@
       "prerequisiteReasons": {
         "pgvector": "Explains the in-database vector storage and similarity search that pgai composes.",
         "pgai-vectorizer": "Explains the managed pipeline that keeps source rows and embeddings synchronized.",
-        "llm-from-sql": "Explains the SQL-callable model operations that complete pgai's in-database workflow.",
-        "retrieval-augmented-generation": "Defines the retrieve-then-generate application architecture that pgai assembles inside PostgreSQL."
+        "llm-from-sql": "Explains the SQL-callable model operations that complete pgai's in-database workflow."
       },
-      "relations": []
+      "relations": [
+        {"type": "APPLIES_TO", "target": "retrieval-augmented-generation", "reason": "RAG is a major application assembled from pgai's capabilities, not required background for understanding the suite's composition."}
+      ]
     },
     "llm-from-sql": {
       "prerequisiteReasons": {
         "sql": "Explains the query expressions and functions through which the model calls are composed.",
         "embedding": "Explains the vector output returned by SQL-callable embedding functions."
       },
-      "relations": []
+      "relations": [
+        {"type": "APPLIES_TO", "target": "retrieval-augmented-generation", "reason": "RAG is one workflow assembled from SQL model calls and retrieval, not required theory for understanding model functions in SQL."}
+      ]
     },
     "prefix-caching": {
       "aliases": [
@@ -71,16 +74,20 @@
         "hessian": "The stated objective requires Hessian (H): the complete explanation applies it in this mechanism: For any scalar function $f$, the curl of its gradient is always the zero vector: $\\nabla \\times (\\nabla f) = 0$. A field that is built as a gradient can never have any local spin — it is irrotational. The reason is that the derivative matrix of a gradient is the hessian, and the",
         "partial-derivative": "The stated objective requires Partial derivative: the complete explanation applies it in this mechanism: The concept here is a single identity that holds no matter which scalar function you start from: take any $f$ of several variables, form its gradient $\\nabla f$ (the vector of partial-derivatives, which points uphill), then take the curl of that vector-field. The result is",
         "vector-field": "The stated objective requires Vector Field: the complete explanation applies it in this mechanism: The concept here is a single identity that holds no matter which scalar function you start from: take any $f$ of several variables, form its gradient $\\nabla f$ (the vector of partial-derivatives, which points uphill), then take the curl of that vector-field. The result is"
-      }
+      },
+      "relations": [
+        {"type": "USES", "target": "differential-operators", "reason": "The operator-family overview helps place the identity among related vector-calculus rules, but understanding the cancellation only requires the specific curl, gradient, Hessian, partial-derivative, and vector-field mechanisms."}
+      ]
     },
     "write-ahead-logging": {
       "prerequisiteReasons": {
         "transaction": "Defines the atomicity and durability promises that WAL implements across a crash.",
         "page-cache": "Explains why changed data can remain only in volatile memory at commit time.",
-        "writeback": "Explains deferred page flushing and the force-to-stable-storage operation used for the log at commit.",
-        "block-layer": "Defines why forcing one sequential log append is cheaper than forcing scattered dirty data pages at commit."
+        "writeback": "Explains deferred page flushing and the force-to-stable-storage operation used for the log at commit."
       },
-      "relations": []
+      "relations": [
+        {"type": "USES", "target": "block-layer", "reason": "The sequential-log-versus-scattered-page performance explanation uses the block layer's I/O cost model, but that model is not required to understand WAL's durability and recovery mechanism."}
+      ]
     },
     "database-index": {
       "prerequisiteReasons": {
@@ -98,11 +105,12 @@
     },
     "b-tree": {
       "prerequisiteReasons": {
-        "binary-search-tree": "Establishes the ordered branching search mechanism that a B-tree generalizes to high fan-out.",
-        "block-layer": "Defines the per-request storage cost that makes high fan-out and sequential range scans necessary.",
-        "page": "Defines the fixed-size unit a B-tree node is sized to occupy, so one node visit is one storage read."
+        "binary-search-tree": "Establishes the ordered branching search mechanism that a B-tree generalizes to high fan-out."
       },
-      "relations": []
+      "relations": [
+        {"type": "USES", "target": "page", "reason": "A production B-tree sizes a node to a fixed storage page; this substrate detail enriches the fan-out explanation but is not required to understand the search-tree mechanism."},
+        {"type": "USES", "target": "block-layer", "reason": "The block layer's per-I/O cost model explains why high fan-out is valuable on storage, but a learner can understand the B-tree mechanism without first learning OS I/O internals."}
+      ]
     },
     "softmax": {
       "aliases": [

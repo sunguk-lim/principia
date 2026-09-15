@@ -33,7 +33,7 @@ export interface GraphNode {
   relations?: SemanticRelation[];
 }
 
-export interface SemanticRelation { s?: string; t: string; type: "REQUIRES" | "ALTERNATIVE_TO" | "CONTRASTS_WITH"; reason: string; reviewed?: boolean }
+export interface SemanticRelation { s?: string; t: string; type: "REQUIRES" | "ALTERNATIVE_TO" | "CONTRASTS_WITH" | "APPLIES_TO" | "USES"; reason: string; reviewed?: boolean }
 export interface GraphEdge { s: string; t: string }
 export interface GraphData { schemaVersion: number; nodes: GraphNode[]; edges: GraphEdge[]; relations?: SemanticRelation[]; identityIndex?: Record<string, string[]> }
 export type StatusMap = Record<string, StudyStatus>;

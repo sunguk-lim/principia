@@ -35,7 +35,7 @@ To see why, line up what each operator measures. The [[curl]] of a vector field
 takes mirror-pair differences of partial derivatives: each output component has the
 form $\partial F_j/\partial x_i - \partial F_i/\partial x_j$, the difference between
 how the $j$-th piece of the field changes along $x_i$ and how the $i$-th piece
-changes along $x_j$. Curl is the only differential operator carrying
+changes along $x_j$. Curl is the only one of the [[differential-operators]] carrying
 minus signs precisely because it isolates this *antisymmetric* part of the field's
 derivative matrix — the part that survives only when those two cross-rates disagree.
 

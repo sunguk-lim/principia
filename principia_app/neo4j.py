@@ -14,7 +14,7 @@ import threading
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
-from urllib.request import Request, urlopen
+from urllib.request import ProxyHandler, Request, build_opener
 
 import brain
 from principia_app.ontology import canonical_id, catalog, relations, validate
@@ -171,7 +171,9 @@ def endpoint() -> str:
 
 def transaction(statements: list[dict]) -> list:
     request = Request(endpoint(), data=json.dumps({"statements": statements}).encode(), headers={"Content-Type": "application/json"}, method="POST")
-    with urlopen(request, timeout=30) as response:
+    # The endpoint is validated as loopback above; bypass ambient HTTP proxies
+    # so a private database never routes through a gateway.
+    with build_opener(ProxyHandler({})).open(request, timeout=30) as response:
         result = json.load(response)
     if result.get("errors"):
         raise RuntimeError("Neo4j rejected transaction: " + "; ".join(item.get("code", "error") for item in result["errors"]))
@@ -271,6 +273,7 @@ def semantic_audit(nodes: dict, extra: dict) -> dict:
     return {"canonicalSources": len(set(canonical_by_source.values())),
             "semanticCandidates": len(rows),
             "resolvedCandidates": len(decisions),
+            "complete": len(decisions) == len(rows),
             "maxWords": max((row["wordCount"] for row in rows), default=0),
             "candidates": sorted(rows, key=lambda row: (row["sourceId"], row["objective"]))}
 
@@ -282,6 +285,9 @@ def status() -> dict:
 
 
 def sync(nodes: dict, extra: dict) -> dict:
+    review = semantic_audit(nodes, extra)
+    if not review["complete"]:
+        raise ValueError(f"Semantic review incomplete: {review['resolvedCandidates']}/{review['semanticCandidates']}")
     data = snapshot(nodes, extra)
     digest = data["digest"]
     query("CREATE CONSTRAINT principia_entity_id IF NOT EXISTS FOR (n:PrincipiaEntity) REQUIRE n.entityId IS UNIQUE")

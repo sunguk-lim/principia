@@ -188,6 +188,12 @@ The complete explanation.
         self.assertNotIn("entityId", section)
         self.assertTrue(section["contentHash"])
 
+    def test_sync_refuses_an_incomplete_semantic_review(self):
+        with patch("principia_app.neo4j.semantic_audit", return_value={"complete": False, "resolvedCandidates": 1, "semanticCandidates": 2}), patch("principia_app.neo4j.snapshot") as snapshot:
+            with self.assertRaisesRegex(ValueError, "Semantic review incomplete: 1/2"):
+                __import__("principia_app.neo4j", fromlist=["sync"]).sync(self.nodes, {})
+        snapshot.assert_not_called()
+
     def test_semantic_audit_rejects_stale_editorial_resolution(self):
         body = "# Example\n\n## Grounded explanation\n\n**Mechanism.** An explanation."
         nodes = {"example": {"title": "Example", "type": "concept", "tags": "[math/example]", "prereqs": "[]"}}

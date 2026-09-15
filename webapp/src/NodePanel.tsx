@@ -35,8 +35,8 @@ export function NodePanel({ node, byId, statuses, mode, onClose, onSelect, onSav
   const prerequisites = useMemo(() => node.prereqs.map(id => byId.get(id)).filter((item): item is GraphNode => Boolean(item)), [node, byId]);
   const dependents = useMemo(() => [...byId.values()].filter(item => item.prereqs.includes(node.id)).sort((a, b) => a.title.localeCompare(b.title)), [node.id, byId]);
   const persist = async (value: StudyStatus) => { setSaving(true); setSaveError(""); try { await onSave(statusId, value); } catch (error) { setSaveError(error instanceof Error ? error.message : "Could not save progress."); } finally { setSaving(false); } };
-  return <aside className="node-panel">
-    <header className="panel-head"><div><span className="eyebrow">{node.root} · entity</span><h2>{node.title}</h2></div><div className="panel-actions">{onOpenCopilot && <button className="ask-codex" onClick={onOpenCopilot}>Ask Copilot</button>}<button className="icon-button" onClick={onClose} aria-label="Close">×</button></div></header>
+  return <aside className="node-panel learning-stage" aria-label={`Learning stage: ${node.title}`}>
+    <header className="panel-head"><div><span className="eyebrow">Learning stage · {node.root}</span><h2>{node.title}</h2></div><div className="panel-actions">{onOpenCopilot && <button className="ask-codex" onClick={onOpenCopilot}>Ask Copilot</button>}<button className="back-to-map" onClick={onClose}>Back to map</button><button className="icon-button" onClick={onClose} aria-label="Close learning stage">×</button></div></header>
     <p className="summary">{node.summary}</p>
     {!!node.aliases?.length && <p className="alias-line">Also known as: {node.aliases.join(" · ")}</p>}
     <section className="study-card explanation-card">

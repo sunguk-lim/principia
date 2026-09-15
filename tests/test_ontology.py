@@ -1,3 +1,4 @@
+import json
 import unittest
 from unittest.mock import patch
 
@@ -5,7 +6,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from principia_app.ontology import admission, allowed_links, enrich, identities, identity_candidates, prerequisite_evidence, relations, validate
-from principia_app.neo4j import learning_subgraph, semantic_sections, snapshot
+from principia_app.neo4j import learning_subgraph, semantic_audit, semantic_sections, snapshot
 
 
 class OntologyTests(unittest.TestCase):
@@ -160,6 +161,24 @@ The overview.
         self.assertNotIn("[[a]]", "\n".join(section["content"] for section in sections))
         self.assertNotIn("A source", "\n".join(section["content"] for section in sections))
 
+    def test_structural_explanation_headings_do_not_duplicate_overview_candidates(self):
+        body = """# Example
+
+## Summary
+
+The short framing.
+
+## Grounded explanation
+
+The complete explanation.
+
+**Mechanism.** A distinct mechanism.
+"""
+        sections = semantic_sections("example", body)
+        self.assertEqual([section["heading"] for section in sections], ["Overview", "Mechanism"])
+        self.assertIn("short framing", sections[0]["content"])
+        self.assertIn("complete explanation", sections[0]["content"])
+
     def test_semantic_audit_candidates_carry_traceability_but_no_entity_identity(self):
         # Candidate extraction may identify a review target, but resolving its
         # identity is an explicit editorial decision.
@@ -168,6 +187,22 @@ The overview.
         self.assertTrue(section["candidateKey"].startswith("cand-"))
         self.assertNotIn("entityId", section)
         self.assertTrue(section["contentHash"])
+
+    def test_semantic_audit_rejects_stale_editorial_resolution(self):
+        body = "# Example\n\n## Grounded explanation\n\n**Mechanism.** An explanation."
+        nodes = {"example": {"title": "Example", "type": "concept", "tags": "[math/example]", "prereqs": "[]"}}
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            nodes_dir = root / "nodes"; nodes_dir.mkdir()
+            ontology_dir = root / "ontology"; ontology_dir.mkdir()
+            (nodes_dir / "example.md").write_text(body, encoding="utf-8")
+            (ontology_dir / "semantic-resolutions.json").write_text(json.dumps({
+                "schemaVersion": 1,
+                "decisions": [{"candidateKey": "cand-stale", "decision": "retain"}],
+            }), encoding="utf-8")
+            with patch("principia_app.neo4j.brain.NODES", nodes_dir), patch("principia_app.neo4j.brain.ROOT", root):
+                with self.assertRaisesRegex(ValueError, "Invalid semantic resolution decision"):
+                    semantic_audit(nodes, {})
 
     def test_snapshot_does_not_turn_authored_sections_into_entities(self):
         body = """# Example

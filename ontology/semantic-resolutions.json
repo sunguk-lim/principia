@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "decisions": [
+    {
+      "candidateKey": "cand-c49dac6e64d25dbc1a2a",
+      "sourceId": "flash-attention",
+      "contentHash": "68410eb706d04cf7a89ee200ad0dc402929e4456650f3e118cbf2b3023173fce",
+      "decision": "retain",
+      "reason": "The weighted-average formulation is necessary explanation for FlashAttention, not a separately learnable concept."
+    },
+    {
+      "candidateKey": "cand-19888b4c9cfcfdb1509e",
+      "sourceId": "flash-attention",
+      "contentHash": "101aff68a0f2923633b7ff173a7379a6ef820a8289c179cd2e6d59922121f5ce",
+      "decision": "resolve",
+      "targetId": "softmax",
+      "reason": "Max-shift invariance and numerical stabilization are already explained by Softmax."
+    },
+    {
+      "candidateKey": "cand-7ec07e30b0bf6737378c",
+      "sourceId": "flash-attention",
+      "contentHash": "1c767266d9943d4f96b3fa369a68ef1fd4603e5530ea3abbc926bf2408b6942d",
+      "decision": "resolve",
+      "targetId": "online-softmax",
+      "reason": "The carried (m, ℓ, O) recurrence is Online Softmax applied to attention tiles."
+    },
+    {
+      "candidateKey": "cand-788201426d5e6eb9c668",
+      "sourceId": "flash-attention",
+      "contentHash": "ec1e23c56311e389fe3e0e4fa12e1a5faf5fe78db3dd7025e435d85a45ec0ec8",
+      "decision": "retain",
+      "reason": "This is the parent FlashAttention explanation, not a child entity."
+    },
+    {
+      "candidateKey": "cand-3183d78e6c28cfa55a91",
+      "sourceId": "flash-attention",
+      "contentHash": "1ef392b37874fcd9cfba5d463219e213765dab209ac1cecffdaa506a65277e34",
+      "decision": "retain",
+      "reason": "The IO consequence explains why FlashAttention matters; it is not a standalone objective in this source."
+    },
+    {
+      "candidateKey": "cand-b665c3cbe673831acf8f",
+      "sourceId": "flash-attention",
+      "contentHash": "96e58f7746d512bbbb9798e1ddea3932df9dc58e3755f77fbcff9a9b2a38da8c",
+      "decision": "retain",
+      "reason": "This is a worked example for FlashAttention, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-3fa9a0af15ac89a26ad1",
+      "sourceId": "change-of-variables",
+      "contentHash": "09996e042072b1f1d4525f6109853f5e5b18d54c81bcecc308111ad10ff918d1",
+      "decision": "retain",
+      "reason": "The overview frames Change of Variables itself rather than a child concept."
+    },
+    {
+      "candidateKey": "cand-216303cdebaf38d8e1b2",
+      "sourceId": "change-of-variables",
+      "contentHash": "e0b9ba69980c612ca9061481fad58f65b8fe22defbb8f5af6e686caf956ca468",
+      "decision": "retain",
+      "reason": "The definition and formula establish the parent Change of Variables objective."
+    },
+    {
+      "candidateKey": "cand-e27a5b52e6b0f6c08877",
+      "sourceId": "change-of-variables",
+      "contentHash": "39578394a30b3fa4c8a9fa68461395b4de2c3687ad61d10655b6bf9f8060cd65",
+      "decision": "retain",
+      "reason": "Density-per-unit-length is explanatory intuition for the parent rule, not a new objective."
+    },
+    {
+      "candidateKey": "cand-a181eabc4ffcf6f869b6",
+      "sourceId": "change-of-variables",
+      "contentHash": "5f93b2468f01ea6d2618b7a7baddf707691871bd546e656b887fadf7f1db770e",
+      "decision": "retain",
+      "reason": "This is the CDF derivation of Change of Variables, not an independently learnable entity."
+    },
+    {
+      "candidateKey": "cand-9a4ad32b3a4c752873c8",
+      "sourceId": "change-of-variables",
+      "contentHash": "8c21b9bdae28b3e3cc2330a23214191fd87be9e68d24fa11696261d198e23a00",
+      "decision": "retain",
+      "reason": "The infinitesimal proof supports the same objective; it does not introduce a distinct concept."
+    },
+    {
+      "candidateKey": "cand-b7004c2985892f308b59",
+      "sourceId": "change-of-variables",
+      "contentHash": "c0253b75dd4eb89066f0ec2b512e8410f911c5b21d8435178d8198c783fa28b1",
+      "decision": "resolve",
+      "targetId": "jacobian",
+      "reason": "The local stretch factor and its conservation role are the existing Jacobian concept."
+    },
+    {
+      "candidateKey": "cand-38d01c986707b0be8cd6",
+      "sourceId": "change-of-variables",
+      "contentHash": "1c20589310a94fea980b5af1fb12c6b0afa0dd676875acdb0049e6c72b92371b",
+      "decision": "retain",
+      "reason": "The uniform-to-exponential transformation is a worked instance of Change of Variables."
+    },
+    {
+      "candidateKey": "cand-b87cf42c303d0493b7c7",
+      "sourceId": "change-of-variables",
+      "contentHash": "fe9cf424e9a15b993951fb93bbab21f25a5e022d2d9825c3f874f0c8a87f0d4b",
+      "decision": "retain",
+      "reason": "This summarizes the parent objective and adds no distinct entity."
+    }
+  ]
+}

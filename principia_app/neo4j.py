@@ -21,6 +21,7 @@ from principia_app.ontology import canonical_id, catalog, relations, validate
 
 _lock = threading.Lock()
 EDGE_KINDS = ("REQUIRES", "ALTERNATIVE_TO", "CONTRASTS_WITH")
+RESOLUTION_DECISIONS = {"resolve", "retain", "new", "reject"}
 
 
 def _hash(value: str) -> str:
@@ -54,6 +55,17 @@ def _candidate(source_id: str, source_hash: str, ordinal: int, heading: str, con
         "sourceHash": source_hash, "contentHash": content_hash, "ordinal": ordinal,
         "heading": heading, "content": content, "wordCount": _words(content),
     }
+
+
+def _resolution_manifest(root: Path) -> list[dict]:
+    """Read editorial semantic-resolution decisions, never inferred ones."""
+    path = root / "ontology" / "semantic-resolutions.json"
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("schemaVersion") != 1 or not isinstance(data.get("decisions"), list):
+        raise ValueError("Invalid semantic resolution manifest")
+    return data["decisions"]
 
 
 _NON_EXPLANATION_HEADINGS = {
@@ -115,14 +127,17 @@ def semantic_sections(source_id: str, body: str) -> list[dict]:
             normalized = text.casefold()
             if level == 1:
                 continue
-            flush()
             if normalized in _NON_EXPLANATION_HEADINGS:
+                flush()
                 skipping = True
             else:
                 skipping = False
-                # Structural h2s retain the current overview; authored h3s
-                # and non-structural h2s name a new learnable idea.
+                # Summary and Grounded explanation are structural containers
+                # for one parent concept, not separate semantic candidates.
+                # Do not flush here: doing so emits duplicate "Overview"
+                # candidates for a single explanation.
                 if normalized not in _EXPLANATION_HEADINGS:
+                    flush()
                     heading = text
             continue
         if skipping:
@@ -232,8 +247,30 @@ def semantic_audit(nodes: dict, extra: dict) -> dict:
             rows.append({"sourceId": source_id, "candidateKey": section["candidateKey"],
                          "objective": section["heading"], "wordCount": section["wordCount"],
                          "contentHash": section["contentHash"], "resolution": "unreviewed"})
+    by_key = {row["candidateKey"]: row for row in rows}
+    decisions = _resolution_manifest(brain.ROOT)
+    seen = set()
+    for item in decisions:
+        key, decision = item.get("candidateKey"), item.get("decision")
+        if key in seen or key not in by_key or decision not in RESOLUTION_DECISIONS:
+            raise ValueError(f"Invalid semantic resolution decision: {key}")
+        seen.add(key)
+        candidate = by_key[key]
+        if item.get("sourceId") != candidate["sourceId"] or item.get("contentHash") != candidate["contentHash"]:
+            raise ValueError(f"Stale semantic resolution decision: {key}")
+        target = item.get("targetId")
+        if decision == "resolve":
+            if target not in nodes or canonical_id(target, nodes, extra) != target:
+                raise ValueError(f"Invalid semantic resolution target: {key}")
+        elif target is not None:
+            raise ValueError(f"Unexpected semantic resolution target: {key}")
+        candidate["resolution"] = decision
+        candidate["resolutionReason"] = item.get("reason", "")
+        if target:
+            candidate["targetId"] = target
     return {"canonicalSources": len(set(canonical_by_source.values())),
             "semanticCandidates": len(rows),
+            "resolvedCandidates": len(decisions),
             "maxWords": max((row["wordCount"] for row in rows), default=0),
             "candidates": sorted(rows, key=lambda row: (row["sourceId"], row["objective"]))}
 

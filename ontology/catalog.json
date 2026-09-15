@@ -95,6 +95,24 @@
     },
     "t-sne": {
       "aliases": ["t-distributed stochastic neighbor embedding"]
+    },
+    "quantization": {
+      "prerequisiteReasons": {
+        "arithmetic": "Quantization defines scale selection, code rounding, reconstruction, and the error bound with division, multiplication, subtraction, and absolute-value comparisons."
+      }
+    },
+    "arithmetic-intensity": {
+      "prerequisiteReasons": {
+        "arithmetic": "Its objective is the operations-per-byte ratio, so counting numerical operations and dividing by transferred bytes are required to calculate or interpret it.",
+        "numeric-precision-formats": "A byte-traffic calculation depends on the bytes occupied by each value, and the article compares FP32 and FP16 representations directly."
+      }
+    },
+    "memory-hierarchy": {
+      "prerequisiteReasons": {
+        "arithmetic": "The objective compares capacity, bandwidth, compute rate, and balance points through counts, multiplication, and ratios.",
+        "arithmetic-intensity": "Distinguishing memory-bound from compute-bound work requires comparing the workload's operations-per-byte intensity with the machine-format balance point.",
+        "numeric-precision-formats": "The machine balance point and transferred-byte count vary with the representation, and the article's FP64, FP32, and FP16 comparison depends on that distinction."
+      }
     }
   }
 }

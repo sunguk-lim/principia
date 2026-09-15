@@ -293,3 +293,9 @@ restart the completed Letters historical backfill or alter its ledger.
 - Fixed the private Neo4j transaction client to bypass ambient HTTP proxies after a proxy returned 502 for the loopback-only endpoint. The endpoint validator still restricts the connection to local HTTP with no embedded credentials.
 - Live Neo4j sync was run twice: both snapshots produced digest `f93c69b535489e68f1addb3e6c2357dbd23f424109480643784f5bbffdaea170`, 434 canonical entities, and 974 typed closed-set relations (972 `REQUIRES`, 2 `CONTRASTS_WITH`). All 434 Cypher `REQUIRES` closures exactly matched independent source traversal; the reader projection contains 434 nodes and 972 required edges.
 - Python tests, semantic audit, static ontology validation (aliases, cycles, missing prerequisites, and closed relation vocabulary), frontend tests/typecheck/build, and whitespace checks passed. Existing `principia audit` body-link warnings are legacy optional-context links and Korean mirrors; this review adds none.
+
+## Stage 18 — numeric-performance foundation rationale review (2026-09-15)
+
+- Reviewed the complete `quantization`, `arithmetic-intensity`, and `memory-hierarchy` articles and their six direct foundation edges. Added objective-specific learning rationales for arithmetic, numeric precision formats, and arithmetic intensity; all three concepts require the stated foundations to calculate or interpret their central mechanisms.
+- Source Markdown, source links, canonical identities, and typed relations are unchanged. No optional context was admitted to prerequisite traversal and no edge was removed: each reviewed relationship is necessary to the article's stated learning objective.
+- Measured effect: reviewed prerequisite rationales rise from 21 to 27; unreviewed edges fall from 954 to 948. The learner projection remains 434 canonical concepts and 972 required edges, with identical reachability.

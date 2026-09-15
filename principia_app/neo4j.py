@@ -1,4 +1,4 @@
-"""Rebuildable Principia projection: portable entities and closed edges.
+"""Rebuildable Principia projection: resolved semantic entities and closed edges.
 
 Markdown is build input only.  The private application reads its cards,
 content units, and goal roadmaps from Neo4j at request time.
@@ -21,10 +21,6 @@ from principia_app.ontology import canonical_id, catalog, relations, validate
 
 _lock = threading.Lock()
 EDGE_KINDS = ("REQUIRES", "ALTERNATIVE_TO", "CONTRASTS_WITH")
-# A portable explanation is a target for editorial review, not a token at which
-# the indexer is allowed to cut prose.  The builder must preserve semantic
-# boundaries even while reporting an overlong authored unit.
-MAX_NODE_WORDS = 280
 
 
 def _hash(value: str) -> str:
@@ -49,11 +45,12 @@ def _entity_signature(title: str, kind: str, domain: str) -> str:
     return _hash("\x1f".join(("principia-entity-v2", title.strip().casefold(), kind, domain.casefold())))
 
 
-def _unit(entity_id: str, source_id: str, source_hash: str, ordinal: int, heading: str, content: str) -> dict:
+def _candidate(source_id: str, source_hash: str, ordinal: int, heading: str, content: str) -> dict:
+    """Return a traceable semantic-review candidate, not a graph entity."""
     content_hash = _hash(content)
     return {
-        "contentId": "cnt-" + _hash(f"{entity_id}:{source_id}:{ordinal}:{content_hash}")[:20],
-        "entityId": entity_id, "sourceId": source_id, "sourcePath": f"nodes/{source_id}.md",
+        "candidateKey": "cand-" + _hash(f"{source_id}:{ordinal}:{content_hash}")[:20],
+        "sourceId": source_id, "sourcePath": f"nodes/{source_id}.md",
         "sourceHash": source_hash, "contentHash": content_hash, "ordinal": ordinal,
         "heading": heading, "content": content, "wordCount": _words(content),
     }
@@ -90,14 +87,13 @@ def _inline_semantic_label(block: str) -> tuple[str, str] | None:
     return label, remainder
 
 
-def semantic_sections(entity_id: str, source_id: str, body: str) -> list[dict]:
-    """Project authored semantic units without length- or sentence-based cuts.
+def semantic_sections(source_id: str, body: str) -> list[dict]:
+    """Extract authored semantic *candidates* without length- or sentence cuts.
 
     `###` headings and an explicit, limited set of in-body mechanism labels
     form boundaries.  Metadata sections such as sources and prerequisites are
-    omitted.  If an authored unit exceeds ``MAX_NODE_WORDS`` it is retained as
-    one unit and marked unreviewed by the caller; shortening it requires an
-    editorial rewrite, not automatic fragmentation.
+    omitted.  These candidates are an editorial review queue only: calling
+    this function never creates a Neo4j entity or relationship.
     """
     source_hash = _hash(body)
     sections: list[tuple[str, list[str]]] = []
@@ -144,7 +140,7 @@ def semantic_sections(entity_id: str, source_id: str, body: str) -> list[dict]:
         sections = [("Overview", ["No indexed explanation is available yet."])]
 
     return [
-        _unit(entity_id, source_id, source_hash, ordinal, title, "\n\n".join(source_blocks))
+        _candidate(source_id, source_hash, ordinal, title, "\n\n".join(source_blocks))
         for ordinal, (title, source_blocks) in enumerate(sections, start=1)
     ]
 
@@ -188,55 +184,40 @@ def snapshot(nodes: dict, extra: dict) -> dict:
         aliases = list(extra.get("concepts", {}).get(source_id, {}).get("aliases", []))
         aliases.extend(title for title in source_titles if title.casefold() != canonical_title.casefold())
         aliases = list(dict.fromkeys(alias.strip() for alias in aliases if alias.strip()))
-        sections = semantic_sections(source_id, source_id, _body(brain.NODES / f"{source_id}.md"))
-        node_ids = []
-        for position, section in enumerate(sections, start=1):
-            suffix = "" if len(sections) == 1 else f" — {section['heading']} ({position}/{len(sections)})"
-            title = canonical_title + suffix
-            # Identity follows the learnable objective, not its current prose.
-            # A concise editorial rewrite therefore updates this same entity;
-            # ``contentHash`` below remains the distinct-content trace.
-            semantic_name = f"{canonical_title} — {section['heading']}"
-            signature = _entity_signature(semantic_name, kind, domain)
-            entity_id = "ent-" + signature[:20]
-            node_ids.append(entity_id)
-            entities.append({"entityId": entity_id, "signature": signature, "canonicalName": title,
-                             "canonicalSourceId": source_id, "sourceIds": source_ids, "sourceTitles": source_titles,
-                             "sourceId": source_id, "sourcePath": f"nodes/{source_id}.md", "sourceHash": section["sourceHash"],
-                             "contentHash": section["contentHash"], "explanation": section["content"], "wordCount": section["wordCount"],
-                             "ordinal": position, "segmentCount": len(sections), "type": kind, "domain": domain,
-                             "summary": node.get("summary", "") if position == 1 else section["heading"],
-                             "objective": section["heading"], "aliases": aliases if position == 1 else [], "statusId": source_id,
-                             "portable": section["wordCount"] <= MAX_NODE_WORDS, "reviewed": False})
-        entities_for_source[source_id] = node_ids
+        explanation = _body(brain.NODES / f"{source_id}.md")
+        # One resolved semantic concept is one entity.  Source prose may be
+        # long, but length alone must never manufacture child entities.
+        signature = _entity_signature(canonical_title, kind, domain)
+        entity_id = "ent-" + signature[:20]
+        entities.append({"entityId": entity_id, "signature": signature, "canonicalName": canonical_title,
+                         "canonicalSourceId": source_id, "sourceIds": source_ids, "sourceTitles": source_titles,
+                         "sourceId": source_id, "sourcePath": f"nodes/{source_id}.md", "sourceHash": _hash(explanation),
+                         "contentHash": _hash(explanation), "explanation": explanation, "wordCount": _words(explanation),
+                         "ordinal": 1, "segmentCount": 1, "type": kind, "domain": domain,
+                         "summary": node.get("summary", ""),
+                         "objective": extra.get("concepts", {}).get(source_id, {}).get("objective", node.get("summary", "")),
+                         "aliases": aliases, "statusId": source_id, "reviewed": False})
+        entities_for_source[source_id] = [entity_id]
     for source_id, canonical_source in canonical_by_source.items():
         entities_for_source[source_id] = entities_for_source[canonical_source]
     edge_rows, seen = [], set()
-    # A split concept is a sequence of actual ontology nodes.  Each later node
-    # requires the previous one; provenance remains node properties, not edges.
-    for source_id in sorted(set(canonical_by_source.values())):
-        chain = entities_for_source[source_id]
-        for position in range(1, len(chain)):
-            edge_rows.append({"sEntity": chain[position], "tEntity": chain[position - 1], "type": "REQUIRES",
-                              "reason": "Semantic explanation sequence", "reviewed": False})
     for edge in relations(nodes, extra):
         source_chain, target_chain = entities_for_source[edge["s"]], entities_for_source[edge["t"]]
-        item = {**edge, "sEntity": source_chain[0] if edge["type"] == "REQUIRES" else source_chain[-1],
-                "tEntity": target_chain[-1]}
+        item = {**edge, "sEntity": source_chain[0], "tEntity": target_chain[0]}
         key = (item["sEntity"], item["tEntity"], item["type"])
         if item["sEntity"] != item["tEntity"] and key not in seen:
             seen.add(key); edge_rows.append(item)
-    result = {"entities": entities, "portableNodes": len(entities), "relations": edge_rows}
+    result = {"entities": entities, "relations": edge_rows}
     result["digest"] = _hash(json.dumps(result, ensure_ascii=False, sort_keys=True))
     return result
 
 
 def semantic_audit(nodes: dict, extra: dict) -> dict:
-    """Report editorial work remaining before a portable-node import.
+    """Report authored semantic candidates for editorial extraction.
 
-    This is intentionally an audit, not a fallback that changes boundaries.
-    Every listed unit is one authored semantic boundary that needs a concise
-    rewrite or an explicit further semantic decomposition.
+    Candidate boundaries are never import gates and never mutate the graph.
+    A reviewer must resolve each candidate to an existing entity, a new
+    semantic entity, or a non-entity explanation section.
     """
     errors = validate(nodes, extra)
     if errors:
@@ -244,30 +225,26 @@ def semantic_audit(nodes: dict, extra: dict) -> dict:
     canonical_by_source = {sid: canonical_id(sid, nodes, extra) for sid in nodes}
     rows = []
     for source_id in sorted(set(canonical_by_source.values())):
-        for section in semantic_sections(source_id, source_id, _body(brain.NODES / f"{source_id}.md")):
-            rows.append({"sourceId": source_id, "objective": section["heading"],
-                         "wordCount": section["wordCount"],
-                         "portable": section["wordCount"] <= MAX_NODE_WORDS})
-    overlong = [row for row in rows if not row["portable"]]
+        for section in semantic_sections(source_id, _body(brain.NODES / f"{source_id}.md")):
+            # A candidate is traceable to the exact authored text that prompted
+            # review.  It is deliberately *not* assigned an entity ID here:
+            # that assignment is the editor's identity-resolution decision.
+            rows.append({"sourceId": source_id, "candidateKey": section["candidateKey"],
+                         "objective": section["heading"], "wordCount": section["wordCount"],
+                         "contentHash": section["contentHash"], "resolution": "unreviewed"})
     return {"canonicalSources": len(set(canonical_by_source.values())),
-            "semanticNodes": len(rows), "portableNodes": len(rows) - len(overlong),
-            "overlongNodes": len(overlong), "maxWords": max((row["wordCount"] for row in rows), default=0),
-            "needsEditorialRewrite": sorted(overlong, key=lambda row: (-row["wordCount"], row["sourceId"], row["objective"]))}
+            "semanticCandidates": len(rows),
+            "maxWords": max((row["wordCount"] for row in rows), default=0),
+            "candidates": sorted(rows, key=lambda row: (row["sourceId"], row["objective"]))}
 
 
 def status() -> dict:
-    rows = query("MATCH (p:PrincipiaProjection {id:'current'}) RETURN p.digest, p.entities, p.portableNodes, p.relations")
-    return ({"available": True, "digest": rows[0][0], "entities": rows[0][1], "portableNodes": rows[0][2], "relations": rows[0][3]}
+    rows = query("MATCH (p:PrincipiaProjection {id:'current'}) RETURN p.digest, p.entities, p.relations")
+    return ({"available": True, "digest": rows[0][0], "entities": rows[0][1], "relations": rows[0][2]}
             if rows else {"available": False})
 
 
 def sync(nodes: dict, extra: dict) -> dict:
-    audit = semantic_audit(nodes, extra)
-    if audit["overlongNodes"]:
-        raise ValueError(
-            f"Semantic projection blocked: {audit['overlongNodes']} authored units exceed "
-            f"{MAX_NODE_WORDS} words; rewrite or explicitly decompose them before sync."
-        )
     data = snapshot(nodes, extra)
     digest = data["digest"]
     query("CREATE CONSTRAINT principia_entity_id IF NOT EXISTS FOR (n:PrincipiaEntity) REQUIRE n.entityId IS UNIQUE")
@@ -278,7 +255,7 @@ def sync(nodes: dict, extra: dict) -> dict:
     ]
     for kind in EDGE_KINDS:
         statements.append({"statement": f"UNWIND $items AS item MATCH (s:PrincipiaEntity {{entityId:item.sEntity}}), (t:PrincipiaEntity {{entityId:item.tEntity}}) CREATE (s)-[r:{kind}]->(t) SET r.reason=item.reason, r.reviewed=item.reviewed, r.snapshot=$digest", "parameters": {"items": [edge for edge in data["relations"] if edge["type"] == kind], "digest": digest}})
-    statements.append({"statement": "CREATE (p:PrincipiaProjection {id:'current',digest:$digest,entities:$entities,portableNodes:$portableNodes,relations:$relations})", "parameters": {"digest": digest, "entities": len(data["entities"]), "portableNodes": data["portableNodes"], "relations": len(data["relations"])}})
+    statements.append({"statement": "CREATE (p:PrincipiaProjection {id:'current',digest:$digest,entities:$entities,relations:$relations})", "parameters": {"digest": digest, "entities": len(data["entities"]), "relations": len(data["relations"])}})
     transaction(statements)
     return status()
 

@@ -125,30 +125,48 @@ independent learning objectives, not synonyms or arbitrary paragraph chunks.
 At present, lesson-file presence sets `lessonReviewed`; create these files only after editorial
 review. This is a convention, not an independent review-signoff mechanism.
 
-## Semantic-node projection
+## Semantic extraction and Neo4j projection
 
-The Neo4j learner projection is built from **semantic units**, not from a word-count or a
-paragraph-packing algorithm. A unit is an independently learnable objective: a named mechanism,
-derivation, decision rule, or worked method. It has its own resolved entity signature, explanation,
-and placement in the existing closed `REQUIRES` vocabulary.
+Neo4j stores **resolved semantic entities**, not files, headings, paragraphs, or reading pages.
+One independently learnable concept has one entity signature. Its source IDs, aliases, source hash,
+and content hash are properties used for traceability; none of them is an ontology edge.
 
-When authoring a large source article, make those boundaries explicit with an `###` heading or an
-authored numbered mechanism label such as `**1 — Normalize the scores.**`. Do not add a boundary
-solely because text reached a length limit. Keep each resulting explanation at or below 280 words;
-if it cannot be concise without losing one objective, give the next objective its own named boundary
-and direct prerequisite placement.
+The baseline projection resolves every canonical source concept to one entity. A semantic split is
+an editorial operation, not an indexing side effect: extract candidate concepts from a source,
+resolve each candidate against existing entities, and create a new entity only when it is genuinely
+distinct. Every accepted entity needs its own name, learning objective, explanation, and reviewed
+placement using the existing closed vocabulary. Similar text, a Markdown heading, and text length
+are review signals—not identity evidence.
 
-Run the semantic audit before publishing a Neo4j projection:
+Use the semantic audit to create an authored review queue:
 
 ```bash
 uv run python -m principia_app.neo4j semantic-audit
 ```
 
-The audit lists every authored unit that still needs rewriting. `neo4j sync` refuses to publish
-while any unit is over the limit, so a syntactic split cannot silently become a learner node.
-The entity signature uses canonical name, semantic objective, kind, and domain; the current prose
-hash is retained separately for content traceability. Editing an explanation therefore updates the
-same semantic entity rather than creating a new concept from a Markdown filename.
+The audit reports authored semantic candidates and their source context. It does not create nodes,
+relationships, or a publication gate. There is no fixed word limit: an explanation should be as
+concise as its objective permits, while preserving necessary equations, examples, and distinctions.
+The entity signature uses canonical name, kind, and domain; the current prose hash is retained
+separately for content traceability. Editing an explanation therefore updates the same resolved
+entity rather than creating a new concept from a Markdown filename.
+
+### Semantic-review decision record
+
+The audit is a *queue*, not a migration. For every candidate accepted for review, record one
+explicit decision before changing the graph:
+
+| Decision | Meaning | Graph effect |
+| --- | --- | --- |
+| `resolve` | The candidate explains an existing entity. | No new entity or edge. |
+| `retain` | The candidate is supporting explanation, example, or derivation inside its source entity. | No new entity or edge. |
+| `new` | The candidate is a separately learnable concept with its own objective. | Author one new node, resolve its signature, and add only reviewed closed-vocabulary relations. |
+| `reject` | The candidate is a heading, repetition, or non-learning material. | No graph effect. |
+
+`new` requires a unique canonical name, objective, independently readable explanation, source
+anchors/content hash, identity-collision check, and a reviewed `REQUIRES` placement. It must not
+be used merely because a section is long. A source article may resolve entirely to its existing
+entity; semantic extraction does not imply a numerical expansion of the graph.
 
 ## Legacy command limitations
 

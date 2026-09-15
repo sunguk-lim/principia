@@ -5,7 +5,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from principia_app.ontology import admission, allowed_links, enrich, identities, identity_candidates, prerequisite_evidence, relations, validate
-from principia_app.neo4j import MAX_NODE_WORDS, learning_subgraph, semantic_sections
+from principia_app.neo4j import learning_subgraph, semantic_sections, snapshot
 
 
 class OntologyTests(unittest.TestCase):
@@ -129,7 +129,7 @@ class OntologyTests(unittest.TestCase):
         self.assertTrue(any("invalid" in error for error in validate(nodes, extra)))
 
     def test_semantic_sections_use_authored_boundaries_not_word_count(self):
-        long_mechanism = " ".join(["mechanism"] * (MAX_NODE_WORDS + 20))
+        long_mechanism = " ".join(["mechanism"] * 500)
         body = """# Example
 
 ## Summary
@@ -152,13 +152,44 @@ The overview.
 
 - A source
 """.format(long_mechanism=long_mechanism)
-        sections = semantic_sections("example", "example", body)
+        sections = semantic_sections("example", body)
         self.assertEqual([section["heading"] for section in sections], [
             "Overview", "1 — The mechanism", "Why it matters",
         ])
-        self.assertGreater(sections[1]["wordCount"], MAX_NODE_WORDS)
+        self.assertGreater(sections[1]["wordCount"], 280)
         self.assertNotIn("[[a]]", "\n".join(section["content"] for section in sections))
         self.assertNotIn("A source", "\n".join(section["content"] for section in sections))
+
+    def test_semantic_audit_candidates_carry_traceability_but_no_entity_identity(self):
+        # Candidate extraction may identify a review target, but resolving its
+        # identity is an explicit editorial decision.
+        body = "# Example\n\n## Grounded explanation\n\n**Mechanism.** An explanation."
+        section = semantic_sections("example", body)[0]
+        self.assertTrue(section["candidateKey"].startswith("cand-"))
+        self.assertNotIn("entityId", section)
+        self.assertTrue(section["contentHash"])
+
+    def test_snapshot_does_not_turn_authored_sections_into_entities(self):
+        body = """# Example
+
+## Grounded explanation
+
+**1 — First mechanism.** An explanation.
+
+**2 — Second mechanism.** Another explanation.
+"""
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            nodes_dir = root / "nodes"
+            nodes_dir.mkdir()
+            (nodes_dir / "example.md").write_text(body, encoding="utf-8")
+            nodes = {"example": {"title": "Example", "type": "concept", "tags": "[math/example]", "prereqs": "[]", "summary": "One concept."}}
+            with patch("principia_app.neo4j.brain.NODES", nodes_dir):
+                data = snapshot(nodes, {})
+        self.assertEqual(len(data["entities"]), 1)
+        self.assertEqual(data["entities"][0]["canonicalName"], "Example")
+        self.assertEqual(data["entities"][0]["segmentCount"], 1)
+        self.assertEqual(data["relations"], [])
 
 
 

@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-14_
+_Last rebuilt: 2026-09-17_
 
-**436** nodes · **3** axioms · **0** on the frontier
+**438** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (163)
+## 🌳 Parent (root) nodes — top-level, required by nothing (166)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -16,6 +16,7 @@ _Last rebuilt: 2026-09-14_
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
 - [Bayes' Theorem](nodes/bayes-theorem.md)
+- [Block Layer](nodes/block-layer.md)
 - [Boot Process](nodes/boot-process.md)
 - [Categorical Data Encoding](nodes/categorical-data-encoding.md)
 - [Causal Structure Learning](nodes/causal-structure-learning.md)
@@ -36,6 +37,7 @@ _Last rebuilt: 2026-09-14_
 - [Cyclical Feature Encoding](nodes/cyclical-feature-encoding.md)
 - [Deque](nodes/deque.md)
 - [Determinant](nodes/determinant.md)
+- [Differential operators](nodes/differential-operators.md)
 - [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md)
 - [Directional Derivative](nodes/directional-derivative.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
@@ -78,6 +80,7 @@ _Last rebuilt: 2026-09-14_
 - [Layer Normalization](nodes/layer-normalization.md)
 - [Linear Least Squares](nodes/linear-least-squares.md)
 - [Linear Programming](nodes/linear-programming.md)
+- [LLM Text Watermarking](nodes/llm-text-watermarking.md)
 - [Local Feature Attribution](nodes/local-feature-attribution.md)
 - [Local LLM Inference](nodes/local-llm-inference.md)
 - [Log-Normal Distribution](nodes/log-normal-distribution.md)
@@ -346,6 +349,7 @@ _Last rebuilt: 2026-09-14_
 - [Huber Loss](nodes/huber-loss.md)
 - [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md)
 - [Hypervisor](nodes/hypervisor.md)
+- [Hypothesis Testing](nodes/hypothesis-testing.md)
 - [Image Preference Modeling](nodes/image-preference-modeling.md)
 - [Inference Cost Break-Even](nodes/inference-cost-break-even.md)
 - [Init Process](nodes/init-process.md)
@@ -391,6 +395,7 @@ _Last rebuilt: 2026-09-14_
 - [Linked List](nodes/linked-list.md)
 - [LLM as a Judge](nodes/llm-as-a-judge.md)
 - [Calling LLMs from SQL](nodes/llm-from-sql.md)
+- [LLM Text Watermarking](nodes/llm-text-watermarking.md)
 - [Load Balancing](nodes/load-balancing.md)
 - [Load Testing](nodes/load-testing.md)
 - [Local Feature Attribution](nodes/local-feature-attribution.md)
@@ -620,7 +625,7 @@ _Last rebuilt: 2026-09-14_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 11 top-level / 51 leaf fields
+## 🏷️ By field (cut the graph) — 11 top-level / 53 leaf fields
 
 ### algorithms (21)
 
@@ -662,7 +667,7 @@ _Last rebuilt: 2026-09-14_
 
   - **languages/semantics** (8) — [Closure](nodes/closure.md), [Coroutine](nodes/coroutine.md), [Dynamic Typing](nodes/dynamic-typing.md), [First-Class Function](nodes/first-class-function.md), [Lexical Scoping](nodes/lexical-scoping.md), [Metatable](nodes/metatable.md), [Object-Oriented Inheritance](nodes/object-oriented-inheritance.md), [Static Type Checking](nodes/static-type-checking.md)
 
-### math (76)
+### math (77)
 
   - **math/calculus** (20) — [Convexity](nodes/convexity.md), [Curl (∇×F)](nodes/curl.md), [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md), [Definite Integral](nodes/definite-integral.md), [Del operator (∇)](nodes/del-operator.md), [Derivative](nodes/derivative.md), [Differential (Total Derivative)](nodes/differential.md), [Differential Equation](nodes/differential-equation.md), [Differential operators](nodes/differential-operators.md), [Directional Derivative](nodes/directional-derivative.md), [Divergence (∇·F)](nodes/divergence.md), [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md), [Exponential function](nodes/exponential-function.md), [Gradient](nodes/gradient.md), [Hessian (H)](nodes/hessian.md), [Jacobian (J)](nodes/jacobian.md), [Laplacian (∇²f)](nodes/laplacian.md), [Partial derivative](nodes/partial-derivative.md), [Scalar Field](nodes/scalar-field.md), [Vector Field](nodes/vector-field.md)
 
@@ -674,7 +679,9 @@ _Last rebuilt: 2026-09-14_
 
   - **math/set-theory** (1) — [Set (membership)](nodes/set.md)
 
-### ml (147)
+  - **math/statistics** (1) — [Hypothesis Testing](nodes/hypothesis-testing.md)
+
+### ml (148)
 
   - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
@@ -691,6 +698,8 @@ _Last rebuilt: 2026-09-14_
   - **ml/information-retrieval** (14) — [BM25](nodes/bm25.md), [GraphRAG](nodes/graph-rag.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Late-Interaction Retrieval](nodes/late-interaction-retrieval.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Lost in the Middle](nodes/lost-in-the-middle.md), [Modularity Resolution Limit](nodes/modularity-resolution-limit.md), [Multimodal Retrieval-Augmented Generation](nodes/multimodal-rag.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Vector Database](nodes/vector-database.md)
 
     - **ml/llm/architecture** (13) — [Attention Sink](nodes/attention-sink.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Joint Attention](nodes/joint-attention.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Positional Encoding](nodes/positional-encoding.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [State Space Model](nodes/state-space-model.md)
+
+    - **ml/llm/evaluation** (1) — [LLM Text Watermarking](nodes/llm-text-watermarking.md)
 
     - **ml/llm/inference** (21) — [Chunked Prefill](nodes/chunked-prefill.md), [Context Window](nodes/context-window.md), [Continuous Batching](nodes/continuous-batching.md), [Inference Cost Break-Even](nodes/inference-cost-break-even.md), [KV-cache](nodes/kv-cache.md), [KV-Cache Quantization](nodes/kv-quantization.md), [Local LLM Inference](nodes/local-llm-inference.md), [Numeric Precision Formats](nodes/numeric-precision-formats.md), [Paged attention](nodes/paged-attention.md), [Post-Training Quantization](nodes/post-training-quantization.md), [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md), [Prefill vs Decode](nodes/prefill-vs-decode.md), [Prefix Caching](nodes/prefix-caching.md), [Progressive Diffusion Distillation](nodes/progressive-diffusion-distillation.md), [Prompt Caching](nodes/prompt-caching.md), [Prompt Rewriting](nodes/prompt-rewriting.md), [Quantization](nodes/quantization.md), [Roofline Model](nodes/roofline-model.md), [Speculative Decoding](nodes/speculative-decoding.md), [vLLM](nodes/vllm.md), [Weight-Load Amortization](nodes/weight-load-amortization.md)
 

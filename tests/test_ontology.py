@@ -231,6 +231,25 @@ The complete explanation.
                 with self.assertRaisesRegex(ValueError, "Invalid semantic resolution decision"):
                     semantic_audit(nodes, {})
 
+    def test_semantic_audit_rejects_self_resolution(self):
+        body = "# Example\n\n## Grounded explanation\n\n**Mechanism.** An explanation."
+        nodes = {"example": {"title": "Example", "type": "concept", "tags": "[math/example]", "prereqs": "[]"}}
+        section = semantic_sections("example", body)[0]
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            nodes_dir = root / "nodes"; nodes_dir.mkdir()
+            ontology_dir = root / "ontology"; ontology_dir.mkdir()
+            (nodes_dir / "example.md").write_text(body, encoding="utf-8")
+            (ontology_dir / "semantic-resolutions.json").write_text(json.dumps({
+                "schemaVersion": 1,
+                "decisions": [{"candidateKey": section["candidateKey"], "sourceId": "example",
+                               "contentHash": section["contentHash"], "decision": "resolve", "targetId": "example",
+                               "reason": "This is the existing Example entity."}],
+            }), encoding="utf-8")
+            with patch("principia_app.neo4j.brain.NODES", nodes_dir), patch("principia_app.neo4j.brain.ROOT", root):
+                with self.assertRaisesRegex(ValueError, "Invalid semantic resolution target"):
+                    semantic_audit(nodes, {})
+
     def test_snapshot_does_not_turn_authored_sections_into_entities(self):
         body = """# Example
 

@@ -312,3 +312,9 @@ restart the completed Letters historical backfill or alter its ledger.
 - Strengthened the complete semantic-review manifest: every hash-pinned decision must now carry a non-empty editorial reason. A blank or omitted reason makes the semantic audit fail before a Neo4j projection can sync.
 - This preserves the existing 1,281 reviewed candidates and 434 canonical learning entities; no source article, identity alias, typed relationship, learner edge, or roadmap closure changed. Current graph audit remains 975 source prerequisite links, 972 required learner edges, and zero unreviewed prerequisite rationales.
 - Added a regression test for reasonless decisions and reconciled the authoring contract with the enforced projection gate. This is an audit-integrity stage, not a claim of new editorial review.
+
+## Stage 21 — self-resolution semantic resolutions (2026-09-16)
+
+- Tightened the semantic-review projection gate: a `resolve` decision must now name a distinct existing canonical target. A source section cannot silently count as a separate resolved entity by resolving to its own parent concept.
+- The existing three resolve decisions already name canonical targets (`softmax`, `online-softmax`, and `jacobian`), so no source article, canonical alias, typed relationship, learner edge, or roadmap closure changed. The catalog remains 434 canonical learning entities with 1,281 hash-pinned semantic decisions and zero unreviewed prerequisite rationales.
+- Added a regression test for the rejected self-resolution case. This is a bounded manifest-integrity correction, not a new claim of catalog-wide editorial review.

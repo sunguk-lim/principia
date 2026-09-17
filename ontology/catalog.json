@@ -2781,6 +2781,14 @@
         "softmax": "The watermark is embedded by biasing token logits before softmax converts them into next-token probabilities.",
         "hypothesis-testing": "Detection compares green-token excess with a predeclared null distribution and threshold."
       }
+    },
+    "llm-inference-memory-budget": {
+      "prerequisiteReasons": {
+        "post-training-quantization": "Weight precision determines the mostly fixed model-weight term in the budget.",
+        "kv-cache": "The request-dependent cache is the main term that scales with context length and concurrency.",
+        "prefill-vs-decode": "Temporary-memory peaks and batching shapes differ between prompt processing and token generation.",
+        "paged-attention": "Block-based cache management explains why reserved capacity, fragmentation, and live KV bytes differ."
+      }
     }
   }
 }

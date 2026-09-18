@@ -1,14 +1,14 @@
 ---
 id: structured-output
 title: Structured Output
-summary: Structured output constrains token generation with a grammar by masking illegal logits to negative infinity and renormalizing probability over the legal tokens.
+summary: Structured output masks grammar-illegal tokens during decoding so completed outputs can conform to a schema, without guaranteeing that permitted values are true, authorized, or safe.
 type: concept
 tags: [ml/llm/reasoning]
 prereqs: [softmax, probability-distribution]
-sources: []
+sources: [https://openai.com/index/introducing-structured-outputs-in-the-api/, https://json-schema.org/overview/what-is-jsonschema]
 status: explained
 created: 2026-06-23
-updated: 2026-06-25
+updated: 2026-09-19
 ---
 
 # Structured Output
@@ -22,8 +22,7 @@ step, before turning the model's scores into probabilities, a "constraint
 engine" deletes every token that would break the structure by pushing its score
 to $-\infty$. Because [[softmax]] sends a score of $-\infty$ to probability 0,
 those tokens can never be picked, while the allowed tokens keep their *relative*
-likelihoods. The result is **guaranteed-valid** output — never a parse failure —
-without otherwise overriding the model's preferences.
+likelihoods. When the implementation supports the schema and generation reaches a normal completion, the result is **structurally conformant** output rather than a parse-by-luck result. This guarantee stops at the declared grammar: it does not establish that a permitted value is true, grounded in the input, authorized, or safe to execute.
 
 ![A grammar state expects a digit. Among five vocabulary tokens, the illegal closer has the largest raw probability. Masking leaves legal digits 7 and 4, whose probabilities renormalize to 0.622 and 0.378 while preserving their relative preference; sampling 7 advances the grammar toward valid JSON.](structured-output.svg)
 
@@ -167,4 +166,5 @@ renormalize over the survivors, sample, advance.
 
 ## Sources
 
-_none_
+- [OpenAI, “Introducing Structured Outputs in the API”](https://openai.com/index/introducing-structured-outputs-in-the-api/) — describes compiling JSON Schema to a grammar and dynamically masking invalid next tokens during sampling.
+- [JSON Schema, “What is JSON Schema?”](https://json-schema.org/overview/what-is-jsonschema) — defines JSON Schema as a declarative language for JSON structure and constraints, validated by a schema validator.

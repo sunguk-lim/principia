@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-19_
+_Last rebuilt: 2026-09-21_
 
-**439** nodes · **3** axioms · **0** on the frontier
+**440** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (167)
+## 🌳 Parent (root) nodes — top-level, required by nothing (168)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -151,6 +151,7 @@ _Last rebuilt: 2026-09-19_
 - [Reward Hacking](nodes/reward-hacking.md)
 - [RMSNorm](nodes/rmsnorm.md)
 - [ROC Curve](nodes/roc-curve.md)
+- [Sandboxed Code Execution](nodes/sandboxed-code-execution.md)
 - [Scan (prefix)](nodes/scan.md)
 - [Score-Based Generative Model](nodes/score-based-generative-model.md)
 - [Socket Buffer (sk_buff)](nodes/sk-buff.md)
@@ -551,6 +552,7 @@ _Last rebuilt: 2026-09-19_
 - [ROC Curve](nodes/roc-curve.md)
 - [Roofline Model](nodes/roofline-model.md)
 - [Root process](nodes/root-process.md)
+- [Sandboxed Code Execution](nodes/sandboxed-code-execution.md)
 - [SASS (GPU Machine Code)](nodes/sass.md)
 - [Scalar Field](nodes/scalar-field.md)
 - [Scan (prefix)](nodes/scan.md)
@@ -683,9 +685,9 @@ _Last rebuilt: 2026-09-19_
 
   - **math/statistics** (1) — [Hypothesis Testing](nodes/hypothesis-testing.md)
 
-### ml (149)
+### ml (150)
 
-  - **ml/agents** (6) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
+  - **ml/agents** (7) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Sandboxed Code Execution](nodes/sandboxed-code-execution.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 
   - **ml/ai-systems** (1) — [Model Context Protocol](nodes/model-context-protocol.md)
 

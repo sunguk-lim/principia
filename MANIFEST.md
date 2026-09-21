@@ -1,6 +1,6 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-21_
+_Last rebuilt: 2026-09-22_
 
 **440** nodes · **3** axioms · **0** on the frontier
 

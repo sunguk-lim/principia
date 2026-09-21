@@ -1,16 +1,18 @@
 ---
 id: test-time-compute
 title: Test-Time Compute
-summary: Test-time compute is the idea that a model's accuracy can be raised by spending more computation at inference time — when it is actually answering a question — as a lever distinct…
+summary: Test-time compute spends an adaptive per-request inference budget on longer trajectories, multiple candidates, or feedback-guided revision while keeping model weights fixed.
 type: concept
 tags: [ml/llm/reasoning]
 prereqs: [chain-of-thought]
 sources:
   - "OpenAI 2024, Learning to Reason with LLMs (o1 system card / blog)"
   - "DeepSeek-AI 2025, DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (arXiv:2501.12948)"
+  - "Snell et al. 2024, Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (arXiv:2408.03314)"
+  - "Madaan et al. 2023, Self-Refine: Iterative Refinement with Self-Feedback (arXiv:2303.17651)"
 status: explained
 created: 2026-06-23
-updated: 2026-06-23
+updated: 2026-09-22
 ---
 
 # Test-Time Compute
@@ -24,12 +26,12 @@ called *test time*) is the moment the trained model is run on a new input;
 *training time* is the earlier, one-off process that produced the model's fixed
 weights. The training cost is paid once; the test-time cost is paid afresh on every
 single query, and — this is the point — we can choose *how much* to pay per query.
-The primary knob, grounded in [[chain-of-thought]], is simply **letting the model
-generate more reasoning tokens before it answers**. Because each generated token is
-another forward pass through the network, more tokens means literally more
-sequential computation applied to that one problem. Harder problems are given more
-of it; empirically, accuracy climbs smoothly as inference compute grows — a scaling
-axis separate from making the model bigger.
+The budget can be allocated in three distinct shapes: **depth**, by extending one
+reasoning trajectory; **width**, by generating multiple candidates; or **feedback**,
+by checking an attempt and conditioning a revision on the result. These mechanisms
+all spend inference compute, but they repair different failures and do not guarantee
+that additional compute improves a particular request. The allocation must therefore
+be chosen and evaluated against task difficulty, latency, cost, and checker quality.
 
 ## Grounded explanation
 
@@ -81,18 +83,38 @@ increment, over orders of magnitude. That is the signature of a genuine scaling
 axis, and it is orthogonal to model size — the *same* frozen weights get better the
 more they are allowed to think.
 
-**Other levers (same currency, different shape).** Generating one long chain is not
-the only way to spend test-time compute; it is just the one that follows directly
-from [[chain-of-thought]]. A second way is to sample **several independent chains**
-for the same question — each a fresh run of the reasoning process — and then
-**aggregate** their answers, e.g. by taking the majority vote across them. This
-spends compute "in parallel" (more chains) rather than "in series" (a longer single
-chain), and it works because independent chains tend to make *different* mistakes
-while agreeing on the correct answer, so the vote concentrates on the right one. A
-third way is to generate many candidate solutions and have a separate scoring
-process pick the best; the machinery of that search is left to its own node. All
-three are the same idea — buy accuracy with inference computation — and all measure
-their spend in tokens generated.
+**Three allocations, three failure diagnoses.** Test-time compute is a budget, not a
+single “think longer” switch:
+
+- **Depth** continues one trajectory. It helps when a sound plan is unfinished, but
+  can reinforce an early wrong assumption because every later token inherits the
+  same prefix.
+- **Width** samples independent candidates and aggregates or scores them. It helps
+  when plausible starts lead to different outcomes, but correlated errors and a weak
+  selector can make many candidates repeat the same mistake.
+- **Feedback** evaluates an attempt and supplies a new observation before revision.
+  The observation may come from an executable test, an environment, a human, or a
+  model-based critique. It helps only when the check is informative; a noisy or
+  biased checker can confidently steer the next attempt in the wrong direction.
+
+The information flow is the durable distinction. Depth adds more state to the same
+history, width creates alternative histories, and feedback changes a later history
+with evidence that was unavailable to the first attempt. A practical policy first
+classifies the failure: allocate depth when completion is the bottleneck, width when
+path selection is unstable, and feedback when a checker can localize an error.
+Difficulty matters too: Snell et al. found that the relative effectiveness of
+inference-scaling methods varied with prompt difficulty, motivating adaptive rather
+than uniform allocation.
+
+**Budget accounting and validation.** Generated tokens, candidate count, verifier
+calls, tool executions, and wall-clock latency are not interchangeable, so report
+both the allocation and an implementation-level budget such as FLOPs, model calls,
+tokens, and tool cost. Compare against a one-shot baseline under the same model and
+task set. Measure task correctness, calibration, latency distribution, total cost,
+candidate diversity, checker false positives and false negatives, and recovery after
+an observed failure. Include cases where extra work should stop early: more compute
+can waste money or amplify a bad premise when neither alternatives nor new evidence
+are introduced.
 
 **Worked instance.** Take a problem that needs several dependent steps, so a single
 capped pass is genuinely strained:
@@ -170,3 +192,5 @@ are permitted to spend.
 - OpenAI (2024). *Learning to Reason with LLMs* (o1 announcement / system card).
 - DeepSeek-AI (2025). *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via
   Reinforcement Learning.* arXiv:2501.12948.
+- Snell et al. (2024). *Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters.* arXiv:2408.03314.
+- Madaan et al. (2023). *Self-Refine: Iterative Refinement with Self-Feedback.* arXiv:2303.17651.

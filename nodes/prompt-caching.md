@@ -1,7 +1,7 @@
 ---
 id: prompt-caching
 title: Prompt Caching
-summary: Prompt caching reuses the previously computed key–value state of an identical prompt prefix, reducing repeated prefill work while making prefix stability and cache-lifetime policy part of the request contract.
+summary: Prompt caching reuses key–value state for an identical eligible request prefix, reducing repeated prefill while making prefix construction, model settings, lifetime, and hit diagnostics part of the request contract.
 type: concept
 tags: [ml/llm/inference]
 prereqs: [kv-cache]
@@ -9,7 +9,7 @@ sources:
   - https://platform.claude.com/docs/en/build-with-claude/prompt-caching
 status: explained
 created: 2026-09-12
-updated: 2026-09-12
+updated: 2026-09-25
 ---
 
 # Prompt Caching
@@ -46,6 +46,14 @@ process. Providers also define retention and invalidation policies, so an
 application must treat a cache as an optional performance benefit rather than
 its only copy of context.
 
+### Diagnose misses as request-prefix differences
+
+A cache key is determined by more than the visible user text. Provider request construction can place tool definitions before the system prompt and message history, and model or serving settings can select a different cache namespace. A hit comparison must therefore use the **rendered eligible prefix** and the effective model/settings—not only the last user message.
+
+When a hit rate drops, compare two requests from the beginning and find the first meaningful difference. Common causes are reordered or edited tools, a timestamp or request identifier inserted into stable instructions, history compaction that replaces earlier messages, a model change, a different cache breakpoint, or expiration. Put volatile data after the stable prefix; keep intentional semantic changes even when they reduce hits. A lower hit rate can be the correct result when compaction reduces total input work or a safety rule must change.
+
+Record cache-read tokens, cache-write tokens, uncached input tokens, time to first token, total latency, and the effective model and breakpoint. Those fields distinguish a true reuse failure from a cheaper request that intentionally has less reusable input. Cache-hit rate alone is not the optimization objective; total latency, cost, and answer quality are.
+
 ### Worked instance
 
 Suppose an assistant sends a 12,000-token stable policy-and-tools prefix followed
@@ -55,7 +63,7 @@ later request with that exact prefix and a different 300-token suffix, a cache
 hit can reuse the prefix's [[kv-cache]] and prefill only the new portion. If the
 application inserts a timestamp near the beginning of the policy, the prefix is
 no longer identical and it should expect a miss. Keeping volatile material at
-the end preserves the reusable boundary.
+the end preserves the reusable boundary. If a later deployment also reorders the tool list before that policy, the effective prefix changes earlier and the 12,000-token policy cannot be reused even though its text is unchanged. Comparing the fully rendered request exposes that first divergence.
 
 ## Prerequisites
 
@@ -63,4 +71,4 @@ the end preserves the reusable boundary.
 
 ## Sources
 
-- [Anthropic, “Prompt caching”](https://platform.claude.com/docs/en/build-with-claude/prompt-caching): official API documentation on cacheable prompt prefixes, cache lifetime, and cache reads and writes.
+- [Anthropic, “Prompt caching”](https://platform.claude.com/docs/en/build-with-claude/prompt-caching): official API documentation on cacheable prompt prefixes, the `tools` → `system` → `messages` prefix order, cache breakpoints and lifetime, and cache-read/write usage fields.

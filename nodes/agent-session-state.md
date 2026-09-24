@@ -1,14 +1,14 @@
 ---
 id: agent-session-state
 title: Agent Session State
-summary: Agent session state preserves conversation-scoped data across fresh per-turn executions while keeping transient run progress and durable cross-session memory in separate lifecycles.
+summary: Agent session state preserves ordered conversation data across fresh turns and crash recovery while separating transient run progress, tool-call reconciliation, and durable cross-session memory.
 type: concept
 tags: [ml/agents]
 prereqs: [agent-memory, trace-span, transaction]
-sources: [https://openai.github.io/openai-agents-python/sessions/, https://docs.langchain.com/oss/python/langgraph/persistence]
+sources: [https://openai.github.io/openai-agents-python/sessions/, https://docs.langchain.com/oss/python/langgraph/persistence, https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview]
 status: explained
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-09-25
 ---
 
 # Agent Session State
@@ -46,6 +46,14 @@ The invariant is: **a later turn may inherit conversation meaning, but it must n
 
 Session storage must also preserve ordering. Two messages for the same session can arrive concurrently; without a sequence number, version check, [[transaction]], or per-session serialization rule, both runs may read the same old history and overwrite one another's updates. The correct mechanism depends on the storage system, but the required outcome is the same: the committed session history has one unambiguous order.
 
+### Tool calls make crash recovery a reconciliation problem
+
+A tool-using turn has an additional structural invariant: the persisted assistant tool call and the tool result returned to the model must remain paired by the call identifier. Official tool-use protocols represent that round trip explicitly: the model emits a structured call, the application executes it, and a later message returns a result referring to the same identifier. Persisting only the call can therefore leave a history that cannot continue correctly after a crash.
+
+The local session commit and an external side effect usually cannot be one atomic [[transaction]]. A process may die after a refund succeeded but before its result was recorded. Recovery must classify the call as **outcome unknown**, consult an execution receipt or the external system, and only then record the result or retry. Deleting the call loses audit history; blindly retrying can repeat a consequential action. For a repeatable operation, the application should send a stable idempotency key and persist states such as `planned`, `started`, `succeeded`, `failed`, and `unknown` so replay converges on one outcome.
+
+The commit boundary is therefore not merely “append the assistant message.” It is “commit a history prefix that the next model request can interpret, plus enough execution metadata to reconcile every in-flight call.” A synthetic interruption result may make the protocol history structurally complete, but it must say that the outcome is unknown rather than claiming the tool failed.
+
 ### Worked instance
 
 Consider a support agent receiving two messages under session `S7`.
@@ -53,6 +61,8 @@ Consider a support agent receiving two messages under session `S7`.
 **Turn 1 input:** “Where is order 4471?” The runtime loads an empty session, creates run `R1`, looks up the order, and returns “Order 4471 is in transit.” It commits two visible messages and the domain field `current_order = 4471` to `S7`. Tool arguments and intermediate lookup rows remain in `R1`'s trace. `R1` then closes.
 
 **Turn 2 input:** “Has that arrived yet?” The runtime loads `S7`, so “that” can resolve to order 4471. It creates a new run `R2` whose completed-step set is empty, performs a fresh lookup, and appends the new exchange to `S7`. If `R1`'s completed-step set had been stored in `S7`, `R2` could skip the lookup and return the stale first answer. If no session state had been loaded, `R2` would not know what “that” refers to.
+
+Now suppose `R2` calls `issue_refund` with call identifier `C9`. The external service completes the refund, but the worker crashes before the result enters `S7`. On restart, the runtime finds `C9` in `started` state with no local result. It must query the refund system using the stable operation identifier. If the refund exists, it records `succeeded` and appends the matching result; if the system cannot determine the outcome, it records `unknown` and routes the case to bounded reconciliation instead of issuing a second refund.
 
 The same example also shows why scope matters. The order number is useful within this support conversation, so it belongs in the session. A stable preference such as the user's language may be deliberately promoted to [[agent-memory]] for later conversations. A database response body and retry count belong only to the run trace. Classifying each value by lifetime prevents both amnesia and accidental persistence.
 
@@ -63,6 +73,7 @@ Test more than single-turn task accuracy:
 - send two turns where the second depends on the first and verify continuity;
 - send two unrelated turns and verify completed work is not replayed;
 - run concurrent turns for one session and verify deterministic ordering or conflict handling;
+- inject crashes before tool dispatch, after an external side effect, and before result persistence; verify call/result reconciliation and no duplicate consequential action;
 - restart a worker and verify that a production session backend preserves committed history;
 - enforce retention, deletion, and access boundaries by session identifier;
 - compare the stored visible history with the [[trace-span]] records and verify internal tool activity is not silently copied into future model context.
@@ -77,3 +88,4 @@ Test more than single-turn task accuracy:
 
 - [OpenAI Agents SDK, “Sessions”](https://openai.github.io/openai-agents-python/sessions/): documents conversation history maintained across multiple agent runs, retrieval before a run, persistence after a run, bounded history, and resumption of interrupted runs.
 - [LangGraph, “Persistence”](https://docs.langchain.com/oss/python/langgraph/persistence): distinguishes thread-scoped graph checkpoints used for conversation continuity and recovery from stores used for longer-lived cross-thread data.
+- [Anthropic, “Tool use with Claude”](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview): documents the client-tool round trip in which an assistant `tool_use` block is executed by the application and a later `tool_result` refers back to the same call identifier.

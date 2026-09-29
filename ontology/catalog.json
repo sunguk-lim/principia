@@ -2789,6 +2789,81 @@
         "prefill-vs-decode": "Temporary-memory peaks and batching shapes differ between prompt processing and token generation.",
         "paged-attention": "Block-based cache management explains why reserved capacity, fragmentation, and live KV bytes differ."
       }
+    },
+    "subword-tokenization": {
+      "objective": "Explain how a fixed subword vocabulary trades sequence length against coverage and task behavior.",
+      "prerequisiteReasons": {
+        "probability-distribution": "A token vocabulary determines which next-token outcomes the model assigns probabilities to."
+      }
+    },
+    "byte-pair-encoding-tokenization": {
+      "objective": "Explain frequency-based merge learning and how its frozen rules segment new text.",
+      "prerequisiteReasons": {
+        "subword-tokenization": "BPE is a particular way to build and apply subword pieces.",
+        "hash-map": "Pair frequencies are counted by symbol-pair identity during training."
+      }
+    },
+    "wordpiece-tokenization": {
+      "objective": "Explain greedy longest-match WordPiece encoding and its continuation-marker behavior.",
+      "prerequisiteReasons": {
+        "subword-tokenization": "WordPiece is a subword segmentation family.",
+        "trie": "Longest valid vocabulary prefix is the core inference lookup."
+      }
+    },
+    "cursor-prefix-tokenization": {
+      "objective": "Evaluate a tokenizer at arbitrary text cursor offsets rather than only on complete files.",
+      "prerequisiteReasons": {
+        "subword-tokenization": "Different vocabularies segment the same truncated text differently.",
+        "byte-pair-encoding-tokenization": "Frozen merges can change the token boundary when more text arrives.",
+        "context-window": "Token count still affects the model input budget, but does not settle completion quality."
+      }
+    },
+    "multi-model-inference-residency": {
+      "objective": "Decide which models remain loaded on a finite GPU under mixed-model traffic.",
+      "prerequisiteReasons": {
+        "llm-inference-memory-budget": "The simultaneously resident models and requests must fit one device budget.",
+        "queue": "Waiting time is separate from model-load and inference time.",
+        "load-balancing": "Separate endpoints require routing and make an alternative baseline."
+      }
+    },
+    "streaming-voice-agent-pipeline": {
+      "objective": "Trace and validate a live audio-to-action-to-speech interaction across stage boundaries.",
+      "prerequisiteReasons": {
+        "agent-session-state": "Corrections and action outcomes need durable structured state.",
+        "pipeline-bottleneck-localization": "Stage timestamps isolate the cause of end-to-end delay.",
+        "latency-percentile": "Turn delays and interruptions must be checked in the tail, not only at the median."
+      }
+    },
+    "tool-call-execution-contract": {
+      "objective": "Separate model-proposed tool arguments from authorized application execution and recorded outcomes.",
+      "prerequisiteReasons": {
+        "structured-output": "Schema-valid arguments are the syntax layer, not authorization.",
+        "agent-session-state": "Call IDs, side effects, and results must be reconciled across interruption."
+      }
+    },
+    "python-concurrency-model-selection": {
+      "objective": "Select and validate a Python concurrency model from workload and runtime evidence.",
+      "prerequisiteReasons": {
+        "thread": "Threads provide the shared-memory blocking-I/O option.",
+        "coroutine": "Coroutines provide cooperative asynchronous I/O.",
+        "parallel-process": "Separate processes provide a CPU-parallel option with communication cost.",
+        "gil": "Interpreter execution constraints affect the CPU trade-off.",
+        "measurement": "The decision must be tested on the actual workload and runtime."
+      }
+    },
+    "training-data-extraction-risk": {
+      "objective": "Diagnose and measure disclosure of specific training examples separately from retrieval and tool leaks.",
+      "prerequisiteReasons": {
+        "neural-network": "Parameter learning creates the possibility of reproducing training examples.",
+        "measurement": "Extraction needs a stated attacker model, test set, and success criterion."
+      }
+    },
+    "model-unlearning": {
+      "objective": "Evaluate whether an intervention reduced dependence on specified training data rather than merely changing direct refusal behavior.",
+      "prerequisiteReasons": {
+        "training-data-extraction-risk": "Residual disclosure is one critical observable outcome.",
+        "measurement": "Approximate removal must be compared against a baseline and utility metrics."
+      }
     }
   }
 }

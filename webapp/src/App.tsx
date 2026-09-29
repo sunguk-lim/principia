@@ -4,6 +4,7 @@ import { NodePanel } from "./NodePanel";
 import { loadStatuses, saveStatus } from "./status-store";
 import { emptyStatus, statusLabel, type GraphData, type GraphNode, type StatusMap, type StoreMode, type StudyStatus } from "./types";
 import { canonicalNodeId } from "./graph-utils";
+import { loadGraph } from "./graph-data";
 
 const ROOT_COLORS: Record<string,string> = { ml:"#8b9cff", math:"#f4c95d", os:"#55d6be", gpu:"#ff8a65", databases:"#d48cff", algorithms:"#65a8ff", networking:"#ff6b91", observability:"#7ee787", languages:"#c9a0ff", "parallel-computing":"#55c2ff" };
 
@@ -20,7 +21,7 @@ export default function App() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/neo4j/graph").then(response => { if (!response.ok) throw new Error("Neo4j graph unavailable"); return response.json(); }),
+      loadGraph(),
       loadStatuses(),
     ]).then(([graph, study]) => { setData(graph); setStatuses(study.statuses); setMode(study.mode); }).catch(error => console.error(error));
   }, []);

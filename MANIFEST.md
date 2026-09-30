@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-09-30_
 
-**451** nodes · **3** axioms · **0** on the frontier
+**456** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (171)
+## 🌳 Parent (root) nodes — top-level, required by nothing (172)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -22,6 +22,7 @@ _Last rebuilt: 2026-09-30_
 - [Chunked Prefill](nodes/chunked-prefill.md)
 - [Class-Weighted Loss](nodes/class-weighted-loss.md)
 - [clone()](nodes/clone.md)
+- [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
 - [Column Pruning](nodes/column-pruning.md)
 - [Conjugate Prior](nodes/conjugate-prior.md)
@@ -200,7 +201,9 @@ _Last rebuilt: 2026-09-30_
 - [Adaptive Layer Normalization](nodes/adaptive-layer-normalization.md)
 - [Address Space Layout](nodes/address-space-layout.md)
 - [Agent Memory](nodes/agent-memory.md)
+- [Agent Plan Artifact](nodes/agent-plan-artifact.md)
 - [Agent Session State](nodes/agent-session-state.md)
+- [Agent Validation Hooks](nodes/agent-validation-hooks.md)
 - [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md)
 - [All-gather](nodes/all-gather.md)
 - [All-reduce](nodes/all-reduce.md)
@@ -236,6 +239,7 @@ _Last rebuilt: 2026-09-30_
 - [Class-Weighted Loss](nodes/class-weighted-loss.md)
 - [clone()](nodes/clone.md)
 - [Closure](nodes/closure.md)
+- [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
 - [Collective operation](nodes/collective-operation.md)
 - [Column Pruning](nodes/column-pruning.md)
@@ -550,6 +554,7 @@ _Last rebuilt: 2026-09-30_
 - [Relational Model](nodes/relational-model.md)
 - [Reparameterization Trick](nodes/reparameterization-trick.md)
 - [Replication](nodes/replication.md)
+- [Repository Agent Instructions](nodes/repository-agent-instructions.md)
 - [Representation Alignment](nodes/representation-alignment.md)
 - [Reservoir Sampling](nodes/reservoir-sampling.md)
 - [Residual Network](nodes/residual-network.md)
@@ -639,6 +644,7 @@ _Last rebuilt: 2026-09-30_
 - [Web Text Extraction](nodes/web-text-extraction.md)
 - [Weight-Load Amortization](nodes/weight-load-amortization.md)
 - [WordPiece Tokenization](nodes/wordpiece-tokenization.md)
+- [Worktree Isolation for Coding Agents](nodes/worktree-isolation-for-agents.md)
 - [Write-Ahead Logging (WAL)](nodes/write-ahead-logging.md)
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
@@ -699,9 +705,9 @@ _Last rebuilt: 2026-09-30_
 
   - **math/statistics** (1) — [Hypothesis Testing](nodes/hypothesis-testing.md)
 
-### ml (160)
+### ml (165)
 
-  - **ml/agents** (8) — [Agent Memory](nodes/agent-memory.md), [Agent Session State](nodes/agent-session-state.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Sandboxed Code Execution](nodes/sandboxed-code-execution.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md), [Tool-Call Execution Contract](nodes/tool-call-execution-contract.md)
+  - **ml/agents** (13) — [Agent Memory](nodes/agent-memory.md), [Agent Plan Artifact](nodes/agent-plan-artifact.md), [Agent Session State](nodes/agent-session-state.md), [Agent Validation Hooks](nodes/agent-validation-hooks.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md), [Graph Memory](nodes/graph-memory.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Repository Agent Instructions](nodes/repository-agent-instructions.md), [Sandboxed Code Execution](nodes/sandboxed-code-execution.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md), [Tool-Call Execution Contract](nodes/tool-call-execution-contract.md), [Worktree Isolation for Coding Agents](nodes/worktree-isolation-for-agents.md)
 
   - **ml/ai-systems** (1) — [Model Context Protocol](nodes/model-context-protocol.md)
 

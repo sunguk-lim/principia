@@ -10,7 +10,7 @@ sources:
   - arxiv:2501.13956
 status: explained
 created: 2026-06-25
-updated: 2026-06-25
+updated: 2026-10-01
 ---
 
 # Graph Memory
@@ -63,6 +63,8 @@ current statements compete.
   tier of [[agent-memory]], before the model answers. Because traversal follows *relation labels*, it
   assembles exactly the chain a multi-hop question needs — the `O(V + E)` walk from [[knowledge-graph]],
   not a similarity guess.
+
+**Identity is an evaluated decision, not a free property of the graph.** A graph store merges only the records that its identity-resolution policy says refer to the same entity. Names, aliases, embeddings, and shared attributes can generate candidates, but homonyms and changing identifiers can create false merges or missed links. Keep source provenance and conflicting claims, send uncertain pairs for review, and test merge precision and recall on adjudicated records before allowing a model score to overwrite an existing node. The graph data structure makes a chosen merge representable; it does not establish that the choice was correct.
 
 **Adding time — the temporal knowledge graph.** The update problem is solved by letting edges carry
 **validity time**. Instead of deleting the old fact when the user changes jobs, graph memory records the

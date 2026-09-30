@@ -16,6 +16,13 @@
       "reason": "Limits and validation is supporting explanation for the canonical Reservoir Sampling objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-005d524cb75e46651e0f",
+      "sourceId": "fixed-choice-logit-scoring",
+      "contentHash": "9b2c790c76c947b145e365b0aa574c59e66872cebe549617fc05092105275599",
+      "decision": "retain",
+      "reason": "Label tokenization, template position, and score calibration delimit when Fixed-Choice Logit Scoring works; they belong with its mechanism."
+    },
+    {
       "candidateKey": "cand-0081dbf2ba1b691a3ae4",
       "sourceId": "sk-buff",
       "contentHash": "f044c5219e16e38187ddd4aa3f7422cfca1c94f62c918f11cc9bbc48b2af9710",
@@ -574,6 +581,13 @@
       "contentHash": "8192ed4e505a6caf79dc7e0e2bd017c2435fd37db175eb37bc0bd408c8f8584c",
       "decision": "retain",
       "reason": "Worked instance: one scalar line becomes 32 results, then a branch splits the warp is supporting explanation for the canonical SIMT objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-0d296b8eddea420efef0",
+      "sourceId": "model-unlearning",
+      "contentHash": "e41189dd984cc3abfe3bb66eae3cf686af111454d04b000c16a315c9ea78f686",
+      "decision": "retain",
+      "reason": "This section defines and explains Model Unlearning as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-0d2e6051b499300af1da",
@@ -1177,6 +1191,13 @@
       "contentHash": "dc1d7c50c2667b4023dd073beedc1962a1bba37e5304d79099543efd1b2d7ef8",
       "decision": "retain",
       "reason": "Worked instance is supporting explanation for the canonical Operator set objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-1f6f9e2a76e12ed161ba",
+      "sourceId": "structured-output",
+      "contentHash": "24cf3390a0fd887cc6888e4a9275e213a049bb6d77a0ada4f09f2d5ebc83d728",
+      "decision": "retain",
+      "reason": "This section defines and explains Structured Output as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-1f833ee095d4edc1d646",
@@ -2208,6 +2229,13 @@
       "reason": "Overview is supporting explanation for the canonical Cross Product objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-3c24f2dfe0c2cb223d95",
+      "sourceId": "llm-text-watermarking",
+      "contentHash": "cdfab124414b349c0887774108b9111d6619c6cf8b3558cd92cedf666f7c362c",
+      "decision": "retain",
+      "reason": "This section defines and explains LLM Text Watermarking as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-3c88c5389aaad1210596",
       "sourceId": "convexity",
       "contentHash": "0b30e802e7f7265087221a6c629223048c9c8320aef8fe0cfc229fb1fb7e5afa",
@@ -2264,6 +2292,13 @@
       "reason": "Overview is supporting explanation for the canonical Memory Hierarchy objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-3f4bcafc935872d7f2bc",
+      "sourceId": "test-time-compute",
+      "contentHash": "82ff4e7c6e59fed1d2e825ae7d77db21bf76271878a014fb2460bcbb1680ca8b",
+      "decision": "retain",
+      "reason": "This section defines and explains Test-Time Compute as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-3fa9a0af15ac89a26ad1",
       "sourceId": "change-of-variables",
       "contentHash": "09996e042072b1f1d4525f6109853f5e5b18d54c81bcecc308111ad10ff918d1",
@@ -2290,13 +2325,6 @@
       "contentHash": "24fb7c4c470d77e7f2e249ce827961cfb0dd2167983986d23597f6402dda2e8c",
       "decision": "retain",
       "reason": "What DMA *is*: delegating the bulk move to a dedicated engine is supporting explanation for the canonical Direct Memory Access objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-40554a0ff17959c90ef1",
-      "sourceId": "test-time-compute",
-      "contentHash": "12973b5e5a8b51c7e1be82c27983292883b06a4c0a5a4aea8cc3d3dd6d963b46",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Test-Time Compute objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-40583db2cf874619907d",
@@ -2423,6 +2451,13 @@
       "contentHash": "db17e496b7c92d82c858e8f86be17a8b76cbde80d2b234dbc43123f2c84d4249",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Multi-Head Attention objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-439eebbf34462e7d58e4",
+      "sourceId": "sandboxed-code-execution",
+      "contentHash": "d303fc8fcfa07ab794b0c71c56739eecf075ae8796b2d00148ff634d84371856",
+      "decision": "retain",
+      "reason": "This section defines and explains Sandboxed Code Execution as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-43cdf2cd068328785a8b",
@@ -2747,13 +2782,6 @@
       "reason": "Overview is supporting explanation for the canonical Context Window objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-4b5f0bf03df3ae1d9ea9",
-      "sourceId": "agent-session-state",
-      "contentHash": "4ec2d9d6f5289bd8c3c3d05798ade3d76141a37c8202d6e47d7fd7d89b3b3b45",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Agent Session State objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-4b7e71613cda90371e5f",
       "sourceId": "process",
       "contentHash": "2be8358a9be5a117ae8ae1767dab8d27ebc1d7ec91b5bb358125858590697a0b",
@@ -2915,6 +2943,13 @@
       "reason": "Overview is supporting explanation for the canonical OverlayFS objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-4fe74f195be37df8c15a",
+      "sourceId": "multi-model-inference-residency",
+      "contentHash": "bb0692ad2dbb14819638771e6967307e6bdc5ea331fb0e1cf593f6bae6476d72",
+      "decision": "retain",
+      "reason": "This section defines and explains Multi-Model Inference Residency as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-500e2d25865358e27075",
       "sourceId": "sk-buff",
       "contentHash": "48de9c9115ecf84a79ca6249aa9b481fe6c07e2910fe17849c93f60179627f02",
@@ -3048,6 +3083,13 @@
       "reason": "A worked instance — the same $y$ two ways is supporting explanation for the canonical State Space Model objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-53c70dddc8734afb7566",
+      "sourceId": "fixed-choice-logit-scoring",
+      "contentHash": "b219e4f259df10bdde39b9a70111bf5eb051dc53c7adc57b66c35e8620f27468",
+      "decision": "retain",
+      "reason": "Ticket labels, next-token logits, and renormalization together constitute the Fixed-Choice Logit Scoring mechanism; no separate entity is introduced."
+    },
+    {
       "candidateKey": "cand-5414ec1dd66f59a0e63b",
       "sourceId": "gather",
       "contentHash": "f79ee102c6c31e2a4444110ee292828044ceb81fbd9a105debc0afad932251d4",
@@ -3055,11 +3097,25 @@
       "reason": "Overview is supporting explanation for the canonical Gather objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-54f8b288f306afaeafac",
+      "sourceId": "fixed-choice-logit-scoring",
+      "contentHash": "e7bd35dcfdc1466f73b44b5177dec53ec1938584662a027cebd5b37c229b3dc6",
+      "decision": "retain",
+      "reason": "This section defines and explains Fixed-Choice Logit Scoring as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-560450eb2082a8fb931c",
       "sourceId": "convex-transformation-order",
       "contentHash": "215543c0c2751f96950c56b29347411c565dfab5e9f319746402531c3a344164",
       "decision": "retain",
       "reason": "What the concept *is* — and the gap it fills is supporting explanation for the canonical Convex Transformation Order objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-5612482ab4d13fe9bd44",
+      "sourceId": "streaming-voice-agent-pipeline",
+      "contentHash": "f6d44f29d24e1362bdafe0be739eae49207f8a71a5ce07b38e40fb5dbd32dda9",
+      "decision": "retain",
+      "reason": "This section defines and explains Streaming Voice-Agent Pipeline as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-561ae4980b084595339b",
@@ -3221,6 +3277,13 @@
       "contentHash": "47f93c02dc33fecdffd0135f31eb88e0e98b2cb58b30554e9ac84bc60077147d",
       "decision": "retain",
       "reason": "The honest baseline it is a shortcut for: hierarchical Bayes is supporting explanation for the canonical Empirical Bayes objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-5ad88975975aad282b07",
+      "sourceId": "llm-inference-memory-budget",
+      "contentHash": "87681d4326279e68ea31bd23c5dcc37532f9c67215e1ce9cf7ce86585e0c583e",
+      "decision": "retain",
+      "reason": "This combines weights, KV cache, temporary buffers, runtime, and headroom into one LLM Inference Memory Budget; component concepts can be studied separately, but this section teaches their joint accounting."
     },
     {
       "candidateKey": "cand-5b0060e50ca00d52bcc9",
@@ -3783,6 +3846,13 @@
       "reason": "Worked instance — a non-repeatable read, and how Repeatable Read forbids it is supporting explanation for the canonical Transaction Isolation objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-6aad1d6d4e9697ae599e",
+      "sourceId": "wordpiece-tokenization",
+      "contentHash": "bd5dac8e219c626e48dd16ceb9b3e9531433e1d0aa7977d6f07cc23f1070fa68",
+      "decision": "retain",
+      "reason": "This section defines and explains WordPiece Tokenization as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-6abd8b068e4c46e75555",
       "sourceId": "cromwell-rule",
       "contentHash": "af6fb06bf8ea3a7c432a07260c3b74fa869eb588b5c78f37b727948e519c3e0a",
@@ -4063,6 +4133,13 @@
       "reason": "Overview is supporting explanation for the canonical Skewness objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-739e9ba66fc5714eb8e1",
+      "sourceId": "agent-validation-hooks",
+      "contentHash": "a03679e94011a07d68a4b8fc0637b74750e64e94dbadf74d29459f295312410f",
+      "decision": "retain",
+      "reason": "This section defines and explains Agent Validation Hooks as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-73b81323c43a44f938ff",
       "sourceId": "mmu",
       "contentHash": "c54500432d89e36f815afb58c5653e05b361471c2eb5df0ae1b7ff5b0c0678a7",
@@ -4194,6 +4271,13 @@
       "contentHash": "57c2f14218545d6b4733c36e86fc0d5f5877028fa2ab2a6cdc07ea605697228e",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Federated Learning objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-76d1b771a022fd9c8240",
+      "sourceId": "training-data-extraction-risk",
+      "contentHash": "01e4366a174df01066032150a36ad7144645c1e1818be668a675a62116b251d1",
+      "decision": "retain",
+      "reason": "This section defines and explains Training-Data Extraction Risk as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-7716dd3dac488dfe19f5",
@@ -4687,6 +4771,13 @@
       "reason": "The why: the gap between fork and exec is supporting explanation for the canonical Fork and Exec objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-854c6fa1513ffbf86a6e",
+      "sourceId": "hypothesis-testing",
+      "contentHash": "6250b4be95ef20c7ea44e0ba32569896472ea294b60d00b4d918ae4d3e581eef",
+      "decision": "retain",
+      "reason": "This section defines and explains Hypothesis Testing as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-859f3b7bfe2deafdc029",
       "sourceId": "load-testing",
       "contentHash": "a58f42e5408e60c429a5608de0252b3695bfb431411d384593bccb8405eecdf7",
@@ -5086,6 +5177,13 @@
       "reason": "Overview is supporting explanation for the canonical Namespace objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-91cafe521d4481b1341e",
+      "sourceId": "cursor-prefix-tokenization",
+      "contentHash": "a425b73e75ae4a1bfb1f8822db205c4ff063cd6ae2ada93d7b747c05e8016b00",
+      "decision": "retain",
+      "reason": "This section defines and explains Cursor-Prefix Tokenization as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-91d65434f84f2b73873c",
       "sourceId": "inode",
       "contentHash": "5ed1274fe9c55383ce3c4c0ff8c1060d0d82cb1de99e7a6b2f4b29c71fcb20d1",
@@ -5189,6 +5287,13 @@
       "contentHash": "60e09ae98151da8ec523d116a70cfa94a6ffb3e30d699df04dce58f9a3c0802a",
       "decision": "retain",
       "reason": "Contrast with TCP, in a sentence is supporting explanation for the canonical UDP objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-94db4ea7e2f1e17b0d78",
+      "sourceId": "llm-inference-memory-budget",
+      "contentHash": "0cd56a2730ff7630df73d96ddd0a30e9ed53b6134e8239bcec7a4efddf56b63f",
+      "decision": "retain",
+      "reason": "This section defines and explains LLM Inference Memory Budget as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-94dfe078629371a09e6c",
@@ -5324,6 +5429,13 @@
       "reason": "Mechanism 3 — flow control: don't overrun a slow receiver is supporting explanation for the canonical TCP objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-99294a35cab2a5297b65",
+      "sourceId": "llm-inference-memory-budget",
+      "contentHash": "fb48c09892adecf1bbe84c3e99b8246eebce52cb22c3f52d7dafa1cdfd617828",
+      "decision": "retain",
+      "reason": "The 40-GiB capacity calculation is a worked application of the LLM Inference Memory Budget, not a separate identity."
+    },
+    {
       "candidateKey": "cand-99989a99fa53053b5819",
       "sourceId": "temporal-data-leakage",
       "contentHash": "b473524c696a7bad6e116db6378d2224b6703fa4bd75e238e9d291f2e9e5a560",
@@ -5331,11 +5443,25 @@
       "reason": "Overview is supporting explanation for the canonical Temporal Data Leakage objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-9a0ea4c598704ed1b7f6",
+      "sourceId": "byte-pair-encoding-tokenization",
+      "contentHash": "b53789bc55a70c93ce602b377efd3b337d53f1a15858700e49395b3dc5837715",
+      "decision": "retain",
+      "reason": "This section defines and explains Byte-Pair Encoding Tokenization as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-9a4ad32b3a4c752873c8",
       "sourceId": "change-of-variables",
       "contentHash": "8c21b9bdae28b3e3cc2330a23214191fd87be9e68d24fa11696261d198e23a00",
       "decision": "retain",
       "reason": "The infinitesimal proof supports the same objective; it does not introduce a distinct concept."
+    },
+    {
+      "candidateKey": "cand-9a5333bdb9b96a064e2b",
+      "sourceId": "agent-session-state",
+      "contentHash": "588e8d96c4937dccdd36ede0ca704596a3463733f21a1fb066e652aab21aad1a",
+      "decision": "retain",
+      "reason": "These checks test the stated Agent Session State invariants; they are validation examples, not an independent learning objective."
     },
     {
       "candidateKey": "cand-9ac71718d4ff387180f6",
@@ -5387,6 +5513,13 @@
       "reason": "Worked instance: a `read()` on a sensor through its driver is supporting explanation for the canonical Device Driver objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-9bf4e26bd06eebd71e27",
+      "sourceId": "fixed-choice-logit-scoring",
+      "contentHash": "ce442dc2eaa998b1d94cd865b1dc09bbb772b68207ed66dd74195a2a2a9e5a94",
+      "decision": "retain",
+      "reason": "The three-label numerical calculation applies Fixed-Choice Logit Scoring and is an example, not a second concept."
+    },
+    {
       "candidateKey": "cand-9c05b293b6e3c5c2297a",
       "sourceId": "geometric-distribution",
       "contentHash": "7814143ed0bcbb9cb18d244a2b9ba983efe09b2ffc4018c00bd21a3228213c7c",
@@ -5406,6 +5539,13 @@
       "contentHash": "6576eed0e79579e6be987477a18ef81deba59bc69078cf6b9a935f2c6768820e",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Queue objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-9c7b4c24bc87f018bb9e",
+      "sourceId": "repository-agent-instructions",
+      "contentHash": "604463c987309f40edc7dc61b23a7749947520b52bfb8e923761cac8e26b9361",
+      "decision": "retain",
+      "reason": "This section defines and explains Repository Agent Instructions as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-9c8e3a4230a3b4ebda25",
@@ -6136,6 +6276,13 @@
       "reason": "Job one: firewalling — `ACCEPT`, `DROP`, `REJECT` by address, port, or connection state is supporting explanation for the canonical Netfilter (iptables/NAT) objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-affa6c6698f5ea51e9dc",
+      "sourceId": "subword-tokenization",
+      "contentHash": "8f9d2a805590d41a2ef9abc9fb7ed83d603a876f1a678cae93369c61c897684c",
+      "decision": "retain",
+      "reason": "This section defines and explains Subword Tokenization as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-b0182fed89fa11192a23",
       "sourceId": "dns",
       "contentHash": "81831840f920d0ea21630299c5240b5913ac535a4de81d182ae0c62b512893d6",
@@ -6148,6 +6295,13 @@
       "contentHash": "d953ba905ceeee51a6e29050e85d4fadf01245b157a77d8d365621197bc462d5",
       "decision": "retain",
       "reason": "Pillar one — [[paged-attention]] frees the memory is supporting explanation for the canonical vLLM objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-b0706a617139928f0c8c",
+      "sourceId": "hypothesis-testing",
+      "contentHash": "88decbf800cb1fb906aed2d6560db7bbdf45166fec4a72ea580218873907225a",
+      "decision": "retain",
+      "reason": "The coin-flip calculation illustrates the null model, statistic, and rejection rule already taught by Hypothesis Testing."
     },
     {
       "candidateKey": "cand-b08f14eea14ec56d3c27",
@@ -6290,6 +6444,13 @@
       "reason": "Worked example is supporting explanation for the canonical Concept Drift objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-b372f551b45dad35db2f",
+      "sourceId": "coding-agent-workflow-composition",
+      "contentHash": "df60f738a65946af878e3900cb51ae68084598cbd31781445b7e431e04e10cfb",
+      "decision": "retain",
+      "reason": "This section defines and explains Coding-Agent Workflow Composition as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
       "candidateKey": "cand-b3ad48f2d30a744700f4",
       "sourceId": "page-fault",
       "contentHash": "d42b12fee239f2a9583385a8447fa195dd0793c2131449e5725bc5945528f7ae",
@@ -6323,6 +6484,13 @@
       "contentHash": "f7c353806ca5727905eb74803cb855ce95a785cec968cd958237321b6a3e9d04",
       "decision": "retain",
       "reason": "The why: a container is light because it shares the host kernel is supporting explanation for the canonical Container objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-b47cef37ade45660a18a",
+      "sourceId": "llm-inference-memory-budget",
+      "contentHash": "644a1b7d02a6892c32b5e234bff937a1370df1409fceec591232c3e8235739c9",
+      "decision": "retain",
+      "reason": "The measurement procedure validates an LLM Inference Memory Budget under realistic concurrency and scheduler behavior; it is part of the budget objective."
     },
     {
       "candidateKey": "cand-b47f68bd88caa8cdc998",
@@ -6606,6 +6774,20 @@
       "reason": "Overview is supporting explanation for the canonical Conditional Independence objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-bc176fa44349e1bf6a35",
+      "sourceId": "python-concurrency-model-selection",
+      "contentHash": "5bc91878c58abd7225c1b0e775f026747c9616d22cdeb6df7ab305b2a679446e",
+      "decision": "retain",
+      "reason": "This section defines and explains Python Concurrency Model Selection as the source node’s learning objective; it is not a second entity alongside that node."
+    },
+    {
+      "candidateKey": "cand-bc813d79a73cb8e1cc0f",
+      "sourceId": "sandboxed-code-execution",
+      "contentHash": "e9d63a036e246a984029617ffe35189de736c2c184bb32b0b996538c0c10fed8",
+      "decision": "retain",
+      "reason": "The comparison motivates Sandboxed Code Execution by explaining the extra risks of arbitrary code; it is supporting rationale."
+    },
+    {
       "candidateKey": "cand-bc93dad6745cab011d57",
       "sourceId": "parallel-process",
       "contentHash": "c41912ce3ac49c5881b240b34a62f6301c5cd44890d3e8835cce34936c823278",
@@ -6739,6 +6921,13 @@
       "reason": "Why the wrapper exists is supporting explanation for the canonical glibc Wrapper objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-c0b09976b43b09ddef41",
+      "sourceId": "sandboxed-code-execution",
+      "contentHash": "54f972b011070e543dea8b0aecdfc129102ef0e93eaaf2f72095899bfbf9abb5",
+      "decision": "retain",
+      "reason": "Supervisor ownership and a constrained capability channel are components of the Sandboxed Code Execution boundary described in this lesson."
+    },
+    {
       "candidateKey": "cand-c0c2d5ed52245e761c31",
       "sourceId": "telemetry-context",
       "contentHash": "80444b1e807c2df991ee966d440606e3423ac528ddcb144f3c133fb059a6a000",
@@ -6807,6 +6996,13 @@
       "contentHash": "bf2c57c4c182da44dc7a88b3b17021160f24b775c8fdd2275444a67d05e78072",
       "decision": "retain",
       "reason": "Why PostgreSQL is its own node and not just the sum of its parts is supporting explanation for the canonical PostgreSQL objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-c3cfbc30ca40ae8eb0ce",
+      "sourceId": "worktree-isolation-for-agents",
+      "contentHash": "c627dc9d8f5a7bc7980a37e8600dcd69f84301733a5194066be1af1cc98066ae",
+      "decision": "retain",
+      "reason": "This section defines and explains Worktree Isolation for Coding Agents as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-c3d43feff266812a40b8",
@@ -6968,6 +7164,13 @@
       "contentHash": "fce397478e44ea72ed262bfe80a0f2be3b82542724ed292b3d5b7e689d5263d6",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Dropout objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-c69082dc20d929d02258",
+      "sourceId": "llm-text-watermarking",
+      "contentHash": "703cdc8ed633007f374c294beaf343bf0243eca693b3e7022e19683e149e5132",
+      "decision": "retain",
+      "reason": "The green-token z-score calculation demonstrates LLM Text Watermarking detection and does not define a new concept."
     },
     {
       "candidateKey": "cand-c6a54a62b9a63fc5a4ab",
@@ -7164,6 +7367,13 @@
       "contentHash": "559b668b42cc184b139b4e2e044e068da48c17baead12795de2cc137123e37dc",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Moment Skewness objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-ca50a4006047f9a8168f",
+      "sourceId": "agent-plan-artifact",
+      "contentHash": "6ce549150369da9f06cffb294f8b1c9922dfad9acccdcd1f4626577bae15ee1f",
+      "decision": "retain",
+      "reason": "This section defines and explains Agent Plan Artifact as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-ca9b7b70dc34c369a7d8",
@@ -7404,6 +7614,13 @@
       "reason": "`clone()`: the one creation primitive, parameterized by flags is supporting explanation for the canonical clone() objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-cf896951ece34a469c49",
+      "sourceId": "sandboxed-code-execution",
+      "contentHash": "7b286a434fa1967fdca30674ce1c8f8b975cb51c60d81ad4089d77799c566f0f",
+      "decision": "retain",
+      "reason": "The bounded local-file task illustrates Sandboxed Code Execution controls in one concrete workflow; it is an example."
+    },
+    {
       "candidateKey": "cand-cf8f3b6d0f77d638a6dd",
       "sourceId": "symmetric-antisymmetric-decomposition",
       "contentHash": "0f354a821f8f20c86c9bffe08d4eeab0e712cc7d053f316fb2181cc56d5e5dd1",
@@ -7509,6 +7726,13 @@
       "reason": "A worked instance: fetching a web page, byte-for-byte like a file is supporting explanation for the canonical Socket objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-d2cc8a1e4f7b9d837904",
+      "sourceId": "agent-session-state",
+      "contentHash": "4abde3df6df23185c9e4e97e5406a8a51280bbcc6a7700cbe5cb26fcda545dbb",
+      "decision": "retain",
+      "reason": "This explains how a session runtime reconciles tool-call and result pairs after a crash; it is part of the Agent Session State lifecycle, not a separate objective."
+    },
+    {
       "candidateKey": "cand-d2d801f60b839ea89cb3",
       "sourceId": "log-normal-distribution",
       "contentHash": "340c7077413a82a5d0de46aed79f728a1f04a24b35e5f0fe336ad9be6bf62dc2",
@@ -7542,6 +7766,13 @@
       "contentHash": "c8e2caf7041805d6d7722e404a0495a532640466c731bfc4587e43bb018d6189",
       "decision": "retain",
       "reason": "Why splitting the work creates a communication problem is supporting explanation for the canonical NVLink objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-d3e0b7a267c915379a27",
+      "sourceId": "tool-call-execution-contract",
+      "contentHash": "fa9ac1addf732eaea0eab963305ddaccd29ca9ba188b41d331635f2db0cf1945",
+      "decision": "retain",
+      "reason": "This section defines and explains Tool-Call Execution Contract as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-d3f401e19277bcd20adb",
@@ -8258,13 +8489,6 @@
       "reason": "Overview is supporting explanation for the canonical Model-Free Learning objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-eb3e54074498d86d5a1b",
-      "sourceId": "structured-output",
-      "contentHash": "be54528c61f8587a68e1235532512e31724c4bc5832c76dd8d2e5c3a79d3ecd0",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Structured Output objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-eb910202917a9be40f0e",
       "sourceId": "memory-coalescing",
       "contentHash": "70ffeda4f0d77d38217d6bd356830a6db259567c720b07e8ce8f9f46fcbbe2ca",
@@ -8543,6 +8767,13 @@
       "contentHash": "d21d2c211bb2894046d09453ff5e703c23f03351e4d29fb5ab9fe3c76c866086",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Python Profiling objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-f45a38830200266c6341",
+      "sourceId": "sandboxed-code-execution",
+      "contentHash": "8d4416e92e81598efb2d85dde6cfa5a5028869a16a40904211bf4bc36add003c",
+      "decision": "retain",
+      "reason": "These adversarial and resource-limit checks test the Sandboxed Code Execution boundary; they are validation criteria within the same objective."
     },
     {
       "candidateKey": "cand-f4b158a26256c55acc3b",
@@ -8825,13 +9056,6 @@
       "reason": "The regions, from low addresses to high is supporting explanation for the canonical Address Space Layout objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-fbc4bb0b89e95d12bc7e",
-      "sourceId": "agent-session-state",
-      "contentHash": "fdc481c6005352482d3158eb36eb16f915d8b642efb1866a334e8208b949820d",
-      "decision": "retain",
-      "reason": "Operational checks is supporting explanation for the canonical Agent Session State objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-fbcb7ca6995eb83aa4fd",
       "sourceId": "directed-acyclic-graph",
       "contentHash": "48eb237b5d2287cc2217001c74cd0c0634103dbf06295cd5a3940725b3b61994",
@@ -8921,6 +9145,13 @@
       "contentHash": "d283118aabb01aafc016e930b1dccb8da4c7782812ccd65415ef294739ce4c2f",
       "decision": "retain",
       "reason": "Worked instance: three checkout servers is supporting explanation for the canonical Load Balancing objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-fdc8616f878259d0e962",
+      "sourceId": "agent-session-state",
+      "contentHash": "c6192b8a7e39684ff8165f9ec62707dc1f1d75099f3f2a5b8dbff10af89b3828",
+      "decision": "retain",
+      "reason": "The two-turn support-agent trace illustrates continuity, replay, and recovery of Agent Session State rather than defining another concept."
     },
     {
       "candidateKey": "cand-fe2deb4fbf596d343bb5",

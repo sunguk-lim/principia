@@ -8,7 +8,7 @@ prereqs: [retrieval-augmented-generation, context-window]
 sources: []
 status: explained
 created: 2026-06-23
-updated: 2026-06-23
+updated: 2026-10-01
 ---
 
 # Agent Memory
@@ -36,6 +36,10 @@ Now the *why*, stated plainly. Long-horizon agents — a multi-session assistant
 A worked instance ties the tiers together. Early in a long assistant session the user mentions, in passing, "I prefer metric units, and I'm allergic to peanuts." The agent recognizes these as durable preferences and **writes** them to long-term memory as semantic facts. The conversation then continues for tens of thousands of tokens about unrelated topics. Suppose the window holds 8,000 tokens; by the time the running conversation has accumulated, say, 50,000 tokens of dialogue, those early sentences scrolled out of the [[context-window]] long ago — short-term memory has completely forgotten them, and memory management has by now **compacted** that early stretch into a few summary lines so the live context still fits under 8,000. The user now asks, "give me a dinner recipe." The agent embeds this request, runs [[retrieval-augmented-generation]] against its long-term store, and the two stored preference facts surface as the most relevant items; they are injected back into the [[context-window]] alongside the request. The model, now seeing "prefers metric units" and "allergic to peanuts" as live tokens again, produces a peanut-free recipe with metric quantities — instead of obliviously suggesting a peanut sauce measured in cups. Without long-term memory the facts were unrecoverable once they scrolled out; without [[retrieval-augmented-generation]] the agent could not have found *those* two facts among everything it had ever stored; without compaction the running context would have overflowed the window long before the recipe question arrived.
 
 One closing note: this very brain — its store of concept nodes that an assistant writes to and later retrieves from to answer questions across separate sessions — is itself an instance of long-term agent memory.
+
+## Memory promotion as a separate decision
+
+A completed interaction is evidence, not automatically a durable memory. Before writing long-term state, the application can propose candidate facts or procedures, check that they are supported by the trace, compare them with existing entries, and choose to add, update, defer, or discard. A repeated preference can be promoted as a scoped semantic fact; a one-off tool failure may remain an episode rather than becoming a universal procedure. Corrections should supersede stale facts with provenance and time rather than silently appending contradictions. This promotion gate controls privacy, retention, and quality separately from retrieval: a highly relevant memory may still be unauthorized to keep or reuse. Validate the gate on adjudicated examples for false promotion, missed useful lessons, stale preference handling, and downstream task outcomes. A model-provided relevance or novelty score is a fallible input, not the write policy itself.
 
 ## Prerequisites
 

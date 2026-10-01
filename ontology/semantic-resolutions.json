@@ -23,6 +23,13 @@
       "reason": "Label tokenization, template position, and score calibration delimit when Fixed-Choice Logit Scoring works; they belong with its mechanism."
     },
     {
+      "candidateKey": "cand-0066b25270dcf0b31853",
+      "sourceId": "model-output-sensitive-data-filter",
+      "contentHash": "7a8e91192354e0391e2d02002fa96c77a4033390546e255286b0846a2635c17b",
+      "decision": "retain",
+      "reason": "Overview is the complete defense-in-depth explanation for the canonical Model-Output Sensitive-Data Filter objective, not a separately learnable entity."
+    },
+    {
       "candidateKey": "cand-0081dbf2ba1b691a3ae4",
       "sourceId": "sk-buff",
       "contentHash": "f044c5219e16e38187ddd4aa3f7422cfca1c94f62c918f11cc9bbc48b2af9710",
@@ -49,6 +56,13 @@
       "contentHash": "c810c8e7b2597c1525692892a51da7f0fb68342e6e566bda276ae076f0407afd",
       "decision": "retain",
       "reason": "The idea: give each process a private, fake address space is supporting explanation for the canonical Virtual Memory objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-00ef1ab8ff2600a31202",
+      "sourceId": "retrieval-evidence-gate",
+      "contentHash": "23e19a2509da731cdc0f85bcedfc1bacbe67b93209e05f574bd20d187a03cf33",
+      "decision": "retain",
+      "reason": "Overview is the complete relevance-and-sufficiency control explanation for the canonical Retrieval Evidence Gate objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-00fa18c45b7b0f528216",
@@ -756,6 +770,13 @@
       "contentHash": "e07216a7ca2425ae73981aba5594812de6f02d01ac2ed8e8e594422100eadf31",
       "decision": "retain",
       "reason": "\"Everything is a file,\" now earned is supporting explanation for the canonical Virtual File System objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-12e591423ab7b4ed8312",
+      "sourceId": "retrieval-authorization-boundary",
+      "contentHash": "96106a4bd8ed68e1afce643817d0a7860f32097dbc5c9e31984bbd642e3d12d3",
+      "decision": "retain",
+      "reason": "Overview explains pre-context permission enforcement for the canonical Retrieval Authorization Boundary objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-13afdfd2ae7fa298a9b8",
@@ -3580,6 +3601,13 @@
       "reason": "The non-obvious step made plain is supporting explanation for the canonical Full Bayesian Inference objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-61df9de17abadab1e648",
+      "sourceId": "training-data-minimization",
+      "contentHash": "5927784107c5d2e65c4151721eb876126e46c2cbb3eec48003be1f0f753d95e8",
+      "decision": "retain",
+      "reason": "Overview is the complete provenance, reduction, and measured-risk explanation for the canonical Training-Data Minimization objective, not a separately learnable entity."
+    },
+    {
       "candidateKey": "cand-626a39d7861c0404eb3e",
       "sourceId": "sliding-window-attention",
       "contentHash": "ce057ecd6b4a0f188b60985d04a9d2df774214c32d6aa104d335dd3781a5571b",
@@ -5441,6 +5469,13 @@
       "contentHash": "b473524c696a7bad6e116db6378d2224b6703fa4bd75e238e9d291f2e9e5a560",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Temporal Data Leakage objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-99fc538bf92192a0cace",
+      "sourceId": "agent-memory",
+      "contentHash": "0b441b889b855699cbb4007236152ad2cd1e831db9e31d4914130b054c93257f",
+      "decision": "retain",
+      "reason": "Memory promotion specifies the write-policy control within the canonical Agent Memory objective; it is not a separate learning entity."
     },
     {
       "candidateKey": "cand-9a0ea4c598704ed1b7f6",
@@ -8202,6 +8237,13 @@
       "reason": "Worked instance: a tiled matrix multiply is supporting explanation for the canonical Shared Memory objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-e0742d046f075d3b18ee",
+      "sourceId": "decision-score-action-gate",
+      "contentHash": "31f3eb6cdbf042a25e23aec02c11021181ec919ac7253a2fb24e452532ff9ef0",
+      "decision": "retain",
+      "reason": "Overview defines the judgment-to-authorized-action mechanism of the canonical Decision-Score Action Gate objective, not a separately learnable entity."
+    },
+    {
       "candidateKey": "cand-e0b8897d489697e797b5",
       "sourceId": "document-model",
       "contentHash": "2f3ae6bbcc50dc45376b459842cc578092e9743326d601f3cc1a82553784562b",
@@ -8676,6 +8718,13 @@
       "contentHash": "22a04be80faa4bb47d51d9f2819270f5fa84d87487000044c39981e0bbc1e4a7",
       "decision": "retain",
       "reason": "What a register is, and why each thread needs its own is supporting explanation for the canonical Register Pressure objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-f14ca1fe88cd6d44c8b7",
+      "sourceId": "code-corpus-leakage-audit",
+      "contentHash": "6c0f60f1a2650120c3ce61620a30b01677b957f3d5a8586dbcbae3266631ee4c",
+      "decision": "retain",
+      "reason": "Overview is the complete audit procedure for the canonical Code-Corpus Leakage Audit objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-f154240b7031ab008c72",

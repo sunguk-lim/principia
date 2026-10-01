@@ -8,7 +8,7 @@ prereqs: [flow-network, residual-network, shortest-path]
 sources: [https://developers.google.com/optimization/flow/mincostflow]
 status: explained
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-10-02
 ---
 
 # Minimum-Cost Flow
@@ -37,6 +37,10 @@ A successive-shortest-path method starts with zero flow, views editable choices 
 Factory $S$ supplies 3 units. Customer $T$ demands 3. There are two routes: direct edge $S\to T$ has capacity 1 and cost 1 per unit; route $S\to A\to T$ has capacities 3 and costs 2 and 1 per unit. Send 1 unit directly for cost $1\times1=1$. The remaining 2 units take the indirect route, each costing $2+1=3$, for $2\times3=6$. Total cost is $7$. Sending all three indirectly would cost $9$, while sending more than one directly violates capacity.
 
 The result is not merely a cheap path: it is a globally feasible assignment across all edges. Applications include shipping, assignment, and scheduling whenever quantities, bottlenecks, and per-unit costs coexist.
+
+## Solver validation
+
+Before trusting a solver result, check conservation residuals at every node, lower and upper capacity bounds on every edge, and the stated cost computed from the returned flow. Test a small network with a hand-checkable optimum and an infeasible instance; the solver should distinguish optimal, feasible-but-not-proved, and infeasible outcomes. For larger cases, compare objective values with a second formulation, a bound, or a documented solver certificate when available, and perturb supplies or costs to expose indexing and sign errors. A zero constraint residual proves feasibility, not optimality; a low objective from a relaxed problem is not automatically an implementable flow.
 
 ## Prerequisites
 

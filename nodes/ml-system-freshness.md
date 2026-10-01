@@ -8,7 +8,7 @@ prereqs: [concept-drift, measurement]
 sources: [https://developers.google.com/machine-learning/guides/rules-of-ml#rule_8_know_the_freshness_requirements_of_your_system]
 status: explained
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-10-02
 ---
 
 # ML System Freshness
@@ -28,6 +28,10 @@ Choose refresh cadence by measuring quality as artifacts age. If engagement is s
 Freshness differs from [[concept-drift]]. Drift changes the relationship the model must learn; stale serving can fail even with unchanged model parameters because a user, item, or inventory state changed after precomputation. Retraining more often cannot repair an old cache downstream, and refreshing predictions cannot repair a model whose learned relationship has drifted.
 
 Monitor age distributions, missed update deadlines, late events, cache age, and task quality by age bucket. Test the cost and failure modes of each faster path: lower age may increase compute, load pressure, partial-update inconsistency, and operational complexity. Set the freshness target from observed quality loss and business consequences rather than from a fashionable batch-versus-streaming label.
+
+## External-source synchronization as a freshness boundary
+
+For a connected document source, record provider revision or change cursor, last successful poll, processing completion, index commit, and visibility time separately. A poll succeeding does not prove every document reached the searchable index: partial pages, rate limits, retries, deletes, and permission changes can leave a stale or over-permissive copy. Reconcile IDs and revisions, make replays idempotent, and surface a bounded stale state when the provider is unavailable. Measure change-to-searchable lag and revocation-to-invisible lag by source; a short average cannot hide a dangerous long tail. This is an application of the same age-of-information model, not a claim that retraining fixes connector lag.
 
 ## Prerequisites
 

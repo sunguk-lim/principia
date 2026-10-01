@@ -23,6 +23,8 @@ A [[tool-call-execution-contract]] defines one model-to-tool handoff. The harnes
 
 For example, a support agent may search orders and draft a refund. The harness bounds search calls, records tool IDs and outcomes, validates refund eligibility and amount, pauses for required approval, and resumes from a checkpoint. If a provider fails after a side effect, the harness reconciles the operation rather than blindly repeating it. LangGraph documents checkpointers and interrupts as concrete mechanisms for persistence and pause/resume; they do not make every application safe automatically.
 
+Screening untrusted text and sensitive data is a separate fallible layer. Normalize and bound tool inputs, keep retrieved or user-supplied instructions at data privilege, and remove unnecessary personal fields before model calls. Test redaction with synthetic identifiers and injection attempts, including false blocks; never rely on a screening score to grant an otherwise unauthorized tool call. Approval for a write must bind the exact arguments and resource scope so a resumed run cannot swap the approved operation.
+
 Test the harness as a system: unauthorized writes, malformed calls, duplicate results, provider failures, timeouts, approval denial, crash recovery, and budget exhaustion. Compare with a simpler baseline under identical tasks. [[measurement]] should track task completion, escaped unauthorized effects, false blocks, recovery, latency, and cost. A large test count or a calibrated-looking score alone is not evidence of safe behavior.
 
 ## Prerequisites

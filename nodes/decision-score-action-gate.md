@@ -5,10 +5,10 @@ summary: A decision-score action gate converts a bounded model judgment into an 
 type: concept
 tags: [ml/agents]
 prereqs: [model-calibration, measurement, structured-output]
-sources: [https://scikit-learn.org/stable/modules/calibration.html, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html]
+sources: [https://scikit-learn.org/stable/modules/calibration.html, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html, https://openrouter.ai/docs/api/api-reference/systemone/submit-a-system-one-request]
 status: explained
 created: 2026-10-01
-updated: 2026-10-01
+updated: 2026-10-03
 ---
 
 # Decision-Score Action Gate
@@ -27,6 +27,8 @@ Use [[measurement]] to evaluate confusion by class, precision and recall at cand
 
 The same gate can rank which context or skill to load, flag uncertain extracted fields for verification, or propose a browser action. Each application needs its own allowed answers, evidence labels, cost model, and authorization checks; sharing a scoring interface does not make those policies interchangeable.
 
+A typed decision API can express yes/no, bounded choice, or range-scored questions over explicit state. That response shape is useful for branching, but arithmetic, eligibility, permissions, and threshold policy still belong in application code. Check that answer labels and score ranges preserve their meaning across model and prompt revisions; benchmark against deterministic rules and a conventional classifier before using a learned decision service.
+
 This architecture separates *judgment* from *action*. It applies whether the judgment came from a specialized decision model or a general model. Claims that one model family is faster or better require matched workload measurements, not inference from its interface.
 
 ## Prerequisites
@@ -39,3 +41,5 @@ This architecture separates *judgment* from *action*. It applies whether the jud
 
 - [scikit-learn probability calibration](https://scikit-learn.org/stable/modules/calibration.html): score-to-frequency validation.
 - [scikit-learn precision-recall curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html): operating-point trade-offs across thresholds.
+
+- [OpenRouter System One request API](https://openrouter.ai/docs/api/api-reference/systemone/submit-a-system-one-request): example of typed questions over supplied state; application policy remains separate.

@@ -8,7 +8,7 @@ prereqs: [agent-memory]
 sources: [https://code.claude.com/docs/en/memory]
 status: explained
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-04
 ---
 
 # Repository Agent Instructions
@@ -20,6 +20,8 @@ updated: 2026-09-30
 ## Grounded explanation
 
 A project instruction file can name build commands, style rules, architectural constraints, and repository workflow. Claude Code supports project `CLAUDE.md` files and, under documented conditions, `AGENTS.md`. A shared file should contain durable project guidance rather than task-specific state or secrets. Loading rules and scope matter: an instruction in a subdirectory may be read only when work enters that directory.
+
+A multi-turn language migration illustrates the scope boundary: a one-task request to port a component to Rust does not necessarily constrain later tasks. Put a repository-wide language rule in a loaded project instruction file, keep examples and build commands consistent with it, and use build or policy checks to catch drift. Preserve explicit exceptions for legitimate mixed-language migration work.
 
 Instructions influence model behavior but are not a hard enforcement mechanism. For a rule that must always hold, use repository checks or permissions and verify the result. Keep guidance concise and revise it when the repository changes; stale instructions can misdirect an otherwise capable agent.
 

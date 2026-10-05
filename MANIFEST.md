@@ -2,11 +2,11 @@
 
 _Last rebuilt: 2026-10-06_
 
-**505** nodes · **3** axioms · **0** on the frontier
+**506** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (200)
+## 🌳 Parent (root) nodes — top-level, required by nothing (199)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -113,6 +113,7 @@ _Last rebuilt: 2026-10-06_
 - [Metamorphic Testing](nodes/metamorphic-testing.md)
 - [MicroPython](nodes/micropython.md)
 - [Minimum-Cost Flow](nodes/minimum-cost-flow.md)
+- [Model Alias Pinning](nodes/model-alias-pinning.md)
 - [Model-Free Learning](nodes/model-free-learning.md)
 - [Model-Output Sensitive-Data Filter](nodes/model-output-sensitive-data-filter.md)
 - [Model Unlearning](nodes/model-unlearning.md)
@@ -145,10 +146,8 @@ _Last rebuilt: 2026-10-06_
 - [Predecessor Query](nodes/predecessor-query.md)
 - [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md)
 - [Progressive Diffusion Distillation](nodes/progressive-diffusion-distillation.md)
-- [Progressive Model Rollout](nodes/progressive-model-rollout.md)
 - [Prompt Caching](nodes/prompt-caching.md)
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
-- [Model-Provider Capability Matrix](nodes/provider-capability-matrix.md)
 - [Provider Data-Policy Routing](nodes/provider-data-policy-routing.md)
 - [Provider Failover Semantics](nodes/provider-failover-semantics.md)
 - [Python Assertion](nodes/python-assertion.md)
@@ -499,6 +498,7 @@ _Last rebuilt: 2026-10-06_
 - [Mixture-of-Experts (MoE)](nodes/mixture-of-experts.md)
 - [ML System Freshness](nodes/ml-system-freshness.md)
 - [Memory Management Unit](nodes/mmu.md)
+- [Model Alias Pinning](nodes/model-alias-pinning.md)
 - [Model Calibration](nodes/model-calibration.md)
 - [Model Context Protocol](nodes/model-context-protocol.md)
 - [Model-Free Learning](nodes/model-free-learning.md)
@@ -782,7 +782,7 @@ _Last rebuilt: 2026-10-06_
 
   - **math/statistics** (2) — [Hypothesis Testing](nodes/hypothesis-testing.md), [Quantile](nodes/quantile.md)
 
-### ml (210)
+### ml (211)
 
   - **ml/agents** (22) — [Agent Execution Harness](nodes/agent-execution-harness.md), [Agent Memory](nodes/agent-memory.md), [Agent Observation Ledger](nodes/agent-observation-ledger.md), [Agent Plan Artifact](nodes/agent-plan-artifact.md), [Agent Session State](nodes/agent-session-state.md), [Agent Side-Effect Invariants](nodes/agent-side-effect-invariants.md), [Agent Validation Hooks](nodes/agent-validation-hooks.md), [Agent Verification Loop](nodes/agent-verification-loop.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md), [Decision-Score Action Gate](nodes/decision-score-action-gate.md), [Document Input API](nodes/document-input-api.md), [Graph Memory](nodes/graph-memory.md), [Hosted Server-Tool Execution](nodes/hosted-server-tool-execution.md), [MCP Apps](nodes/mcp-apps.md), [Model-Output Sensitive-Data Filter](nodes/model-output-sensitive-data-filter.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Repository Agent Instructions](nodes/repository-agent-instructions.md), [Sandboxed Code Execution](nodes/sandboxed-code-execution.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md), [Tool-Call Execution Contract](nodes/tool-call-execution-contract.md), [Worktree Isolation for Coding Agents](nodes/worktree-isolation-for-agents.md)
 
@@ -808,7 +808,7 @@ _Last rebuilt: 2026-10-06_
 
     - **ml/llm/training** (8) — [Context Parallelism](nodes/context-parallelism.md), [Data parallelism](nodes/data-parallelism.md), [Expert parallelism (MoE)](nodes/expert-parallelism.md), [FSDP / ZeRO](nodes/fsdp.md), [Pipeline parallelism](nodes/pipeline-parallelism.md), [Tensor parallelism](nodes/tensor-parallelism.md), [3D Parallelism](nodes/three-dimensional-parallelism.md), [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-  - **ml/model-portability** (12) — [API-Key Usage Guardrail](nodes/api-key-usage-guardrail.md), [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [Multimodal Chat-Template Alignment](nodes/multimodal-chat-template-alignment.md), [Multimodal Model-Input Contract](nodes/multimodal-input-contract.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md), [Model-Provider Capability Matrix](nodes/provider-capability-matrix.md), [Provider Data-Policy Routing](nodes/provider-data-policy-routing.md)
+  - **ml/model-portability** (13) — [API-Key Usage Guardrail](nodes/api-key-usage-guardrail.md), [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [Model Alias Pinning](nodes/model-alias-pinning.md), [Multimodal Chat-Template Alignment](nodes/multimodal-chat-template-alignment.md), [Multimodal Model-Input Contract](nodes/multimodal-input-contract.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md), [Model-Provider Capability Matrix](nodes/provider-capability-matrix.md), [Provider Data-Policy Routing](nodes/provider-data-policy-routing.md)
 
   - **ml/regression** (1) — [Quantile Regression](nodes/quantile-regression.md)
 

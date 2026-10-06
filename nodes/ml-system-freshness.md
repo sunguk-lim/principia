@@ -5,10 +5,10 @@ summary: ML system freshness measures how old the model, features, candidates, a
 type: concept
 tags: [ml/evaluation]
 prereqs: [concept-drift, measurement]
-sources: [https://developers.google.com/machine-learning/guides/rules-of-ml#rule_8_know_the_freshness_requirements_of_your_system]
+sources: [https://developers.google.com/machine-learning/guides/rules-of-ml#rule_8_know_the_freshness_requirements_of_your_system, https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html]
 status: explained
 created: 2026-09-09
-updated: 2026-10-02
+updated: 2026-10-07
 ---
 
 # ML System Freshness
@@ -33,6 +33,10 @@ Monitor age distributions, missed update deadlines, late events, cache age, and 
 
 For a connected document source, record provider revision or change cursor, last successful poll, processing completion, index commit, and visibility time separately. A poll succeeding does not prove every document reached the searchable index: partial pages, rate limits, retries, deletes, and permission changes can leave a stale or over-permissive copy. Reconcile IDs and revisions, make replays idempotent, and surface a bounded stale state when the provider is unavailable. Measure change-to-searchable lag and revocation-to-invisible lag by source; a short average cannot hide a dangerous long tail. This is an application of the same age-of-information model, not a claim that retraining fixes connector lag.
 
+## Decision-to-effect boundary
+
+A newly computed decision can still be stale *as experienced* when a downstream actuator or customer-facing surface has not applied it. Measure decision-to-apply and decision-to-visible lag separately from feature or cache age. A desired state or accepted command is not proof of reported physical state; version the decision and reconcile acknowledgments with observations. When the effect path is slower than the data path, a faster feature stream may add load without improving the user-visible outcome. Choose the refresh target using the complete path and test delayed or partially applied updates, rather than treating model inference time as the end of the system.
+
 ## Prerequisites
 
 - [[concept-drift]]
@@ -41,3 +45,4 @@ For a connected document source, record provider revision or change cursor, last
 ## Sources
 
 - [Google, “Rules of Machine Learning,” Rule 8](https://developers.google.com/machine-learning/guides/rules-of-ml#rule_8_know_the_freshness_requirements_of_your_system): measure how quality degrades with model age and align monitoring with required update cadence; Rule 10 also documents silent failures from stale input tables.
+- [AWS IoT, Device Shadow service](https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html): distinguishes desired commands from reported device state for effect-path reconciliation.

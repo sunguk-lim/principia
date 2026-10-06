@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-10-06_
+_Last rebuilt: 2026-10-07_
 
-**506** nodes · **3** axioms · **0** on the frontier
+**511** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (199)
+## 🌳 Parent (root) nodes — top-level, required by nothing (203)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -44,11 +44,13 @@ _Last rebuilt: 2026-10-06_
 - [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md)
 - [Cursor-Prefix Tokenization](nodes/cursor-prefix-tokenization.md)
 - [Cyclical Feature Encoding](nodes/cyclical-feature-encoding.md)
+- [Decision–Actuation Consistency](nodes/decision-actuation-consistency.md)
 - [Deque](nodes/deque.md)
 - [Determinant](nodes/determinant.md)
 - [Differential operators](nodes/differential-operators.md)
 - [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md)
 - [Directional Derivative](nodes/directional-derivative.md)
+- [Distributed Dataframe Execution](nodes/distributed-dataframe-execution.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
 - [Document Input API](nodes/document-input-api.md)
 - [DoRA](nodes/dora.md)
@@ -95,6 +97,8 @@ _Last rebuilt: 2026-10-06_
 - [Lazy Nearest-Neighbor Learning](nodes/lazy-nearest-neighbor-learning.md)
 - [Linear Least Squares](nodes/linear-least-squares.md)
 - [Linear Programming](nodes/linear-programming.md)
+- [Linux Filesystem Hierarchy](nodes/linux-filesystem-hierarchy.md)
+- [Linux Pseudo-Filesystems](nodes/linux-pseudo-filesystems.md)
 - [LLM Serving Metric Triangulation](nodes/llm-serving-metric-triangulation.md)
 - [LLM Text Watermarking](nodes/llm-text-watermarking.md)
 - [Local Feature Attribution](nodes/local-feature-attribution.md)
@@ -135,7 +139,6 @@ _Last rebuilt: 2026-10-06_
 - [ONNX Runtime](nodes/onnx-runtime.md)
 - [OOM Killer](nodes/oom-killer.md)
 - [OpenTelemetry](nodes/opentelemetry.md)
-- [Out-of-Core Processing](nodes/out-of-core-processing.md)
 - [PATH Environment Variable](nodes/path-environment-variable.md)
 - [PCI Express](nodes/pci-express.md)
 - [Permutation Feature Importance](nodes/permutation-feature-importance.md)
@@ -145,6 +148,7 @@ _Last rebuilt: 2026-10-06_
 - [Posterior Consistency](nodes/posterior-consistency.md)
 - [Predecessor Query](nodes/predecessor-query.md)
 - [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md)
+- [Principal Component Analysis](nodes/principal-component-analysis.md)
 - [Progressive Diffusion Distillation](nodes/progressive-diffusion-distillation.md)
 - [Prompt Caching](nodes/prompt-caching.md)
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
@@ -324,6 +328,7 @@ _Last rebuilt: 2026-10-06_
 - [Database Index](nodes/database-index.md)
 - [Database Trigger](nodes/database-trigger.md)
 - [Dataset Lineage](nodes/dataset-lineage.md)
+- [Decision–Actuation Consistency](nodes/decision-actuation-consistency.md)
 - [Decision-Score Action Gate](nodes/decision-score-action-gate.md)
 - [Definite Integral](nodes/definite-integral.md)
 - [Del operator (∇)](nodes/del-operator.md)
@@ -341,6 +346,7 @@ _Last rebuilt: 2026-10-06_
 - [Diffusion Transformer](nodes/diffusion-transformer.md)
 - [Directed Acyclic Graph](nodes/directed-acyclic-graph.md)
 - [Directional Derivative](nodes/directional-derivative.md)
+- [Distributed Dataframe Execution](nodes/distributed-dataframe-execution.md)
 - [Distributed Tracing](nodes/distributed-tracing.md)
 - [Divergence (∇·F)](nodes/divergence.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
@@ -457,6 +463,8 @@ _Last rebuilt: 2026-10-06_
 - [Linear Programming](nodes/linear-programming.md)
 - [Linear Transformation](nodes/linear-transformation.md)
 - [Linked List](nodes/linked-list.md)
+- [Linux Filesystem Hierarchy](nodes/linux-filesystem-hierarchy.md)
+- [Linux Pseudo-Filesystems](nodes/linux-pseudo-filesystems.md)
 - [LLM as a Judge](nodes/llm-as-a-judge.md)
 - [Calling LLMs from SQL](nodes/llm-from-sql.md)
 - [LLM Inference Memory Budget](nodes/llm-inference-memory-budget.md)
@@ -574,6 +582,7 @@ _Last rebuilt: 2026-10-06_
 - [Prefill-Decode Disaggregation](nodes/prefill-decode-disaggregation.md)
 - [Prefill vs Decode](nodes/prefill-vs-decode.md)
 - [Prefix Caching](nodes/prefix-caching.md)
+- [Principal Component Analysis](nodes/principal-component-analysis.md)
 - [Probability](nodes/probability.md)
 - [Probability Distribution](nodes/probability-distribution.md)
 - [Process](nodes/process.md)
@@ -726,19 +735,21 @@ _Last rebuilt: 2026-10-06_
 - [Writeback](nodes/writeback.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🏷️ By field (cut the graph) — 12 top-level / 54 leaf fields
+## 🏷️ By field (cut the graph) — 12 top-level / 55 leaf fields
 
 ### algorithms (21)
 
 [Binary Search](nodes/binary-search.md), [Binary Search Tree](nodes/binary-search-tree.md), [Deque](nodes/deque.md), [Directed Acyclic Graph](nodes/directed-acyclic-graph.md), [Dynamic Array](nodes/dynamic-array.md), [Flow Network](nodes/flow-network.md), [Graph (Adjacency List)](nodes/graph.md), [Hash Map](nodes/hash-map.md), [Hash Set](nodes/hash-set.md), [Heap](nodes/heap.md), [Key–Value Mapping](nodes/key-value.md), [Linked List](nodes/linked-list.md), [Minimum-Cost Flow](nodes/minimum-cost-flow.md), [Multi-Armed Bandit](nodes/multi-armed-bandit.md), [Predecessor Query](nodes/predecessor-query.md), [Queue](nodes/queue.md), [Residual Network](nodes/residual-network.md), [Shortest Path](nodes/shortest-path.md), [Stack](nodes/stack.md), [Trie](nodes/trie.md), [Union-Find](nodes/union-find.md)
 
-### databases (26)
+### databases (27)
 
   - **databases/distributed** (4) — [Leader Election](nodes/leader-election.md), [MapReduce](nodes/mapreduce.md), [Replication](nodes/replication.md), [Sharding (Horizontal Partitioning)](nodes/sharding.md)
 
   - **databases/document-database** (2) — [Document Data Model](nodes/document-model.md), [MongoDB](nodes/mongodb.md)
 
   - **databases/key-value-store** (2) — [Key–Value Store (key-value database)](nodes/key-value-store.md), [Redis (in-memory data-structure store)](nodes/redis.md)
+
+  - **databases/query-processing** (1) — [Distributed Dataframe Execution](nodes/distributed-dataframe-execution.md)
 
   - **databases/relational-database** (5) — [Database Trigger](nodes/database-trigger.md), [PostgreSQL](nodes/postgresql.md), [Query Planning & Optimization](nodes/query-planning.md), [Relational Model](nodes/relational-model.md), [SQL (Structured Query Language)](nodes/sql.md)
 
@@ -758,9 +769,9 @@ _Last rebuilt: 2026-10-06_
 
   - **gpu/programming-models** (1) — [GPU Tile Programming](nodes/gpu-tile-programming.md)
 
-### languages (28)
+### languages (27)
 
-  - **languages/python** (14) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Assertion](nodes/python-assertion.md), [Python Break Statement](nodes/python-break-statement.md), [Python Concurrency Model Selection](nodes/python-concurrency-model-selection.md), [Python Shallow and Deep Copying](nodes/python-copying.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Special Method](nodes/python-special-method.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
+  - **languages/python** (13) — [Abstract Base Class](nodes/abstract-base-class.md), [Python Assertion](nodes/python-assertion.md), [Python Break Statement](nodes/python-break-statement.md), [Python Shallow and Deep Copying](nodes/python-copying.md), [Python Descriptor](nodes/python-descriptor.md), [Python Language Governance](nodes/python-governance.md), [Python Loop](nodes/python-loop.md), [Python Membership Test](nodes/python-membership-test.md), [Python Profiling](nodes/python-profiling.md), [Python Special Method](nodes/python-special-method.md), [Python Underscore Conventions](nodes/python-underscore-conventions.md), [Reactive User Interface](nodes/reactive-user-interface.md), [Python TypedDict](nodes/typed-dict.md)
 
   - **languages/runtime** (5) — [Bytecode Virtual Machine](nodes/bytecode-vm.md), [Garbage Collection](nodes/garbage-collection.md), [Interpreter](nodes/interpreter.md), [MicroPython](nodes/micropython.md), [Read–Eval–Print Loop](nodes/read-eval-print-loop.md)
 
@@ -782,11 +793,11 @@ _Last rebuilt: 2026-10-06_
 
   - **math/statistics** (2) — [Hypothesis Testing](nodes/hypothesis-testing.md), [Quantile](nodes/quantile.md)
 
-### ml (211)
+### ml (213)
 
   - **ml/agents** (22) — [Agent Execution Harness](nodes/agent-execution-harness.md), [Agent Memory](nodes/agent-memory.md), [Agent Observation Ledger](nodes/agent-observation-ledger.md), [Agent Plan Artifact](nodes/agent-plan-artifact.md), [Agent Session State](nodes/agent-session-state.md), [Agent Side-Effect Invariants](nodes/agent-side-effect-invariants.md), [Agent Validation Hooks](nodes/agent-validation-hooks.md), [Agent Verification Loop](nodes/agent-verification-loop.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md), [Decision-Score Action Gate](nodes/decision-score-action-gate.md), [Document Input API](nodes/document-input-api.md), [Graph Memory](nodes/graph-memory.md), [Hosted Server-Tool Execution](nodes/hosted-server-tool-execution.md), [MCP Apps](nodes/mcp-apps.md), [Model-Output Sensitive-Data Filter](nodes/model-output-sensitive-data-filter.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Repository Agent Instructions](nodes/repository-agent-instructions.md), [Sandboxed Code Execution](nodes/sandboxed-code-execution.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md), [Tool-Call Execution Contract](nodes/tool-call-execution-contract.md), [Worktree Isolation for Coding Agents](nodes/worktree-isolation-for-agents.md)
 
-  - **ml/ai-systems** (1) — [Model Context Protocol](nodes/model-context-protocol.md)
+  - **ml/ai-systems** (2) — [Decision–Actuation Consistency](nodes/decision-actuation-consistency.md), [Model Context Protocol](nodes/model-context-protocol.md)
 
   - **ml/data** (3) — [Schema-Guided Document Extraction](nodes/schema-guided-document-extraction.md), [Training-Data Minimization](nodes/training-data-minimization.md), [Web Text Extraction](nodes/web-text-extraction.md)
 
@@ -814,7 +825,7 @@ _Last rebuilt: 2026-10-06_
 
   - **ml/reinforcement-learning** (4) — [Bellman Equation](nodes/bellman-equation.md), [Code-Generation Quality Reward](nodes/code-generation-quality-reward.md), [Markov Decision Process](nodes/markov-decision-process.md), [Model-Free Learning](nodes/model-free-learning.md)
 
-  - **ml/representation-learning** (2) — [Multimodal Embedding Alignment](nodes/multimodal-embedding-alignment.md), [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
+  - **ml/representation-learning** (3) — [Multimodal Embedding Alignment](nodes/multimodal-embedding-alignment.md), [Principal Component Analysis](nodes/principal-component-analysis.md), [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
 
   - **ml/speech** (3) — [RNN Transducer](nodes/rnnt.md), [Streaming Voice-Agent Pipeline](nodes/streaming-voice-agent-pipeline.md), [Token-and-Duration Transducer](nodes/token-and-duration-transducer.md)
 
@@ -840,15 +851,15 @@ _Last rebuilt: 2026-10-06_
 
   - **observability/tracing** (4) — [Context Propagation](nodes/context-propagation.md), [Distributed Tracing](nodes/distributed-tracing.md), [Telemetry Context](nodes/telemetry-context.md), [Trace Span](nodes/trace-span.md)
 
-### os (60)
+### os (63)
 
-  - **os/filesystem** (8) — [Block Layer](nodes/block-layer.md), [Dentry](nodes/dentry.md), [Hard Link](nodes/hard-link.md), [Inode](nodes/inode.md), [OverlayFS](nodes/overlayfs.md), [Page Cache](nodes/page-cache.md), [Virtual File System](nodes/vfs.md), [Writeback](nodes/writeback.md)
+  - **os/filesystem** (10) — [Block Layer](nodes/block-layer.md), [Dentry](nodes/dentry.md), [Hard Link](nodes/hard-link.md), [Inode](nodes/inode.md), [Linux Filesystem Hierarchy](nodes/linux-filesystem-hierarchy.md), [Linux Pseudo-Filesystems](nodes/linux-pseudo-filesystems.md), [OverlayFS](nodes/overlayfs.md), [Page Cache](nodes/page-cache.md), [Virtual File System](nodes/vfs.md), [Writeback](nodes/writeback.md)
 
   - **os/kernel** (15) — [Boot Process](nodes/boot-process.md), [Device Driver](nodes/device-driver.md), [Direct Memory Access](nodes/dma.md), [File Descriptor](nodes/file-descriptor.md), [glibc Wrapper](nodes/glibc-wrapper.md), [Init Process](nodes/init-process.md), [Interrupt](nodes/interrupt.md), [I/O Interconnect](nodes/io-interconnect.md), [Kernel](nodes/kernel.md), [Kernel Module](nodes/kernel-module.md), [Kernel Thread](nodes/kernel-thread.md), [Memory-Mapped I/O](nodes/memory-mapped-io.md), [PCI Express](nodes/pci-express.md), [System Call](nodes/system-call.md), [User Mode vs Kernel Mode](nodes/user-mode-vs-kernel-mode.md)
 
   - **os/memory** (16) — [Address Space Layout](nodes/address-space-layout.md), [Content-Addressable Memory](nodes/content-addressable-memory.md), [Copy-on-Write](nodes/copy-on-write.md), [Demand Paging](nodes/demand-paging.md), [Memory Hierarchy](nodes/memory-hierarchy.md), [Memory Management Unit](nodes/mmu.md), [NUMA Architecture](nodes/numa-architecture.md), [NUMA Locality](nodes/numa-locality.md), [NUMA Memory Policy](nodes/numa-memory-policy.md), [OOM Killer](nodes/oom-killer.md), [Page](nodes/page.md), [Page Fault](nodes/page-fault.md), [Page Table](nodes/page-table.md), [Swap](nodes/swap.md), [Translation Lookaside Buffer](nodes/tlb.md), [Virtual Memory](nodes/virtual-memory.md)
 
-  - **os/process** (10) — [clone()](nodes/clone.md), [Context Switch](nodes/context-switch.md), [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md), [Fork and Exec](nodes/fork-exec.md), [Global Interpreter Lock](nodes/gil.md), [PATH Environment Variable](nodes/path-environment-variable.md), [Process](nodes/process.md), [Processor Affinity](nodes/processor-affinity.md), [Scheduler](nodes/scheduler.md), [Thread](nodes/thread.md)
+  - **os/process** (11) — [clone()](nodes/clone.md), [Context Switch](nodes/context-switch.md), [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md), [Fork and Exec](nodes/fork-exec.md), [Global Interpreter Lock](nodes/gil.md), [PATH Environment Variable](nodes/path-environment-variable.md), [Process](nodes/process.md), [Processor Affinity](nodes/processor-affinity.md), [Python Concurrency Model Selection](nodes/python-concurrency-model-selection.md), [Scheduler](nodes/scheduler.md), [Thread](nodes/thread.md)
 
   - **os/virtualization** (11) — [Capabilities](nodes/capabilities.md), [Cgroup](nodes/cgroup.md), [Container](nodes/container.md), [Container Runtime](nodes/container-runtime.md), [Hypervisor](nodes/hypervisor.md), [Kubernetes Operator](nodes/kubernetes-operator.md), [Kubernetes Pod](nodes/kubernetes-pod.md), [Namespace](nodes/namespace.md), [Real-Time OS](nodes/real-time-os.md), [seccomp](nodes/seccomp.md), [Simulated GPU Device Plugin](nodes/simulated-gpu-device-plugin.md)
 

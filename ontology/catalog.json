@@ -2864,6 +2864,38 @@
         "training-data-extraction-risk": "Residual disclosure is one critical observable outcome.",
         "measurement": "Approximate removal must be compared against a baseline and utility metrics."
       }
+    },
+    "data-serialization": {
+      "objective": "Explain how a structured value becomes transferable bytes under a shared format."
+    },
+    "remote-procedure-call": {
+      "objective": "Trace a remote invocation and identify why timeout is not proof of non-execution.",
+      "prerequisiteReasons": {
+        "network-stack": "A remote call crosses the network between separate programs."
+      }
+    },
+    "protocol-buffers": {
+      "objective": "Read a small protobuf schema and explain stable field numbers and binary message exchange.",
+      "prerequisiteReasons": {
+        "data-serialization": "Protobuf specifies a concrete format for serializing structured values."
+      }
+    },
+    "http-2": {
+      "objective": "Explain how HTTP/2 multiplexes framed requests and responses on streams.",
+      "prerequisiteReasons": {
+        "http": "HTTP/2 retains HTTP request, response, header, and status semantics."
+      }
+    },
+    "grpc": {
+      "aliases": [
+        "gRPC framework"
+      ],
+      "objective": "Trace a unary or streaming gRPC call from service contract through encoding and transport to status.",
+      "prerequisiteReasons": {
+        "remote-procedure-call": "The learner must understand the remote invocation and its failure boundary.",
+        "protocol-buffers": "The default service contract and message representation use protobuf.",
+        "http-2": "Ordinary gRPC calls are carried on HTTP/2 streams."
+      }
     }
   }
 }

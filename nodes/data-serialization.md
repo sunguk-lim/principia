@@ -30,4 +30,3 @@ None. This is the chosen starting point for structured messages.
 ## Sources
 
 - [Protocol Buffers overview](https://protobuf.dev/overview/) — one concrete serialization system.
-

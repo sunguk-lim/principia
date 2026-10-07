@@ -709,6 +709,13 @@
       "reason": "What the concept *is* is supporting explanation for the canonical Cumulative Distribution Function objective, not a separately learnable entity."
     },
     {
+      "candidateKey": "cand-110c2ab9ef1561db1ee2",
+      "sourceId": "protocol-buffers",
+      "contentHash": "947f0b93680d3139ffff3f963612f0249fde923dca53f2a434533b170ee67184",
+      "decision": "retain",
+      "reason": "Overview explains the single protocol buffers learning objective; it is not a separately learnable entity."
+    },
+    {
       "candidateKey": "cand-1143c1e396209a2ad3d4",
       "sourceId": "namespace",
       "contentHash": "f9436f5ef526ac11dcf3d212474a61b29097a49d0eff878a8917065d3cb919f9",
@@ -1233,6 +1240,13 @@
       "contentHash": "bc0009671da105ef7539305baee2668472650a36fa6435de754cae7353ad1635",
       "decision": "retain",
       "reason": "The write-ahead invariant — log first, force the log, flush data later is supporting explanation for the canonical Write-Ahead Logging (WAL) objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-1ff722d0172d3b5decf0",
+      "sourceId": "remote-procedure-call",
+      "contentHash": "a15d379e1f3595f5f0d51e821c35b3e36912c6e5d7659bc1d3561f0f5224985f",
+      "decision": "retain",
+      "reason": "Overview explains the single remote procedure call learning objective; it is not a separately learnable entity."
     },
     {
       "candidateKey": "cand-1ff77d7d1a020ecf1d7e",
@@ -2332,6 +2346,13 @@
       "contentHash": "6b269091d12f0ef07db29864a4bbb30375896149dd5491c2de62b0da7449d1b7",
       "decision": "retain",
       "reason": "One shared network identity is supporting explanation for the canonical Kubernetes Pod objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-4062c2701dfeeb1bb203",
+      "sourceId": "grpc",
+      "contentHash": "2f9bf592e2f917365135bb31fd319b17ff2d7427ef0080bd30d3576ff88eede4",
+      "decision": "retain",
+      "reason": "Overview explains the single grpc learning objective; it is not a separately learnable entity."
     },
     {
       "candidateKey": "cand-4065bd191b132f089fa7",
@@ -4643,6 +4664,13 @@
       "contentHash": "458aaace9726d662ad6a91290154cf415039c69c9a5da3c6a909a55b68408f93",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Markov Decision Process objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-80f144c836e5cf7ccba1",
+      "sourceId": "data-serialization",
+      "contentHash": "5cb93961b66979fa7f4aba16a2e47174af981c03d82d2c368031d3b49aae6191",
+      "decision": "retain",
+      "reason": "Overview explains the single data serialization learning objective; it is not a separately learnable entity."
     },
     {
       "candidateKey": "cand-8161fe4b8990e08ae593",
@@ -7570,6 +7598,13 @@
       "contentHash": "d578f09f40260a93a3a07636416c8059794f1e5396c1ca7cfee94a11188473ae",
       "decision": "retain",
       "reason": "Contrast: empirical Bayes, the plug-in shortcut is supporting explanation for the canonical Hierarchical Bayes objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-cecc460867f8c8bea4d9",
+      "sourceId": "http-2",
+      "contentHash": "634e4ccd821022408ca0e09a355aeb56c3d20018da510a0715abe2cf585ebbda",
+      "decision": "retain",
+      "reason": "Overview explains the single http 2 learning objective; it is not a separately learnable entity."
     },
     {
       "candidateKey": "cand-cf0f67616afc8f45b5c3",

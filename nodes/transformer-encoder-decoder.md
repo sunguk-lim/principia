@@ -8,7 +8,7 @@ prereqs: [transformer-attention, positional-encoding, layer-normalization]
 sources: [https://arxiv.org/abs/1706.03762]
 status: explained
 created: 2026-10-08
-updated: 2026-10-08
+updated: 2026-10-09
 ---
 
 # Transformer Encoder–Decoder
@@ -26,6 +26,12 @@ A decoder layer first uses *masked* self-attention: target position $t$ may read
 For translation, the encoder reads the complete source sentence while the decoder predicts the next target word from the target prefix and relevant source positions. An encoder-only classifier can omit the decoder; a decoder-only language model can omit the source encoder and cross-attention. These are architectural variants, not evidence that one design wins on every task. The newer causal encoder–decoder design serves a different objective: its source-reading path is causal and deliberately asymmetric for inference cost.
 
 Validate by checking attention masks, source/target positions, teacher-forcing inputs, and generation stopping behavior. Compare variants at matched data and compute budgets using task quality, latency, memory, and length generalization. Do not infer that recurrence is obsolete or that scaling is effortless from the historical paper.
+
+### Cross-attention and causal masking as separate mechanisms
+
+For encoder–decoder cross-attention, a decoder state produces the query while encoder outputs produce keys and values. The query therefore selects information from a *different* sequence or representation. This mechanism also appears outside translation, so an encoder–decoder architecture is one use of cross-attention, not its definition. Test it by holding encoder outputs fixed and changing decoder queries; attention scores and selected source positions should change. If source positions need padding masks, apply them before softmax.
+
+A causal self-attention mask solves a different problem: it forbids a target position from attending to *future target tokens*. In a score matrix, disallowed positions receive an effectively negative-infinite score before softmax, producing zero attention weight. This prevents target leakage during parallel teacher-forced training, but it does not make decoding parallel at inference: each newly sampled token still conditions on its predecessors. Check mask orientation and cached positions with a tiny sequence, because an inverted triangular mask can silently leak future tokens or hide the past.
 
 ## Sources
 

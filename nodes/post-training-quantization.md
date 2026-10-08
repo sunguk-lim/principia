@@ -8,7 +8,7 @@ prereqs: [quantization, neural-network, loss-function, tensor]
 sources: [https://developer.nvidia.com/blog/model-quantization-post-training-quantization-using-nvidia-model-optimizer/, arxiv:1712.05877]
 status: explained
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-10-09
 ---
 
 # Post-Training Quantization
@@ -84,6 +84,12 @@ A mixed representation is a valid outcome: leave sensitive layers wide and quant
 Choose the acceptance contract before conversion. Keep the original network as the baseline, evaluate both versions on the same representative examples, and compare the original [[loss-function]] plus the deployment metric that users actually experience. Record model size, peak memory, latency, throughput, and any hardware-specific conversion overhead alongside quality. Warm up execution, hold batching and input shapes fixed, and report multiple workload slices rather than one aggregate.
 
 PTQ succeeds only when the lower-bit model meets both sides of the contract: a measured resource improvement and a quality change inside the declared tolerance. A smaller file without faster supported kernels is not an inference win, and a speedup whose quality cost was never measured is not a validated conversion.
+
+Deployment co-design matters: quantized weight bytes, activation format, integer-matrix support, dequantization work, and kernel fusion all influence speed. A smaller checkpoint can save memory yet lose throughput if a device must repeatedly unpack or convert values. Benchmark the actual target kernel with identical model quality and batch shape.
+
+### Distillation after quantization
+
+If conversion loses task quality, a separate training stage can use a higher-precision teacher to guide a quantized student. That is quantization-aware distillation, not pure post-training quantization: gradients update the student or its adapters. Compare equal-bit PTQ, fine-tuning without teacher targets, and distillation with the same data and compute budget. Measure held-out quality, quantization error, memory traffic, and runtime; a smaller loss during training does not establish an inference-speed gain.
 
 ## Prerequisites
 

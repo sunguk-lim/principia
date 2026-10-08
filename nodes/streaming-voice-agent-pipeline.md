@@ -8,7 +8,7 @@ prereqs: [agent-session-state, pipeline-bottleneck-localization, latency-percent
 sources: [https://docs.livekit.io/agents/multimodality/audio/, https://docs.livekit.io/agents/logic/turns/]
 status: explained
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-09
 ---
 
 # Streaming Voice-Agent Pipeline
@@ -26,6 +26,8 @@ A booking caller might first say “October sixteenth,” then correct to “eig
 Measure a timeline: first speech to detected end of turn, end of turn to final transcript, final transcript to first generated text, first text to first audio, and first audio to playback. The first interval includes the user's speaking time, so it is not an STT speed benchmark. [[pipeline-bottleneck-localization]] distinguishes recognition, model inference, synthesis, network jitter, and queueing. Report [[latency-percentile]]s as well as median latency, word/field error on noisy and accented samples, task completion, corrected-field accuracy, interruptions, and false action rate.
 
 The STT–dialogue–TTS decomposition is not the only architecture: realtime speech-to-speech models can merge stages, trading interchangeability and inspectability for potentially different latency and interaction quality. Evaluate both under the same scenarios and privacy requirements. Provider-specific language or millisecond claims require separate evidence; they do not follow from the pipeline design.
+
+A custom recognition vocabulary can improve application-specific names, product identifiers, and alphanumeric codes, but it can also bias unrelated words. Keep the lexicon versioned with the application and test it on accented, noisy, and code-heavy speech. Report named-entity and critical-field error separately from overall word error, plus latency and false corrections. Do not promote a vendor's language-count or post-utterance latency claim into a pipeline guarantee.
 
 ## Prerequisites
 

@@ -8,7 +8,7 @@ prereqs: [post-training-quantization, memory-mapped-io, inference-cost-break-eve
 sources: [https://github.com/ggml-org/llama.cpp/blob/master/docs/development/token_generation_performance_tips.md]
 status: explained
 created: 2026-09-10
-updated: 2026-09-10
+updated: 2026-10-09
 ---
 
 # Local LLM Inference
@@ -26,6 +26,8 @@ CPU, GPU, and hybrid offload expose different bottlenecks. The llama.cpp documen
 “Local” is not automatically private or offline. The runtime, UI, extensions, update checks, telemetry, model download path, prompt logs, crash reports, and network tools must all be audited. Verify traffic controls and data retention rather than inferring privacy from where numerical computation occurs.
 
 Benchmark prompt processing and token generation separately, plus first-token and tail latency, throughput under concurrency, energy, memory pressure, quality at each compression setting, and failure recovery. Compare CLI, desktop, and serving runtimes by required interface and workload—not product lists. Include hardware and operational effort in [[inference-cost-break-even]].
+
+At batch one, decode often has too little arithmetic per weight byte to saturate compute units. A first-order bandwidth ceiling is sustained bytes per second divided by bytes transferred per target pass, but cache traffic, quantization metadata, draft overhead, and accepted tokens per pass change observed output tokens per second. This ceiling is not a measured runtime speed. Report prefill and decode separately, and keep prompt, checkpoint, precision, sampling, and thermal state fixed when comparing engines.
 
 ## Prerequisites
 

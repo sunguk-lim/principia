@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-10-09_
+_Last rebuilt: 2026-10-10_
 
-**534** nodes · **3** axioms · **0** on the frontier
+**544** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (216)
+## 🌳 Parent (root) nodes — top-level, required by nothing (223)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Active Learning](nodes/active-learning.md)
@@ -14,6 +14,7 @@ _Last rebuilt: 2026-10-09_
 - [Adaptive Model-and-Effort Routing](nodes/adaptive-model-effort-routing.md)
 - [Advantage Baseline in Policy Optimization](nodes/advantage-baseline.md)
 - [Agent Harness Transfer](nodes/agent-harness-transfer.md)
+- [Agent-Memory Read Projections](nodes/agent-memory-read-projections.md)
 - [Agent Observation Ledger](nodes/agent-observation-ledger.md)
 - [Agent Side-Effect Invariants](nodes/agent-side-effect-invariants.md)
 - [Agent Workflow Graph](nodes/agent-workflow-graph.md)
@@ -33,6 +34,7 @@ _Last rebuilt: 2026-10-09_
 - [clone()](nodes/clone.md)
 - [Code-Corpus Leakage Audit](nodes/code-corpus-leakage-audit.md)
 - [Code-Generation Quality Reward](nodes/code-generation-quality-reward.md)
+- [Coding-Agent Loop Ablation](nodes/coding-agent-loop-ablation.md)
 - [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
 - [Column Pruning](nodes/column-pruning.md)
@@ -50,6 +52,7 @@ _Last rebuilt: 2026-10-09_
 - [Cursor-Prefix Tokenization](nodes/cursor-prefix-tokenization.md)
 - [Cyclical Feature Encoding](nodes/cyclical-feature-encoding.md)
 - [Decision–Actuation Consistency](nodes/decision-actuation-consistency.md)
+- [Decoder-Only Transformer](nodes/decoder-only-transformer.md)
 - [Deque](nodes/deque.md)
 - [Determinant](nodes/determinant.md)
 - [Differential operators](nodes/differential-operators.md)
@@ -64,6 +67,7 @@ _Last rebuilt: 2026-10-09_
 - [Dropout](nodes/dropout.md)
 - [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md)
 - [Empirical Bayes](nodes/empirical-bayes.md)
+- [Encoder-Only Transformer](nodes/encoder-only-transformer.md)
 - [Expert parallelism (MoE)](nodes/expert-parallelism.md)
 - [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md)
 - [Feature Hashing](nodes/feature-hashing.md)
@@ -151,6 +155,7 @@ _Last rebuilt: 2026-10-09_
 - [PATH Environment Variable](nodes/path-environment-variable.md)
 - [PCI Express](nodes/pci-express.md)
 - [Permutation Feature Importance](nodes/permutation-feature-importance.md)
+- [Persistent Agent Improvement](nodes/persistent-agent-improvement.md)
 - [pgai](nodes/pgai.md)
 - [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md)
 - [Position-Wise Feed-Forward Network](nodes/position-wise-feed-forward-network.md)
@@ -194,6 +199,7 @@ _Last rebuilt: 2026-10-09_
 - [Score-Based Generative Model](nodes/score-based-generative-model.md)
 - [Simulated GPU Device Plugin](nodes/simulated-gpu-device-plugin.md)
 - [Socket Buffer (sk_buff)](nodes/sk-buff.md)
+- [Sparse Attention Patterns](nodes/sparse-attention-patterns.md)
 - [Speculative Tree Decoding](nodes/speculative-tree-decoding.md)
 - [Streaming Voice-Agent Pipeline](nodes/streaming-voice-agent-pipeline.md)
 - [Subject-Driven Generation](nodes/subject-driven-generation.md)
@@ -201,7 +207,6 @@ _Last rebuilt: 2026-10-09_
 - [Supervised Contrastive Learning](nodes/supervised-contrastive-learning.md)
 - [t-Distributed Stochastic Neighbor Embedding](nodes/t-sne.md)
 - [Tabular Model Comparison](nodes/tabular-model-comparison.md)
-- [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md)
 - [Tensor Core](nodes/tensor-core.md)
 - [TensorRT](nodes/tensorrt.md)
 - [3D Parallelism](nodes/three-dimensional-parallelism.md)
@@ -210,9 +215,11 @@ _Last rebuilt: 2026-10-09_
 - [Translation Lookaside Buffer](nodes/tlb.md)
 - [Token-and-Duration Transducer](nodes/token-and-duration-transducer.md)
 - [Training-Data Minimization](nodes/training-data-minimization.md)
-- [Transformer Encoder–Decoder](nodes/transformer-encoder-decoder.md)
+- [Transformer FLOP Estimation](nodes/transformer-flop-estimation.md)
+- [Transformer Parameter Estimation](nodes/transformer-parameter-estimation.md)
 - [Tree-Search Decoding](nodes/tree-search-decoding.md)
 - [Tree Split Impurity](nodes/tree-split-impurity.md)
+- [Typed Decision-Model Adaptation](nodes/typed-decision-model-adaptation.md)
 - [Python TypedDict](nodes/typed-dict.md)
 - [Union-Find](nodes/union-find.md)
 - [User-Data RAG Integration](nodes/user-data-rag-integration.md)
@@ -251,6 +258,7 @@ _Last rebuilt: 2026-10-09_
 - [Agent Execution Harness](nodes/agent-execution-harness.md)
 - [Agent Harness Transfer](nodes/agent-harness-transfer.md)
 - [Agent Memory](nodes/agent-memory.md)
+- [Agent-Memory Read Projections](nodes/agent-memory-read-projections.md)
 - [Agent Observation Ledger](nodes/agent-observation-ledger.md)
 - [Agent Plan Artifact](nodes/agent-plan-artifact.md)
 - [Agent Session State](nodes/agent-session-state.md)
@@ -290,6 +298,7 @@ _Last rebuilt: 2026-10-09_
 - [Capabilities](nodes/capabilities.md)
 - [Categorical Data Encoding](nodes/categorical-data-encoding.md)
 - [Causal Encoder–Decoder for Autoregressive Serving](nodes/causal-encoder-decoder.md)
+- [Causal Language-Model Training](nodes/causal-language-model-training.md)
 - [Causal Structure Learning](nodes/causal-structure-learning.md)
 - [Cgroup](nodes/cgroup.md)
 - [Chain-of-Thought](nodes/chain-of-thought.md)
@@ -300,6 +309,7 @@ _Last rebuilt: 2026-10-09_
 - [Closure](nodes/closure.md)
 - [Code-Corpus Leakage Audit](nodes/code-corpus-leakage-audit.md)
 - [Code-Generation Quality Reward](nodes/code-generation-quality-reward.md)
+- [Coding-Agent Loop Ablation](nodes/coding-agent-loop-ablation.md)
 - [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md)
 - [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md)
 - [Collective operation](nodes/collective-operation.md)
@@ -351,6 +361,7 @@ _Last rebuilt: 2026-10-09_
 - [Dataset Lineage](nodes/dataset-lineage.md)
 - [Decision–Actuation Consistency](nodes/decision-actuation-consistency.md)
 - [Decision-Score Action Gate](nodes/decision-score-action-gate.md)
+- [Decoder-Only Transformer](nodes/decoder-only-transformer.md)
 - [Definite Integral](nodes/definite-integral.md)
 - [Del operator (∇)](nodes/del-operator.md)
 - [Demand Paging](nodes/demand-paging.md)
@@ -384,6 +395,7 @@ _Last rebuilt: 2026-10-09_
 - [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md)
 - [Embedding](nodes/embedding.md)
 - [Empirical Bayes](nodes/empirical-bayes.md)
+- [Encoder-Only Transformer](nodes/encoder-only-transformer.md)
 - [Execution Benchmark Validity](nodes/execution-benchmark-validity.md)
 - [Execution provider](nodes/execution-provider.md)
 - [Expectation](nodes/expectation.md)
@@ -595,6 +607,7 @@ _Last rebuilt: 2026-10-09_
 - [PATH Environment Variable](nodes/path-environment-variable.md)
 - [PCI Express](nodes/pci-express.md)
 - [Permutation Feature Importance](nodes/permutation-feature-importance.md)
+- [Persistent Agent Improvement](nodes/persistent-agent-improvement.md)
 - [pgai](nodes/pgai.md)
 - [pgai Vectorizer](nodes/pgai-vectorizer.md)
 - [pgvector](nodes/pgvector.md)
@@ -697,6 +710,7 @@ _Last rebuilt: 2026-10-09_
 - [Sliding-Window Attention](nodes/sliding-window-attention.md)
 - [Socket](nodes/socket.md)
 - [Softmax](nodes/softmax.md)
+- [Sparse Attention Patterns](nodes/sparse-attention-patterns.md)
 - [Speculative Decoding](nodes/speculative-decoding.md)
 - [Speculative Tree Decoding](nodes/speculative-tree-decoding.md)
 - [SQL (Structured Query Language)](nodes/sql.md)
@@ -745,9 +759,12 @@ _Last rebuilt: 2026-10-09_
 - [Transaction Isolation](nodes/transaction-isolation.md)
 - [Transformer attention](nodes/transformer-attention.md)
 - [Transformer Encoder–Decoder](nodes/transformer-encoder-decoder.md)
+- [Transformer FLOP Estimation](nodes/transformer-flop-estimation.md)
+- [Transformer Parameter Estimation](nodes/transformer-parameter-estimation.md)
 - [Tree-Search Decoding](nodes/tree-search-decoding.md)
 - [Tree Split Impurity](nodes/tree-split-impurity.md)
 - [Trie](nodes/trie.md)
+- [Typed Decision-Model Adaptation](nodes/typed-decision-model-adaptation.md)
 - [Python TypedDict](nodes/typed-dict.md)
 - [UDP](nodes/udp.md)
 - [Union-Find](nodes/union-find.md)
@@ -830,9 +847,9 @@ _Last rebuilt: 2026-10-09_
 
   - **math/statistics** (2) — [Hypothesis Testing](nodes/hypothesis-testing.md), [Quantile](nodes/quantile.md)
 
-### ml (230)
+### ml (240)
 
-  - **ml/agents** (24) — [Agent Execution Harness](nodes/agent-execution-harness.md), [Agent Harness Transfer](nodes/agent-harness-transfer.md), [Agent Memory](nodes/agent-memory.md), [Agent Observation Ledger](nodes/agent-observation-ledger.md), [Agent Plan Artifact](nodes/agent-plan-artifact.md), [Agent Session State](nodes/agent-session-state.md), [Agent Side-Effect Invariants](nodes/agent-side-effect-invariants.md), [Agent Validation Hooks](nodes/agent-validation-hooks.md), [Agent Verification Loop](nodes/agent-verification-loop.md), [Agent Workflow Graph](nodes/agent-workflow-graph.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md), [Decision-Score Action Gate](nodes/decision-score-action-gate.md), [Document Input API](nodes/document-input-api.md), [Graph Memory](nodes/graph-memory.md), [Hosted Server-Tool Execution](nodes/hosted-server-tool-execution.md), [MCP Apps](nodes/mcp-apps.md), [Model-Output Sensitive-Data Filter](nodes/model-output-sensitive-data-filter.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Repository Agent Instructions](nodes/repository-agent-instructions.md), [Sandboxed Code Execution](nodes/sandboxed-code-execution.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md), [Tool-Call Execution Contract](nodes/tool-call-execution-contract.md), [Worktree Isolation for Coding Agents](nodes/worktree-isolation-for-agents.md)
+  - **ml/agents** (28) — [Agent Execution Harness](nodes/agent-execution-harness.md), [Agent Harness Transfer](nodes/agent-harness-transfer.md), [Agent Memory](nodes/agent-memory.md), [Agent-Memory Read Projections](nodes/agent-memory-read-projections.md), [Agent Observation Ledger](nodes/agent-observation-ledger.md), [Agent Plan Artifact](nodes/agent-plan-artifact.md), [Agent Session State](nodes/agent-session-state.md), [Agent Side-Effect Invariants](nodes/agent-side-effect-invariants.md), [Agent Validation Hooks](nodes/agent-validation-hooks.md), [Agent Verification Loop](nodes/agent-verification-loop.md), [Agent Workflow Graph](nodes/agent-workflow-graph.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Coding-Agent Loop Ablation](nodes/coding-agent-loop-ablation.md), [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md), [Decision-Score Action Gate](nodes/decision-score-action-gate.md), [Document Input API](nodes/document-input-api.md), [Graph Memory](nodes/graph-memory.md), [Hosted Server-Tool Execution](nodes/hosted-server-tool-execution.md), [MCP Apps](nodes/mcp-apps.md), [Model-Output Sensitive-Data Filter](nodes/model-output-sensitive-data-filter.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Persistent Agent Improvement](nodes/persistent-agent-improvement.md), [Repository Agent Instructions](nodes/repository-agent-instructions.md), [Sandboxed Code Execution](nodes/sandboxed-code-execution.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md), [Tool-Call Execution Contract](nodes/tool-call-execution-contract.md), [Typed Decision-Model Adaptation](nodes/typed-decision-model-adaptation.md), [Worktree Isolation for Coding Agents](nodes/worktree-isolation-for-agents.md)
 
   - **ml/ai-systems** (2) — [Decision–Actuation Consistency](nodes/decision-actuation-consistency.md), [Model Context Protocol](nodes/model-context-protocol.md)
 
@@ -846,7 +863,7 @@ _Last rebuilt: 2026-10-09_
 
   - **ml/information-retrieval** (19) — [BM25](nodes/bm25.md), [Connector OAuth Scope Management](nodes/connector-oauth-scope-management.md), [GraphRAG](nodes/graph-rag.md), [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md), [Inverted Index](nodes/inverted-index.md), [Knowledge Graph](nodes/knowledge-graph.md), [Late-Interaction Retrieval](nodes/late-interaction-retrieval.md), [Lexical Retrieval](nodes/lexical-retrieval.md), [Lost in the Middle](nodes/lost-in-the-middle.md), [Modularity Resolution Limit](nodes/modularity-resolution-limit.md), [Multimodal Retrieval-Augmented Generation](nodes/multimodal-rag.md), [Nearest-Neighbor Search](nodes/nearest-neighbor-search.md), [Reciprocal Rank Fusion](nodes/reciprocal-rank-fusion.md), [Retrieval-Augmented Generation](nodes/retrieval-augmented-generation.md), [Retrieval Authorization Boundary](nodes/retrieval-authorization-boundary.md), [Retrieval Evidence Gate](nodes/retrieval-evidence-gate.md), [User-Data RAG Integration](nodes/user-data-rag-integration.md), [Vector ANN Index Families](nodes/vector-ann-index-families.md), [Vector Database](nodes/vector-database.md)
 
-    - **ml/llm/architecture** (18) — [Attention Sink](nodes/attention-sink.md), [Byte-Pair Encoding Tokenization](nodes/byte-pair-encoding-tokenization.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Joint Attention](nodes/joint-attention.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Position-Wise Feed-Forward Network](nodes/position-wise-feed-forward-network.md), [Positional Encoding](nodes/positional-encoding.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [State Space Model](nodes/state-space-model.md), [Subword Tokenization](nodes/subword-tokenization.md), [Transformer Encoder–Decoder](nodes/transformer-encoder-decoder.md), [WordPiece Tokenization](nodes/wordpiece-tokenization.md)
+    - **ml/llm/architecture** (23) — [Attention Sink](nodes/attention-sink.md), [Byte-Pair Encoding Tokenization](nodes/byte-pair-encoding-tokenization.md), [Decoder-Only Transformer](nodes/decoder-only-transformer.md), [Encoder-Only Transformer](nodes/encoder-only-transformer.md), [FlashAttention](nodes/flash-attention.md), [Grouped-query attention (GQA / MQA)](nodes/gqa.md), [Joint Attention](nodes/joint-attention.md), [Mamba](nodes/mamba.md), [MoE Routing](nodes/moe-routing.md), [Multi-Head Attention](nodes/multi-head-attention.md), [Multi-Head Latent Attention](nodes/multi-head-latent-attention.md), [Online Softmax](nodes/online-softmax.md), [Position-Wise Feed-Forward Network](nodes/position-wise-feed-forward-network.md), [Positional Encoding](nodes/positional-encoding.md), [Ring Attention](nodes/ring-attention.md), [Sliding-Window Attention](nodes/sliding-window-attention.md), [Sparse Attention Patterns](nodes/sparse-attention-patterns.md), [State Space Model](nodes/state-space-model.md), [Subword Tokenization](nodes/subword-tokenization.md), [Transformer Encoder–Decoder](nodes/transformer-encoder-decoder.md), [Transformer FLOP Estimation](nodes/transformer-flop-estimation.md), [Transformer Parameter Estimation](nodes/transformer-parameter-estimation.md), [WordPiece Tokenization](nodes/wordpiece-tokenization.md)
 
     - **ml/llm/evaluation** (1) — [LLM Text Watermarking](nodes/llm-text-watermarking.md)
 
@@ -854,7 +871,7 @@ _Last rebuilt: 2026-10-09_
 
     - **ml/llm/reasoning** (4) — [Chain-of-Thought](nodes/chain-of-thought.md), [Structured Output](nodes/structured-output.md), [Test-Time Compute](nodes/test-time-compute.md), [Tree-Search Decoding](nodes/tree-search-decoding.md)
 
-    - **ml/llm/training** (11) — [Advantage Baseline in Policy Optimization](nodes/advantage-baseline.md), [Context Parallelism](nodes/context-parallelism.md), [Data parallelism](nodes/data-parallelism.md), [Expert parallelism (MoE)](nodes/expert-parallelism.md), [FSDP / ZeRO](nodes/fsdp.md), [Pipeline parallelism](nodes/pipeline-parallelism.md), [Success-Filtered Self-Training](nodes/success-filtered-self-training.md), [Tensor parallelism](nodes/tensor-parallelism.md), [3D Parallelism](nodes/three-dimensional-parallelism.md), [Training Memory Budget](nodes/training-memory-budget.md), [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
+    - **ml/llm/training** (12) — [Advantage Baseline in Policy Optimization](nodes/advantage-baseline.md), [Causal Language-Model Training](nodes/causal-language-model-training.md), [Context Parallelism](nodes/context-parallelism.md), [Data parallelism](nodes/data-parallelism.md), [Expert parallelism (MoE)](nodes/expert-parallelism.md), [FSDP / ZeRO](nodes/fsdp.md), [Pipeline parallelism](nodes/pipeline-parallelism.md), [Success-Filtered Self-Training](nodes/success-filtered-self-training.md), [Tensor parallelism](nodes/tensor-parallelism.md), [3D Parallelism](nodes/three-dimensional-parallelism.md), [Training Memory Budget](nodes/training-memory-budget.md), [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
   - **ml/model-portability** (13) — [API-Key Usage Guardrail](nodes/api-key-usage-guardrail.md), [Computation graph](nodes/computation-graph.md), [Execution provider](nodes/execution-provider.md), [Graph optimization](nodes/graph-optimization.md), [Intermediate representation](nodes/intermediate-representation.md), [Model Alias Pinning](nodes/model-alias-pinning.md), [Multimodal Chat-Template Alignment](nodes/multimodal-chat-template-alignment.md), [Multimodal Model-Input Contract](nodes/multimodal-input-contract.md), [ONNX (Open Neural Network Exchange)](nodes/onnx.md), [ONNX Runtime](nodes/onnx-runtime.md), [Operator set](nodes/operator-set.md), [Model-Provider Capability Matrix](nodes/provider-capability-matrix.md), [Provider Data-Policy Routing](nodes/provider-data-policy-routing.md)
 

@@ -8,7 +8,7 @@ prereqs: [low-rank-factorization, fine-tuning, transformer-attention]
 sources: [arxiv:2106.09685]
 status: explained
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-10-13
 ---
 
 # LoRA (Low-Rank Adaptation)
@@ -27,10 +27,8 @@ entries of `W`, LoRA assumes the *change* needed to adapt the model is itself
 low-rank, so it represents `ΔW` as `B·A` with a tiny `r`. Training touches only
 `2dr` parameters while `W` stays fixed.
 
-Where these weight matrices live inside the model is now grounded in
-[[transformer-attention]] — LoRA injects its low-rank update into the query and
-value projections ($W_q$, $W_v$). What is being *adapted* — [[fine-tuning]] — is
-the one prerequisite of LoRA still on the frontier.
+Where these weight matrices live inside the model is grounded in
+[[transformer-attention]] — the original LoRA study applies updates to attention projection matrices, while later implementations can target other linear layers. [[fine-tuning]] supplies the adaptation objective.
 
 ## Prerequisites
 
@@ -66,7 +64,7 @@ $$h = W x + \tfrac{\alpha}{r}\,B\,A\,x \qquad \text{(forward pass — only } B,\
 ![LoRA: the effective weight W-prime equals the frozen W plus the low-rank update B times A](lora.svg)
 
 Trainable parameters: $2dr$ (just $B$ and $A$) instead of $d^2$ — $W$ never
-moves. At inference, $B\,A$ folds back into $W$, so LoRA adds **zero** latency.
+moves. At inference the update **can be merged** into the frozen weight as $W' = W + (\alpha/r) B A$, yielding the same linear operation without an extra adapter matrix multiplication. This requires materializing or serving a merged weight for that adapter. An **unmerged** adapter route computes the low-rank update at request time and may add latency, memory traffic, or runtime overhead; the size depends on implementation, batch shape, and adapter switching. A shared base model serving many adapters may deliberately keep them separate to avoid duplicating full merged weights. Benchmark both routes at matched precision and workload rather than assuming zero overhead for every deployment.
 
 ## Sources
 

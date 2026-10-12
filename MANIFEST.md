@@ -2,12 +2,13 @@
 
 _Last rebuilt: 2026-10-13_
 
-**569** nodes · **3** axioms · **0** on the frontier
+**570** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (235)
+## 🌳 Parent (root) nodes — top-level, required by nothing (236)
 
+- [Accessibility-Tree Verification](nodes/accessibility-tree-verification.md)
 - [Active Learning](nodes/active-learning.md)
 - [AdaBoost Exponential Objective](nodes/adaboost-exponential-objective.md)
 - [Adapter Pattern](nodes/adapter-pattern.md)
@@ -260,6 +261,7 @@ _Last rebuilt: 2026-10-13_
 ## 🔷 Concepts
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
+- [Accessibility-Tree Verification](nodes/accessibility-tree-verification.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
 - [Active Learning](nodes/active-learning.md)
 - [AdaBoost Exponential Objective](nodes/adaboost-exponential-objective.md)
@@ -960,6 +962,6 @@ _Last rebuilt: 2026-10-13_
 
 [All-gather](nodes/all-gather.md), [All-reduce](nodes/all-reduce.md), [All-to-all](nodes/all-to-all.md), [Arithmetic Intensity](nodes/arithmetic-intensity.md), [Barrier](nodes/barrier.md), [Broadcast](nodes/broadcast.md), [Collective Algorithm (Ring vs Tree)](nodes/collective-algorithm.md), [Collective operation](nodes/collective-operation.md), [Communicator](nodes/communicator.md), [Gather](nodes/gather.md), [Message passing](nodes/message-passing.md), [MPI Datatype](nodes/mpi-datatype.md), [Parallel process](nodes/parallel-process.md), [Rank](nodes/rank.md), [Reduce](nodes/reduce.md), [Reduce-scatter](nodes/reduce-scatter.md), [Reduction operation](nodes/reduction-operation.md), [Root process](nodes/root-process.md), [Scan (prefix)](nodes/scan.md), [Scatter](nodes/scatter.md)
 
-### software (3)
+### software (4)
 
-  - **software/testing** (3) — [Continuous Integration](nodes/continuous-integration.md), [Execution Benchmark Validity](nodes/execution-benchmark-validity.md), [Visual Regression Testing](nodes/visual-regression-testing.md)
+  - **software/testing** (4) — [Accessibility-Tree Verification](nodes/accessibility-tree-verification.md), [Continuous Integration](nodes/continuous-integration.md), [Execution Benchmark Validity](nodes/execution-benchmark-validity.md), [Visual Regression Testing](nodes/visual-regression-testing.md)

@@ -5,10 +5,10 @@ summary: A decision-score action gate converts a bounded model judgment into an 
 type: concept
 tags: [ml/agents]
 prereqs: [model-calibration, measurement, structured-output]
-sources: [https://scikit-learn.org/stable/modules/calibration.html, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html, https://openrouter.ai/docs/api/api-reference/systemone/submit-a-system-one-request]
+sources: [https://scikit-learn.org/stable/modules/calibration.html, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html, https://openrouter.ai/docs/api/api-reference/systemone/submit-a-system-one-request, https://docs.pydantic.dev/latest/concepts/validators/]
 status: explained
 created: 2026-10-01
-updated: 2026-10-03
+updated: 2026-10-14
 ---
 
 # Decision-Score Action Gate
@@ -20,6 +20,8 @@ A model can return a small answer set such as `billing`, `technical`, or `uncert
 ## Grounded explanation
 
 First define the state the model may inspect, the mutually interpretable answer labels, and an abstain path. A score over those labels is evidence about a predicted outcome only after its meaning and [[model-calibration]] are tested on representative, held-out cases. Scores from different prompts, models, or answer sets need not be comparable. A JSON schema or other [[structured-output]] constraint can keep the wire format valid; it cannot make the selected answer true.
+
+A decision's score must belong to that exact decision. When a selected label is absent from a probability map, taking the map's maximum would splice another label's score into an unauthorized action. Validate label membership, score range, and selected-label association as one response invariant; reject an inconsistent response or route it to human review. Test malformed and partial maps as well as the expected schema. A high score is never a substitute for the authorization checks below.
 
 The application owns a policy table. For an ordinary support ticket, it might route to billing only when the billing score passes a chosen threshold, otherwise request human triage. For a refund, a score alone must never authorize payment: identity, eligibility, amount limit, and idempotency checks run outside the model. An asymmetric loss model helps choose thresholds: an incorrect refund may cost more than a delayed review, while an incorrect low-priority classification may have a different cost. Expose the uncertainty region instead of forcing every case into an action.
 
@@ -43,3 +45,5 @@ This architecture separates *judgment* from *action*. It applies whether the jud
 - [scikit-learn precision-recall curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html): operating-point trade-offs across thresholds.
 
 - [OpenRouter System One request API](https://openrouter.ai/docs/api/api-reference/systemone/submit-a-system-one-request): example of typed questions over supplied state; application policy remains separate.
+
+- [Pydantic validators](https://docs.pydantic.dev/latest/concepts/validators/): cross-field validation of response invariants.

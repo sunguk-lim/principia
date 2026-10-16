@@ -8,7 +8,7 @@ prereqs: [loss-function, gradient-descent]
 sources: [https://www.deeplearningbook.org/contents/regularization.html]
 status: explained
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-10-17
 ---
 
 # Regularization
@@ -45,6 +45,10 @@ $$
 
 Differentiating gives $2(w-3)+w=3w-6$. Setting this to zero yields $w=2$. The regularized solution has data loss $(2-3)^2=1$ rather than $0$, but its penalty is $0.5(2^2)=2$, so its total is $3$. At the unregularized solution $w=3$, the total is $0+0.5(9)=4.5$. Regularization intentionally selects $w=2$: a worse exact fit, but a smaller and less extreme parameter.
 
+### L1 sparsity and its serving limit
+
+An L1 penalty uses $R(w)=\sum_j |w_j|$ instead of the squared L2 penalty above. The absolute-value corner at zero can set some fitted coefficients exactly to zero, making it useful for sparse feature selection in a linear model. Elastic Net combines L1 and L2 so selection and coefficient shrinkage can be balanced. This is a property of the fitted weights, not proof that a deployed feature pipeline becomes cheaper automatically: if the serving system still computes, fetches, or encodes a zero-weight feature, its upstream cost remains. Remove the feature from the pipeline, retrain and validate the resulting model, then measure end-to-end latency. Correlated inputs can make the selected subset unstable, so inspect held-out slices rather than interpreting a nonzero coefficient as causal importance.
+
 Penalty terms are only one implementation. Stopping optimization before it fully adapts to training peculiarities, randomly perturbing training inputs or activations, and expanding the training set with label-preserving transformations all impose biases too. The unifying idea is the tradeoff, not a particular formula: constrain effective flexibility so success is judged by behavior beyond the examples already seen.
 
 ## Prerequisites
@@ -55,3 +59,4 @@ Penalty terms are only one implementation. Stopping optimization before it fully
 ## Sources
 
 - Goodfellow, Bengio, and Courville, *Deep Learning*, Chapter 7, “Regularization for Deep Learning” — regularization as modifying a learning algorithm to reduce generalization error, including parameter penalties and other mechanisms.
+- [scikit-learn linear models: Lasso and Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#lasso): L1-driven sparse coefficients and combined penalties.

@@ -2,7 +2,7 @@
 
 _Last rebuilt: 2026-10-17_
 
-**610** nodes · **3** axioms · **0** on the frontier
+**611** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
@@ -78,6 +78,7 @@ _Last rebuilt: 2026-10-17_
 - [Empirical Bayes](nodes/empirical-bayes.md)
 - [Encoder-Only Transformer](nodes/encoder-only-transformer.md)
 - [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md)
+- [Feature-Space Serving Budget](nodes/feature-space-serving-budget.md)
 - [Federated Learning](nodes/federated-learning.md)
 - [Fixed-Choice Logit Scoring](nodes/fixed-choice-logit-scoring.md)
 - [FlashAttention Version Comparison](nodes/flashattention-version-comparison.md)
@@ -175,7 +176,6 @@ _Last rebuilt: 2026-10-17_
 - [PATH Environment Variable](nodes/path-environment-variable.md)
 - [PCI Express](nodes/pci-express.md)
 - [Performer Attention](nodes/performer-attention.md)
-- [Permutation Feature Importance](nodes/permutation-feature-importance.md)
 - [Persistent Agent Improvement](nodes/persistent-agent-improvement.md)
 - [pgai](nodes/pgai.md)
 - [Physics-Informed Neural Network](nodes/physics-informed-neural-network.md)
@@ -459,6 +459,7 @@ _Last rebuilt: 2026-10-17_
 - [Factory Method Pattern](nodes/factory-method-pattern.md)
 - [Fair Scheduler (CFS/EEVDF)](nodes/fair-scheduler.md)
 - [Feature Hashing](nodes/feature-hashing.md)
+- [Feature-Space Serving Budget](nodes/feature-space-serving-budget.md)
 - [Federated Learning](nodes/federated-learning.md)
 - [File Descriptor](nodes/file-descriptor.md)
 - [Fine-tuning](nodes/fine-tuning.md)
@@ -947,7 +948,7 @@ _Last rebuilt: 2026-10-17_
 
   - **math/statistics** (2) — [Hypothesis Testing](nodes/hypothesis-testing.md), [Quantile](nodes/quantile.md)
 
-### ml (285)
+### ml (286)
 
   - **ml/agents** (39) — [Agent Edit Interface](nodes/agent-edit-interface.md), [Agent Execution Harness](nodes/agent-execution-harness.md), [Agent Harness Interoperability](nodes/agent-harness-interoperability.md), [Agent Harness Transfer](nodes/agent-harness-transfer.md), [Agent Memory](nodes/agent-memory.md), [Agent-Memory Read Projections](nodes/agent-memory-read-projections.md), [Agent Observation Ledger](nodes/agent-observation-ledger.md), [Agent Plan Artifact](nodes/agent-plan-artifact.md), [Agent Session State](nodes/agent-session-state.md), [Agent Side-Effect Invariants](nodes/agent-side-effect-invariants.md), [Agent Skill Package](nodes/agent-skill-package.md), [Agent Validation Hooks](nodes/agent-validation-hooks.md), [Agent Verification Loop](nodes/agent-verification-loop.md), [Agent Workflow Graph](nodes/agent-workflow-graph.md), [Agentic Retrieval-Augmented Generation](nodes/agentic-rag.md), [Browser-Based UI Verification](nodes/browser-based-ui-verification.md), [Coding-Agent Loop Ablation](nodes/coding-agent-loop-ablation.md), [Coding-Agent Workflow Composition](nodes/coding-agent-workflow-composition.md), [Decision-Score Action Gate](nodes/decision-score-action-gate.md), [Document Input API](nodes/document-input-api.md), [Durable Agent Execution](nodes/durable-agent-execution.md), [Graph Memory](nodes/graph-memory.md), [Hosted Server-Tool Execution](nodes/hosted-server-tool-execution.md), [Jailbreak Attack](nodes/jailbreak-attack.md), [MCP Apps](nodes/mcp-apps.md), [Model-Output Sensitive-Data Filter](nodes/model-output-sensitive-data-filter.md), [Multi-Agent Orchestration](nodes/multi-agent-orchestration.md), [Multi-Agent State Reduction](nodes/multi-agent-state-reduction.md), [Persistent Agent Improvement](nodes/persistent-agent-improvement.md), [Prompt Injection](nodes/prompt-injection.md), [Repository Agent Instructions](nodes/repository-agent-instructions.md), [Sandboxed Code Execution](nodes/sandboxed-code-execution.md), [Schema-Guided Agent Memory](nodes/schema-guided-agent-memory.md), [Stateful Coding-Agent Evaluation](nodes/stateful-coding-agent-evaluation.md), [Temporal Knowledge Graph](nodes/temporal-knowledge-graph.md), [Tool-Call Execution Contract](nodes/tool-call-execution-contract.md), [Trajectory-Derived Agent Planning](nodes/trajectory-derived-agent-planning.md), [Typed Decision-Model Adaptation](nodes/typed-decision-model-adaptation.md), [Worktree Isolation for Coding Agents](nodes/worktree-isolation-for-agents.md)
 
@@ -983,7 +984,7 @@ _Last rebuilt: 2026-10-17_
 
   - **ml/speech** (3) — [RNN Transducer](nodes/rnnt.md), [Streaming Voice-Agent Pipeline](nodes/streaming-voice-agent-pipeline.md), [Token-and-Duration Transducer](nodes/token-and-duration-transducer.md)
 
-  - **ml/systems** (3) — [Classifier Serving Contract](nodes/classifier-serving-contract.md), [Cold-Start Item Serving](nodes/cold-start-item-serving.md), [GPU Allocation Fragmentation](nodes/gpu-allocation-fragmentation.md)
+  - **ml/systems** (4) — [Classifier Serving Contract](nodes/classifier-serving-contract.md), [Cold-Start Item Serving](nodes/cold-start-item-serving.md), [Feature-Space Serving Budget](nodes/feature-space-serving-budget.md), [GPU Allocation Fragmentation](nodes/gpu-allocation-fragmentation.md)
 
   - **ml/training** (15) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md), [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md), [Gaussian Mixture Model](nodes/gaussian-mixture-model.md), [Hard-Negative Mining](nodes/hard-negative-mining.md), [K-means clustering](nodes/k-means-clustering.md), [Label Smoothing](nodes/label-smoothing.md), [Model Unlearning](nodes/model-unlearning.md), [Multimodal Adapter Targeting](nodes/multimodal-adapter-targeting.md), [Quantized LoRA Training](nodes/quantized-lora-training.md), [Representation Alignment](nodes/representation-alignment.md), [Reward Hacking](nodes/reward-hacking.md), [Subject-Driven Generation](nodes/subject-driven-generation.md), [Synthetic Bug Training for Coding Agents](nodes/synthetic-bug-training.md), [Synthetic Training Data](nodes/synthetic-training-data.md)
 

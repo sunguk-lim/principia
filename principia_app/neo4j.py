@@ -263,7 +263,11 @@ def semantic_audit(nodes: dict, extra: dict) -> dict:
             raise ValueError(f"Stale semantic resolution decision: {key}")
         target = item.get("targetId")
         if decision == "resolve":
-            if target not in nodes or canonical_id(target, nodes, extra) != target:
+            # A resolution must identify a distinct, already canonical learning
+            # entity. Self-resolution would be a no-op that misleadingly
+            # classifies this source section as a separate entity.
+            if (target not in nodes or canonical_id(target, nodes, extra) != target
+                    or target == candidate["sourceId"]):
                 raise ValueError(f"Invalid semantic resolution target: {key}")
         elif target is not None:
             raise ValueError(f"Unexpected semantic resolution target: {key}")

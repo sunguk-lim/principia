@@ -2896,6 +2896,145 @@
         "protocol-buffers": "The default service contract and message representation use protobuf.",
         "http-2": "Ordinary gRPC calls are carried on HTTP/2 streams."
       }
+    },
+    "generative-model-design-axes": {
+      "aliases": [],
+      "objective": "Architecture, distribution factorization, training objective, and generation policy are distinct but compatibility-constrained choices.",
+      "prerequisiteReasons": {
+        "neural-network": "Supplies parameterized functions and learned weights.",
+        "conditional-probability": "Defines the output distributions and conditional factors distinguished from network computation.",
+        "loss-function": "Explains how a learning objective selects parameters."
+      }
+    },
+    "normalizing-flow": {
+      "aliases": [],
+      "objective": "A normalizing flow transforms a tractable base distribution through invertible maps while accounting for density changes.",
+      "prerequisiteReasons": {
+        "change-of-variables": "Provides the density correction under invertible coordinate transformations.",
+        "neural-network": "Supplies learnable transformation parameters."
+      }
+    },
+    "gang-scheduling": {
+      "aliases": [],
+      "objective": "Gang scheduling admits a minimum viable group of cooperating tasks only when their joint resource constraints can be satisfied.",
+      "prerequisiteReasons": {
+        "kubernetes-pod": "Defines the placement and resource-request unit."
+      }
+    },
+    "cluster-fair-share-scheduling": {
+      "aliases": [],
+      "objective": "Cluster fair-share scheduling allocates scarce resources among competing tenants according to declared entitlements and measured usage.",
+      "prerequisiteReasons": {
+        "kubernetes-pod": "Defines the resource-consuming workloads being admitted.",
+        "measurement": "Defines usage windows and comparable fairness outcomes."
+      }
+    },
+    "hierarchical-resource-quotas": {
+      "aliases": [],
+      "objective": "Hierarchical quotas constrain resource use through nested organizational budgets while making guarantees, limits, and borrowing explicit.",
+      "prerequisiteReasons": {
+        "cluster-fair-share-scheduling": "Explains how competing resource entitlements are acted on."
+      }
+    },
+    "topology-aware-workload-placement": {
+      "aliases": [],
+      "objective": "Topology-aware placement assigns cooperating workloads to compatible hardware locations according to communication and availability constraints.",
+      "prerequisiteReasons": {
+        "kubernetes-pod": "Defines node-bound resource requests and placement constraints.",
+        "tensor-parallelism": "Provides a concrete communication-intensive workload that makes locality consequential."
+      }
+    },
+    "cluster-bin-packing": {
+      "aliases": [],
+      "objective": "Cluster bin packing concentrates compatible resource requests onto fewer nodes to preserve useful free nodes while respecting placement constraints.",
+      "prerequisiteReasons": {
+        "kubernetes-pod": "Defines per-node workload resource requests."
+      }
+    },
+    "gpu-sharing-enforcement": {
+      "aliases": [],
+      "objective": "GPU sharing needs separate contracts for memory limits, compute access, interference, and fault isolation rather than merely fractional resource accounting.",
+      "prerequisiteReasons": {
+        "gpu-memory-spaces": "Explains the device memory that shared clients consume.",
+        "kubernetes-operator": "Explains reconciliation of the runtime components enforcing the allocation.",
+        "device-driver": "Defines the hardware-facing enforcement boundary."
+      }
+    },
+    "dynamic-resource-allocation": {
+      "aliases": [],
+      "objective": "Kubernetes Dynamic Resource Allocation binds structured device claims to matching devices and coordinates their preparation for Pods.",
+      "prerequisiteReasons": {
+        "kubernetes-pod": "Defines the workload referring to a resource claim.",
+        "device-driver": "Provides device discovery and preparation implementation."
+      }
+    },
+    "workload-structure-contract": {
+      "aliases": [],
+      "objective": "A workload structure contract maps heterogeneous Kubernetes resource schemas into common roles, replica counts, pod templates, and lifecycle observations.",
+      "prerequisiteReasons": {
+        "kubernetes-pod": "Defines the execution units exposed through the descriptor.",
+        "kubernetes-operator": "Explains controllers and custom resources whose differing schemas need adaptation."
+      }
+    },
+    "model-weight-streaming": {
+      "aliases": [],
+      "objective": "Model weight streaming overlaps bounded tensor reads and device transfers to shorten model loading without removing storage and memory bottlenecks.",
+      "prerequisiteReasons": {
+        "python-concurrency-model-selection": "Explains overlapping I/O and bounded concurrency.",
+        "gpu-data-flow": "Explains host-to-device transfer and device-resident execution."
+      }
+    },
+    "multi-component-workload-scaling": {
+      "aliases": [],
+      "objective": "Multi-component scaling changes viable groups of cooperating service roles while keeping capacity, startup ordering, and readiness explicit.",
+      "prerequisiteReasons": {
+        "gang-scheduling": "Explains admission of minimum viable groups.",
+        "kubernetes-operator": "Provides reconciliation of desired group state.",
+        "prefill-decode-disaggregation": "Provides a concrete service whose independently specialized roles must cooperate."
+      }
+    },
+    "gpu-orchestration-control-plane": {
+      "aliases": [],
+      "objective": "A GPU orchestration control plane composes workload interpretation, entitlement policy, placement, and runtime enforcement through explicit contracts.",
+      "prerequisiteReasons": {
+        "workload-structure-contract": "Defines the normalized workload roles and lifecycle information.",
+        "hierarchical-resource-quotas": "Defines organizational entitlement constraints.",
+        "topology-aware-workload-placement": "Explains feasible physical placement.",
+        "gpu-sharing-enforcement": "Explains the runtime boundary distinct from scheduling intent."
+      }
+    },
+    "rotary-position-embedding": {
+      "aliases": [],
+      "objective": "Rotary position embedding rotates query and key coordinate pairs so their inner product depends on relative position.",
+      "prerequisiteReasons": {
+        "positional-encoding": "Explains why token order must enter attention.",
+        "matrix-multiplication": "Provides the linear-map composition and dot products used in the rotation identity."
+      }
+    },
+    "transformer-projection-fusion": {
+      "aliases": [],
+      "objective": "Transformer projection fusion combines compatible linear maps into larger matrix products without removing nonlinear or data-dependency boundaries.",
+      "prerequisiteReasons": {
+        "matrix-multiplication": "Provides concatenation identities for combining linear maps.",
+        "transformer-attention": "Defines query, key, value, and attention output roles.",
+        "position-wise-feed-forward-network": "Defines the feedforward branch and its nonlinear boundary."
+      }
+    },
+    "spatial-convolution": {
+      "aliases": [],
+      "objective": "A spatial convolution applies shared local filter weights across a grid to aggregate nearby values into output features.",
+      "prerequisiteReasons": {
+        "tensor": "Defines input, filter, and output array shapes.",
+        "matrix-multiplication": "Provides the weighted-sum channel mixing used by each local filter."
+      }
+    },
+    "mix-ffn-spatial-mixing": {
+      "aliases": [],
+      "objective": "Mix-FFN adds local spatial interaction inside a transformer feedforward block by applying a depthwise convolution on the token grid.",
+      "prerequisiteReasons": {
+        "position-wise-feed-forward-network": "Defines the token-independent baseline that spatial mixing changes.",
+        "spatial-convolution": "Explains local filtering and spatial boundary behavior."
+      }
     }
   }
 }

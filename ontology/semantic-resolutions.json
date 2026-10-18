@@ -9236,6 +9236,510 @@
       "contentHash": "5a34ee3ffe996062c8a850e6eebd836288829bb903fab3efac03411651070fa9",
       "decision": "retain",
       "reason": "What the concept *is*: a relay of disposable loaders is supporting explanation for the canonical Boot Process objective, not a separately learnable entity."
+    },
+    {
+      "candidateKey": "cand-39ee0ccabde16e41bd99",
+      "sourceId": "cluster-bin-packing",
+      "contentHash": "0714b4e202c8ee6fdf3eae8f26f5fba862a4130dca7d05cd77836648ecde840f",
+      "decision": "retain",
+      "reason": "Defines the single canonical Cluster Bin Packing learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-c8b93c0f64cb0544c43c",
+      "sourceId": "cluster-bin-packing",
+      "contentHash": "3f0ac058b3c2664b5c3f30877ea3a10c63e6ea9484b9cd54ecc769b3d5ec7478",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Cluster Bin Packing, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-471f35024b5dcb78b720",
+      "sourceId": "cluster-bin-packing",
+      "contentHash": "b6f656999ff7dcbcfcbc17c5c1e610e821770c8c8fa587a37bdefad0d5b26138",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Cluster Bin Packing and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-7610a58ad4a068155e7f",
+      "sourceId": "cluster-bin-packing",
+      "contentHash": "4f5fc50d0028ef06dce94dd1d0acd8e8e31a2c0b948915b41f5d004b42493db3",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Cluster Bin Packing; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-02eb50541266d41b8a75",
+      "sourceId": "cluster-fair-share-scheduling",
+      "contentHash": "1332259f6cfa562c96a521b49eb0acd737d48a0e02a7b308a258c377ebd63855",
+      "decision": "retain",
+      "reason": "Defines the single canonical Cluster Fair-Share Scheduling learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-77af9423f3a1bfa90f63",
+      "sourceId": "cluster-fair-share-scheduling",
+      "contentHash": "d01d8ce66cecc5d18f778c9d12249b1ebf0e62bdbb01a152c8904962c3c07fa7",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Cluster Fair-Share Scheduling, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-f0b20c502f25368d0065",
+      "sourceId": "cluster-fair-share-scheduling",
+      "contentHash": "126b201e45248070a84489b376700697d8c814eca07d192c82bbd20232d0c6e0",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Cluster Fair-Share Scheduling and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-759da11d8dac567e69bf",
+      "sourceId": "cluster-fair-share-scheduling",
+      "contentHash": "c27b6c5f32ed8d8bde97a109448264de373984b91f7b891b4da0ec014777c49b",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Cluster Fair-Share Scheduling; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-b645c7378ef6acea92b1",
+      "sourceId": "dynamic-resource-allocation",
+      "contentHash": "a27dc26bbddbbf0d282bf9a45361319f100ff683099be926d2b93505e98c6c25",
+      "decision": "retain",
+      "reason": "Defines the single canonical Dynamic Resource Allocation learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-731b486e5b56429b4ac7",
+      "sourceId": "dynamic-resource-allocation",
+      "contentHash": "4691ce36b8d47d969897b5b5714eab25ea76a6b3e966edc8130eb0ab5133f9dd",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Dynamic Resource Allocation, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-7aea25837fe60895d56d",
+      "sourceId": "dynamic-resource-allocation",
+      "contentHash": "92cd52602407015b88d9f2cba6c4a513447c926076e824babf564e63e457ffe5",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Dynamic Resource Allocation and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-6e84694990f3e57dde86",
+      "sourceId": "dynamic-resource-allocation",
+      "contentHash": "a14b80d83beb6558a4eba778eaae31f573e2f04c048fa7bb3668537a1499434a",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Dynamic Resource Allocation; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-e74c4db7bc32c5dee6d6",
+      "sourceId": "gang-scheduling",
+      "contentHash": "cfa047a12779b29058846fd15633e9866ce6c43b81bbbb72e99c150630ba0c47",
+      "decision": "retain",
+      "reason": "Defines the single canonical Gang Scheduling learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-5733585afa5e2f8662b9",
+      "sourceId": "gang-scheduling",
+      "contentHash": "d0f11fe6e93c2429192f26b8882fbc54d14a17675fac02ee58d47a1055b22dae",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Gang Scheduling, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-5d6b048329407f01d730",
+      "sourceId": "gang-scheduling",
+      "contentHash": "06c4553f7faee6e4239ec133cb111d5558655e36d6804d26bbc5f0b45f39fabb",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Gang Scheduling and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-7c1dd7489b8e5eb825fe",
+      "sourceId": "gang-scheduling",
+      "contentHash": "46e8a7512cf12bf4033cac996c2a1ec9586a66718cda24b559dc28a1168c621a",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Gang Scheduling; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-50a1f05bae71ae6c667b",
+      "sourceId": "generative-model-design-axes",
+      "contentHash": "3e2c81e561788c012a64969f22acd26cc3b48013ec95002f0d6da682a46a76e2",
+      "decision": "retain",
+      "reason": "Defines the single canonical Generative Model Design Axes learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-35f8c01ae4973d24797c",
+      "sourceId": "generative-model-design-axes",
+      "contentHash": "b45cb1ac4d006be47ada754ab38b3868e322eb84536deb4da535f3513c0fb630",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Generative Model Design Axes, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-d813ac73c6c2af800e79",
+      "sourceId": "generative-model-design-axes",
+      "contentHash": "73da241d8cd19f51cd1ec98cef6faca2cd103b910dac0f17e23c0d8944898bbf",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Generative Model Design Axes and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-cd4bda718ceb7487a919",
+      "sourceId": "generative-model-design-axes",
+      "contentHash": "7dc54491eed610446971bd83525e6f5515064a9f1ecd6dbf8abb00f3d6a8f657",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Generative Model Design Axes; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-015690696635e3fef226",
+      "sourceId": "gpu-orchestration-control-plane",
+      "contentHash": "156956d4a0dff3ae1835240c0ed14b68c24f9e57f4b32ba48f2e7834a7b003f8",
+      "decision": "retain",
+      "reason": "Defines the single canonical GPU Orchestration Control Plane learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-7d5084d27aac907183d8",
+      "sourceId": "gpu-orchestration-control-plane",
+      "contentHash": "5f49e8d8d68eb117eb46c741618db3f656963615e0f31fe29d9d0d9b1867154d",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of GPU Orchestration Control Plane, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-2179b75fd9f6c16691d5",
+      "sourceId": "gpu-orchestration-control-plane",
+      "contentHash": "9f95224f3a30902ffec0d2cd63a1bbb7f8c1789887779a930073de4d51045de5",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of GPU Orchestration Control Plane and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-81217a17ba40175d8665",
+      "sourceId": "gpu-orchestration-control-plane",
+      "contentHash": "a292c617d4a70c97fcfe58b9036655bd5ff64724a816cd26dd1404e26f255d2c",
+      "decision": "retain",
+      "reason": "Checks the key misconception for GPU Orchestration Control Plane; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-fa88b4a5991c8ef996d2",
+      "sourceId": "gpu-sharing-enforcement",
+      "contentHash": "6c041675129bebee016f2b3d7a6dde44e02a5d03421052569c07452a592ce4bf",
+      "decision": "retain",
+      "reason": "Defines the single canonical GPU Sharing Enforcement learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-5cb9985ecc0f9134b5a2",
+      "sourceId": "gpu-sharing-enforcement",
+      "contentHash": "2316dc1634f8b0a6f3324972d52a95466e0d6bda8ed7d405cacafaea54c3ebff",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of GPU Sharing Enforcement, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-52cf88855d848f011a5f",
+      "sourceId": "gpu-sharing-enforcement",
+      "contentHash": "b5c29454b21482048f743831a132d4db5d54580ff31f0a67663d470e59db082f",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of GPU Sharing Enforcement and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-03f4603ffe53dea840f1",
+      "sourceId": "gpu-sharing-enforcement",
+      "contentHash": "bd56dc0f35b7e4fd0597bd87d345d812923efceff4f23b3c0cc812714213dda0",
+      "decision": "retain",
+      "reason": "Checks the key misconception for GPU Sharing Enforcement; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-2c4e38503e94446ce23f",
+      "sourceId": "hierarchical-resource-quotas",
+      "contentHash": "bf3dedd3bf001c2da4f8cd427c073b9384e29bc7657514411a819b48130d8730",
+      "decision": "retain",
+      "reason": "Defines the single canonical Hierarchical Resource Quotas learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-0ae9999acbdff5d78407",
+      "sourceId": "hierarchical-resource-quotas",
+      "contentHash": "d77cd0be43dd5b08efda295617b6db26492863fc77f629f7709ad4d204226b66",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Hierarchical Resource Quotas, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-4898723e2e7a3c6dc46a",
+      "sourceId": "hierarchical-resource-quotas",
+      "contentHash": "5369c7db70571042d86f5ac4d6103ad475294f3177abe9954bf674dc2ed33bd2",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Hierarchical Resource Quotas and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-a970e812fa7d4a50a86e",
+      "sourceId": "hierarchical-resource-quotas",
+      "contentHash": "e323be2a1e6e12b23cfa058f430eea414c9e9cfc43027808261af9d45a46b6b3",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Hierarchical Resource Quotas; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-48cebc22bfd727e7a92a",
+      "sourceId": "joint-attention",
+      "contentHash": "8c9ecf790e99fba2c81cc8439787402c3efd1a0b7d81f624fac51ca6ea63e135",
+      "decision": "retain",
+      "reason": "Explains a specific parameter-sharing layout of joint multimodal attention and its transition boundaries; retain as a distinct architectural subsection, not as a synonymous new joint-attention entity."
+    },
+    {
+      "candidateKey": "cand-2c1957cc128785a0b29e",
+      "sourceId": "linear-transformer-attention",
+      "contentHash": "7c8603df8b118f48b1464b5c174bf7f1e0f3daabb187656b1bf180ce1fe73b6a",
+      "decision": "retain",
+      "reason": "Introduces the canonical Linear Transformer Attention objective; the feature-map specialization remains within that attention family."
+    },
+    {
+      "candidateKey": "cand-393820f0410ca2251bd4",
+      "sourceId": "linear-transformer-attention",
+      "contentHash": "d9c2276ddf04269bfb047c4bd2bf7491d289fd7e4d3bbff98376fb49b2a7a3c6",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Linear Transformer Attention, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-e35ab098f273a057f14a",
+      "sourceId": "linear-transformer-attention",
+      "contentHash": "f55bb29e842f044c1aff57b2c2a2c00e0df4169f0925e01656af69c51951b012",
+      "decision": "retain",
+      "reason": "Instantiates linear attention with a specified nonnegative feature map, numerical worked example, and zero-denominator contract; retain in the linear-attention reference rather than creating a duplicate general attention entity."
+    },
+    {
+      "candidateKey": "cand-449655c735c8eaaa2363",
+      "sourceId": "mix-ffn-spatial-mixing",
+      "contentHash": "e4778928082ad2df0dab301d4e49ec0998e211d6804737faf8ef6e9a6656f09e",
+      "decision": "retain",
+      "reason": "Defines the single canonical Mix-FFN Spatial Mixing learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-3879a8822c77f00d5b38",
+      "sourceId": "mix-ffn-spatial-mixing",
+      "contentHash": "aacd8897278cd903f2a665e11045e47463bde1f3c29477151746a65992b1b1c6",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Mix-FFN Spatial Mixing, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-6b1d51a250b1ec3418e2",
+      "sourceId": "mix-ffn-spatial-mixing",
+      "contentHash": "58d91ce62b685969c56e9424366fa815358004b01b5e60d5dae8bfe4d80e479d",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Mix-FFN Spatial Mixing and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-3add42f0249779eaf5b4",
+      "sourceId": "mix-ffn-spatial-mixing",
+      "contentHash": "51d887010f84fd5f749bca898cbe6bb7f0c06cb4ef23bbb82ced4fa06bd314f5",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Mix-FFN Spatial Mixing; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-aa6151e0e66d817f0b59",
+      "sourceId": "model-weight-streaming",
+      "contentHash": "863bb577dabd318f5907a18b9f0b017046951e203a43108dec499bd491fd5ef5",
+      "decision": "retain",
+      "reason": "Defines the single canonical Model Weight Streaming learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-d3199d93586a13036b35",
+      "sourceId": "model-weight-streaming",
+      "contentHash": "3574bf377a2a376b24b58bf3f87237a96fe18d7cb0f64682f836282e35311909",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Model Weight Streaming, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-d5027b2ce1f64c215716",
+      "sourceId": "model-weight-streaming",
+      "contentHash": "1214966ef071b0f054cd65c7df55c3fdb1c4b40bcd27b8f87023f42c9591bfdc",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Model Weight Streaming and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-c27076d727901a897c07",
+      "sourceId": "model-weight-streaming",
+      "contentHash": "a1890f5ecee8fbff9a22119acb6388c1a0c627c00b6c43f75e5ae58457028588",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Model Weight Streaming; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-ee6d65b7d42561fff0a3",
+      "sourceId": "multi-component-workload-scaling",
+      "contentHash": "7ea3d21e8ac12be511f0598e11551875fedf96208adc5293c9d593b6d6a5e7c0",
+      "decision": "retain",
+      "reason": "Defines the single canonical Multi-Component Workload Scaling learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-49cd71d68f76608c812c",
+      "sourceId": "multi-component-workload-scaling",
+      "contentHash": "7c9ea6fb134e83aa6db4e901867c1b1e87b3006cdc9428ddb0c59a5d656b112c",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Multi-Component Workload Scaling, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-91cb0924432a35a06bad",
+      "sourceId": "multi-component-workload-scaling",
+      "contentHash": "8ffb11910bb02dcf385ad0594e7ab4f73bba3555049fde1885bff73a0757ebb4",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Multi-Component Workload Scaling and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-d54722588f676a79057a",
+      "sourceId": "multi-component-workload-scaling",
+      "contentHash": "0cc8380e7cb0ca4d9287d94a68f3cef9f5ca9029a84fc381bc4ec3730a777b10",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Multi-Component Workload Scaling; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-ecbfdee07adcc38a7cc0",
+      "sourceId": "normalizing-flow",
+      "contentHash": "cda27c3be45571a24c9969d6d7ec0e4965ff70fcb3beb32949d57e2adc6df2d2",
+      "decision": "retain",
+      "reason": "Defines the single canonical Normalizing Flow learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-4a8f14c00123638cc489",
+      "sourceId": "normalizing-flow",
+      "contentHash": "885c0a159da2a978e04c26955ede5afe64b229118293f765b3797224c9bf84e4",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Normalizing Flow, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-3e4a9d15c6d891bc145a",
+      "sourceId": "normalizing-flow",
+      "contentHash": "18c34aa24c1353bd4f558ed1d8518b7e3a7f3ea263feddbac63faafe44f8b557",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Normalizing Flow and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-713ad14d759f1c114b4e",
+      "sourceId": "normalizing-flow",
+      "contentHash": "86186fcd32b473d79308558a663725c1ec41434261a49980ef9c78bc39c794be",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Normalizing Flow; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-5428108469497bf07f7f",
+      "sourceId": "rotary-position-embedding",
+      "contentHash": "3a10d06d404028ad19dc3627dbbaf857967464e870dee25dc667791881085e71",
+      "decision": "retain",
+      "reason": "Defines the single canonical Rotary Position Embedding learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-726e768e9b35b89f698d",
+      "sourceId": "rotary-position-embedding",
+      "contentHash": "b14b554f0f3dedf2156848d2f86fdb9228998999f74341d77aad35429c3c61ef",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Rotary Position Embedding, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-68907cd877c0c4234b42",
+      "sourceId": "rotary-position-embedding",
+      "contentHash": "d6ab092faa0965116236fa3d4c8cdbbdd81cbefbfa7794d496cee58de156ab73",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Rotary Position Embedding and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-97ec12a6b455b9f24e7a",
+      "sourceId": "rotary-position-embedding",
+      "contentHash": "f0f2812120284dcba4db442e0f66dc25206e854ceee0d9ec020984b2331ab85f",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Rotary Position Embedding; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-513e1d29cc45a611f6d6",
+      "sourceId": "spatial-convolution",
+      "contentHash": "8b071f6e97f4cea5aa52d06d2bacd183c6ab9861818dd4423aada2f678efd12f",
+      "decision": "retain",
+      "reason": "Defines the single canonical Spatial Convolution learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-db4a70b23b828d2cf863",
+      "sourceId": "spatial-convolution",
+      "contentHash": "e6b8dd97984c094b92e627f5cf1121bbc33ae807c161e9e74c4ac0ed86e99827",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Spatial Convolution, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-1256d036b4b49df6988e",
+      "sourceId": "spatial-convolution",
+      "contentHash": "cf1ca0709032105ae4fd86f2f23812c42e8b59fe02f22a4c1890e6488e1bd417",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Spatial Convolution and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-746993a84d7f74b99aaf",
+      "sourceId": "spatial-convolution",
+      "contentHash": "8c137267292c675801be7b17f214fe352954057345be0b233d4e1e9a5515ebd6",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Spatial Convolution; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-c3b7d1ed1dfc733e6e82",
+      "sourceId": "topology-aware-workload-placement",
+      "contentHash": "f2df009ad9a577658ef98285ecbb4ef6b8a4ddb40a8dd5a15c3d3b51b054f698",
+      "decision": "retain",
+      "reason": "Defines the single canonical Topology-Aware Workload Placement learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-7ba224d6d3ef8e44f07c",
+      "sourceId": "topology-aware-workload-placement",
+      "contentHash": "f471fefe4e398adaaa943b4989d60eebdd4f58514996ae6f546db143d13bafde",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Topology-Aware Workload Placement, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-8aa507bb93bfb48c5ada",
+      "sourceId": "topology-aware-workload-placement",
+      "contentHash": "f25af774016dc6724bd13a3ce8cdc144ed18d01166eb87aff611902e53a8b27b",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Topology-Aware Workload Placement and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-d35895345b59b27bbad1",
+      "sourceId": "topology-aware-workload-placement",
+      "contentHash": "c1a6d36358a0b9e00bf7a44fc537fae821141174fa199f335f6529af0ccee736",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Topology-Aware Workload Placement; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-05adfd8d1e2ea7b18927",
+      "sourceId": "transformer-projection-fusion",
+      "contentHash": "b0532fec16b4714cdf6fcaef4e437917fd77fb27a87d06064997e65d2e0cdb1f",
+      "decision": "retain",
+      "reason": "Defines the single canonical Transformer Projection Fusion learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-ef07c4e5e688649dbf95",
+      "sourceId": "transformer-projection-fusion",
+      "contentHash": "389f0ebb314d2b32a12c694c7f34b2ee6f14317e6669fae88d0d0ae6de48f47e",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Transformer Projection Fusion, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-3a07bfd0ce344462a054",
+      "sourceId": "transformer-projection-fusion",
+      "contentHash": "befbab04a666e68741d32f1741daaf7d062bf68ddf45cdd81f97074812dff48e",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Transformer Projection Fusion and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-fc501f93d6519b2414f3",
+      "sourceId": "transformer-projection-fusion",
+      "contentHash": "021d4dc90dc5178b84dd1ef68ad5888bfdc4f255eba414114ed384786363934d",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Transformer Projection Fusion; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-b87bd3d88ef2b61ba128",
+      "sourceId": "workload-structure-contract",
+      "contentHash": "7f3802b8c296219fdf37bcc9dfce1b4e7ab84b6fd4139ef3d440310781bb0235",
+      "decision": "retain",
+      "reason": "Defines the single canonical Workload Structure Contract learning objective; retain as its entry point rather than creating a second entity."
+    },
+    {
+      "candidateKey": "cand-b599c60d6ec6f53f64f5",
+      "sourceId": "workload-structure-contract",
+      "contentHash": "2691c9342b4b65e56fde983f235b0bfddd9b07c415cd71b43fb6fd60b764998b",
+      "decision": "retain",
+      "reason": "Explains the causal operation and limitations of Workload Structure Contract, using its declared prerequisites; retain within that same concept."
+    },
+    {
+      "candidateKey": "cand-d5d10366e295b4293e6f",
+      "sourceId": "workload-structure-contract",
+      "contentHash": "4dcf26c1741a22a51e18251fc7f5c8b1cbfc9969618f4b8be62f4a236dd203e9",
+      "decision": "retain",
+      "reason": "Traces a non-degenerate instance of Workload Structure Contract and validation boundaries; an example is not a separate semantic entity."
+    },
+    {
+      "candidateKey": "cand-04d0905b0ed229a4532f",
+      "sourceId": "workload-structure-contract",
+      "contentHash": "1517f426d02d89fddbbacf1f024cf7c630c47fdc211cb6cfbcf14818c6d41637",
+      "decision": "retain",
+      "reason": "Checks the key misconception for Workload Structure Contract; this question and answer are supporting instruction, not a separate concept."
     }
   ]
 }

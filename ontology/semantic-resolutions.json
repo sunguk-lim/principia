@@ -443,13 +443,6 @@
       "reason": "Curves and decisions is supporting explanation for the canonical Precision and Recall objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-0afe744c999f8e49cd4f",
-      "sourceId": "prefix-caching",
-      "contentHash": "60fb96de1af2fb07fcb7bb718b63cf18cf9cc62271e97288c8b262d973b9cdba",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Prefix Caching objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-0b2c02bf3c194eeaf27d",
       "sourceId": "mac-vs-ip",
       "contentHash": "9c64739660b052f1fb08d421d01544d99c5e7f9c85cdcf0e1ece98acb158af7e",
@@ -630,13 +623,6 @@
       "contentHash": "0f150d9f1be8b3bf39e1b24bbfc35ba2c690c79e96e21f42c4fa2c8ffa69afaf",
       "decision": "retain",
       "reason": "The WHY: content-blindness, and how selectivity fixes it is supporting explanation for the canonical Mamba objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-0ee185e16a174af1acf8",
-      "sourceId": "sliding-window-attention",
-      "contentHash": "41fc9efcb3f08d05360789f6e6b1c20b2e45477478904baedbefb17d0deb236a",
-      "decision": "retain",
-      "reason": "Why it works — the cost argument is supporting explanation for the canonical Sliding-Window Attention objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-0f0f6b1f8f074b18cc17",
@@ -1618,13 +1604,6 @@
       "contentHash": "994472ae5e4adfdd0f018e2833096a14bced8b377df8a613d38e71124ce93659",
       "decision": "retain",
       "reason": "Worked instance — the same join, two selectivities, two winning plans is supporting explanation for the canonical Query Planning & Optimization objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-2bfb3480a434772f3925",
-      "sourceId": "multi-head-latent-attention",
-      "contentHash": "d0614a11ad07fc203ffcabaa24ceee0eae2e6c8e116fc37ef2e889de41badb0d",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Multi-Head Latent Attention objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-2c55d5ffa7ceb716a54a",
@@ -3251,13 +3230,6 @@
       "reason": "Why this is worth the extra layer: partial pooling and shrinkage is supporting explanation for the canonical Hierarchical Bayes objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-59c90b16053c4b62b054",
-      "sourceId": "multi-head-latent-attention",
-      "contentHash": "ebec9e041e95c8a77b485b6d4998474c954645f1ea46b7e3f61ffe6b5a38af0e",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Multi-Head Latent Attention objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-59eef1bb28400a819308",
       "sourceId": "shared-memory",
       "contentHash": "77084d8366dafbf60752ad190f9a4333ba2ab0928cf9a243c5dcd2029367ef1c",
@@ -3599,13 +3571,6 @@
       "contentHash": "c4e1637eee1ea91ecc13da5c93378b14b100b1b1060c4db6fef23cdec5dcfe6d",
       "decision": "retain",
       "reason": "The non-obvious step made plain is supporting explanation for the canonical Full Bayesian Inference objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-626a39d7861c0404eb3e",
-      "sourceId": "sliding-window-attention",
-      "contentHash": "ce057ecd6b4a0f188b60985d04a9d2df774214c32d6aa104d335dd3781a5571b",
-      "decision": "retain",
-      "reason": "The trade-off and its resolution is supporting explanation for the canonical Sliding-Window Attention objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-628a9d822ffe96e4fec5",
@@ -5100,13 +5065,6 @@
       "reason": "Why the front constant is forced, not chosen is supporting explanation for the canonical Normal Distribution objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-8e8a796cb7c357a18e34",
-      "sourceId": "continuous-batching",
-      "contentHash": "cda4203754d22954d0e3f3707c55048bf516995049d135ebbef44a59a0130795",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Continuous Batching objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-8e90f8d7ac28659d0e42",
       "sourceId": "state-space-model",
       "contentHash": "10b68e6a4da58f1424bcc92a91fcc3a0316611c8ea9177e3491a28be39af73e4",
@@ -6332,13 +6290,6 @@
       "reason": "The coin-flip calculation illustrates the null model, statistic, and rejection rule already taught by Hypothesis Testing."
     },
     {
-      "candidateKey": "cand-b08f14eea14ec56d3c27",
-      "sourceId": "sliding-window-attention",
-      "contentHash": "f76ff7072e0b54e0ec81e22b03654201d35ed0b9f0ec29d6ff29307d2412a2e1",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Sliding-Window Attention objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-b0edfba5caa822390f86",
       "sourceId": "container-runtime",
       "contentHash": "ea11ab8c0d4c416ea7f08f9d757dd158294bea89b40fb9b4c36be04d5ce10287",
@@ -6716,13 +6667,6 @@
       "contentHash": "7ecd105be73b56e5663062d8e5727554dfd87283acc4d2eda4da0a9cddf64658",
       "decision": "retain",
       "reason": "Where this picks up: the stack only promises \"best effort\" is supporting explanation for the canonical TCP objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-b9df1354bd60476e3ebb",
-      "sourceId": "continuous-batching",
-      "contentHash": "f7237e768c38e3c5e2ac8de186c494b8c3a874945abd5f369e8f04019a00fd79",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Continuous Batching objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-b9e969b74b119c218e70",
@@ -7432,13 +7376,6 @@
       "reason": "Worked instance: 3907 blocks on a 132-SM GPU, and the same grid on a small one is supporting explanation for the canonical GigaThread Engine objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-cb4e4bba5f8ef324ee2d",
-      "sourceId": "sliding-window-attention",
-      "contentHash": "a813f7f36e9fd5b42dc88ab3c323f1c6e82498341e9e530024e7b5ebbaf01105",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Sliding-Window Attention objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-cb57707b295105c5322c",
       "sourceId": "inode",
       "contentHash": "0cf24f18673e95cca1acb812f675ca9be63c174632db122a8d3342c30a280da6",
@@ -7612,13 +7549,6 @@
       "contentHash": "4f26df067a2bd095504341487f1f1a7698f9003ca11cae5f89b9e2c64c10e14b",
       "decision": "retain",
       "reason": "The problem: \"root\" is one switch, and it's all the way on is supporting explanation for the canonical Capabilities objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-cf133560eba548b75aa2",
-      "sourceId": "sliding-window-attention",
-      "contentHash": "191bbc71b79af527d06f7b5db83efadaaf48bad0862c9726ebe9ff063a71ecb7",
-      "decision": "retain",
-      "reason": "What the concept is is supporting explanation for the canonical Sliding-Window Attention objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-cf3fa9da33b50fe1e118",
@@ -9469,27 +9399,6 @@
       "reason": "Explains a specific parameter-sharing layout of joint multimodal attention and its transition boundaries; retain as a distinct architectural subsection, not as a synonymous new joint-attention entity."
     },
     {
-      "candidateKey": "cand-2c1957cc128785a0b29e",
-      "sourceId": "linear-transformer-attention",
-      "contentHash": "7c8603df8b118f48b1464b5c174bf7f1e0f3daabb187656b1bf180ce1fe73b6a",
-      "decision": "retain",
-      "reason": "Introduces the canonical Linear Transformer Attention objective; the feature-map specialization remains within that attention family."
-    },
-    {
-      "candidateKey": "cand-393820f0410ca2251bd4",
-      "sourceId": "linear-transformer-attention",
-      "contentHash": "d9c2276ddf04269bfb047c4bd2bf7491d289fd7e4d3bbff98376fb49b2a7a3c6",
-      "decision": "retain",
-      "reason": "Explains the causal operation and limitations of Linear Transformer Attention, using its declared prerequisites; retain within that same concept."
-    },
-    {
-      "candidateKey": "cand-e35ab098f273a057f14a",
-      "sourceId": "linear-transformer-attention",
-      "contentHash": "f55bb29e842f044c1aff57b2c2a2c00e0df4169f0925e01656af69c51951b012",
-      "decision": "retain",
-      "reason": "Instantiates linear attention with a specified nonnegative feature map, numerical worked example, and zero-denominator contract; retain in the linear-attention reference rather than creating a duplicate general attention entity."
-    },
-    {
       "candidateKey": "cand-449655c735c8eaaa2363",
       "sourceId": "mix-ffn-spatial-mixing",
       "contentHash": "e4778928082ad2df0dab301d4e49ec0998e211d6804737faf8ef6e9a6656f09e",
@@ -9740,6 +9649,363 @@
       "contentHash": "1517f426d02d89fddbbacf1f024cf7c630c47fdc211cb6cfbcf14818c6d41637",
       "decision": "retain",
       "reason": "Checks the key misconception for Workload Structure Contract; this question and answer are supporting instruction, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-799506f45104b5d68dc5",
+      "sourceId": "bag-of-words",
+      "contentHash": "a6d572e25dd62a71f421e130f2c1a2e5845dd5b866319059e8660320392f4ec0",
+      "decision": "retain",
+      "reason": "Defines the single canonical learning objective, not a synonymous second entity."
+    },
+    {
+      "candidateKey": "cand-ac29dad406c7c8f12dc5",
+      "sourceId": "bag-of-words",
+      "contentHash": "c8ab24f5438f1e4929c7b163405be8e622e1830b3d8ca20e23902330c36832a5",
+      "decision": "retain",
+      "reason": "Explains the operation of this same concept through its declared prerequisites; retain as its mechanism."
+    },
+    {
+      "candidateKey": "cand-c47f63d58d6987952087",
+      "sourceId": "bag-of-words",
+      "contentHash": "636d494433e4833db33da4940f4af6c3f57859443544305d564663f83414c81a",
+      "decision": "retain",
+      "reason": "Traces a concrete instance and its boundary conditions, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-19ab799a6bd48454d28e",
+      "sourceId": "bag-of-words",
+      "contentHash": "79a195f13d8ff18780bb8a00edb7768d2aaba8864be10a7d1b6f5d601f3aee36",
+      "decision": "retain",
+      "reason": "Tests the defining misconception; a comprehension question is supporting instruction."
+    },
+    {
+      "candidateKey": "cand-ea237e385c715a6a25c3",
+      "sourceId": "cache-aware-model-hardware-codesign",
+      "contentHash": "c7ba8ff51287954765a41b61a033a5871191b2c3b6eb671cd22fd4bd65f4e47d",
+      "decision": "retain",
+      "reason": "Defines the single canonical learning objective, not a synonymous second entity."
+    },
+    {
+      "candidateKey": "cand-881bd18f0870311b7639",
+      "sourceId": "cache-aware-model-hardware-codesign",
+      "contentHash": "fcca7c7eaa2e211415ca6033f7100035fb029f12af12d0aab2bca3d8e4a59365",
+      "decision": "retain",
+      "reason": "Explains the operation of this same concept through its declared prerequisites; retain as its mechanism."
+    },
+    {
+      "candidateKey": "cand-f92754849dda41c01fd6",
+      "sourceId": "cache-aware-model-hardware-codesign",
+      "contentHash": "a2ffa8ae6d8567e0786b1817c127e676ed727882c8ec5a1808c8caf8b7530cda",
+      "decision": "retain",
+      "reason": "Traces a concrete instance and its boundary conditions, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-5c356df986eaa4b432be",
+      "sourceId": "cache-aware-model-hardware-codesign",
+      "contentHash": "2c470b360b33e3577f0efd4dd59427b909e8fe0543ff30689edeb6b4a1042d5d",
+      "decision": "retain",
+      "reason": "Tests the defining misconception; a comprehension question is supporting instruction."
+    },
+    {
+      "candidateKey": "cand-c2918f048c4fd3c44e59",
+      "sourceId": "character-ngram-features",
+      "contentHash": "4987a82e45e999cea289ccddf27a0613c49c48baedca33eee7df56c1a831152f",
+      "decision": "retain",
+      "reason": "Defines the single canonical learning objective, not a synonymous second entity."
+    },
+    {
+      "candidateKey": "cand-f88843156cd37b931685",
+      "sourceId": "character-ngram-features",
+      "contentHash": "b578b201be1aa1be95e60ebdfe5e997245f78aaf5c313ef4e4a61b2fe632c9f7",
+      "decision": "retain",
+      "reason": "Explains the operation of this same concept through its declared prerequisites; retain as its mechanism."
+    },
+    {
+      "candidateKey": "cand-5d56369d20e83802d3c5",
+      "sourceId": "character-ngram-features",
+      "contentHash": "192674db3431fa151dfb4b677fbf984556a59630851f3916440ef3241c7ee9a7",
+      "decision": "retain",
+      "reason": "Traces a concrete instance and its boundary conditions, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-d81204a5cede3081c6c4",
+      "sourceId": "character-ngram-features",
+      "contentHash": "a454823cb35bf402f2dd2cf13fc2d128b43763eb0ad332121e5b495eb99c7fca",
+      "decision": "retain",
+      "reason": "Tests the defining misconception; a comprehension question is supporting instruction."
+    },
+    {
+      "candidateKey": "cand-504951e6b8790844e030",
+      "sourceId": "continuous-batching",
+      "contentHash": "3a434489af53d9cf7c13a7f1fb985b546857c7e604b1f1c169bdbf5a29f166ff",
+      "decision": "retain",
+      "reason": "Introduces and explains the canonical concept under the same learning objective."
+    },
+    {
+      "candidateKey": "cand-7f2e01bc3e4d69d9411f",
+      "sourceId": "continuous-batching",
+      "contentHash": "75abf9c234598329cd5d0bfe938b71c16609582ec4d8cd99c67a86714a384631",
+      "decision": "retain",
+      "reason": "Explains correct iteration-boundary membership changes and independent request state; retain within continuous batching."
+    },
+    {
+      "candidateKey": "cand-36e46ab15c078a00c70c",
+      "sourceId": "continuous-batching",
+      "contentHash": "4525b1eead19e51673f06ca0b2c44d0f44de746dd1208c5ad7731e7896fc3f0f",
+      "decision": "retain",
+      "reason": "Shows a fixed-arrival two-slot trace with derived occupancy and bounded assumptions; not a new scheduling concept."
+    },
+    {
+      "candidateKey": "cand-1062f783bc634af0a86d",
+      "sourceId": "continuous-batching",
+      "contentHash": "6f84d46ffb81d7226a7352dc5c9356eb545fd8192a220d6b59b9db6e74b2e93c",
+      "decision": "retain",
+      "reason": "Specifies conditions under which continuous admission helps and how to test it; retain within the canonical concept."
+    },
+    {
+      "candidateKey": "cand-7975277c2b90c5cd4989",
+      "sourceId": "evaluation-slices",
+      "contentHash": "f4b0f5c7e6ad1c34d91d3eb126086cec6cff6f90eb468a2a8a34fda4cb36e66b",
+      "decision": "retain",
+      "reason": "Defines the single canonical learning objective, not a synonymous second entity."
+    },
+    {
+      "candidateKey": "cand-c570fc9de3e9c1610507",
+      "sourceId": "evaluation-slices",
+      "contentHash": "0560dad49a405824dfcd824cd8132aef63f05771c361fc93e88a35bc72e05b3c",
+      "decision": "retain",
+      "reason": "Explains the operation of this same concept through its declared prerequisites; retain as its mechanism."
+    },
+    {
+      "candidateKey": "cand-1e8128fd07c546bd42ab",
+      "sourceId": "evaluation-slices",
+      "contentHash": "bc1f676707bcf131f31eed90e0b5d336412fa32ac6e202dcf7e0d850159647ac",
+      "decision": "retain",
+      "reason": "Traces a concrete instance and its boundary conditions, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-f0ca9dd980a2f2abbe22",
+      "sourceId": "evaluation-slices",
+      "contentHash": "8925bec32f0e8a166f8b757d8aa96e7a141553464d01af54f0156564dfac963a",
+      "decision": "retain",
+      "reason": "Tests the defining misconception; a comprehension question is supporting instruction."
+    },
+    {
+      "candidateKey": "cand-b7101af8f6fb8d475b02",
+      "sourceId": "hypothesis-driven-troubleshooting",
+      "contentHash": "8c02e4a43f97b336d78a06f444581bbdf6d8d5b519cf59f059da96bad973efb2",
+      "decision": "retain",
+      "reason": "Defines the single canonical learning objective, not a synonymous second entity."
+    },
+    {
+      "candidateKey": "cand-e8e5df7f5ba0ee998b87",
+      "sourceId": "hypothesis-driven-troubleshooting",
+      "contentHash": "da9d6d5bc3596c84cff2a3158a66e8510067af16f4fdee51f6a0574960b6d47c",
+      "decision": "retain",
+      "reason": "Explains the operation of this same concept through its declared prerequisites; retain as its mechanism."
+    },
+    {
+      "candidateKey": "cand-05b94d11ee1416cda433",
+      "sourceId": "hypothesis-driven-troubleshooting",
+      "contentHash": "44bc836421054f856e6af010059028eab35209b97a36d2ff5b25378938daecff",
+      "decision": "retain",
+      "reason": "Traces a concrete instance and its boundary conditions, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-451f163a9bf78fe8ce3d",
+      "sourceId": "hypothesis-driven-troubleshooting",
+      "contentHash": "bbf6955223aac9383f5b2921980d7df180d3931235a44aa7159ab640eac068f9",
+      "decision": "retain",
+      "reason": "Tests the defining misconception; a comprehension question is supporting instruction."
+    },
+    {
+      "candidateKey": "cand-33c6a6f187f344a06c9b",
+      "sourceId": "inference-request-scheduling",
+      "contentHash": "5f01e344ea318536d7bce2aa8ebeeaed08c1bb78f5aad9c87a8bda6d2d5db3d8",
+      "decision": "retain",
+      "reason": "Introduces and explains the canonical concept under the same learning objective."
+    },
+    {
+      "candidateKey": "cand-1fae428ab9fc09b33b24",
+      "sourceId": "inference-request-scheduling",
+      "contentHash": "79d31ac2b2e0c6dd8e34302e81e5954558d8fab3061ccab60c19d56d8dd71979",
+      "decision": "retain",
+      "reason": "Explains the concrete admission and memory-pressure actions of the existing inference scheduler; chunked prefill is linked as a real prerequisite."
+    },
+    {
+      "candidateKey": "cand-2c1957cc128785a0b29e",
+      "sourceId": "linear-transformer-attention",
+      "contentHash": "7c8603df8b118f48b1464b5c174bf7f1e0f3daabb187656b1bf180ce1fe73b6a",
+      "decision": "retain",
+      "reason": "Introduces and explains the canonical concept under the same learning objective."
+    },
+    {
+      "candidateKey": "cand-393820f0410ca2251bd4",
+      "sourceId": "linear-transformer-attention",
+      "contentHash": "d9c2276ddf04269bfb047c4bd2bf7491d289fd7e4d3bbff98376fb49b2a7a3c6",
+      "decision": "retain",
+      "reason": "Explains the operation of this same concept through its declared prerequisites; retain as its mechanism."
+    },
+    {
+      "candidateKey": "cand-e35ab098f273a057f14a",
+      "sourceId": "linear-transformer-attention",
+      "contentHash": "f55bb29e842f044c1aff57b2c2a2c00e0df4169f0925e01656af69c51951b012",
+      "decision": "retain",
+      "reason": "Retains an existing feature-map specialization with exact same-function numerical comparison; not a duplicate linear-attention entity."
+    },
+    {
+      "candidateKey": "cand-91e0ba5db113e28296bd",
+      "sourceId": "linear-transformer-attention",
+      "contentHash": "1a03c11e1455580dc6eb8ceadbb8a2e8ad3f564254912a87898b63b1d689ea46",
+      "decision": "retain",
+      "reason": "Optional contrast explains why exact softmax tiling and a factorized similarity are different; both entities already exist."
+    },
+    {
+      "candidateKey": "cand-4ac1fb3f6a98436af875",
+      "sourceId": "multi-head-latent-attention",
+      "contentHash": "d07d9e4c916762afed0ce44b9702a7f1825b51fa7cbb7c8b9d2692cba824e6af",
+      "decision": "retain",
+      "reason": "Introduces and explains the canonical concept under the same learning objective."
+    },
+    {
+      "candidateKey": "cand-6203f31badf85e4c2d48",
+      "sourceId": "multi-head-latent-attention",
+      "contentHash": "545c6920cdf5f556634610372d4b2d060c52ab0c67f02ba45942a4f1404bfc06",
+      "decision": "retain",
+      "reason": "Retains the content-only latent factorization example while explicitly separating its assumptions from complete architecture accounting."
+    },
+    {
+      "candidateKey": "cand-d5293342d234d327fbcf",
+      "sourceId": "multi-head-latent-attention",
+      "contentHash": "f2d9ff48d368589ad4500400fc2ca5674ac84560e3bb23cd99fc7672079b8b43",
+      "decision": "retain",
+      "reason": "Explains the full MLA object using a declared rotary-position prerequisite and corrected byte calculation; not a new cache architecture."
+    },
+    {
+      "candidateKey": "cand-06d6fd954c8fa2cf097f",
+      "sourceId": "multi-turn-token-accounting",
+      "contentHash": "9c4eb75b1539b8b804569ce7af386093565ecbcbfca75f2b2e165cf32b0d820a",
+      "decision": "retain",
+      "reason": "Defines the single canonical learning objective, not a synonymous second entity."
+    },
+    {
+      "candidateKey": "cand-52a64c8d7504cb604fcc",
+      "sourceId": "multi-turn-token-accounting",
+      "contentHash": "6fd8258b6fa9895cb312e2ab796e4c0ccb4eabf4b49d23b64318b28bd0ca075b",
+      "decision": "retain",
+      "reason": "Explains the operation of this same concept through its declared prerequisites; retain as its mechanism."
+    },
+    {
+      "candidateKey": "cand-214967475ce7b50bb60f",
+      "sourceId": "multi-turn-token-accounting",
+      "contentHash": "01c79d255e4972f045110782b89b0c29bc267386dd43e24e6920c63cc42408a1",
+      "decision": "retain",
+      "reason": "Traces a concrete instance and its boundary conditions, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-f5ab18fca31c8075ee2e",
+      "sourceId": "multi-turn-token-accounting",
+      "contentHash": "22cc2219407d359f3387e9e97fc1a462e0f7a0f97bcaae2dae913cd4ac0c6652",
+      "decision": "retain",
+      "reason": "Tests the defining misconception; a comprehension question is supporting instruction."
+    },
+    {
+      "candidateKey": "cand-9901e27bb36b26071c17",
+      "sourceId": "prefix-caching",
+      "contentHash": "5bf6206d8519fafc699df189a2f7d3407e72e7ef38afe86af3aa64d626f9cd10",
+      "decision": "retain",
+      "reason": "Introduces and explains the canonical concept under the same learning objective."
+    },
+    {
+      "candidateKey": "cand-5d30066bd93f56fd4703",
+      "sourceId": "prefix-caching",
+      "contentHash": "6f64b8964a430aac7b24cd663513c241241b0ccac39ac1dd8515caf43b2c6ea9",
+      "decision": "retain",
+      "reason": "Qualifies the existing cross-request reuse invariant with compatibility keys, safe sharing and remaining decode work; retain within prefix caching."
+    },
+    {
+      "candidateKey": "cand-b08f14eea14ec56d3c27",
+      "sourceId": "sliding-window-attention",
+      "contentHash": "f76ff7072e0b54e0ec81e22b03654201d35ed0b9f0ec29d6ff29307d2412a2e1",
+      "decision": "retain",
+      "reason": "Introduces and explains the canonical concept under the same learning objective."
+    },
+    {
+      "candidateKey": "cand-cf133560eba548b75aa2",
+      "sourceId": "sliding-window-attention",
+      "contentHash": "191bbc71b79af527d06f7b5db83efadaaf48bad0862c9726ebe9ff063a71ecb7",
+      "decision": "retain",
+      "reason": "Defines a local attention pattern and its normalization using existing attention foundations."
+    },
+    {
+      "candidateKey": "cand-0ee185e16a174af1acf8",
+      "sourceId": "sliding-window-attention",
+      "contentHash": "41fc9efcb3f08d05360789f6e6b1c20b2e45477478904baedbefb17d0deb236a",
+      "decision": "retain",
+      "reason": "Derives the local-pair work bound for the existing window-attention objective."
+    },
+    {
+      "candidateKey": "cand-626a39d7861c0404eb3e",
+      "sourceId": "sliding-window-attention",
+      "contentHash": "ce057ecd6b4a0f188b60985d04a9d2df774214c32d6aa104d335dd3781a5571b",
+      "decision": "retain",
+      "reason": "Explains depth-mediated communication within a window pattern, not a separate new architecture."
+    },
+    {
+      "candidateKey": "cand-cb4e4bba5f8ef324ee2d",
+      "sourceId": "sliding-window-attention",
+      "contentHash": "a813f7f36e9fd5b42dc88ab3c323f1c6e82498341e9e530024e7b5ebbaf01105",
+      "decision": "retain",
+      "reason": "Retains the content-only latent factorization example while explicitly separating its assumptions from complete architecture accounting."
+    },
+    {
+      "candidateKey": "cand-8f0f917325faf01cd52d",
+      "sourceId": "sliding-window-attention",
+      "contentHash": "88082ebfa1f0ae5be8992e6b2e383cf26e68d936de84e07863538194eca0b0f3",
+      "decision": "retain",
+      "reason": "Adds bidirectional 2D window specialization and shifted-window comparison to the same local-pattern concept."
+    },
+    {
+      "candidateKey": "cand-9d0d9706baa515d12cb2",
+      "sourceId": "tiered-kv-cache",
+      "contentHash": "fb153462318a0b8f1b57985d24da735cfcaae4989ad3546d771361aef62503a0",
+      "decision": "retain",
+      "reason": "Introduces and explains the canonical concept under the same learning objective."
+    },
+    {
+      "candidateKey": "cand-e627e44bcb72352e4bc9",
+      "sourceId": "tiered-kv-cache",
+      "contentHash": "c8d699422b61e8533dba572f64f0f533e36b3bc077af8d51f267e81ed72d12db",
+      "decision": "retain",
+      "reason": "Adds a measured-path crossover and capacity opportunity cost to the existing tiered-state placement concept."
+    },
+    {
+      "candidateKey": "cand-c7270b6db45e51784eb7",
+      "sourceId": "word-ngram-features",
+      "contentHash": "440813a87f068138d4c8801671f1834dac1faa221e489ba838f930e56e66d907",
+      "decision": "retain",
+      "reason": "Defines the single canonical learning objective, not a synonymous second entity."
+    },
+    {
+      "candidateKey": "cand-ad863f39349791e5fca4",
+      "sourceId": "word-ngram-features",
+      "contentHash": "7264932317657c61749dd033458bc2a7998aef69a43cf4bafd0cce4e754ac11b",
+      "decision": "retain",
+      "reason": "Explains the operation of this same concept through its declared prerequisites; retain as its mechanism."
+    },
+    {
+      "candidateKey": "cand-17a9255bd3efc98733e7",
+      "sourceId": "word-ngram-features",
+      "contentHash": "52ce9272ed13f78389b8898a2218e5524ca6c6bb27e29361edadb5eb61e81018",
+      "decision": "retain",
+      "reason": "Traces a concrete instance and its boundary conditions, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-b41099de24602af42de9",
+      "sourceId": "word-ngram-features",
+      "contentHash": "610a84420aafaef926dec6bff7692c8b117547c1335052ed40a636a10298fbd0",
+      "decision": "retain",
+      "reason": "Tests the defining misconception; a comprehension question is supporting instruction."
     }
   ]
 }

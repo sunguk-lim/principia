@@ -1695,7 +1695,8 @@
       "prerequisiteReasons": {
         "multi-head-attention": "The stated objective requires Multi-Head Attention: the complete explanation applies it in this mechanism: The kv-cache is the memory bottleneck of generation, and in multi-head-attention it stores the keys and values of every head for every past token. Multi-head latent attention (MLA) shrinks that cache with a low-rank-factorization: instead of caching all the heads' K and V, it",
         "kv-cache": "The stated objective requires KV-cache: the complete explanation applies it in this mechanism: The kv-cache is the memory bottleneck of generation, and in multi-head-attention it stores the keys and values of every head for every past token. Multi-head latent attention (MLA) shrinks that cache with a low-rank-factorization: instead of caching all the heads' K and V, it",
-        "low-rank-factorization": "The stated objective requires Low-rank factorization: the complete explanation applies it in this mechanism: The kv-cache is the memory bottleneck of generation, and in multi-head-attention it stores the keys and values of every head for every past token. Multi-head latent attention (MLA) shrinks that cache with a low-rank-factorization: instead of caching all the heads' K and V, it"
+        "low-rank-factorization": "The stated objective requires Low-rank factorization: the complete explanation applies it in this mechanism: The kv-cache is the memory bottleneck of generation, and in multi-head-attention it stores the keys and values of every head for every past token. Multi-head latent attention (MLA) shrinks that cache with a low-rank-factorization: instead of caching all the heads' K and V, it",
+        "rotary-position-embedding": "Explains why a position-dependent key component remains separate from absorbable compressed content."
       }
     },
     "multimodal-rag": {
@@ -3034,6 +3035,68 @@
       "prerequisiteReasons": {
         "position-wise-feed-forward-network": "Defines the token-independent baseline that spatial mixing changes.",
         "spatial-convolution": "Explains local filtering and spatial boundary behavior."
+      }
+    },
+    "bag-of-words": {
+      "aliases": [],
+      "objective": "Bag of words represents text by token occurrence counts while discarding the ordering between occurrences.",
+      "prerequisiteReasons": {
+        "tensor": "Represents token counts as a fixed-coordinate vector.",
+        "arithmetic": "Defines occurrence counting and addition."
+      }
+    },
+    "word-ngram-features": {
+      "aliases": [],
+      "objective": "Word n-gram features count contiguous token sequences to preserve local ordering without representing arbitrary sentence structure.",
+      "prerequisiteReasons": {
+        "bag-of-words": "Supplies count-based vocabulary representation and its order-loss boundary.",
+        "regularization": "Explains the statistical cost of expanding sparse features."
+      }
+    },
+    "character-ngram-features": {
+      "aliases": [],
+      "objective": "Character n-gram features count short character spans, sharing surface-form evidence across words without assuming semantic equivalence.",
+      "prerequisiteReasons": {
+        "bag-of-words": "Provides count-vector vocabulary construction; characters replace word units."
+      }
+    },
+    "evaluation-slices": {
+      "aliases": [],
+      "objective": "Evaluation slices measure the same prediction task on explicitly defined input subpopulations so aggregate quality cannot hide localized failures.",
+      "prerequisiteReasons": {
+        "confusion-matrix": "Defines label-specific error counts within each selected population.",
+        "conditional-probability": "Defines error conditioned on slice membership."
+      }
+    },
+    "hypothesis-driven-troubleshooting": {
+      "aliases": [],
+      "objective": "Hypothesis-driven troubleshooting compares causal explanations through discriminating observations and bounded tests rather than equating correlated incidents with one proven cause.",
+      "prerequisiteReasons": {
+        "observability": "Makes current behavior and component boundaries inspectable.",
+        "measurement": "Supports controlled comparisons with units, timing and a baseline."
+      }
+    },
+    "multi-turn-token-accounting": {
+      "aliases": [],
+      "objective": "Multi-turn token accounting separates repeated-prefix reads, new input, cache creation and output across requests before applying provider-specific prices.",
+      "prerequisiteReasons": {
+        "arithmetic": "Supports per-turn sums and consistent price units.",
+        "prefix-caching": "Explains which repeated prefix may be reused and why hits are conditional."
+      }
+    },
+    "cache-aware-model-hardware-codesign": {
+      "aliases": [],
+      "objective": "Cache-aware model-hardware co-design jointly chooses attention state representation, serving policy and execution hardware under fixed quality and workload constraints.",
+      "prerequisiteReasons": {
+        "grouped-query-attention": "Provides an architectural control over KV-head state size.",
+        "multi-head-latent-attention": "Provides a distinct compressed-state representation and reconstruction trade-off.",
+        "tiered-kv-cache": "Explains placement and movement of reusable state.",
+        "roofline-model": "Relates memory traffic and arithmetic to hardware limits."
+      }
+    },
+    "inference-request-scheduling": {
+      "prerequisiteReasons": {
+        "chunked-prefill": "Explains splitting waiting prompt work into chunks that fit the remaining per-iteration token budget."
       }
     }
   }

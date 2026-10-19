@@ -1,14 +1,14 @@
 ---
 id: prefix-caching
 title: Prefix Caching
-summary: A kv-cache reuses keys and values within one sequence as it grows.
+summary: Prefix caching reuses compatible attention state across requests with an identical rendered token prefix, avoiding repeated prefill but not later attention reads.
 type: concept
 tags: [ml/llm/inference]
 prereqs: [kv-cache]
-sources: []
+sources: [https://raw.githubusercontent.com/vllm-project/vllm/main/docs/features/automatic_prefix_caching.md, https://raw.githubusercontent.com/vllm-project/vllm/main/docs/design/prefix_caching.md]
 status: explained
 created: 2026-06-23
-updated: 2026-06-23
+updated: 2026-10-20
 ---
 
 # Prefix Caching
@@ -25,7 +25,7 @@ expensive **prefill** (the bulk pass that processes the prompt before any token 
 generated) over the shared part and only prefills the **suffix** where it differs.
 The licensing fact is causality: a token's key and value depend on the tokens **at
 or before it** — never on what comes after — so two prompts that agree on their
-first $p$ tokens have bit-identical `K`/`V` for those $p$ tokens regardless of how
+first $p$ tokens have mathematically identical `K`/`V` under compatible execution for those $p$ tokens regardless of how
 they continue.
 
 ## Grounded explanation
@@ -58,8 +58,8 @@ $1..j$ — are identical between A and B. The model weights are the same. Theref
 These are **equal values, not merely similar** — the same arithmetic on the same
 inputs. Whatever A and B do *after* position $p$ cannot reach back to change a
 causal token's key or value. So the first $p$ columns of A's `K`/`V` cache and the
-first $p$ columns of B's are bit-identical. Computing them twice is provably
-redundant; computing them once and copying is provably correct. (The equality holds
+first $p$ columns of B's are mathematically identical under compatible execution. Computing them twice is provably
+redundant; computing them once and reusing compatible state is mathematically correct. Floating-point kernels can differ across execution shapes, so this is not a promise of bitwise identity across every implementation. (The equality holds
 per layer and per head, so the stored block is the prefix's columns across **all**
 layers — the same shape the [[kv-cache]] would have built.)
 
@@ -114,8 +114,15 @@ caching is precisely the bridge that lets the frozen columns survive that bounda
 **In practice.** Serving systems implement this as **automatic prefix caching**
 (e.g. vLLM): the engine hashes prefixes of incoming prompts, transparently detects
 the longest match against already-cached `K`/`V` blocks, reuses them, and prefills
-only the divergent tail — with no change to the request, since the invariant
-guarantees the answer is identical to a full recompute.
+only the divergent tail — with no change to the request, since the invariant licenses reuse under the cache compatibility contract; numerical and generated-output equivalence must still be tested.
+
+## Compatibility, isolation and remaining work
+
+Identical visible text alone is not a cache key. Reuse requires identical rendered prefix tokens and compatible model weights, adapters, positions, masks, multimodal inputs and cache representation. Serving systems can include model-level namespaces and additional identifiers in block hashes; an application must also choose a safe tenant or trust-group boundary. Hash equality alone is not an authorization decision. vLLM documents parent-block hashes, token IDs, additional input identifiers and optional cache salts. Treat mutable inputs and model updates as invalidation events.
+
+The equality argument is mathematical, not a guarantee of bitwise equality across kernels, batches or devices. Validate cached versus recomputed results within the numerical contract. Immutable full blocks may be shared by reference rather than copied per request; a divergent writable tail needs correct ownership. Block granularity can limit the reusable prefix length.
+
+A hit removes redundant prefix prefill; a new suffix and every later generated query still need attention to retained context. For example, reuse 8,000 prefix tokens and append 20 new tokens: only 20 token states need new prefill, but those states still interact with the earlier history, and decode still reads the required prior state. A cached-input discount therefore does not imply negligible generation latency. Measure prefill saved, actual state bytes, decode latency, cache misses and tenant-isolation behavior separately.
 
 ## Prerequisites
 
@@ -123,4 +130,6 @@ guarantees the answer is identical to a full recompute.
 
 ## Sources
 
-_none_
+- <https://raw.githubusercontent.com/vllm-project/vllm/main/docs/features/automatic_prefix_caching.md>
+
+- <https://raw.githubusercontent.com/vllm-project/vllm/main/docs/design/prefix_caching.md>

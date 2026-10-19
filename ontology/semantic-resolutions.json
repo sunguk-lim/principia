@@ -919,13 +919,6 @@
       "reason": "Why keep the vectors inside the relational engine — the load-bearing idea is supporting explanation for the canonical pgvector objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-18abd06f6268b515da74",
-      "sourceId": "lora",
-      "contentHash": "9a012ba13cfde6715932a5d5ba4d9fd4677365ffb7b16ac338ffd0de0d2db03e",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical LoRA (Low-Rank Adaptation) objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-18d60bae798d0751580b",
       "sourceId": "hierarchical-bayes",
       "contentHash": "1e3a71ab703f3b32d1a4abdebc2c021e4fa9fba7b283b4b2339de8910a759a02",
@@ -2194,13 +2187,6 @@
       "reason": "Why a naive all-reduce wastes the wire is supporting explanation for the canonical NCCL objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-3b3e4ae7d2413a0f2842",
-      "sourceId": "chunked-prefill",
-      "contentHash": "23b0d13a7ede6f062b1df39397f18507f30f4a4c7f460fe6461e928be9ab83ed",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Chunked Prefill objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-3b5d54ea1b5654b7f2c7",
       "sourceId": "maximum-a-posteriori",
       "contentHash": "4f405122dd55711a81861bde85ac583a67c05577028912e196c4278a757260c8",
@@ -2248,13 +2234,6 @@
       "contentHash": "ed93aa6dc9a000a6bb65eb04bcef92340972ca107451d7348775fbf8ab53c648",
       "decision": "retain",
       "reason": "Use 1 — the scratchpad: load once from global, reuse many times on-chip is supporting explanation for the canonical Shared Memory objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-3d57976052ef047137f7",
-      "sourceId": "chunked-prefill",
-      "contentHash": "44b2e74914e4c5389d9b5770a3631467757aaef8c1a8851d762f0c45ac980272",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Chunked Prefill objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-3df825b751e2c2c75f25",
@@ -3062,13 +3041,6 @@
       "reason": "Prefill: many tokens per weight load → high intensity → compute-bound is supporting explanation for the canonical Prefill vs Decode objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-5372acecb442384805f0",
-      "sourceId": "graph-memory",
-      "contentHash": "143c5e0f09c5a18747a6c6c373081f9e0f1e02b3ceb1b01140799e2a6724ba83",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Graph Memory objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-5387c8ee726704106064",
       "sourceId": "cumulative-distribution-function",
       "contentHash": "0edbe3ea8de90a56d6e3acda9cb80ec34fa84f5f25be243b0cee3c7d8ec9ac23",
@@ -3109,13 +3081,6 @@
       "contentHash": "215543c0c2751f96950c56b29347411c565dfab5e9f319746402531c3a344164",
       "decision": "retain",
       "reason": "What the concept *is* — and the gap it fills is supporting explanation for the canonical Convex Transformation Order objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-5612482ab4d13fe9bd44",
-      "sourceId": "streaming-voice-agent-pipeline",
-      "contentHash": "f6d44f29d24e1362bdafe0be739eae49207f8a71a5ce07b38e40fb5dbd32dda9",
-      "decision": "retain",
-      "reason": "This section defines and explains Streaming Voice-Agent Pipeline as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-561ae4980b084595339b",
@@ -3650,13 +3615,6 @@
       "reason": "What the concept *is* — promoting indivisibility from a cell to a sequence is supporting explanation for the canonical Transaction (ACID) objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-64fcd5668a429380f860",
-      "sourceId": "regularization",
-      "contentHash": "2b1106e1cf828960d4b00ed2454627f913ad9c24435bc019cc95567c89f1f88f",
-      "decision": "retain",
-      "reason": "Worked example is supporting explanation for the canonical Regularization objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-6500b36a29fc199fcc08",
       "sourceId": "sharding",
       "contentHash": "41186bb66aadf429cfe9da8f5ff35198324fea749f0ccc99504bbb5e3d4c1ac6",
@@ -4145,13 +4103,6 @@
       "contentHash": "0fd0991a4a47a2a9df46e5ff1aa57bdf5ff51eff37ef6d6ca7ad338363b8d1fa",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Binary Search Tree objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-7434ac73272f1bd4045f",
-      "sourceId": "local-llm-inference",
-      "contentHash": "b607ebe1415fb9f9735381553777540c7ca782edad9653dc657656a2ef634b79",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Local LLM Inference objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-7448763a41267d3928a2",
@@ -5282,13 +5233,6 @@
       "reason": "This section defines and explains LLM Inference Memory Budget as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
-      "candidateKey": "cand-94dfe078629371a09e6c",
-      "sourceId": "post-training-quantization",
-      "contentHash": "757f7e6c5e6f162ff880b50830691104c116186d196a59d63999ad838e2a49c0",
-      "decision": "retain",
-      "reason": "Validation contract is supporting explanation for the canonical Post-Training Quantization objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-94e3b07769fb06448dff",
       "sourceId": "sharding",
       "contentHash": "c2ba0fec1d213a333367725ffcac1589a296ff7a1e5a98e21307c1f684427b66",
@@ -5525,13 +5469,6 @@
       "contentHash": "6576eed0e79579e6be987477a18ef81deba59bc69078cf6b9a935f2c6768820e",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Queue objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-9c7b4c24bc87f018bb9e",
-      "sourceId": "repository-agent-instructions",
-      "contentHash": "604463c987309f40edc7dc61b23a7749947520b52bfb8e923761cac8e26b9361",
-      "decision": "retain",
-      "reason": "This section defines and explains Repository Agent Instructions as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-9c8e3a4230a3b4ebda25",
@@ -10006,6 +9943,77 @@
       "contentHash": "610a84420aafaef926dec6bff7692c8b117547c1335052ed40a636a10298fbd0",
       "decision": "retain",
       "reason": "Tests the defining misconception; a comprehension question is supporting instruction."
+    },
+    {
+      "candidateKey": "cand-03f5395494bc8016fdbf",
+      "sourceId": "repository-agent-instructions",
+      "contentHash": "40bae96d7134069d99e25efca921b07642d79bfad6c14ba948a667e4b6b40b54",
+      "decision": "retain",
+      "reason": "Persistent project conventions, loading scope, migration exceptions, and enforcement limits jointly explain the existing repository-agent-instructions objective. They are not separately learnable entities in this overview."
+    },
+    {
+      "candidateKey": "cand-089c971e060c9000f610",
+      "sourceId": "regularization",
+      "contentHash": "a60925f1a9c9ea87c1c6a974d8842ba95714951895cb24446ea82a531c089d37",
+      "decision": "retain",
+      "reason": "The paragraph compares penalty choices and explains why sparse coefficients do not automatically remove feature-computation cost. It supports regularization model selection and validation rather than defining a distinct served system."
+    },
+    {
+      "candidateKey": "cand-1222ddfd75145648dd9d",
+      "sourceId": "graph-memory",
+      "contentHash": "be293f6abc4e5c7f2882e758f094ebb529fe6f766e498bee9259830995737c91",
+      "decision": "retain",
+      "reason": "The current overview explains graph-backed agent recall, temporal updates, and the identity-resolution failure mode within the graph-memory objective. The identity caveat corrects the mechanism description; it is not an independently authored entity."
+    },
+    {
+      "candidateKey": "cand-3bc387fe866bd01cbfbb",
+      "sourceId": "post-training-quantization",
+      "contentHash": "c568e8650ac0026ba40169e920deeafa4ca037cffc665e3ea3b3bdb96f581538",
+      "decision": "retain",
+      "reason": "Matched baseline evaluation, target-kernel support, resource metrics, and quality tolerances are the acceptance procedure for the existing PTQ objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-5c8906c9a7944de22b2a",
+      "sourceId": "streaming-voice-agent-pipeline",
+      "contentHash": "42e0c043e827afb055b85b9e81cf9db9d1b3dadcfc6a5ee07e4582ac76ba5a19",
+      "decision": "retain",
+      "reason": "The current section explains streaming recognition, dialogue state, synthesis, interruption handling, and stage-level validation. Custom-vocabulary testing is a pipeline diagnostic, not a new entity boundary."
+    },
+    {
+      "candidateKey": "cand-605cf5a1898d79bf0d1b",
+      "sourceId": "lora",
+      "contentHash": "c60c2703f1de15695a42fe4cb851461ea92d9cff77efaf2ac5a84ec9f7b66ab2",
+      "decision": "retain",
+      "reason": "The current explanation derives the frozen-base low-rank update from low-rank factorization and fine-tuning, with attention projection placement. It explains the canonical LoRA entity rather than adding another learning objective."
+    },
+    {
+      "candidateKey": "cand-794454b4b684c012ca30",
+      "sourceId": "post-training-quantization",
+      "contentHash": "79bd84cd4f82e4e95db27b10236f2d4e712807fa698ddf3aa33163670a9d0c74",
+      "decision": "resolve",
+      "reason": "This paragraph identifies teacher-guided parameter updates as the knowledge-distillation alternative after PTQ, distinguishing training from fixed-weight conversion. Resolve the alternative to the existing knowledge-distillation entity.",
+      "targetId": "knowledge-distillation"
+    },
+    {
+      "candidateKey": "cand-8dbad93423e717f1ece2",
+      "sourceId": "local-llm-inference",
+      "contentHash": "56ccc11232f8e77bf9a22ff99c272cb107097e3c7eeb41c3dcd8e87ba29972b5",
+      "decision": "retain",
+      "reason": "The current overview treats memory feasibility, offload, privacy boundaries, and bandwidth-limited decoding as deployment diagnostics for local inference. They support the existing local-llm-inference objective."
+    },
+    {
+      "candidateKey": "cand-e58b100cdf34db9a361e",
+      "sourceId": "regularization",
+      "contentHash": "9ac52ee6dbf90e61e4f5a6ef1479550af4a013e547fc1de9e170889264abf663",
+      "decision": "retain",
+      "reason": "The one-parameter quadratic example explicitly demonstrates the existing regularization objective by solving its penalized optimum. It is an illustrative calculation, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-ed1dd720acadfb39829e",
+      "sourceId": "chunked-prefill",
+      "contentHash": "05eba97261d7b94486f205642affe77f0669ef7cafb4b00effc9f74bfd4e2123",
+      "decision": "retain",
+      "reason": "The current section explains chunked prefill itself: token-budget scheduling, causal cache continuity, latency trade-offs, and validation. These mechanisms support the existing chunked-prefill objective rather than establish a separate entity."
     }
   ]
 }

@@ -5,10 +5,10 @@ type: concept
 summary: Linear Transformer attention factors a kernel similarity into query and key feature maps so attention aggregation can be reordered through a fixed-size state.
 tags: [ml/llm/architecture]
 prereqs: [transformer-attention, matrix-multiplication, measurement]
-sources: [https://arxiv.org/abs/2006.16236, https://arxiv.org/abs/2410.10629]
+sources: [https://arxiv.org/abs/2205.14135, https://arxiv.org/abs/2006.16236, https://arxiv.org/abs/2410.10629]
 status: explained
 created: 2026-10-11
-updated: 2026-10-19
+updated: 2026-10-20
 ---
 
 # Linear Transformer Attention
@@ -31,6 +31,12 @@ For a one-query, two-key example, take q=(1,2), k₁=(2,1), k₂=(-1,2), and sca
 
 If all query features are zero, or query and keys have no overlapping positive coordinates, the denominator is zero. An epsilon or explicit fallback must be specified; it modifies the function and does not restore missing selectivity. Compare dense evaluation of the same ReLU similarity with reassociated evaluation for numerical agreement, then separately compare quality against softmax attention. Probe sharp retrieval, long-range interactions, feature sparsity, precision, memory, and full-image latency at matched resolution and compute.
 
+## Exact attention kernels versus changed attention functions
+
+FlashAttention changes how ordinary softmax attention is evaluated: tiled computation and online normalization avoid writing the full score matrix to slow memory. It retains the attention definition, up to floating-point differences, but dense prefill still has quadratic pair interactions. Kernelized linear attention changes or approximates the similarity so aggregation can be reassociated. Its linear sequence scaling is not an exact softmax implementation in general.
+
+For N=4 positions, dense attention considers 16 query–key pairs; with N=8 it considers 64. An exact tiled implementation can avoid storing those 64 scores all at once, but it still evaluates their contributions. A fixed-width linear-attention state instead grows work roughly in proportion to N, with feature-width costs and a different similarity contract. Compare dense versus tiled evaluation of the same softmax operator for numerical agreement. Then compare linear attention against that operator separately for task quality, sharp retrieval and numerical stability. Lower activation memory, lower arithmetic and equivalent output are three distinct claims. “Linear memory” in an exact kernel description does not imply linear arithmetic or the same design as linear attention.
+
 ## Prerequisites
 
 - [[transformer-attention]]
@@ -42,3 +48,5 @@ If all query features are zero, or query and keys have no overlapping positive c
 - [Katharopoulos et al., “Fast Autoregressive Transformers with Linear Attention”](https://arxiv.org/abs/2006.16236).
 
 - [SANA](https://arxiv.org/abs/2410.10629): ReLU linear attention within a redesigned image-generation system; performance claims are setting-specific.
+
+- <https://arxiv.org/abs/2205.14135>

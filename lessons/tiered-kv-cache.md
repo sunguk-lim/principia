@@ -12,7 +12,7 @@ Consider a long multi-turn conversation revisited after other users fill GPU mem
 
 ## One example
 
-A long chat prefix is evicted from GPU RAM but retained in CPU RAM. A later request restores it if transfer costs less than prefill recomputation.
+For a hypothetical 2 GiB prefix, a restore path sustaining 8 GiB/s needs at least 250 ms to transfer it. Add 30 ms for setup and queueing: restoration takes 280 ms before any additional contention. If recomputation takes 180 ms, a hit on that slower tier is not the fastest path. At 32 GiB/s the transfer floor is 62.5 ms; with the same overhead, 92.5 ms restoration can win. Retaining the block on the GPU avoids the restore but consumes space other requests could use. Measure the full path and reuse probability before choosing how long to retain it.
 
 ## Check your understanding
 

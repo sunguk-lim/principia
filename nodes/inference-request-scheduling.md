@@ -4,11 +4,11 @@ title: Inference Request Scheduling
 summary: An inference request scheduler admits and batches prefill and decode work within KV-cache and latency limits rather than sending each API request directly to a GPU.
 type: concept
 tags: [ml/llm/inference]
-prereqs: [prefill-vs-decode, llm-inference-memory-budget, continuous-batching, queue]
-sources: [https://docs.vllm.ai/en/latest/design/paged_attention/, https://arxiv.org/abs/2309.06180]
+prereqs: [prefill-vs-decode, llm-inference-memory-budget, continuous-batching, queue, chunked-prefill]
+sources: [https://docs.vllm.ai/en/latest/configuration/optimization/, https://docs.vllm.ai/en/latest/design/paged_attention/, https://arxiv.org/abs/2309.06180]
 status: explained
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-20
 ---
 
 # Inference Request Scheduling
@@ -25,6 +25,12 @@ Consider one long prompt arriving while short conversations are decoding. Runnin
 
 Replay a representative mix of prompt lengths, output lengths, concurrency, and arrival bursts. Measure queue wait, time to first token, inter-token latency, p95 end-to-end latency, throughput, KV occupancy, preemptions, and OOMs. Compare policies under the same model, hardware, and quality settings. vLLM's documented paged attention and the PagedAttention paper ground the cache-allocation constraint; the best scheduling policy remains workload-dependent.
 
+## Token budgets and recomputation preemption
+
+A [[chunked-prefill]] scheduling iteration has both a work budget and a state-capacity constraint. In a decode-prioritizing chunked policy, each active ordinary decode may consume one scheduled token; unused token budget can go to prompt chunks. For a hypothetical 12-token budget with five one-token decodes, seven prompt tokens fit. A 20-token waiting prefill can consume seven now and continue later. This is a toy accounting example, not a promise about kernel duration or a universal scheduler order; speculative steps and other architectures can have different work units.
+
+A token budget does not reserve all future KV growth. If live state no longer fits, the scheduler may preempt a request and later recompute its prefix, trading useful progress for temporary capacity. vLLM V1 documentation describes recomputation preemption and a decode-first chunked-prefill policy; verify the deployed version rather than inferring all engines use it. Admission caps, smaller token budgets, more cache capacity and parallelism can change pressure, with communication or latency costs. Measure preemptions, recomputed tokens, waiting time and tail latency, and validate cancellation and resumed output. Two stages sharing an iteration is not evidence that prefill and decode have identical execution semantics.
+
 ## Prerequisites
 
 - [[prefill-vs-decode]]
@@ -36,3 +42,5 @@ Replay a representative mix of prompt lengths, output lengths, concurrency, and 
 
 - [vLLM Paged Attention design](https://docs.vllm.ai/en/latest/design/paged_attention/): KV-block allocation and reuse.
 - [Kwon et al., Efficient Memory Management for Large Language Model Serving](https://arxiv.org/abs/2309.06180): memory management for serving.
+
+- <https://docs.vllm.ai/en/latest/configuration/optimization/>

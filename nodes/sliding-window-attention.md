@@ -1,14 +1,14 @@
 ---
 id: sliding-window-attention
 title: Sliding-Window Attention
-summary: In ordinary transformer-attention every query attends to all $n$ keys, so the work scales like $n^2$.
+summary: Sliding-window attention restricts each query to a local neighborhood, reducing attention work while making long-range communication depend on the pattern and depth.
 type: concept
 tags: [ml/llm/architecture]
 prereqs: [transformer-attention, softmax]
-sources: []
+sources: [https://arxiv.org/abs/2103.14030]
 status: explained
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-10-20
 ---
 
 # Sliding-Window Attention
@@ -136,6 +136,12 @@ That matches the estimate: reach $\approx L\cdot w$. Here $L=3$, $w=3$ gives abo
 $3\times3 = 9 \ge 8 = n$, so 3 windowed layers suffice to connect the two ends of an
 8-token sequence that a single windowed layer could never bridge.
 
+## Image windows and global communication
+
+For image transformers, a window can be a two-dimensional group of patches rather than a trailing causal interval. If N image tokens are partitioned into disjoint windows of M tokens, dense attention within each window evaluates (N/M)×M²=N×M ordered pairs, compared with N² for global bidirectional attention. Merely expressing a local mask in a dense N-by-N kernel may not realize this saving. Nonoverlapping fixed windows also prevent cross-window communication unless another operation connects them.
+
+Take a 4-by-4 image-token grid: N=16. Partition it into four 2-by-2 windows, each with M=4 tokens. The layer computes 4×4²=64 within-window scores instead of 16²=256 global scores. A token in the upper-left window cannot directly read a token in the lower-right window. Shifting window boundaries between layers, overlapping neighborhoods, or inserting global attention introduces different communication paths. Swin uses shifted windows with masking to connect neighboring windows; it is not a causal sliding decoder. Compare long-range composition, boundary artifacts, quality, memory and actual kernels at matched image resolution. Local reach through depth is a possible path, not proof that every distant dependency is learned.
+
 ## Prerequisites
 
 - [[transformer-attention]]
@@ -143,3 +149,5 @@ $3\times3 = 9 \ge 8 = n$, so 3 windowed layers suffice to connect the two ends o
 ## Sources
 
 _none_
+
+- <https://arxiv.org/abs/2103.14030>

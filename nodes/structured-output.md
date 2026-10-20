@@ -8,7 +8,7 @@ prereqs: [softmax, probability-distribution]
 sources: [https://openai.com/index/introducing-structured-outputs-in-the-api/, https://json-schema.org/overview/what-is-jsonschema]
 status: explained
 created: 2026-06-23
-updated: 2026-09-19
+updated: 2026-10-21
 ---
 
 # Structured Output
@@ -152,8 +152,8 @@ construction.
 
 ### In practice
 
-Real systems implement exactly this loop. **JSON mode** constrains decoding to a
-JSON schema; libraries like **Outlines** compile a regex or schema into the state
+Real systems implement exactly this loop. **JSON mode** aims for valid JSON but does not itself enforce an application schema.
+**Strict schema-constrained output** adds that supported-schema contract; libraries like **Outlines** compile a regex or schema into the state
 machine that produces each step's legal set; **GBNF** (the grammar format used by
 `llama.cpp`) lets you write a context-free grammar whose parser plays the same
 role. All of them reduce to the same primitive shown above: track the state,

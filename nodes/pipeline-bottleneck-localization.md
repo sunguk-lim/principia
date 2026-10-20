@@ -5,10 +5,10 @@ summary: Pipeline bottleneck localization measures stage service times and utili
 type: concept
 tags: [observability/fundamentals]
 prereqs: [measurement, latency-percentile, memory-hierarchy]
-sources: [https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html]
+sources: [https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html, https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html]
 status: explained
 created: 2026-09-10
-updated: 2026-09-10
+updated: 2026-10-21
 ---
 
 # Pipeline Bottleneck Localization
@@ -29,6 +29,14 @@ Caching can introduce a new [[memory-hierarchy]] bottleneck, alter randomness or
 
 Change one stage at a time and compare warm steady-state throughput plus [[latency-percentile]]s. Track buffered-work depth, accelerator idle gaps, host utilization, transfer bandwidth, peak memory, and output equivalence. Reprofile after every optimization because removing one bottleneck usually exposes another.
 
+## Inference bookkeeping and the critical path
+
+Inference profiling must include memory processing as well as arithmetic: cache-block allocation, address preparation, gather/scatter, copies, transfers, sampling and host scheduling can all consume time. A memory-management cost is not automatically a saturated-HBM-bandwidth cost. Distinguish resident bytes, transferred bytes and host bookkeeping before choosing an intervention.
+
+For a toy request, a 20 ms transfer overlapped with a 50 ms kernel contributes 50 ms jointly, not 70 ms. Halving the transfer to 10 ms changes no elapsed time if it remains entirely hidden; halving the kernel to 25 ms changes this region to 25 ms under the same overlap. Real dependency boundaries can differ. Use an aligned host/device trace and controlled experiments, not a sum of inclusive operator times.
+
+Multi-token execution can amortize repeated host and sampler work without making the dominant individual kernel faster. Offload can increase capacity while adding transfer and synchronization latency. Compare end-to-end outputs and timing under fixed model, precision, prompt/output mix, concurrency and cache state. Record warmup and profiler overhead, then test both the original bottleneck and newly exposed stages. A study's percentage overhead or microbenchmark speedup does not transfer to an unrelated serving workload.
+
 ## Prerequisites
 
 - [[measurement]]
@@ -38,3 +46,5 @@ Change one stage at a time and compare warm steady-state throughput plus [[laten
 ## Sources
 
 - [PyTorch Profiler recipe](https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html): demonstrates operator timing, self versus total time, memory profiling, custom ranges, shapes, and CPU/CUDA activity analysis.
+
+- <https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html>

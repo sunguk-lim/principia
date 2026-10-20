@@ -1179,13 +1179,6 @@
       "reason": "Worked instance is supporting explanation for the canonical Operator set objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-1f6f9e2a76e12ed161ba",
-      "sourceId": "structured-output",
-      "contentHash": "24cf3390a0fd887cc6888e4a9275e213a049bb6d77a0ada4f09f2d5ebc83d728",
-      "decision": "retain",
-      "reason": "This section defines and explains Structured Output as the source node’s learning objective; it is not a second entity alongside that node."
-    },
-    {
       "candidateKey": "cand-1f833ee095d4edc1d646",
       "sourceId": "gigathread",
       "contentHash": "82c5504f0c1c60fc8177474b3c840d8d40fa2369e58e4eea5b0637213a3d675a",
@@ -1821,13 +1814,6 @@
       "contentHash": "47e81eca733b5151284102176c133c5631e8b0609a58381ded06b050af999766",
       "decision": "retain",
       "reason": "What the page table is, and why it must exist is supporting explanation for the canonical Page Table objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-332b82da299b1ff1e02d",
-      "sourceId": "vector-database",
-      "contentHash": "10970c41d7e2520a148fe50d64da9d726d224d0b9665960cede8971e148df819",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Vector Database objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-333bab1ca3f01979eefb",
@@ -4280,13 +4266,6 @@
       "reason": "Worked instance is supporting explanation for the canonical Cosine Similarity objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-77f0602b4e6931e1cc78",
-      "sourceId": "structured-output",
-      "contentHash": "9eb43b8688093402d722f1d10f8495990cfda2de636387043f6aa076ffdf08d9",
-      "decision": "retain",
-      "reason": "The problem is supporting explanation for the canonical Structured Output objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-780d7afb0f7c6dea450d",
       "sourceId": "vllm",
       "contentHash": "8bb241d5f9931a00123ff90688baf808ef4ee684aeaf7fd0719a8b4cad207fd7",
@@ -5210,13 +5189,6 @@
       "contentHash": "a72be98879526d3f42f622a83e1e805a9baec0f03eee0de878434e513812c563",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Stack objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-94494250da29fc8e452a",
-      "sourceId": "structured-output",
-      "contentHash": "e42ba4243dfb18e00e05bed385d040540fd3cdac8f75d198a50b05fef5724b41",
-      "decision": "retain",
-      "reason": "The mechanism: mask, then renormalize is supporting explanation for the canonical Structured Output objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-94aa05161d66d0ecff94",
@@ -6274,13 +6246,6 @@
       "contentHash": "97562aaa68cb664209eccdad381b3e83ffdc178c88116b63b6b2c60c157c74b9",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Multi-Agent Orchestration objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-b1edc47f833d8b7e8523",
-      "sourceId": "expert-parallelism",
-      "contentHash": "4dbe0fa1a81422a981014c60815081b746637aea6b0e7fe0dd40c8eebab403ab",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Expert parallelism (MoE) objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-b218cc3a1b2c5d3310b0",
@@ -7383,13 +7348,6 @@
       "reason": "Overview is supporting explanation for the canonical RMSNorm objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-cd08c756dfb4aa5d57aa",
-      "sourceId": "structured-output",
-      "contentHash": "a8bd0b7d5e574d4ca9f081b42291a0aaf2c8fdd8da68a1cfc5cd23d35f87cec5",
-      "decision": "retain",
-      "reason": "A worked instance is supporting explanation for the canonical Structured Output objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-cd0cba3d68e42cf8bf4b",
       "sourceId": "ml-system-freshness",
       "contentHash": "b1502fa2497cbfb1c4cd1526cd04f09ca1b93d465488603b4b0a6ca924d3da15",
@@ -7668,13 +7626,6 @@
       "contentHash": "c8e2caf7041805d6d7722e404a0495a532640466c731bfc4587e43bb018d6189",
       "decision": "retain",
       "reason": "Why splitting the work creates a communication problem is supporting explanation for the canonical NVLink objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-d3e0b7a267c915379a27",
-      "sourceId": "tool-call-execution-contract",
-      "contentHash": "fa9ac1addf732eaea0eab963305ddaccd29ca9ba188b41d331635f2db0cf1945",
-      "decision": "retain",
-      "reason": "This section defines and explains Tool-Call Execution Contract as the source node’s learning objective; it is not a second entity alongside that node."
     },
     {
       "candidateKey": "cand-d3f401e19277bcd20adb",
@@ -8629,13 +8580,6 @@
       "reason": "Measurement discipline is supporting explanation for the canonical Inference Cost Break-Even objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-f2e10e89b2166e69fbf0",
-      "sourceId": "pipeline-bottleneck-localization",
-      "contentHash": "94b025e36289a084720a1c776ac6f43275ba216a902d0155251a6c63c3203f78",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Pipeline Bottleneck Localization objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-f314f38a5ecf4209457b",
       "sourceId": "quantile-quantile-plot",
       "contentHash": "6fc59ee84ce1e9259f369314d4429b4a31df02f08615d86fe19cab37b02f6727",
@@ -8900,13 +8844,6 @@
       "contentHash": "be93b4010f300a15821e980d51ca4374914a92208bb70fe817ca2d518298e877",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Numeric Precision Formats objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-faed3946fb76201c3199",
-      "sourceId": "structured-output",
-      "contentHash": "6399130af3a5f846734b4999c03d2f4fedcdff33321ec84c2ada9a3efb369ee9",
-      "decision": "retain",
-      "reason": "In practice is supporting explanation for the canonical Structured Output objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-faef6adf7273c38dd0c9",
@@ -10014,6 +9951,517 @@
       "contentHash": "05eba97261d7b94486f205642affe77f0669ef7cafb4b00effc9f74bfd4e2123",
       "decision": "retain",
       "reason": "The current section explains chunked prefill itself: token-budget scheduling, causal cache continuity, latency trade-offs, and validation. These mechanisms support the existing chunked-prefill objective rather than establish a separate entity."
+    },
+    {
+      "candidateKey": "cand-f351c94a41875afbc935",
+      "sourceId": "agent-workload-identity",
+      "contentHash": "f97eebae75687d9204c0363252e22844ddea4f5bbd942b0306231b8acef5702a",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-513fd2d8c517ed531d88",
+      "sourceId": "agent-workload-identity",
+      "contentHash": "7001c9676fca529083c7cb62c3da5cd2dd46f75ca08259c645ec82956cd6eed9",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-4229e2df9cf63f849f24",
+      "sourceId": "agent-workload-identity",
+      "contentHash": "8dccdb1fd57b60b169ecc99ca2e07a4d99315d4fd3c875badac193c48597a1c5",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-c1f298e2d59526d6b0d4",
+      "sourceId": "agent-workload-identity",
+      "contentHash": "e4939dbc5b20879b5337358effda8fbd5db9d7d009e3a3009efbe338042719c4",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-733b8f8ca59312b0c868",
+      "sourceId": "amdahls-law",
+      "contentHash": "0e8084f17678a9b7a782e6e60885c699bd29bfc7d146c4653755dca3099470e5",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-7ef7e45272e5bfa2febb",
+      "sourceId": "amdahls-law",
+      "contentHash": "2cf3052c3a27e4453918f3ca673c9238750ea54872746155023d6680122072c4",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-990bccd2dd25ac832108",
+      "sourceId": "amdahls-law",
+      "contentHash": "923bbaaee8517a727e67720a282d531a8d481abf2464baf519012f0fc50cc6d6",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-ce85f2aaf81f684f084e",
+      "sourceId": "amdahls-law",
+      "contentHash": "ad9aa33d3e3cf69d45445a0adfeba657ba778bad74830c78d8b309efca701d7d",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-79ec202526fdc7b05a99",
+      "sourceId": "bounded-kv-replay",
+      "contentHash": "815af261a6c9a5dfd3cdfbdc06142ddf21e34a0fe6908f14bbac868439d0e1ce",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-bbaf7f725258caf1b37e",
+      "sourceId": "bounded-kv-replay",
+      "contentHash": "8250fe0aba1037c34709efc4b817a63ef45a0cf869e06cbdaef52d9144964497",
+      "decision": "retain",
+      "reason": "Corrects the semantic contract of bounded replay using a declared receptive-field prerequisite and a concrete two-layer trace."
+    },
+    {
+      "candidateKey": "cand-aa56217d8d0dbf17335d",
+      "sourceId": "cache-aware-inference-routing",
+      "contentHash": "96091a90bf13588ac9a0ec8026388876f31b62f938c98bf8837bd8f05cf65459",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-ebc4ecce5d438a73aacb",
+      "sourceId": "cache-aware-inference-routing",
+      "contentHash": "2bda2968af0c46e0960bdef1c5d9e208cadaf6bbcfc26cb633ef3f960a68a4f1",
+      "decision": "retain",
+      "reason": "Describes how shared cache accessibility changes the same cache/load routing tradeoff; not a second router entity."
+    },
+    {
+      "candidateKey": "cand-c70c65ee942f71d91791",
+      "sourceId": "citation-support-validation",
+      "contentHash": "f8a9728b1c0710a2e70ed39f68b3ca5612b6a18b9f6f5ae2331ad8b209fb11c8",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-b8040ed0d56ff993813e",
+      "sourceId": "citation-support-validation",
+      "contentHash": "75f7f790e5057ddc6b896af0330cf8ed49d505b6acce0fef2dfd0c3a82182a57",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-a9447fd89bb0972328dd",
+      "sourceId": "citation-support-validation",
+      "contentHash": "aadb73ed01858e4f3e74d7a4b3f6f65cdc7d007e78c800c15c5416c88b5c2ea0",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-b7f0618808b657fc7960",
+      "sourceId": "citation-support-validation",
+      "contentHash": "4ba05ba69d8be0f83ae004a3c130272a1a46c76401f4141c84ce274c88df4abc",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-6e229604a7ca9583e3f1",
+      "sourceId": "confidence-scheduled-verification",
+      "contentHash": "1388dd15f599643cc7a7fd37342483eab89f08ee858d4e09dd650c1d50b2c64c",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-dfadedb428f6c35d6f14",
+      "sourceId": "confidence-scheduled-verification",
+      "contentHash": "364419e0a9cd64cafb45a17d9d79c858665a5e272aefe8937fe4cc26528535b7",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-05efd779cbeb83f78625",
+      "sourceId": "confidence-scheduled-verification",
+      "contentHash": "baccc2d63b07eb4c0d18f3244350d408decfb47bb6e3d1ee71a2c94c4a941038",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-5a0e9d3b24f6ee193847",
+      "sourceId": "confidence-scheduled-verification",
+      "contentHash": "44ccd6ddef98b1bd623f7eeb84baa568f6aa1bcceea950aa6bdd84fade66ef06",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-218fa5538e925dcaecbf",
+      "sourceId": "durable-agent-execution",
+      "contentHash": "bf46eb0d75d4c63bb023ece0d36c423160dd0e76aea3e9311bf6cf50004a40c4",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-228c1a086919f93238a9",
+      "sourceId": "durable-agent-execution",
+      "contentHash": "e7c829d582faac9eb2c96271e02c11c9ae5195351fd588102f204fd246003c25",
+      "decision": "retain",
+      "reason": "Retains the continuation/effect boundary of durable execution; idempotent operation keys and outbox have their own new canonical explanations."
+    },
+    {
+      "candidateKey": "cand-b1edc47f833d8b7e8523",
+      "sourceId": "expert-parallelism",
+      "contentHash": "4dbe0fa1a81422a981014c60815081b746637aea6b0e7fe0dd40c8eebab403ab",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-c7ad6fa24469cb833ebe",
+      "sourceId": "expert-parallelism",
+      "contentHash": "57fc6368f761d09e34d6468c2e71cba18b68ed84026d3c8573c3f372ede4e3e6",
+      "decision": "retain",
+      "reason": "Explains workload-dependent efficiency and routing skew in the same expert-placement objective; not another parallelism identity."
+    },
+    {
+      "candidateKey": "cand-2ff742e1061c962e5a21",
+      "sourceId": "idempotent-operation-key",
+      "contentHash": "7c74e723cbaae0ba989e93b5f323a5aa8083db5649519e15b46090b571fda7dc",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-4a7947e43116a880ac99",
+      "sourceId": "idempotent-operation-key",
+      "contentHash": "5684b2fc8ed64ddd53ff2c9a0b2aa060961df1f6184600ff1b9d0365b1fd4d83",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-2ee5f3ba08bedb9e2c31",
+      "sourceId": "idempotent-operation-key",
+      "contentHash": "c29e2f8b970885a76949cae1806eb7117528c180ca18f1ceaed4dfe136e99397",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-b5a46bc1f6de51282d40",
+      "sourceId": "idempotent-operation-key",
+      "contentHash": "adfe4bf3bb2eb3a915c2a53a17f5ac92443bbe6b0c5d4059a4c86882d554280b",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-a8067e6027832245b71f",
+      "sourceId": "inference-parallelism-selection",
+      "contentHash": "da1a3385dd37b7b50d81772d5bc1c842c7e7696a4534642001bbb6663e072ba5",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-c1d95b01cadf011cc6d1",
+      "sourceId": "inference-parallelism-selection",
+      "contentHash": "152b72c2c793af15d0557b35b4fcbce8eddba7913e828ab6b16e44ae569b9c49",
+      "decision": "retain",
+      "reason": "Applies parallelism selection to separate phase demands without asserting a universal hardware recipe."
+    },
+    {
+      "candidateKey": "cand-a045e10002dcdcc810d2",
+      "sourceId": "logarithm",
+      "contentHash": "8ac6fd1027fc98041698038747fc2fcb3cad57103353e14823921261260775fa",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-a69ae144f552f73c5aa1",
+      "sourceId": "logarithm",
+      "contentHash": "cd2bfbd40c838c41f354d4433a64af9a90ea5c518c2993cf42024ccb9b93687c",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-fc83c44794add44d218e",
+      "sourceId": "logarithm",
+      "contentHash": "684759abc5f3c60a3d371c074e07599ffe6abc2accc1ac9c0b234450a60dc91e",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-82ee0091beb34fca993f",
+      "sourceId": "logarithm",
+      "contentHash": "b631173ad2555b3bf25c3354e64a6eec0100eeec56280a18ef313ad54bb7d948",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-f2e10e89b2166e69fbf0",
+      "sourceId": "pipeline-bottleneck-localization",
+      "contentHash": "94b025e36289a084720a1c776ac6f43275ba216a902d0155251a6c63c3203f78",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-fe6cbba2ea4bc9e8d696",
+      "sourceId": "pipeline-bottleneck-localization",
+      "contentHash": "895b911e7e3f3614b28f58f72c680e83d0a294fa166d2a964b38acffbc498e86",
+      "decision": "retain",
+      "reason": "Extends the existing bottleneck-localization objective to allocation, transfers and overlapped inference work; the speedup bound has its own Amdahl node."
+    },
+    {
+      "candidateKey": "cand-b0f846e6b9a2f73682cd",
+      "sourceId": "probability-chain-rule",
+      "contentHash": "fc7f262e6ca380efcd242d1748e70d683a1d6cc262a96ac6427545a9a84e0799",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-a7871e3fa75fa2a471a2",
+      "sourceId": "probability-chain-rule",
+      "contentHash": "9b5d972b503c927092273c1c0d02dbdd1ed1a9c6204f91bb2d9c60482efe5352",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-4bfa00898cc3f7858a9b",
+      "sourceId": "probability-chain-rule",
+      "contentHash": "f109b162b955122471ef6b2209dd1552ec6a489c24c5a032caedba47532fc751",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-dc3618ebb74ef46d4cc4",
+      "sourceId": "probability-chain-rule",
+      "contentHash": "fa972aa3bc7b896aee3faebaf7fd5aba8f52c292b20b7dfba461d95a9ba68956",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-9d67210dcb6a8b1def52",
+      "sourceId": "production-ai-system-boundaries",
+      "contentHash": "924a8fde8c20be8bc48de981c64c8588b23fb5ec250568b043732901b943c14a",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-8556bba50ebc9b47375e",
+      "sourceId": "production-ai-system-boundaries",
+      "contentHash": "4537287497497e2ce8424b4a0067417995579c1f0746409355827e94e43024b4",
+      "decision": "retain",
+      "reason": "Retains the established production-ai-system-boundaries mechanism or worked derivation under its existing learning objective; full paragraph reviewed, not a new standalone concept."
+    },
+    {
+      "candidateKey": "cand-e11c381d8f7293c02e35",
+      "sourceId": "production-ai-system-boundaries",
+      "contentHash": "38dc3376fa81f75b435f4fbcf1587b67209a64a6079dbdc0bee099324d5c71df",
+      "decision": "retain",
+      "reason": "Applies the existing system-boundary objective to distinguish released execution primitives from an operated service."
+    },
+    {
+      "candidateKey": "cand-6c679ea9224c102b2425",
+      "sourceId": "relative-position-embeddings",
+      "contentHash": "9d1a32d3d03e59b6a54fc6f9dede5f5f96be8106301b98647ffa716345561e62",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-3fa90696ed95dc26ec4d",
+      "sourceId": "relative-position-embeddings",
+      "contentHash": "32c57867da0345d083f9a1be9500bd8b980b3f91ec2865fed37491306fc7cf3e",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-d92491d1c23c8456e32d",
+      "sourceId": "relative-position-embeddings",
+      "contentHash": "34cf52923c9d54690a5cb21b3dceb3f20935640fc9e7e2789f9ac35ea1310771",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-d9032aa3aa3c8215e2b2",
+      "sourceId": "relative-position-embeddings",
+      "contentHash": "e040614c4e7490905496d4aa06ec8f41c7105112ab834da3b8a61e9a9142941e",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-9196e860de3295a42fc6",
+      "sourceId": "scoped-tool-argument-references",
+      "contentHash": "f9c06ec6ac327986b53c8b840a72d17b645ae6e5befa538669c92fb1d5c1dcb9",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-1bbf2d5984764e36d917",
+      "sourceId": "scoped-tool-argument-references",
+      "contentHash": "7c5485625ceb07e4df46add080850910bbbbe464e71d534917fb0be56a77f2aa",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-45682ba53a1e33af8085",
+      "sourceId": "scoped-tool-argument-references",
+      "contentHash": "3b2cf15c036e7bc0c924a9475f25617ad2c91444dd27954598e4d74238c88931",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-09539ea22c8bb4413833",
+      "sourceId": "scoped-tool-argument-references",
+      "contentHash": "45beb563c371d92857bce21bd8f4e81be126482abfd41710bd5ced8019919294",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-91a96a542edce4957bfe",
+      "sourceId": "sequence-level-reliability",
+      "contentHash": "5a7d6d8c89f16e94bfbc27125fbf06c964a8d8531f355df8af4a158865c74521",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-4a1bc6462ac008e86ed7",
+      "sourceId": "sequence-level-reliability",
+      "contentHash": "c8098b14a19e2368a0cd038b6054d339698b0ec665a7b20a55ce4825b1dd76d0",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-4216941df57d45e782d5",
+      "sourceId": "sequence-level-reliability",
+      "contentHash": "adf8d89e280778bfe0fc5298c567b61da63eef0aa97fd59fd0104b447eb9aed4",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-f88329f3c135880ac3cb",
+      "sourceId": "sequence-level-reliability",
+      "contentHash": "2c2a8542602442e5e7e8a7e655fff7bef3f938b853bd6e6318ef7b276fbc82d1",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-1f6f9e2a76e12ed161ba",
+      "sourceId": "structured-output",
+      "contentHash": "24cf3390a0fd887cc6888e4a9275e213a049bb6d77a0ada4f09f2d5ebc83d728",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-77f0602b4e6931e1cc78",
+      "sourceId": "structured-output",
+      "contentHash": "9eb43b8688093402d722f1d10f8495990cfda2de636387043f6aa076ffdf08d9",
+      "decision": "retain",
+      "reason": "Retains the established structured-output mechanism or worked derivation under its existing learning objective; full paragraph reviewed, not a new standalone concept."
+    },
+    {
+      "candidateKey": "cand-94494250da29fc8e452a",
+      "sourceId": "structured-output",
+      "contentHash": "e42ba4243dfb18e00e05bed385d040540fd3cdac8f75d198a50b05fef5724b41",
+      "decision": "retain",
+      "reason": "Retains the established structured-output mechanism or worked derivation under its existing learning objective; full paragraph reviewed, not a new standalone concept."
+    },
+    {
+      "candidateKey": "cand-cd08c756dfb4aa5d57aa",
+      "sourceId": "structured-output",
+      "contentHash": "a8bd0b7d5e574d4ca9f081b42291a0aaf2c8fdd8da68a1cfc5cd23d35f87cec5",
+      "decision": "retain",
+      "reason": "Retains the established structured-output mechanism or worked derivation under its existing learning objective; full paragraph reviewed, not a new standalone concept."
+    },
+    {
+      "candidateKey": "cand-6ab163d8868c731a2f37",
+      "sourceId": "structured-output",
+      "contentHash": "7859221a6cf515103b2dc6f73b33ffa4fc29a40c3d850cd26ba9dc0c7bf95e04",
+      "decision": "retain",
+      "reason": "Retains the established structured-output mechanism or worked derivation under its existing learning objective; full paragraph reviewed, not a new standalone concept."
+    },
+    {
+      "candidateKey": "cand-bbffee3122b1d9cb1b77",
+      "sourceId": "tf-idf",
+      "contentHash": "b0f221732de98e5975f3ce719949ba437af40e1d3863c1f65edd3a72f43a7bb4",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-4b8fcdab3fc3795ca48d",
+      "sourceId": "tf-idf",
+      "contentHash": "17b57479fe5d696f793e6ed15608ccd8a19dd32066191745ba1069758e96bbab",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-0d3f72ffa5178b857749",
+      "sourceId": "tf-idf",
+      "contentHash": "f3f5555efcd1dfd480c71cf3c161e5352aad3c388b072917de6ed90bc38f5e8d",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-1378fa32e55ec81e7665",
+      "sourceId": "tf-idf",
+      "contentHash": "9b7e2a4eb1832fc46b35067571036197b5973bc053c1309f7e2a08d783453d00",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-d3e0b7a267c915379a27",
+      "sourceId": "tool-call-execution-contract",
+      "contentHash": "fa9ac1addf732eaea0eab963305ddaccd29ca9ba188b41d331635f2db0cf1945",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-6e3f9df3308e1fb6d537",
+      "sourceId": "tool-call-execution-contract",
+      "contentHash": "6c98717d409253aed29e1ba21afaf1f64485a90686be2899b3d433bac230ab5e",
+      "decision": "retain",
+      "reason": "Applies the existing tool-call handoff objective; the distinct scoped-reference mechanism now has its own canonical node."
+    },
+    {
+      "candidateKey": "cand-946197d3a114e4f545e3",
+      "sourceId": "transactional-outbox",
+      "contentHash": "5ad42a5e17bb31013a19f4155850fce3db0842c652cceb7b81678ffb8d5952e7",
+      "decision": "retain",
+      "reason": "Defines the one canonical learning objective; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-9e129b6ad75fd36525c5",
+      "sourceId": "transactional-outbox",
+      "contentHash": "d9357ebcb18e7bc6f202b58cf691da8a6ede332bdd33dcf8b582a558c4253090",
+      "decision": "retain",
+      "reason": "Explains the defining operation through reviewed prerequisite concepts."
+    },
+    {
+      "candidateKey": "cand-f75963d2ec2fd42bd1a8",
+      "sourceId": "transactional-outbox",
+      "contentHash": "50c8ceebdf426f0828ea24ec1f5cf64659b03ad3777aa6805ee2c8ec1667da4c",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-260e8d05ab9e1754baa8",
+      "sourceId": "transactional-outbox",
+      "contentHash": "b7eb5239788e334af7ac973a358025d04648307460e85f82a7db7778c21f675c",
+      "decision": "retain",
+      "reason": "Comprehension check for the single defining misconception, not a new entity."
+    },
+    {
+      "candidateKey": "cand-33fab04a46846f86b4c2",
+      "sourceId": "vector-database",
+      "contentHash": "b321c5b51122908ad51bd2921ab3888a884fb313e6838ab084ff257a8e301d6b",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical object; no synonymous entity."
+    },
+    {
+      "candidateKey": "cand-e6ce1d7b094aef5e5527",
+      "sourceId": "vector-database",
+      "contentHash": "c70882ab629162276ce9c67bc3495ba6d9ba56109a7c27b31a732541be608c54",
+      "decision": "retain",
+      "reason": "Derives a concrete instance and boundary conditions of this same concept."
+    },
+    {
+      "candidateKey": "cand-05d2cab744cc188c379a",
+      "sourceId": "vector-database",
+      "contentHash": "29c58ce249d546bee55d12facb5cf680c18a4adacfd169f9343feaa0fa51ace6",
+      "decision": "retain",
+      "reason": "Defines measurable quality, lifecycle and applicability limits of the same vector-store objective."
     }
   ]
 }

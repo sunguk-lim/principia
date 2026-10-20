@@ -3098,6 +3098,107 @@
       "prerequisiteReasons": {
         "chunked-prefill": "Explains splitting waiting prompt work into chunks that fit the remaining per-iteration token budget."
       }
+    },
+    "probability-chain-rule": {
+      "aliases": [],
+      "objective": "The probability chain rule factors a joint event into successive conditional probabilities without requiring independence.",
+      "prerequisiteReasons": {
+        "conditional-probability": "Derives each product factor by rearranging the conditional-probability definition."
+      }
+    },
+    "sequence-level-reliability": {
+      "aliases": [],
+      "objective": "Sequence-level reliability measures whether a complete generated operation satisfies its contract rather than inferring success from average token accuracy.",
+      "prerequisiteReasons": {
+        "probability-chain-rule": "Distinguishes conditional sequence probability from marginal token accuracy.",
+        "measurement": "Defines and measures whole-operation success and failure slices."
+      }
+    },
+    "scoped-tool-argument-references": {
+      "aliases": [],
+      "objective": "Scoped tool-argument references let a model select a bounded handle that trusted code resolves to an authorized payload instead of regenerating that payload.",
+      "prerequisiteReasons": {
+        "tool-call-execution-contract": "Owns argument validation, authorization and execution after reference resolution.",
+        "key-value": "Defines the handle-to-object mapping that eliminates payload regeneration."
+      }
+    },
+    "idempotent-operation-key": {
+      "aliases": [],
+      "objective": "An idempotent operation key binds retries of one logical action to one recorded outcome under an explicit scope, payload and retention contract.",
+      "prerequisiteReasons": {
+        "transaction": "Provides atomic local key claims and result-state transitions.",
+        "key-value-store": "Models lookup of payload and outcome by scoped logical-operation key."
+      }
+    },
+    "transactional-outbox": {
+      "aliases": [],
+      "objective": "A transactional outbox commits application state and delivery intent in one local transaction, then relays committed events with duplicate-safe consumption.",
+      "prerequisiteReasons": {
+        "transaction": "Commits the business change and delivery record together.",
+        "idempotent-operation-key": "Explains duplicate-safe consumption when a relay repeats delivery.",
+        "queue": "Provides the deferred delivery and consumption model."
+      }
+    },
+    "amdahls-law": {
+      "aliases": [],
+      "objective": "Amdahl's law bounds fixed-workload speedup by the fraction of original elapsed work an optimization can actually accelerate.",
+      "prerequisiteReasons": {
+        "arithmetic": "Derives elapsed-time fractions and their speedup ratio.",
+        "measurement": "Determines the workload-specific fraction and checks overlap and overhead."
+      }
+    },
+    "confidence-scheduled-verification": {
+      "aliases": [],
+      "objective": "Confidence-scheduled verification allocates target-model draft verification work using predicted useful acceptance and measured execution cost while preserving a separately checked sampling contract.",
+      "prerequisiteReasons": {
+        "speculative-decoding": "Defines proposals, target verification and the acceptance/correction contract.",
+        "inference-request-scheduling": "Defines the shared execution budget to which predicted useful work is assigned."
+      }
+    },
+    "agent-workload-identity": {
+      "aliases": [],
+      "objective": "An agent workload identity names the executing software principal whose resource permissions remain separate from the model's proposals and the end user's intent.",
+      "prerequisiteReasons": {
+        "agent-execution-harness": "Provides the application authorization boundary to distinguish from platform-principal identity."
+      }
+    },
+    "relative-position-embeddings": {
+      "aliases": [],
+      "objective": "Learned relative position embeddings add clipped query-key offset representations to attention scores and optionally values instead of relying only on absolute input positions.",
+      "prerequisiteReasons": {
+        "positional-encoding": "Supplies absolute-position motivation and attention foundations against which the relative mechanism is defined."
+      }
+    },
+    "citation-support-validation": {
+      "aliases": [],
+      "objective": "Citation support validation checks that answer claims are supported by the exact cited source spans and that material claims are not left without evidence.",
+      "prerequisiteReasons": {
+        "retrieval-augmented-generation": "Provides the retrieved evidence and generated answer whose claim links are being validated.",
+        "measurement": "Separates citation correctness, completeness and evaluator error on adjudicated cases."
+      }
+    },
+    "bounded-kv-replay": {
+      "prerequisiteReasons": {
+        "kv-cache": "Defines the stored attention state that replay reconstructs.",
+        "receptive-field": "Determines whether a bounded raw-token suffix contains every multilayer dependency needed for exact reconstruction.",
+        "prefill-vs-decode": "Determines where reconstruction work affects prompt admission and generation."
+      }
+    },
+    "logarithm": {
+      "aliases": [],
+      "objective": "A real logarithm inverts a positive-base exponential, turning multiplicative ratios into additive differences.",
+      "prerequisiteReasons": {
+        "exponential-function": "Provides the invertible positive map and addition-to-multiplication identity used to define logarithms."
+      }
+    },
+    "tf-idf": {
+      "aliases": [],
+      "objective": "TF-IDF weights token counts by corpus rarity and optionally normalizes the resulting vector for lexical similarity or classification.",
+      "prerequisiteReasons": {
+        "bag-of-words": "Provides the count-vector representation being reweighted.",
+        "logarithm": "Defines the rarity transform and smoothing domain in the IDF formula.",
+        "cosine-similarity": "Defines normalized query/document vector scoring rather than treating the score as a probability."
+      }
     }
   }
 }

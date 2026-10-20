@@ -19,3 +19,5 @@ A model proposes `search_books({"query":"graphs"})`. The host validates a bounde
 ## Check your understanding
 
 **Question:** What does a syntactically valid tool call prove? **Answer:** Only that it matches a permitted shape under the chosen parser. Authorization, truth, execution, and external outcome require separate checks.
+
+Generate only information the application does not already know. Scoped handles and small enums can reduce copying errors; staged choices and bounded repair still need end-to-end evaluation. A malformed or missing response after a write is an unknown outcome to reconcile, not permission to execute again.

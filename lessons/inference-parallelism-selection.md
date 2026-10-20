@@ -15,3 +15,5 @@ A model fits and one replica meets latency targets, but queue delay rises at pea
 ## Check your understanding
 
 **Question:** Why is “four GPUs” not enough information to choose a layout? **Answer:** The limiting resource, model shape, link topology, request mix, and latency target determine which partition helps.
+
+Prefill and decode can use different attention-replica and expert-group widths. Wider groups need sufficient offered load; compare their per-GPU efficiency and tail latency rather than treating a published cluster size as a minimum deployment requirement.

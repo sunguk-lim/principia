@@ -5,10 +5,10 @@ summary: Durable agent execution reconstructs a task from committed checkpoints 
 type: concept
 tags: [ml/agents]
 prereqs: [agent-execution-harness, agent-session-state, transaction]
-sources: [https://docs.langchain.com/oss/python/langgraph/persistence, https://docs.langchain.com/oss/python/langgraph/interrupts]
+sources: [https://adk.dev/runtime/resume/, https://docs.langchain.com/oss/python/langgraph/persistence, https://docs.langchain.com/oss/python/langgraph/interrupts]
 status: explained
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-10-21
 ---
 
 # Durable Agent Execution
@@ -25,6 +25,14 @@ The hardest boundary is an external side effect. The local checkpoint and a remo
 
 Crash-test the boundaries: before action dispatch, after dispatch before acknowledgement, after checkpoint commit, during an approval pause, and after model-context compaction. Require one coherent outcome and no duplicate consequential effect. Compare this machinery with a simpler queue and idempotent worker; a general agent runtime is justified when adaptive multi-step work really needs it.
 
+## Re-entry is not exactly-once execution
+
+ADK's resume documentation identifies a workflow by invocation and session, restores completed event results, and may rerun the interrupted tool. It explicitly warns that tools can execute more than once and that modifying a stopped workflow before resume is unsupported. A persistent session service is necessary for cross-process recovery but does not atomically bind remote effects to local event records.
+
+Persist the exact evidence, draft, operation arguments and approval binding before a pause. Reusing the same logical operation must not silently retrieve new evidence or create a new draft under the old approval. Recheck current permissions and policy-critical freshness before dispatch; when a refreshed payload differs, obtain a decision for that payload rather than repurposing the old one.
+
+A completed-table check followed by publication can race between workers, and a crash after publication can leave the completed table empty. An atomic local claim helps serialize workers but does not remove this remote ambiguity. Pair stable operation identity with provider deduplication or an outcome query; an outbox atomically commits local delivery intent but still requires duplicate-safe delivery and consumption. Test concurrent duplicate approvals and every crash boundary, not only one sequential replay.
+
 ## Prerequisites
 
 - [[agent-execution-harness]]
@@ -35,3 +43,5 @@ Crash-test the boundaries: before action dispatch, after dispatch before acknowl
 
 - [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence): documents thread checkpoints, durability, replay, and state recovery.
 - [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts): documents durable pause/resume points for human input.
+
+- <https://adk.dev/runtime/resume/>

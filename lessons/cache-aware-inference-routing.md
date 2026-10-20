@@ -19,3 +19,5 @@ Replica A has a cached shared prompt but a long queue; B is cold but idle. The r
 **Question:** Can a higher cache-hit rate by itself prove better routing?
 
 **Answer:** No. It may increase queueing and tail latency.
+
+Shared compatible KV storage can decouple prefix reuse from compute-node affinity, but matching, restoration, local-window state and queueing still affect route quality. A shared hit does not make transfer or recovery free.

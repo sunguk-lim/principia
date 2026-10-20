@@ -5,10 +5,10 @@ summary: Cache-aware inference routing chooses an LLM-serving replica using both
 type: concept
 tags: [ml/llm/inference]
 prereqs: [prefix-caching, inference-request-scheduling, load-balancing]
-sources: [https://llm-d.ai/docs/well-lit-paths/foundations/optimized-baseline, https://llm-d.ai/docs/well-lit-paths/foundations/precise-prefix-cache-routing]
+sources: [https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md, https://llm-d.ai/docs/well-lit-paths/foundations/optimized-baseline, https://llm-d.ai/docs/well-lit-paths/foundations/precise-prefix-cache-routing]
 status: explained
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-21
 ---
 
 # Cache-Aware Inference Routing
@@ -27,6 +27,14 @@ A coarse scheme can use session affinity or approximate prefix scores. A finer s
 
 Replay repeated-prefix, unique-prefix, and mixed workloads under the same model and hardware. Compare load-only, affinity, and cache-plus-load policies. Report cache-hit and stale-index rates, queue wait, time to first token, inter-token latency, tail latency, throughput, and resource use. Include overload and eviction cases; a hit-rate improvement that worsens p95 latency is not automatically a win.
 
+## Shared storage changes affinity, not transfer cost
+
+When every prefill worker can restore a compatible prefix from shared storage, routing need not pin a request to the compute node that originally produced its blocks. DeepInfer documents a shared persistent block-KV store that separates storage capacity from compute placement. This is broader than simply adding a local cache-hit bonus to a router score.
+
+A shared block hit is not the complete state-recovery contract. The same deployment separately tracks local-window state in host memory and may fetch or reconstruct it when missing. Metadata matching, storage fetch, host staging, device transfer and bounded replay have different costs and availability properties. A router still estimates remaining work and queueing; universal prefix accessibility does not imply universal latency or no locality effects.
+
+Test storage-node loss, stale directories, model-version incompatibility, cross-tenant isolation, network saturation and compute-node replacement. Compare affinity, load-only and shared-restore routing with TTFT, tail latency, bytes moved and recomputation. Independent storage scaling is useful only when its capacity and bandwidth meet the actual reuse workload.
+
 ## Prerequisites
 
 - [[prefix-caching]]
@@ -37,3 +45,5 @@ Replay repeated-prefix, unique-prefix, and mixed workloads under the same model 
 
 - [llm-d optimized baseline](https://llm-d.ai/docs/well-lit-paths/foundations/optimized-baseline): prefix-aware and load-aware router design.
 - [llm-d precise prefix cache routing](https://llm-d.ai/docs/well-lit-paths/foundations/precise-prefix-cache-routing): cache-state indexing variant.
+
+- <https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md>

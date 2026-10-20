@@ -5,10 +5,10 @@ summary: A mixture-of-experts layer holds many expert FFNs and routes each token
 type: concept
 tags: [ml/llm/training]
 prereqs: [mixture-of-experts, all-to-all]
-sources: []
+sources: [https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md]
 status: explained
 created: 2026-06-20
-updated: 2026-06-20
+updated: 2026-10-21
 ---
 	
 # Expert parallelism (MoE)
@@ -48,6 +48,12 @@ weights, which makes all-to-all (not all-reduce) its characteristic collective. 
 all-to-all is the heaviest pattern (`n×n` personalized messages), EP is most practical
 within a fast-interconnect domain.
 
+## Wide decode groups and skew
+
+Expert placement also changes the effective batch seen by each expert. In a balanced toy layer, 64 simultaneous token routes distributed over eight experts give eight routes per expert on average. If wider attention-data-parallel groups aggregate 256 routes over those same eight experts, the average becomes 32. Larger expert matrix batches can amortize weight reads and improve kernel efficiency; this is not caused by merely increasing the number of devices while keeping demand fixed.
+
+Routing skew makes averages insufficient: one hot expert can delay the entire step. Redundant copies of hot experts and periodic reassignment can reduce the slowest-rank burden, at the cost of weight memory, statistics and migration traffic. DeepInfer documents different prefill/decode expert layouts and an expert-parallel load balancer using recent load statistics. These are implementation examples, not a claim that wide expert groups always beat tensor parallelism. Compare throughput per GPU, token latency, load skew and collective time at fixed quality and real offered load.
+
 ## Prerequisites
 
 - [[mixture-of-experts]]
@@ -56,3 +62,5 @@ within a fast-interconnect domain.
 ## Sources
 
 _none_
+
+- <https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md>

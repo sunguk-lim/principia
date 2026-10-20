@@ -15,3 +15,5 @@ An agent requests a refund, the service completes it, and the worker crashes bef
 ## Check your understanding
 
 **Question:** Why is a stored transcript insufficient? **Answer:** It may omit whether a side effect completed, which artifact version was used, or which exact operation was approved.
+
+A runtime may re-enter an unfinished tool after resume. Persist the exact evidence and approval binding, keep code/checkpoint versions compatible, and test concurrent duplicate approvals. A local check-then-send pattern cannot alone guarantee one external effect after a crash.

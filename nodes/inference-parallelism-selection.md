@@ -5,10 +5,10 @@ summary: Inference parallelism selection maps a measured serving bottleneck to r
 type: concept
 tags: [ml/llm/inference]
 prereqs: [data-parallelism, tensor-parallelism, pipeline-parallelism, inference-context-parallelism, expert-parallelism, llm-serving-metric-triangulation]
-sources: [https://docs.vllm.ai/en/stable/serving/parallelism_scaling/, https://docs.vllm.ai/en/stable/serving/context_parallel_deployment/, https://docs.vllm.ai/en/stable/serving/data_parallel_deployment/]
+sources: [https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md, https://docs.vllm.ai/en/stable/serving/parallelism_scaling/, https://docs.vllm.ai/en/stable/serving/context_parallel_deployment/, https://docs.vllm.ai/en/stable/serving/data_parallel_deployment/]
 status: explained
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-21
 ---
 
 # Inference Parallelism Selection
@@ -25,6 +25,12 @@ Placement follows topology: frequent tensor collectives generally need faster li
 
 Sweep representative prompt/output lengths, concurrency, and mixture-of-experts routing skew. Record peak memory, queue delay, TTFT, inter-token latency, throughput, link utilization, idle stages, and cost at equal model quality. Compare each added dimension against the simpler layout it replaces. An advertised speedup under another workload is not a placement rule.
 
+## Phase-specific layouts need phase-specific demand
+
+A model can use attention data parallelism with expert-parallel feedforward work and still choose different group widths for prefill and decode. DeepInfer documents small prefill groups and wide decode groups for one large-scale MoE deployment. Prefill, decode and storage are provisioned separately; its suggested production sizes are not a universal minimum model deployment.
+
+Wider decode groups can raise expert batches only when enough live requests supply tokens. At low offered load, idle devices and collective overhead can make a narrower or tensor-parallel layout preferable. Compare service demand in uncached prompt tokens and active decode requests, not an assumed 1:1 device ratio. Topology, route skew, cache compatibility and KV-transfer costs constrain the feasible configurations. Validate the actual release: an offline engine exposing distributed primitives does not automatically include routing, persistent cache storage or the complete disaggregated service.
+
 ## Prerequisites
 
 - [[data-parallelism]]
@@ -39,3 +45,5 @@ Sweep representative prompt/output lengths, concurrency, and mixture-of-experts 
 - [vLLM Parallelism and Scaling](https://docs.vllm.ai/en/stable/serving/parallelism_scaling/): distributed inference layout guidance.
 - [vLLM Context Parallel Deployment](https://docs.vllm.ai/en/stable/serving/context_parallel_deployment/): separate prefill and decode objectives.
 - [vLLM Data Parallel Deployment](https://docs.vllm.ai/en/stable/serving/data_parallel_deployment/): replica and expert-partition combinations.
+
+- <https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md>

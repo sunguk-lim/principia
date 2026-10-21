@@ -4,11 +4,11 @@ title: Prompt Injection
 summary: Prompt injection occurs when lower-trust input is treated as operational instruction and changes an AI application's behavior across its intended authority boundary.
 type: concept
 tags: [ml/agents]
-prereqs: [tool-call-execution-contract, retrieval-authorization-boundary]
+prereqs: [tool-call-execution-contract, retrieval-authorization-boundary, agent-memory]
 sources: [https://genai.owasp.org/llmrisk/llm01-prompt-injection/]
 status: explained
 created: 2026-10-17
-updated: 2026-10-17
+updated: 2026-10-22
 ---
 
 # Prompt Injection
@@ -27,7 +27,15 @@ For example, a retrieved support article might contain a sentence styled as a sy
 
 Test benign quotations and adversarial content across web pages, documents, tool outputs, and retrieval results. Measure unauthorized tool attempts, successful external effects, false blocks, and recovery after rejected actions. Include multilingual and encoded variants. A successful prompt-level defense on a fixed test set is not proof of universal resistance.
 
+## Persistence through memory and skill promotion
+
+With [[agent-memory]], an indirect injection can outlive the page that carried it if an application promotes the text into trusted memory or a reusable procedure. The second trust crossing is promotion: a historical tool result or generated summary is evidence, not authority to create a new system rule. Keep original origin, scope and time on retained facts, separate quoted text from instructions, and validate any proposed procedure under the host's current permissions before activating it.
+
+For example, an untrusted repository note can claim that a build requires sending a configuration file to an external address. If a summarizer records that sentence as “standard deployment procedure,” the next session may retrieve it without the original warning. Reformatting did not make the instruction trustworthy. Test the whole write–store–retrieve–execute lifecycle: inject a candidate in one session, start a fresh session, retrieve the memory and verify that external policy still rejects the unauthorized effect. Do not treat a clean first-turn response as proof that delayed activation is blocked. Review correction, supersession and deletion paths as well as initial filtering.
+
 ## Prerequisites
+
+- [[agent-memory]]
 
 - [[tool-call-execution-contract]]
 - [[retrieval-authorization-boundary]]

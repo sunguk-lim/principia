@@ -15,3 +15,7 @@ An agent repeatedly misuses an edit tool. A new skill describes valid patch synt
 ## Check your understanding
 
 **Question:** Why is success on replayed failures insufficient? **Answer:** The update may overfit those cases and regress on new tasks.
+
+## From a trace to a scoped proposal
+
+A repeated workflow can suggest a skill, but its successful commands may depend on one repository's paths and environment. Extract the task trigger, inputs, prerequisites, observed checks and recovery branches. Retain evidence and mark missing coverage; remove private identifiers and credentials. A proposal that replays three familiar repositories but fails on a fourth is not yet a general skill. Scope or parameterize it, test future tasks excluded from development, and preserve rollback. Count actual successful use and regressions rather than assuming storage or invocation proves improvement.

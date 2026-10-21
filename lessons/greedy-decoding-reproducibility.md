@@ -9,3 +9,7 @@ To test reproducibility, pin the exact prompt bytes, model weights, tokenizer, d
 Exact replay is a stronger requirement than stable meaning. If byte identity matters, use a supported deterministic path and regression-test it after upgrades. Otherwise define an acceptable variability target and evaluate answer quality independently.
 
 **Check:** If a seed is fixed but the tokenizer changes, should identical tokens be expected? Why not?
+
+## Local optimality is not sequence optimality
+
+Take a two-token generation. First choose A with probability 0.6 or B with 0.4. After A, final choices x and y each have probability 0.5. After B, x has probability 0.9 and y 0.1. Greedy takes A, then x under a fixed tie rule, giving Ax probability 0.30. Yet Bx has probability 0.36. A locally best choice need not produce the most probable complete sequence. Even the highest-probability sequence is not a proof of truth or action permission. Measure correctness separately from repeated-output agreement.

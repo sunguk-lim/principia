@@ -8,7 +8,7 @@ prereqs: [agent-execution-harness, agent-memory, agent-verification-loop, execut
 sources: [https://arxiv.org/abs/2305.16291, https://docs.langchain.com/oss/python/langgraph/persistence, https://www.swebench.com/SWE-bench/guides/evaluation/]
 status: explained
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-22
 ---
 
 # Persistent Agent Improvement
@@ -24,6 +24,12 @@ The durable change can live in the system—an instruction, tool interface, retr
 Use traces to turn failures into hypotheses: a tool schema is confusing, a retrieved fact is stale, or the model misuses test feedback. Propose the smallest change, replay representative failures, and then run held-out tasks. An executable environment supplies initial state, actions, observations, and outcome checks; a saved transcript contains only one historical trajectory and cannot test alternative actions by itself. A curriculum can sample harder or more diverse tasks from outcomes, but the promotion set must remain independent of the curriculum, or repeated tuning overfits the evaluator.
 
 The [[agent-verification-loop]] checks each trial, while [[execution-benchmark-validity]] checks the task oracle and environment. Compare against a no-update control and a simple fixed baseline. Measure future-task success, regression slices, invalid actions, latency, cost, and safety violations. Version the proposed change, training/evaluation data, test environment, and promotion decision. If a change helps only the replayed failures or if its artifact is never retrieved, call it a local repair or an unused note—not persistent improvement.
+
+## From traces to a proposed skill
+
+A trace-to-skill pipeline first identifies a recurring task pattern, then extracts its inputs, preconditions, actions, observed outcomes and recovery branches. Remove accidental paths, environment-specific identifiers and credentials; retain provenance and state what the evidence does not cover. Produce a versioned proposal with a task trigger, prerequisites, bounded instructions and an understanding of which checks establish success. One successful trace supplies an example, not evidence that the same commands work in another repository or harness.
+
+For example, three UI tasks use the same development server and screenshot check, but a fourth repository uses a different build command. A proposal that hard-codes the first command can replay the initial traces yet fail the held-out repository. Parameterize or explicitly scope the recipe, test its trigger and prerequisites, then compare successful future use with a no-skill control. Keep rejected candidates and rollback evidence separate from the published skill library. Repeated exposure to one flawed trace can amplify an error; repetition alone is not a quality gate.
 
 ## Sources
 

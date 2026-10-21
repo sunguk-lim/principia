@@ -3199,6 +3199,74 @@
         "logarithm": "Defines the rarity transform and smoothing domain in the IDF formula.",
         "cosine-similarity": "Defines normalized query/document vector scoring rather than treating the score as a probability."
       }
+    },
+    "self-consistency-decoding": {
+      "aliases": [],
+      "objective": "Self-consistency decoding samples several reasoning paths and aggregates their normalized final answers rather than trusting one greedy path.",
+      "prerequisiteReasons": {
+        "chain-of-thought": "Provides distinct generated reasoning paths whose final answers can be aggregated.",
+        "llm-sampling-controls": "Defines stochastic generation of the paths and its probability-changing parameters.",
+        "measurement": "Separates agreement frequency, true task accuracy, calibration and sampling cost."
+      }
+    },
+    "cross-harness-trace-normalization": {
+      "aliases": [],
+      "objective": "Cross-harness trace normalization maps heterogeneous agent events into a versioned evidence schema while preserving identity, causal links, provenance and explicit information loss.",
+      "prerequisiteReasons": {
+        "agent-harness-interoperability": "Distinguishes shared historical data from tested live session and effect semantics.",
+        "trace-span": "Grounds operation identity, parent relationships and bounded durations.",
+        "log-record": "Grounds typed event fields and source observations rather than unstructured narrative."
+      }
+    },
+    "telemetry-data-minimization": {
+      "aliases": [],
+      "objective": "Telemetry data minimization limits captured and exported fields to the evidence needed for observability instead of treating full prompts, payloads and credentials as default trace content.",
+      "prerequisiteReasons": {
+        "opentelemetry": "Defines the instrumentation, propagation, Collector processing and export path where minimization must be enforced."
+      }
+    },
+    "sensitive-read-outbound-correlation": {
+      "aliases": [],
+      "objective": "Sensitive-read outbound correlation joins evidence of a sensitive resource read and a later network action within a scoped execution window to produce a reviewable security signal, not proof of exfiltration.",
+      "prerequisiteReasons": {
+        "agent-execution-harness": "Supplies externally enforced tool policy and observed action boundaries rather than model claims.",
+        "log-record": "Provides structured resource and network event observations and scoped join fields.",
+        "trace-span": "Links bounded execution operations without relying solely on timestamp proximity.",
+        "measurement": "Separates detection precision, recall, missing telemetry and confirmed effects."
+      }
+    },
+    "transformer-xl-relative-attention": {
+      "aliases": [],
+      "objective": "Transformer-XL relative attention combines content and relative-distance score terms with learned global content and position biases so cached states retain coherent ordering across segments.",
+      "prerequisiteReasons": {
+        "transformer-attention": "Defines projected queries/keys, score scaling, masking and weight normalization.",
+        "positional-encoding": "Grounds the order problem and the difference between absolute coordinates and relative distances."
+      }
+    },
+    "relative-position-shift": {
+      "aliases": [],
+      "objective": "Relative-position shift reindexes query-by-distance attention scores into query-by-key order so shared relative vectors can be projected once per distance rather than once per token pair.",
+      "prerequisiteReasons": {
+        "transformer-xl-relative-attention": "Defines the distance-based score whose mathematical value must be preserved during reindexing."
+      }
+    },
+    "alibi": {
+      "aliases": [],
+      "objective": "ALiBi adds a fixed head-specific linear distance penalty to attention logits rather than adding positional embeddings to token representations.",
+      "prerequisiteReasons": {
+        "transformer-attention": "Supplies the content logits, scale, mask and softmax affected by the added bias.",
+        "positional-encoding": "Defines the order representation problem and alternatives to additive embedding tables."
+      }
+    },
+    "prompt-injection": {
+      "prerequisiteReasons": {
+        "agent-memory": "Explains the retained memory lifecycle across which an untrusted instruction can be promoted and later reactivated."
+      }
+    },
+    "greedy-decoding-reproducibility": {
+      "prerequisiteReasons": {
+        "probability-chain-rule": "Grounds the worked comparison of locally greedy tokens with complete-sequence probability products."
+      }
     }
   }
 }

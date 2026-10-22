@@ -15,3 +15,7 @@ Choose q=(1,2), k=(3,1), θ=π/2, m=1, and n=2. The rotated query is (-2,1), the
 ## Check your understanding
 
 Does relative dependence mean attention ignores content? No: the rotated inner product still depends on q and k as well as the offset.
+
+## Equivalent coordinate representation
+
+A pair (a,b) can be represented as the [[complex-number]] a+ib. Multiplication by cos(α)+i sin(α) gives (a cos(α)-b sin(α), a sin(α)+b cos(α)), the same real rotation. Use Re(z_q conjugate(z_k)) for the real dot product; omitting conjugation changes it. For rotated pairs (-2,1) and (-3,-1), the real score is 6-1=5, matching Re((-2+i)(-3+i))=5. This notation changes neither the attention function nor its extrapolation guarantees.

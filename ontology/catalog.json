@@ -3009,7 +3009,8 @@
       "objective": "Rotary position embedding rotates query and key coordinate pairs so their inner product depends on relative position.",
       "prerequisiteReasons": {
         "positional-encoding": "Explains why token order must enter attention.",
-        "matrix-multiplication": "Provides the linear-map composition and dot products used in the rotation identity."
+        "matrix-multiplication": "Provides the linear-map composition and dot products used in the rotation identity.",
+        "complex-number": "Defines pair multiplication and conjugation required to derive the equivalent rotary score."
       }
     },
     "transformer-projection-fusion": {
@@ -3266,6 +3267,101 @@
     "greedy-decoding-reproducibility": {
       "prerequisiteReasons": {
         "probability-chain-rule": "Grounds the worked comparison of locally greedy tokens with complete-sequence probability products."
+      }
+    },
+    "work-span-model": {
+      "aliases": [],
+      "objective": "The work-span model separates total computation from the longest dependency chain to bound execution time with finite processors.",
+      "prerequisiteReasons": {
+        "computation-graph": "Defines producer-consumer dependencies and concurrently ready operations.",
+        "arithmetic": "Supports work division, path-length counts and finite-processor bounds."
+      }
+    },
+    "recurrent-neural-network": {
+      "aliases": [],
+      "objective": "A recurrent neural network reuses a parameterized state transition across sequence positions so each hidden state depends on the preceding state and current input.",
+      "prerequisiteReasons": {
+        "neural-network": "Provides parameterized matrix maps and elementwise nonlinearities.",
+        "work-span-model": "Distinguishes temporal transition depth from parallel arithmetic within a step."
+      }
+    },
+    "chain-rule": {
+      "aliases": [],
+      "objective": "The chain rule differentiates a composition by multiplying each local derivative evaluated at its own intermediate input.",
+      "prerequisiteReasons": {
+        "derivative": "Defines local first-order sensitivity and its limiting interpretation."
+      }
+    },
+    "backpropagation-through-time": {
+      "aliases": [],
+      "objective": "Backpropagation through time differentiates an unrolled recurrent computation and sums all uses of each shared parameter.",
+      "prerequisiteReasons": {
+        "recurrent-neural-network": "Defines the shared temporal transition being unrolled.",
+        "chain-rule": "Derives sensitivity propagation through dependent transitions.",
+        "gradient": "Defines the accumulated loss sensitivity of trainable parameters."
+      }
+    },
+    "recurrent-gradient-stability": {
+      "aliases": [],
+      "objective": "Recurrent gradient stability concerns how products of transition derivatives shrink or amplify learning signals across time.",
+      "prerequisiteReasons": {
+        "backpropagation-through-time": "Supplies the temporal derivative paths whose stability is being analyzed.",
+        "jacobian": "Represents the local multidimensional transition derivatives multiplied along the path."
+      }
+    },
+    "model-flops-utilization": {
+      "aliases": [],
+      "objective": "Model FLOPs utilization compares achieved token throughput with the throughput implied by declared model work and the system arithmetic peak.",
+      "prerequisiteReasons": {
+        "transformer-flop-estimation": "Defines architecture-specific useful arithmetic rather than inferring work from busy time.",
+        "measurement": "Defines token throughput, timing boundaries and matched comparison conditions.",
+        "activation-checkpointing": "Explains extra recomputation excluded from model-work accounting."
+      }
+    },
+    "affine-recurrence-scan": {
+      "aliases": [],
+      "objective": "An affine recurrence scan composes state-update maps associatively to compute every recurrent prefix with a parallel tree.",
+      "prerequisiteReasons": {
+        "scan": "Defines associative ordered prefix computation.",
+        "matrix-multiplication": "Derives composition of affine vector maps and its dimension-dependent cost.",
+        "work-span-model": "Separates parallel depth, total combines and actual finite-resource execution."
+      }
+    },
+    "rope-position-interpolation": {
+      "aliases": [],
+      "objective": "RoPE position interpolation compresses requested position coordinates into the pretrained coordinate range before computing rotations.",
+      "prerequisiteReasons": {
+        "rotary-position-embedding": "Defines the position-dependent rotations and relative phases being rescaled.",
+        "measurement": "Separates configured length from retained quality and execution cost."
+      }
+    },
+    "implicit-causal-position": {
+      "aliases": [],
+      "objective": "A causal attention mask can provide asymmetric position cues even without explicit positional embeddings, but does not guarantee reliable length generalization.",
+      "prerequisiteReasons": {
+        "causal-language-model-training": "Provides the causal mask and prefix-restricted information flow.",
+        "positional-encoding": "Defines explicit positional mechanisms against which the implicit cue is distinguished."
+      }
+    },
+    "hybrid-positional-attention-layout": {
+      "aliases": [],
+      "objective": "A hybrid positional attention layout assigns different position encodings and visibility patterns to different layers rather than one uniform rule throughout a decoder.",
+      "prerequisiteReasons": {
+        "rotary-position-embedding": "Defines the explicit encoding applied in selected layers.",
+        "implicit-causal-position": "Explains the positional-information boundary of layers without explicit encoding.",
+        "sparse-attention-patterns": "Defines local versus full token visibility independently of positional coordinates."
+      }
+    },
+    "complex-number": {
+      "aliases": [],
+      "objective": "A complex number is a real coordinate pair with addition and multiplication defined so the imaginary unit squares to minus one.",
+      "prerequisiteReasons": {
+        "arithmetic": "Supplies real-coordinate addition, multiplication and the distributive rules extended by i²=-1."
+      }
+    },
+    "transformer-flop-estimation": {
+      "prerequisiteReasons": {
+        "arithmetic-intensity": "Relates shape-dependent weight reuse to idealized FLOPs per byte rather than assuming work predicts elapsed time."
       }
     }
   }

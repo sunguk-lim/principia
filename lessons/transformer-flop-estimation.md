@@ -15,3 +15,7 @@ Doubling sequence length roughly doubles projection work but can quadruple dense
 ## Check your understanding
 
 **Question:** Can a lower FLOP estimate make a system slower? **Answer:** Yes. Irregular memory accesses, launch overhead, padding, or insufficient accelerator utilization can dominate.
+
+## Shape and execution boundary
+
+With ideal one-read FP16 inputs and weights, a 1×1024 by 1024×1024 multiply has about 0.998 FLOP/byte. Stacking 128 known input rows raises the idealized value to 102.4 by amortizing the weight read. [[arithmetic-intensity]] describes this reuse, not a latency guarantee. Profile actual traffic, tile use, launches and matched-quality tokens/s; increasing batch size can also increase latency and memory.

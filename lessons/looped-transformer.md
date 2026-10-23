@@ -23,4 +23,3 @@ Evaluate quality and latency across depth, both inside and outside the training 
 ## Check your understanding
 
 Does drawing four copies of a shared block imply four independently trained weight sets? No. It represents four applications of the same parameters to successive states.
-

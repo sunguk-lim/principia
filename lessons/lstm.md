@@ -23,4 +23,3 @@ With the same forget value across ten steps, the direct retained-cell sensitivit
 ## Check your understanding
 
 Does an additive cell route guarantee an unchanged gradient? No. Forget gates can attenuate it, and the full recurrent system contains additional derivative paths.
-

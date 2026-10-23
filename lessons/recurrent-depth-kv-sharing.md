@@ -21,4 +21,3 @@ Memory savings do not establish lower end-to-end latency: more recurrent computa
 ## Check your understanding
 
 Do identical key-projection weights imply identical cached keys at different recurrence steps? No. Different hidden-state inputs generally produce different projections.
-

@@ -23,4 +23,3 @@ Use [[measurement]] on a held-out set to compare answer support, incorrect reuse
 ## Check your understanding
 
 Why not index every successful reply immediately? Success on one interaction does not establish general applicability, permission for reuse, or correctness under later policy versions.
-

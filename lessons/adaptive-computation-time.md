@@ -23,4 +23,3 @@ The original paper found gains on particular synthetic tasks and limited languag
 ## Check your understanding
 
 Why use a remainder? It makes the aggregation weights sum to one at the selected stopping step without treating an overshooting raw halting value as the final weight.
-

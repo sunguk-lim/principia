@@ -21,4 +21,3 @@ Use [[measurement]] to compare task correctness at matched total FLOPs, latency,
 ## Check your understanding
 
 Is generated-token count a universal measure of inference compute? No. A latent model can spend more internal updates while generating the same number of tokens.
-

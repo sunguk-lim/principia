@@ -19,4 +19,3 @@ The original IRNN study reports results on specific benchmarks. It does not esta
 ## Check your understanding
 
 If the initial recurrent matrix is identity, are all long-horizon derivatives one? No. Activation masks and subsequent parameter updates can change or cut the path.
-

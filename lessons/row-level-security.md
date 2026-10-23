@@ -21,4 +21,3 @@ Test reads, inserts, updates, deletes, role inheritance, ownership, pooled ident
 ## Check your understanding
 
 Does granting SELECT make RLS irrelevant? No. Normal row visibility still requires applicable policy permission, while privileged bypass paths must be audited separately.
-

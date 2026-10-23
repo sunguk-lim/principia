@@ -2908,13 +2908,6 @@
       "reason": "Overview is supporting explanation for the canonical OverlayFS objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-4fe74f195be37df8c15a",
-      "sourceId": "multi-model-inference-residency",
-      "contentHash": "bb0692ad2dbb14819638771e6967307e6bdc5ea331fb0e1cf593f6bae6476d72",
-      "decision": "retain",
-      "reason": "This section defines and explains Multi-Model Inference Residency as the source node’s learning objective; it is not a second entity alongside that node."
-    },
-    {
       "candidateKey": "cand-500e2d25865358e27075",
       "sourceId": "sk-buff",
       "contentHash": "48de9c9115ecf84a79ca6249aa9b481fe6c07e2910fe17849c93f60179627f02",
@@ -10912,34 +10905,6 @@
       "reason": "Tests the defining misconception of this concept; not a separate entity."
     },
     {
-      "candidateKey": "cand-9f100a43e0b9b830fa72",
-      "sourceId": "recurrent-gradient-stability",
-      "contentHash": "2ba2a3412afd611ef7093ddcc9e5c17ab97ac33c3a27ea410667904594f0a21b",
-      "decision": "retain",
-      "reason": "Defines the canonical learning objective rather than a second concept."
-    },
-    {
-      "candidateKey": "cand-6774ea4509ce6d0f4973",
-      "sourceId": "recurrent-gradient-stability",
-      "contentHash": "df11854ed62a1c8658f3d7f3ab7a2e74f9db3093c80b0a7bbced2d44df5917b6",
-      "decision": "retain",
-      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
-    },
-    {
-      "candidateKey": "cand-8fdc2dc09cea70b7400e",
-      "sourceId": "recurrent-gradient-stability",
-      "contentHash": "2b289f99c5aaad95927543ca5dc72efc275def5bbee1a79135dbeb5f7c5cb8a9",
-      "decision": "retain",
-      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
-    },
-    {
-      "candidateKey": "cand-8d27850b047976c28b71",
-      "sourceId": "recurrent-gradient-stability",
-      "contentHash": "c9f08f8f7880975756580e64b0796bed866731877c64356bfadf9f282a18437f",
-      "decision": "retain",
-      "reason": "Tests the defining misconception of this concept; not a separate entity."
-    },
-    {
       "candidateKey": "cand-8d88a3b947421532da8e",
       "sourceId": "recurrent-neural-network",
       "contentHash": "78d6bdd5553fe205a99b5acb4e71795a95bba4ee14d8ae9317023f5bd9176fb1",
@@ -11069,6 +11034,363 @@
       "candidateKey": "cand-65f46a88d8066389a9bf",
       "sourceId": "work-span-model",
       "contentHash": "9c20913de824e2ed2397e95075111f15b55af54798f450c9f3148d090a1d6e1e",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-1b443f57e875e62f44d8",
+      "sourceId": "adaptive-computation-time",
+      "contentHash": "ccd0e473d4f38ba5144bd09e00b380f0922e6e914e4a1763d2a06e0f5b804d83",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-fed65cd5316f14f0dac4",
+      "sourceId": "adaptive-computation-time",
+      "contentHash": "4a2be6f8cad14d5936d929470bcbf33960b722d953ee5566550d71272c04313e",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-aa10ba925398e9065cd0",
+      "sourceId": "adaptive-computation-time",
+      "contentHash": "dad3e9dda4804322c910ffb85227821f5fcb94d406a1dad5a4a1425f38b9bb0a",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-4802b4ec8f092628b1a6",
+      "sourceId": "adaptive-computation-time",
+      "contentHash": "6a897f53b68a67493fd24e9aad2bbb1d7ca940efeba71905a23bb1290755483d",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-bc4d004a20038edacb10",
+      "sourceId": "background-document-indexing",
+      "contentHash": "c3225919300f158018c13edba5b41a87a558a1f5112804e49cf4db6e4f3be012",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-7ad0552429bfafbd909b",
+      "sourceId": "background-document-indexing",
+      "contentHash": "28af9e352f40f68e9eabf2b55adc1ceb066c72c328d97b42432174fbe57bea01",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-25932215411b0d47aedc",
+      "sourceId": "background-document-indexing",
+      "contentHash": "1cb75e91e6d37d0d90b7be7e0348dcb96c31498e4a977def6993ffb39adc8451",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-a7a751c3e16d530c15f2",
+      "sourceId": "background-document-indexing",
+      "contentHash": "9b664d84e5a0c217a511b320a6571f2148c8baaf9eb5aa8c1b23cbb689fdabfe",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-30b92ed08cc1505b5bf9",
+      "sourceId": "gated-recurrent-unit",
+      "contentHash": "777aab09c8fc62ecf2e5365489be8b8a55eeb23cfdb1a720d34447b87d1fc1fc",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-28eee55016e8b967da01",
+      "sourceId": "gated-recurrent-unit",
+      "contentHash": "448a1f787d09b700fd67cd0c426b3079ae653a7aacbe09e68022e0713cfdfef7",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-42e80129504029e8f69e",
+      "sourceId": "gated-recurrent-unit",
+      "contentHash": "e066067e27acc0e59e6593be15cc634c79b7fbff2dd27a4e9e40d6e1afa84503",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-1d4cd02c2d7552b49be6",
+      "sourceId": "gated-recurrent-unit",
+      "contentHash": "cf05189e76eb9d5ac8bfc82171ebb06e139d43a7b3ffd4f4068c498ef57c346e",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-d6070007085cf2ba684b",
+      "sourceId": "identity-initialized-relu-recurrence",
+      "contentHash": "963adaf39436fe7c0948d2f45beff434fb7e0f6ce6287834ba3a68d353dba941",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-7f893cd05b0df1916011",
+      "sourceId": "identity-initialized-relu-recurrence",
+      "contentHash": "3632272d2329a4b8abe3547430af013edfeaf636ebac92c3fc9221022a838bc5",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-eaea1ebcbd4c77fca842",
+      "sourceId": "identity-initialized-relu-recurrence",
+      "contentHash": "49b521cf2fbc8c533ebd91228efb39689ff23320b812b163e0754402140f82ad",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-a31cef29780a8a1e0f1d",
+      "sourceId": "identity-initialized-relu-recurrence",
+      "contentHash": "fc4a44c180f17fca9b53420a456e58339a0fd326d340c03e36dce39e33fe4248",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-ad925ae87023a804f480",
+      "sourceId": "latent-reasoning",
+      "contentHash": "6fb9fa96f7379541d113ef4f0033ffc8adcbf9df5428876106e1445b463dab68",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-19a04079173df370e1e7",
+      "sourceId": "latent-reasoning",
+      "contentHash": "3eb26a62b9b69dbcabf06c9ff678117064144f76cd1a11a0bdc540417c4adeff",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-b4fded1caf486903ec9f",
+      "sourceId": "latent-reasoning",
+      "contentHash": "9fd79b4b009ab81d70befc2942406ba2fcf38395f5bf13d34415c5af5e6ac137",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-8ec3889d9de8e406b353",
+      "sourceId": "latent-reasoning",
+      "contentHash": "615cdef5caec5e1425dd1a140a8bd49a9ca13a398c19de4bd3ada601cb60b221",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-890b82e0d86528076728",
+      "sourceId": "looped-transformer",
+      "contentHash": "f40c48395ac53deebae50858455fa29a52e8fec31adbce0e1b0db1da8347fb44",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-6097d09ba77d9c7304ab",
+      "sourceId": "looped-transformer",
+      "contentHash": "d3bfa05cdef1a58ba9dae23f2156564282fe57329a012d81705a0cd1a9861c8b",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-fa0a2b4310c61dd46410",
+      "sourceId": "looped-transformer",
+      "contentHash": "9d687961218fb538f9b5e86e7d90ecdcc9dfee3b7afa886e2faa2ad9037d5809",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-939f3cd61deb8c48f3ba",
+      "sourceId": "looped-transformer",
+      "contentHash": "22c2c3d9009791361597bebbb86a69d6b71b517b1a72151f3224f756b1f0406e",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-89da3882f1a202a4c04c",
+      "sourceId": "lstm",
+      "contentHash": "14f2588bb36f350347b63439d123d028ec2e91d1656c69e05c77d5471437db1d",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-505d661c6d19c4af4b96",
+      "sourceId": "lstm",
+      "contentHash": "e64b4986c58b2d74301945f4a4fadb24489eb46190325264743d45c2088f63b0",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-4b18c7e4dbc879c06114",
+      "sourceId": "lstm",
+      "contentHash": "4e116ee3867c799bc1423bd84b4b4e307ea1555039f4a378c62f7c0de3b13803",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-56d5a78d9d409653102a",
+      "sourceId": "lstm",
+      "contentHash": "d70062fb202ab761c0ef4bf41e77b17bb6a1167198d3abf51c98e447b90b7b10",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-4fe74f195be37df8c15a",
+      "sourceId": "multi-model-inference-residency",
+      "contentHash": "bb0692ad2dbb14819638771e6967307e6bdc5ea331fb0e1cf593f6bae6476d72",
+      "decision": "retain",
+      "reason": "Introduces the canonical learning objective and its scope, not another entity."
+    },
+    {
+      "candidateKey": "cand-b1c8ee22b0d452d806fd",
+      "sourceId": "multi-model-inference-residency",
+      "contentHash": "79683da75c6cd5f5da431ae085d30863bc0cba3b707aa7b8434d9c8b69a97ed9",
+      "decision": "retain",
+      "reason": "Explains the execution-admission side of the existing residency objective; per-model queueing and workspace constraints are not a separate model identity."
+    },
+    {
+      "candidateKey": "cand-65fb199e064326fbf468",
+      "sourceId": "multimodal-embedding-alignment",
+      "contentHash": "9405b67dbd83736e91c5e350f80c85360084c82245c05bdd6d6214a0c216ad21",
+      "decision": "retain",
+      "reason": "Introduces the canonical learning objective and its scope, not another entity."
+    },
+    {
+      "candidateKey": "cand-e92153dfd539166a9afa",
+      "sourceId": "multimodal-embedding-alignment",
+      "contentHash": "6f1fbe1c929ff2b5957140a2839a5d05b3533f7a2410d9e7568ef7fd71955421",
+      "decision": "retain",
+      "reason": "Explains the same aligned-representation identity under encoder/version changes with a concrete score example."
+    },
+    {
+      "candidateKey": "cand-5439122b446afcbfb6f4",
+      "sourceId": "recurrent-depth-kv-sharing",
+      "contentHash": "73333c303299c4f941031d0f85514c90254fb02dc997b55ae688a4f522ec33e5",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-a575a9b0074aa453eeda",
+      "sourceId": "recurrent-depth-kv-sharing",
+      "contentHash": "c3e5282deb8177465e351958fd09a106d84672f042b3c506d93058f96cd10fba",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-a8800e4a5441cb066c38",
+      "sourceId": "recurrent-depth-kv-sharing",
+      "contentHash": "62fa624d3409893e689ad9e3e3be12d49cbd0a7fb0df05cc1bd62c8c5b0bf584",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-6ca7f3d71944ada342b0",
+      "sourceId": "recurrent-depth-kv-sharing",
+      "contentHash": "331917107211457bc70c0caba98c22b1a6fe46693be31f73a193c20c2c1cf922",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-9f100a43e0b9b830fa72",
+      "sourceId": "recurrent-gradient-stability",
+      "contentHash": "2ba2a3412afd611ef7093ddcc9e5c17ab97ac33c3a27ea410667904594f0a21b",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-6774ea4509ce6d0f4973",
+      "sourceId": "recurrent-gradient-stability",
+      "contentHash": "df11854ed62a1c8658f3d7f3ab7a2e74f9db3093c80b0a7bbced2d44df5917b6",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-8fdc2dc09cea70b7400e",
+      "sourceId": "recurrent-gradient-stability",
+      "contentHash": "2b289f99c5aaad95927543ca5dc72efc275def5bbee1a79135dbeb5f7c5cb8a9",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-8d27850b047976c28b71",
+      "sourceId": "recurrent-gradient-stability",
+      "contentHash": "c9f08f8f7880975756580e64b0796bed866731877c64356bfadf9f282a18437f",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-cd1490eaa9f461c96c2a",
+      "sourceId": "recurrent-gradient-stability",
+      "contentHash": "1b8e491a07f742e7be91b86ba3dc486d2b30053af86d4796ecc0b6bcf9f827a4",
+      "decision": "retain",
+      "reason": "Supports recurrent gradient stability with activation masks and a finite-horizon counterexample; not a distinct canonical entity."
+    },
+    {
+      "candidateKey": "cand-00ef1ab8ff2600a31202",
+      "sourceId": "retrieval-evidence-gate",
+      "contentHash": "23e19a2509da731cdc0f85bcedfc1bacbe67b93209e05f574bd20d187a03cf33",
+      "decision": "retain",
+      "reason": "Introduces the canonical learning objective and its scope, not another entity."
+    },
+    {
+      "candidateKey": "cand-cede7629ef3fa02adc2e",
+      "sourceId": "retrieval-evidence-gate",
+      "contentHash": "272d1ed717b103bfd838b776e12163dfa60eb82a76753b7ed2b9b4d9714ffff5",
+      "decision": "retain",
+      "reason": "Refines the existing evidence-gate policy across modalities; relevance/sufficiency separation remains its single objective."
+    },
+    {
+      "candidateKey": "cand-e8dca84ae2776c9ff744",
+      "sourceId": "reviewed-knowledge-promotion",
+      "contentHash": "28a56d45eb9d66bbd27642cdf296007f99719415bb2031021fa5f7cf6680582f",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-d7fedda4b4af1b0afe2d",
+      "sourceId": "reviewed-knowledge-promotion",
+      "contentHash": "bccdd3b913ef02717fe434ab75ac094a75233591edb6cfdba5a196bf8192cacd",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-e75c22fa30d0bddaa93c",
+      "sourceId": "reviewed-knowledge-promotion",
+      "contentHash": "b274d5b66a3aedc93dad44128af9735122e51eea75b23df578dcf4de6ea1920c",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-8c5db52f6056cb92572a",
+      "sourceId": "reviewed-knowledge-promotion",
+      "contentHash": "27af00865859be9c29af63b590fea97753cb10aebcade0c9c1635017a147e38b",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-3e06ac16676972555f8a",
+      "sourceId": "row-level-security",
+      "contentHash": "e116e03c7e99474a10047e7adf1861a661b962510d946ea766655cb074f8263b",
+      "decision": "retain",
+      "reason": "Defines the canonical learning objective rather than a second concept."
+    },
+    {
+      "candidateKey": "cand-4230dc8334d5012a30da",
+      "sourceId": "row-level-security",
+      "contentHash": "d0adcf4eb594606e7817f4898f513e8f8fce1b84e8385ea13a724212245bacb4",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-02cfe70097e795ad7d90",
+      "sourceId": "row-level-security",
+      "contentHash": "5c23a9f68fe025f226a80e5f9b0bc0a0cb0780ffff735486cf55705389b446cd",
+      "decision": "retain",
+      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
+    },
+    {
+      "candidateKey": "cand-fdb1e5d0366f61359bbe",
+      "sourceId": "row-level-security",
+      "contentHash": "29069584c9f5ad3bb56bc75c3c19e25819c2d3ae713fe3f55941294c7b3132bb",
       "decision": "retain",
       "reason": "Tests the defining misconception of this concept; not a separate entity."
     }

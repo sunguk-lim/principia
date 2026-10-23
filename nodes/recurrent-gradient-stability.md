@@ -5,10 +5,10 @@ summary: Recurrent gradient stability concerns how products of transition deriva
 type: concept
 tags: [ml/deep-learning]
 prereqs: [backpropagation-through-time, jacobian]
-sources: [https://arxiv.org/html/1211.5063v2]
+sources: [https://arxiv.org/html/1211.5063v2, https://arxiv.org/abs/1504.00941]
 status: explained
 created: 2026-10-23
-updated: 2026-10-23
+updated: 2026-10-24
 ---
 
 # Recurrent Gradient Stability
@@ -33,6 +33,14 @@ Norm clipping with threshold c rescales a gradient g to g×min(1,c/||g||), prese
 
 **Question:** Does clipping exploding gradients solve vanishing gradients? **Answer:** No; limiting a large norm does not restore a small missing learning signal.
 
+## Rectification and finite-horizon amplification
+
+For a rectified transition $h_t=\max(0,Wh_{t-1}+u_t)$, let $D_t$ be the diagonal matrix with one on positive preactivations and zero on negative ones. Away from zero, $J_t=D_tW$. Replacing tanh with ReLU changes $D_t$ but does not remove $W$ or make the changing masks commute with it. An inactive coordinate cuts that local derivative route; other coordinates can still carry sensitivity. Positive states are unbounded, so forward growth must be checked separately from gradient norms.
+
+A single eigenvalue threshold cannot classify every finite nonlinear trajectory. Even for an unmasked linear transition, take $W=\begin{pmatrix}0.5&4\\0&0.5\end{pmatrix}$ and initial perturbation $v=(0,1)$. Both eigenvalues are $0.5$, yet $Wv=(4,0.5)$ has length $\sqrt{16.25}\approx4.03$ versus initial length one. The next perturbation is $W^2v=(4,0.25)$, still large. The off-diagonal coupling creates temporary growth even though powers eventually decay. The eigenvalues here are the roots of $(0.5-\lambda)^2=0$, while length is the square root of the sum of squared coordinates. No general spectral theorem is needed to verify the counterexample by direct multiplication.
+
+In a nonlinear recurrence, inspect actual ordered derivative products or their action on test directions, not only eigenvalues of the bare weight matrix. ReLU's active derivative is one, but an identity initialization can lose that property after learning or when inputs change the activation masks. Compare initialization, gates and residual updates using matched long-horizon tasks. None makes clipping a cure for vanished information or makes all recurrent gradients inevitably explode.
+
 ## Prerequisites
 
 - [[backpropagation-through-time]]
@@ -41,3 +49,5 @@ Norm clipping with threshold c rescales a gradient g to g×min(1,c/||g||), prese
 ## Sources
 
 - <https://arxiv.org/html/1211.5063v2>
+
+- <https://arxiv.org/abs/1504.00941>

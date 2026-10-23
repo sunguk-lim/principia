@@ -3363,6 +3363,116 @@
       "prerequisiteReasons": {
         "arithmetic-intensity": "Relates shape-dependent weight reuse to idealized FLOPs per byte rather than assuming work predicts elapsed time."
       }
+    },
+    "lstm": {
+      "aliases": [
+        "LSTM",
+        "long short-term memory network"
+      ],
+      "objective": "An LSTM carries an additive cell state whose learned gates separately control retention, writing, and exposure.",
+      "prerequisiteReasons": {
+        "recurrent-neural-network": "Defines the shared state transition and sequence-position dependency that the gated cell extends.",
+        "recurrent-gradient-stability": "Explains the multiplied-derivative problem addressed by the direct additive cell route."
+      }
+    },
+    "identity-initialized-relu-recurrence": {
+      "aliases": [
+        "IRNN"
+      ],
+      "objective": "Identity initialization gives an active ReLU recurrence a unit temporal derivative at initialization without guaranteeing that masks or learned dynamics stay stable.",
+      "prerequisiteReasons": {
+        "recurrent-neural-network": "Supplies the recurrent state equation whose initial matrix is chosen.",
+        "recurrent-gradient-stability": "Explains the temporal derivative products used to evaluate this initialization."
+      }
+    },
+    "looped-transformer": {
+      "aliases": [
+        "recurrent-depth Transformer",
+        "looped transformers"
+      ],
+      "objective": "A looped Transformer reuses a shared attention block across computational depth while evolving hidden state before producing a prediction.",
+      "prerequisiteReasons": {
+        "transformer-attention": "Defines the sequence interaction inside the repeated block.",
+        "residual-connection": "Explains the additive state update used in the shared Transformer layers.",
+        "backpropagation-through-time": "Defines gradient accumulation across repeated uses of one parameter set."
+      }
+    },
+    "adaptive-computation-time": {
+      "aliases": [
+        "ACT"
+      ],
+      "objective": "Adaptive Computation Time learns a halting allocation over repeated state updates and penalizes extra computation instead of using one fixed depth for every input.",
+      "prerequisiteReasons": {
+        "recurrent-neural-network": "Supplies the carried state and repeated transition whose computation is allocated.",
+        "backpropagation-through-time": "Explains training through repeated uses and the intermediate weighted outputs."
+      }
+    },
+    "recurrent-depth-kv-sharing": {
+      "aliases": [],
+      "objective": "Recurrent-depth KV sharing bounds attention-cache storage across latent iterations by explicitly reusing cache slots under architecture-specific semantics.",
+      "prerequisiteReasons": {
+        "looped-transformer": "Introduces the recurrence-depth dimension and evolving states whose caches are managed.",
+        "kv-cache": "Explains the attention keys and values being retained and reused."
+      }
+    },
+    "row-level-security": {
+      "aliases": [
+        "RLS",
+        "database row-level security"
+      ],
+      "objective": "Row-level security applies database-owned predicates to row visibility and writes under a caller role, in addition to ordinary table privileges.",
+      "prerequisiteReasons": {
+        "relational-model": "Defines the table and row units being protected.",
+        "sql": "Defines query and write semantics to which database policy predicates apply."
+      }
+    },
+    "reviewed-knowledge-promotion": {
+      "aliases": [
+        "human-answer knowledge promotion"
+      ],
+      "objective": "Reviewed knowledge promotion turns a resolved interaction into scoped, versioned retrieval evidence only after validation and authorization checks.",
+      "prerequisiteReasons": {
+        "retrieval-augmented-generation": "Defines how a published knowledge record becomes evidence for later answers.",
+        "dataset-lineage": "Supplies source/version provenance and correction traceability.",
+        "retrieval-authorization-boundary": "Defines which audiences may receive promoted evidence.",
+        "measurement": "Separates genuine downstream improvement from reuse counts and feedback contamination."
+      }
+    },
+    "latent-reasoning": {
+      "aliases": [],
+      "objective": "Latent reasoning carries intermediate computation in evolving hidden representations rather than requiring every reasoning step to be emitted as a token.",
+      "prerequisiteReasons": {
+        "looped-transformer": "Provides a concrete mechanism for repeatedly evolving hidden state with fixed weights.",
+        "chain-of-thought": "Defines the explicit-token alternative whose state and cost are compared.",
+        "measurement": "Grounds the equal-budget comparison and limits of inferred reasoning quality."
+      }
+    },
+    "gated-recurrent-unit": {
+      "aliases": [
+        "GRU"
+      ],
+      "objective": "A gated recurrent unit mixes a retained hidden state with gated candidate content using update and reset gates.",
+      "prerequisiteReasons": {
+        "recurrent-neural-network": "Defines the shared sequence-state transition whose update is gated.",
+        "recurrent-gradient-stability": "Explains why the retained path is useful but does not guarantee stable full gradients."
+      },
+      "relations": [
+        {
+          "type": "ALTERNATIVE_TO",
+          "target": "lstm",
+          "reason": "Both gate carried recurrent state, but GRU blends one hidden vector while LSTM separates a cell from exposed hidden state; compare as alternatives rather than required learning."
+        }
+      ]
+    },
+    "background-document-indexing": {
+      "aliases": [],
+      "objective": "Background document indexing persists versioned ingestion work and builds searchable evidence outside the upload transaction while tracking partial progress and safe publication.",
+      "prerequisiteReasons": {
+        "retrieval-chunking": "Defines evidence units and metadata boundaries created from a document.",
+        "vector-database": "Explains where computed evidence representations become searchable.",
+        "transactional-outbox": "Supplies durable work-intent capture and duplicate-delivery limits.",
+        "dataset-lineage": "Preserves source and version identity across staged work and publication."
+      }
     }
   }
 }

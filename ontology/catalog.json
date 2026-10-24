@@ -3564,6 +3564,18 @@
         "gpu-data-flow": "Explains staging, transfers and synchronization around device operations.",
         "numeric-precision-formats": "Grounds storage and arithmetic compatibility and numerical comparison."
       }
+    },
+    "retrieval-query-expansion": {
+      "aliases": [
+        "query expansion",
+        "query rewriting"
+      ],
+      "objective": "Retrieval query expansion searches bounded variants of an original information need while preserving exact constraints and evaluating whether added recall outweighs drift and cost.",
+      "prerequisiteReasons": {
+        "lexical-retrieval": "Defines how terms acquire candidate evidence before any reranking.",
+        "reciprocal-rank-fusion": "Provides an explicit rank-based combination rule for variant result lists.",
+        "measurement": "Defines the held-out recall, drift, cost and latency comparison."
+      }
     }
   }
 }

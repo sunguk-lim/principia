@@ -11612,6 +11612,34 @@
       "reason": "Tests the defining misconception of this canonical concept, not a second entity."
     },
     {
+      "candidateKey": "cand-d62f06e4439fe8df49ce",
+      "sourceId": "retrieval-query-expansion",
+      "contentHash": "c6c10b495420518f8b45a36e725ffc90522152c5248d4ef9ea5c469c30891bf6",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-612c8e3ffa3f04c3a559",
+      "sourceId": "retrieval-query-expansion",
+      "contentHash": "ecca3f01176bf8b04b407f72a9304d18e12b9ce00917bc408a49919cc34fa332",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-d9c81ac54a8c2c1ca21a",
+      "sourceId": "retrieval-query-expansion",
+      "contentHash": "e4062149a9e608280685257a776094825fe645c6ad1487804a623d58f82b8ffd",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-a17bf33a29ee32df98df",
+      "sourceId": "retrieval-query-expansion",
+      "contentHash": "ce05f9d776e4f1f2590e969e45c95cb48c80e3c7cd5a16c43585a316741325a2",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
       "candidateKey": "cand-19c7e2c3193bcda6148d",
       "sourceId": "shared-retrieval-service",
       "contentHash": "4a12ae0f995ec9e6d5bf3be776c0b540e9048143c42139b6857675a821dc2b42",

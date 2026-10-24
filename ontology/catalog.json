@@ -1320,7 +1320,8 @@
       "prerequisiteReasons": {
         "quantization": "The stated objective requires Quantization: the complete explanation applies it in this mechanism: The kv-cache — the stored keys and values of every past token — is normally held in 16-bit floats (FP16), and for long context or large batch it is the biggest thing in memory and the thing the model must re-read from memory on every decode step. KV-cache quantization shrinks it",
         "kv-cache": "The stated objective requires KV-cache: the complete explanation applies it in this mechanism: The kv-cache — the stored keys and values of every past token — is normally held in 16-bit floats (FP16), and for long context or large batch it is the biggest thing in memory and the thing the model must re-read from memory on every decode step. KV-cache quantization shrinks it"
-      }
+      },
+      "objective": "KV-cache quantization reduces the precision of request-dependent attention state while balancing reconstruction error, metadata, residual buffers and kernel cost."
     },
     "label-smoothing": {
       "prerequisiteReasons": {
@@ -3472,6 +3473,108 @@
         "vector-database": "Explains where computed evidence representations become searchable.",
         "transactional-outbox": "Supplies durable work-intent capture and duplicate-delivery limits.",
         "dataset-lineage": "Preserves source and version identity across staged work and publication."
+      }
+    },
+    "learned-position-table-extension": {
+      "aliases": [
+        "absolute position embedding extension"
+      ],
+      "objective": "Learned position-table extension creates valid coordinates beyond a pretrained lookup range while separately adapting and testing long-distance behavior.",
+      "prerequisiteReasons": {
+        "positional-encoding": "Defines the additive position vectors whose finite learned table is extended.",
+        "fine-tuning": "Explains how pretrained parameters can adapt after changing the coordinate representation."
+      }
+    },
+    "fp8-kv-cache": {
+      "aliases": [
+        "FP8 key-value cache"
+      ],
+      "objective": "An FP8 KV cache stores attention keys and values in scaled eight-bit floating-point form under an explicitly compatible attention-kernel contract.",
+      "prerequisiteReasons": {
+        "kv-cache": "Defines the attention state whose storage precision is reduced.",
+        "numeric-precision-formats": "Distinguishes FP8 range and precision from integer storage."
+      }
+    },
+    "residual-kv-buffer": {
+      "aliases": [
+        "residual KV cache"
+      ],
+      "objective": "A residual KV buffer retains recent keys and values at high precision until a complete block can be quantized and appended to an older compressed cache.",
+      "prerequisiteReasons": {
+        "kv-quantization": "Defines the compressed key/value representation and its granularity trade-off."
+      }
+    },
+    "nonuniform-kv-quantization": {
+      "aliases": [
+        "non-uniform KV cache quantization"
+      ],
+      "objective": "Non-uniform KV quantization maps cached values to unequally spaced reconstruction levels chosen to preserve a calibrated distribution or sensitivity objective.",
+      "prerequisiteReasons": {
+        "kv-quantization": "Defines why cache reconstruction error and metadata matter for attention."
+      }
+    },
+    "sparse-kv-outlier-storage": {
+      "aliases": [
+        "dense-and-sparse KV quantization"
+      ],
+      "objective": "Sparse KV outlier storage separates exceptional cache values and their coordinates from a low-bit dense representation so extremes do not coarsen every ordinary value.",
+      "prerequisiteReasons": {
+        "kv-quantization": "Explains the dense low-bit cache and the range/error trade-off that outlier separation changes."
+      }
+    },
+    "agent-interaction-trajectories": {
+      "aliases": [
+        "full-stack agent trajectories"
+      ],
+      "objective": "Agent interaction trajectories correlate model and tool execution with user actions and interventions so observed behavior can become attributable evidence rather than an assumed learning signal.",
+      "prerequisiteReasons": {
+        "trace-span": "Provides correlated bounded agent/tool operation evidence.",
+        "log-record": "Represents user actions and other point events without inventing durations.",
+        "dataset-lineage": "Preserves source and transformation versions when trajectories become downstream data."
+      }
+    },
+    "shared-retrieval-service": {
+      "aliases": [
+        "standing retrieval layer",
+        "retrieval as a service"
+      ],
+      "objective": "A shared retrieval service separates versioned ingestion and permission-scoped querying from individual applications so multiple callers can reuse one evidence infrastructure.",
+      "prerequisiteReasons": {
+        "background-document-indexing": "Defines durable, version-bound ingestion outside the request path.",
+        "retrieval-authorization-boundary": "Explains server-enforced permission scope shared by multiple callers."
+      }
+    },
+    "origin-private-file-system": {
+      "aliases": [
+        "OPFS"
+      ],
+      "objective": "The origin-private file system provides browser-managed persistent byte storage scoped to a web origin, with quota and lifecycle constraints distinct from working memory.",
+      "prerequisiteReasons": {
+        "http": "Identifies the web application boundary whose scheme, host and port scope browser storage.",
+        "memory-hierarchy": "Distinguishes persistent storage capacity and access cost from live memory."
+      }
+    },
+    "webgpu-inference": {
+      "aliases": [
+        "browser-hosted GPU inference"
+      ],
+      "objective": "WebGPU inference implements model operations through validated browser GPU resources and compute pipelines while explicitly managing memory, numerical behavior and unsupported operators.",
+      "prerequisiteReasons": {
+        "cpu-vs-gpu": "Explains the parallel execution substrate of compute pipelines.",
+        "gpu-data-flow": "Explains staging, transfers and synchronization around device operations.",
+        "numeric-precision-formats": "Grounds storage and arithmetic compatibility and numerical comparison."
+      }
+    },
+    "retrieval-query-expansion": {
+      "aliases": [
+        "query expansion",
+        "query rewriting"
+      ],
+      "objective": "Retrieval query expansion searches bounded variants of an original information need while preserving exact constraints and evaluating whether added recall outweighs drift and cost.",
+      "prerequisiteReasons": {
+        "lexical-retrieval": "Defines how terms acquire candidate evidence before any reranking.",
+        "reciprocal-rank-fusion": "Provides an explicit rank-based combination rule for variant result lists.",
+        "measurement": "Defines the held-out recall, drift, cost and latency comparison."
       }
     }
   }

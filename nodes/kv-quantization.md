@@ -1,7 +1,7 @@
 ---
 id: kv-quantization
 title: KV-Cache Quantization
-summary: The kv-cache — the stored keys and values of every past token — is normally held in 16-bit floats (FP16), and for long context or large batch it is the biggest thing in memory and…
+summary: KV-cache quantization reduces the precision of request-dependent attention state while balancing reconstruction error, metadata, residual buffers and kernel cost.
 type: concept
 tags: [ml/llm/inference]
 prereqs: [quantization, kv-cache]
@@ -10,127 +10,32 @@ sources:
   - "Hooper et al., 'KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization' (2024), arXiv:2401.18079"
 status: explained
 created: 2026-06-23
-updated: 2026-06-23
+updated: 2026-10-25
 ---
 
 # KV-Cache Quantization
 
 ## Summary
 
-The [[kv-cache]] — the stored keys and values of every past token — is normally
-held in 16-bit floats (FP16), and for long context or large batch it is the
-biggest thing in memory *and* the thing the model must re-read from memory on
-**every** decode step. KV-cache quantization shrinks it by storing those cached
-`K` and `V` numbers as low-precision integers (INT8, even INT4) instead of FP16,
-using ordinary [[quantization]]: keep a small integer code per value plus a shared
-**scale `s`**, and multiply back (`x̂ = q × s`) the moment a value is needed for
-attention. INT8 halves the cache (2×); INT4 quarters it (4×) — and because decode
-is bottlenecked on *moving* the cache, not computing on it, reading half as many
-bytes makes each step roughly that much faster. The one non-obvious wrinkle: the
-**keys** have a few wildly large "outlier" channels that would wreck a single
-shared scale, so practice quantizes keys **per-channel** and values **per-token**
-rather than one scale for the whole cache.
+KV-cache quantization stores request-dependent keys and values with fewer bits. It applies [[quantization]] to the [[kv-cache]], independently of model-weight precision. It can reduce memory traffic and increase capacity, but payload bit ratios are not guarantees about total memory, accuracy or decoding speed.
 
 ## Grounded explanation
 
-**Where the cost is.** Recall from [[kv-cache]] that decoding stores, for the
-whole sequence, `2 × n_tokens × n_layers × n_heads × d_head` numbers, and that for
-long context or large batch this cache is the **dominant** inference cost. Two
-costs, really. (1) *Memory*: the cache can dwarf the model's own weights — e.g. a
-batch of 32 sequences of 8192 tokens, 32 layers, 32 heads, `d_head = 128`, at 2
-bytes each (FP16), is `2 × 8192 × 32 × 32 × 128 × 32 × 2 bytes ≈ 137 GB`, more
-than fits beside the weights on one accelerator. (2) *Bandwidth*: from [[kv-cache]],
-each decode step computes only **one** new token but must read the **entire**
-cache back out of memory to attend against it. Decode is therefore *memory-bound* —
-the arithmetic is trivial; the time goes to streaming those bytes in. Halve the
-bytes and you roughly halve both the footprint and the per-step read time. That is
-the entire motivation.
+An ordinary decoder retains keys and values for past tokens so they need not be recomputed. For fixed layers, KV heads and head width, stored values grow with retained tokens and concurrent sequences. Weight-only quantization changes learned parameter storage, not automatically the precision of these computed activations. Cache dominance depends on workload and architecture; it is not universal at every context or batch size.
 
-**The idea: apply [[quantization]] to the cache contents.** Instead of storing each
-cached key/value as an FP16 number, store it as a low-bit integer **code** plus a
-shared **scale**, exactly the scheme from [[quantization]]: a code `q` stands for
-the real value `q × s`, where the scale that loses nothing to clipping is
-`s = max(|x|) / q_max` and `q_max = 2^(b−1) − 1` for `b` bits (INT8: `q_max = 127`;
-INT4: `q_max = 7`). The cache write becomes `q = round(x / s)`; the cache read —
-which happens inside attention every step — becomes `x̂ = q × s`. FP16→INT8 takes
-each value from 16 bits to 8 (2× smaller); FP16→INT4 takes it to 4 (4× smaller).
-The price, also straight from [[quantization]], is bounded rounding error
-`|x̂ − x| ≤ s/2`: the keys and values fed into attention are now slightly perturbed.
-This is the whole trade — a small, bounded error on `K`/`V` in exchange for 2×–4×
-less cache to store and stream.
+For symmetric integer quantization, let x be a cached scalar, s a positive shared scale and q the nearest representable integer code. With no clipping, q=round(x/s) reconstructs x_hat=q×s and has error at most s/2. Four-bit symmetric codes might use -7 through 7; asymmetric schemes instead use a zero point. FP8 and codebook schemes use different reconstruction levels and cannot inherit this uniform-grid bound without checking their own conversion rule.
 
-**The non-obvious step: keys have outliers, so granularity matters.** If you could
-use one scale for the entire cache you would — one number to store. But recall the
-granularity warning from [[quantization]]: a single outlier inflates `M = max(|x|)`
-and so inflates `s`, and a larger `s` coarsens *every other value* (a stray large
-entry can force all the small ones to round to code `0`, erasing them). It turns
-out the **key** vectors of trained transformers have exactly this pathology: within
-a key vector, a *few specific coordinates* (the same coordinate across all tokens —
-a "channel") carry persistently huge magnitudes, while the rest are small. One
-per-tensor scale built from those outliers would crush the many small coordinates
-to zero. The fix is finer granularity, chosen to match where the outliers live:
+**Granularity and streaming.** Per-tensor scales are cheap but couple many values to the same range. Per-channel key scales group the same coordinate across tokens; per-token value scales group coordinates within a token. KIVI motivates this asymmetry from studied key outliers and value-error behavior, and keeps a recent high-precision residual cache until blocks can be quantized. These are tested design choices, not laws that every model has identical outlier structure. Per-channel grouping also needs tokens to arrive before a full block can be encoded.
 
-- **Keys: per-channel.** The outliers are aligned by *coordinate*, so give **each
-  coordinate (channel) its own scale**, computed over that coordinate across the
-  cached tokens. An outlier channel then gets a large scale that only coarsens
-  *itself*; the well-behaved channels keep small scales and stay sharp.
-- **Values: per-token.** Value vectors don't show the same fixed-channel outlier
-  structure, so they're quantized **per token** — each token's whole value vector
-  shares one scale — which also fits the cache layout (a token's `V` arrives all at
-  once when the token does).
+### Worked example
 
-Some methods (e.g. KVQuant) go further and keep a handful of the very worst outlier
-channels in full FP16, quantizing only the rest — paying a little storage to remove
-the values that hurt most. The unifying point is the [[quantization]] lesson: put
-the scale boundaries where the outliers *aren't*, so one big value can't drag the
-grid coarse for its neighbors.
+Take two token key rows, each with two channels: [0.5,12] and [-0.8,9]. A single four-bit symmetric scale is 12/7≈1.714. The first channel's values both round to zero. With separate channel scales, the first uses 0.8/7≈0.1143: codes [4,-7] reconstruct [0.4571,-0.8]. The second uses 12/7≈1.714: codes [7,5] reconstruct [12,8.571]. Small-channel values survive, but reconstruction is not exact and two scales cost more than one. This groups actual tokens rather than assigning a separate scale to every isolated scalar.
 
-**Worked instance.** Take one cached key vector with a clear outlier coordinate and
-one cached value vector, and quantize both to **INT8** (`q_max = 127`).
+A toy cache with 1,000 values requires 2,000 payload bytes at 16 bits. Four-bit codes require 500 bytes. If there are 20 four-byte scales, they add 80 bytes: 580 bytes before residual buffers, padding and allocator overhead. The fourfold payload reduction is only about 3.45-fold for these counted terms. Temporary conversion buffers can further increase the peak.
 
-*Key vector* `k = [0.5, −0.8, 12.0, 0.3]` — coordinate 3 is the outlier (12.0 vs.
-neighbors near ±0.5).
+**Other error controls.** Non-uniform methods choose unequal reconstruction levels using calibration. KVQuant studies sensitivity-weighted levels, pre-rotation key quantization and per-vector dense-and-sparse outlier handling. Sparse values need their coordinates and a precise replacement/correction convention; they are not simply free high-precision channels. Each mechanism should be evaluated separately and in combination.
 
-- **Per-tensor (the wrong way), to see the failure.** One scale from the whole
-  vector: `M = 12.0`, `s = 12.0 / 127 ≈ 0.0945`. Codes `q = round(k/s)`:
-  `0.5/0.0945 = 5.3 → 5`; `−0.8/0.0945 = −8.5 → −8`; `12.0/0.0945 = 127 → 127`;
-  `0.3/0.0945 = 3.2 → 3`. Dequantized: `[0.472, −0.756, 12.00, 0.284]`. The small
-  values survive here only because INT8 is fairly fine — but the *error budget* is
-  set by the outlier: `s/2 ≈ 0.047`, so the small `0.3` carries error `≈ 0.016`,
-  about **5%** of its value. Drop to INT4 (`q_max = 7`, `s = 12.0/7 ≈ 1.714`) and
-  the disaster from [[quantization]] strikes: `round(0.5/1.714)=0`, `round(0.3/1.714)=0`,
-  `round(−0.8/1.714)=0` — three of four coordinates collapse to `0`, leaving
-  `[0, 0, 7, 0]` → `[0, 0, 12.0, 0]`. The outlier ate the whole vector.
-
-- **Per-channel (the right way).** Each coordinate has its own scale (in real use,
-  computed across all cached tokens for that coordinate; here, per single value for
-  illustration). The small coordinates now get small scales — e.g. coordinate 1
-  with magnitude `0.5` gets `s_1 = 0.5/127 ≈ 0.00394`, so `0.5` maps to code `127`
-  and is recovered as `0.500`, error `≈ 0.002` (`< s_1/2 ≈ 0.002`) instead of being
-  swamped by the outlier. The outlier coordinate keeps its own large scale
-  (`12.0/127 ≈ 0.0945`) and is recovered as `12.00`. No coordinate is coarsened by
-  another's magnitude. *This contrast is the reason for per-channel keys.*
-
-*Value vector* `v = [0.2, −1.3, 3.1, 0.05]` — no extreme outlier, quantized
-**per-token** (one scale for the whole vector). `M = 3.1`, `s = 3.1/127 ≈ 0.0244`.
-Codes: `round(0.2/0.0244)=8`, `round(−1.3/0.0244)=−53`, `round(3.1/0.0244)=127`,
-`round(0.05/0.0244)=2`. Dequantized `v̂ = [0.195, −1.293, 3.100, 0.0488]`, every
-error under `s/2 ≈ 0.0122`. Because `v` has no outlier, one shared (per-token)
-scale is already fine — which is exactly why values don't need the per-channel
-treatment keys do.
-
-**What it costs, what it buys.** Storage drops by the bit ratio: this key/value
-pair at FP16 is `8 numbers × 16 bits = 128 bits`; at INT8 it is
-`8 × 8 = 64 bits` plus the scales (2×, before scale overhead), and at INT4
-`8 × 4 = 32 bits` (4×). Across the whole cache that is the difference between a
-context fitting in memory or not, and between each decode step reading 137 GB or
-~68 GB (INT8) / ~34 GB (INT4) — directly proportional to decode speed, since the
-step is memory-bound. The cost is the per-value rounding error `≤ s/2` now riding
-on the `K`/`V` that enter attention, plus the small bookkeeping of many scales
-(more scales = more bits, the same bits-vs-error trade from [[quantization]], now
-applied to the scales themselves). Choosing per-channel keys and per-token values
-is what keeps that error small enough — typically INT8 is nearly lossless and
-well-done INT4 is usable — so the 2×–4× win comes almost for free.
+**Capacity is not latency.** The cache path can be bandwidth limited, but weight reads, launches, attention arithmetic, unpacking, conversion and scheduling can also matter. A compatible fused kernel can hide conversion work; an incompatible layout can erase the traffic benefit. Compare the same model, prompts, output lengths, concurrency and quality target. Measure peak allocated/reserved memory, cache bytes including metadata, prefill latency, token latency, throughput and long-context task quality. Include rare errors, saturation, block boundaries and shifted inputs. Neither almost-lossless accuracy nor speed proportional to bit width is a general guarantee.
 
 ## Prerequisites
 
@@ -139,8 +44,5 @@ well-done INT4 is usable — so the 2×–4× win comes almost for free.
 
 ## Sources
 
-- Liu et al., "KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache"
-  (2024), arXiv:2402.02750 — per-channel keys, per-token values.
-- Hooper et al., "KVQuant: Towards 10 Million Context Length LLM Inference with KV
-  Cache Quantization" (2024), arXiv:2401.18079 — per-channel key quantization and
-  isolating outlier channels in high precision.
+- <https://arxiv.org/html/2402.02750v1> — KIVI: per-channel keys, per-token values and streaming residual buffers.
+- <https://arxiv.org/html/2401.18079v2> — KVQuant: non-uniform reconstruction, pre-RoPE keys and dense-and-sparse outliers.

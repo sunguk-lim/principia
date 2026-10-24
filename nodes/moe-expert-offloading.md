@@ -5,7 +5,7 @@ summary: Expert offloading keeps selected MoE weights in host memory and transfe
 type: concept
 tags: [ml/llm/inference]
 prereqs: [mixture-of-experts, llm-inference-memory-budget, gpu-data-flow]
-sources: [https://arxiv.org/abs/2401.14361, https://arxiv.org/abs/2401.14361]
+sources: [https://arxiv.org/abs/2401.14361]
 status: explained
 created: 2026-10-16
 updated: 2026-10-25
@@ -42,5 +42,3 @@ Measure cold and warm expert bytes, cache misses, read amplification, storage qu
 ## Sources
 
 - [MoE-Infinity](https://arxiv.org/abs/2401.14361): activation-aware expert caching and offloading under constrained GPU capacity.
-
-- <https://arxiv.org/abs/2401.14361>

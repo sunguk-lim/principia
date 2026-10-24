@@ -5,10 +5,10 @@ summary: Background document indexing persists versioned ingestion work and buil
 type: concept
 tags: [ml/information-retrieval]
 prereqs: [retrieval-chunking, vector-database, transactional-outbox, dataset-lineage]
-sources: [https://learn.microsoft.com/en-us/azure/search/search-indexer-overview, https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html]
+sources: [https://learn.microsoft.com/en-us/azure/search/search-indexer-overview, https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html, https://developers.llamaindex.ai/python/framework/module_guides/loading/ingestion_pipeline/]
 status: explained
 created: 2026-10-24
-updated: 2026-10-24
+updated: 2026-10-25
 ---
 
 # Background Document Indexing
@@ -35,6 +35,12 @@ Compare synchronous and queued ingestion on upload latency, time-to-searchable, 
 
 If a background task reaches 100% page extraction, is the new document necessarily safe to retrieve? No. Validate index writes, version, coverage and permissions under an explicit publication rule.
 
+## Incremental invalidation and synchronization
+
+A document content hash can skip unchanged work only if the cache identity also represents the transformations that affect output. Record extraction, chunking, embedding and relevant schema versions. Equal source bytes with a new embedding model are not reusable old vectors merely because the document hash is unchanged. Conversely, an access-policy update may require metadata and cache invalidation without recomputing the same text representation. LlamaIndex's ingestion pipeline documents node-plus-transformation caching and document-ID/hash tracking; a complete deployment must still choose its permission and deletion policies.
+
+For a toy corpus of 100 documents, suppose two change text, one is deleted and a fourth changes access scope. Re-embed the two changed texts under the same pipeline; remove the deleted document's units; update authorization for the fourth. Re-embedding only two documents is not a complete synchronization if deleted or revoked evidence remains searchable. If the embedding revision changes, potentially all 99 remaining documents require new compatible representations. Bind active versions, retries and tombstones to the same publication contract so a late old job cannot restore a deleted source. Track source-to-search delay and failed imports separately from endpoint health; periodic polling provides bounded freshness, not instantaneous consistency.
+
 ## Prerequisites
 
 - [[retrieval-chunking]]
@@ -46,3 +52,5 @@ If a background task reaches 100% page extraction, is the new document necessari
 
 - <https://learn.microsoft.com/en-us/azure/search/search-indexer-overview>
 - <https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html>
+
+- <https://developers.llamaindex.ai/python/framework/module_guides/loading/ingestion_pipeline/>

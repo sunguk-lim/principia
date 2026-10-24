@@ -7810,13 +7810,6 @@
       "reason": "Worked example is supporting explanation for the canonical Bellman Equation objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-da0f7c69bee52c5a88b9",
-      "sourceId": "kv-quantization",
-      "contentHash": "505bcab732b0e585a4424f997f6563a71c3fa74081d0c070a7cb5ca2aa781648",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical KV-Cache Quantization objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-da19d8fc6f617a33a8e7",
       "sourceId": "bayes-rule",
       "contentHash": "dfd27988c68b182b41e48b7d29eb01f561a7fc63f1432dd1597bf5951c6d5ea0",
@@ -8186,13 +8179,6 @@
       "contentHash": "f70f2be6e80079d0b77f7dc98b3445e9b12c9d4532ea7342afd7db7c88cb519a",
       "decision": "retain",
       "reason": "The log-likelihood, and why we maximize it is supporting explanation for the canonical Likelihood objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-e6b54839d5e518a256a5",
-      "sourceId": "kv-quantization",
-      "contentHash": "2579a2dddcbc5f5b5eaa54d595574dba46fe65cf446a9ae92e45d6114e159a0c",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical KV-Cache Quantization objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-e7a7f0715d5938e56e9d",
@@ -10520,20 +10506,6 @@
       "reason": "Retains the local-versus-global objective counterexample within greedy decoding reproducibility; probability chain rule is a real declared prerequisite, not a new synonym."
     },
     {
-      "candidateKey": "cand-fd1a5baf03ac4803802d",
-      "sourceId": "persistent-agent-improvement",
-      "contentHash": "cf5e740fc30b0298e1990709fd2c317c533790483999d5e08d4b0e3e4521099e",
-      "decision": "retain",
-      "reason": "Introduces the canonical learning objective and its scope, not another entity."
-    },
-    {
-      "candidateKey": "cand-eb8d72fe5087f6bc41fd",
-      "sourceId": "persistent-agent-improvement",
-      "contentHash": "866ba2420a9742f7e8ebc1ed602d29c09230668d9b04431c22cdf152b9f52867",
-      "decision": "retain",
-      "reason": "Retains the artifact-promotion mechanism of persistent improvement; separately existing skill packages supply format, so no duplicate skill identity."
-    },
-    {
       "candidateKey": "cand-ef5ed691911d7378c5fa",
       "sourceId": "prompt-injection",
       "contentHash": "a7840dd49e1d6a14890af6965ce7e3c918b20601fc51319ed324b4df0d2a4698",
@@ -11066,34 +11038,6 @@
       "reason": "Tests the defining misconception of this concept; not a separate entity."
     },
     {
-      "candidateKey": "cand-bc4d004a20038edacb10",
-      "sourceId": "background-document-indexing",
-      "contentHash": "c3225919300f158018c13edba5b41a87a558a1f5112804e49cf4db6e4f3be012",
-      "decision": "retain",
-      "reason": "Defines the canonical learning objective rather than a second concept."
-    },
-    {
-      "candidateKey": "cand-7ad0552429bfafbd909b",
-      "sourceId": "background-document-indexing",
-      "contentHash": "28af9e352f40f68e9eabf2b55adc1ceb066c72c328d97b42432174fbe57bea01",
-      "decision": "retain",
-      "reason": "Derives the same canonical mechanism from its reviewed prerequisites."
-    },
-    {
-      "candidateKey": "cand-25932215411b0d47aedc",
-      "sourceId": "background-document-indexing",
-      "contentHash": "1cb75e91e6d37d0d90b7be7e0348dcb96c31498e4a977def6993ffb39adc8451",
-      "decision": "retain",
-      "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
-    },
-    {
-      "candidateKey": "cand-a7a751c3e16d530c15f2",
-      "sourceId": "background-document-indexing",
-      "contentHash": "9b664d84e5a0c217a511b320a6571f2148c8baaf9eb5aa8c1b23cbb689fdabfe",
-      "decision": "retain",
-      "reason": "Tests the defining misconception of this concept; not a separate entity."
-    },
-    {
       "candidateKey": "cand-30b92ed08cc1505b5bf9",
       "sourceId": "gated-recurrent-unit",
       "contentHash": "777aab09c8fc62ecf2e5365489be8b8a55eeb23cfdb1a720d34447b87d1fc1fc",
@@ -11393,6 +11337,363 @@
       "contentHash": "29069584c9f5ad3bb56bc75c3c19e25819c2d3ae713fe3f55941294c7b3132bb",
       "decision": "retain",
       "reason": "Tests the defining misconception of this concept; not a separate entity."
+    },
+    {
+      "candidateKey": "cand-c292849bc4b42b845348",
+      "sourceId": "agent-interaction-trajectories",
+      "contentHash": "dd143280ffc696ae27295eaaaa38d494dbf3c744db85e08732510ffa65bb4e8b",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-bf1af77981d47aaa6500",
+      "sourceId": "agent-interaction-trajectories",
+      "contentHash": "06cd1cd71a3624ebe3472f93f03762fc1ee4feba28557cdac5a5564b753c5362",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-71acd603314b729838d0",
+      "sourceId": "agent-interaction-trajectories",
+      "contentHash": "4095b78a6bcefd34ec9d1ed1d006f481d90b8a083179af2c6058a955c96c7442",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-9ef7651b6a8e08af80b8",
+      "sourceId": "agent-interaction-trajectories",
+      "contentHash": "688e478eccaf75d51faefa3c30c6aa777b21005780bbb26709a5d54254bfd34a",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-bc4d004a20038edacb10",
+      "sourceId": "background-document-indexing",
+      "contentHash": "c3225919300f158018c13edba5b41a87a558a1f5112804e49cf4db6e4f3be012",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-7ad0552429bfafbd909b",
+      "sourceId": "background-document-indexing",
+      "contentHash": "28af9e352f40f68e9eabf2b55adc1ceb066c72c328d97b42432174fbe57bea01",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-25932215411b0d47aedc",
+      "sourceId": "background-document-indexing",
+      "contentHash": "1cb75e91e6d37d0d90b7be7e0348dcb96c31498e4a977def6993ffb39adc8451",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-a7a751c3e16d530c15f2",
+      "sourceId": "background-document-indexing",
+      "contentHash": "9b664d84e5a0c217a511b320a6571f2148c8baaf9eb5aa8c1b23cbb689fdabfe",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-08f4043efe3b3d81985d",
+      "sourceId": "background-document-indexing",
+      "contentHash": "89db3b2d44af17fcea12f9df7bb817d75789d842116ae6b25796a167205154f1",
+      "decision": "retain",
+      "reason": "Explains cache validity and publication within the existing durable version-bound ingestion objective. Content-only reuse is contrasted with transformation, delete and permission changes; it does not assert that a hash alone is a new evidence entity."
+    },
+    {
+      "candidateKey": "cand-c3ae82c417f49196ae5e",
+      "sourceId": "effective-context-utilization",
+      "contentHash": "322d818ec42d527c2fa30f7c5628cdd0ffbb7fdfb087603a41d6a0c9511f5f4f",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical objective before its sections; not a new concept."
+    },
+    {
+      "candidateKey": "cand-4f873a57548e81452e0b",
+      "sourceId": "effective-context-utilization",
+      "contentHash": "26a4fb6b1d6f91ebca44a62fdc992973e82b296bee9cef76e62efa88cbd684c3",
+      "decision": "retain",
+      "reason": "Defines acceptance experiments for the same effective-context objective; no independent concept is introduced by a validation heading."
+    },
+    {
+      "candidateKey": "cand-07afc5e141406ec24666",
+      "sourceId": "effective-context-utilization",
+      "contentHash": "082245fc63c097464b44d2cbde30b288abdd61ad5b9481d913c2df69f31f4126",
+      "decision": "retain",
+      "reason": "Supports the existing effective-context measurement identity with RULER tasks, perplexity limitations and stratified arithmetic; a proposed synonymous long-context node was not published."
+    },
+    {
+      "candidateKey": "cand-8da06c5a5931cc1b5de9",
+      "sourceId": "fp8-kv-cache",
+      "contentHash": "33510fa986d410cc43b5e4a5af6465ea8ebb4250bea9aae1cc4c09fb0ebd0684",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-5c666eb305eb3384e8af",
+      "sourceId": "fp8-kv-cache",
+      "contentHash": "1ff89727e31f5b8d953cc3a4639cfb2fabbea9350696369c0ef6637ebe4ecf34",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-28656ecf7c577fc91a75",
+      "sourceId": "fp8-kv-cache",
+      "contentHash": "7ae5952ca0f4fae8b9f69fcea6012499c22d15fb28e6c503c342df35e700facb",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-e698fb974adf26834d2f",
+      "sourceId": "fp8-kv-cache",
+      "contentHash": "a22efd4d58cc0feee62a2f2323de4e1404a7fe169bbd93108cb06cdae8a09358",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-d1a13aeea041ad456a33",
+      "sourceId": "kv-quantization",
+      "contentHash": "c3b03c2954c3803ab87d5e2389d92738ef99294dd6fafe7e8fe6bf09bee44cc9",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical objective before its sections; not a new concept."
+    },
+    {
+      "candidateKey": "cand-604c9f185d9c19c45be3",
+      "sourceId": "kv-quantization",
+      "contentHash": "bccda1293d2691b8955b99210153e0d38a8b0111eb2aac9f2b39c11f667a947a",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-ceb553fa9c5e87dab699",
+      "sourceId": "learned-position-table-extension",
+      "contentHash": "943dae5bfd975ec0181c1f17edd207b8e29b6b78e989ae2cd2ebc96ce44d6215",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-9448f59176127f846397",
+      "sourceId": "learned-position-table-extension",
+      "contentHash": "4036b75dc0c9499472059e470333e9d943d6eb0306c06dbac1734f1c3d66c211",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-01822791a4be5a71dbae",
+      "sourceId": "learned-position-table-extension",
+      "contentHash": "5bcfa9f3982ae5b986b4ba0272896402786df5684c2a484e3db336ec1a3cd949",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-963af840aca18334380d",
+      "sourceId": "learned-position-table-extension",
+      "contentHash": "d3f8b136f52b7b77298b2db196b9f4e136fabcd0fa54fa6b29acb248eeb73bfd",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-628c1cea7e668aa78338",
+      "sourceId": "moe-expert-offloading",
+      "contentHash": "ba0456fd6c29f54dafa0ab4b4c246e0b343ac9a948b485eff197c4b046f94bda",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical objective before its sections; not a new concept."
+    },
+    {
+      "candidateKey": "cand-2dc4f06309266d78df7e",
+      "sourceId": "moe-expert-offloading",
+      "contentHash": "8510600707a0598c83f4d9a7fb1319927f0306e6926ccbd6f0dcab7af316f2e4",
+      "decision": "retain",
+      "reason": "Extends the existing tiered expert-weight placement objective with disk service and cache-hit accounting. The bytes/bandwidth calculation is a supporting lower-bound example, not a distinct algorithm identity."
+    },
+    {
+      "candidateKey": "cand-97f60d9a8eb51023cfbb",
+      "sourceId": "nonuniform-kv-quantization",
+      "contentHash": "7a1edb67dbb2b8e86ed96c10cc8209027918e2a309022a9f486b028c3621f3ab",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-925cc39cd06a0f4dd528",
+      "sourceId": "nonuniform-kv-quantization",
+      "contentHash": "7d4ae2bf78f580ad105498cab5db502fe2eb78b3330c7d61cd9a2ec05eaa419e",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-65039337494f5f71f2d7",
+      "sourceId": "nonuniform-kv-quantization",
+      "contentHash": "1aebc7160600a9b9817692cfa8687709674a0d2b5cd588769a755a66541dc7b6",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-91c8cfb5305ea349df5e",
+      "sourceId": "nonuniform-kv-quantization",
+      "contentHash": "0ebe58648a5fca495d423c86b8d41cc23df7591e23a0b11cf9de3109b70b9b86",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-b8334571b71865a0faff",
+      "sourceId": "origin-private-file-system",
+      "contentHash": "3ccd301a29cb35992d73d7399be5f5d96ebc64e406e997c81f0693e2254a1eff",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-9c76becbb15966341eff",
+      "sourceId": "origin-private-file-system",
+      "contentHash": "cc0991ec82715532514ade5d3ced3995e21e88cc8cfcba2a4ae01d2da06051e2",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-94af718468933188ab18",
+      "sourceId": "origin-private-file-system",
+      "contentHash": "3b426b5e48487dc906e6ad644135446594b01076403513cc8a6f1df1984678da",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-259aedf22fc5b62a3cda",
+      "sourceId": "origin-private-file-system",
+      "contentHash": "a2499dd862a9a3ec0e5544abff380c7ccb560c59f2c4498472adaa42c956f759",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-fd1a5baf03ac4803802d",
+      "sourceId": "persistent-agent-improvement",
+      "contentHash": "cf5e740fc30b0298e1990709fd2c317c533790483999d5e08d4b0e3e4521099e",
+      "decision": "retain",
+      "reason": "Introduces the existing canonical objective before its sections; not a new concept."
+    },
+    {
+      "candidateKey": "cand-eb8d72fe5087f6bc41fd",
+      "sourceId": "persistent-agent-improvement",
+      "contentHash": "866ba2420a9742f7e8ebc1ed602d29c09230668d9b04431c22cdf152b9f52867",
+      "decision": "retain",
+      "reason": "Applies the existing retained-change and independent-promotion objective to skill extraction; this preexisting section remains one application, not an extra entity."
+    },
+    {
+      "candidateKey": "cand-4ab0e58e4204786c2685",
+      "sourceId": "persistent-agent-improvement",
+      "contentHash": "bf060c4b9ed0d0a43861872a2e3fa3ae44c56aafa9bff808edad118c15a9e887",
+      "decision": "retain",
+      "reason": "Refines evidence labeling and independent acceptance within the existing improvement loop. Product-side capture is separately authored as agent-interaction-trajectories; no duplicate loop identity is added."
+    },
+    {
+      "candidateKey": "cand-d4385b5a854d10c73a22",
+      "sourceId": "residual-kv-buffer",
+      "contentHash": "96b8bfeb26a99972e18c41260db1806f3a7a38523fc6164dbb710e0534e333a7",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-01e8e49878a0b99febd0",
+      "sourceId": "residual-kv-buffer",
+      "contentHash": "10eb0df2b1f42db976297fbeeb86f16a1257e71360d1afd65c1569a1afad3efc",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-a846faa3f701fa0c90e5",
+      "sourceId": "residual-kv-buffer",
+      "contentHash": "7762a9532c59ab64d6f75ab1d089ffbffd6072ee22a2cde35aceaab55b0313c4",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-8623e5dca71d8255ca52",
+      "sourceId": "residual-kv-buffer",
+      "contentHash": "62d67148351152c96f2700eb09d9627fb2561d84b3761aa9869eab5fa79250a6",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-19c7e2c3193bcda6148d",
+      "sourceId": "shared-retrieval-service",
+      "contentHash": "4a12ae0f995ec9e6d5bf3be776c0b540e9048143c42139b6857675a821dc2b42",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-fe8a45670ba3fb600298",
+      "sourceId": "shared-retrieval-service",
+      "contentHash": "9703f846df961fbfe64297b1a0bab49d9b1cfd4d19bad6a53556cc9ae0dcc8e0",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-704971dc43805508b70b",
+      "sourceId": "shared-retrieval-service",
+      "contentHash": "eb2c010ee251a8d3ca6727e6bd4702580e18dd188ebbd68574a9dc4cdc482f7e",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-0829a23e95e01a291901",
+      "sourceId": "shared-retrieval-service",
+      "contentHash": "970756a095876ebb0388a9ec56bf70b7dad909ba852268816e9aaaf77b8ad719",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-81057fbf8c84f00a52e7",
+      "sourceId": "sparse-kv-outlier-storage",
+      "contentHash": "e2b68bf05d47e496b92e494a1293c06fb4aac0f2251602aa1811fc580beedfcf",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-17da84a10be9c522a770",
+      "sourceId": "sparse-kv-outlier-storage",
+      "contentHash": "a87dcfa49e2fdb9f1988a0e770377c6a51b47b58585bd62603732a45fb3b3b1f",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-d7a043bc01e502ed9a23",
+      "sourceId": "sparse-kv-outlier-storage",
+      "contentHash": "08243cbbcb547a4ff01aa5776519cecaa1fa2e1345a2d9850f6738bfee4da0f3",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-d551a93940d241714ffd",
+      "sourceId": "sparse-kv-outlier-storage",
+      "contentHash": "cf6003cc1676e3c410a15bb4fd075056863a1dbb1310a040a454f118b46e17e7",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-2162f1025205351f056a",
+      "sourceId": "webgpu-inference",
+      "contentHash": "77d4e0ef02c2b137aac74b05289a3c83a219419e015821bcde0b352818efa770",
+      "decision": "retain",
+      "reason": "Defines this canonical identity and scope; does not introduce a second independent concept."
+    },
+    {
+      "candidateKey": "cand-6f70872f50e07447f85f",
+      "sourceId": "webgpu-inference",
+      "contentHash": "d0f49e31a6c20ee5597dd24eb0b74b5a7544ff15abf2991ff5a6f25b456561bf",
+      "decision": "retain",
+      "reason": "Derives this canonical mechanism from its declared and inherited foundations."
+    },
+    {
+      "candidateKey": "cand-391b65396bb0df34ec57",
+      "sourceId": "webgpu-inference",
+      "contentHash": "0177cdd72ea801e44bf06ce16d98c75bf3db4dff3b41a6d6043a39106943f363",
+      "decision": "retain",
+      "reason": "Checks this objective through a concrete arithmetic or operational instance rather than introducing a new identity."
+    },
+    {
+      "candidateKey": "cand-3150e89e947cdcc342ea",
+      "sourceId": "webgpu-inference",
+      "contentHash": "4636cdf3734e352bdc3e397c82913a79c33b45ff9bd23e35e9c8413948eb636e",
+      "decision": "retain",
+      "reason": "Tests the defining misconception of this canonical concept, not a second entity."
     }
   ]
 }

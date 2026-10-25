@@ -1,25 +1,19 @@
-# Cuda Graph Replay
+# CUDA Graph Replay for Inference
 
 ## Meaning
 
-CUDA graph replay reduces repeated CPU work submitting a compatible GPU operation sequence. It does not make the operations themselves faster.
+CUDA graph replay reduces recurring host submission work for a compatible device-operation sequence. It records work structure, not the result of a model forward pass. Every replay still executes the kernels on current input data.
 
 ## Mechanism
 
-Capture a warmed, stable execution path, then replay it with stable buffers and compatible shapes. Multiple graph buckets improve coverage but require memory and startup work; eager fallback handles incompatible shapes.
+Warm up eagerly to establish initialization and allocations, then capture eligible work with the framework's documented stream ordering. Retain input and output storage: replay uses captured pointers, so rebinding a variable to a different tensor does not update those pointers. Copy new data into stable buffers before replay and wait appropriately before consuming or overwriting output. CPU logic is not automatically replayed.
 
-## Example
+PyTorch's ordinary replay path expects compatible shapes and arguments. CUDA's lower-level graph-update APIs can change supported parameters under compatibility rules; they do not make arbitrary topology changes free. Handle update failure with re-instantiation or eager fallback. Multiple shape buckets exchange preparation time and graph memory for better request coverage; padding also spends device work.
 
-A decode step with many tiny kernels has visible GPU idle gaps between CPU launches. Replaying a captured graph can reduce those gaps, while a long compute-bound prefill may barely change.
+## One example
 
-## Boundaries and trade-offs
+Assume a measured eager interval takes 120 microseconds: 80 of device work plus 40 of attributable gaps. Replay takes 88: the same 80 plus 8 of gaps. The saving is 32 microseconds. An 8,000-microsecond preparation cost is recovered after 250 replays; more than 250 is needed for a net win under those fixed assumptions. Include copies, synchronization and output handling in both measured paths. These are toy timings, not a universal speedup.
 
-A graph is an execution packaging mechanism. The CPU can submit a captured operation sequence more cheaply, but the GPU still executes kernels and moves data. This means its benefit is conditional on the fraction of time spent waiting for launches. Capture can fail or produce incorrect assumptions if buffers change address, operations allocate unexpectedly, or control flow depends on live data. Warm-up and replay correctness checks are part of deployment.
+## Check your understanding
 
-## Validation
-
-Profile a representative arrival trace, not a single ideal batch. Label host enqueue periods, GPU idle gaps, kernel execution, queueing, and synchronization. Then compare eager and replay under equal shapes, precision, and quality. Count which requests use a captured bucket, which are padded, and which fall back. Extra buckets improve coverage but reserve memory; padding can waste compute. If p95 latency improves only on a benchmark shape, the production claim is not established.
-
-## Understanding check
-
-Which profiler evidence distinguishes launch-bound decode from kernel-bound decode, and what costs grow when you capture more batch shapes?
+**Question:** Does replaying on new inputs reuse old predictions? **Answer:** No, it reruns the recorded work. Profile launch gaps and compare eager/replay at matched model, shape, precision and quality. If long device kernels dominate the request, removing small host gaps has limited headroom. Report actual bucket coverage, memory and cold-start cost alongside steady-state latency.

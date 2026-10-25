@@ -5,10 +5,10 @@ summary: Agent harness interoperability requires a shared task interface plus te
 type: concept
 tags: [ml/agents]
 prereqs: [agent-harness-transfer, tool-call-execution-contract, agent-session-state]
-sources: [https://agentclientprotocol.com/overview/introduction, https://modelcontextprotocol.io/specification/2025-06-18/server/tools]
+sources: [https://agentclientprotocol.com/overview/introduction, https://modelcontextprotocol.io/specification/2025-06-18/server/tools, https://agentclientprotocol.com/protocol/session-setup, https://agentclientprotocol.com/protocol/prompt-turn]
 status: explained
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-26
 ---
 
 # Agent Harness Interoperability
@@ -25,6 +25,16 @@ The Agent Client Protocol is a primary example of a shared editor–agent interf
 
 Run conformance tests across at least two runtimes: start, stream, cancel, resume, file mutation, malformed input, tool refusal, timeout, and crash recovery. Compare the resulting artifacts, effect logs, latency, and permissions. A success on one happy-path task does not establish substitutability.
 
+## Native runtimes, artifact handoffs, and cancellation
+
+A coordinator can keep one conversation while worker A and worker B execute in their own harnesses. That is not the same as changing the coordinator's model or serializing one live execution into another runtime. Preserve a mapping from coordinator task to worker runtime, session and attempt. Capability negotiation must precede optional operations: a runtime that can create a session does not necessarily support loading it. ACP's session-load path can replay history, while a supported resume path can reconnect without replaying it. Neither promises that a native tool process or arbitrary interpreter state moved between runtimes.
+
+The artifact contract is equally important. Suppose worker A produces revision `r7` of `analysis.json`, then worker B builds a report from it. The handoff should identify the producer, attempt, immutable content digest, revision, media type and permitted location. B verifies those properties and its allowed read scope before consuming the file. A local path in A's workspace is not automatically meaningful or authorized in B's. If A later writes `r8`, it is a new candidate input, not an invisible mutation of B's already accepted evidence. Separate workspaces reduce edit collisions; they do not create a security sandbox or revoke shared credentials.
+
+Cancellation is a request-and-observation protocol, not proof of rollback. ACP illustrates the distinction: the client sends a cancellation notification, the agent attempts to abort ongoing work, and the original prompt response eventually reports a cancelled stop reason after pending updates. Updates can arrive after the request but before that response. An adapter must still reconcile them. If an artifact or external side effect completed just before cancellation, cancelling does not erase it; inspect the observed receipt and mark an unobserved outcome unknown instead of inventing failure.
+
+A conformance fixture starts task T in runtime A, receives two partial events, sends cancel, then receives a completed-file event before the terminal cancelled response. The correct result retains the file's observed revision and records that the turn was cancelled; it must not label the file nonexistent or silently resume T in B. Test duplicate events, lost terminal responses, permission-request cancellation, missing artifacts and incompatible resume capabilities. A common transport only helps if these semantic distinctions survive translation.
+
 ## Prerequisites
 
 - [[agent-harness-transfer]]
@@ -35,3 +45,7 @@ Run conformance tests across at least two runtimes: start, stream, cancel, resum
 
 - [Agent Client Protocol introduction](https://agentclientprotocol.com/overview/introduction): primary editor–agent interoperability contract.
 - [Model Context Protocol tools specification](https://modelcontextprotocol.io/specification/2025-06-18/server/tools): a separate tool-discovery and invocation boundary.
+
+- <https://agentclientprotocol.com/protocol/session-setup>
+
+- <https://agentclientprotocol.com/protocol/prompt-turn>

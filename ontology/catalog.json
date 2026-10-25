@@ -3576,6 +3576,62 @@
         "reciprocal-rank-fusion": "Provides an explicit rank-based combination rule for variant result lists.",
         "measurement": "Defines the held-out recall, drift, cost and latency comparison."
       }
+    },
+    "graph-guided-evidence-retrieval": {
+      "prerequisiteReasons": {
+        "knowledge-graph": "Provides typed entity identities and relations used to select bridge evidence.",
+        "retrieval-augmented-generation": "Provides the index-to-evidence-to-generation pipeline that graph retrieval changes.",
+        "retrieval-authorization-boundary": "Grounds permission checks for intermediate relation evidence before model exposure."
+      },
+      "relations": [
+        {
+          "type": "CONTRASTS_WITH",
+          "target": "graph-rag",
+          "reason": "Local entity/path evidence selection is distinct from the existing global community-summary GraphRAG objective."
+        },
+        {
+          "type": "CONTRASTS_WITH",
+          "target": "agentic-rag",
+          "reason": "Graph structure guides evidence selection; agentic control decides which retrieval actions to take, and can invoke it."
+        }
+      ]
+    },
+    "rag-latency-budget": {
+      "prerequisiteReasons": {
+        "retrieval-augmented-generation": "Defines the retrieval and context-assembly stages whose elapsed work is attributed.",
+        "prefill-vs-decode": "Separates input-processing and streamed-generation contributions to first and final output.",
+        "trace-span": "Provides correlated start/end operation intervals and parent/child containment.",
+        "latency-percentile": "Grounds distributional latency validation rather than summing unrelated stage tails."
+      }
+    },
+    "text-embedding-api-contract": {
+      "prerequisiteReasons": {
+        "embedding": "Defines the learned vector representation returned by the API.",
+        "cosine-similarity": "Grounds the normalization/metric compatibility rule and numerical scoring example.",
+        "nearest-neighbor-search": "Defines the downstream ranking/index objective that encoder migration must preserve."
+      }
+    },
+    "cache-augmented-generation": {
+      "prerequisiteReasons": {
+        "prefix-caching": "Provides the compatibility and retained-state mechanism used for a preloaded evidence prefix.",
+        "effective-context-utilization": "Distinguishes fitting the corpus from reliably using it across positions and distractors.",
+        "retrieval-authorization-boundary": "Grounds caller-scoped evidence permission even when there is no query-time selector."
+      },
+      "relations": [
+        {
+          "type": "ALTERNATIVE_TO",
+          "target": "retrieval-augmented-generation",
+          "reason": "A bounded stable authorized corpus may be preloaded instead of selecting documents per query; hybrid designs remain possible."
+        }
+      ]
+    },
+    "provider-capability-matrix": {
+      "prerequisiteReasons": {
+        "fine-tuning": "Distinguishes weight-training adaptation from an endpoint/account merely advertising a currently available training-job capability.",
+        "tool-call-execution-contract": "Defines the authorization and execution semantics compared across provider tool APIs.",
+        "structured-output": "Defines schema constraints whose availability and refusal behavior must be tested.",
+        "measurement": "Grounds workload-specific acceptance tests and costs, rather than catalog claims."
+      }
     }
   }
 }

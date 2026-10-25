@@ -2,16 +2,20 @@
 
 ## Meaning
 
-A common chat endpoint can hide materially different capabilities. A **provider capability matrix** is a tested mapping from a workload's requirements to each model, provider, and endpoint revision, rather than a table copied from marketing pages.
+A provider capability matrix is a tested mapping from application requirements to exact model, endpoint and provider revisions. It records supported, unsupported, conditional and untested behavior instead of assuming that one request shape makes models interchangeable.
 
 ## Mechanism
 
-Start with requirements: accepted text, image, or audio formats; output constraints through [[structured-output]]; tool-call behavior under [[tool-call-execution-contract]]; context limits; training or fine-tuning support; privacy terms; availability; and cost. Mark each cell supported, unsupported, conditional, or untested, and attach the exact model revision, endpoint, provider route, and test date. A model can support image input through one API while another route accepts only text or URL-hosted images. A uniform JSON shape does not make those routes equivalent.
+Include modalities and content formats, output schemas, tool-call execution semantics, input/context/output ceilings, privacy and retention, availability, training support and cost. Attach the tested route, revision and date. Check invalid as well as valid requests: refusal, malformed inputs, timeouts and partial tool results matter alongside the happy path.
 
-Use a small conformance suite with valid and invalid examples. For tool calls, compare schema adherence, call IDs, parallel calls, timeout, retry, and result ordering. For modalities, test file type, size, encoding, and provider-specific content blocks. For structured outputs, test refusals and malformed input. Price comparisons must include input/output mix, cache, retries, and rejected work under [[measurement]], not just a quoted token rate.
+Context and output limits can have distinct accounting rules. An endpoint may count input plus generated tokens against a combined ceiling, while another model has an additional output cap. Reasoning or formatting tokens can consume generated-token allowances without appearing as visible prose. Verify the actual endpoint rather than copying another model's settings.
 
-## Worked example
+The mechanism of fine-tuning continues training model weights; whether a particular account can create that training job is a separate lifecycle capability. Eligibility, base model, method, deployment and retirement conditions need current primary evidence, not a historical vendor list.
 
-A project needs image input and parallel tool calls. Provider A accepts inline image bytes but serializes tool calls; provider B supports parallel calls but only fetches image URLs. A common chat schema conceals this difference. The matrix marks each exact endpoint conditionally supported and ties it to passing tests.
+## One example
 
-**Understanding check:** Why is an OpenAI-compatible request format insufficient evidence of workload portability?
+A hypothetical combined allowance is 16,000 tokens. A 12,000-token input plus a 5,000-token output request totals 17,000 and exceeds it by 1,000. Requesting 3,000 instead leaves 1,000 headroom, assuming no additional accounting. Passing the smaller case does not certify the larger one or any real model's limit. Separately, a model can accept image URLs on one route yet fail inline images on another despite both using a chat schema.
+
+## Check your understanding
+
+**Question:** Is changing only a model slug enough to establish a safe migration? **Answer:** No. Re-run conformance and representative task quality, safety, latency and total-cost tests. Unknown cells stay unknown; a documented feature is not proof that the application's exact route meets its acceptance contract.

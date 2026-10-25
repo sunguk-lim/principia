@@ -11722,6 +11722,188 @@
       "contentHash": "4636cdf3734e352bdc3e397c82913a79c33b45ff9bd23e35e9c8413948eb636e",
       "decision": "retain",
       "reason": "Tests the defining misconception of this canonical concept, not a second entity."
+    },
+    {
+      "candidateKey": "cand-6588040609831f76a77d",
+      "sourceId": "agent-harness-interoperability",
+      "contentHash": "5762ed18b06e0180ac188890697b4d76ba472dccc4e30efde1fd1dd88275faf3",
+      "decision": "retain",
+      "reason": "Existing canonical objective and its original explanation remain one identity; expanded operational support does not create a heading-based entity."
+    },
+    {
+      "candidateKey": "cand-db8a735424395a3c331b",
+      "sourceId": "agent-harness-interoperability",
+      "contentHash": "387437f2cdaaa840d709db475fdbf33af4807f1a8b06d5fbe85aa976856f09a0",
+      "decision": "retain",
+      "reason": "Refines the existing cross-runtime semantic conformance objective. Native-runtime mappings, revision-bound handoffs and cancellation races are the operational contracts already owned by this identity, not new protocol names or worker products."
+    },
+    {
+      "candidateKey": "cand-a02db2b7f669e0a88faa",
+      "sourceId": "cache-augmented-generation",
+      "contentHash": "dd73721da1c6eabc72be0e936571cda3c29b6aecf0e5ba3cd8f47bbc259efc24",
+      "decision": "retain",
+      "reason": "Defines the one canonical objective of this independently authored article."
+    },
+    {
+      "candidateKey": "cand-40decc7d1abf4751e8e7",
+      "sourceId": "cache-augmented-generation",
+      "contentHash": "5a3a816f1077271c77bc5a64da2b91391d9e06e2253a996c34cd8d06cf4c5ec4",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its declared foundations; no second entity introduced by this section heading."
+    },
+    {
+      "candidateKey": "cand-b560a86fa2b0817a2efc",
+      "sourceId": "cache-augmented-generation",
+      "contentHash": "50fc1b8630af884d37cf22ca659faf9e888c66aed9ddca0ee716d61ec5cfd4c0",
+      "decision": "retain",
+      "reason": "Checks the canonical objective using an original numerical or operational instance; example objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-658369140fdaef932c46",
+      "sourceId": "cache-augmented-generation",
+      "contentHash": "8fba4fe95fb8d1477fb214a8a13355994b2de37db41fc0c71e5d667ef3141399",
+      "decision": "retain",
+      "reason": "Bounds the same architecture and compares its acceptance conditions without creating a synonymous architecture."
+    },
+    {
+      "candidateKey": "cand-dac05881df26929a4444",
+      "sourceId": "cache-augmented-generation",
+      "contentHash": "a3528265d8187e8967f5c64ab9f83892201612b0adfa88b95f75c291ffb45a68",
+      "decision": "retain",
+      "reason": "Tests the central misconception of this canonical objective; a question heading is not a new concept."
+    },
+    {
+      "candidateKey": "cand-b2e603fda3eb8ac08098",
+      "sourceId": "cuda-graph-replay",
+      "contentHash": "87553cc047cdb54bea9057f84d8c65d3caceb417b2299ffb22abb6e230073345",
+      "decision": "retain",
+      "reason": "Existing canonical objective and its original explanation remain one identity; expanded operational support does not create a heading-based entity."
+    },
+    {
+      "candidateKey": "cand-9cece0373295c0337bf0",
+      "sourceId": "cuda-graph-replay",
+      "contentHash": "f5826e18bcf288b42117123651c31c0a2d7880222b220ee4bbda333f566d273f",
+      "decision": "retain",
+      "reason": "Supports the existing replay mechanism with primary capture/update distinctions, lifetime invariants and original amortization/padding examples. These are boundaries and cost cases of replay rather than a new synonymous graph concept."
+    },
+    {
+      "candidateKey": "cand-152363f3ca64e074ece7",
+      "sourceId": "graph-guided-evidence-retrieval",
+      "contentHash": "7ae6142ba28bae634e0e0876b7c03485444d895ce9b436bfd720796c54bc85e7",
+      "decision": "retain",
+      "reason": "Defines the one canonical objective of this independently authored article."
+    },
+    {
+      "candidateKey": "cand-2e73371327a50825f0e2",
+      "sourceId": "graph-guided-evidence-retrieval",
+      "contentHash": "fc9cc3e71ca94524f32e0013ae111e66e96c0be321ed88285587a6a351088b87",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its declared foundations; no second entity introduced by this section heading."
+    },
+    {
+      "candidateKey": "cand-d64c5d5a85c04a4132ce",
+      "sourceId": "graph-guided-evidence-retrieval",
+      "contentHash": "09ada9ea917557f6d12400ba0dc77c83f185a837677293e5ce954791ac12c49f",
+      "decision": "retain",
+      "reason": "Checks the canonical objective using an original numerical or operational instance; example objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-8814490a6221b66aa2d0",
+      "sourceId": "graph-guided-evidence-retrieval",
+      "contentHash": "5c96df7a61dcd01c7948f968c9b7f7034b1ff53bc9a60742b033e51a76bad106",
+      "decision": "retain",
+      "reason": "Bounds the same architecture and compares its acceptance conditions without creating a synonymous architecture."
+    },
+    {
+      "candidateKey": "cand-112e175a69b007b83814",
+      "sourceId": "graph-guided-evidence-retrieval",
+      "contentHash": "c51ea601155b0e484f516c1b26f1277265112086b491b49c284094a2ada877be",
+      "decision": "retain",
+      "reason": "Tests the central misconception of this canonical objective; a question heading is not a new concept."
+    },
+    {
+      "candidateKey": "cand-fa56088ca9996e699a6d",
+      "sourceId": "provider-capability-matrix",
+      "contentHash": "ce2b03200de5c5d7fb7e3b238478f4ef5455fbed1cd0025724646fe2c3b2a06f",
+      "decision": "retain",
+      "reason": "Existing canonical objective and its original explanation remain one identity; expanded operational support does not create a heading-based entity."
+    },
+    {
+      "candidateKey": "cand-a4e4fdccd84e7b52b7fe",
+      "sourceId": "provider-capability-matrix",
+      "contentHash": "ec1fd998723ca107fb91dbb7c847690e9ad17df6627a542e2b70d43383fa934b",
+      "decision": "retain",
+      "reason": "Refines the existing endpoint/model/account capability contract with combined/output accounting and time-sensitive training eligibility. Underlying weight adaptation is linked to existing fine-tuning rather than split from this heading."
+    },
+    {
+      "candidateKey": "cand-76e9bb8dd1b978282269",
+      "sourceId": "rag-latency-budget",
+      "contentHash": "3fea88b2e4d553a4bec4ed05d1cb43a751a056a3bb1109b0008bd740fbb6aa9e",
+      "decision": "retain",
+      "reason": "Defines the one canonical objective of this independently authored article."
+    },
+    {
+      "candidateKey": "cand-6525041d34dc35ca22d2",
+      "sourceId": "rag-latency-budget",
+      "contentHash": "d5e840e6c62881fe6c6b66845b0ec127c0f69cf001da5fa88877bc3ab97ab225",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its declared foundations; no second entity introduced by this section heading."
+    },
+    {
+      "candidateKey": "cand-bea8fa05b21ba7377341",
+      "sourceId": "rag-latency-budget",
+      "contentHash": "06a37ae90a69d1c8bd19cfcd0d2d6a29adf5d6a2e55b492b65988e1e5667568f",
+      "decision": "retain",
+      "reason": "Checks the canonical objective using an original numerical or operational instance; example objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-76e3b2cc89a729859c12",
+      "sourceId": "rag-latency-budget",
+      "contentHash": "be854c53e33473efc41ed381f542b04e6c39052b403b71bc5a5c4c241412e024",
+      "decision": "retain",
+      "reason": "Specifies acceptance experiments for this same objective, not another learning identity."
+    },
+    {
+      "candidateKey": "cand-130c219298ae9000d07d",
+      "sourceId": "rag-latency-budget",
+      "contentHash": "56ecad95a5735bc8c52562143cd7c6974bc824cb81a69234178caac4de32be1f",
+      "decision": "retain",
+      "reason": "Tests the central misconception of this canonical objective; a question heading is not a new concept."
+    },
+    {
+      "candidateKey": "cand-c733c15025598fe27bbb",
+      "sourceId": "text-embedding-api-contract",
+      "contentHash": "bce9aa02cc95dc5efd795baf9ffec4eae5d09d6ade4d9ecd0e308ea31b801a52",
+      "decision": "retain",
+      "reason": "Defines the one canonical objective of this independently authored article."
+    },
+    {
+      "candidateKey": "cand-370f8cc02c21cf2c0952",
+      "sourceId": "text-embedding-api-contract",
+      "contentHash": "fda33da97846c0560f7ea1fbc38514b60ce346d30058f5a653205f9f4d7a3f5c",
+      "decision": "retain",
+      "reason": "Derives the same canonical mechanism from its declared foundations; no second entity introduced by this section heading."
+    },
+    {
+      "candidateKey": "cand-038cfe47a5bf389d5f75",
+      "sourceId": "text-embedding-api-contract",
+      "contentHash": "70b8901d9ce243f5c57a5c99b6546eb1cb7952ca36b9886e5ff3af9437196c95",
+      "decision": "retain",
+      "reason": "Checks the canonical objective using an original numerical or operational instance; example objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-19a4c9ab8aa00fdecb60",
+      "sourceId": "text-embedding-api-contract",
+      "contentHash": "b8f12686563409c12fceb408e0b7e735671fe1176de25ae224ab954d6d71b6e3",
+      "decision": "retain",
+      "reason": "Specifies acceptance experiments for this same objective, not another learning identity."
+    },
+    {
+      "candidateKey": "cand-7b1224e14332f5419a50",
+      "sourceId": "text-embedding-api-contract",
+      "contentHash": "e43b430668ac41b8cc00b6a17ec3b85c604ded1ad16f1371b58a964da451f540",
+      "decision": "retain",
+      "reason": "Tests the central misconception of this canonical objective; a question heading is not a new concept."
     }
   ]
 }

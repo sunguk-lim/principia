@@ -604,7 +604,7 @@
     },
     "cpu-vs-gpu": {
       "prerequisiteReasons": {
-        "memory-hierarchy": "The stated objective requires Memory Hierarchy: the complete explanation applies it in this mechanism: A CPU and a GPU are both processors that do arithmetic, and both face the same problem: the data they need lives far down a slow memory-hierarchy, where moving a number costs vastly more than computing on it. They answer that problem with opposite bets. The CPU is"
+        "memory-hierarchy": "Grounds cache and main-memory traffic, storage residency and bandwidth-versus-latency trade-offs used to compare execution designs."
       }
     },
     "crawl-frontier": {
@@ -3631,6 +3631,33 @@
         "tool-call-execution-contract": "Defines the authorization and execution semantics compared across provider tool APIs.",
         "structured-output": "Defines schema constraints whose availability and refusal behavior must be tested.",
         "measurement": "Grounds workload-specific acceptance tests and costs, rather than catalog claims."
+      }
+    },
+    "high-bandwidth-memory": {
+      "prerequisiteReasons": {
+        "memory-hierarchy": "Places stacked main memory relative to caches and registers and supplies the capacity, transfer-rate and access-cost distinctions used throughout."
+      }
+    },
+    "w4a16-weight-only-kernel": {
+      "prerequisiteReasons": {
+        "quantization": "Defines stored codes, reconstruction scales and the numerical contract that the consuming kernel must preserve.",
+        "cuda-kernel": "Supplies the execution and data-access unit whose layout and conversion path are optimized.",
+        "tensor-core": "Explains the matrix arithmetic substrate and operand-format compatibility.",
+        "roofline-model": "Distinguishes weight-transfer savings from conversion/compute limits at each batch shape."
+      }
+    },
+    "kernel-to-serving-speedup": {
+      "prerequisiteReasons": {
+        "cuda-kernel": "Identifies the optimized component and its supported execution shapes.",
+        "measurement": "Provides units and observed intervals for the speed-ratio derivation and validation.",
+        "prefill-vs-decode": "Explains why serving phases present different workloads to one kernel.",
+        "continuous-batching": "Explains why real iteration membership and matrix shapes change under serving load."
+      }
+    },
+    "noisy-top-k-expert-routing": {
+      "prerequisiteReasons": {
+        "mixture-of-experts": "Defines expert score selection, softmax weighting, sparse execution and the routing-collapse problem being modified.",
+        "normal-distribution": "Defines the standard Gaussian draws and how scaling changes their dispersion."
       }
     }
   }

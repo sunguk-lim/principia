@@ -2110,13 +2110,6 @@
       "reason": "Overview is supporting explanation for the canonical Sharding (Horizontal Partitioning) objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-38fb45f8b8477990435b",
-      "sourceId": "prefill-vs-decode",
-      "contentHash": "555270cd48f6496d4b28bfbdda8df0e7df4103667b10cdd9d4788a6feeba1170",
-      "decision": "retain",
-      "reason": "Why it matters: the phases want different things, and mixing them hurts is supporting explanation for the canonical Prefill vs Decode objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-3957e4c82ea2d966d898",
       "sourceId": "lexical-retrieval",
       "contentHash": "28b209a5fa80181d4c8a79cf3d3696d2044be50aa232aab127dce56f40e30fb3",
@@ -2297,13 +2290,6 @@
       "contentHash": "2f9bf592e2f917365135bb31fd319b17ff2d7427ef0080bd30d3576ff88eede4",
       "decision": "retain",
       "reason": "Overview explains the single grpc learning objective; it is not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-4065bd191b132f089fa7",
-      "sourceId": "roofline-model",
-      "contentHash": "282addffbac00f8905f5822c7b7735ce0c6620e3eaa183273353a9228c51d86a",
-      "decision": "retain",
-      "reason": "Why it matters: it names the lever before you pull it is supporting explanation for the canonical Roofline Model objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-40be0bbc0f1e55225fbd",
@@ -2803,13 +2789,6 @@
       "reason": "Overview is supporting explanation for the canonical Progressive Diffusion Distillation objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-4d0d31b115521b450a2b",
-      "sourceId": "prefill-vs-decode",
-      "contentHash": "73f566a9a0f127ab6519251004540425e895f852b76055cbb85f87dd5b8e5090",
-      "decision": "retain",
-      "reason": "Decode: one token per weight load → near-zero intensity → memory-bound is supporting explanation for the canonical Prefill vs Decode objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-4d58798b67c4c5285cfb",
       "sourceId": "network-stack",
       "contentHash": "5ece28b4e39eb2dff84101c4ab707b23a3ce722ea5af9e63d2353f0bbca16b52",
@@ -3011,13 +2990,6 @@
       "contentHash": "4d849f92b18d8c3555b6cf177f000b9bde0165312947c93e257e20b280f69cd8",
       "decision": "retain",
       "reason": "Why convex curvature manufactures a right tail is supporting explanation for the canonical Convex Transformation Order objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-5365e6753a8789b400ca",
-      "sourceId": "prefill-vs-decode",
-      "contentHash": "591a701d60d9d26d606a41477db894e37841b576ffd9a8d8f5cc10bdec496fc5",
-      "decision": "retain",
-      "reason": "Prefill: many tokens per weight load → high intensity → compute-bound is supporting explanation for the canonical Prefill vs Decode objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-5387c8ee726704106064",
@@ -4392,13 +4364,6 @@
       "reason": "Overview is supporting explanation for the canonical Linked List objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-7bee30e53a0585e79645",
-      "sourceId": "cpu-vs-gpu",
-      "contentHash": "6459b1aaa3ff6e43e467ed3d9a2978f876f4967bbe6d694d43d04d40de4cf573",
-      "decision": "retain",
-      "reason": "The shared problem both chips are answering is supporting explanation for the canonical CPU vs GPU objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-7c01fc9d13b212d65d84",
       "sourceId": "python-special-method",
       "contentHash": "b5b570036d3d33b535eb178416ff63f3589fc6cc45debf29074dd63fdd0f5cf6",
@@ -4834,13 +4799,6 @@
       "reason": "Overview is supporting explanation for the canonical Convexity objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-899ad31bb8c2e4e1fec5",
-      "sourceId": "warp",
-      "contentHash": "58fa8311ad7417de58ff73cadbbb44a085fe133c9fbfd50c1bc6ea573346729e",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Warp objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-89af60624372a34f73ea",
       "sourceId": "warp-shuffle",
       "contentHash": "25d9fa5da70bb1539f8389703e27a262939d4b92f1005cb1dd7dac74179be9a6",
@@ -5154,13 +5112,6 @@
       "contentHash": "8b563d3574a0e27d8d48ed80281ee4f913ff2e0441e43cd76122a0c6cec21fb4",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Physics-Informed Neural Network objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-93ebab3b2f8aed8c7e2e",
-      "sourceId": "warp",
-      "contentHash": "98f26537578c6060dc34b1f07133faf5c55e6d4855811425720fe270773bc912",
-      "decision": "retain",
-      "reason": "The why: one instruction drives 32 threads — the upside and the catch is supporting explanation for the canonical Warp objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-9418f03c656bafca6edb",
@@ -5534,13 +5485,6 @@
       "reason": "What a cgroup is, precisely is supporting explanation for the canonical Cgroup objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-9f18e331080d4870daa2",
-      "sourceId": "prefill-vs-decode",
-      "contentHash": "150f8df5f9d998ee11055379cebfaa304589f683768174448c17bec225784c19",
-      "decision": "retain",
-      "reason": "What the concept *is*: one model, two regimes on the roofline is supporting explanation for the canonical Prefill vs Decode objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-9f37e33dc4f6c7e975f5",
       "sourceId": "mmu",
       "contentHash": "e7d82d4dcaa9a30096b1d6be46b58979508a3221b2582ff675b3fffd15179462",
@@ -5742,13 +5686,6 @@
       "contentHash": "2e04275d51a3f915ec19218f6da09b244e2c602f4d2bbb2b8c3d747a8d2c9818",
       "decision": "retain",
       "reason": "Worked instance is supporting explanation for the canonical Nearest-Neighbor Search objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-a3d5b4fb22230e7f2f39",
-      "sourceId": "cpu-vs-gpu",
-      "contentHash": "b1a3c52a1548c1c73fe9a8a5c66d78a9aa2ad1652b023b19859234f622e4a0b2",
-      "decision": "retain",
-      "reason": "The GPU's bet: tolerate latency, keep thousands of lanes busy is supporting explanation for the canonical CPU vs GPU objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-a411857b5e5660c77932",
@@ -6122,13 +6059,6 @@
       "reason": "Pulling it together is supporting explanation for the canonical Skewness objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-aed15bec79cfee32bd02",
-      "sourceId": "roofline-model",
-      "contentHash": "5f4af7c7feba697f90498ded75f39f2354741bf6b4b7a080e57e187ecc5b1f1a",
-      "decision": "retain",
-      "reason": "Why it works: the ridge point is the machine balance, and intensity fixes your fate is supporting explanation for the canonical Roofline Model objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-aee5e449fa800d03c02f",
       "sourceId": "streaming-multiprocessor",
       "contentHash": "a243765f00856367ee8d72403430af19af3d40fa9d7a167b61b57d3c80b6d8a7",
@@ -6283,13 +6213,6 @@
       "reason": "Overview is supporting explanation for the canonical clone() objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-b291053520a7089de9aa",
-      "sourceId": "roofline-model",
-      "contentHash": "78e6d8c696825fd3f9edfda9526bc0126ad4d5d56384fb77f9fbbc0ace14385a",
-      "decision": "retain",
-      "reason": "Worked instance: two kernels on one roof is supporting explanation for the canonical Roofline Model objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-b314d5a6dde60ef5bb97",
       "sourceId": "page",
       "contentHash": "ece14792010fafa602a54b89b00e047e4f5bce3551dfd45c87da5b9620691026",
@@ -6379,13 +6302,6 @@
       "contentHash": "64f34aa976bed36be528ace913144c9c2cacc5431e605df19a5c4fe75da05a25",
       "decision": "retain",
       "reason": "What it is — a dial for demand, two curves for the answer is supporting explanation for the canonical Load Testing objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-b4a20950019c9f92b9b3",
-      "sourceId": "roofline-model",
-      "contentHash": "d7f3d0d22176a5cb8fe24e6529604113af06d895f9ba1ccac677dd1836cdb586",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Roofline Model objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-b4ab75feda5d79faf4f5",
@@ -6618,13 +6534,6 @@
       "contentHash": "980ed065d27e0261c5ed1d1a20958cf483f23edddb2f02045b2b423d21e560b9",
       "decision": "retain",
       "reason": "The continuous case: a probability density function is supporting explanation for the canonical Probability Distribution objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-bba28d0bee8b7430e70e",
-      "sourceId": "warp",
-      "contentHash": "7d5f9307226e007cd81bf569a126690d127290e8211e88b09b913abd9082bb14",
-      "decision": "retain",
-      "reason": "The consequence: branch on warp boundaries, not inside a warp is supporting explanation for the canonical Warp objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-bbef07a75eec4441e108",
@@ -7082,13 +6991,6 @@
       "reason": "Overview is supporting explanation for the canonical Leader Election objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-c749bc680fd21c426cb4",
-      "sourceId": "cpu-vs-gpu",
-      "contentHash": "c8368b560c403eb1726667ab56b19de0e10fd360c74d92eb34e1c1d87b97bfc4",
-      "decision": "retain",
-      "reason": "\"Core\" means two different things is supporting explanation for the canonical CPU vs GPU objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-c751135b0e6b6d8dc190",
       "sourceId": "flow-matching",
       "contentHash": "d836052f1a7c686bbc15303cd24ac7184deb8fbd52d0082f444a70e3978590af",
@@ -7283,13 +7185,6 @@
       "contentHash": "fb86b21cb7bc1647d904e15db109c8063ebd781ec7de2004f6ba131877216b4e",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Tensor objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-cbc1356583243d6a5894",
-      "sourceId": "cpu-vs-gpu",
-      "contentHash": "ae68090a336ad3f6822109834132bab99d4f4ae879541d7f693117d4f55114a5",
-      "decision": "retain",
-      "reason": "The rule this yields is supporting explanation for the canonical CPU vs GPU objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-cc42a32ba7a1c736e8c8",
@@ -7600,13 +7495,6 @@
       "reason": "Overview is supporting explanation for the canonical Quantile-Quantile Plot objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-d3a3d2c22abcf43dd1ce",
-      "sourceId": "warp",
-      "contentHash": "f0337d25c794e02b22abb87af60abec98b744ccba4542e301c6c9003b588cd30",
-      "decision": "retain",
-      "reason": "Worked instance: 32 threads adding, then the same 32 forced to disagree is supporting explanation for the canonical Warp objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-d3d3c03dfc80dce1a0c7",
       "sourceId": "moment-generating-function",
       "contentHash": "7c1ba33c2fea24f8a373212f0379f8b6f1400632e1028fd6db71406d3c54068e",
@@ -7710,13 +7598,6 @@
       "contentHash": "ec40cc2dc31510fa9047dfb81c7f897e2f11b4dc76cd56ff17fb7862f98c6ead",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Curl (∇×F) objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-d7eed62f4f280d668074",
-      "sourceId": "prefill-vs-decode",
-      "contentHash": "7295db9fdeb656cff4e0a128fa649fa9ef58b4255869a8ab4ab80c4dfab1af21",
-      "decision": "retain",
-      "reason": "Worked instance: a 500-token prompt, then generation is supporting explanation for the canonical Prefill vs Decode objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-d83f343d26fa736c8236",
@@ -7957,13 +7838,6 @@
       "reason": "Worked instance — one transaction, end to end through every piece is supporting explanation for the canonical PostgreSQL objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-dd6a02dc11e88f7a5215",
-      "sourceId": "prefill-vs-decode",
-      "contentHash": "0c6cb673a6ba5bcd3e2bec33b1f39789213258f38289eb644f82d06b378f2313",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Prefill vs Decode objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-ddb616724a0c9332a368",
       "sourceId": "moment-skewness",
       "contentHash": "4ee681aef977bc9e5ee0848e2c8e699916b0823c5d2038b24e197b1ca708ed24",
@@ -8132,13 +8006,6 @@
       "reason": "The fix: make one block fetch decide among hundreds of keys is supporting explanation for the canonical B-Tree / B+-Tree objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-e4dca748f54c8e394b81",
-      "sourceId": "cpu-vs-gpu",
-      "contentHash": "8e097824f1e8d7b11ca7c47d62136c68f12346dd2d1585a093222d4c894b8136",
-      "decision": "retain",
-      "reason": "Worked instance: add two million-element arrays is supporting explanation for the canonical CPU vs GPU objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-e4fdb7f0ac8220302fb1",
       "sourceId": "memory-coalescing",
       "contentHash": "53fb6d488e94665ded0894d2a3d52d86640fd41431fbc695147bdae5340a8b4f",
@@ -8151,13 +8018,6 @@
       "contentHash": "4b4a4cc4f1b2648bf36a278ffe9dbec427d7f58ade7d5b4b59d8e39a8119eea4",
       "decision": "retain",
       "reason": "What the \"context\" is — and why exactly this state is supporting explanation for the canonical Context Switch objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-e53d99ba1601b31995ec",
-      "sourceId": "roofline-model",
-      "contentHash": "1dbde33118ee7e42367dadebafa33d66efd2b64c7d40cfd83b24e15c06241fec",
-      "decision": "retain",
-      "reason": "What the concept *is*: turning two ceilings into one performance envelope is supporting explanation for the canonical Roofline Model objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-e5ee86410fed1b6b5cd9",
@@ -8326,13 +8186,6 @@
       "contentHash": "70ffeda4f0d77d38217d6bd356830a6db259567c720b07e8ce8f9f46fcbbe2ca",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Memory Coalescing objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-eba9f78884210f4a0f58",
-      "sourceId": "cpu-vs-gpu",
-      "contentHash": "c8c4aab42370a06d1ee85149741956b0d1fb5cae41620d3dd268ba53926d9160",
-      "decision": "retain",
-      "reason": "The CPU's bet: avoid latency, finish one thread fast is supporting explanation for the canonical CPU vs GPU objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-ebeaa9f2696ccc80310d",
@@ -8657,13 +8510,6 @@
       "reason": "Worked instance: adding two million-element arrays, no loop is supporting explanation for the canonical CUDA Thread Hierarchy objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-f64213225726e03cd721",
-      "sourceId": "warp",
-      "contentHash": "dee4b4251b1b4a98a3dea182d75a6cfab8b50e0cba6f87c15757aef35b07d440",
-      "decision": "retain",
-      "reason": "Where this sits: the warp is the SM's real scheduling unit is supporting explanation for the canonical Warp objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-f6a8d8aeedd931325625",
       "sourceId": "write-ahead-logging",
       "contentHash": "20768c1d1a02cd30ac1492700ffe396ef3a6882447ea52028fbfd08e49c597d3",
@@ -8942,13 +8788,6 @@
       "contentHash": "020c5f884d8e95d6404f79dcb2bac6b37bf73f26a25c77bbbbcc14f7eee492be",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical TensorRT objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-fcb29a27bc3f9654cb50",
-      "sourceId": "cpu-vs-gpu",
-      "contentHash": "8c2279f8c5f36204b6b00fa983e89d7b8ff03d766b272449e021869725033fd2",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical CPU vs GPU objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-fd4f9c1721d1f3bedd54",
@@ -11904,6 +11743,286 @@
       "contentHash": "e43b430668ac41b8cc00b6a17ec3b85c604ded1ad16f1371b58a964da451f540",
       "decision": "retain",
       "reason": "Tests the central misconception of this canonical objective; a question heading is not a new concept."
+    },
+    {
+      "candidateKey": "cand-f2c2446407c4652a709d",
+      "sourceId": "cpu-vs-gpu",
+      "contentHash": "139d4454c38d85be7824ba4880a724dcb174928209ad282ddf697bb242737d50",
+      "decision": "retain",
+      "reason": "cpu-vs-gpu: Defines the one canonical concept and its explicit boundary, not another learning objective."
+    },
+    {
+      "candidateKey": "cand-c0f4a8a8071e135952ca",
+      "sourceId": "cpu-vs-gpu",
+      "contentHash": "41d2c5d0489018530802e382383c8b52bba34dd3563d68cc3969c94214ca27eb",
+      "decision": "retain",
+      "reason": "cpu-vs-gpu: Derives the canonical mechanism from its declared foundations. Variables and implementation choices support this identity rather than introduce a new concept."
+    },
+    {
+      "candidateKey": "cand-34b3a97898e80ae09413",
+      "sourceId": "cpu-vs-gpu",
+      "contentHash": "585bea167574912d8247c6a7f8d5f3f7983ccf394fc7e5cc05bdba7aa7086c08",
+      "decision": "retain",
+      "reason": "cpu-vs-gpu: Original numerical instance checks this same canonical objective; example values and objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-5b67e5cf9fc24e7a4c0e",
+      "sourceId": "cpu-vs-gpu",
+      "contentHash": "fc0dbeccd5e686b86943054b855e7611230e578dac94ebb223ff667e16099b81",
+      "decision": "retain",
+      "reason": "cpu-vs-gpu: Bounds this canonical mechanism with acceptance checks and alternatives; it does not define a new synonymous concept."
+    },
+    {
+      "candidateKey": "cand-cce8be7a81359f899803",
+      "sourceId": "cpu-vs-gpu",
+      "contentHash": "0b28032f640ea770ba3a8e6b68813ae85d2297e5dba043da4fa790f1e0147d8d",
+      "decision": "retain",
+      "reason": "cpu-vs-gpu: Tests the main misconception of this objective; a question heading does not create an entity."
+    },
+    {
+      "candidateKey": "cand-c6ff09c52f5bfb61c11a",
+      "sourceId": "high-bandwidth-memory",
+      "contentHash": "0eac24df48ec928f690b22da7ed55aec7a2a396cb650eee8152d16715be87443",
+      "decision": "retain",
+      "reason": "high-bandwidth-memory: Defines the one canonical concept and its explicit boundary, not another learning objective."
+    },
+    {
+      "candidateKey": "cand-d298c5c627cb25dad72b",
+      "sourceId": "high-bandwidth-memory",
+      "contentHash": "d1761d3ff7c0b7068d7af4a7a4a72a299396f2081f474c0c437b78f2f74d2cad",
+      "decision": "retain",
+      "reason": "high-bandwidth-memory: Derives the canonical mechanism from its declared foundations. Variables and implementation choices support this identity rather than introduce a new concept."
+    },
+    {
+      "candidateKey": "cand-d84343a4b43c37edf21e",
+      "sourceId": "high-bandwidth-memory",
+      "contentHash": "0c08e82563fd6a9a5ad75f834859c025f96cb0fc789b31e66dbe2a7752edca9d",
+      "decision": "retain",
+      "reason": "high-bandwidth-memory: Original numerical instance checks this same canonical objective; example values and objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-1cb7cb201934ba9db97f",
+      "sourceId": "high-bandwidth-memory",
+      "contentHash": "7603fd0e8721ca08d0670971eb4c42a56cfb947eb560d2c044c1a5b2e9fc2df4",
+      "decision": "retain",
+      "reason": "high-bandwidth-memory: Bounds this canonical mechanism with acceptance checks and alternatives; it does not define a new synonymous concept."
+    },
+    {
+      "candidateKey": "cand-e231ef6ebf20157bd680",
+      "sourceId": "high-bandwidth-memory",
+      "contentHash": "ee73aada5376527cffb87f8fcf2fc237786270d8c90ba6a69307e909b0f2f027",
+      "decision": "retain",
+      "reason": "high-bandwidth-memory: Tests the main misconception of this objective; a question heading does not create an entity."
+    },
+    {
+      "candidateKey": "cand-592473108ed1a3a562cc",
+      "sourceId": "kernel-to-serving-speedup",
+      "contentHash": "72ee7285010428af444ab21a6f4fbaabc99009c220cc4fbfdced8f6dff17d403",
+      "decision": "retain",
+      "reason": "kernel-to-serving-speedup: Defines the one canonical concept and its explicit boundary, not another learning objective."
+    },
+    {
+      "candidateKey": "cand-3386a3413daaf21a5f49",
+      "sourceId": "kernel-to-serving-speedup",
+      "contentHash": "3809200fe99c99266fc1d3b7519f3aa41f51d1c09aa32eb35d0d4c9e7ec8559f",
+      "decision": "retain",
+      "reason": "kernel-to-serving-speedup: Derives the canonical mechanism from its declared foundations. Variables and implementation choices support this identity rather than introduce a new concept."
+    },
+    {
+      "candidateKey": "cand-672d4d9b1d9e952031a0",
+      "sourceId": "kernel-to-serving-speedup",
+      "contentHash": "e490dfd2ae69df3044e5aeb6cb2d26f5553c4caa11ede0ee57d8d6f28aaf3b8f",
+      "decision": "retain",
+      "reason": "kernel-to-serving-speedup: Original numerical instance checks this same canonical objective; example values and objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-cb320c8314a55bf4aab3",
+      "sourceId": "kernel-to-serving-speedup",
+      "contentHash": "84107d6ac316b4ea8df88575c7c190d60b4445cb23f0301cabda386251218795",
+      "decision": "retain",
+      "reason": "kernel-to-serving-speedup: Bounds this canonical mechanism with acceptance checks and alternatives; it does not define a new synonymous concept."
+    },
+    {
+      "candidateKey": "cand-27813bdc7b51c69b4786",
+      "sourceId": "kernel-to-serving-speedup",
+      "contentHash": "f9d06358b8b452efe3bdd493eca34e841cd5d91c693fce28fbf27f5ef1f338f4",
+      "decision": "retain",
+      "reason": "kernel-to-serving-speedup: Tests the main misconception of this objective; a question heading does not create an entity."
+    },
+    {
+      "candidateKey": "cand-b1be6c7ea23588ca6113",
+      "sourceId": "noisy-top-k-expert-routing",
+      "contentHash": "d289295771d5f01d12e764e1df1395db2a7ec5e731f30874a0cfef7fa0557333",
+      "decision": "retain",
+      "reason": "noisy-top-k-expert-routing: Defines the one canonical concept and its explicit boundary, not another learning objective."
+    },
+    {
+      "candidateKey": "cand-d51bf3009401847ee9a3",
+      "sourceId": "noisy-top-k-expert-routing",
+      "contentHash": "3fb9369890ca4bbce5f4799642737f1bb04cf59a63e36fed8d0a3e993cccc079",
+      "decision": "retain",
+      "reason": "noisy-top-k-expert-routing: Derives the canonical mechanism from its declared foundations. Variables and implementation choices support this identity rather than introduce a new concept."
+    },
+    {
+      "candidateKey": "cand-a98d6b86cb43a811fda5",
+      "sourceId": "noisy-top-k-expert-routing",
+      "contentHash": "788c53bc928d1d8ab775dc7a208d5bd6bf8cee29e0d8c8dd223d1a137ea3cd4f",
+      "decision": "retain",
+      "reason": "noisy-top-k-expert-routing: Original numerical instance checks this same canonical objective; example values and objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-e59d08f7d003c5db8304",
+      "sourceId": "noisy-top-k-expert-routing",
+      "contentHash": "008a986b397ddbfe0fcbf9555ea82a4a1ada1d56c5bb1dea9fd88f6baf1b07dd",
+      "decision": "retain",
+      "reason": "noisy-top-k-expert-routing: Bounds this canonical mechanism with acceptance checks and alternatives; it does not define a new synonymous concept."
+    },
+    {
+      "candidateKey": "cand-28cc5e25fb2a9652c4f7",
+      "sourceId": "noisy-top-k-expert-routing",
+      "contentHash": "127f7383995dd59381628cc6e928d972c278a1f23954034546ad706afa4222b3",
+      "decision": "retain",
+      "reason": "noisy-top-k-expert-routing: Tests the main misconception of this objective; a question heading does not create an entity."
+    },
+    {
+      "candidateKey": "cand-e84d7c40c8d0cb5b3e0a",
+      "sourceId": "prefill-vs-decode",
+      "contentHash": "4d8914a861c7ef0f064f76c43a9ce89a75f3e2fdaf7312c0c7c2641dc8760804",
+      "decision": "retain",
+      "reason": "prefill-vs-decode: Defines the one canonical concept and its explicit boundary, not another learning objective."
+    },
+    {
+      "candidateKey": "cand-90a50ac36cf28aa59df4",
+      "sourceId": "prefill-vs-decode",
+      "contentHash": "98a8dd971276f5155acf8f79565fdea6129315efd29e1efe5a6808c5b879f76d",
+      "decision": "retain",
+      "reason": "prefill-vs-decode: Derives the canonical mechanism from its declared foundations. Variables and implementation choices support this identity rather than introduce a new concept."
+    },
+    {
+      "candidateKey": "cand-5e97740ea73e4316b21c",
+      "sourceId": "prefill-vs-decode",
+      "contentHash": "5be0a860811df9e96c85ec0e1da9e8177f8400b92538b20aea4d82b7d937e010",
+      "decision": "retain",
+      "reason": "prefill-vs-decode: Original numerical instance checks this same canonical objective; example values and objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-2c17f962025a30ccf541",
+      "sourceId": "prefill-vs-decode",
+      "contentHash": "804eff32eecb760017342e6ffce85a43b5c6f63fcf8d92737f3fe2b8d1c83acc",
+      "decision": "retain",
+      "reason": "prefill-vs-decode: Bounds this canonical mechanism with acceptance checks and alternatives; it does not define a new synonymous concept."
+    },
+    {
+      "candidateKey": "cand-0111978ec50308d67aff",
+      "sourceId": "prefill-vs-decode",
+      "contentHash": "82ed13848bea9ccee1691b2b1815458e217b2d8b4e618c4d81ae5b8e374dd90c",
+      "decision": "retain",
+      "reason": "prefill-vs-decode: Tests the main misconception of this objective; a question heading does not create an entity."
+    },
+    {
+      "candidateKey": "cand-6c99c83f83bee8b4695f",
+      "sourceId": "roofline-model",
+      "contentHash": "d281a67ec9433be193c6aa6eb6b9a1f309f8d28cd1254f184874aa1c38a5b01d",
+      "decision": "retain",
+      "reason": "roofline-model: Defines the one canonical concept and its explicit boundary, not another learning objective."
+    },
+    {
+      "candidateKey": "cand-70f7b409a3217371eff2",
+      "sourceId": "roofline-model",
+      "contentHash": "0c9fcbe5b870afb0386381cc3e9573bf3c023db7f31f8742ef39ab917708ce76",
+      "decision": "retain",
+      "reason": "roofline-model: Derives the canonical mechanism from its declared foundations. Variables and implementation choices support this identity rather than introduce a new concept."
+    },
+    {
+      "candidateKey": "cand-30b2fbcbe98ec477f99d",
+      "sourceId": "roofline-model",
+      "contentHash": "e16a91538b8c00cc539ed9fe79b4d847dfd6b3c9b86dbd6e4fa2dfa21b8f6302",
+      "decision": "retain",
+      "reason": "roofline-model: Original numerical instance checks this same canonical objective; example values and objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-2b03f4a3a8f6e16076be",
+      "sourceId": "roofline-model",
+      "contentHash": "277cf6d306b94c0f2a0cc22cb53d42dd95c875085e812e6a2e3c5792c1a5847c",
+      "decision": "retain",
+      "reason": "roofline-model: Bounds this canonical mechanism with acceptance checks and alternatives; it does not define a new synonymous concept."
+    },
+    {
+      "candidateKey": "cand-2901a67d658cf8f6bfa0",
+      "sourceId": "roofline-model",
+      "contentHash": "d62da2472bc19a30ed120f42868b9ab452b279221a48ca998bca34ca2e8609eb",
+      "decision": "retain",
+      "reason": "roofline-model: Tests the main misconception of this objective; a question heading does not create an entity."
+    },
+    {
+      "candidateKey": "cand-34e80f1f93c759f340fd",
+      "sourceId": "w4a16-weight-only-kernel",
+      "contentHash": "66981eba737b5c2eab3a450a7b79ae47f82ee027999d255912cabcc07124b4ef",
+      "decision": "retain",
+      "reason": "w4a16-weight-only-kernel: Defines the one canonical concept and its explicit boundary, not another learning objective."
+    },
+    {
+      "candidateKey": "cand-abffddbecd7be66ef17c",
+      "sourceId": "w4a16-weight-only-kernel",
+      "contentHash": "a0e31d8285f74c3de66d899e4e886aa127e0b7b12115ba233745bdd0adad969a",
+      "decision": "retain",
+      "reason": "w4a16-weight-only-kernel: Derives the canonical mechanism from its declared foundations. Variables and implementation choices support this identity rather than introduce a new concept."
+    },
+    {
+      "candidateKey": "cand-c5ff7260023b32be78e3",
+      "sourceId": "w4a16-weight-only-kernel",
+      "contentHash": "091aedd816ea7f126b7c7c53233b4cd837bd6e3ddeb7d4fc0a7089de81c8c496",
+      "decision": "retain",
+      "reason": "w4a16-weight-only-kernel: Original numerical instance checks this same canonical objective; example values and objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-d8b3eba492866199558a",
+      "sourceId": "w4a16-weight-only-kernel",
+      "contentHash": "0e3f0f11c4739f6d0b4b2871a0e8e1be9fd80f8fe1c9ccb3933d3f9af9cb32bf",
+      "decision": "retain",
+      "reason": "w4a16-weight-only-kernel: Bounds this canonical mechanism with acceptance checks and alternatives; it does not define a new synonymous concept."
+    },
+    {
+      "candidateKey": "cand-12acc77f2ae35cca8ad2",
+      "sourceId": "w4a16-weight-only-kernel",
+      "contentHash": "cf698ccf7a059b594f748dd919c71047ba1ab4115e996b147ffdcc194bcf5699",
+      "decision": "retain",
+      "reason": "w4a16-weight-only-kernel: Tests the main misconception of this objective; a question heading does not create an entity."
+    },
+    {
+      "candidateKey": "cand-7ebf321b5938bfc06dab",
+      "sourceId": "warp",
+      "contentHash": "d52a7680d8d18af7f7971c4105fdca3d05c5d1f6c8ed32fe1db06838af389b1e",
+      "decision": "retain",
+      "reason": "warp: Defines the one canonical concept and its explicit boundary, not another learning objective."
+    },
+    {
+      "candidateKey": "cand-1617406d3f0c7980918c",
+      "sourceId": "warp",
+      "contentHash": "6521ecc6a4ad7486b5ce8d10ac9b35a8ffb3075647fbe5166e2f0e85cdd839d6",
+      "decision": "retain",
+      "reason": "warp: Derives the canonical mechanism from its declared foundations. Variables and implementation choices support this identity rather than introduce a new concept."
+    },
+    {
+      "candidateKey": "cand-d3dff21d299ce03bb00d",
+      "sourceId": "warp",
+      "contentHash": "44d108bca83887cbe2738807ed5f5d0369659487b59f45b02409bb9ee7daa8d3",
+      "decision": "retain",
+      "reason": "warp: Original numerical instance checks this same canonical objective; example values and objects are not independent concept entities."
+    },
+    {
+      "candidateKey": "cand-087a4937888f1ad2ac27",
+      "sourceId": "warp",
+      "contentHash": "635abe7d77ab81ebe1c2f262222fe3b565b513cbe1daf5a7a44842941dbc5ab5",
+      "decision": "retain",
+      "reason": "warp: Bounds this canonical mechanism with acceptance checks and alternatives; it does not define a new synonymous concept."
+    },
+    {
+      "candidateKey": "cand-6b8c56ceed552dd2e3e0",
+      "sourceId": "warp",
+      "contentHash": "eb30d1296b1ffd57fcb55fad3f4aa7591545854b8bad3ac42d9107d7ffcff2f1",
+      "decision": "retain",
+      "reason": "warp: Tests the main misconception of this objective; a question heading does not create an entity."
     }
   ]
 }

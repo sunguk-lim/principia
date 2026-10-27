@@ -3272,13 +3272,6 @@
       "reason": "Overview is supporting explanation for the canonical Kubernetes Service objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-5c3fda21adda0e77362a",
-      "sourceId": "mixture-of-experts",
-      "contentHash": "531429bdc708b0cec0fa06daa6cdb77a61f62b803173436eeaf4db60a21fa4de",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Mixture-of-Experts (MoE) objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-5c408fb24d85aa1c61fe",
       "sourceId": "inverted-index",
       "contentHash": "4a98ada73b9e75e443656b8c9918a345c3d0306621b6cb1e382314e062f1e7cf",
@@ -12023,6 +12016,300 @@
       "contentHash": "eb30d1296b1ffd57fcb55fad3f4aa7591545854b8bad3ac42d9107d7ffcff2f1",
       "decision": "retain",
       "reason": "warp: Tests the main misconception of this objective; a question heading does not create an entity."
+    },
+    {
+      "candidateKey": "cand-c9c2949bfad7b200322e",
+      "sourceId": "adverse-action-reason-codes",
+      "contentHash": "745dba9c432e9c58addf244a95928e6f5264f61614e9976e56fe7bf07becafe1",
+      "decision": "retain",
+      "reason": "adverse-action-reason-codes: Defines the named canonical objective and its boundary rather than a second entity."
+    },
+    {
+      "candidateKey": "cand-52e5307f7a8a65a1aa1d",
+      "sourceId": "adverse-action-reason-codes",
+      "contentHash": "a71149a4b2f209fba465e253fe4f23b36a7e8d93c625e4760067aad809f5d73b",
+      "decision": "retain",
+      "reason": "adverse-action-reason-codes: Derives the same objective from declared foundations; implementation details support this entity."
+    },
+    {
+      "candidateKey": "cand-73183c07169377047294",
+      "sourceId": "adverse-action-reason-codes",
+      "contentHash": "b364b4be3a40506113a2a49618c67c60988acafb66899991f50c914e7177c8d8",
+      "decision": "retain",
+      "reason": "adverse-action-reason-codes: Original nondegenerate instance exercises this canonical mechanism, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-86682c0866fa14248fc3",
+      "sourceId": "adverse-action-reason-codes",
+      "contentHash": "f66804c8b789030d29e04d5bd949c2db0c8961a746d045d3d5a9c4eeec2f407d",
+      "decision": "retain",
+      "reason": "adverse-action-reason-codes: Bounds the stated mechanism with acceptance checks and contrasts; no independently introduced objective."
+    },
+    {
+      "candidateKey": "cand-b3d99245de984d3d27f4",
+      "sourceId": "adverse-action-reason-codes",
+      "contentHash": "58bc0ed26a7f11f65ef47830ce719e810f191cc90d196493684014361a098607",
+      "decision": "retain",
+      "reason": "adverse-action-reason-codes: Checks the central misconception of the owning concept."
+    },
+    {
+      "candidateKey": "cand-a6968f94c96bd22ab98a",
+      "sourceId": "spmd-tensor-partitioning",
+      "contentHash": "3fd2637864e104cb05c74686febcc8de39a5d1b611ae918d748065f654812fe7",
+      "decision": "retain",
+      "reason": "spmd-tensor-partitioning: Defines the named canonical objective and its boundary rather than a second entity."
+    },
+    {
+      "candidateKey": "cand-697e6dd85266838bd0c9",
+      "sourceId": "spmd-tensor-partitioning",
+      "contentHash": "7e641f1264f5fe1a7ea7222b1cf15da4a80715a1854eb610442eaecc25e620e9",
+      "decision": "retain",
+      "reason": "spmd-tensor-partitioning: Derives the same objective from declared foundations; implementation details support this entity."
+    },
+    {
+      "candidateKey": "cand-465e9d27bc78a621df36",
+      "sourceId": "spmd-tensor-partitioning",
+      "contentHash": "7dcaf3971c7271c8881d71bc8c897dbd7452a5e85a906845aeb268aedb5988eb",
+      "decision": "retain",
+      "reason": "spmd-tensor-partitioning: Original nondegenerate instance exercises this canonical mechanism, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-fcb8e534d798e0b0bcf1",
+      "sourceId": "spmd-tensor-partitioning",
+      "contentHash": "25a6e935f5a03bf6356595eeca82b7abf8ecf8f9ac27b6485a51c44e14f27b2e",
+      "decision": "retain",
+      "reason": "spmd-tensor-partitioning: Bounds the stated mechanism with acceptance checks and contrasts; no independently introduced objective."
+    },
+    {
+      "candidateKey": "cand-c5005b2517c44033810b",
+      "sourceId": "spmd-tensor-partitioning",
+      "contentHash": "0e6d210f5cb5873735411ba87b6acbc939bfc8622a4a38729998664d3b96cd97",
+      "decision": "retain",
+      "reason": "spmd-tensor-partitioning: Checks the central misconception of the owning concept."
+    },
+    {
+      "candidateKey": "cand-22f2e4217b98ab229c2d",
+      "sourceId": "shared-kv-cache-service",
+      "contentHash": "1a5caa5b2d3626afbf95255d75983852231894747fa6732a2f551c55956e5a0b",
+      "decision": "retain",
+      "reason": "shared-kv-cache-service: Defines the named canonical objective and its boundary rather than a second entity."
+    },
+    {
+      "candidateKey": "cand-ba750d811770365ad2b6",
+      "sourceId": "shared-kv-cache-service",
+      "contentHash": "54e4500d4304feb59104f931bef7278bf18586dd5e53988ac0a1bed06ae15542",
+      "decision": "retain",
+      "reason": "shared-kv-cache-service: Derives the same objective from declared foundations; implementation details support this entity."
+    },
+    {
+      "candidateKey": "cand-2d81def7ae3761c3ce12",
+      "sourceId": "shared-kv-cache-service",
+      "contentHash": "17d7299851256d975107d3ec1ca2ad60d2e4841f3ec46016ac845b204f6495d9",
+      "decision": "retain",
+      "reason": "shared-kv-cache-service: Original nondegenerate instance exercises this canonical mechanism, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-48fb493621f64d419bed",
+      "sourceId": "shared-kv-cache-service",
+      "contentHash": "1cf78ddc893725f0eef445368f57289c809e468adf056d4f7c14b8f9fefd10d8",
+      "decision": "retain",
+      "reason": "shared-kv-cache-service: Bounds the stated mechanism with acceptance checks and contrasts; no independently introduced objective."
+    },
+    {
+      "candidateKey": "cand-a0dec70f04d819788793",
+      "sourceId": "shared-kv-cache-service",
+      "contentHash": "793aad2ebbbce9d1ce7f1913e749e94ca38a0d11be38964c5f9b9650b12b1d74",
+      "decision": "retain",
+      "reason": "shared-kv-cache-service: Checks the central misconception of the owning concept."
+    },
+    {
+      "candidateKey": "cand-b698d3d76a5d18accaab",
+      "sourceId": "hierarchical-mixture-of-experts-gating",
+      "contentHash": "749fa395145035bd305d92f94b21ad3b38d48ca7d7c7c2fa8efc4d3f0a1e8bc5",
+      "decision": "retain",
+      "reason": "hierarchical-mixture-of-experts-gating: Defines the named canonical objective and its boundary rather than a second entity."
+    },
+    {
+      "candidateKey": "cand-2bddac414d7da1e14af7",
+      "sourceId": "hierarchical-mixture-of-experts-gating",
+      "contentHash": "9a8654a5b1171d0f61dd25b9343d9e91369067e49d52df17d253427a6ac9bc16",
+      "decision": "retain",
+      "reason": "hierarchical-mixture-of-experts-gating: Derives the same objective from declared foundations; implementation details support this entity."
+    },
+    {
+      "candidateKey": "cand-2c3c041ea12f52ff0ed2",
+      "sourceId": "hierarchical-mixture-of-experts-gating",
+      "contentHash": "93c9a99d8f44008b0f98756ac402a8ee9a79828f63798cae0dd0f4a5aed0fa0d",
+      "decision": "retain",
+      "reason": "hierarchical-mixture-of-experts-gating: Original nondegenerate instance exercises this canonical mechanism, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-7650b67f48dc1fd7a4e0",
+      "sourceId": "hierarchical-mixture-of-experts-gating",
+      "contentHash": "2cba7b4042ffb1d4f7bf0b0aed7c771b3dae560309fa03b916711d98321e3138",
+      "decision": "retain",
+      "reason": "hierarchical-mixture-of-experts-gating: Bounds the stated mechanism with acceptance checks and contrasts; no independently introduced objective."
+    },
+    {
+      "candidateKey": "cand-02517cbcdf54e5e46b7a",
+      "sourceId": "hierarchical-mixture-of-experts-gating",
+      "contentHash": "6b4cb1f0c83603cf50ac4b5bc5c9a84a26809881fb436f916681d930dd722267",
+      "decision": "retain",
+      "reason": "hierarchical-mixture-of-experts-gating: Checks the central misconception of the owning concept."
+    },
+    {
+      "candidateKey": "cand-83cbff8eebf10e77227c",
+      "sourceId": "agent-memory-entity-resolution",
+      "contentHash": "066bb82c7a71034a2a1d1407cae69e140eaa498535b18e75a4ecf9ae7a3a91bb",
+      "decision": "retain",
+      "reason": "agent-memory-entity-resolution: Defines the named canonical objective and its boundary rather than a second entity."
+    },
+    {
+      "candidateKey": "cand-3f0c3c9286ecc3f15982",
+      "sourceId": "agent-memory-entity-resolution",
+      "contentHash": "973717c1e4cee635d3f601f7d3c0e05b1c80ff5f520031cca799eb8b95996441",
+      "decision": "retain",
+      "reason": "agent-memory-entity-resolution: Derives the same objective from declared foundations; implementation details support this entity."
+    },
+    {
+      "candidateKey": "cand-ade7b184d30224522956",
+      "sourceId": "agent-memory-entity-resolution",
+      "contentHash": "965c969375bc2f90bdcec05e8e255c4a82aac837baa340d0b91411a7164de209",
+      "decision": "retain",
+      "reason": "agent-memory-entity-resolution: Original nondegenerate instance exercises this canonical mechanism, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-7b8f0db2c1c90f1b0285",
+      "sourceId": "agent-memory-entity-resolution",
+      "contentHash": "729d16deca06113ad538edc67e88c3aa9fb8312347083b9ed6157162c7f97627",
+      "decision": "retain",
+      "reason": "agent-memory-entity-resolution: Bounds the stated mechanism with acceptance checks and contrasts; no independently introduced objective."
+    },
+    {
+      "candidateKey": "cand-77208f1efaf8c08b0b80",
+      "sourceId": "agent-memory-entity-resolution",
+      "contentHash": "659304bfb9a20a861cce81009a959d30bf05d2338d0edec510b6091a66a2f7b0",
+      "decision": "retain",
+      "reason": "agent-memory-entity-resolution: Checks the central misconception of the owning concept."
+    },
+    {
+      "candidateKey": "cand-720e78c4476dfae26ea1",
+      "sourceId": "selective-kv-cache-recomputation",
+      "contentHash": "1382297566336baaeeb24c42d54bf84941096a71166d796d32e7ff46e6589d0e",
+      "decision": "retain",
+      "reason": "selective-kv-cache-recomputation: Defines the named canonical objective and its boundary rather than a second entity."
+    },
+    {
+      "candidateKey": "cand-63251346f846b7d4fea7",
+      "sourceId": "selective-kv-cache-recomputation",
+      "contentHash": "f84b75862da938eb80e903abd65674000875c0fe6e451a05f18ee660a6594bca",
+      "decision": "retain",
+      "reason": "selective-kv-cache-recomputation: Derives the same objective from declared foundations; implementation details support this entity."
+    },
+    {
+      "candidateKey": "cand-1deb67270031ec8dce34",
+      "sourceId": "selective-kv-cache-recomputation",
+      "contentHash": "8ba21fe1d62da211b84279432391ebc0a46de5b63d3c96594981fb24ce1efff5",
+      "decision": "retain",
+      "reason": "selective-kv-cache-recomputation: Original nondegenerate instance exercises this canonical mechanism, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-8b7d33c952da751aa8f5",
+      "sourceId": "selective-kv-cache-recomputation",
+      "contentHash": "113ae2dbcddac6571a91ab2d5c6076f02302d92f8182fe4ad86c404957a9de6d",
+      "decision": "retain",
+      "reason": "selective-kv-cache-recomputation: Bounds the stated mechanism with acceptance checks and contrasts; no independently introduced objective."
+    },
+    {
+      "candidateKey": "cand-2099bc490de6255c6d9e",
+      "sourceId": "selective-kv-cache-recomputation",
+      "contentHash": "f0645b424214495704aefd4e24e0f81d880d05a503961845f2cf956922fd0cd4",
+      "decision": "retain",
+      "reason": "selective-kv-cache-recomputation: Checks the central misconception of the owning concept."
+    },
+    {
+      "candidateKey": "cand-645601fed9359db303c8",
+      "sourceId": "gshard-automatic-model-sharding",
+      "contentHash": "99b8a13f80274c51c18644f0639e39e89bb6f54ddb19df9a801e7c649c040855",
+      "decision": "retain",
+      "reason": "gshard-automatic-model-sharding: Defines the named canonical objective and its boundary rather than a second entity."
+    },
+    {
+      "candidateKey": "cand-faadef1b346db389155e",
+      "sourceId": "gshard-automatic-model-sharding",
+      "contentHash": "1389371ff96ab0c37d7dcd1d455a77580b7f9b108ce6b379456480c9e2c0c2ad",
+      "decision": "retain",
+      "reason": "gshard-automatic-model-sharding: Derives the same objective from declared foundations; implementation details support this entity."
+    },
+    {
+      "candidateKey": "cand-dec1ec7b5eedefedef5b",
+      "sourceId": "gshard-automatic-model-sharding",
+      "contentHash": "932f84c2ecf704647a5831277be8fb222bf778f55614bf62e6be7dc9fa16a66a",
+      "decision": "retain",
+      "reason": "gshard-automatic-model-sharding: Original nondegenerate instance exercises this canonical mechanism, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-26fa08238c01ca6add3f",
+      "sourceId": "gshard-automatic-model-sharding",
+      "contentHash": "9043cbd1fae7ff6cda113920cde406f0cb4da7a0ae34c9de721195fd7245c0c0",
+      "decision": "retain",
+      "reason": "gshard-automatic-model-sharding: Bounds the stated mechanism with acceptance checks and contrasts; no independently introduced objective."
+    },
+    {
+      "candidateKey": "cand-dc880e73f891a6af5f92",
+      "sourceId": "gshard-automatic-model-sharding",
+      "contentHash": "414683490341839c286a0694eff3cbe707d45b57fe5aa42554915e7027aa4079",
+      "decision": "retain",
+      "reason": "gshard-automatic-model-sharding: Checks the central misconception of the owning concept."
+    },
+    {
+      "candidateKey": "cand-539173466c010ea68cbd",
+      "sourceId": "constrained-counterfactual-recourse",
+      "contentHash": "ff314eb0841c636f3e2195c084ba132bf57ec12c43bd6b44e340da9ae7323b83",
+      "decision": "retain",
+      "reason": "constrained-counterfactual-recourse: Defines the named canonical objective and its boundary rather than a second entity."
+    },
+    {
+      "candidateKey": "cand-8732116098a7f0e3bba0",
+      "sourceId": "constrained-counterfactual-recourse",
+      "contentHash": "af205a278b97c366cff09196fe0cfb3546ca0dabc4ed700bdd4c538f59f35d03",
+      "decision": "retain",
+      "reason": "constrained-counterfactual-recourse: Derives the same objective from declared foundations; implementation details support this entity."
+    },
+    {
+      "candidateKey": "cand-794b58596da186e54d49",
+      "sourceId": "constrained-counterfactual-recourse",
+      "contentHash": "8a4d378e913675396eaa9b5117e6df45c650e6c631edadcc8eeb02989cff0e1e",
+      "decision": "retain",
+      "reason": "constrained-counterfactual-recourse: Original nondegenerate instance exercises this canonical mechanism, not a separate concept."
+    },
+    {
+      "candidateKey": "cand-1cfc75882887d2e7ae49",
+      "sourceId": "constrained-counterfactual-recourse",
+      "contentHash": "cd708740f0efa0915213f4ea1c2320febf4c99d72e91c186020df3fd2c8c2e2b",
+      "decision": "retain",
+      "reason": "constrained-counterfactual-recourse: Bounds the stated mechanism with acceptance checks and contrasts; no independently introduced objective."
+    },
+    {
+      "candidateKey": "cand-eddef9ca1aee6fc12dfe",
+      "sourceId": "constrained-counterfactual-recourse",
+      "contentHash": "81b9675625165d1407b842561e3f9c2f7bebb12713caefb2a503a88ca8717535",
+      "decision": "retain",
+      "reason": "constrained-counterfactual-recourse: Checks the central misconception of the owning concept."
+    },
+    {
+      "candidateKey": "cand-f176d5c2840d602a4974",
+      "sourceId": "mixture-of-experts",
+      "contentHash": "2d059db2dd4a0b1452e6c189fdf959d7f7a2e9638353fce5f1606f9e238e2f53",
+      "decision": "retain",
+      "reason": "mixture-of-experts: Defines sparse expert selection, weighted combination and the capacity/active-work boundary. Router details and the worked mechanism explain this canonical MoE entity rather than a new objective."
+    },
+    {
+      "candidateKey": "cand-99f4abcda4136968be58",
+      "sourceId": "mixture-of-experts",
+      "contentHash": "7e35c3156a0a0df95c61b7225ff547fa181b6bcb9ef6a0182a9ee09003655ac5",
+      "decision": "retain",
+      "reason": "mixture-of-experts: Separates total parameters, selected expert work, router overhead and runtime within the sparse-MoE scaling objective, rather than introducing another scaling law."
     }
   ]
 }

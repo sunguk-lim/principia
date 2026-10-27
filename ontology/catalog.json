@@ -3659,6 +3659,59 @@
         "mixture-of-experts": "Defines expert score selection, softmax weighting, sparse execution and the routing-collapse problem being modified.",
         "normal-distribution": "Defines the standard Gaussian draws and how scaling changes their dispersion."
       }
+    },
+    "shared-kv-cache-service": {
+      "prerequisiteReasons": {
+        "prefix-caching": "Defines the exact state-reuse invariant adopted across workers.",
+        "tiered-kv-cache": "Supplies the restore-versus-recompute cost and storage-tier distinction.",
+        "process": "Explains independent engine and cache address spaces and lifetimes.",
+        "retrieval-authorization-boundary": "Defines the evidence-access restriction that cache reuse must preserve."
+      }
+    },
+    "selective-kv-cache-recomputation": {
+      "prerequisiteReasons": {
+        "prefix-caching": "Provides the exact baseline and explains why its reuse invariant does not extend to arbitrary chunk positions.",
+        "transformer-attention": "Provides the causal dependence and attention operation whose omitted cross-chunk effects are repaired.",
+        "tiered-kv-cache": "Provides the retrieval and overlap costs of off-device cached state."
+      }
+    },
+    "constrained-counterfactual-recourse": {
+      "prerequisiteReasons": {
+        "neural-network": "Provides the predictive model whose decision must actually change.",
+        "arithmetic": "Supports the score, decision threshold and explicit cost calculations.",
+        "set": "Defines the feasible-action domain and explains why an empty feasible solution is possible."
+      }
+    },
+    "adverse-action-reason-codes": {
+      "prerequisiteReasons": {
+        "local-feature-attribution": "Separates local attribution from decision explanations and supplies its convention-dependent limits.",
+        "dataset-lineage": "Provides traceability of the feature evidence needed to reproduce a reason."
+      }
+    },
+    "agent-memory-entity-resolution": {
+      "prerequisiteReasons": {
+        "knowledge-graph": "Defines typed entities and the stable vertex identity to which mentions are linked.",
+        "cosine-similarity": "Explains embedding candidate similarity without equating similarity with identity.",
+        "agent-memory": "Supplies episodes and retained facts whose attachment and retrieval depend on identity decisions.",
+        "embedding": "Explains the learned vector representation used to retrieve entity candidates, separately from the contextual identity judgment."
+      }
+    },
+    "hierarchical-mixture-of-experts-gating": {
+      "prerequisiteReasons": {
+        "mixture-of-experts": "Provides sparse expert selection, gate-weighted combination and the flat routing baseline factorized by the hierarchy."
+      }
+    },
+    "gshard-automatic-model-sharding": {
+      "prerequisiteReasons": {
+        "expert-parallelism": "Provides the routed expert dispatch and combination realized by the distributed sparse architecture.",
+        "spmd-tensor-partitioning": "Provides the compiler transformation and communication/layout correctness contract used by the annotation-based architecture."
+      }
+    },
+    "spmd-tensor-partitioning": {
+      "prerequisiteReasons": {
+        "computation-graph": "Defines global tensor operations, values and data dependencies whose meaning partitioning must preserve.",
+        "all-reduce": "Provides the cross-device combination required when a reduction spans local slices."
+      }
     }
   }
 }

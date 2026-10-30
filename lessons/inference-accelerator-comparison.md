@@ -8,6 +8,8 @@ There is no workload-free fastest inference chip. A device and its compiler/runt
 
 Use the [[roofline-model]] to ask whether the workload is bandwidth- or compute-limited. A batch-one decode can be limited by streaming weights, while a full service batch can reuse them across requests. Check model and kernel coverage, memory for weights and cache, interconnect, and scheduling. A specialized accelerator may win a fixed supported workload but impose compilation or feature constraints.
 
+Before timing, establish a versioned feature contract for the exact model, runtime build, driver and device. Mark each required feature supported, conditional, unsupported or untested, and exercise combinations rather than only isolated features. A short successful completion does not establish adapter, cache-offload, cancellation or phase-handoff behavior. Recheck after upgrades; frontend-to-worker compatibility does not prove worker-to-worker state compatibility.
+
 ## One example
 
 Compare the same checkpoint at the same quality target under short and long prompts, batch one and high concurrency. Record first-token and per-token latency, sustained output tokens per second, peak memory, energy, and cost. If one system must change precision or model architecture, disclose that instead of calling it a hardware-only speedup.

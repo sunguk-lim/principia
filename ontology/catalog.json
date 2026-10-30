@@ -3712,6 +3712,49 @@
         "computation-graph": "Defines global tensor operations, values and data dependencies whose meaning partitioning must preserve.",
         "all-reduce": "Provides the cross-device combination required when a reduction spans local slices."
       }
+    },
+    "causal-attention-validation": {
+      "objective": "Causal attention validation checks prefix invariance and exact mask conventions rather than inferring information leakage from a low training loss.",
+      "prerequisiteReasons": {
+        "causal-language-model-training": "Defines the prefix-only prediction contract being tested.",
+        "metamorphic-testing": "Defines the transformed-input invariance test and its limits."
+      }
+    },
+    "masked-attention-numerics": {
+      "objective": "Masked attention numerics distinguishes excluding invalid keys from defining empty-query behavior and tests both under the executed floating-point format.",
+      "prerequisiteReasons": {
+        "transformer-attention": "Defines score masking before the weighted value combination.",
+        "mixed-precision-training": "Explains why numerical range and dtype selection change execution behavior."
+      }
+    },
+    "pointwise-passage-reranking": {
+      "objective": "Pointwise passage reranking scores each query-passage pair independently and sorts those scores within an already retrieved candidate set.",
+      "prerequisiteReasons": {
+        "retrieval-evidence-gate": "Defines the candidate boundary and relevance-versus-answerability distinction.",
+        "transformer-attention": "Explains joint token interaction in the cross-encoder implementation example."
+      }
+    },
+    "pairwise-passage-reranking": {
+      "objective": "Pairwise passage reranking aggregates query-conditioned preferences between candidate pairs while explicitly handling ties, cycles and comparison cost.",
+      "prerequisiteReasons": {
+        "retrieval-evidence-gate": "Defines the fixed candidate set and the downstream evidence objective."
+      }
+    },
+    "latency-driven-inference-scaling": {
+      "objective": "Latency-driven inference scaling selects ready prefill and decode capacity from workload-conditioned service measurements and explicit first-token and inter-token targets.",
+      "prerequisiteReasons": {
+        "inference-request-scheduling": "Explains queueing, batching and cache constraints inside a worker.",
+        "measurement": "Grounds workload-conditioned service estimates and validation.",
+        "prefill-decode-disaggregation": "Explains separately provisioned prompt and generation pools."
+      }
+    },
+    "fleet-inference-orchestration": {
+      "objective": "Fleet inference orchestration coordinates request routing, capacity control and reusable model state across engine instances rather than treating single-engine optimization as a complete serving architecture.",
+      "prerequisiteReasons": {
+        "cache-aware-inference-routing": "Explains the per-request placement decision using reuse and current load.",
+        "tiered-kv-cache": "Explains the state-placement and restore-versus-recompute decision.",
+        "latency-driven-inference-scaling": "Explains the slower loop that adjusts ready capacity."
+      }
     }
   }
 }

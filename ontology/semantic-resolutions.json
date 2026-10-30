@@ -12310,6 +12310,195 @@
       "contentHash": "7e35c3156a0a0df95c61b7225ff547fa181b6bcb9ef6a0182a9ee09003655ac5",
       "decision": "retain",
       "reason": "mixture-of-experts: Separates total parameters, selected expert work, router overhead and runtime within the sparse-MoE scaling objective, rather than introducing another scaling law."
+    },
+    {
+      "candidateKey": "cand-6fc81b22fb82e7f20ad0",
+      "sourceId": "causal-attention-validation",
+      "contentHash": "68feaaa9224c4a856565db186a919f2a0d0ef443ea6f1f692ec0904c9f4350cc",
+      "decision": "retain",
+      "reason": "Limits what a prefix-invariance test proves and distinguishes target alignment; these are scope conditions of validation."
+    },
+    {
+      "candidateKey": "cand-e522ece8fa805f235e64",
+      "sourceId": "causal-attention-validation",
+      "contentHash": "fe11413305878b7cfca034b9a72b6b778fcfd842e64f2c9ef9d711482c3dcee4",
+      "decision": "retain",
+      "reason": "Defines the prefix-invariance validation objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-1fea9a38dadce38d55da",
+      "sourceId": "causal-attention-validation",
+      "contentHash": "16a268d0dfd89f291a34959499a8b0834402cc728ced9835d5b9c06062ca2d86",
+      "decision": "retain",
+      "reason": "Mask polarity and controlled suffix perturbation are the execution-contract checks needed for this validation objective; API names are examples, not entities."
+    },
+    {
+      "candidateKey": "cand-0a15e5591d7b54f7e8da",
+      "sourceId": "causal-attention-validation",
+      "contentHash": "3e94294040e31e61730df2cca04c5d2916175315720177407879122b22447885",
+      "decision": "retain",
+      "reason": "The preserved-prefix case, its complement mask and positive control instantiate the same validation procedure."
+    },
+    {
+      "candidateKey": "cand-3bd7add15e81fc9508c5",
+      "sourceId": "cuda-graph-replay",
+      "contentHash": "4ba823c49ff1afd550597efb5adc52b2cff0a27c57199654b359741192ad6b3c",
+      "decision": "retain",
+      "reason": "Mutable metadata and full-versus-piecewise capture specify replay compatibility and coverage, extending the same CUDA graph replay entity; batch descriptors and backend defaults are version-specific implementation details."
+    },
+    {
+      "candidateKey": "cand-6f6017b1daab25e84ea0",
+      "sourceId": "fleet-inference-orchestration",
+      "contentHash": "661598f3421230121dfe6e565651c3834d171865666cd11a5cc13a601e41a308",
+      "decision": "retain",
+      "reason": "Defines the fleet-level coordination responsibility, distinct from execution-engine internals."
+    },
+    {
+      "candidateKey": "cand-7ae30aaddf2ccd552150",
+      "sourceId": "fleet-inference-orchestration",
+      "contentHash": "b02c13aaf7e80c2bc8285077e1aa3cbae42e9fd2d338d1d5703d4bff934c5cfb",
+      "decision": "retain",
+      "reason": "Required routing, phase separation, cache placement and scaling entities already exist and are linked; the contribution here is their cross-plane contract."
+    },
+    {
+      "candidateKey": "cand-b0fdd11675b791a15734",
+      "sourceId": "fleet-inference-orchestration",
+      "contentHash": "168d32e6082ae8aabf1a1745f7443fdbd65821429d6cd4b11c0a48a33a59c39a",
+      "decision": "retain",
+      "reason": "Failure and system-boundary checks qualify orchestration rather than create additional reliability entities."
+    },
+    {
+      "candidateKey": "cand-5e046328b8cb0e890e7d",
+      "sourceId": "fleet-inference-orchestration",
+      "contentHash": "a914cbc1b5698e1cba47a52de8b3f20ff1e8e19ab011006a6639005c85e64c90",
+      "decision": "retain",
+      "reason": "One request traces coupled queue/reuse/handoff estimates through the same architecture."
+    },
+    {
+      "candidateKey": "cand-4f6dbd1b92a82c521b96",
+      "sourceId": "inference-accelerator-comparison",
+      "contentHash": "8ab551c333bc2dc91a2c08a16ce1d35de32819a32fe8c79fb4fb2be939175b8a",
+      "decision": "retain",
+      "reason": "Conformance of the timed model/runtime/device configuration is an eligibility condition of accelerator comparison, not a synonymous provider API matrix or a new hardware ranking entity."
+    },
+    {
+      "candidateKey": "cand-f5331c007618f78857f7",
+      "sourceId": "inference-accelerator-comparison",
+      "contentHash": "1f1c42e298b5814f116f00c100df1fa3b08d3aee2ee36a858f57b43b406f3ef6",
+      "decision": "retain",
+      "reason": "The existing canonical comparison objective remains one identity; its workload and quality constraints are not a new concept."
+    },
+    {
+      "candidateKey": "cand-64b1a1933e9dcb0173ea",
+      "sourceId": "latency-driven-inference-scaling",
+      "contentHash": "97d5fb64b99150084b4a3a42de752e8191e755a55e36e7510e497d2f57915242",
+      "decision": "retain",
+      "reason": "Stale metrics, oscillation and controlled trace comparisons are validity conditions for this scaling loop."
+    },
+    {
+      "candidateKey": "cand-7cde4c533f7bc458c82c",
+      "sourceId": "latency-driven-inference-scaling",
+      "contentHash": "7fccf4005876b84a0a4daf998818f05572456b17faadebee492f404bc3aa6fb8",
+      "decision": "retain",
+      "reason": "Defines ready-capacity selection under explicit latency constraints."
+    },
+    {
+      "candidateKey": "cand-952b1ac4bad44203599a",
+      "sourceId": "latency-driven-inference-scaling",
+      "contentHash": "c62921cee0edc780803fb8949521c2403527ffa6a09dfbf8e7d9cf23deaca89f",
+      "decision": "retain",
+      "reason": "Measurements, readiness and predictive/reactive policies explain one scaling loop; no product configuration field is treated as an entity."
+    },
+    {
+      "candidateKey": "cand-0d552711253d5bc7ffae",
+      "sourceId": "latency-driven-inference-scaling",
+      "contentHash": "9d1ab38d2cfb49441b1346601f8bc5a15b7ab65f631a12ab606040b955905b39",
+      "decision": "retain",
+      "reason": "Replica arithmetic and startup backlog instantiate the capacity-selection objective and distinguish it from desired counts."
+    },
+    {
+      "candidateKey": "cand-a9f00b5a46093eb1b844",
+      "sourceId": "masked-attention-numerics",
+      "contentHash": "6cd00f51c06b3115536b9074e5120e6161adbc2151b67db66f32f8ee2a5d3fa2",
+      "decision": "retain",
+      "reason": "Defines numerical validity for allowed-key and empty-query cases within one attention-masking objective."
+    },
+    {
+      "candidateKey": "cand-10c817ff611feab14945",
+      "sourceId": "masked-attention-numerics",
+      "contentHash": "5060c58a4922117918b29a40ae22d233e00dd30abb356dbd8da35d081b60ebe0",
+      "decision": "retain",
+      "reason": "Normalization and representability explain the existing attention and mixed-precision prerequisites in this mask-specific case."
+    },
+    {
+      "candidateKey": "cand-fdc9e2866ccca0fdc17d",
+      "sourceId": "masked-attention-numerics",
+      "contentHash": "6c045c51d28337014521c281b9385cb61da936ca15b36497e8b0164a4613441c",
+      "decision": "retain",
+      "reason": "Forward/gradient and padding checks establish the numerical masking contract rather than a separate generic testing entity."
+    },
+    {
+      "candidateKey": "cand-b6332f7186f43ea7a80e",
+      "sourceId": "masked-attention-numerics",
+      "contentHash": "e7d61e16c3d354c1f200bea53ef016603727b03a612814026671344bca731348",
+      "decision": "retain",
+      "reason": "Finite and infinite sentinels are contrasting numerical cases, not new independent quantities."
+    },
+    {
+      "candidateKey": "cand-6e272839e41c5b248af9",
+      "sourceId": "pairwise-passage-reranking",
+      "contentHash": "e4fa4520547cd4b8390e239b96003b760567bcacc5c61a0cb5ce90a6d098d08b",
+      "decision": "retain",
+      "reason": "Defines local query-conditioned comparisons and their aggregation as one ranking procedure."
+    },
+    {
+      "candidateKey": "cand-a74e5ce95591394261ad",
+      "sourceId": "pairwise-passage-reranking",
+      "contentHash": "b465d15e4f7e4e6474c0f64b2ff542af4690419b54aa2dce43ff9ab78ffc9049",
+      "decision": "retain",
+      "reason": "Order reversal, ties and win totals specify the selected aggregation mechanism, not separate entities for each rule."
+    },
+    {
+      "candidateKey": "cand-89a576bd217a306587c1",
+      "sourceId": "pairwise-passage-reranking",
+      "contentHash": "48ea8ecd2da0be8d1d35ac35d725a3f0a9288932f8f89f7e910d583b4c3c083b",
+      "decision": "retain",
+      "reason": "All-pair, sorting and bounded-pass alternatives delimit implementations of the same pairwise ranking objective."
+    },
+    {
+      "candidateKey": "cand-003659b85cd838b016cb",
+      "sourceId": "pairwise-passage-reranking",
+      "contentHash": "230dc48a3b1437aecab89c9980d06471c242168c4e774e3ef07e37587094840e",
+      "decision": "retain",
+      "reason": "Cycle and tied-comparison cases are worked instances of preference aggregation."
+    },
+    {
+      "candidateKey": "cand-9aad82e1ae75a5ce2a93",
+      "sourceId": "pointwise-passage-reranking",
+      "contentHash": "9f4d1e9a2dd09b8451b252bf472da4a92ec3e1c771a0c6226c7db3eac58f8710",
+      "decision": "retain",
+      "reason": "Defines independent query-passage scoring within one ranking procedure."
+    },
+    {
+      "candidateKey": "cand-21a98cdef8982fedd100",
+      "sourceId": "pointwise-passage-reranking",
+      "contentHash": "461df035337a5d81b892355e7ad15074c139f5717623e9103c2de3107442ded7",
+      "decision": "retain",
+      "reason": "Cross-encoder scoring is a concrete implementation of the declared attention prerequisite; score comparability is a boundary of pointwise ordering."
+    },
+    {
+      "candidateKey": "cand-12c7c05b17ac3f6acd9f",
+      "sourceId": "pointwise-passage-reranking",
+      "contentHash": "7e8b4b143d9c097824ff0022099cb8f36442f1ecbcc5841d139d73d1f7e90ef9",
+      "decision": "retain",
+      "reason": "Controlled candidate pools and evidence/cost measurements evaluate this ranking procedure."
+    },
+    {
+      "candidateKey": "cand-db39928583aac2145afb",
+      "sourceId": "pointwise-passage-reranking",
+      "contentHash": "f5a6d2a7fe45bb24927f2f164ff698d58af29d5d4d7f91f7461978f887af8c64",
+      "decision": "retain",
+      "reason": "The three-passage score ordering and temporal conflict demonstrate this scoring procedure and its evidence limits."
     }
   ]
 }

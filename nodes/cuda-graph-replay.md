@@ -5,10 +5,10 @@ summary: CUDA graph replay reduces repeated host launch work by capturing a comp
 type: concept
 tags: [gpu]
 prereqs: [cuda-kernel, cuda-stream, prefill-vs-decode, llm-inference-memory-budget]
-sources: [https://docs.pytorch.org/docs/2.14/notes/cuda.html#cuda-graphs, https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__GRAPH.html, https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/cuda-graphs.html]
+sources: [https://docs.vllm.ai/en/latest/design/cuda_graphs/, https://docs.pytorch.org/docs/2.14/notes/cuda.html#cuda-graphs, https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__GRAPH.html, https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/cuda-graphs.html]
 status: explained
 created: 2026-10-16
-updated: 2026-10-26
+updated: 2026-10-31
 ---
 
 # CUDA Graph Replay for Inference
@@ -37,6 +37,14 @@ Consider a hypothetical measured decode interval: eager execution takes 120 micr
 
 Buckets also change the denominator. A batch of 5 routed to a captured batch of 8 has 3 padded slots: 3/8=37.5% of those slots are inactive, though runtime need not scale linearly with slot count. More buckets reduce padding but can reserve extra graph-pool memory and increase preparation time. Measure the actual batch distribution, eager fallbacks and peak memory, not only the fastest captured shape. Compare replay with kernel fusion separately: packaging existing launches and changing the device operations are different interventions.
 
+## Dynamic metadata and partial capture
+
+A growing token history does not necessarily change the graph's execution structure. A serving engine can update token IDs, positions, valid lengths and cache-location tables inside retained buffers while replaying a compatible fixed-capacity operation sequence. The kernels must explicitly support interpreting that metadata. Stable pointers alone do not make arbitrary context lengths, cache layouts, model adapters or control paths compatible. A dispatch key needs every property that changes the captured path, not merely the number of requests.
+
+Full capture includes the eligible model path in one graph; piecewise capture leaves unsupported or dynamic regions eager and replays compatible regions around them. For a hypothetical `projection → attention → output projection` path whose attention implementation cannot be captured, the two projection regions can be replayed separately while attention runs eagerly between them. This preserves the dynamic boundary but retains its dispatch and synchronization costs. If the attention path becomes capture-compatible, full capture may remove more host overhead, subject to memory and preparation costs. Compilation and capture are different transformations; one does not imply the other.
+
+The vLLM V1 design documents batch descriptors, runtime dispatch between full, piecewise and eager modes, and capability-dependent fallback. Its developer-preview defaults and backend tables are version-specific, not a portable guarantee. Compare full, partial and eager paths on the actual prompt/decode mix with correctness checks, graph coverage, padding, startup, peak memory and end-to-end latency. More captured work is not automatically a better operating point.
+
 ## Prerequisites
 
 - [[cuda-kernel]]
@@ -50,3 +58,5 @@ Buckets also change the denominator. A batch of 5 routed to a captured batch of 
 - [NVIDIA CUDA Runtime graph management](https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__GRAPH.html): graph execution API.
 
 - <https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/cuda-graphs.html>
+
+- <https://docs.vllm.ai/en/latest/design/cuda_graphs/>

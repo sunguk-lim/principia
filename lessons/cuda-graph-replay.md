@@ -10,6 +10,8 @@ Warm up eagerly to establish initialization and allocations, then capture eligib
 
 PyTorch's ordinary replay path expects compatible shapes and arguments. CUDA's lower-level graph-update APIs can change supported parameters under compatibility rules; they do not make arbitrary topology changes free. Handle update failure with re-instantiation or eager fallback. Multiple shape buckets exchange preparation time and graph memory for better request coverage; padding also spends device work.
 
+For changing LLM state, update supported token, position and cache metadata inside retained buffers. Full capture replays the whole compatible path; piecewise capture leaves unsupported regions eager and replays safe regions around them. A batch dispatcher chooses an actually compatible captured variant or eager fallback. Compilation and capture are different mechanisms, and backend support is version-specific.
+
 ## One example
 
 Assume a measured eager interval takes 120 microseconds: 80 of device work plus 40 of attributable gaps. Replay takes 88: the same 80 plus 8 of gaps. The saving is 32 microseconds. An 8,000-microsecond preparation cost is recovered after 250 replays; more than 250 is needed for a net win under those fixed assumptions. Include copies, synchronization and output handling in both measured paths. These are toy timings, not a universal speedup.

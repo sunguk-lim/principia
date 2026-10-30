@@ -5,10 +5,10 @@ summary: "Compare GPU, TPU, and specialized dataflow inference devices at a fixe
 type: concept
 tags: [ml/llm/inference]
 prereqs: [roofline-model, gpu-data-flow, llm-inference-memory-budget]
-sources: [https://arxiv.org/abs/1704.04760, https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/best-practices.html]
+sources: [https://docs.nvidia.com/dynamo/resources/feature-matrix, https://arxiv.org/abs/1704.04760, https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/best-practices.html]
 status: explained
 created: 2026-10-09
-updated: 2026-10-09
+updated: 2026-10-31
 ---
 
 # Inference Accelerator Comparison
@@ -25,6 +25,14 @@ First specify checkpoint and numerical format, context and output length distrib
 
 A vendor-reported “10× faster” result is not portable without its baseline, workload, precision, batch, and measurement boundary. Treat an architecture claim as a hypothesis for a controlled benchmark, not a ranking of device families.
 
+## Backend and device feature contracts
+
+Before timing a configuration, establish that its exact model, runtime build, driver, device and feature combination implements the required behavior. Record supported, unsupported, conditional and untested separately, with versioned primary documentation and a conformance test. Importing a backend or producing one short completion does not establish support for quantized caches, adapters, phase-separated serving, cancellation or their combinations. A feature matrix for individual features does not prove that every pair composes.
+
+For example, test a baseline request, the intended cache-offload path, cancellation during generation, and cancellation while prompt work is still on another worker. If the last case fails to release resources, successful generation is insufficient evidence for the required cancellation contract. This is an illustrative test design, not a claim about one current vendor release. Record unsupported paths explicitly; a transparent fallback may preserve output while invalidating an accelerator-only latency or memory comparison.
+
+Recheck conformance after upgrades. Distinguish frontend-to-worker API compatibility from direct worker-to-worker state-transfer compatibility: a version window guaranteed for one boundary does not automatically cover another. Dynamo's primary feature matrix demonstrates why backend, release and feature-interaction scope matter. Do not freeze its changing tables into a timeless device ranking. Unknown combinations remain untested until verified on the intended deployment.
+
 ## Prerequisites
 
 - [[roofline-model]]
@@ -35,3 +43,5 @@ A vendor-reported “10× faster” result is not portable without its baseline,
 
 - [Jouppi et al., In-Datacenter Performance Analysis of a Tensor Processing Unit](https://arxiv.org/abs/1704.04760): primary example of workload-specific accelerator analysis.
 - [NVIDIA TensorRT performance best practices](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/best-practices.html): runtime, batch, and profiling considerations.
+
+- <https://docs.nvidia.com/dynamo/resources/feature-matrix>

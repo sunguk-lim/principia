@@ -9,3 +9,6 @@ Test this stage with labeled questions and supporting passages. Measure first-st
 Keep quality control separate from security. A model's “not prompt injection” score cannot authorize the passage; access control must have happened before retrieval, and the passage remains untrusted when shown to the generator.
 
 **Understanding check:** Why can a high reranking score not repair a first-stage search that omitted the only policy page containing the deadline?
+## Locate the exclusion
+
+A hierarchy can lose evidence during grouping, branch pruning, passage selection or final ranking. If 90 of 100 questions retain support and 63 have it at the top, coverage is 90%, overall top-one support is 63%, and conditional ordering success is 70%. These are different metrics. Find the first failed stage and test bounded expansion rather than repeatedly reranking a shortlist that lacks the evidence.

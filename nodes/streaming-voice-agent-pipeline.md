@@ -8,7 +8,7 @@ prereqs: [agent-session-state, pipeline-bottleneck-localization, latency-percent
 sources: [https://docs.livekit.io/agents/multimodality/audio/, https://docs.livekit.io/agents/logic/turns/]
 status: explained
 created: 2026-09-30
-updated: 2026-10-09
+updated: 2026-11-01
 ---
 
 # Streaming Voice-Agent Pipeline
@@ -29,6 +29,12 @@ The STT–dialogue–TTS decomposition is not the only architecture: realtime sp
 
 A custom recognition vocabulary can improve application-specific names, product identifiers, and alphanumeric codes, but it can also bias unrelated words. Keep the lexicon versioned with the application and test it on accented, noisy, and code-heavy speech. Report named-entity and critical-field error separately from overall word error, plus latency and false corrections. Do not promote a vendor's language-count or post-utterance latency claim into a pipeline guarantee.
 
+## Critical fields must survive both directions
+
+A correct final transcript can still become incorrect speech. Evaluate recognition against what the caller said and synthesis against the approved response text separately. Names, units, decimal points, dosages and reference codes deserve field-level checks, because one dangerous substitution can be hidden by a low average word error rate. Pronunciation customization is a possible intervention, not evidence that the field was spoken correctly.
+
+Suppose the approved reply says “0.5 milligrams at 18:30,” but the audio is perceived as “5 milligrams at 8:30.” Dialogue-state validation alone cannot detect an outbound synthesis or intelligibility error. Use adjudicated listening on a held-out critical-string set, compare spoken fields with intended fields, and test correction/confirmation handling through the complete conversation. Back-transcription is a useful screening signal but is not an independent perfect oracle: it can share recognition errors. Report critical-field accuracy and harmful substitutions separately from naturalness, latency and aggregate word error.
+
 ## Prerequisites
 
 - [[agent-session-state]]
@@ -39,3 +45,5 @@ A custom recognition vocabulary can improve application-specific names, product 
 
 - [LiveKit Agents, speech and audio](https://docs.livekit.io/agents/multimodality/audio/): STT–LLM–TTS and realtime-model options.
 - [LiveKit Agents, turn detection and interruptions](https://docs.livekit.io/agents/logic/turns/): turn-boundary and interruption mechanisms.
+
+- <https://docs.livekit.io/agents/multimodality/audio/>

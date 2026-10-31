@@ -1,14 +1,14 @@
 ---
 id: multi-head-attention
 title: Multi-Head Attention
-summary: One transformer-attention produces a single weighting of the tokens — so it can emphasize only one kind of relationship at a time.
+summary: Multi-head attention learns several query-key-value projections, normalizes attention separately per head and combines their outputs at a declared total width.
 type: concept
 tags: [ml/llm/architecture]
-prereqs: [transformer-attention, matrix-multiplication, softmax]
-sources: ["Vaswani et al., Attention Is All You Need (2017), arXiv:1706.03762"]
+prereqs: [transformer-attention, matrix-multiplication, softmax, matrix-rank, determinant]
+sources: [https://arxiv.org/abs/1706.03762, https://arxiv.org/abs/1905.10650]
 status: explained
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-11-01
 ---
 
 # Multi-Head Attention
@@ -19,7 +19,7 @@ One [[transformer-attention]] produces a **single** weighting of the tokens — 
 one kind of relationship at a time. **Multi-head attention** runs $h$ attentions *in parallel*, each on
 its own learned slice of the representation, then glues the results back together. Because every head
 works in a space $h$ times narrower, the $h$ heads together cost about the same as one full-size
-attention — so the model attends to several relationships at once, essentially **for free**.
+attention — so separate learned weighting patterns can coexist. Equal leading matrix work does not mean equal latency, and learned head specialization is not guaranteed.
 
 ## Grounded explanation
 
@@ -57,7 +57,7 @@ carry all of them at once (one head can track the subject, another the adjacent 
 long-range referent). The identity that makes this affordable: with $d_\text{head} = d/h$, the $h$
 projection matrices $W^i$ stack into the *same* $d\times d$ matrix a single full-width attention would
 use — so $h$ narrow heads cost the **same** parameters and [[matrix-multiplication]]s as one wide head.
-Multi-relational mixing comes essentially for free.
+The leading dense matrix-work accounting is similar; normalization work, intermediate storage and kernel efficiency can differ.
 
 **Worked instance.** Take $d = 4$, $h = 2$ (so $d_\text{head} = 2$), two tokens, with token 1 as the
 query. To keep the arithmetic visible, let each head's projection simply *select* two coordinates: head
@@ -79,12 +79,22 @@ at the same time, precisely because the heads look at different subspaces. A sin
 reported only one of them.
 
 **Where it runs.** The $h$ heads are independent, so hardware computes them as one batched set of matrix
-multiplications — no slower than the single wide attention they replace. One consequence matters later:
+multiplications, but runtime depends on shape, normalization and hardware rather than a guarantee of equal speed. One consequence matters later:
 each head keeps its **own** keys and values, and during generation those accumulate per head — which is
 exactly the per-head memory cost that grouped-query attention is built to cut.
 
+## Fixed width, rank and execution shape
+
+Assume dense projections whose total query, key and value widths all equal model width d, with h heads and per-head width d/h. Ignoring biases, Q/K/V and output projections together contain 4d² weights. Changing h at fixed d changes their grouping, not that total. With d=2,048, 16 heads use width 128 and 32 heads use width 64; both have 16,777,216 projection weights. This count does not establish identical function classes, training behavior or quality.
+
+For an unmasked head with query and key matrices of shape T by d_head, the T by T raw product QK transpose has [[matrix-rank]] at most d_head. Rowwise [[softmax]] is nonlinear, and adding a causal mask changes the matrix, so this raw-product bound is not a bound on the final attention matrix. A rank-one score example is [[0,0],[0,1]]: its row softmax is approximately [[0.5,0.5],[0.269,0.731]], whose [[determinant]] is about 0.231 and therefore has rank two. This does not prove arbitrary expressiveness; it refutes carrying the pre-softmax rank bound through the nonlinear normalization.
+
+At fixed d, leading attention matrix multiplications scale with T²d, while a materialized score tensor has hT² elements. Fused implementations avoid materializing that entire tensor, but still pay shape-dependent normalization, data movement and scheduling costs. There is no universal optimal head width, and more heads need not imply redundant heads. Compare retrained fixed-width alternatives at matched budgets and inspect actual kernel traces, memory, prefill/decode timing and held-out quality. Post-training pruning evidence answers a different question from architecture selection.
+
 ## Prerequisites
 
+- [[determinant]]
+- [[matrix-rank]]
 - [[transformer-attention]]
 - [[matrix-multiplication]]
 - [[softmax]]

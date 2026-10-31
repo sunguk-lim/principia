@@ -8,7 +8,7 @@ prereqs: [reward-hacking, execution-benchmark-validity]
 sources: [https://arxiv.org/abs/2501.12948, https://www.swebench.com/SWE-bench/guides/evaluation/]
 status: explained
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-11-01
 ---
 
 # Verifiable Reward Design
@@ -25,6 +25,12 @@ Because an optimizer will seek high reward, [[reward-hacking]] is a design const
 
 A verifier is most valuable when a reliable checker exists and ideal reasoning traces are costly. It is less suitable for goals such as helpfulness or design quality that have no complete executable oracle. Combining several checks can improve coverage, but arbitrary weighted sums may let a model trade a serious failure for easy bonus points. Use gates for non-negotiable constraints and measure each component separately.
 
+## Layered correctness gates for generated SQL
+
+Executing without an exception is weaker than answering the intended question. For generated SQL, first enforce permitted read-only operations and resource scope outside the model. Then evaluate result correctness against adjudicated cases. Reward latency or scanned-data savings only among candidates that pass non-negotiable correctness checks; a weighted bonus must not compensate for an unsafe or wrong query.
+
+Suppose the question asks for 2025 net revenue. A query summing every year's gross revenue can parse, execute and return a plausible number. Even equality with a reference result on one database is insufficient: a fixture with no refunds or only one year may accidentally hide both errors. Add counterexample fixtures with refunds, duplicate join keys, missing values and boundary dates, and compare results under declared ordering and numeric tolerances. Keep these verifier-development examples separate from held-out schemas and independently assessed evaluation. Increased reward can mean the model found the verifier's gaps rather than learned the task.
+
 ## Prerequisites
 
 - [[reward-hacking]]
@@ -34,3 +40,5 @@ A verifier is most valuable when a reliable checker exists and ideal reasoning t
 
 - [DeepSeek-R1 technical report](https://arxiv.org/abs/2501.12948): discusses rule-based rewards for verifiable tasks.
 - [SWE-bench evaluation guide](https://www.swebench.com/SWE-bench/guides/evaluation/): illustrates executable test outcomes and harness boundaries.
+
+- <https://www.swebench.com/SWE-bench/guides/evaluation/>

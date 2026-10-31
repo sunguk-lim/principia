@@ -5,10 +5,10 @@ summary: A retrieval evidence gate evaluates whether retrieved passages support 
 type: concept
 tags: [ml/information-retrieval]
 prereqs: [retrieval-augmented-generation, measurement]
-sources: [https://arxiv.org/abs/2005.11401, https://learn.microsoft.com/en-us/azure/search/semantic-search-overview]
+sources: [https://arxiv.org/abs/2005.11401, https://learn.microsoft.com/en-us/azure/search/semantic-search-overview, https://arxiv.org/html/2610.35868v1]
 status: explained
 created: 2026-10-01
-updated: 2026-10-24
+updated: 2026-11-01
 ---
 
 # Retrieval Evidence Gate
@@ -31,6 +31,12 @@ Text passages and rendered pages may have different score distributions and fail
 
 Evaluate answerable-from-text, answerable-only-from-image, mixed-evidence, and unsupported cases separately, including questions containing screenshots. Inspect both false acceptance of insufficient evidence and false exclusion of a decisive page. A bounded wider-search retry may recover missing recall; repeating a low-quality candidate set cannot manufacture missing facts. If evidence remains insufficient, persist the question, permitted evidence identifiers, and reason for human review rather than generating a confident unsupported answer. Threshold fitting and final evaluation need separate data; a small demonstration table is not a general reliability guarantee.
 
+## Diagnosing hierarchical exclusions
+
+In a hierarchical search, missing evidence can disappear before passage ranking begins. Attribute failure to the first decision that excludes the supporting path: incorrect document grouping or summary, branch pruning, passage selection, final reranking or answer generation. Measuring only the final top passage conflates these causes.
+
+For 100 answerable questions, suppose the explored branches contain support for 90, and the final top passage contains support for 63. Branch coverage is 90/100=90%; top-one support is 63/100=63%; conditional top-one success among covered questions is 63/90=70%. A competing method with lower coverage but better conditional ordering can win top-one while losing at a larger context budget. Report all three quantities under explicit denominators. A bounded expansion or independent fallback search may recover a pruned branch; reranking the unchanged shortlist cannot. Compare build cost and end-to-end latency separately from the scoring pass, especially when systems use different deployment setups.
+
 ## Prerequisites
 
 - [[retrieval-augmented-generation]]
@@ -40,3 +46,5 @@ Evaluate answerable-from-text, answerable-only-from-image, mixed-evidence, and u
 
 - [Lewis et al., Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401): retriever-generator architecture.
 - [Azure AI Search semantic ranking](https://learn.microsoft.com/en-us/azure/search/semantic-search-overview): documented reranking over an initial result set.
+
+- <https://arxiv.org/html/2610.35868v1>

@@ -1689,7 +1689,9 @@
       "prerequisiteReasons": {
         "transformer-attention": "The stated objective requires Transformer attention: the complete explanation applies it in this mechanism: One transformer-attention produces a single weighting of the tokens — so it can emphasize only one kind of relationship at a time. Multi-head attention runs $h$ attentions in parallel, each on its own learned slice of the representation, then glues the results back together.",
         "matrix-multiplication": "The stated objective requires Matrix Multiplication: the complete explanation applies it in this mechanism: What it is. Each head $i$ first projects the input into its own $d\\text{head}$-dimensional subspace via matrix-multiplication: $X Wq^i$, $X Wk^i$, $X Wv^i$. It then runs an ordinary transformer-attention there to get $\\text{head}i$ (shape $n\\times d\\text{head}$), and then the",
-        "softmax": "The stated objective requires Softmax: the complete explanation applies it in this mechanism: - Head 1 (dims 1–2): query $q = [1,0]$; keys $k1 = [1,0],\\, k2 = [0,1]$; values $v1 = [2,0],\\, v2 = [0,2]$. Scores $q\\!\\cdot\\!k1 = 1,\\ q\\!\\cdot\\!k2 = 0$; scale by $\\sqrt{d\\text{head}} = \\sqrt2$ to get $[0.71,\\,0]$; softmax $\\to [0.67,\\,0.33]$. So $\\text{head}1 = 0.67\\,[2,0] +"
+        "softmax": "The stated objective requires Softmax: the complete explanation applies it in this mechanism: - Head 1 (dims 1–2): query $q = [1,0]$; keys $k1 = [1,0],\\, k2 = [0,1]$; values $v1 = [2,0],\\, v2 = [0,2]$. Scores $q\\!\\cdot\\!k1 = 1,\\ q\\!\\cdot\\!k2 = 0$; scale by $\\sqrt{d\\text{head}} = \\sqrt2$ to get $[0.71,\\,0]$; softmax $\\to [0.67,\\,0.33]$. So $\\text{head}1 = 0.67\\,[2,0] +",
+        "matrix-rank": "Distinguishes the raw score-product rank bound from nonlinear normalized attention expressiveness.",
+        "determinant": "The concrete softmax counterexample uses a nonzero 2x2 determinant to establish full rank."
       }
     },
     "multi-head-latent-attention": {
@@ -3067,7 +3069,8 @@
       "objective": "Evaluation slices measure the same prediction task on explicitly defined input subpopulations so aggregate quality cannot hide localized failures.",
       "prerequisiteReasons": {
         "confusion-matrix": "Defines label-specific error counts within each selected population.",
-        "conditional-probability": "Defines error conditioned on slice membership."
+        "conditional-probability": "Defines error conditioned on slice membership.",
+        "loss-function": "Explains probability-based target losses whose slice-weighted aggregates are compared."
       }
     },
     "hypothesis-driven-troubleshooting": {
@@ -3754,6 +3757,106 @@
         "cache-aware-inference-routing": "Explains the per-request placement decision using reuse and current load.",
         "tiered-kv-cache": "Explains the state-placement and restore-versus-recompute decision.",
         "latency-driven-inference-scaling": "Explains the slower loop that adjusts ready capacity."
+      }
+    },
+    "floating-point-reduction-order": {
+      "objective": "Floating-point reduction order fixes which rounded partial sums are combined, so mathematically equal sums can produce different machine values.",
+      "prerequisiteReasons": {
+        "numeric-precision-formats": "Explains representable grids and intermediate rounding.",
+        "reduction-operation": "Explains how regrouping combines local partial results."
+      }
+    },
+    "batch-invariant-inference": {
+      "objective": "Batch-invariant inference preserves a request's numerical computation when unrelated requests change batch membership, distinct from fixed-batch repeatability.",
+      "prerequisiteReasons": {
+        "floating-point-reduction-order": "Explains how shape-specific arithmetic changes values.",
+        "continuous-batching": "Explains why batch membership changes during serving.",
+        "greedy-decoding-reproducibility": "Explains how altered logits can change greedy output."
+      }
+    },
+    "rollout-trainer-probability-consistency": {
+      "objective": "Rollout–trainer probability consistency checks whether the behavior policy that produced tokens matches the probabilities the trainer attributes to those tokens.",
+      "prerequisiteReasons": {
+        "group-relative-policy-optimization": "Explains why sampled-policy probabilities enter group-based updates.",
+        "batch-invariant-inference": "Explains one serving/training numerical mismatch source.",
+        "kl-divergence": "Explains distribution divergence and its interpretation."
+      }
+    },
+    "kernel-autotuning": {
+      "objective": "Kernel autotuning benchmarks valid implementation configurations for a keyed workload and retains a measured choice while accounting for search cost and correctness.",
+      "prerequisiteReasons": {
+        "cuda-kernel": "Explains the device program being configured.",
+        "measurement": "Explains fair timing and correctness observations.",
+        "memory-hierarchy": "Explains locality and resource reuse tradeoffs."
+      }
+    },
+    "tsne-early-exaggeration": {
+      "objective": "Early exaggeration temporarily scales t-SNE input affinities to strengthen attraction before ordinary neighborhood optimization resumes.",
+      "prerequisiteReasons": {
+        "t-sne": "Explains input/map affinities and the visualization objective.",
+        "gradient-descent": "Explains how a temporary force change alters iterative optimization."
+      }
+    },
+    "hierarchical-document-retrieval": {
+      "objective": "Hierarchical document retrieval selects promising document or section branches before expanding their evidence, exchanging exhaustive scoring for structured search and pruning risk.",
+      "prerequisiteReasons": {
+        "retrieval-augmented-generation": "Explains evidence selection for generated answers.",
+        "graph": "Explains parent/child structure and traversal.",
+        "retrieval-authorization-boundary": "Explains permission checks before evidence exposure."
+      }
+    },
+    "decision-model-hierarchical-retrieval": {
+      "objective": "Decision-model hierarchical retrieval uses shared-context bounded judgments to select branches and passages without generating navigation text at every level.",
+      "prerequisiteReasons": {
+        "hierarchical-document-retrieval": "Explains hierarchy construction, expansion and pruning.",
+        "decision-score-action-gate": "Explains bounded judgments, calibration and external policy."
+      }
+    },
+    "binary-embedding-quantization": {
+      "objective": "Binary embedding quantization maps each embedding coordinate to one bit and uses compact codes for approximate candidate retrieval with measured quality loss.",
+      "prerequisiteReasons": {
+        "quantization": "Explains mapping numeric values onto a smaller code set.",
+        "embedding": "Explains the representation whose coordinates are compressed.",
+        "nearest-neighbor-search": "Explains candidate search and approximate recall."
+      }
+    },
+    "listwise-passage-reranking": {
+      "objective": "Listwise passage reranking jointly orders a group of retrieved candidates and validates the resulting permutation under explicit context and window limits.",
+      "prerequisiteReasons": {
+        "retrieval-augmented-generation": "Explains why retrieved candidate evidence is being ordered.",
+        "structured-output": "Explains validating the permutation contract.",
+        "measurement": "Explains controlled comparisons and robustness checks."
+      }
+    },
+    "attention-head-pruning": {
+      "objective": "Attention head pruning removes selected learned attention contributions and evaluates whether retained quality and actual execution cost justify the structural change.",
+      "prerequisiteReasons": {
+        "multi-head-attention": "Explains the learned head contributions being removed.",
+        "measurement": "Explains joint quality and execution evaluation."
+      }
+    },
+    "cross-entropy-versus-accuracy": {
+      "objective": "Cross entropy evaluates probability assigned to a target whereas top-choice accuracy changes only when the selected answer changes.",
+      "prerequisiteReasons": {
+        "loss-function": "Explains the averaged target scoring objective.",
+        "softmax": "Explains probabilities and the top-score choice.",
+        "logarithm": "Explains negative log target probability."
+      }
+    },
+    "paired-benchmark-uncertainty": {
+      "objective": "Paired benchmark uncertainty estimates model differences from matched per-item outcomes while preserving dependencies and declared prompt variation.",
+      "prerequisiteReasons": {
+        "hypothesis-testing": "Explains sampling assumptions and inferential claims.",
+        "variance": "Explains variability of paired differences.",
+        "measurement": "Explains reproducible per-item observations."
+      }
+    },
+    "variance": {
+      "objective": "Compute and distinguish population variance, descriptive variance and sample variance.",
+      "prerequisiteReasons": {
+        "expectation": "Defines the probability-weighted mean and expected squared deviation.",
+        "arithmetic": "Supports expansion, squaring and sample denominator calculations.",
+        "random-variable": "Defines the numeric random outcome whose expected squared deviation is measured."
       }
     }
   }

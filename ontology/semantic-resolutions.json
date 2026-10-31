@@ -2397,13 +2397,6 @@
       "reason": "Where it sits, and why there is a layer here at all is supporting explanation for the canonical Block Layer objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-435a80b6fbade35bf0da",
-      "sourceId": "multi-head-attention",
-      "contentHash": "db17e496b7c92d82c858e8f86be17a8b76cbde80d2b234dbc43123f2c84d4249",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Multi-Head Attention objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-439eebbf34462e7d58e4",
       "sourceId": "sandboxed-code-execution",
       "contentHash": "d303fc8fcfa07ab794b0c71c56739eecf075ae8796b2d00148ff634d84371856",
@@ -2675,13 +2668,6 @@
       "contentHash": "39d4b261999739009d9673494ddb8cde45f662933c178dd5d51562769ce11822",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Data parallelism objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-49cccedbe63ea9b761e4",
-      "sourceId": "gqa",
-      "contentHash": "8d1aed0569fe77eafc98559eefb7228eeef3baef0ef6a094e952c2a51701959b",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Grouped-query attention (GQA / MQA) objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-49ef2bb281cdc72cc0c8",
@@ -7255,13 +7241,6 @@
       "contentHash": "5cb92295bc5fb89c6265027b4997b75d230c47b1190ecf28e804559f076591ab",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Gaussian Mixture Model objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-cd40091d6076b05b1479",
-      "sourceId": "multi-head-attention",
-      "contentHash": "549215b84d7f16fb64056654697f09481f0dea38bc1adbe5e77bb741385a34ed",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Multi-Head Attention objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-cd6386ae3f5ef9ffd673",
@@ -12499,6 +12478,468 @@
       "contentHash": "f5a6d2a7fe45bb24927f2f164ff698d58af29d5d4d7f91f7461978f887af8c64",
       "decision": "retain",
       "reason": "The three-passage score ordering and temporal conflict demonstrate this scoring procedure and its evidence limits."
+    },
+    {
+      "candidateKey": "cand-b122736045173628826f",
+      "sourceId": "attention-head-pruning",
+      "contentHash": "8bc87c7bc8b99d153061fa4a9bab41864813c9d6c085fe692b39712d2585aee2",
+      "decision": "retain",
+      "reason": "Removing trained head contributions and testing combined quality/cost, explicitly distinct from from-scratch head-count design. The limitations distinguish the objective from stronger unsupported claims, not a separately learnable mechanism."
+    },
+    {
+      "candidateKey": "cand-02d3c143b64f066ad204",
+      "sourceId": "attention-head-pruning",
+      "contentHash": "16f593d150bbf565c0faf2f8993403724ef41fad381a5764b344c1f7100cda9b",
+      "decision": "retain",
+      "reason": "Removing trained head contributions and testing combined quality/cost, explicitly distinct from from-scratch head-count design. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-59ec72486a53c67ff5d4",
+      "sourceId": "attention-head-pruning",
+      "contentHash": "426fa3320e23c704d99f99885aee94a7874360611d11a7a28c49e3c3f1b0874f",
+      "decision": "retain",
+      "reason": "Removing trained head contributions and testing combined quality/cost, explicitly distinct from from-scratch head-count design. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-6ee3561794a6c5663bc0",
+      "sourceId": "attention-head-pruning",
+      "contentHash": "d1d0070547519a8fe42267dcd8a454920d6ec2b96340295eb2ada0ac6db5093b",
+      "decision": "retain",
+      "reason": "Removing trained head contributions and testing combined quality/cost, explicitly distinct from from-scratch head-count design. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-1f532483804427cd3718",
+      "sourceId": "batch-invariant-inference",
+      "contentHash": "3fe47d4a4d67d67a1e5b450672ba7944ef84973f1e1c1ea82f9d376a8a763388",
+      "decision": "retain",
+      "reason": "Preserving a request computation across changed co-batched traffic, distinct from fixed-batch repeatability. Platform/version scope and cross-batch tests qualify the invariance objective; product flags are reference details."
+    },
+    {
+      "candidateKey": "cand-dec3b0a21f4bccff6409",
+      "sourceId": "batch-invariant-inference",
+      "contentHash": "90d4c3baaa2a50eb8eab36b4fb808657a9e02710fea3180330ff23d5dd6d7df5",
+      "decision": "retain",
+      "reason": "Preserving a request computation across changed co-batched traffic, distinct from fixed-batch repeatability. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-66ef37f45e07d2e1100d",
+      "sourceId": "batch-invariant-inference",
+      "contentHash": "f646a7a72ba3a2cf1744aed259af0f8a764b2f5fa76475000b324d6e4a0a78b2",
+      "decision": "retain",
+      "reason": "Preserving a request computation across changed co-batched traffic, distinct from fixed-batch repeatability. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-bf74177051c8bf3479ba",
+      "sourceId": "batch-invariant-inference",
+      "contentHash": "3a40e3b6f5ee97749c4f3b96d48f9eddc7cf3330299b4d6c679fa9820d915c75",
+      "decision": "retain",
+      "reason": "Preserving a request computation across changed co-batched traffic, distinct from fixed-batch repeatability. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-7651a5ce515d3e6c24c5",
+      "sourceId": "binary-embedding-quantization",
+      "contentHash": "1bbb2162829f14ad47d8ab8997d4d24c071be32c810945eeffc8311b3fe22812",
+      "decision": "retain",
+      "reason": "Mapping vector coordinates to packed one-bit codes and evaluating approximate retrieval/rescoring. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-8f61e3fb4dccff3cdcc2",
+      "sourceId": "binary-embedding-quantization",
+      "contentHash": "a4053c3997f91fbbd602853494fb9840a4588301c3007a667f09202d80a20186",
+      "decision": "retain",
+      "reason": "Mapping vector coordinates to packed one-bit codes and evaluating approximate retrieval/rescoring. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-f950db9dd277f07eeb32",
+      "sourceId": "binary-embedding-quantization",
+      "contentHash": "4300fb9fa1174ffd2d4c41710f86b269aec559ac5a54bdc0de8ce4bd2d060545",
+      "decision": "retain",
+      "reason": "Mapping vector coordinates to packed one-bit codes and evaluating approximate retrieval/rescoring. The controlled comparisons and failure tests qualify that objective; they are not a second generic evaluation node."
+    },
+    {
+      "candidateKey": "cand-f756cdf935c3d2011e46",
+      "sourceId": "binary-embedding-quantization",
+      "contentHash": "804ab6254d9152cc258d8c1e33ba024508a148fa0fe0bf31b5d5a8abf7885dd1",
+      "decision": "retain",
+      "reason": "Mapping vector coordinates to packed one-bit codes and evaluating approximate retrieval/rescoring. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-da32bf39c716617cd470",
+      "sourceId": "cross-entropy-versus-accuracy",
+      "contentHash": "f0fd68d4aa398e7f034c7b8466be64676d02c5b11f6d9a177607f0b621c0ca25",
+      "decision": "retain",
+      "reason": "Distinguishing negative log target probability from the discontinuous top-choice decision. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-d653908d7d375d1340ce",
+      "sourceId": "cross-entropy-versus-accuracy",
+      "contentHash": "3e3d24f3ce780d62d333b2bdda626b9399293a36c3328c16e0aebf193beb8f84",
+      "decision": "retain",
+      "reason": "Distinguishing negative log target probability from the discontinuous top-choice decision. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-5a7f29bdd4e56a742ecb",
+      "sourceId": "cross-entropy-versus-accuracy",
+      "contentHash": "a882b87fbc83b9858ff6d8c231a1d939f88f4f05344159a280c3eeaf45ea4ccc",
+      "decision": "retain",
+      "reason": "Distinguishing negative log target probability from the discontinuous top-choice decision. The controlled comparisons and failure tests qualify that objective; they are not a second generic evaluation node."
+    },
+    {
+      "candidateKey": "cand-e0ba4922aed8c6d1c584",
+      "sourceId": "cross-entropy-versus-accuracy",
+      "contentHash": "5a70558a8b26364c971df05ddafbcce480e3c5fa71800c8785e4172620405493",
+      "decision": "retain",
+      "reason": "Distinguishing negative log target probability from the discontinuous top-choice decision. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-65c83087441f8fb43c49",
+      "sourceId": "decision-model-hierarchical-retrieval",
+      "contentHash": "e7c2316b554ed6dc006a64452d5210a2bc1ff615e8c9ae508f5cc0fbb62e9f2a",
+      "decision": "retain",
+      "reason": "Shared-context bounded relevance decisions that control hierarchical expansion, distinct from generic hierarchy structure. The scope conditions and tests establish the objective's promised contract, not another entity."
+    },
+    {
+      "candidateKey": "cand-c9c37e6386da8f9db334",
+      "sourceId": "decision-model-hierarchical-retrieval",
+      "contentHash": "307fad89a1bcd862bbe76201f33fc74ce45bb5ec21d01b522dd1758d59a9318f",
+      "decision": "retain",
+      "reason": "Shared-context bounded relevance decisions that control hierarchical expansion, distinct from generic hierarchy structure. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-9bc23957fe460b3d38d9",
+      "sourceId": "decision-model-hierarchical-retrieval",
+      "contentHash": "1046eb0d16a81c8d1d748ab58e6d597965b721dfbc0a94e72cdeead189869231",
+      "decision": "retain",
+      "reason": "Shared-context bounded relevance decisions that control hierarchical expansion, distinct from generic hierarchy structure. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-011f28502f836824c197",
+      "sourceId": "decision-model-hierarchical-retrieval",
+      "contentHash": "a7d1288e61f37ea0de5dc0545de33799c218b5e740a17ecd79b3f227f9849132",
+      "decision": "retain",
+      "reason": "Shared-context bounded relevance decisions that control hierarchical expansion, distinct from generic hierarchy structure. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-1cdb24fd769f7f0949a2",
+      "sourceId": "evaluation-slices",
+      "contentHash": "c26e15e1b978fcfbafeaa414e1130decf0cc16fddaf59adc0260406f741193ed",
+      "decision": "retain",
+      "reason": "The fixed-mixture numeric loss example extends the existing slice objective beyond hard-label error; loss-function is a reviewed prerequisite, not a synonym of slicing."
+    },
+    {
+      "candidateKey": "cand-aa94c98427468f3973c2",
+      "sourceId": "floating-point-reduction-order",
+      "contentHash": "3bf1ce97c7a63630b9eb12ef7b15fd484daec0bed994c3da5b40a86ecd9076a6",
+      "decision": "retain",
+      "reason": "How rounded partial-sum grouping changes machine values despite identical exact sums. The scope conditions and tests establish the objective's promised contract, not another entity."
+    },
+    {
+      "candidateKey": "cand-29a41eeedc7075d6266b",
+      "sourceId": "floating-point-reduction-order",
+      "contentHash": "14eb398c79a40bddde6b673836278ff9b540ed4fd8925b9e0c1417a596351391",
+      "decision": "retain",
+      "reason": "How rounded partial-sum grouping changes machine values despite identical exact sums. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-81b78590252d2a04afd8",
+      "sourceId": "floating-point-reduction-order",
+      "contentHash": "3cd5e2ae4bcd516bfddb1b91f4ea48355e71b4ae5c12d9336603cf9d27e6d0d5",
+      "decision": "retain",
+      "reason": "How rounded partial-sum grouping changes machine values despite identical exact sums. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-296a5ea2175d9b4e4dd9",
+      "sourceId": "floating-point-reduction-order",
+      "contentHash": "e447a71d6f5f34d29f472dd3cdacc35f6919d22a8c6dd5f9e208dbe28101f3a8",
+      "decision": "retain",
+      "reason": "How rounded partial-sum grouping changes machine values despite identical exact sums. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-2872787223ced70527b8",
+      "sourceId": "gqa",
+      "contentHash": "73f297eeb8a3b6911152ac67f4b0bc3d67f003163e60cf462b374acfb357f1d2",
+      "decision": "retain",
+      "reason": "The existing GQA/MQA sharing mechanism remains the canonical objective; corrected quality scope does not create another entity."
+    },
+    {
+      "candidateKey": "cand-470ae98fa507ee730ff3",
+      "sourceId": "gqa",
+      "contentHash": "2ef4de3978408ec837afff488b3bb1a91110a8b9629f305757b3ade943fbb740",
+      "decision": "retain",
+      "reason": "The 128 MiB worked cache calculation distinguishes query heads, stored KV heads and width, an accounting boundary of this existing sharing mechanism."
+    },
+    {
+      "candidateKey": "cand-7f174c22c70fcaa607c8",
+      "sourceId": "hierarchical-document-retrieval",
+      "contentHash": "e37b5d299966daf893cc97138a3efcd61e73495640174fe9f9236062f5889bf2",
+      "decision": "retain",
+      "reason": "The branch-selection and evidence-expansion architecture, not only a specific scorer implementation. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-de87354cf6b30762e560",
+      "sourceId": "hierarchical-document-retrieval",
+      "contentHash": "c06251a649e121e44281b43ec24c9535172ed5c8cad2e21601dfac404f7b04d5",
+      "decision": "retain",
+      "reason": "The branch-selection and evidence-expansion architecture, not only a specific scorer implementation. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-54bdaee5d50c514c3915",
+      "sourceId": "hierarchical-document-retrieval",
+      "contentHash": "6d7c01ee69e9c0a24360a5e4b86c153e41327821daa41cc39d0e05bce0124cd8",
+      "decision": "retain",
+      "reason": "The branch-selection and evidence-expansion architecture, not only a specific scorer implementation. Cost/coverage tradeoffs and baselines evaluate the same hierarchical expansion architecture."
+    },
+    {
+      "candidateKey": "cand-7d1ae9f2ad039caa871e",
+      "sourceId": "hierarchical-document-retrieval",
+      "contentHash": "fd912431fca1f462e1f60af7ecaa13b467f5dc6ba8bd6f831a85d74df5c42a96",
+      "decision": "retain",
+      "reason": "The branch-selection and evidence-expansion architecture, not only a specific scorer implementation. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-759c70f27ddc0ed8e2b9",
+      "sourceId": "kernel-autotuning",
+      "contentHash": "4d66b9576d61724af42a0833d50082fa9844709682b13ae76f5befffdabd8edc",
+      "decision": "retain",
+      "reason": "Selecting correct workload-keyed kernel configurations while amortizing repeated candidate execution. The scope conditions and tests establish the objective's promised contract, not another entity."
+    },
+    {
+      "candidateKey": "cand-9cd8da21f39afa08e295",
+      "sourceId": "kernel-autotuning",
+      "contentHash": "19ba3314a38deebd8cd5bd803fe051d41f484d7108848e23d2b3d38fd5e84b53",
+      "decision": "retain",
+      "reason": "Selecting correct workload-keyed kernel configurations while amortizing repeated candidate execution. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-683028da6e59f4d3d85b",
+      "sourceId": "kernel-autotuning",
+      "contentHash": "2f7da757a4e1e80f68ed3c5c75a620945c837322e8666a237c412639144ddbe3",
+      "decision": "retain",
+      "reason": "Selecting correct workload-keyed kernel configurations while amortizing repeated candidate execution. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-fed237d2509ca55bfb13",
+      "sourceId": "kernel-autotuning",
+      "contentHash": "8a4ce3a919217bedccc84675808ac4dc1905c2b6ab5597ea842e447c5c1b8112",
+      "decision": "retain",
+      "reason": "Selecting correct workload-keyed kernel configurations while amortizing repeated candidate execution. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-ea098eaf1fb93c0dfac2",
+      "sourceId": "listwise-passage-reranking",
+      "contentHash": "6a1ab22e372e07f2541c3cfc05367a163fab924f89336b9dc72a221de71f9872",
+      "decision": "retain",
+      "reason": "Joint candidate permutation with bounded windows and validity/position-sensitivity checks. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-13dad506903fdb6b9d1d",
+      "sourceId": "listwise-passage-reranking",
+      "contentHash": "8ad3fdbbdfb7023b26b3ba806c54b6a1cf5a607c68fe9d343845e8f127a351ec",
+      "decision": "retain",
+      "reason": "Joint candidate permutation with bounded windows and validity/position-sensitivity checks. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-783976371099affbf1ec",
+      "sourceId": "listwise-passage-reranking",
+      "contentHash": "b88b19db5f26ab6ef9f04f3bdc6f934fd4b0454485aad77147b2321eb2166567",
+      "decision": "retain",
+      "reason": "Joint candidate permutation with bounded windows and validity/position-sensitivity checks. The controlled comparisons and failure tests qualify that objective; they are not a second generic evaluation node."
+    },
+    {
+      "candidateKey": "cand-8e8c121c219f9a65bff0",
+      "sourceId": "listwise-passage-reranking",
+      "contentHash": "2f9c7dd98d142c7b48550c142ccb81e1363a2c777ef6afdbd1b68f1868b52d8a",
+      "decision": "retain",
+      "reason": "Joint candidate permutation with bounded windows and validity/position-sensitivity checks. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-16dbebfb84208233da94",
+      "sourceId": "multi-agent-orchestration",
+      "contentHash": "970c5f72dcc439e13dbf12b3d65552d29e6beb75664644179857bdc86884b627",
+      "decision": "retain",
+      "reason": "Externally restricting coordinator search and reconciling evidence IDs are a concrete role-and-handoff topology within orchestration, not a proven universally superior architecture."
+    },
+    {
+      "candidateKey": "cand-612c7de3468d992f3d0f",
+      "sourceId": "multi-head-attention",
+      "contentHash": "d59cb81ff922b137ebf8dfdfee414820216bdf3c49002c00597c8281f83b7633",
+      "decision": "retain",
+      "reason": "The projection count, nonlinear rank counterexample and shape-dependent cost delimit head parameterization; matrix-rank and determinant are reviewed prerequisites, not new aliases of attention."
+    },
+    {
+      "candidateKey": "cand-150acf702a1e47dcce9f",
+      "sourceId": "multi-head-attention",
+      "contentHash": "28b5a1fd46aaa4f29e62696647ab8e999a50ca05fd4322286f7d0894f6ecb8a8",
+      "decision": "retain",
+      "reason": "The revised summary and retained complete derivation teach the existing parallel projection-and-combine mechanism without claiming free latency."
+    },
+    {
+      "candidateKey": "cand-4c3c21af54ecc61d6d34",
+      "sourceId": "multi-head-attention",
+      "contentHash": "93c51cbaad5c71b4d07a8efeed204ed9160df7c8c7fdf888fde0c7a5c7308858",
+      "decision": "retain",
+      "reason": "The two-head numerical trace instantiates the canonical multi-head mechanism; the changed section boundary does not define another concept."
+    },
+    {
+      "candidateKey": "cand-03b6c4afdef9e9c657fb",
+      "sourceId": "ocr-evaluation",
+      "contentHash": "95b5181c1fcde02d3b717376b286236aa98eb15718464afdf198417b4e24a1b5",
+      "decision": "retain",
+      "reason": "Unit-test families, failure accounting and the 89.2% versus 70% aggregation example operationalize OCR evaluation; a scorer or benchmark brand is not a new concept."
+    },
+    {
+      "candidateKey": "cand-b27983811d86a9790d1f",
+      "sourceId": "ocr-evaluation",
+      "contentHash": "0e5ed06ab4a31482df7d7c50e222192e510b9ebd8bd62e194fd20eec5cd67d83",
+      "decision": "retain",
+      "reason": "The existing extraction-quality objective and task-matched slices remain one canonical evaluation entity."
+    },
+    {
+      "candidateKey": "cand-57a19d8dab561f4e2594",
+      "sourceId": "paired-benchmark-uncertainty",
+      "contentHash": "4747a7a355e03cb560766335791ec0630c06ce520855fb870620b74e38e54989",
+      "decision": "retain",
+      "reason": "Estimating model differences from matched item outcomes while preserving dependencies. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-f9853949e86e6e2fe350",
+      "sourceId": "paired-benchmark-uncertainty",
+      "contentHash": "e8f753308eed25363d3b76e7dcd1925fc66805771c23979deb5ff10c21207857",
+      "decision": "retain",
+      "reason": "Estimating model differences from matched item outcomes while preserving dependencies. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-eabf89b354e9630f04d3",
+      "sourceId": "paired-benchmark-uncertainty",
+      "contentHash": "32b009e666cef2fc4d7c30c9e7354f0d86fc81cf2d350ec1c15c147175311892",
+      "decision": "retain",
+      "reason": "Estimating model differences from matched item outcomes while preserving dependencies. The sampling, prompting and generalization limits qualify the matched-outcome comparison objective."
+    },
+    {
+      "candidateKey": "cand-50b76740156f76e12a94",
+      "sourceId": "paired-benchmark-uncertainty",
+      "contentHash": "5c7eae60cbb90224755218e969190226c6ef6c646a5fb308f26c0c99d1efff81",
+      "decision": "retain",
+      "reason": "Estimating model differences from matched item outcomes while preserving dependencies. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-baf43f1d34d4bbb705f1",
+      "sourceId": "retrieval-evidence-gate",
+      "contentHash": "a25367d227b4377341b6d5766253c9fc8c292df8dfd91af1cab52906f0fdef6d",
+      "decision": "retain",
+      "reason": "Coverage, conditional ordering and support denominators locate where evidence was lost. The hierarchy itself is separately archived; this section retains its evaluation consequences."
+    },
+    {
+      "candidateKey": "cand-cb6675c851df37af047c",
+      "sourceId": "rollout-trainer-probability-consistency",
+      "contentHash": "5f73732d08a8f11403cc2fd4460059fccc7979d31c7fd9b31176657fa9d6c746",
+      "decision": "retain",
+      "reason": "Matching actual behavior-policy probabilities with trainer attribution at a frozen snapshot. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-08d07641e6df6efcb693",
+      "sourceId": "rollout-trainer-probability-consistency",
+      "contentHash": "5e741fc12581fd6c26b171aed0453f4b9e937172a3c16d5e463cf10e6c34561c",
+      "decision": "retain",
+      "reason": "Matching actual behavior-policy probabilities with trainer attribution at a frozen snapshot. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-2dd7649bcb2d2ed13c40",
+      "sourceId": "rollout-trainer-probability-consistency",
+      "contentHash": "31f3a10b244649bf2cb5b8d7b6f6eb5e2d4e19e739cd1dbbc5f0bec274fa95f1",
+      "decision": "retain",
+      "reason": "Matching actual behavior-policy probabilities with trainer attribution at a frozen snapshot. The sampling, prompting and generalization limits qualify the matched-outcome comparison objective."
+    },
+    {
+      "candidateKey": "cand-306f6f3d548a470023d7",
+      "sourceId": "rollout-trainer-probability-consistency",
+      "contentHash": "e99492ab588f44bc7523bebdf27b40eabdfdaa80ee558976ff86189e2342642c",
+      "decision": "retain",
+      "reason": "Matching actual behavior-policy probabilities with trainer attribution at a frozen snapshot. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-5a7d47873ac6fe086b89",
+      "sourceId": "streaming-voice-agent-pipeline",
+      "contentHash": "16cd5d007052920a31fc695089617af99daa848a697007db97ad0a7a2893233c",
+      "decision": "retain",
+      "reason": "Separate recognition and synthesis references and the spoken-dose counterexample refine end-to-end field fidelity within the existing voice pipeline."
+    },
+    {
+      "candidateKey": "cand-44155cdb852e06351bfe",
+      "sourceId": "tiered-kv-cache",
+      "contentHash": "322705d321226ad06bf3a32a28e68a57ac3aa18472b91db78d5b6918a4d9e4ce",
+      "decision": "retain",
+      "reason": "Parallel read limits, shared-link bottlenecks and staging lifetimes explain restore eligibility within tiering. The original source is independently grounded, not copied."
+    },
+    {
+      "candidateKey": "cand-1c839d88448598655f56",
+      "sourceId": "tsne-early-exaggeration",
+      "contentHash": "60876fefdc5334fba13e3e232a2e6fcb3275ef9c41b8bb1fe5382795568d1ec1",
+      "decision": "retain",
+      "reason": "A temporary input-affinity scaling schedule that changes attraction relative to repulsion. The scope conditions and tests establish the objective's promised contract, not another entity."
+    },
+    {
+      "candidateKey": "cand-246b440c8e077ac44aa7",
+      "sourceId": "tsne-early-exaggeration",
+      "contentHash": "3261ce90d0a857e74a5fad5ca84c0fc161f91cdd679b20b95bf9753987105b3c",
+      "decision": "retain",
+      "reason": "A temporary input-affinity scaling schedule that changes attraction relative to repulsion. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-85f9979560285fa4d0bb",
+      "sourceId": "tsne-early-exaggeration",
+      "contentHash": "7e9b3e02516a698c2b93859ac4fa23f060c169cc0eb55b6882efabb76fb21e5f",
+      "decision": "retain",
+      "reason": "A temporary input-affinity scaling schedule that changes attraction relative to repulsion. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-ef6c2debbb29fbd6ec03",
+      "sourceId": "tsne-early-exaggeration",
+      "contentHash": "d5ff27ea3787e98f60e2b283849958081d2b544c8f9776a89ac6f6f3c4f1a5c3",
+      "decision": "retain",
+      "reason": "A temporary input-affinity scaling schedule that changes attraction relative to repulsion. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-59e95c86919b0241a766",
+      "sourceId": "variance",
+      "contentHash": "5d1197910615a1eeeb8a4bdbd22bf04fd94e50d3d93ac8ea8d3193d0882a2dd2",
+      "decision": "retain",
+      "reason": "Expected squared deviation and the distinct descriptive/sample estimators. The limitations distinguish the objective from stronger unsupported claims, not a separately learnable mechanism."
+    },
+    {
+      "candidateKey": "cand-bdb6918dd3b4ad5af191",
+      "sourceId": "variance",
+      "contentHash": "77e741dcfa6a35a1b502564953f5de20c895c17c3d5a9c66348124e86dc97dc0",
+      "decision": "retain",
+      "reason": "Expected squared deviation and the distinct descriptive/sample estimators. Defines the canonical learning objective already represented by this node."
+    },
+    {
+      "candidateKey": "cand-b696a962217ebabf75c7",
+      "sourceId": "variance",
+      "contentHash": "ba88d6d752d6af41a5666962bad9e05b322e3125819adf1e2aaac221cd739243",
+      "decision": "retain",
+      "reason": "Expected squared deviation and the distinct descriptive/sample estimators. Explains the same objective using its reviewed prerequisites and explicitly declared invariants."
+    },
+    {
+      "candidateKey": "cand-3d94a98aee046fd06643",
+      "sourceId": "variance",
+      "contentHash": "5b88529088fe01201e4878204b4a820586d6e64e3d8e999fc6600d412e402c6a",
+      "decision": "retain",
+      "reason": "Expected squared deviation and the distinct descriptive/sample estimators. The non-degenerate numeric or candidate trace demonstrates that objective rather than introducing an unrelated entity."
+    },
+    {
+      "candidateKey": "cand-26f08a4c04bfcee87c85",
+      "sourceId": "verifiable-reward-design",
+      "contentHash": "5ac6555e67388a75e767d5dce6a9ae0620198a59c0af59f3931766959f01b167",
+      "decision": "retain",
+      "reason": "Read-only permission, semantic correctness and gated efficiency are a concrete verifier example; SQL fixture cases reveal reward gaps, not a new SQL entity."
+    },
+    {
+      "candidateKey": "cand-3676152086039853a66a",
+      "sourceId": "verifiable-reward-design",
+      "contentHash": "6f66553926a48121302e1fccc9c7c3003cd872331f5ba4572a5944d0df731c69",
+      "decision": "retain",
+      "reason": "The existing executable-checker objective includes incomplete oracle coverage and gating; a newly adjacent section does not change identity."
     }
   ]
 }

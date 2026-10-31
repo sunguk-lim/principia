@@ -14,6 +14,10 @@ Timestamp each boundary. The interval from speech start to final transcript incl
 
 The caller says “October sixteenth—sorry, eighteenth.” A provisional transcript may briefly show the sixteenth. The application updates the pending date to the eighteenth, confirms it if needed, and makes one idempotent booking request. If the agent starts speaking too soon, an interruption should cancel or supersede the stale response.
 
+## Outbound correctness
+
+Recognition and synthesis have different references. Recognition should preserve what the caller said; synthesis should preserve the validated response text. A correct stored dose of 0.5 milligrams does not help if playback is heard as 5 milligrams. Evaluate critical spoken fields with held-out listening checks, corrections and confirmations, separately from naturalness and average word error. Automatic back-transcription can screen failures but is not a perfect listening oracle.
+
 ## Check your understanding
 
 **Question:** Why measure final-transcript-to-first-audio separately? **Answer:** It isolates the delay the caller experiences after finishing a turn from the duration of their own speech and the recognition stage.

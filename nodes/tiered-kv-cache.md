@@ -5,10 +5,10 @@ summary: A tiered KV cache moves reusable attention state from scarce GPU memory
 type: concept
 tags: [ml/llm/inference]
 prereqs: [kv-cache, prefix-caching, memory-hierarchy]
-sources: [https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache]
+sources: [https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache, https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md]
 status: explained
 created: 2026-10-06
-updated: 2026-10-20
+updated: 2026-11-01
 ---
 
 # Tiered KV Cache
@@ -31,6 +31,14 @@ A retention policy chooses not only where a block goes, but how long keeping it 
 
 For a hypothetical 2 GiB prefix, a path sustaining 8 GiB/s needs at least 250 ms to move the state. Add 30 ms of setup and waiting to obtain 280 ms. If recomputation takes 180 ms under the same load, discard-and-recompute is faster for this request. At 32 GiB/s the transfer floor becomes 62.5 ms; with the same 30 ms overhead, 92.5 ms restoration can win. These are illustrative measured-path assumptions, not device peak predictions. Long queues can reverse either choice. Choose retention duration using reuse likelihood, capacity pressure and restore/recompute cost; test stale indexes, eviction, cold starts and incompatible model versions. Keeping bytes is not sufficient if the corresponding request state cannot safely be resumed.
 
+## Parallel storage and dependency-correct prefetch
+
+A storage tier can spread compatible cache blocks across devices and fetch several blocks concurrently. Parallelism raises useful bandwidth only until storage, network, host staging or device transfer becomes limiting; a slow shard can still determine when a dependent layer can run. Shared storage also reduces dependence on the original compute worker without eliminating locality costs.
+
+Consider four equal 128 MiB blocks fetched on independent 2 GiB/s paths. Ignoring all overhead, each transfer takes 62.5 ms and concurrent completion also takes 62.5 ms. If their common network path sustains only 4 GiB/s in total, 512 MiB needs at least 125 ms instead. A slow device or queue adds further delay. Aggregate device peak rates are therefore not the end-to-end restore rate.
+
+Layerwise prefetch can overlap the next layer's transfer with current work, but the layer must wait for all state it reads and staging buffers must remain valid until consumption completes. Measure cold and warm restoration under contention, stragglers, worker loss and fallback recomputation. DeepInfer describes shared persistent cache and staged transfer as a system design; its deployment numbers are not general performance guarantees.
+
 ## Prerequisites
 
 - [[kv-cache]]
@@ -42,3 +50,5 @@ For a hypothetical 2 GiB prefix, a path sustaining 8 GiB/s needs at least 250 ms
 - [llm-d tiered prefix cache](https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache): GPU, CPU, and storage tiers.
 
 - <https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache>
+
+- <https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md>

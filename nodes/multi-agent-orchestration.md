@@ -8,7 +8,7 @@ prereqs: [transformer-attention, structured-output, measurement]
 sources: [https://arxiv.org/abs/2308.08155]
 status: explained
 created: 2026-09-10
-updated: 2026-09-10
+updated: 2026-11-01
 ---
 
 # Multi-Agent Orchestration
@@ -29,6 +29,12 @@ Tool access requires least privilege and explicit data boundaries. Treat scraped
 
 Compare orchestration with a single-worker baseline at equal model and tool budgets. [[measurement]] should include task success, independently verified correctness, tool failures, handoff loss, latency, token and external-service cost, retries, and safety violations. Keep multiple workers only when decomposition improves these outcomes enough to justify added state and coordination risk.
 
+## Separating strategy from search
+
+A coordinator can be restricted to planning and worker dispatch while research workers alone have search access. This changes the permitted action space: the coordinator must formulate a self-contained brief rather than satisfy every subquestion through its own browsing. Enforce the restriction in tool exposure and authorization, not merely in a role prompt. It is a hypothesis about better task decomposition, not a theorem that coordinators must never search.
+
+For example, dispatch separate evidence questions about mechanism, limitations and competing explanations. Each worker returns source identifiers, claims and unresolved gaps. A deterministic assembly step can renumber identifiers and remove duplicate references, but it cannot verify that a source entails a claim. Preserve that claim-to-evidence association when merging. A shallow topology limits the number of summaries passed between workers; it does not prevent every distortion. Compare tool-separated and search-capable coordinators at equal research and model budgets, checking completeness, evidence support, handoff loss and latency rather than a vendor leaderboard.
+
 ## Prerequisites
 
 - [[transformer-attention]]
@@ -38,3 +44,5 @@ Compare orchestration with a single-worker baseline at equal model and tool budg
 ## Sources
 
 - [Wu et al., “AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation”](https://arxiv.org/abs/2308.08155): presents customizable conversational workers combining language models, human input, tools, and programmable interaction patterns.
+
+- <https://arxiv.org/abs/2308.08155>

@@ -3858,6 +3858,40 @@
         "arithmetic": "Supports expansion, squaring and sample denominator calculations.",
         "random-variable": "Defines the numeric random outcome whose expected squared deviation is measured."
       }
+    },
+    "agent-task-cost": {
+      "objective": "Agent task cost sums all trial resources over a declared task cohort and normalizes by attempted or successfully completed tasks rather than prompt length.",
+      "prerequisiteReasons": {
+        "multi-turn-token-accounting": "Explains disjoint per-call token categories and cache-dependent prices.",
+        "execution-benchmark-validity": "Defines valid task outcomes and comparable trials."
+      }
+    },
+    "lossy-context-compaction": {
+      "objective": "Lossy context compaction replaces detailed history with bounded state while explicitly managing omitted evidence and the ability to recover it.",
+      "prerequisiteReasons": {
+        "context-window": "Defines the finite live input budget.",
+        "agent-session-state": "Explains ordered records, action state and recoverable history."
+      }
+    },
+    "quality-cost-model-selection": {
+      "objective": "Quality–cost model selection chooses a deployment configuration against task utility and measured resource constraints rather than ranking models by one benchmark or parameter count.",
+      "prerequisiteReasons": {
+        "paired-benchmark-uncertainty": "Grounds uncertainty of matched quality differences.",
+        "evaluation-slices": "Grounds critical-subpopulation checks.",
+        "measurement": "Grounds units, workload conditions and resource comparisons."
+      }
+    },
+    "math-aware-markup-extraction": {
+      "objective": "Math-aware markup extraction preserves semantic equations from web representations before generic text cleanup and validates their survival through later corpus filters.",
+      "prerequisiteReasons": {
+        "web-text-extraction": "Grounds corpus selection, extraction precision/recall and downstream filter interactions."
+      }
+    },
+    "mean-squared-error": {
+      "objective": "Mean squared error averages squared prediction residuals, penalizing large errors disproportionately and retaining squared target units.",
+      "prerequisiteReasons": {
+        "loss-function": "Grounds prediction-versus-target loss and the distinction from a complete fitting objective."
+      }
     }
   }
 }

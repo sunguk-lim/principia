@@ -5,10 +5,10 @@ summary: A coding-agent loop ablation compares a bounded edit pipeline with prog
 type: concept
 tags: [ml/agents]
 prereqs: [agent-execution-harness, agent-verification-loop, execution-benchmark-validity, measurement]
-sources: [https://arxiv.org/abs/2407.01489, https://www.swebench.com/SWE-bench/guides/evaluation/]
+sources: [https://arxiv.org/abs/2407.01489, https://www.swebench.com/SWE-bench/guides/evaluation/, https://www.anthropic.com/research/effective-context-engineering-for-ai-agents, https://www.anthropic.com/research/demystifying-evals-for-ai-agents]
 status: explained
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-11-02
 ---
 
 # Coding-Agent Loop Ablation
@@ -25,7 +25,16 @@ Then ablate one capability at a time. A no-validation variant isolates the value
 
 Use [[measurement]] to report paired resolved-task outcomes, invalid calls, regressions, latency, tokens, cost, and uncertainty by task slice. Train on agent trajectories only after the failure analysis identifies a generalization problem that simpler interface or control fixes do not resolve. Hold out repositories and harness variants when testing transfer. A loop earns its extra steps when they measurably improve valid outcomes enough to offset added cost and error opportunities.
 
+## Testing a context representation
+
+A context-policy change needs a paired comparison, not only a token-count dashboard. Keep issue set, model, tools, environment, completion oracle and budgets fixed while comparing raw results, structured extracts and summaries. Record the cost of producing each representation as well as later calls. A trial trace should retain which exact evidence was available before each action, not just the final transcript.
+
+For example, the raw variant has already observed a passing check in module B; the summary omits that fact. The compacted variant checks B twice before editing module A. Those extra calls suggest a specific information-loss mechanism, but correlation alone is insufficient: replay with the omitted passing result restored and check whether repetition changes. Extra steps may instead be useful verification or ordinary trial variability. Compare paired success and cost, repeated actions, recovery reads and the first point where relevant evidence disappears. Multiple trials and held-out repositories help distinguish a stable effect from one fortunate path. The context-engineering and agent-evaluation primary references motivate this evaluation design; the causal replay is an independent diagnostic proposal.
+
 ## Sources
 
 - [Xia et al., Agentless](https://arxiv.org/abs/2407.01489): a fixed localization, repair, and patch-validation comparison point.
 - [SWE-bench evaluation guide](https://www.swebench.com/SWE-bench/guides/evaluation/): patch application and task-scoring protocol.
+
+- <https://www.anthropic.com/research/effective-context-engineering-for-ai-agents>
+- <https://www.anthropic.com/research/demystifying-evals-for-ai-agents>

@@ -10,6 +10,10 @@ Represent policy at endpoint granularity, not as a blanket property of the model
 
 The path also includes gateway logs, caches, observability, server tools, and downstream processors. “No training” and “zero retention” are not synonyms, and neither says whether transient processing, abuse monitoring, billing records, or legal holds are in scope. Document those boundaries from current primary terms and a contract where stakes require it.
 
+## Scope and exceptions
+
+Check the exact policy profile. Current documentation distinguishes strict zero retention from separately allowed safety retention. Request-level enforcement can narrow routing but cannot disable an account or guardrail requirement. Gateway logs, upstream retention and enabled tools are separate boundaries; documentation includes CSAM review and required legal-preservation exceptions. A routing flag is not an independent audit of actual deletion. Review current terms and settings rather than assuming “no training” means “no retention.”
+
 ## Worked example
 
 One model slug has two serving providers. One endpoint satisfies a zero-retention requirement and the other does not. A price-first failover router could switch to the second endpoint during an outage; a policy-first router excludes it and fails visibly if no eligible endpoint remains.

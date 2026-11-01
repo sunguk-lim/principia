@@ -30,13 +30,6 @@
       "reason": "Overview is supporting explanation for the canonical Socket Buffer (sk_buff) objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-00afd1c4156b30024884",
-      "sourceId": "chain-of-thought",
-      "contentHash": "9ed467a0858053c27ce612b917ab1b7c1e81d1504bd3910b04fe291c3f3d1c10",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Chain-of-Thought objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-00de1184c0a99ca93d5d",
       "sourceId": "mmu",
       "contentHash": "24b5b320a458a5ef45c1bcac850b25826ad675e1dd495aec941ed43843aa5496",
@@ -4194,13 +4187,6 @@
       "contentHash": "bc4f00d154c411b568d08e35ad48029cdd65656be0a0cf2fa04af00f5a2856d6",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Scalar Field objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-77be7837969369eec1ca",
-      "sourceId": "chain-of-thought",
-      "contentHash": "3110e7940e20a5088cf0b7ed7fbbf212ef887acb1d0c070352ce29ce3031336b",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Chain-of-Thought objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-77dba6439e0816975f5b",
@@ -12940,6 +12926,202 @@
       "contentHash": "6f66553926a48121302e1fccc9c7c3003cd872331f5ba4572a5944d0df731c69",
       "decision": "retain",
       "reason": "The existing executable-checker objective includes incomplete oracle coverage and gating; a newly adjacent section does not change identity."
+    },
+    {
+      "candidateKey": "cand-b5fd44e3541a33ad874e",
+      "sourceId": "agent-task-cost",
+      "contentHash": "7dd01ea4f647277a90c7cea676d46bc1f6f747d3168e00c8b85be7e7abcfe549",
+      "decision": "retain",
+      "reason": "The objective is a cohort-level accounting boundary with attempt and success denominators; per-call token pricing is a declared prerequisite, not a substitute for this broader task-level objective. Qualifies the objective with units, failure accounting, task matching and scope; generic validation is not a new entity."
+    },
+    {
+      "candidateKey": "cand-e5c6d7b542cac41e9878",
+      "sourceId": "agent-task-cost",
+      "contentHash": "4c811448f2c9fdb913700391a4fb786da51db90cc0098a22b21257c50ce3595e",
+      "decision": "retain",
+      "reason": "The objective is a cohort-level accounting boundary with attempt and success denominators; per-call token pricing is a declared prerequisite, not a substitute for this broader task-level objective. Defines the same single canonical learning objective."
+    },
+    {
+      "candidateKey": "cand-6d3be4c55923c9e33dc5",
+      "sourceId": "agent-task-cost",
+      "contentHash": "70511dffbfb006cd36ba3ffb09b7810e94db15e70a88cc140d7908eb6fad6057",
+      "decision": "retain",
+      "reason": "The objective is a cohort-level accounting boundary with attempt and success denominators; per-call token pricing is a declared prerequisite, not a substitute for this broader task-level objective. Explains that objective through the explicitly reviewed prerequisite set; it does not create another entity for a prose section."
+    },
+    {
+      "candidateKey": "cand-cb0f46485874a5d23848",
+      "sourceId": "agent-task-cost",
+      "contentHash": "5976b8e81753bd50cb5b24380d4428c3509c82b2afbeeb1b2d634bf5a333ffa1",
+      "decision": "retain",
+      "reason": "The objective is a cohort-level accounting boundary with attempt and success denominators; per-call token pricing is a declared prerequisite, not a substitute for this broader task-level objective. The original numerical or evidence trace demonstrates this objective, not an unrelated concept."
+    },
+    {
+      "candidateKey": "cand-859dfd5423544e4758df",
+      "sourceId": "chain-of-thought",
+      "contentHash": "32c6b50decebd7c95b9a67949341b4cfb03546ac419a3ca17ad58124ee61c639",
+      "decision": "retain",
+      "reason": "The canonical objective is intermediate-token prompting; conditioning is distinguished from faithful internal reasoning and neither generated length nor one arithmetic step per pass is asserted as a universal mechanism. Defines the same single canonical learning objective."
+    },
+    {
+      "candidateKey": "cand-78d381b52d21b31b5196",
+      "sourceId": "chain-of-thought",
+      "contentHash": "8bb905e5c5b8c566af6f31855e1d2dc04d737b66b993b25aa70a165f3b2886a6",
+      "decision": "retain",
+      "reason": "The canonical objective is intermediate-token prompting; conditioning is distinguished from faithful internal reasoning and neither generated length nor one arithmetic step per pass is asserted as a universal mechanism. Explains that objective through the explicitly reviewed prerequisite set; it does not create another entity for a prose section."
+    },
+    {
+      "candidateKey": "cand-528ede752ef082f8a3d8",
+      "sourceId": "chain-of-thought",
+      "contentHash": "c025e701d52425f6cf5f4520b8e2f11c9c1615009981bb4284cc437b7bca6cc9",
+      "decision": "retain",
+      "reason": "The canonical objective is intermediate-token prompting; conditioning is distinguished from faithful internal reasoning and neither generated length nor one arithmetic step per pass is asserted as a universal mechanism. The fidelity or causal tests qualify the promised contract rather than introducing another general evaluation entity."
+    },
+    {
+      "candidateKey": "cand-161e7b1604e6d9a95d8d",
+      "sourceId": "chain-of-thought",
+      "contentHash": "68b9abd849ac210a77f875a72ce0a737bebaa65b2ca0283cb4adb9387ebd7cf5",
+      "decision": "retain",
+      "reason": "The canonical objective is intermediate-token prompting; conditioning is distinguished from faithful internal reasoning and neither generated length nor one arithmetic step per pass is asserted as a universal mechanism. The original numerical or evidence trace demonstrates this objective, not an unrelated concept."
+    },
+    {
+      "candidateKey": "cand-c9c45e9d794e4498b71b",
+      "sourceId": "coding-agent-loop-ablation",
+      "contentHash": "ecab77a9d161ffe76c5ba7b942fc762d89295f3bdfa39f96046778dc4ac578e4",
+      "decision": "retain",
+      "reason": "The canonical objective is controlled comparison of agent-loop capabilities; context-policy replay is a concrete paired diagnostic within the existing ablation objective. Retains the complete original canonical objective with the reviewed clarification and public-source grounding."
+    },
+    {
+      "candidateKey": "cand-ebd1ac33f9bdabfb3764",
+      "sourceId": "coding-agent-loop-ablation",
+      "contentHash": "768e1d3414c990b67717d066b15577df7bbb393afacfae818d7c260e9373e848",
+      "decision": "retain",
+      "reason": "The canonical objective is controlled comparison of agent-loop capabilities; context-policy replay is a concrete paired diagnostic within the existing ablation objective. Matched raw/summary trials and restoring omitted evidence operationalize loop ablation; the diagnostic is separately tracked in the private evidence ledger but belongs within this published evaluation concept."
+    },
+    {
+      "candidateKey": "cand-f754d858c28813165e3a",
+      "sourceId": "lossy-context-compaction",
+      "contentHash": "2a32e30be512ab404d8277f9b6d90383a812b969db2d16a482be2971d8c50ddc",
+      "decision": "retain",
+      "reason": "The objective is preserving actionable evidence and recoverability under a lossy bounded representation; session ordering is a prerequisite, while summary state is not proof of action completion. Defines the same single canonical learning objective."
+    },
+    {
+      "candidateKey": "cand-565a670643a7ffd71702",
+      "sourceId": "lossy-context-compaction",
+      "contentHash": "d1b496f1f18d67c8f6c58d6c770d5973878ce6bd7540e7ffc8f34fc32c0f8982",
+      "decision": "retain",
+      "reason": "The objective is preserving actionable evidence and recoverability under a lossy bounded representation; session ordering is a prerequisite, while summary state is not proof of action completion. Explains that objective through the explicitly reviewed prerequisite set; it does not create another entity for a prose section."
+    },
+    {
+      "candidateKey": "cand-3bf8b2870bc534a20095",
+      "sourceId": "lossy-context-compaction",
+      "contentHash": "410ed8f4569a7f1372b05b83248bfc683bc12e364b957d4e474c986febaae705",
+      "decision": "retain",
+      "reason": "The objective is preserving actionable evidence and recoverability under a lossy bounded representation; session ordering is a prerequisite, while summary state is not proof of action completion. Tests the same evidence-preservation objective and its recovery trade-offs."
+    },
+    {
+      "candidateKey": "cand-fb6b30a02470b056866a",
+      "sourceId": "lossy-context-compaction",
+      "contentHash": "314f2dfbdd52ea29916fb24e63d1cfbe48c49aab61025da41d3d31b2aa348c31",
+      "decision": "retain",
+      "reason": "The objective is preserving actionable evidence and recoverability under a lossy bounded representation; session ordering is a prerequisite, while summary state is not proof of action completion. The original numerical or evidence trace demonstrates this objective, not an unrelated concept."
+    },
+    {
+      "candidateKey": "cand-422ee0af15fe7f993bb6",
+      "sourceId": "math-aware-markup-extraction",
+      "contentHash": "c9e75ddd7169735677437159c223bc16c020d8ebc89f7e42e522359b063ed468",
+      "decision": "retain",
+      "reason": "The objective is semantic equation preservation before generic cleanup, including representation selection and later stage attrition; generic extraction alone does not cover this mathematical fidelity contract. Defines the same single canonical learning objective."
+    },
+    {
+      "candidateKey": "cand-63b7043a616cdb7b050f",
+      "sourceId": "math-aware-markup-extraction",
+      "contentHash": "058379159542aba2767aa8fab0c95562cf180d67d662926d777aea068a9a2a38",
+      "decision": "retain",
+      "reason": "The objective is semantic equation preservation before generic cleanup, including representation selection and later stage attrition; generic extraction alone does not cover this mathematical fidelity contract. Explains that objective through the explicitly reviewed prerequisite set; it does not create another entity for a prose section."
+    },
+    {
+      "candidateKey": "cand-86cfe392c5bef34c8d03",
+      "sourceId": "math-aware-markup-extraction",
+      "contentHash": "15b20268a9f9274adf0e8fe9259298aa1ea5a6f2f96f0c931e724ddcfbc1db07",
+      "decision": "retain",
+      "reason": "The objective is semantic equation preservation before generic cleanup, including representation selection and later stage attrition; generic extraction alone does not cover this mathematical fidelity contract. The fidelity or causal tests qualify the promised contract rather than introducing another general evaluation entity."
+    },
+    {
+      "candidateKey": "cand-cd9b8020feaa558fc266",
+      "sourceId": "math-aware-markup-extraction",
+      "contentHash": "ba4fccec4eedf2960c3aa9a070699ee627674494edc39727920469758b63fdd5",
+      "decision": "retain",
+      "reason": "The objective is semantic equation preservation before generic cleanup, including representation selection and later stage attrition; generic extraction alone does not cover this mathematical fidelity contract. The original numerical or evidence trace demonstrates this objective, not an unrelated concept."
+    },
+    {
+      "candidateKey": "cand-080fcc682b4e0f7935b5",
+      "sourceId": "mean-squared-error",
+      "contentHash": "b6e686975accbed935fde2caaf9eab245e0b157c0352dda9692c88465dafa46f",
+      "decision": "retain",
+      "reason": "The objective is squared residual aggregation with unit and outlier consequences; a generic loss definition alone does not explain these numerical properties. Qualifies the objective with units, failure accounting, task matching and scope; generic validation is not a new entity."
+    },
+    {
+      "candidateKey": "cand-d9a40e47f0446ed4b459",
+      "sourceId": "mean-squared-error",
+      "contentHash": "25ee29b90871f5ece3353fd4cb730522cfc205190e2cfe864de3fd14b0b9a99d",
+      "decision": "retain",
+      "reason": "The objective is squared residual aggregation with unit and outlier consequences; a generic loss definition alone does not explain these numerical properties. Defines the same single canonical learning objective."
+    },
+    {
+      "candidateKey": "cand-6357670ae1024de47b0a",
+      "sourceId": "mean-squared-error",
+      "contentHash": "e3cfb95abbfb7efa1f69ddd436e46dfb43b77a1f4a8793463a8c22d4c999d369",
+      "decision": "retain",
+      "reason": "The objective is squared residual aggregation with unit and outlier consequences; a generic loss definition alone does not explain these numerical properties. Explains that objective through the explicitly reviewed prerequisite set; it does not create another entity for a prose section."
+    },
+    {
+      "candidateKey": "cand-11d3059d0adcfa6893f1",
+      "sourceId": "mean-squared-error",
+      "contentHash": "60175353b27945259fcd6e3a261407b83d5aa7cdbaa51556802c2e20e7b40de7",
+      "decision": "retain",
+      "reason": "The objective is squared residual aggregation with unit and outlier consequences; a generic loss definition alone does not explain these numerical properties. The original numerical or evidence trace demonstrates this objective, not an unrelated concept."
+    },
+    {
+      "candidateKey": "cand-78f058873a065fc839d1",
+      "sourceId": "provider-data-policy-routing",
+      "contentHash": "28ddfe4d00e06a06160babce9ba145728e5545fd82c62dd5e518d50a023b444e",
+      "decision": "retain",
+      "reason": "The canonical objective is policy-first endpoint eligibility; upstream policy and gateway retention scope remain separately checked boundaries within this routing architecture. Retains the complete original canonical objective with the reviewed clarification and public-source grounding."
+    },
+    {
+      "candidateKey": "cand-21073edb517e1801554f",
+      "sourceId": "provider-data-policy-routing",
+      "contentHash": "d8a889493acfd6341a69d9a6f60cab46c72b2de44fff9be71bf6e59f5a5db0e1",
+      "decision": "retain",
+      "reason": "The canonical objective is policy-first endpoint eligibility; upstream policy and gateway retention scope remain separately checked boundaries within this routing architecture. Separates request enforcement, safety retention, tool scope and gateway exceptions so endpoint filtering is not mistaken for a blanket retention guarantee. These policy attributes qualify this canonical routing objective, not distinct invented product entities."
+    },
+    {
+      "candidateKey": "cand-cc7cb3f19ed286f1e2bd",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "d4fc312043a3333476a3b19cb874561f851ea32ad14d87614eba8b794f545e2d",
+      "decision": "retain",
+      "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. Qualifies the objective with units, failure accounting, task matching and scope; generic validation is not a new entity."
+    },
+    {
+      "candidateKey": "cand-9d370f32cb884914903c",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "38ae5edaeee9c5fc18b408e4bb73ea597d2812bbfdf555bb1b010fe796bedf6e",
+      "decision": "retain",
+      "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. Defines the same single canonical learning objective."
+    },
+    {
+      "candidateKey": "cand-96e8f15154c8e24a38df",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "4e0a1bc0e59faa724335bad00804aa7580aa5b16019f8898e1741aa26c99e081",
+      "decision": "retain",
+      "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. Explains that objective through the explicitly reviewed prerequisite set; it does not create another entity for a prose section."
+    },
+    {
+      "candidateKey": "cand-c31227a0d068f2053e15",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "8ccc2a5882dcdf57fa8d6bfc4711f6336a068a2661e9fef7c6d2bfd9251d474c",
+      "decision": "retain",
+      "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. The original numerical or evidence trace demonstrates this objective, not an unrelated concept."
     }
   ]
 }

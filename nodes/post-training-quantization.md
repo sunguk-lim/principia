@@ -5,10 +5,10 @@ summary: Post-training quantization converts a trained neural network to lower-b
 type: concept
 tags: [ml/llm/inference]
 prereqs: [quantization, neural-network, loss-function, tensor]
-sources: [https://developer.nvidia.com/blog/model-quantization-post-training-quantization-using-nvidia-model-optimizer/, arxiv:1712.05877]
+sources: [https://arxiv.org/abs/2306.00978, https://developer.nvidia.com/blog/model-quantization-post-training-quantization-using-nvidia-model-optimizer/, arxiv:1712.05877]
 status: explained
 created: 2026-09-02
-updated: 2026-10-09
+updated: 2026-11-03
 ---
 
 # Post-Training Quantization
@@ -91,6 +91,12 @@ Deployment co-design matters: quantized weight bytes, activation format, integer
 
 If conversion loses task quality, a separate training stage can use a higher-precision teacher to guide a quantized student. That is quantization-aware distillation, not pure post-training quantization: gradients update the student or its adapters. Compare equal-bit PTQ, fine-tuning without teacher targets, and distillation with the same data and compute budget. Measure held-out quality, quantization error, memory traffic, and runtime; a smaller loss during training does not establish an inference-speed gain.
 
+## Calibration is a separate evidence boundary
+
+Representative inputs used to choose ranges, clipping or channel scales are calibration data, not proof of generalization. Keep calibration separate from held-out acceptance, and test rare channels, long contexts and shifted domains. Weight-only methods can also need activations: minimizing raw weight error is not the same as minimizing output distortion. For a layer with matrix W and input x, a weight perturbation E changes its exact output by Ex. A weight error of 0.02 on an input of magnitude 10 contributes 0.2, while the same error on magnitude 0.1 contributes 0.002. Correlated contributions can reinforce or cancel.
+
+State weight, activation, accumulation and cache precision separately. Weight-only compression can leave activation arithmetic wide; weight-and-activation conversion has a different input-distribution contract. Calibration statistics, grouping, packed layout and actual kernels must travel with the checkpoint. Evaluate the original and converted networks on untouched examples, including failure slices, and measure the executable deployment rather than only reconstructed weight error. A more sophisticated conversion is not automatically better than a simple equal-bit baseline.
+
 ## Prerequisites
 
 - [[quantization]]
@@ -102,3 +108,5 @@ If conversion loses task quality, a separate training stage can use a higher-pre
 
 - NVIDIA Technical Blog, “Model Quantization: Post-Training Quantization Using NVIDIA Model Optimizer” — deployment workflow and PTQ configuration choices. The saved Raindrop snapshot supplied metadata only; source-specific claims were not relied on beyond this topic boundary.
 - Jacob et al., “Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference” (2018), arXiv:1712.05877 — scale and integer-mapping foundation.
+
+- <https://arxiv.org/abs/2306.00978>

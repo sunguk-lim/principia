@@ -13122,6 +13122,181 @@
       "contentHash": "8ccc2a5882dcdf57fa8d6bfc4711f6336a068a2661e9fef7c6d2bfd9251d474c",
       "decision": "retain",
       "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. The original numerical or evidence trace demonstrates this objective, not an unrelated concept."
+    },
+    {
+      "candidateKey": "cand-16da9c66f4f0ed568d41",
+      "sourceId": "application-containerization",
+      "contentHash": "eeecb956c0d3b364ea8a1b78673c003597ccd221cd6d320b9b894a579e0ed6fb",
+      "decision": "retain",
+      "reason": "The objective is packaging code, dependencies and startup while separating runtime configuration and durable state. Kernel isolation is a declared prerequisite, not a substitute for this packaging contract. Qualifies the same objective with failure cases and verification, not a new generic testing entity."
+    },
+    {
+      "candidateKey": "cand-f7ac6cb99cd2302a3ca9",
+      "sourceId": "application-containerization",
+      "contentHash": "0635a3e25fb34964b45dc7eda407eae4f00d217e41e56028326fde615486fe1b",
+      "decision": "retain",
+      "reason": "The objective is packaging code, dependencies and startup while separating runtime configuration and durable state. Kernel isolation is a declared prerequisite, not a substitute for this packaging contract. Defines the same objective."
+    },
+    {
+      "candidateKey": "cand-5eae1a7f872b25599d7d",
+      "sourceId": "application-containerization",
+      "contentHash": "f3fe5f71027a3ded440cb8de76a6ca232f5c9b45027e4184c5efa9f568e7ab35",
+      "decision": "retain",
+      "reason": "The objective is packaging code, dependencies and startup while separating runtime configuration and durable state. Kernel isolation is a declared prerequisite, not a substitute for this packaging contract. Explains its mechanism through reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-07deb506c15c66b967d9",
+      "sourceId": "application-containerization",
+      "contentHash": "ee84d13c949f1c70e023f288b2794fd1ae0cab5c191871e5347c2f4b6906e95f",
+      "decision": "retain",
+      "reason": "The objective is packaging code, dependencies and startup while separating runtime configuration and durable state. Kernel isolation is a declared prerequisite, not a substitute for this packaging contract. Demonstrates the objective with original concrete values and stated limits."
+    },
+    {
+      "candidateKey": "cand-f1957c7b52a677396ad2",
+      "sourceId": "binary-cross-entropy",
+      "contentHash": "0e396b8ae1ba1fff25c2da88ec9ff1d02f18618eeb5610d84f359d8923e86f29",
+      "decision": "retain",
+      "reason": "The objective is binary-probability log loss, including the two label branches and probability-estimation interpretation. Generic loss and logarithms are existing prerequisites; this is not a duplicate of the accuracy-comparison objective. Qualifies the same objective with failure cases and verification, not a new generic testing entity."
+    },
+    {
+      "candidateKey": "cand-fe8a0cb63ee6c67bc6d1",
+      "sourceId": "binary-cross-entropy",
+      "contentHash": "3fcef8475d1eedd2267f205fe9c7fea506a11664a1387cb52c29df400e9d7a4e",
+      "decision": "retain",
+      "reason": "The objective is binary-probability log loss, including the two label branches and probability-estimation interpretation. Generic loss and logarithms are existing prerequisites; this is not a duplicate of the accuracy-comparison objective. Defines the same objective."
+    },
+    {
+      "candidateKey": "cand-5c7804af1789305a5d0a",
+      "sourceId": "binary-cross-entropy",
+      "contentHash": "be2613697c1554c825503d91928f5f15ab47e017d6a5419ace174d3c7def29d1",
+      "decision": "retain",
+      "reason": "The objective is binary-probability log loss, including the two label branches and probability-estimation interpretation. Generic loss and logarithms are existing prerequisites; this is not a duplicate of the accuracy-comparison objective. Explains its mechanism through reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-1c7e07e0485065e8c321",
+      "sourceId": "binary-cross-entropy",
+      "contentHash": "1f5ec9299859be1082c09a23d80ee044438e6833b3ca1ddeb94ac0917fef1025",
+      "decision": "retain",
+      "reason": "The objective is binary-probability log loss, including the two label branches and probability-estimation interpretation. Generic loss and logarithms are existing prerequisites; this is not a duplicate of the accuracy-comparison objective. Demonstrates the objective with original concrete values and stated limits."
+    },
+    {
+      "candidateKey": "cand-c8781a8b30f1dd8d6e98",
+      "sourceId": "decision-actuation-consistency",
+      "contentHash": "2313f7390a8ac32e57d86f97089e96df398f40165118a2c833f5f6d8128aa5e0",
+      "decision": "retain",
+      "reason": "The canonical objective is agreement between intended, applied and visible decision versions. Separating analytical candidates from publication refines this effect-path contract rather than creating an entity from every pipeline role. Preserves the existing full canonical objective."
+    },
+    {
+      "candidateKey": "cand-ece282e3cf8c943e78e2",
+      "sourceId": "decision-actuation-consistency",
+      "contentHash": "106da9be5ac79124140e130cfbc4c0083bfe70483d1c9e23d9ad707a8a584126",
+      "decision": "retain",
+      "reason": "The canonical objective is agreement between intended, applied and visible decision versions. Separating analytical candidates from publication refines this effect-path contract rather than creating an entity from every pipeline role. Distinguishes candidate freshness from authorized visible actuation."
+    },
+    {
+      "candidateKey": "cand-2d77c5a6d192a2a1d9ec",
+      "sourceId": "materialized-view",
+      "contentHash": "049c547ee8bb3fb0cc768ebcb405c36662e305c80ff722912bc21a3fcb41b544",
+      "decision": "retain",
+      "reason": "The objective is persistence and explicit refresh of a declarative query result. The worked operational publication boundary is an application, not a new claim that database refresh applies physical decisions. Qualifies the same objective with failure cases and verification, not a new generic testing entity."
+    },
+    {
+      "candidateKey": "cand-5f61870e6f95fac95ba2",
+      "sourceId": "materialized-view",
+      "contentHash": "26c33f000920393812bbaab7d3125eb7fb9c739d98046d22572e5ea97b9cace9",
+      "decision": "retain",
+      "reason": "The objective is persistence and explicit refresh of a declarative query result. The worked operational publication boundary is an application, not a new claim that database refresh applies physical decisions. Defines the same objective."
+    },
+    {
+      "candidateKey": "cand-858dc28ad1734614993b",
+      "sourceId": "materialized-view",
+      "contentHash": "ff1f70d04a1258fbc77d11de02c3d7e733e9a5cf7582597c2d50a2a8afcdba4a",
+      "decision": "retain",
+      "reason": "The objective is persistence and explicit refresh of a declarative query result. The worked operational publication boundary is an application, not a new claim that database refresh applies physical decisions. Explains its mechanism through reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-5c8055f3fd4b26c99196",
+      "sourceId": "materialized-view",
+      "contentHash": "72b99fd8ebd9b1287c3772c8acb44fcabfb4bbba2c011e20710216a0eebd17f4",
+      "decision": "retain",
+      "reason": "The objective is persistence and explicit refresh of a declarative query result. The worked operational publication boundary is an application, not a new claim that database refresh applies physical decisions. Demonstrates the objective with original concrete values and stated limits."
+    },
+    {
+      "candidateKey": "cand-7f7e8bab32cc52fbd662",
+      "sourceId": "multi-agent-orchestration",
+      "contentHash": "a361d7959632909e55922151d70c4ffc2af9fd6c01a338539d55c504e2fe6b45",
+      "decision": "retain",
+      "reason": "The canonical objective is explicit worker roles, communication and termination. Message-edge accounting and serial-versus-parallel failure paths qualify this protocol; scaling-policy selection is authored as its own node. Counts edges and rounds under explicitly different communication protocols."
+    },
+    {
+      "candidateKey": "cand-bc818d2f1acab6fe10b1",
+      "sourceId": "multi-agent-scaling-evaluation",
+      "contentHash": "f266d44cd4639388ca699b4171162ac2ba4884165b318d71e2882a2581626411",
+      "decision": "retain",
+      "reason": "The single objective is measured resource-constrained team-size selection. Task accounting and constrained model selection are prerequisite concepts, while team size and budget feasibility are separately tracked evidence candidates for this one selection procedure. Qualifies the same objective with failure cases and verification, not a new generic testing entity."
+    },
+    {
+      "candidateKey": "cand-f7ec74c9645f5fba9ca0",
+      "sourceId": "multi-agent-scaling-evaluation",
+      "contentHash": "1cc8ebc2b83440a57d327a5cb9d318fb24595ce5c99857b7b3c74153976d969c",
+      "decision": "retain",
+      "reason": "The single objective is measured resource-constrained team-size selection. Task accounting and constrained model selection are prerequisite concepts, while team size and budget feasibility are separately tracked evidence candidates for this one selection procedure. Defines the same objective."
+    },
+    {
+      "candidateKey": "cand-f8cb2dc8bf2629bcccdf",
+      "sourceId": "multi-agent-scaling-evaluation",
+      "contentHash": "c4f64a791ad0edf655df669a9918f69e6f2f0687ca7990719c99ecca4f1ee253",
+      "decision": "retain",
+      "reason": "The single objective is measured resource-constrained team-size selection. Task accounting and constrained model selection are prerequisite concepts, while team size and budget feasibility are separately tracked evidence candidates for this one selection procedure. Explains its mechanism through reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-897d46600455dd43c702",
+      "sourceId": "multi-agent-scaling-evaluation",
+      "contentHash": "359500b4c5d9ace7329962d7b803f7ab9e00dca34c3feb77e78f801ec9dd87d5",
+      "decision": "retain",
+      "reason": "The single objective is measured resource-constrained team-size selection. Task accounting and constrained model selection are prerequisite concepts, while team size and budget feasibility are separately tracked evidence candidates for this one selection procedure. Demonstrates the objective with original concrete values and stated limits."
+    },
+    {
+      "candidateKey": "cand-f1ae27bcea1fdd68720b",
+      "sourceId": "post-training-quantization",
+      "contentHash": "4b5d62a839066a4e1e95fc22b3d54bd9a5e106b1a1c7bb37ca733cd291309e92",
+      "decision": "retain",
+      "reason": "The canonical objective is accepted conversion of a trained network. Calibration and held-out acceptance are distinct evidence boundaries within that conversion procedure; named algorithms already have their own canonical entities. Separates range selection from held-out deployment acceptance and weight error from output error."
+    },
+    {
+      "candidateKey": "cand-797cfd9a7325c94ce2d2",
+      "sourceId": "provider-data-policy-routing",
+      "contentHash": "b99583e2f0af0ab23440ff822ce3a543689eeb686794f21ea4f31e2300fb75d5",
+      "decision": "retain",
+      "reason": "The canonical objective is conjunctive endpoint-policy eligibility. Location is separately judged from retention and explicitly covered as an additional policy boundary, not deduplicated against a retention flag. Combines retention and geography without conflating their scope, with separate BYOK and operational-record boundaries."
+    },
+    {
+      "candidateKey": "cand-a8d1c04a3c45b6265140",
+      "sourceId": "smoothquant",
+      "contentHash": "37424fd10a585aa4ef9cd4d263575d7916802829838cd4cd54a3829d4792ffe9",
+      "decision": "retain",
+      "reason": "The objective is inverse channel rescaling to transfer activation range into weights before quantizing both operands. The scale rule and numerical distortion example explain this transform, not new identity synonyms for general quantization or AWQ. Qualifies the same objective with failure cases and verification, not a new generic testing entity."
+    },
+    {
+      "candidateKey": "cand-9858db0e44239f56495c",
+      "sourceId": "smoothquant",
+      "contentHash": "430e303834a72b067fdf71f02f9b9c47e83409838d5cadd0da157d3a8eb0f1e1",
+      "decision": "retain",
+      "reason": "The objective is inverse channel rescaling to transfer activation range into weights before quantizing both operands. The scale rule and numerical distortion example explain this transform, not new identity synonyms for general quantization or AWQ. Defines the same objective."
+    },
+    {
+      "candidateKey": "cand-7367a384f12b3cf5e263",
+      "sourceId": "smoothquant",
+      "contentHash": "054364182846f7061b92b8a6ba560c638a7f371d8b6683a7dc0231b3f2433dc2",
+      "decision": "retain",
+      "reason": "The objective is inverse channel rescaling to transfer activation range into weights before quantizing both operands. The scale rule and numerical distortion example explain this transform, not new identity synonyms for general quantization or AWQ. Explains its mechanism through reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-af3b9cac36b6d9a296bb",
+      "sourceId": "smoothquant",
+      "contentHash": "5efa311eb95c229aebeb0eadb07cbebbd660034dcad2b737f40be00941c7faad",
+      "decision": "retain",
+      "reason": "The objective is inverse channel rescaling to transfer activation range into weights before quantizing both operands. The scale rule and numerical distortion example explain this transform, not new identity synonyms for general quantization or AWQ. Demonstrates the objective with original concrete values and stated limits."
     }
   ]
 }

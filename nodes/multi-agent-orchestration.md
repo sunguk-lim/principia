@@ -5,10 +5,10 @@ summary: Multi-agent orchestration assigns bounded roles and communication paths
 type: concept
 tags: [ml/agents]
 prereqs: [transformer-attention, structured-output, measurement]
-sources: [https://arxiv.org/abs/2308.08155]
+sources: [https://www.anthropic.com/engineering/multi-agent-research-system, https://arxiv.org/abs/2308.08155]
 status: explained
 created: 2026-09-10
-updated: 2026-11-01
+updated: 2026-11-03
 ---
 
 # Multi-Agent Orchestration
@@ -35,6 +35,12 @@ A coordinator can be restricted to planning and worker dispatch while research w
 
 For example, dispatch separate evidence questions about mechanism, limitations and competing explanations. Each worker returns source identifiers, claims and unresolved gaps. A deterministic assembly step can renumber identifiers and remove duplicate references, but it cannot verify that a source entails a claim. Preserve that claim-to-evidence association when merging. A shallow topology limits the number of summaries passed between workers; it does not prevent every distortion. Compare tool-separated and search-capable coordinators at equal research and model budgets, checking completeness, evidence support, handoff loss and latency rather than a vendor leaderboard.
 
+## Communication cost follows the topology
+
+Count communication edges and rounds rather than treating worker count as a complete cost model. One directed all-to-all round among n workers has n(n-1) messages if every distinct pair exchanges one message. With four workers that is 12 messages, whereas a coordinator collecting one result from each of four workers receives four worker-result messages, plus whatever dispatch and follow-up it actually sends. These are examples under explicit protocols, not unavoidable costs of all multi-agent systems.
+
+Record message sizes, coordinator and aggregation calls, duplicate tool work, serialized dependencies and state contention. Parallel generation can increase total cost while reducing latency; lengthy discussion can do the opposite when workers repeatedly wait on one another. Compare topology and round count separately from team size. An early wrong draft can anchor later revisions, while independent proposals can diversify starts; neither independence of sampling nor different role names proves independent errors. Retain a serial baseline when successive steps genuinely depend on new evidence or executable feedback.
+
 ## Prerequisites
 
 - [[transformer-attention]]
@@ -46,3 +52,5 @@ For example, dispatch separate evidence questions about mechanism, limitations a
 - [Wu et al., “AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation”](https://arxiv.org/abs/2308.08155): presents customizable conversational workers combining language models, human input, tools, and programmable interaction patterns.
 
 - <https://arxiv.org/abs/2308.08155>
+
+- <https://www.anthropic.com/engineering/multi-agent-research-system>

@@ -5,10 +5,10 @@ summary: Provider data-policy routing filters eligible inference endpoints by re
 type: concept
 tags: [ml/model-portability]
 prereqs: [load-balancing, api-key-usage-guardrail]
-sources: [https://openrouter.ai/docs/guides/features/zdr, https://openrouter.ai/docs/guides/features/guardrails]
+sources: [https://openrouter.ai/docs/guides/features/in-region-routing, https://openrouter.ai/docs/guides/features/zdr, https://openrouter.ai/docs/guides/features/guardrails]
 status: explained
 created: 2026-10-03
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Provider Data-Policy Routing
@@ -33,6 +33,14 @@ Gateway retention and upstream endpoint retention are separate checks. OpenRoute
 
 For a concrete eligibility test, suppose endpoints A and B both advertise no training use, but only A meets the required strict-retention rule. If A becomes unavailable, B is still ineligible; no-training status does not repair a retention-policy violation. If an operator separately permits safety retention, record that changed contract instead of describing the fallback as an unchanged strict policy.
 
+## Regional processing is an independent constraint
+
+Retention and processing location are distinct policy dimensions. Filter for both before cost or availability selection; a zero-retention endpoint can still process data in an unacceptable jurisdiction. OpenRouter documents regional ingress domains that restrict shared inference endpoints and fail when an eligible route is unavailable rather than silently moving shared inference elsewhere. Its current Europe boundary includes the EU/EEA, the UK and Switzerland, not only EU member states. Check the exact contractual geography rather than inferring it from a hostname.
+
+The boundary is not every related record or destination. Account and operational records are handled separately, and customer-configured trace destinations and bring-your-own-key deployments require their own location checks. A regional gateway cannot relocate a cloud resource provisioned by the customer. Provider-specific routing and declaration rules differ; verify the actual deployment and invocation path rather than relying only on a region label. Regional availability of tools also differs from inference availability.
+
+For a simple intersection test, endpoint A meets retention but not region, B meets region but not retention, and C meets both. Only C is eligible. If C fails, neither A nor B is an unchanged-policy fallback. Test empty intersections, ingress restrictions and observed endpoint selection, while distinguishing a documented vendor guarantee from independent evidence of compliance.
+
 ## Prerequisites
 
 - [[load-balancing]]
@@ -42,3 +50,5 @@ For a concrete eligibility test, suppose endpoints A and B both advertise no tra
 
 - [OpenRouter Zero Data Retention](https://openrouter.ai/docs/guides/features/zdr): endpoint-level ZDR semantics and controls.
 - [OpenRouter Guardrails](https://openrouter.ai/docs/guides/features/guardrails): policy assignment and enforcement scope.
+
+- <https://openrouter.ai/docs/guides/features/in-region-routing>

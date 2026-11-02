@@ -8,7 +8,7 @@ prereqs: [ml-system-freshness]
 sources: [https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html, https://developers.google.com/machine-learning/guides/rules-of-ml#rule_8_know_the_freshness_requirements_of_your_system]
 status: explained
 created: 2026-10-07
-updated: 2026-10-07
+updated: 2026-11-03
 ---
 
 # Decision–Actuation Consistency
@@ -26,6 +26,12 @@ For example, a pricing service may compute a new number before all shelf labels 
 Model the effect path as a state machine: proposed, accepted, applied, observed, and retired or rolled back. Use version identifiers and idempotent updates so retries do not silently apply a different decision. Timeouts and missing acknowledgments must have an explicit policy rather than being interpreted as success. For human-operated changes, observation may be delayed or sampled; state clearly which claims are verified and which remain inferred.
 
 Validate by injecting delayed, duplicated, rejected, and partially applied updates. Measure compute-to-apply and compute-to-visible lag, mismatch duration, stale display rate, failed updates, and actual task outcomes. Compare a faster policy against a bounded-cadence baseline under the same workload. Do not infer an exact optimal cadence or customer response from an unsourced newsletter scenario.
+
+## Separate analytical updates from operational publication
+
+Analytical freshness and actuation cadence need not be identical. A system can continuously recompute forecasts or candidate decisions while publishing only approved, versioned operational changes. The analytical path provides evidence; the publication path determines which result consumers should apply. Keeping those roles separate prevents every new observation from becoming an immediate user-visible command, without requiring the analytical stream to stop.
+
+For example, publish decision version 17 while analysis produces candidates 18 and 19. Consumers continue to use 17 until 19 passes validation and its activation condition is met. A consumer still reporting 17 after publication has not applied 19; a successful candidate computation is not an acknowledgment. Record version, intended activation time, observed application and rollback policy. Batching can bound visible churn, but delays response and does not by itself coordinate multiple physical systems. Compare a controlled publication window with immediate updates using actual mismatch, lag and task outcomes; no particular daily update time is universally optimal.
 
 ## Prerequisites
 

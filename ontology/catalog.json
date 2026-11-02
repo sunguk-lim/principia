@@ -3892,6 +3892,46 @@
       "prerequisiteReasons": {
         "loss-function": "Grounds prediction-versus-target loss and the distinction from a complete fitting objective."
       }
+    },
+    "multi-agent-scaling-evaluation": {
+      "objective": "Multi-agent scaling evaluation measures how team size changes verified task outcomes and total resources before selecting a budget-feasible collaboration policy.",
+      "prerequisiteReasons": {
+        "multi-agent-orchestration": "Defines workers, message topology, state and termination.",
+        "quality-cost-model-selection": "Defines constrained selection and held-out acceptance.",
+        "agent-task-cost": "Defines complete task-cohort accounting including failures."
+      }
+    },
+    "smoothquant": {
+      "objective": "SmoothQuant uses inverse input-channel rescaling to move activation outlier magnitude into weights before quantizing both operands of a linear layer.",
+      "prerequisiteReasons": {
+        "post-training-quantization": "Defines quantization scope, calibration and quality acceptance.",
+        "matrix-multiplication": "Grounds the paired channel-scaling identity and dimensions."
+      },
+      "aliases": [
+        "SmoothQuant"
+      ]
+    },
+    "binary-cross-entropy": {
+      "objective": "Binary cross-entropy scores a binary probability prediction by the negative log probability assigned to the observed label.",
+      "prerequisiteReasons": {
+        "loss-function": "Defines observed-target loss and its likelihood interpretation.",
+        "logarithm": "Explains logarithms and their multiplicative-to-additive transformation."
+      },
+      "aliases": [
+        "Binary Log Loss"
+      ]
+    },
+    "application-containerization": {
+      "objective": "Application containerization packages code, runtime dependencies and a startup contract into an image while keeping deployment configuration and durable state explicit.",
+      "prerequisiteReasons": {
+        "container": "Supplies running-process isolation, image filesystem and mutable-instance semantics."
+      }
+    },
+    "materialized-view": {
+      "objective": "A materialized view stores the result of a declared query and refreshes it separately, trading cheaper repeated reads for storage, refresh work and explicitly bounded staleness.",
+      "prerequisiteReasons": {
+        "sql": "Defines the declarative query and table operations whose result is persisted."
+      }
     }
   }
 }

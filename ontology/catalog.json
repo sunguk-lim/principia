@@ -3932,6 +3932,148 @@
       "prerequisiteReasons": {
         "sql": "Defines the declarative query and table operations whose result is persisted."
       }
+    },
+    "adagrad": {
+      "objective": "AdaGrad scales each gradient coordinate by the inverse square root of its cumulative squared-gradient history.",
+      "prerequisiteReasons": {
+        "gradient-descent": "The baseline update and gradient define the coordinate scaling being changed."
+      }
+    },
+    "rmsprop": {
+      "objective": "RMSprop rescales each gradient using an exponentially decaying average of squared gradients so older scale observations lose influence.",
+      "prerequisiteReasons": {
+        "gradient-descent": "Defines gradients and the parameter update whose coordinate scale is adapted."
+      }
+    },
+    "adam": {
+      "objective": "Adam combines bias-corrected exponential averages of gradients and squared gradients to form a directionally smoothed coordinate-adaptive update.",
+      "prerequisiteReasons": {
+        "momentum": "Explains persistence and cancellation of gradient directions.",
+        "rmsprop": "Explains exponentially forgetting squared-gradient scaling."
+      }
+    },
+    "decoupled-weight-decay": {
+      "objective": "Decoupled weight decay shrinks parameters separately from an adaptive gradient transformation instead of passing an L2 penalty through that transformation.",
+      "prerequisiteReasons": {
+        "adam": "Defines the adaptive transformation from which shrinkage is separated.",
+        "regularization": "Defines the penalty objective being contrasted with direct parameter shrinkage."
+      }
+    },
+    "adafactor": {
+      "objective": "Adafactor approximates matrix squared-gradient statistics using row and column summaries to reduce optimizer-state storage.",
+      "prerequisiteReasons": {
+        "adam": "Defines the full moment-state baseline and adaptive scaling.",
+        "matrix-multiplication": "Explains the two-dimensional parameters and factored reconstruction."
+      }
+    },
+    "lion-optimizer": {
+      "objective": "Lion uses the sign of a momentum–gradient blend for its update while retaining one momentum buffer rather than a second-moment buffer.",
+      "prerequisiteReasons": {
+        "momentum": "Defines the remembered gradient direction used in both blends.",
+        "decoupled-weight-decay": "Defines shrinkage kept separate from the sign data update."
+      },
+      "aliases": [
+        "Lion"
+      ]
+    },
+    "ademamix": {
+      "objective": "AdEMAMix combines fast and slow exponential gradient averages with squared-gradient scaling to retain both recent and older directional information.",
+      "prerequisiteReasons": {
+        "adam": "Defines bias-corrected first and second moment estimates being extended."
+      }
+    },
+    "symmetric-eigendecomposition": {
+      "objective": "A real symmetric matrix can be expressed as orthonormal eigenvectors with real directional scales, enabling matrix powers through scalar powers of its eigenvalues.",
+      "prerequisiteReasons": {
+        "linear-transformation": "Defines the basis-dependent matrix representation and coordinate change whose directional scales eigendecomposition exposes; matrix products and dot products are inherited."
+      }
+    },
+    "matrix-polar-factor": {
+      "objective": "A matrix polar factor separates orientation from positive directional stretching, yielding an orthogonal or rectangular semi-orthogonal factor.",
+      "prerequisiteReasons": {
+        "symmetric-eigendecomposition": "Defines positive matrix powers and the inverse-root construction."
+      }
+    },
+    "shampoo-optimizer": {
+      "objective": "Shampoo preconditions matrix gradients from both sides using axis-wise gradient statistics instead of a full flattened-parameter preconditioner.",
+      "prerequisiteReasons": {
+        "gradient-descent": "Defines the loss gradient and parameter update being transformed.",
+        "symmetric-eigendecomposition": "Defines matrix inverse fourth roots and their numerical requirements."
+      },
+      "aliases": [
+        "Shampoo"
+      ]
+    },
+    "soap-optimizer": {
+      "objective": "SOAP applies Adam-style coordinate adaptation in the eigenbasis of Shampoo statistics and maps the resulting update back to parameter coordinates.",
+      "prerequisiteReasons": {
+        "adam": "Defines the coordinatewise adaptive state and its bias conventions.",
+        "shampoo-optimizer": "Defines axis statistics and their eigenvector coordinate systems."
+      },
+      "aliases": [
+        "SOAP"
+      ]
+    },
+    "muon-optimizer": {
+      "objective": "Muon transforms matrix momentum toward a polar-like update before applying a shape-scaled parameter step.",
+      "prerequisiteReasons": {
+        "momentum": "Defines the matrix gradient history used as the update input.",
+        "matrix-polar-factor": "Defines the orientation/stretch separation and polynomial approximation."
+      },
+      "aliases": [
+        "Muon"
+      ]
+    },
+    "sophia-optimizer": {
+      "objective": "Sophia scales smoothed gradients by a periodically estimated diagonal curvature statistic and clips coordinate updates to bound their magnitude.",
+      "prerequisiteReasons": {
+        "momentum": "Defines the smoothed directional numerator.",
+        "hessian": "Defines the curvature target and distinction from first-gradient moments."
+      },
+      "aliases": [
+        "Sophia"
+      ]
+    },
+    "optimizer-time-to-quality": {
+      "objective": "Optimizer time-to-quality evaluation compares complete tuned training procedures by elapsed resources needed to meet a predefined held-out quality target.",
+      "prerequisiteReasons": {
+        "quality-cost-model-selection": "Defines matched deployment-quality contracts and independent acceptance.",
+        "training-memory-budget": "Defines optimizer-state and runtime peaks that constrain feasible training."
+      }
+    },
+    "ml-task-specification": {
+      "objective": "An ML task specification connects a prediction to an operational decision, admissible data, measurable outcomes and a non-ML baseline before model development.",
+      "prerequisiteReasons": {
+        "measurement": "Defines observable outcomes, denominators and baseline comparison.",
+        "loss-function": "Separates the optimized training surrogate from operational utility."
+      }
+    },
+    "bagging-variance-reduction": {
+      "objective": "Bagging fits predictors on resampled training sets and aggregates their predictions, reducing variance only to the extent their errors are not perfectly correlated.",
+      "prerequisiteReasons": {
+        "variance": "Defines prediction spread and the variance-of-average calculation.",
+        "probability-distribution": "Defines resampling from the observed training examples."
+      }
+    },
+    "multi-container-service-orchestration": {
+      "objective": "Multi-container service orchestration declares application services, connectivity, persistent state and lifecycle dependencies while distinguishing process startup from functional readiness.",
+      "prerequisiteReasons": {
+        "application-containerization": "Defines image identity, startup configuration and state boundaries.",
+        "container-networking": "Defines service addressing, isolated endpoints and published ports."
+      }
+    },
+    "cluster-indexed-sparse-attention": {
+      "objective": "Cluster-indexed sparse attention searches representatives of content-grouped keys before computing attention on an expanded subset, trading selection work against missed evidence.",
+      "prerequisiteReasons": {
+        "hierarchical-sparse-attention-index": "Defines staged selection, recall risk and KV-cache execution costs.",
+        "vector-cluster-representative": "Defines coarse summary scoring, member expansion and lost member-specific relevance without making one particular clustering algorithm required."
+      }
+    },
+    "vector-cluster-representative": {
+      "objective": "A vector-cluster representative summarizes a group for coarse similarity scoring, reducing comparisons while losing information about individual members.",
+      "prerequisiteReasons": {
+        "vector-dot-product": "Defines similarity, length and the member-versus-summary score comparison."
+      }
     }
   }
 }

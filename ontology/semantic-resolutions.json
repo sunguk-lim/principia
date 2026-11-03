@@ -13297,6 +13297,573 @@
       "contentHash": "5efa311eb95c229aebeb0eadb07cbebbd660034dcad2b737f40be00941c7faad",
       "decision": "retain",
       "reason": "The objective is inverse channel rescaling to transfer activation range into weights before quantizing both operands. The scale rule and numerical distortion example explain this transform, not new identity synonyms for general quantization or AWQ. Demonstrates the objective with original concrete values and stated limits."
+    },
+    {
+      "candidateKey": "cand-ec37043ebf087a4e6a54",
+      "sourceId": "adafactor",
+      "contentHash": "cba3ff0e5c816984a01d64ccbeeebb2c15c50e9c60eaaa6e2924b9ad34d642a7",
+      "decision": "retain",
+      "reason": "Adafactor approximates matrix squared-gradient statistics using row and column summaries to reduce optimizer-state storage. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-3874a3f095382d8a99ba",
+      "sourceId": "adafactor",
+      "contentHash": "c57a446f3756826260d61c7fa757cba3ee764c6a883571c37094bb8439a5ef79",
+      "decision": "retain",
+      "reason": "Adafactor approximates matrix squared-gradient statistics using row and column summaries to reduce optimizer-state storage. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-2e69cb1a2a86d966aa5d",
+      "sourceId": "adafactor",
+      "contentHash": "f50fa4dcbfcc10a6b1fe178bd95b2e9dacf26b05f67118ccc3e04525a282fa51",
+      "decision": "retain",
+      "reason": "Adafactor approximates matrix squared-gradient statistics using row and column summaries to reduce optimizer-state storage. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-7685b70e808c33c82fc2",
+      "sourceId": "adafactor",
+      "contentHash": "1a3ad7509583f510bddfc421d6e6e015636baaa3333ff45707f984adf0045831",
+      "decision": "retain",
+      "reason": "Adafactor approximates matrix squared-gradient statistics using row and column summaries to reduce optimizer-state storage. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-5e84a2941d9efbc84406",
+      "sourceId": "adagrad",
+      "contentHash": "8988b495d70bcfebcb64623aa2493ccd571faa90bf282a58e39dc5ea9483b469",
+      "decision": "retain",
+      "reason": "AdaGrad scales each gradient coordinate by the inverse square root of its cumulative squared-gradient history. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-ebe9c932deb52b13a4b9",
+      "sourceId": "adagrad",
+      "contentHash": "4c1c3f770afb6d9d299be20f23550b43327e99278b3ec9c0cd803503a18db0c5",
+      "decision": "retain",
+      "reason": "AdaGrad scales each gradient coordinate by the inverse square root of its cumulative squared-gradient history. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-74f74363ca264e7b7aa0",
+      "sourceId": "adagrad",
+      "contentHash": "6d57aea7265bfcbecabc18169feba59f8ab85a6d0cc19ddaf7bdb754cf5f0472",
+      "decision": "retain",
+      "reason": "AdaGrad scales each gradient coordinate by the inverse square root of its cumulative squared-gradient history. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-27320cabb6b9fa0d227c",
+      "sourceId": "adagrad",
+      "contentHash": "ed6d3815d9de33836a71332de71f5ed1ffbbe391787952f0e54e75c1911b44ab",
+      "decision": "retain",
+      "reason": "AdaGrad scales each gradient coordinate by the inverse square root of its cumulative squared-gradient history. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-58407cc1d2ae70878e52",
+      "sourceId": "adam",
+      "contentHash": "848d3cc8f2e31384b6d49536bc753e8371ac550613a1f62789bb561d7ba8d3cb",
+      "decision": "retain",
+      "reason": "Adam combines bias-corrected exponential averages of gradients and squared gradients to form a directionally smoothed coordinate-adaptive update. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-a7fbc4c2a3d26490ce82",
+      "sourceId": "adam",
+      "contentHash": "0b47bc1ff10072c7225563986d3d98e7d5d2ebcbcc49db463952f1fb58cd4c85",
+      "decision": "retain",
+      "reason": "Adam combines bias-corrected exponential averages of gradients and squared gradients to form a directionally smoothed coordinate-adaptive update. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-45c024a6406ce97ad1b7",
+      "sourceId": "adam",
+      "contentHash": "b7b6664221fac99063f51cad8f9b659e9636fa7a4f89246b63edbafbd90f9d39",
+      "decision": "retain",
+      "reason": "Adam combines bias-corrected exponential averages of gradients and squared gradients to form a directionally smoothed coordinate-adaptive update. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-7d01d9661c3adf2d2c3d",
+      "sourceId": "adam",
+      "contentHash": "b82b0012877de2ded5649f2181b791a81f2e44d051c811ca9438f925fea354d5",
+      "decision": "retain",
+      "reason": "Adam combines bias-corrected exponential averages of gradients and squared gradients to form a directionally smoothed coordinate-adaptive update. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-a5dd1ce0dc979670ac8d",
+      "sourceId": "ademamix",
+      "contentHash": "f5d6ee4a11840c4059eda1c0e604f5e8762d484d1140b316008044d8a1a97cbb",
+      "decision": "retain",
+      "reason": "AdEMAMix combines fast and slow exponential gradient averages with squared-gradient scaling to retain both recent and older directional information. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-79543fc1c4a12db19c1f",
+      "sourceId": "ademamix",
+      "contentHash": "147fe761c8593d69e986260f072e378bb1bcc4b5490cd932a579171450a1f28d",
+      "decision": "retain",
+      "reason": "AdEMAMix combines fast and slow exponential gradient averages with squared-gradient scaling to retain both recent and older directional information. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-85564320db53ac26493c",
+      "sourceId": "ademamix",
+      "contentHash": "13b49e843585a801a68287403f9fad628ffa027610416d0b21f217c3dac8b817",
+      "decision": "retain",
+      "reason": "AdEMAMix combines fast and slow exponential gradient averages with squared-gradient scaling to retain both recent and older directional information. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-bf26ea84db2786ac97d3",
+      "sourceId": "ademamix",
+      "contentHash": "86a656c14992329de7df307d31086e8b4883542751143fb8ded4eb6d4751ed7e",
+      "decision": "retain",
+      "reason": "AdEMAMix combines fast and slow exponential gradient averages with squared-gradient scaling to retain both recent and older directional information. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-4debdc20baf2af2d8716",
+      "sourceId": "agent-execution-harness",
+      "contentHash": "98229a1c2ff0af1437ddf83aa7e29fb0d56ec800d73b0e099c9ab1f22107631a",
+      "decision": "retain",
+      "reason": "An agent execution harness is the application-owned control layer around model and tool calls that enforces permissions, budgets, state, recovery, and observability. Judged framework composition separately from the existing single-call contract: it describes how the same harness is assembled and how outer policy accepts inner investigation. Packaging and overlap are implementation choices within this control-layer objective, not a rival runtime entity."
+    },
+    {
+      "candidateKey": "cand-2b994b7991114393c587",
+      "sourceId": "agent-execution-harness",
+      "contentHash": "21fc84e04becd6d46e8c8383e3be811d26705c1b864b9618ddfc7329a01c0e27",
+      "decision": "retain",
+      "reason": "An agent execution harness is the application-owned control layer around model and tool calls that enforces permissions, budgets, state, recovery, and observability. Preserves the full original canonical architecture and its already grounded prerequisites; no new identity is implied by its reference overview."
+    },
+    {
+      "candidateKey": "cand-ac98f2507db877ca880b",
+      "sourceId": "bagging-variance-reduction",
+      "contentHash": "c9e3112bdeb55b00cd255b2ea96911b5a78c3c91dd2ed54462b79dfdf7898a8f",
+      "decision": "retain",
+      "reason": "Bagging fits predictors on resampled training sets and aggregates their predictions, reducing variance only to the extent their errors are not perfectly correlated. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-98ba353af5368601f5c7",
+      "sourceId": "bagging-variance-reduction",
+      "contentHash": "6b5e4419c7f663f2d102b56f742f0a0d953eec1971d4e45a93d92d864a8d7d8c",
+      "decision": "retain",
+      "reason": "Bagging fits predictors on resampled training sets and aggregates their predictions, reducing variance only to the extent their errors are not perfectly correlated. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-83837ab6960b023b7cb1",
+      "sourceId": "bagging-variance-reduction",
+      "contentHash": "03c4cc8d3e9ae4d89955263fda71df854662b3d22f0aeee6a0f7f91585a88865",
+      "decision": "retain",
+      "reason": "Bagging fits predictors on resampled training sets and aggregates their predictions, reducing variance only to the extent their errors are not perfectly correlated. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-9d8820c51561665010e7",
+      "sourceId": "bagging-variance-reduction",
+      "contentHash": "9fc4aab925e57b4d0eab7c4241a495f4c66f45f5ef13f285578ba9a234c71870",
+      "decision": "retain",
+      "reason": "Bagging fits predictors on resampled training sets and aggregates their predictions, reducing variance only to the extent their errors are not perfectly correlated. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-c57b01f15ff7ed03e6ba",
+      "sourceId": "cluster-indexed-sparse-attention",
+      "contentHash": "2afe9c09675fe9b3bd13da7044f02aadc1412ce75ce9560cf1014337eba16cb4",
+      "decision": "retain",
+      "reason": "Cluster-indexed sparse attention searches representatives of content-grouped keys before computing attention on an expanded subset, trading selection work against missed evidence. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-d69ac0d8738384c50658",
+      "sourceId": "cluster-indexed-sparse-attention",
+      "contentHash": "d81afb456dc81736150c1e608bd14a5cb0faa2c09601d520bb1dc081a65f80df",
+      "decision": "retain",
+      "reason": "Cluster-indexed sparse attention searches representatives of content-grouped keys before computing attention on an expanded subset, trading selection work against missed evidence. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-5e58e510c6bc9d68815a",
+      "sourceId": "cluster-indexed-sparse-attention",
+      "contentHash": "eb68c1e6aae735fc077bd27638799def0662738f69ddeeda65ee0cfabcebd9b7",
+      "decision": "retain",
+      "reason": "Cluster-indexed sparse attention searches representatives of content-grouped keys before computing attention on an expanded subset, trading selection work against missed evidence. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-d31f4513436382747062",
+      "sourceId": "decoupled-weight-decay",
+      "contentHash": "524884313bf1b7eca3843624c602cbd128271c795e93abecde86b69f6a5c3341",
+      "decision": "retain",
+      "reason": "Decoupled weight decay shrinks parameters separately from an adaptive gradient transformation instead of passing an L2 penalty through that transformation. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-14d297e7aeb35de0eb77",
+      "sourceId": "decoupled-weight-decay",
+      "contentHash": "23fe3fad88c2914d0b4520cace9ac7097f6e33694a46c83fb686455239c5e8d2",
+      "decision": "retain",
+      "reason": "Decoupled weight decay shrinks parameters separately from an adaptive gradient transformation instead of passing an L2 penalty through that transformation. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-7c81a80e72bf8db3442a",
+      "sourceId": "decoupled-weight-decay",
+      "contentHash": "940ae0159266e74db8373fade75a4f460f276452f14bc95eb4813ce0804611b1",
+      "decision": "retain",
+      "reason": "Decoupled weight decay shrinks parameters separately from an adaptive gradient transformation instead of passing an L2 penalty through that transformation. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-eca1cab89059a1e42423",
+      "sourceId": "decoupled-weight-decay",
+      "contentHash": "2cc309a9d993f5e860e4750bc314c1ccf19a33deba13c43ce39a873bee2df750",
+      "decision": "retain",
+      "reason": "Decoupled weight decay shrinks parameters separately from an adaptive gradient transformation instead of passing an L2 penalty through that transformation. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-51cd33545761674b0f4b",
+      "sourceId": "hierarchical-sparse-attention-index",
+      "contentHash": "4ca50c59213d319dc19b6b8288d1bae5b59d396cb61bc16f5730355ed6efe04c",
+      "decision": "retain",
+      "reason": "A hierarchical sparse attention index narrows candidate past tokens in stages so deeper queries search a bounded subset rather than the entire context. Preserves the full original canonical architecture and its already grounded prerequisites; no new identity is implied by its reference overview."
+    },
+    {
+      "candidateKey": "cand-488a8747793a40ec8fc7",
+      "sourceId": "hierarchical-sparse-attention-index",
+      "contentHash": "57fc1c38ca5d6510ef7cc0a4e9718dbccc472609897ebad0c9892fdb5611fba1",
+      "decision": "retain",
+      "reason": "A hierarchical sparse attention index narrows candidate past tokens in stages so deeper queries search a bounded subset rather than the entire context. Scoring complexity and read-versus-retained bytes qualify the hierarchical selection objective. The independent cluster-indexed mechanism is separately authored rather than being deduplicated merely because this generic hierarchy exists."
+    },
+    {
+      "candidateKey": "cand-8089aa04af0b23634476",
+      "sourceId": "lion-optimizer",
+      "contentHash": "3c1bd072c1883fba26a8c6ab51c90d2ff17fedd73b384cb3f826b249e54298a7",
+      "decision": "retain",
+      "reason": "Lion uses the sign of a momentum–gradient blend for its update while retaining one momentum buffer rather than a second-moment buffer. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-420b5807d2d32b0693d3",
+      "sourceId": "lion-optimizer",
+      "contentHash": "26390c3956c5c18667793808e1171dfa6aacbe3af1591fe2594953856dee9b6d",
+      "decision": "retain",
+      "reason": "Lion uses the sign of a momentum–gradient blend for its update while retaining one momentum buffer rather than a second-moment buffer. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-c132da7ea5a636b2e84a",
+      "sourceId": "lion-optimizer",
+      "contentHash": "e427b0acebb0d3c640bd9718946dd9427d5c13c80bd8db7efa254d9cc73e8a76",
+      "decision": "retain",
+      "reason": "Lion uses the sign of a momentum–gradient blend for its update while retaining one momentum buffer rather than a second-moment buffer. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-9d31774b7aa25e16ce94",
+      "sourceId": "lion-optimizer",
+      "contentHash": "39397f7471e065977bd22a70eaf64f6dfec61397bc565e4df828e74328a29f23",
+      "decision": "retain",
+      "reason": "Lion uses the sign of a momentum–gradient blend for its update while retaining one momentum buffer rather than a second-moment buffer. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-094343670c8037d7e74f",
+      "sourceId": "matrix-polar-factor",
+      "contentHash": "f76746d42ee4107ed6f06f0ccdfbd9c28420659215e644890688643f5492491e",
+      "decision": "retain",
+      "reason": "A matrix polar factor separates orientation from positive directional stretching, yielding an orthogonal or rectangular semi-orthogonal factor. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-f639732e600e25eec3ba",
+      "sourceId": "matrix-polar-factor",
+      "contentHash": "70dbf8648e91a38e25ca98b7dbb0394213ae8b1e6511be44af75b6fe2300d79e",
+      "decision": "retain",
+      "reason": "A matrix polar factor separates orientation from positive directional stretching, yielding an orthogonal or rectangular semi-orthogonal factor. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-d0f087dff8e084ef4a1a",
+      "sourceId": "matrix-polar-factor",
+      "contentHash": "7f2be860402eb096e6c828a6811b621db11b1c5a8ce34a7cbee1998b987a0bc8",
+      "decision": "retain",
+      "reason": "A matrix polar factor separates orientation from positive directional stretching, yielding an orthogonal or rectangular semi-orthogonal factor. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-0b171981cc656d62def5",
+      "sourceId": "matrix-polar-factor",
+      "contentHash": "1eee3a1b4b39ea9256a83e9c6f2b1c86a3338b3ec99b8e9771187d9c5b21ca39",
+      "decision": "retain",
+      "reason": "A matrix polar factor separates orientation from positive directional stretching, yielding an orthogonal or rectangular semi-orthogonal factor. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-febae348429e8e12472d",
+      "sourceId": "ml-task-specification",
+      "contentHash": "7045d930652542d4b5bf49baa87c645831d37039ed829bee9a446aa30696750a",
+      "decision": "retain",
+      "reason": "An ML task specification connects a prediction to an operational decision, admissible data, measurable outcomes and a non-ML baseline before model development. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-57ed20d58fec15ae8dd7",
+      "sourceId": "ml-task-specification",
+      "contentHash": "243d067b0ca25044415e9c9c7debf209a825cced0ed050af301d472ac5945f26",
+      "decision": "retain",
+      "reason": "An ML task specification connects a prediction to an operational decision, admissible data, measurable outcomes and a non-ML baseline before model development. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-9f19b83315ce72a8f8ba",
+      "sourceId": "ml-task-specification",
+      "contentHash": "cd460cc58e1616c2bca6dda57fff705f0c3b91b2545c6eba1e58c83efdccc0ac",
+      "decision": "retain",
+      "reason": "An ML task specification connects a prediction to an operational decision, admissible data, measurable outcomes and a non-ML baseline before model development. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-b4c1c4217dfa0b89be5b",
+      "sourceId": "ml-task-specification",
+      "contentHash": "887d61627c99acc0312324a5b4ea1a004000eb5052184cc59693421bd41362de",
+      "decision": "retain",
+      "reason": "An ML task specification connects a prediction to an operational decision, admissible data, measurable outcomes and a non-ML baseline before model development. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-037e69aef72199f65294",
+      "sourceId": "multi-agent-orchestration",
+      "contentHash": "a0255c7ccd8afa97d7f03efe2655d15bb9858dd3541c023bbac74f1f66f26047",
+      "decision": "retain",
+      "reason": "Multi-agent orchestration assigns bounded roles and communication paths to multiple model-driven workers while an explicit protocol coordinates state, tools, termination, and verification. Explicitly judges the loss of disagreement and provenance through bounded handoffs and the changed anchoring of divergent proposals. Both are topology policies within orchestration, not synonymous new agents or a universal winning tree theorem."
+    },
+    {
+      "candidateKey": "cand-f3319c6199ef53d8fade",
+      "sourceId": "multi-container-service-orchestration",
+      "contentHash": "72922de23a6e1301dcb452a91bf3402972dc6188c5c893db77e6b112e34c071c",
+      "decision": "retain",
+      "reason": "Multi-container service orchestration declares application services, connectivity, persistent state and lifecycle dependencies while distinguishing process startup from functional readiness. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-60bd7caa388c67ee0f2a",
+      "sourceId": "multi-container-service-orchestration",
+      "contentHash": "d107aeb63ba4ab1d08968db3059d71e004bfd020b07de5a58334008bfbdb768f",
+      "decision": "retain",
+      "reason": "Multi-container service orchestration declares application services, connectivity, persistent state and lifecycle dependencies while distinguishing process startup from functional readiness. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-f6640754f597fc560649",
+      "sourceId": "multi-container-service-orchestration",
+      "contentHash": "3ff9a8aa3802d5d022d309b42d6f4b241dfa934678f4d3e05ee6b752f7582304",
+      "decision": "retain",
+      "reason": "Multi-container service orchestration declares application services, connectivity, persistent state and lifecycle dependencies while distinguishing process startup from functional readiness. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-d58602dc89aecbf20118",
+      "sourceId": "multi-container-service-orchestration",
+      "contentHash": "feeb94ed560006ba35a0b9077f24227113579515889735b68b67bb151c7ece6c",
+      "decision": "retain",
+      "reason": "Multi-container service orchestration declares application services, connectivity, persistent state and lifecycle dependencies while distinguishing process startup from functional readiness. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-46e9a48bd06869fb8d95",
+      "sourceId": "muon-optimizer",
+      "contentHash": "64b395366cbcd8815952630b6d69eb06b09a14df57ae7d06804f94edd94fc637",
+      "decision": "retain",
+      "reason": "Muon transforms matrix momentum toward a polar-like update before applying a shape-scaled parameter step. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-03a36fa559d1a0b78133",
+      "sourceId": "muon-optimizer",
+      "contentHash": "f738437903756aa1c984578108a2ba26ecdfbb32601e35d8f62585b288eb8ddd",
+      "decision": "retain",
+      "reason": "Muon transforms matrix momentum toward a polar-like update before applying a shape-scaled parameter step. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-bff741eed89916e01d93",
+      "sourceId": "muon-optimizer",
+      "contentHash": "c019580f5bd13244659e05f48b5f1ff364ba5717cdd89dc75a4fb601db454b0b",
+      "decision": "retain",
+      "reason": "Muon transforms matrix momentum toward a polar-like update before applying a shape-scaled parameter step. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-07ec098bc959988ff98a",
+      "sourceId": "muon-optimizer",
+      "contentHash": "0f643e72a306d10ec189e22f87be210552fd5dfd8a4b7a826f4a254d22cd8c1d",
+      "decision": "retain",
+      "reason": "Muon transforms matrix momentum toward a polar-like update before applying a shape-scaled parameter step. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-74db5297990c19d849c1",
+      "sourceId": "optimizer-time-to-quality",
+      "contentHash": "6354dade06caaf362ee14f3cba910a3eab7d1bc68a718868cfa44c2ed8ce885c",
+      "decision": "retain",
+      "reason": "Optimizer time-to-quality evaluation compares complete tuned training procedures by elapsed resources needed to meet a predefined held-out quality target. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-38459791f15c1b699ee4",
+      "sourceId": "optimizer-time-to-quality",
+      "contentHash": "202023bd4d20a20d91ca677537a9002b39cd18afa1eae6c8708374f5a92b85b7",
+      "decision": "retain",
+      "reason": "Optimizer time-to-quality evaluation compares complete tuned training procedures by elapsed resources needed to meet a predefined held-out quality target. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-a749ed7f147511616690",
+      "sourceId": "optimizer-time-to-quality",
+      "contentHash": "7490e0c1f53f5f7c8b5563aadffdebf8388c65e22cd8ebea5c436e7bec9ecc4f",
+      "decision": "retain",
+      "reason": "Optimizer time-to-quality evaluation compares complete tuned training procedures by elapsed resources needed to meet a predefined held-out quality target. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-74adc5d3512c8843d31f",
+      "sourceId": "optimizer-time-to-quality",
+      "contentHash": "8f92721c03b50ecefc1c121d28235799b3cec6b4d244e410cee4f59cdfb6b4e2",
+      "decision": "retain",
+      "reason": "Optimizer time-to-quality evaluation compares complete tuned training procedures by elapsed resources needed to meet a predefined held-out quality target. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-83427977b9a9d42b8fd6",
+      "sourceId": "rmsprop",
+      "contentHash": "3b4bc3dfdb78566132b7e3536af54e9d9f829f3cc33e21c004fba754accfcab4",
+      "decision": "retain",
+      "reason": "RMSprop rescales each gradient using an exponentially decaying average of squared gradients so older scale observations lose influence. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-5611000596fd29c5288e",
+      "sourceId": "rmsprop",
+      "contentHash": "7ff248f20badf4fe9f68a57db5823de2acf5b6e6a480dc397605a12669c474b7",
+      "decision": "retain",
+      "reason": "RMSprop rescales each gradient using an exponentially decaying average of squared gradients so older scale observations lose influence. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-542d48801a2f71bd9817",
+      "sourceId": "rmsprop",
+      "contentHash": "896d84792401fee84805e7b0dba45c5092b7f2a6169e40747acdee5cd0c4ceda",
+      "decision": "retain",
+      "reason": "RMSprop rescales each gradient using an exponentially decaying average of squared gradients so older scale observations lose influence. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-851c6bee349ce3e55751",
+      "sourceId": "rmsprop",
+      "contentHash": "44c64be756167b9b648bf153498a42673ea3e4d99a1fd5a465d0f10235cd9aa4",
+      "decision": "retain",
+      "reason": "RMSprop rescales each gradient using an exponentially decaying average of squared gradients so older scale observations lose influence. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-54424188daf30f7ce6bc",
+      "sourceId": "shampoo-optimizer",
+      "contentHash": "409cf755dde3b37d836270a80161933475555fc69da3395b2d5224dec1fca406",
+      "decision": "retain",
+      "reason": "Shampoo preconditions matrix gradients from both sides using axis-wise gradient statistics instead of a full flattened-parameter preconditioner. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-46379df83b5f112f4326",
+      "sourceId": "shampoo-optimizer",
+      "contentHash": "6dab7ad1c4b658759423c15619f3d5a5ad7dd02f9dafc14d41d43c2e84ba9afb",
+      "decision": "retain",
+      "reason": "Shampoo preconditions matrix gradients from both sides using axis-wise gradient statistics instead of a full flattened-parameter preconditioner. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-c92523d416aeda16ccd9",
+      "sourceId": "shampoo-optimizer",
+      "contentHash": "e9783eee9b79aef82ad5e4cb02471d5b73caf2a55946570556ed062545533d3e",
+      "decision": "retain",
+      "reason": "Shampoo preconditions matrix gradients from both sides using axis-wise gradient statistics instead of a full flattened-parameter preconditioner. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-efc96453e673a74db325",
+      "sourceId": "shampoo-optimizer",
+      "contentHash": "034062154e7f310435ced1b61737a02bfb8bd24b977e857af38c0a179421e684",
+      "decision": "retain",
+      "reason": "Shampoo preconditions matrix gradients from both sides using axis-wise gradient statistics instead of a full flattened-parameter preconditioner. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-e713d3aaa3c5bdd39fa2",
+      "sourceId": "soap-optimizer",
+      "contentHash": "b5aad3d3ac91c3141ccef079776f98f5f6dcc287084527ee006355311cb701e9",
+      "decision": "retain",
+      "reason": "SOAP applies Adam-style coordinate adaptation in the eigenbasis of Shampoo statistics and maps the resulting update back to parameter coordinates. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-72164a73051aa4afa394",
+      "sourceId": "soap-optimizer",
+      "contentHash": "4a1ea2275980748b2de87fa9db0b5873c5185204fd9c1719bd4643003f7e1b2a",
+      "decision": "retain",
+      "reason": "SOAP applies Adam-style coordinate adaptation in the eigenbasis of Shampoo statistics and maps the resulting update back to parameter coordinates. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-9a5dea5b445546afa6a5",
+      "sourceId": "soap-optimizer",
+      "contentHash": "504833e6f76717c7a788b26a2556e680b4632ad6159ceabb0e92abc5d0c45be1",
+      "decision": "retain",
+      "reason": "SOAP applies Adam-style coordinate adaptation in the eigenbasis of Shampoo statistics and maps the resulting update back to parameter coordinates. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-1e9878ad8189de38414d",
+      "sourceId": "soap-optimizer",
+      "contentHash": "e532861f35da47fc08ae8253f2656427faeb2670c637627e3f56ca923578686f",
+      "decision": "retain",
+      "reason": "SOAP applies Adam-style coordinate adaptation in the eigenbasis of Shampoo statistics and maps the resulting update back to parameter coordinates. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-b7b7d57c9f4b7969f9ab",
+      "sourceId": "sophia-optimizer",
+      "contentHash": "27fa3463373cc8882a588fd70a24a88134eb0ab71444d5aa5d8bac1c95545fa3",
+      "decision": "retain",
+      "reason": "Sophia scales smoothed gradients by a periodically estimated diagonal curvature statistic and clips coordinate updates to bound their magnitude. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-dc11637f90c1e4597f66",
+      "sourceId": "sophia-optimizer",
+      "contentHash": "71d441495be892d8a9581671ea5cabfe6bb1247ef5bb4048f641021c7cbad1e8",
+      "decision": "retain",
+      "reason": "Sophia scales smoothed gradients by a periodically estimated diagonal curvature statistic and clips coordinate updates to bound their magnitude. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-484baffe9d897a20c7f0",
+      "sourceId": "sophia-optimizer",
+      "contentHash": "f8abe9607e81787e471d4d0ed5f3d88dd66df772fa91e6e16e5207b6f2d2c2d6",
+      "decision": "retain",
+      "reason": "Sophia scales smoothed gradients by a periodically estimated diagonal curvature statistic and clips coordinate updates to bound their magnitude. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-5490319c08686bdfd673",
+      "sourceId": "sophia-optimizer",
+      "contentHash": "036be9b3e5dc1648b72222e2dca7323bf178c3e92dff94eac0a8ba1505750bca",
+      "decision": "retain",
+      "reason": "Sophia scales smoothed gradients by a periodically estimated diagonal curvature statistic and clips coordinate updates to bound their magnitude. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-41efb06160d9a9474acb",
+      "sourceId": "symmetric-eigendecomposition",
+      "contentHash": "0fd5fe345ac8016e6f906b81c74d849abe642f24627e26c9e31917da44400718",
+      "decision": "retain",
+      "reason": "A real symmetric matrix can be expressed as orthonormal eigenvectors with real directional scales, enabling matrix powers through scalar powers of its eigenvalues. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-b4cbaca19c7401dc9cb6",
+      "sourceId": "symmetric-eigendecomposition",
+      "contentHash": "a5208140981a458eb4b8da32b62ffc40a9b3ad5189d2149b3591d0cbaf0c3e63",
+      "decision": "retain",
+      "reason": "A real symmetric matrix can be expressed as orthonormal eigenvectors with real directional scales, enabling matrix powers through scalar powers of its eigenvalues. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-297765f0203866a1eb19",
+      "sourceId": "symmetric-eigendecomposition",
+      "contentHash": "da5bfbba98b9009e2f8480131f0e7e7cb0000bea3231d2f0ea056ae21859eeb3",
+      "decision": "retain",
+      "reason": "A real symmetric matrix can be expressed as orthonormal eigenvectors with real directional scales, enabling matrix powers through scalar powers of its eigenvalues. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-fa9c157561ec8b4153aa",
+      "sourceId": "cluster-indexed-sparse-attention",
+      "contentHash": "f2179df408e3711c7e82c4f5e1631198421ac8342ada12ac95fbda3e50fb1c55",
+      "decision": "retain",
+      "reason": "Cluster-indexed sparse attention searches representatives of content-grouped keys before computing attention on an expanded subset, trading selection work against missed evidence. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-f021071bd4ace65a41ed",
+      "sourceId": "symmetric-eigendecomposition",
+      "contentHash": "451c19557563f9fafa81efa4bec73e75586203b317d1c9a8691b20b3b3137563",
+      "decision": "retain",
+      "reason": "A real symmetric matrix can be expressed as orthonormal eigenvectors with real directional scales, enabling matrix powers through scalar powers of its eigenvalues. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-5ee86362d646c9a09588",
+      "sourceId": "vector-cluster-representative",
+      "contentHash": "7e2104f757b29ecf5f7e433bb13411402e7d28ba4f67a79084c32955e16c8815",
+      "decision": "retain",
+      "reason": "A vector-cluster representative summarizes a group for coarse similarity scoring, reducing comparisons while losing information about individual members. The question and validation caveats test and bound this same objective. Generic benchmarking cautions are supporting material, not newly invented entities."
+    },
+    {
+      "candidateKey": "cand-101781f63554e19c3958",
+      "sourceId": "vector-cluster-representative",
+      "contentHash": "e723489250490e77f782fe1998797a6f1e8212df44b7d4929d0c4acc2f04db43",
+      "decision": "retain",
+      "reason": "A vector-cluster representative summarizes a group for coarse similarity scoring, reducing comparisons while losing information about individual members. Defines the single canonical objective and its boundary; the named prerequisites are linked rather than re-authored as new section entities."
+    },
+    {
+      "candidateKey": "cand-1fc3ac220353c2c3ba2d",
+      "sourceId": "vector-cluster-representative",
+      "contentHash": "174b66b2dbbc5cd3a4970aae2d9980d2035ccc943add858320592bafc82372c9",
+      "decision": "retain",
+      "reason": "A vector-cluster representative summarizes a group for coarse similarity scoring, reducing comparisons while losing information about individual members. Derives the same objective through its reviewed prerequisites. Equations, state conventions and approximation limits specify this mechanism, not additional synonymous entities."
+    },
+    {
+      "candidateKey": "cand-9f7ef812c4754ae88d27",
+      "sourceId": "vector-cluster-representative",
+      "contentHash": "5f5e9f16455a26bb0b3e72a300dede85aa9cc476ecf81a4a987fa6812d09369d",
+      "decision": "retain",
+      "reason": "A vector-cluster representative summarizes a group for coarse similarity scoring, reducing comparisons while losing information about individual members. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
     }
   ]
 }

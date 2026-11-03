@@ -5,10 +5,10 @@ summary: An agent execution harness is the application-owned control layer aroun
 type: concept
 tags: [ml/agents]
 prereqs: [tool-call-execution-contract, agent-session-state, measurement]
-sources: [https://docs.langchain.com/oss/python/langgraph/persistence, https://docs.langchain.com/oss/python/langgraph/interrupts]
+sources: [https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents, https://docs.langchain.com/oss/python/langgraph/persistence, https://docs.langchain.com/oss/python/langgraph/interrupts]
 status: explained
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-11-04
 ---
 
 # Agent Execution Harness
@@ -27,6 +27,14 @@ Screening untrusted text and sensitive data is a separate fallible layer. Normal
 
 Test the harness as a system: unauthorized writes, malformed calls, duplicate results, provider failures, timeouts, approval denial, crash recovery, and budget exhaustion. Compare with a simpler baseline under identical tasks. [[measurement]] should track task completion, escaped unauthorized effects, false blocks, recovery, latency, and cost. A large test count or a calibrated-looking score alone is not evidence of safe behavior.
 
+## Framework components versus assembled execution
+
+A framework supplies composable model, tool, state and routing abstractions. A harness assembles an operating loop with environment tools, context policies and conventions. These overlap and can be layered: a graph framework may implement an open-ended investigative agent, while an outer workflow checks eligibility and accepts or rejects its result. A product label does not determine whether persistence, approvals or completion checks actually work.
+
+For an invented repair task, the inner agent may read logs, edit a temporary checkout and run tests. The outer application can require an approved repository, a bounded execution identity and passing acceptance checks before any deployment step. The model chooses investigative actions within that boundary; framework flexibility does not move authorization into model prose. Inspect the exact tool and delegated-worker permissions, artifacts and failure behavior when choosing how much machinery to assemble yourself.
+
+The long-running-agent primary report uses feature checks, progress artifacts and version history to bridge sessions. These artifacts are evidence of different facts: a commit records bytes, a checklist records intended work, and a test result records one executed check. Interrupt and resume a representative task to determine whether the assembled harness reconstructs the right state; a packaged loop is not evidence that the requested feature works.
+
 ## Prerequisites
 
 - [[tool-call-execution-contract]]
@@ -37,3 +45,5 @@ Test the harness as a system: unauthorized writes, malformed calls, duplicate re
 
 - [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence): checkpointed execution state.
 - [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts): human-in-the-loop pause and resume.
+
+- <https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents>

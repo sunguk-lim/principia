@@ -8,7 +8,7 @@ prereqs: [transformer-attention, structured-output, measurement]
 sources: [https://www.anthropic.com/engineering/multi-agent-research-system, https://arxiv.org/abs/2308.08155]
 status: explained
 created: 2026-09-10
-updated: 2026-11-03
+updated: 2026-11-04
 ---
 
 # Multi-Agent Orchestration
@@ -40,6 +40,14 @@ For example, dispatch separate evidence questions about mechanism, limitations a
 Count communication edges and rounds rather than treating worker count as a complete cost model. One directed all-to-all round among n workers has n(n-1) messages if every distinct pair exchanges one message. With four workers that is 12 messages, whereas a coordinator collecting one result from each of four workers receives four worker-result messages, plus whatever dispatch and follow-up it actually sends. These are examples under explicit protocols, not unavoidable costs of all multi-agent systems.
 
 Record message sizes, coordinator and aggregation calls, duplicate tool work, serialized dependencies and state contention. Parallel generation can increase total cost while reducing latency; lengthy discussion can do the opposite when workers repeatedly wait on one another. Compare topology and round count separately from team size. An early wrong draft can anchor later revisions, while independent proposals can diversify starts; neither independence of sampling nor different role names proves independent errors. Retain a serial baseline when successive steps genuinely depend on new evidence or executable feedback.
+
+## Compression placement and late synthesis
+
+A convergent hierarchy repeatedly compresses worker findings before the final decision. With bounded intermediate messages, a minority contradiction or evidence reference can disappear before reaching the final reviewer. A divergent structure moves from a shared proposal into branches and performs synthesis later. These alter both where information is compressed and which initial assumptions workers inherit; reversing arrows is not a universal quality improvement.
+
+For an invented four-worker investigation, three workers find supporting evidence and one finds a counterexample. If an intermediate summary reports only the majority conclusion, a later manager cannot evaluate the discarded counterexample. Retaining the counterexample’s source ID, scope and uncertainty lets the final reviewer decide whether it actually invalidates the claim. Conversely, giving every branch the same flawed root proposal can correlate their searches even when their final reports are combined late.
+
+Compare convergent, divergent and hybrid policies under equal task sets, total tokens, tools and agent counts. Track fact and disagreement survival at every handoff, evidence support, correlated errors, selector failures, critical-path latency and complete resource use. Include direct structured aggregation and a single-worker baseline. Provider multi-agent engineering reports motivate shallow, evidence-preserving handoffs; they do not prove that every bottom-up organization loses to every top-down tree.
 
 ## Prerequisites
 

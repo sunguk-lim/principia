@@ -5,10 +5,10 @@ summary: A hierarchical sparse attention index narrows candidate past tokens in 
 type: concept
 tags: [ml/llm/inference]
 prereqs: [transformer-attention, kv-cache, nearest-neighbor-search]
-sources: [https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash]
+sources: [https://arxiv.org/html/2610.42147v1, https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash]
 status: explained
 created: 2026-10-08
-updated: 2026-10-08
+updated: 2026-11-04
 ---
 
 # Hierarchical Sparse Attention Index
@@ -25,6 +25,16 @@ DeepSeek's V4.1 Flash model card calls its mechanism Compressed Sparse Attention
 
 Compare with dense attention and fixed local-window attention at matched model quality and hardware. Measure candidate recall on tasks requiring old information, index construction cost, cache bytes, prefill/decode latency, and sensitivity to context length. Test adversarially placed facts and multi-hop dependencies; report failures separately from aggregate next-token loss. Quantization, candidate selection, and cross-layer reuse need independent ablations before attributing a speedup.
 
+## Selection work and storage are separate budgets
+
+Write total selector-and-attention time as measured construction, search, index expansion/gather and selected-attention work, plus any overlap or scheduling effects. Scoring every key with a narrower index vector reduces constants but still costs work proportional to context per query. Scoring every fixed-sized group has the same growth. Across all prompt queries, those scans can remain quadratic even when attention reads a bounded shortlist. A deeper pruned hierarchy changes the search design, while introducing missed-evidence risk.
+
+The LSA primary paper distinguishes flat, fixed-level and tree search. Its experiments isolate attention-layer and end-to-end timings at specific lengths; they are not generic speed factors. For a toy serial layer taking 80 ms in selection and 20 ms elsewhere, making selection four times faster yields 20+20=40 ms, a two-times layer ratio. Additional non-layer service work reduces the whole-request ratio further. Measure real overlap rather than summing overlapped events as independent elapsed time.
+
+Sparse reads and cache compression are also different operations. If every original key and value remains stored, the cache still grows with context even when only a small subset is read per query. Count index metadata and workspace separately. Validate phase-specific timings, selector recall, causal filtering, task quality and memory at multiple lengths; report a useful crossover rather than implying a long-context microbenchmark proves a gain on short prompts.
+
 ## Sources
 
 - [DeepSeek V4.1 Flash model card](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash): primary description of Full/Reindex/Reuse modes and hierarchical candidate selection; numerical gains are author-reported.
+
+- <https://arxiv.org/html/2610.42147v1>

@@ -8,7 +8,7 @@ prereqs: [paired-benchmark-uncertainty, evaluation-slices, measurement]
 sources: [https://www.anthropic.com/research/demystifying-evals-for-ai-agents, https://scikit-learn.org/stable/modules/model_evaluation.html]
 status: explained
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-05
 ---
 
 # Quality–Cost Model Selection
@@ -32,6 +32,14 @@ If the latency limit later changes, repeat the decision; the selected model is c
 ## Boundaries and validation
 
 Keep development tuning separate from final held-out acceptance. Compare paired outcomes, workload slices, tails and billed resources under matched traffic. Parameter doubling does not imply exactly doubled serving cost. Aggregate token loss can guide training without deciding a downstream cost–utility trade-off. Record the selection rule, uncertainty, configuration and rollback condition so the decision can be revisited when traffic or prices change.
+
+## Usage signals and composite router scores
+
+A token-volume ranking describes the selected platform traffic, not a random sample of users or a held-out measure of task quality. A workflow generating 1,000 tokens per attempt contributes ten times the volume of one generating 100, even if both are invoked equally often. Prices, routing defaults, customer mix and output length can change the order. Use popularity for discovery, then evaluate the actual task; token share is not accuracy, unique-user preference or causal evidence of superiority.
+
+A composite router index also makes a choice of priorities. State the normalization, workload weights and direction of each metric before combining them. Suppose A has normalized quality 0.9 and normalized cost 0.8, while B has quality 0.8 and cost 0.2, with lower cost preferred. The invented score quality−0.1×cost gives A=0.82 and B=0.78; changing the cost weight to 0.3 gives A=0.66 and B=0.74, reversing the rank. The measurements did not change: the objective did. Normalization changes can also reverse a ranking.
+
+Keep hard constraints outside a compensating score: an unsafe or ineligible endpoint cannot buy eligibility with low cost. Compare a router with fixed-model and simple-policy baselines on held-out requests, including routing overhead, retries, cache effects and per-slice failure. Freeze the benchmark and tuning boundary; show uncertainty and the separate quality, latency and cost outcomes alongside any aggregate index. An aggregate task suite cannot certify all future workloads.
 
 ## Prerequisites
 

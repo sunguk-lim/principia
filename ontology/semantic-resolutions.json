@@ -2376,13 +2376,6 @@
       "reason": "The whole-chip view: many SMs, work spread across them is supporting explanation for the canonical Streaming Multiprocessor objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-42d245274b027731b850",
-      "sourceId": "layer-normalization",
-      "contentHash": "9352a84798787e2b6cb6f72dd15994128d7c2d06bbd16a2d5f7822c92beda594",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Layer Normalization objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-43301749d6c7284849f4",
       "sourceId": "block-layer",
       "contentHash": "4a22053e76987eacac178768ef2c2d23c040b1ede6dbd2a96734f7d2e58b00e6",
@@ -13864,6 +13857,167 @@
       "contentHash": "5f5e9f16455a26bb0b3e72a300dede85aa9cc476ecf81a4a987fa6812d09369d",
       "decision": "retain",
       "reason": "A vector-cluster representative summarizes a group for coarse similarity scoring, reducing comparisons while losing information about individual members. The independently constructed numerical or service trace demonstrates the canonical mechanism under explicit assumptions; it is not a separate concept identity."
+    },
+    {
+      "candidateKey": "cand-9a0935f532ddb8fb2625",
+      "sourceId": "intrinsic-self-correction",
+      "contentHash": "57d879bc4df3661cd5a453d7fb33e2f480632fd740e89b0572721a26c5dc1d85",
+      "decision": "retain",
+      "reason": "The single objective is revision using the same model without an external correctness signal; draft/critique/revision, information boundaries and correctness-transition counts define and test that mechanism. Defines the objective and distinguishes neighboring mechanisms."
+    },
+    {
+      "candidateKey": "cand-661caf1b001089a09779",
+      "sourceId": "intrinsic-self-correction",
+      "contentHash": "017bbd84cb91367241fd8fd66e3a003d75c3695fdf92e1832eec5ea7f29ba043",
+      "decision": "retain",
+      "reason": "The single objective is revision using the same model without an external correctness signal; draft/critique/revision, information boundaries and correctness-transition counts define and test that mechanism. Derives its information or execution contract using reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-287f83adeb6c3c5f6afd",
+      "sourceId": "intrinsic-self-correction",
+      "contentHash": "aeadc5efc3cda7793e17f7ebb9c1011981bc25d42f7e9a1f87e16dfdfd20137f",
+      "decision": "retain",
+      "reason": "The single objective is revision using the same model without an external correctness signal; draft/critique/revision, information boundaries and correctness-transition counts define and test that mechanism. Uses an original nondegenerate worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-b6138fe06c1d1ed14f04",
+      "sourceId": "intrinsic-self-correction",
+      "contentHash": "71c15ed3306ffa8ada1a3a104e50bd015e59d1b4f40dc3c46c155dbe32ac0221",
+      "decision": "retain",
+      "reason": "The single objective is revision using the same model without an external correctness signal; draft/critique/revision, information boundaries and correctness-transition counts define and test that mechanism. Tests the same objective and bounds evidence or implementation guarantees."
+    },
+    {
+      "candidateKey": "cand-bd2db98cdd30d42d2761",
+      "sourceId": "source-grounded-numerical-verification",
+      "contentHash": "edb958e2c8ebe675867f37b909bc74af03541b76117f04b45339f25209294b00",
+      "decision": "retain",
+      "reason": "The single objective reconstructs a quantity from exact source identity, location, unit and transformation. Generic citation support is declared as a prerequisite; the wrong-row arithmetic example and bounded test checklist specifically establish quantitative trace verification, not a second citation entity. Defines the objective and distinguishes neighboring mechanisms."
+    },
+    {
+      "candidateKey": "cand-324b71fafa08b58b39e1",
+      "sourceId": "source-grounded-numerical-verification",
+      "contentHash": "e2914047c68d6121c01360fb4ff23dc2c7cc0bc591c7a421ee4e1f194ff7096b",
+      "decision": "retain",
+      "reason": "The single objective reconstructs a quantity from exact source identity, location, unit and transformation. Generic citation support is declared as a prerequisite; the wrong-row arithmetic example and bounded test checklist specifically establish quantitative trace verification, not a second citation entity. Derives its information or execution contract using reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-233536b58a90ad75707f",
+      "sourceId": "source-grounded-numerical-verification",
+      "contentHash": "016fbd49a3b7ba7653dc3d5cc1f43884b5cdec51e59d75717b201fae143a730e",
+      "decision": "retain",
+      "reason": "The single objective reconstructs a quantity from exact source identity, location, unit and transformation. Generic citation support is declared as a prerequisite; the wrong-row arithmetic example and bounded test checklist specifically establish quantitative trace verification, not a second citation entity. Uses an original nondegenerate worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-48583d7a0c59c443416e",
+      "sourceId": "source-grounded-numerical-verification",
+      "contentHash": "9225fdd92f2ec41600a08e56d8113f57f343151aaa287a6e1d406501f0651b55",
+      "decision": "retain",
+      "reason": "The single objective reconstructs a quantity from exact source identity, location, unit and transformation. Generic citation support is declared as a prerequisite; the wrong-row arithmetic example and bounded test checklist specifically establish quantitative trace verification, not a second citation entity. Tests the same objective and bounds evidence or implementation guarantees."
+    },
+    {
+      "candidateKey": "cand-61150367e64de0c7065e",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "ed313d94d6bb922f0be0349ece6ecd80df2c4663c6a3b8af925bebcec575427c",
+      "decision": "retain",
+      "reason": "Usage-volume and composite-score sections are separately judged as selection evidence limits: selected traffic is not held-out task quality, and changing normalization or weights changes a decision objective. They improve the existing deployment-selection explanation, not a universal ranking method. Gives explicit traffic-selection and score-weight reversal cases; both remain supporting selection evidence, separately tracked as newsletter concept candidates."
+    },
+    {
+      "candidateKey": "cand-b6f32dda56fc813593ee",
+      "sourceId": "layer-normalization",
+      "contentHash": "6650f08c29558b17e8011dfd47cf49dce5a37c05ef8db677750ddca8f0003f3a",
+      "decision": "retain",
+      "reason": "The original single-vector feature-normalization mechanism and numeric example are preserved. The completed ending, normalized-axis boundary and constant-vector check repair an interrupted explanation without creating a synonymous normalization entity. Preserves and completes the existing mechanism and derivation."
+    },
+    {
+      "candidateKey": "cand-6ef4436541efd2cfdcca",
+      "sourceId": "layer-normalization",
+      "contentHash": "9e7009ca53f69d76fe1c22c7522d6696a780a33cfd4a0dd5a662ee24b7ac67db",
+      "decision": "retain",
+      "reason": "The original single-vector feature-normalization mechanism and numeric example are preserved. The completed ending, normalized-axis boundary and constant-vector check repair an interrupted explanation without creating a synonymous normalization entity. Tests the same objective and bounds evidence or implementation guarantees."
+    },
+    {
+      "candidateKey": "cand-c579272289339aa43640",
+      "sourceId": "adaptive-provider-endpoint-routing",
+      "contentHash": "72026330458d40e801162debdc5be4d21e81de8cee89dd8cc282711418c2cb77",
+      "decision": "retain",
+      "reason": "The single objective selects an eligible backend for a fixed model as observations change. Hard eligibility, exploration, overload feedback and retry boundaries are supporting design constraints, with existing policy and failover prerequisites rather than new model-selection entities. Defines the objective and distinguishes neighboring mechanisms."
+    },
+    {
+      "candidateKey": "cand-9cfed44a5e13b9b8169c",
+      "sourceId": "adaptive-provider-endpoint-routing",
+      "contentHash": "f45406df106c90621974db92a9a2cf44a172e04a744c465ba810db913bf81522",
+      "decision": "retain",
+      "reason": "The single objective selects an eligible backend for a fixed model as observations change. Hard eligibility, exploration, overload feedback and retry boundaries are supporting design constraints, with existing policy and failover prerequisites rather than new model-selection entities. Derives its information or execution contract using reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-6b5c4c39d955953269c5",
+      "sourceId": "adaptive-provider-endpoint-routing",
+      "contentHash": "277f80920f6379ee2a2428b358ed713abe3390d00fb1e4c16d48a2b3635ba92e",
+      "decision": "retain",
+      "reason": "The single objective selects an eligible backend for a fixed model as observations change. Hard eligibility, exploration, overload feedback and retry boundaries are supporting design constraints, with existing policy and failover prerequisites rather than new model-selection entities. Uses an original nondegenerate worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-6a3283e382037b4c4d0c",
+      "sourceId": "adaptive-provider-endpoint-routing",
+      "contentHash": "12ab153281f216421f1b51cc502977e192d1a4c44212fe18ad1bf905a67db51c",
+      "decision": "retain",
+      "reason": "The single objective selects an eligible backend for a fixed model as observations change. Hard eligibility, exploration, overload feedback and retry boundaries are supporting design constraints, with existing policy and failover prerequisites rather than new model-selection entities. Tests the same objective and bounds evidence or implementation guarantees."
+    },
+    {
+      "candidateKey": "cand-b84acaf81f6bc82a3a27",
+      "sourceId": "columnar-vectorized-execution",
+      "contentHash": "db227d9bef37c853335d73a8dbcc974606e7cd31ee8fef61a5a36c8d3ac8aead",
+      "decision": "retain",
+      "reason": "The single objective connects typed column buffers to batch operator execution. The separate layout and scheduling views describe this execution mechanism; the byte-count example and conversion caveats bound its benefit rather than creating a SIMD or storage-format identity. Defines the objective and distinguishes neighboring mechanisms."
+    },
+    {
+      "candidateKey": "cand-db426c1f9ee6b7d67300",
+      "sourceId": "columnar-vectorized-execution",
+      "contentHash": "4e652e367bc1a42faa45f96780acfe8cf123dc7d870d65deb96fb43edf59e570",
+      "decision": "retain",
+      "reason": "The single objective connects typed column buffers to batch operator execution. The separate layout and scheduling views describe this execution mechanism; the byte-count example and conversion caveats bound its benefit rather than creating a SIMD or storage-format identity. Derives its information or execution contract using reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-4f1d9dc732504ef7de86",
+      "sourceId": "columnar-vectorized-execution",
+      "contentHash": "37f0e7bcef324bf8e7d94462ffbb8eb871e145cb9935c1e6d6ddc560c6800f2c",
+      "decision": "retain",
+      "reason": "The single objective connects typed column buffers to batch operator execution. The separate layout and scheduling views describe this execution mechanism; the byte-count example and conversion caveats bound its benefit rather than creating a SIMD or storage-format identity. Uses an original nondegenerate worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-69dcefbe8139d02af25c",
+      "sourceId": "columnar-vectorized-execution",
+      "contentHash": "94d22ea2c3d5fadc1c6f1e5861c8672bf62cba04f23d8048a12c747772e73e40",
+      "decision": "retain",
+      "reason": "The single objective connects typed column buffers to batch operator execution. The separate layout and scheduling views describe this execution mechanism; the byte-count example and conversion caveats bound its benefit rather than creating a SIMD or storage-format identity. Tests the same objective and bounds evidence or implementation guarantees."
+    },
+    {
+      "candidateKey": "cand-4fca99f86f753bb0729c",
+      "sourceId": "task-aligned-loss-selection",
+      "contentHash": "2bb63c95c3231347202efdff5802c5323bb285aaa77de80e922a959746c11e76",
+      "decision": "retain",
+      "reason": "The single objective chooses a training target from the required predicted quantity and tests downstream decision value. Mean-versus-middle examples and error-cost counts establish why objectives differ; general loss and task specification remain declared prerequisite entities. Defines the objective and distinguishes neighboring mechanisms."
+    },
+    {
+      "candidateKey": "cand-72456049a29f56e24e45",
+      "sourceId": "task-aligned-loss-selection",
+      "contentHash": "9e706a9bdbf5a6a162fc2ca9be31fab9e0f3fafbb5eaa4acb2d5022d25cce87d",
+      "decision": "retain",
+      "reason": "The single objective chooses a training target from the required predicted quantity and tests downstream decision value. Mean-versus-middle examples and error-cost counts establish why objectives differ; general loss and task specification remain declared prerequisite entities. Derives its information or execution contract using reviewed prerequisites."
+    },
+    {
+      "candidateKey": "cand-df0bc22da9d15c1fb2d1",
+      "sourceId": "task-aligned-loss-selection",
+      "contentHash": "f80cb81762d551ca444bc00e7d82487a889b547d26357074eb1c366789c2fec7",
+      "decision": "retain",
+      "reason": "The single objective chooses a training target from the required predicted quantity and tests downstream decision value. Mean-versus-middle examples and error-cost counts establish why objectives differ; general loss and task specification remain declared prerequisite entities. Uses an original nondegenerate worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-7946a7ad2d96a612bfee",
+      "sourceId": "task-aligned-loss-selection",
+      "contentHash": "ebe2272750674fee294206527e0c3ceed83221e588439c5f5393c3fa70a44edf",
+      "decision": "retain",
+      "reason": "The single objective chooses a training target from the required predicted quantity and tests downstream decision value. Mean-versus-middle examples and error-cost counts establish why objectives differ; general loss and task specification remain declared prerequisite entities. Tests the same objective and bounds evidence or implementation guarantees."
     }
   ]
 }

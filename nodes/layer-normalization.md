@@ -9,7 +9,7 @@ sources:
   - https://arxiv.org/abs/1607.06450
 status: explained
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-11-05
 ---
 
 # Layer Normalization
@@ -64,4 +64,16 @@ coordinate.
 Layer normalization is distinct from normalizing over examples in a mini-batch:
 its statistics are local to one activation vector. That locality is useful for
 sequence models and for inference, where batch composition can change. It does
-not guarantee training stability by itself; placement in a residual block,
+not guarantee training stability by itself; placement in a residual block, optimization settings and numerical precision still matter.
+
+## Check your understanding
+
+Does evaluating one example in a different batch change its layer-normalization statistics? Not when the input vector, normalized axes and parameters are held fixed. The statistics are computed within that vector, not across examples. For a constant input vector, the positive epsilon keeps the denominator defined; learned offsets can still produce a nonzero output. Check the actual normalized axes, epsilon and accumulation precision in the implementation rather than assuming every normalization layer has the same behavior.
+
+## Prerequisites
+
+- [[neural-network]]
+
+## Sources
+
+- <https://arxiv.org/abs/1607.06450>

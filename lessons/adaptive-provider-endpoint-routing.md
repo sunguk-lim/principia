@@ -19,4 +19,3 @@ In an invented workload, eligible endpoints A and B have typical first-token del
 ## Check your understanding
 
 Is a preferred latency threshold a hard service guarantee? No. Distinguish preferences from rejection conditions in the actual API. Test stale signals, overload bursts, recovery, cold caches and an empty eligible set. [[provider-failover-semantics]] governs whether and how a failed attempt may be retried. Compare fixed-provider, simple balancing and adaptive policies on complete attempts, including failures, cache misses, total billed cost and tail latency; do not certify application quality from well-formed tool calls alone.
-

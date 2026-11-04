@@ -17,4 +17,3 @@ Consider an invented evaluation of 100 tasks. The first answers contain 70 corre
 ## Check your understanding
 
 Does fluent critique establish that a revision is better? No. Use [[measurement]] on held-out tasks, keeping original and revised outputs for blind comparison. Count correct-to-wrong and wrong-to-correct transitions, unchanged errors, abstentions, tokens and elapsed time. Compare no revision, intrinsic feedback and externally grounded checks under declared budgets. Stop after a bounded number of unproductive passes; do not treat changing an answer as evidence of progress.
-

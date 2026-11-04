@@ -19,4 +19,3 @@ On an invented acceptance set, policy A misses 2 dangerous cases and triggers 8 
 ## Check your understanding
 
 Can “regression uses squared error” settle the choice? No. Establish the quantity, error asymmetry and data assumptions first. Use [[measurement]] to compare the training target, held-out predictive score and final decision cost separately, including critical slices and changed conditions. Do not describe a tree's split impurity as interchangeable with every final training or deployment objective.
-

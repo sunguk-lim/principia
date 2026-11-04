@@ -17,4 +17,3 @@ Consider rows `(price=3, count=2, label="a")`, `(5,4,"b")` and `(7,1,"c")`. To c
 ## Check your understanding
 
 Does a call that looks vectorized establish faster native batch execution? No: a library can hide a per-element interpreter loop. Compare identical results, data types, null semantics and batch sizes. Measure dispatch overhead, bytes read and materialized, conversion cost, peak working set and full query time. Large batches can improve amortization while consuming more memory; tiny batches restore overhead. Row-oriented mutation or point lookup can favor a different layout. Neither columnar layout nor moving a local dataframe program to a cluster automatically removes shuffles, skew or large intermediates.
-

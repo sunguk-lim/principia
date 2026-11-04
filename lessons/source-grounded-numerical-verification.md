@@ -19,4 +19,3 @@ An invented table reports service A revenue of 125 and 140 thousand dollars for 
 ## Check your understanding
 
 Would two agents returning 160,000 settle the claim? No: both may have selected B. Test wrong rows, swapped columns, stale periods, unit changes, missing evidence and incorrect conversions separately. Measure detected errors and false alarms against known source truth. If the source is unavailable or ambiguous, preserve that uncertainty and withhold unsupported numerical certainty rather than manufacturing agreement.
-

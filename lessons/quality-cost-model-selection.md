@@ -16,6 +16,10 @@ Suppose the service requires 90% valid completion and a 95th-percentile latency 
 
 These invented measurements illustrate a rule, not a ranking of commercial products. Changing the allowed latency or traffic mix can change the decision.
 
+## Rankings and combined scores
+
+Token-volume popularity is a selected usage measure, not held-out quality: longer outputs can raise token share without more users or better answers. A composite router score also embeds priorities. If A has normalized quality 0.9 and cost 0.8, and B has quality 0.8 and cost 0.2, scoring quality minus 0.1 times cost selects A (0.82 versus 0.78). A cost weight of 0.3 instead selects B (0.66 versus 0.74). These are invented numbers demonstrating a changed objective, not changed model performance. Keep hard constraints outside compensating scores; report component metrics, workload and uncertainty.
+
 ## Check your understanding
 
 Does a lower token-level validation loss establish better deployment value? **No.** Verify the target outcomes, their uncertainty and the actual resource contract. Keep tuning data separate from final acceptance and document when the selection must be revisited.

@@ -5,10 +5,10 @@ summary: An agent skill package bundles task-scoped instructions and optional re
 type: concept
 tags: [ml/agents]
 prereqs: [agent-execution-harness, repository-agent-instructions]
-sources: [https://agentskills.io/specification]
+sources: ["https://agentskills.io/specification", "https://playwright.dev/docs/codegen"]
 status: explained
 created: 2026-10-17
-updated: 2026-10-22
+updated: 2026-11-06
 ---
 
 # Agent Skill Package
@@ -33,6 +33,14 @@ A growing skill library needs a utility decision as well as a package format. Tr
 
 Suppose a routine formatting skill activates on 100 tasks and saves one minute each, while a recovery skill activates twice and prevents two hours of manual repair each time. Invocation count alone ranks the formatter higher; observed time benefit is 100 minutes versus 240 minutes. These illustrative numbers also omit mistakes and maintenance costs. Rare but important recovery procedures should not be deleted solely for low usage, while an automatically injected skill can have high activation without benefit. Compare appropriate activation, held-out task success, harmful regressions, false triggers, cost and maintenance burden; review merging or retirement with versioned rollback.
 
+## From a demonstration to a validated procedure
+
+A recorded demonstration is evidence of one interaction trace, not automatically a reusable procedure. Extract its objective, preconditions, named inputs, observable completion checks and failure branches before packaging it as a skill. Replace incidental coordinates, timestamps and example-specific paths with semantic locators or explicit parameters. Keep secrets and private example data out of the package. The host's permission boundary still governs replay.
+
+Playwright's generator illustrates the distinction: it records interactions and selected assertions and produces code the author can inspect and edit. Recording an action does not infer every assertion needed to establish task completion. A recording that clicks “Save” should be checked against a persisted value, not only the presence of a button.
+
+For an invented form-filling procedure, demonstrate one customer name but replay with a second name, an empty optional field and a rejected write. Verify that the procedure supplies the new input, preserves unrelated fields and reports failure without retrying an uncertain write blindly. Compare replay success, false completion, recovery cost and maintenance against a simpler explicit procedure. Demonstration-derived skills are useful only when the generalized contract survives those changes.
+
 ## Prerequisites
 
 - [[agent-execution-harness]]
@@ -41,3 +49,5 @@ Suppose a routine formatting skill activates on 100 tasks and saves one minute e
 ## Sources
 
 - [Agent Skills specification](https://agentskills.io/specification): package layout, metadata, and optional resources.
+
+- <https://playwright.dev/docs/codegen>

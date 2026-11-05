@@ -2,16 +2,20 @@
 
 ## Meaning
 
-Cross-component security review follows untrusted data and authority across API, state, policy, tools, and rendering boundaries instead of judging files in isolation.
+A program can be locally correct in each file yet expose an unsafe path across components. Cross-component security review follows where untrusted data enters, how it is transformed, which authority it carries and where it reaches a sensitive action. A passing unit-test count does not establish that every such path is safe.
 
 ## Mechanism
 
-A component can be locally correct while an unsafe path exists through several components. **Cross-component security review** traces where data enters, how it is stored or transformed, which authority it carries, and where it is rendered or used for a side effect. This is especially important for agent-built changes that add an API, model response parser, policy, tool, and dashboard in one patch.
+Map the entry point, transformations, stored state, policy checks and final operation. Distinguish parsing from authorization and an action proposal from its observed effect. Check object ownership at each relevant operation, not merely whether the caller logged in. A URL field, rendering layer and configuration writer each have different sensitive uses of incoming data.
+
+Review scope is a separate choice. A diff review examines new or changed code; repository-wide review includes old paths that may not appear in the diff. Record inspected paths and deployment assumptions instead of claiming completeness from either scope.
+
+Framework migration creates another boundary. A route can preserve its successful response while losing middleware that formerly enforced media types, request origin or permissions. Translate those security properties into regression contracts at the new external entry point. Map each old enforcement point to a new owner; do not assume matching framework features imply matching defaults.
 
 ## One example
 
-Incident text enters an API, is stored in shared state, and later reaches dashboard HTML; testing only the rendering file can miss the full exploit path.
+An invented settings route still accepts a legitimate JSON update after migration. That only proves the happy path. Send harmless isolated requests with missing authority, a disallowed origin, an unsupported media type and malformed syntax. Each rejected request must leave the settings writer untouched. Follow the value through parsing and helper calls rather than testing only the final write function. Retain valid requests as controls so a fix cannot pass simply by blocking everything.
 
 ## Check your understanding
 
-**Question:** Where should an adversarial test begin? **Answer:** At the external entry point, then follow the value to the final sink or side effect.
+Where should an adversarial regression begin? At the relevant external entry point, observing whether it reaches the sensitive action. A proposed patch, a scanner label and model agreement remain hypotheses until the complete path and applicable controls are checked.

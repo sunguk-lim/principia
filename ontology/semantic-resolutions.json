@@ -14018,6 +14018,503 @@
       "contentHash": "ebe2272750674fee294206527e0c3ceed83221e588439c5f5393c3fa70a44edf",
       "decision": "retain",
       "reason": "The single objective chooses a training target from the required predicted quantity and tests downstream decision value. Mean-versus-middle examples and error-cost counts establish why objectives differ; general loss and task specification remain declared prerequisite entities. Tests the same objective and bounds evidence or implementation guarantees."
+    },
+    {
+      "candidateKey": "cand-38262b890bfb8b123aa0",
+      "sourceId": "factorial-agent-evaluation",
+      "contentHash": "30f39952e4d35e7bb172ce4fcd22b32af12c91058a5db5ffddc3ae2261e16313",
+      "decision": "retain",
+      "reason": "One objective crosses harness and model factors to identify confounding and interaction. The invented four-cell example derives the difference-of-differences; it does not create a separate model-ranking entity. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-181c2a9675dc34f4c618",
+      "sourceId": "factorial-agent-evaluation",
+      "contentHash": "bf18de0c9c09ff5708ff90fd9345394360c58f8752ec22f48913be963c6c0fd3",
+      "decision": "retain",
+      "reason": "One objective crosses harness and model factors to identify confounding and interaction. The invented four-cell example derives the difference-of-differences; it does not create a separate model-ranking entity. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-03e2f2f29dc79a6af549",
+      "sourceId": "factorial-agent-evaluation",
+      "contentHash": "f4b2431b70c34e2fb50dd81bfc9b1706821c72cb2792c51d27173c66f6302189",
+      "decision": "retain",
+      "reason": "One objective crosses harness and model factors to identify confounding and interaction. The invented four-cell example derives the difference-of-differences; it does not create a separate model-ranking entity. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-92350310b59dcb18fd31",
+      "sourceId": "periodic-agent-workflow",
+      "contentHash": "6a197acf6734136772dca8a1251502aa0c6538b940ca3073e98ccfc8c11f2f16",
+      "decision": "retain",
+      "reason": "One objective binds scheduled occurrences to bounded durable runs. Timezone, overlap and duplicate-effect policies define that execution contract; the invented report illustrates occurrence versus attempt identity. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-2f3f87db0dbba43e7dc8",
+      "sourceId": "periodic-agent-workflow",
+      "contentHash": "86868346e1bca7d7ea60fa1b38812e7acaf7ddeb4b4049deb6e03f3d074da416",
+      "decision": "retain",
+      "reason": "One objective binds scheduled occurrences to bounded durable runs. Timezone, overlap and duplicate-effect policies define that execution contract; the invented report illustrates occurrence versus attempt identity. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-fcfe9398f8f949b809ff",
+      "sourceId": "periodic-agent-workflow",
+      "contentHash": "a5a0293e52e9344f0bf9832189a16070abe72f877d1c2eaeb6435f048ad44819",
+      "decision": "retain",
+      "reason": "One objective binds scheduled occurrences to bounded durable runs. Timezone, overlap and duplicate-effect policies define that execution contract; the invented report illustrates occurrence versus attempt identity. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-d84930562d987c4b2eb3",
+      "sourceId": "periodic-agent-workflow",
+      "contentHash": "0bc9b04230a1c5400079a3fc05ea3c485f661b63bdde9b7ac5b963f2887c4f07",
+      "decision": "retain",
+      "reason": "One objective binds scheduled occurrences to bounded durable runs. Timezone, overlap and duplicate-effect policies define that execution contract; the invented report illustrates occurrence versus attempt identity. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-6e1a095cec49e3210164",
+      "sourceId": "single-writer-state-coordination",
+      "contentHash": "328623a91c93be81964d7e21ea9ec3132fb95d470803ffb97c6c75418396c92a",
+      "decision": "retain",
+      "reason": "One objective serializes state mutations through one authoritative owner. The versioned double-claim example explains exclusion, while persistence and external-effect caveats bound rather than expand the guarantee. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-4ee2742ef0e98d9dcf2a",
+      "sourceId": "single-writer-state-coordination",
+      "contentHash": "75bb0bfea02fdcd09538bc9cf8275c20a7768365fd69630fc82e534883032c67",
+      "decision": "retain",
+      "reason": "One objective serializes state mutations through one authoritative owner. The versioned double-claim example explains exclusion, while persistence and external-effect caveats bound rather than expand the guarantee. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-a79c363b639c81e68a57",
+      "sourceId": "single-writer-state-coordination",
+      "contentHash": "e2068ee82abcf3713cf5120e5709a77e5935f77952b2459229d4544ec17d224e",
+      "decision": "retain",
+      "reason": "One objective serializes state mutations through one authoritative owner. The versioned double-claim example explains exclusion, while persistence and external-effect caveats bound rather than expand the guarantee. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-adb296c685475bc14b10",
+      "sourceId": "single-writer-state-coordination",
+      "contentHash": "313f733e462dcd03f53e3b8d518aa3de40c51d992b30249e05fc95a2af9b06a3",
+      "decision": "retain",
+      "reason": "One objective serializes state mutations through one authoritative owner. The versioned double-claim example explains exclusion, while persistence and external-effect caveats bound rather than expand the guarantee. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-a17b259f285f479d4fab",
+      "sourceId": "durable-agent-task-board",
+      "contentHash": "df6095bfbf9536be50ea1bf74815d333ac38d9550345bdf77d0e559c52315bb0",
+      "decision": "retain",
+      "reason": "One objective stores evidence-backed task transitions. Ownership and versioned artifacts are declared prerequisites; the API-revision handoff demonstrates the same shared-state acceptance mechanism. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-9ee4c2c1564f9b10be86",
+      "sourceId": "durable-agent-task-board",
+      "contentHash": "53d436338dae9b4c70e88d010e7f04ff0daad915248c2e822cda302d78d8d103",
+      "decision": "retain",
+      "reason": "One objective stores evidence-backed task transitions. Ownership and versioned artifacts are declared prerequisites; the API-revision handoff demonstrates the same shared-state acceptance mechanism. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-529500126caa4294aa8a",
+      "sourceId": "durable-agent-task-board",
+      "contentHash": "8688f8f02d694685c5a8cd6499a214527f1ced6bba640ab1e78d3a1e606721c8",
+      "decision": "retain",
+      "reason": "One objective stores evidence-backed task transitions. Ownership and versioned artifacts are declared prerequisites; the API-revision handoff demonstrates the same shared-state acceptance mechanism. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-3d24a498d643c55c8c94",
+      "sourceId": "durable-agent-task-board",
+      "contentHash": "0c56a819b8f1b4a583cfdf82f1c01541e172aaf242c595a8849b2ad00308da90",
+      "decision": "retain",
+      "reason": "One objective stores evidence-backed task transitions. Ownership and versioned artifacts are declared prerequisites; the API-revision handoff demonstrates the same shared-state acceptance mechanism. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-94bcc61939e1c79a4204",
+      "sourceId": "evidence-oriented-vulnerability-triage",
+      "contentHash": "203b44f343a4daba0662bfa0e69770870613a62faf4546bd688b008847ee0841",
+      "decision": "retain",
+      "reason": "One objective turns a finding into an evidence-based risk decision. Reachability, duplicate roots, uncertainty and verified repair are its assessment contract; counts illustrate why alert volume is not confirmed risk. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-503b1e925aa8c6ba3d9f",
+      "sourceId": "evidence-oriented-vulnerability-triage",
+      "contentHash": "827691ee89a064f0134dd90f067d5c8ab0dcee3d4286153beabe0e662d778dda",
+      "decision": "retain",
+      "reason": "One objective turns a finding into an evidence-based risk decision. Reachability, duplicate roots, uncertainty and verified repair are its assessment contract; counts illustrate why alert volume is not confirmed risk. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-e778ae7e40deae8d0556",
+      "sourceId": "evidence-oriented-vulnerability-triage",
+      "contentHash": "5da1f1729df429d49d593613093748d79bf0abf89d3c6c275dd2ff773b67d459",
+      "decision": "retain",
+      "reason": "One objective turns a finding into an evidence-based risk decision. Reachability, duplicate roots, uncertainty and verified repair are its assessment contract; counts illustrate why alert volume is not confirmed risk. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-84079906554f6186a3fe",
+      "sourceId": "evidence-oriented-vulnerability-triage",
+      "contentHash": "d9eba768caae3eec26e8bae2b297313649a9ec4d04a9858a3e45e4fe510d5c37",
+      "decision": "retain",
+      "reason": "One objective turns a finding into an evidence-based risk decision. Reachability, duplicate roots, uncertainty and verified repair are its assessment contract; counts illustrate why alert volume is not confirmed risk. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-889677579fc97e80257e",
+      "sourceId": "interprocedural-taint-analysis",
+      "contentHash": "452e2ed95905c391b75f33ded52d68a2c52e4c2956d646262ca1b337ea24a88f",
+      "decision": "retain",
+      "reason": "One objective traces untrusted influence across calls. Sources, sinks, transformations and validation barriers define the path analysis, and the fictional installer trace illustrates model limits. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-57bf19a2e89697b2ede0",
+      "sourceId": "interprocedural-taint-analysis",
+      "contentHash": "32e0742cf9571f04d22c725215a38c9bbf73b3fcb9e870743a228248ec1c93df",
+      "decision": "retain",
+      "reason": "One objective traces untrusted influence across calls. Sources, sinks, transformations and validation barriers define the path analysis, and the fictional installer trace illustrates model limits. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-670aed9461ca6cc22f4c",
+      "sourceId": "interprocedural-taint-analysis",
+      "contentHash": "b0dea283b66272870bd1db0f66d621e47fddf9000274c590bcbc56821ad10871",
+      "decision": "retain",
+      "reason": "One objective traces untrusted influence across calls. Sources, sinks, transformations and validation barriers define the path analysis, and the fictional installer trace illustrates model limits. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-42f222b4f3194476f9db",
+      "sourceId": "same-origin-policy",
+      "contentHash": "f9787877fe50bac3ebbedc10e4cb4835b5558418d4606d903abad886467366eb",
+      "decision": "retain",
+      "reason": "One browser isolation objective distinguishes script-readable data from dispatch of cross-origin requests. Origin triples and local-service examples support that boundary; resource embedding is not learned vector representation. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-d89ccdeb4423001a8733",
+      "sourceId": "same-origin-policy",
+      "contentHash": "b7e4ed2c901050b94cfc78befac6365e16be21265a34866ef2b470d40a116b8c",
+      "decision": "retain",
+      "reason": "One browser isolation objective distinguishes script-readable data from dispatch of cross-origin requests. Origin triples and local-service examples support that boundary; resource embedding is not learned vector representation. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-9867949515a79ab1e6f4",
+      "sourceId": "same-origin-policy",
+      "contentHash": "eca652d635c5ab39d2fffe7746718a3cd0e41c34c3f4ec4bda1656a1673d7efc",
+      "decision": "retain",
+      "reason": "One browser isolation objective distinguishes script-readable data from dispatch of cross-origin requests. Origin triples and local-service examples support that boundary; resource embedding is not learned vector representation. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-3a1471ad5d9c47330a98",
+      "sourceId": "same-origin-policy",
+      "contentHash": "b2a9ffeed08cc98364426c0f3b2d8f2a5f596cc62b4baa767d7177b43b81adc5",
+      "decision": "retain",
+      "reason": "One browser isolation objective distinguishes script-readable data from dispatch of cross-origin requests. Origin triples and local-service examples support that boundary; resource embedding is not learned vector representation. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-1554092ac9c182d7e926",
+      "sourceId": "cross-site-request-forgery",
+      "contentHash": "9e3fd2f0ae95762a9831d2b6190fa14db5979084b902e3605d962bf1a2ec59b5",
+      "decision": "retain",
+      "reason": "One objective explains browser-carried state changes under implicitly trusted authority. Origin isolation is a real prerequisite; defenses and the harmless settings case bound the same forgery mechanism. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-95edf04cb092b861db54",
+      "sourceId": "cross-site-request-forgery",
+      "contentHash": "1bb53577903f9620eb9e5968ad1359220258851012948d218eff3d853b7d8f2b",
+      "decision": "retain",
+      "reason": "One objective explains browser-carried state changes under implicitly trusted authority. Origin isolation is a real prerequisite; defenses and the harmless settings case bound the same forgery mechanism. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-51a6d6e70eda87bf9b96",
+      "sourceId": "cross-site-request-forgery",
+      "contentHash": "c18362e0014118411697b19cd4d7c577206d04dc52fb1b7aff00a6c80c23a803",
+      "decision": "retain",
+      "reason": "One objective explains browser-carried state changes under implicitly trusted authority. Origin isolation is a real prerequisite; defenses and the harmless settings case bound the same forgery mechanism. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-82a964800edb7a3b6891",
+      "sourceId": "cross-site-request-forgery",
+      "contentHash": "1811c6c33a0e0ab04489c46df863bbbde66825e5f6fdc7cecd48d8c118bd7f77",
+      "decision": "retain",
+      "reason": "One objective explains browser-carried state changes under implicitly trusted authority. Origin isolation is a real prerequisite; defenses and the harmless settings case bound the same forgery mechanism. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-6da455163a2df7ea052a",
+      "sourceId": "http-request-media-type-validation",
+      "contentHash": "6d0dda5edf05ad58aa862d75a18404359db3f7796de8b9d913f35c9053407db1",
+      "decision": "retain",
+      "reason": "One objective enforces body representation before parsing. Request Content-Type, response Accept and the three-request example distinguish representation enforcement from syntax and authorization. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-e3aedea5619a4e45ffa3",
+      "sourceId": "http-request-media-type-validation",
+      "contentHash": "27133f235c67ed80686e6dac2abd77e022c185ec60c3dca71494eab764a6b642",
+      "decision": "retain",
+      "reason": "One objective enforces body representation before parsing. Request Content-Type, response Accept and the three-request example distinguish representation enforcement from syntax and authorization. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-616a90f891065d25348e",
+      "sourceId": "http-request-media-type-validation",
+      "contentHash": "ce338b7871eebc035ae7b111eead55956ebdd2ceb9be7fb33fb98a046b4ed1b9",
+      "decision": "retain",
+      "reason": "One objective enforces body representation before parsing. Request Content-Type, response Accept and the three-request example distinguish representation enforcement from syntax and authorization. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-7ac79b9eba059c7d6118",
+      "sourceId": "http-request-media-type-validation",
+      "contentHash": "a556f36821c968c4eb767fa88582d18793887c2b625f788585f2b9504f89f0ab",
+      "decision": "retain",
+      "reason": "One objective enforces body representation before parsing. Request Content-Type, response Accept and the three-request example distinguish representation enforcement from syntax and authorization. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-7b7ae3abf15f03519799",
+      "sourceId": "package-install-target-validation",
+      "contentHash": "ae9a2ed77868af1b80c4b8e81fa7adc277c6b321145ae2c8a80222be738c7d67",
+      "decision": "retain",
+      "reason": "One objective constrains the package manager target language before code installation. Shell avoidance, fixed package/source and approved-release examples support this operation boundary, not a general package-management survey. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-53d5d904a229104e00cd",
+      "sourceId": "package-install-target-validation",
+      "contentHash": "c5be912e5f5a0f5b517f09fba4a1a44e3f7548d5bfe23ec917c801bf076f281a",
+      "decision": "retain",
+      "reason": "One objective constrains the package manager target language before code installation. Shell avoidance, fixed package/source and approved-release examples support this operation boundary, not a general package-management survey. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-10e2f167fdc3a8110152",
+      "sourceId": "package-install-target-validation",
+      "contentHash": "ba8383deea81af6a957f1516731dfe52ed57f33e004d2f037f1ade3688328f67",
+      "decision": "retain",
+      "reason": "One objective constrains the package manager target language before code installation. Shell avoidance, fixed package/source and approved-release examples support this operation boundary, not a general package-management survey. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-c7e637bc93fe4525b498",
+      "sourceId": "package-install-target-validation",
+      "contentHash": "57761f37b586af1922c58d0d56b2fb67ff114c37c147aa87c6a22558284337ea",
+      "decision": "retain",
+      "reason": "One objective constrains the package manager target language before code installation. Shell avoidance, fixed package/source and approved-release examples support this operation boundary, not a general package-management survey. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-4248b25a3bb78c53778b",
+      "sourceId": "ssrf-destination-validation",
+      "contentHash": "084c3d87f777b7c5a84f514bd2d024484e9c6fbe2a21933d4a7cd9fc04ff9c4c",
+      "decision": "retain",
+      "reason": "One objective validates the actual outbound peer and follow-up hops. The changing DNS example explains the validation/use race; inherited HTTP/DNS and preserved TLS identity are supporting connection constraints. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-05c61856172f6a966b39",
+      "sourceId": "ssrf-destination-validation",
+      "contentHash": "c867993f5df056a28b71106fa21f5331b22d9bd6d2ec4ca596bcd7379d95fd54",
+      "decision": "retain",
+      "reason": "One objective validates the actual outbound peer and follow-up hops. The changing DNS example explains the validation/use race; inherited HTTP/DNS and preserved TLS identity are supporting connection constraints. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-d9c616d10e12e8affc2d",
+      "sourceId": "ssrf-destination-validation",
+      "contentHash": "f1e543164082a1a3bc20b3e396e9ae7a034d673afbae12511a1b1a9b0289120f",
+      "decision": "retain",
+      "reason": "One objective validates the actual outbound peer and follow-up hops. The changing DNS example explains the validation/use race; inherited HTTP/DNS and preserved TLS identity are supporting connection constraints. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-d2e38f17d16a526510a9",
+      "sourceId": "ssrf-destination-validation",
+      "contentHash": "309d415d19e63a537d42c6f01544989770d36d75372118e77bac8677fdf1ffc9",
+      "decision": "retain",
+      "reason": "One objective validates the actual outbound peer and follow-up hops. The changing DNS example explains the validation/use race; inherited HTTP/DNS and preserved TLS identity are supporting connection constraints. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-de93a9706b2db83ec7a4",
+      "sourceId": "bounded-url-fetching",
+      "contentHash": "5304a5da00c37ca6968c4cacbd20d48a02dd538d2aff3387c401e283bbb02690",
+      "decision": "retain",
+      "reason": "One objective bounds resources consumed by untrusted responses. Time, transfer, decoded bytes and aggregate concurrency are dimensions of that contract; the slow-chunk and buffer arithmetic examples explain why one bound is insufficient. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-1b565812b564ce050f61",
+      "sourceId": "bounded-url-fetching",
+      "contentHash": "5ea5debd77a9b84fc5798424eeebc939af879e3ba5a91b917c5cdd575c326423",
+      "decision": "retain",
+      "reason": "One objective bounds resources consumed by untrusted responses. Time, transfer, decoded bytes and aggregate concurrency are dimensions of that contract; the slow-chunk and buffer arithmetic examples explain why one bound is insufficient. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-b60dc95b4ddf527325de",
+      "sourceId": "bounded-url-fetching",
+      "contentHash": "b1eac118ea6f46db8d31427e60c6e3e120a79806bd2a612c75f94005a49a3f24",
+      "decision": "retain",
+      "reason": "One objective bounds resources consumed by untrusted responses. Time, transfer, decoded bytes and aggregate concurrency are dimensions of that contract; the slow-chunk and buffer arithmetic examples explain why one bound is insufficient. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-017f16dbfb5d97cf4493",
+      "sourceId": "bounded-url-fetching",
+      "contentHash": "21b17cd643320fcbe7e1d63287baae205b43fd6fbb28243656a7e73b2af3abf2",
+      "decision": "retain",
+      "reason": "One objective bounds resources consumed by untrusted responses. Time, transfer, decoded bytes and aggregate concurrency are dimensions of that contract; the slow-chunk and buffer arithmetic examples explain why one bound is insufficient. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-ffdf7578e612d624f85e",
+      "sourceId": "predicate-pushdown",
+      "contentHash": "3bde0cc6be6c6137575e5bd9a7da2b0423ed4d1190019a5b07eb157ac0dc1511",
+      "decision": "retain",
+      "reason": "One objective moves row selection earlier without changing results. Column pruning is a distinct declared prerequisite/comparison; the 1000-versus-80-row example separates avoided downstream work from source I/O. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-2321d7e9b4bf526fcaa6",
+      "sourceId": "predicate-pushdown",
+      "contentHash": "cff12e7f394e8165554024c0b4fa5c4177cbed3a275fa0913ffbf473ace74b9f",
+      "decision": "retain",
+      "reason": "One objective moves row selection earlier without changing results. Column pruning is a distinct declared prerequisite/comparison; the 1000-versus-80-row example separates avoided downstream work from source I/O. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-03c18f1b991f0ee08422",
+      "sourceId": "predicate-pushdown",
+      "contentHash": "0fc4bde121eadeb0baf4d56cfa2dca618815a9ab2bcc806ea8bbe731ccd08e8c",
+      "decision": "retain",
+      "reason": "One objective moves row selection earlier without changing results. Column pruning is a distinct declared prerequisite/comparison; the 1000-versus-80-row example separates avoided downstream work from source I/O. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-bcae771259060272c4a7",
+      "sourceId": "predicate-pushdown",
+      "contentHash": "f6c242067dbae6fdf3b073ef89d5eb44dde0cfec1800117223bee0f9c11cb13c",
+      "decision": "retain",
+      "reason": "One objective moves row selection earlier without changing results. Column pruning is a distinct declared prerequisite/comparison; the 1000-versus-80-row example separates avoided downstream work from source I/O. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-7b9abfa70696138ab757",
+      "sourceId": "bounded-and-unbounded-data-processing",
+      "contentHash": "9eaf0bdf34d5c31ed94a95ba21b5105e92cc069acb206d89ae88854ea2704880",
+      "decision": "retain",
+      "reason": "One comparative objective identifies the finite-input boundary and its completion implications. Supporting interval and late-data examples illustrate the need for an explicit output-finality contract, not a new independent watermark implementation. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-3cea00a365f5647eef3a",
+      "sourceId": "bounded-and-unbounded-data-processing",
+      "contentHash": "28bbeaa401e5cb42bc38be3a41d47a2b4e872f75fd2c9a3fbaa071f807576853",
+      "decision": "retain",
+      "reason": "One comparative objective identifies the finite-input boundary and its completion implications. Supporting interval and late-data examples illustrate the need for an explicit output-finality contract, not a new independent watermark implementation. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-e9ff1cced516136e48f0",
+      "sourceId": "bounded-and-unbounded-data-processing",
+      "contentHash": "4db6989cdf50cb0fb5320d8603289403ce84e393bdd6e4d3a3d691b6287b657f",
+      "decision": "retain",
+      "reason": "One comparative objective identifies the finite-input boundary and its completion implications. Supporting interval and late-data examples illustrate the need for an explicit output-finality contract, not a new independent watermark implementation. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-6703f5b7c5963275c91a",
+      "sourceId": "bounded-and-unbounded-data-processing",
+      "contentHash": "cb381e9f8f7ff33c43ce647e61f3ef98941ed811006acbaa9f352ca3c70c77c8",
+      "decision": "retain",
+      "reason": "One comparative objective identifies the finite-input boundary and its completion implications. Supporting interval and late-data examples illustrate the need for an explicit output-finality contract, not a new independent watermark implementation. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-5f675d05677c8472d487",
+      "sourceId": "vocabulary-prediction-head",
+      "contentHash": "9b68db9e9b345ce0314c3a672a8935f6d8a74d0d527517d3d56ea90392dd5563",
+      "decision": "retain",
+      "reason": "One objective projects a hidden state into token logits then probabilities. Declared projection and softmax prerequisites ground the shape and worked three-token arithmetic; optional weight tying is historical architecture context. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-f2f9d73f9e737c36e9ec",
+      "sourceId": "vocabulary-prediction-head",
+      "contentHash": "545968571bacd8f85125a5325456ab7145a552e06ee46fbadb3e357864c884cc",
+      "decision": "retain",
+      "reason": "One objective projects a hidden state into token logits then probabilities. Declared projection and softmax prerequisites ground the shape and worked three-token arithmetic; optional weight tying is historical architecture context. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-edd361a5152215006800",
+      "sourceId": "vocabulary-prediction-head",
+      "contentHash": "71373c7cd9e998bd6e82e3648267c96caf99cc48d0465e744402a5407c6ab8c1",
+      "decision": "retain",
+      "reason": "One objective projects a hidden state into token logits then probabilities. Declared projection and softmax prerequisites ground the shape and worked three-token arithmetic; optional weight tying is historical architecture context. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-67c9082a775c492aaa59",
+      "sourceId": "vocabulary-prediction-head",
+      "contentHash": "ab30eb1eee93d7ec4d1f4b80a9f84b7e7ebf2f46f2af97be13eb55ebc7f3a74a",
+      "decision": "retain",
+      "reason": "One objective projects a hidden state into token logits then probabilities. Declared projection and softmax prerequisites ground the shape and worked three-token arithmetic; optional weight tying is historical architecture context. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-a5f92fe3976766b74c2b",
+      "sourceId": "typed-keyword-argument-unpacking",
+      "contentHash": "8e602d99ecb9ff349315b5494590541f467ab10d4774f15b34dd0cc05cf5f501",
+      "decision": "retain",
+      "reason": "One objective expands a TypedDict into a static keyword-call contract. Required presence, heterogeneous values and forwarding limits support this interface, without claiming runtime validation. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-9fa12ebbc0b7dd36c3e3",
+      "sourceId": "typed-keyword-argument-unpacking",
+      "contentHash": "771deac7382e4de0f148adcc9cc6d0c522586d1a0b0ba30ebbba1742bd13bf52",
+      "decision": "retain",
+      "reason": "One objective expands a TypedDict into a static keyword-call contract. Required presence, heterogeneous values and forwarding limits support this interface, without claiming runtime validation. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-64b4e22436ec8334b5a4",
+      "sourceId": "typed-keyword-argument-unpacking",
+      "contentHash": "5ea003a14048287ff105c63aa0977dd6b27c93e21d58a1c0d636ce82735cfeed",
+      "decision": "retain",
+      "reason": "One objective expands a TypedDict into a static keyword-call contract. Required presence, heterogeneous values and forwarding limits support this interface, without claiming runtime validation. Works through a concrete instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-0a306eb5f6f5b659059e",
+      "sourceId": "typed-keyword-argument-unpacking",
+      "contentHash": "6af2dfa792304959313753c671635bd2b1800d23db91d6bfaf3ffaa3f35439b2",
+      "decision": "retain",
+      "reason": "One objective expands a TypedDict into a static keyword-call contract. Required presence, heterogeneous values and forwarding limits support this interface, without claiming runtime validation. Tests its defining distinction and boundary."
+    },
+    {
+      "candidateKey": "cand-2d75f716760bf9b7e8ff",
+      "sourceId": "agent-skill-package",
+      "contentHash": "1edd825f9597973ea8f49118afe15f49cd0740263e68beacec698e47f4affd28",
+      "decision": "retain",
+      "reason": "The package objective is preserved. The added demonstration-to-procedure section explains how evidence becomes a valid reusable package and how to test generalization; it does not claim recordings automatically infer reliable skills. Judges evidence and generalization before packaging a reusable procedure."
+    },
+    {
+      "candidateKey": "cand-fb754b1b2ad344187695",
+      "sourceId": "cross-component-security-review",
+      "contentHash": "dbe956703e4086a38f491fd8e9f7c979ccb7276cc172a6a67c84d2570edb2eee",
+      "decision": "retain",
+      "reason": "One objective follows data and authority across component boundaries. Scope selection and migration regression cases improve coverage of that method; the distinct CSRF, taint and media-type mechanisms have their own reviewed nodes. Preserves the previously reviewed core mechanism and bounded supporting examples."
+    },
+    {
+      "candidateKey": "cand-50de065fdd446b142d62",
+      "sourceId": "cross-component-security-review",
+      "contentHash": "1e86355c6bfb117f63cf987f125fe33aa476d3702ef147ee604ffa369ee9431c",
+      "decision": "retain",
+      "reason": "One objective follows data and authority across component boundaries. Scope selection and migration regression cases improve coverage of that method; the distinct CSRF, taint and media-type mechanisms have their own reviewed nodes. Tests path coverage and preserved controls under the same cross-component review method."
+    },
+    {
+      "candidateKey": "cand-6cdc5bd182b1c205421d",
+      "sourceId": "adaboost-exponential-objective",
+      "contentHash": "a2d9be62c0d9b079d16161448c5978fcfa59b022ea494e32b1eb6cba8bf9fb8e",
+      "decision": "retain",
+      "reason": "One binary exponential-objective mechanism is preserved and deepened with explicit labels, log-ratio vote and normalized mistake weights. The four-example calculation derives the same algorithm rather than introducing a second entity. Preserves the previously reviewed core mechanism and bounded supporting examples."
+    },
+    {
+      "candidateKey": "cand-3aff92286ee9ebbf878f",
+      "sourceId": "adaboost-exponential-objective",
+      "contentHash": "23f37fefed76746ca2b7b815fba0a473e672e6d0a7b31ec5bc71786622bc1587",
+      "decision": "retain",
+      "reason": "One binary exponential-objective mechanism is preserved and deepened with explicit labels, log-ratio vote and normalized mistake weights. The four-example calculation derives the same algorithm rather than introducing a second entity. Derives the same binary weight update numerically."
+    },
+    {
+      "candidateKey": "cand-f9839b9d649a4f94ff5c",
+      "sourceId": "gradient-boosting-objective",
+      "contentHash": "e3444dca62a93e2251a8db4936c95038cd55842f8bc4ed6bb3acb190d75e1ab1",
+      "decision": "retain",
+      "reason": "One stagewise functional-descent objective is preserved and illustrated by a half-squared residual-tree update. The invented arithmetic explains approximation and shrinkage without treating one loss as universal. Preserves the previously reviewed core mechanism and bounded supporting examples."
+    },
+    {
+      "candidateKey": "cand-c9a1940d58db7e86109a",
+      "sourceId": "gradient-boosting-objective",
+      "contentHash": "111168276b6094d865d9c77d332c196565c0af32ecc3c8112e708c4b68a8553d",
+      "decision": "retain",
+      "reason": "One stagewise functional-descent objective is preserved and illustrated by a half-squared residual-tree update. The invented arithmetic explains approximation and shrinkage without treating one loss as universal. Derives one instance of the same stagewise objective."
+    },
+    {
+      "candidateKey": "cand-be4b9d6546eb05eddf2f",
+      "sourceId": "factorial-agent-evaluation",
+      "contentHash": "2022934b51c8deb12405dcaf3dbc09f2634653d0e194bf1b5d0975ab6e3177c0",
+      "decision": "retain",
+      "reason": "One objective crosses harness and model factors to identify confounding and interaction. The invented four-cell example derives the difference-of-differences; it does not create a separate model-ranking entity. Defines the single learning objective."
+    },
+    {
+      "candidateKey": "cand-9c72ccf828cb36a10e57",
+      "sourceId": "interprocedural-taint-analysis",
+      "contentHash": "8c7ccf92b97a46affa2a2e1fe83d691f28e90e4c080e7f92df7f836603dab932",
+      "decision": "retain",
+      "reason": "One objective traces untrusted influence across calls. Sources, sinks, transformations and validation barriers define the path analysis, and the fictional installer trace illustrates model limits. Explains its causal or formal contract through declared prerequisites."
     }
   ]
 }

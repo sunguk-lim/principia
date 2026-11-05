@@ -4114,6 +4114,127 @@
         "memory-hierarchy": "Grounds locality and the cost of moving selected buffers.",
         "query-planning": "Grounds required fields and operator selection separately from physical layout."
       }
+    },
+    "factorial-agent-evaluation": {
+      "objective": "Factorial agent evaluation crosses harness and model choices on matched tasks to distinguish runtime effects, model effects and their interaction.",
+      "prerequisiteReasons": {
+        "paired-benchmark-uncertainty": "Defines matched task comparisons and uncertainty in observed differences.",
+        "agent-execution-harness": "Defines the runtime controls, tools and state varied as one experimental factor."
+      }
+    },
+    "periodic-agent-workflow": {
+      "objective": "A periodic agent workflow binds each scheduled occurrence to a durable bounded run with explicit timezone, overlap, missed-run and duplicate-effect policies.",
+      "prerequisiteReasons": {
+        "durable-agent-execution": "Defines checkpoint recovery and reconciliation of uncertain external effects.",
+        "idempotent-operation-key": "Defines stable logical operation identities across repeated delivery."
+      }
+    },
+    "single-writer-state-coordination": {
+      "objective": "Single-writer state coordination sends mutations through one authoritative owner so state transitions are serialized rather than racing across independent writers.",
+      "prerequisiteReasons": {
+        "queue": "Defines ordered pending requests to the state owner.",
+        "atomic-operation": "Defines indivisible changes and the lost-update problem."
+      }
+    },
+    "durable-agent-task-board": {
+      "objective": "A durable agent task board stores task identity, dependencies, ownership and evidence-backed transitions separately from conversational plans.",
+      "prerequisiteReasons": {
+        "agent-workflow-graph": "Defines valid task states, transitions, checkpoints and termination.",
+        "single-writer-state-coordination": "Defines one explicit authoritative update policy.",
+        "agent-harness-interoperability": "Defines versioned artifacts and worker-session identities at handoff."
+      }
+    },
+    "evidence-oriented-vulnerability-triage": {
+      "objective": "Evidence-oriented vulnerability triage judges reachability, preconditions, impact and remediation evidence for each finding rather than treating scanner counts as confirmed risk.",
+      "prerequisiteReasons": {
+        "cross-component-security-review": "Defines paths across data and authority boundaries that a finding must substantiate.",
+        "measurement": "Defines outcome and workload evidence for evaluating triage."
+      }
+    },
+    "interprocedural-taint-analysis": {
+      "objective": "Interprocedural taint analysis tracks untrusted influence across calls and transformations from defined input sources to sensitive sinks, subject to explicit barrier and library models.",
+      "prerequisiteReasons": {
+        "graph": "Defines the reachability structure used for source-to-sink paths.",
+        "first-class-function": "Explains callable values and callbacks whose actual targets interprocedural analysis must model."
+      }
+    },
+    "same-origin-policy": {
+      "objective": "The same-origin policy restricts browser script access across scheme-host-port origins while permitting some cross-origin sends and embeddings.",
+      "prerequisiteReasons": {
+        "http": "Defines requests, responses, URLs and transport endpoints used by browser origins."
+      }
+    },
+    "cross-site-request-forgery": {
+      "objective": "Cross-site request forgery induces a browser to send a state-changing request using authority the destination implicitly trusts, without establishing the user intended that action.",
+      "prerequisiteReasons": {
+        "same-origin-policy": "Explains why blocked cross-origin reads do not prevent every cross-origin request."
+      }
+    },
+    "http-request-media-type-validation": {
+      "objective": "HTTP request media-type validation enforces the endpoint body format before parsing and rejects unsupported representations independently of authentication and authorization.",
+      "prerequisiteReasons": {
+        "http": "Defines request headers, bodies and response status codes."
+      }
+    },
+    "package-install-target-validation": {
+      "objective": "Package-install target validation restricts user-controlled installation selectors to the intended package and release rather than letting a package manager reinterpret them as alternate code sources or options.",
+      "prerequisiteReasons": {
+        "tool-call-execution-contract": "Defines validation and authorization before an application-owned operation.",
+        "process": "Defines the executing identity and inherited authority of installer code."
+      }
+    },
+    "ssrf-destination-validation": {
+      "objective": "SSRF destination validation constrains the actual outbound connection and every redirect to approved destinations, avoiding separate unchecked name resolution between validation and use.",
+      "prerequisiteReasons": {
+        "http": "Defines URLs, requests, destinations and name resolution along the connection path."
+      }
+    },
+    "bounded-url-fetching": {
+      "objective": "Bounded URL fetching limits time, bytes, redirects, decompression, concurrency and downstream processing so one untrusted response cannot consume unbounded service resources.",
+      "prerequisiteReasons": {
+        "http": "Defines request and response transfer and redirects.",
+        "measurement": "Defines resource accounting and representative validation."
+      }
+    },
+    "predicate-pushdown": {
+      "objective": "Predicate pushdown moves a row-selection condition toward its data source when the rewrite preserves results, reducing downstream intermediate work and sometimes source reads.",
+      "prerequisiteReasons": {
+        "query-planning": "Defines equivalent execution plans and their estimated costs."
+      },
+      "relations": [
+        {
+          "type": "CONTRASTS_WITH",
+          "target": "column-pruning",
+          "reason": "Predicate pushdown reduces rows; projection pruning reduces fields. The comparison is optional context, not a required roadmap dependency."
+        }
+      ]
+    },
+    "bounded-and-unbounded-data-processing": {
+      "objective": "Bounded versus unbounded data processing distinguishes a known finite input from an ongoing collection, determining when results can be final and what update policy is required.",
+      "prerequisiteReasons": {
+        "distributed-dataframe-execution": "Defines partitioned operators, global state and execution trade-offs."
+      }
+    },
+    "vocabulary-prediction-head": {
+      "objective": "A vocabulary prediction head maps a model hidden state to one score per vocabulary token and normalizes those scores for next-token prediction.",
+      "prerequisiteReasons": {
+        "linear-transformation": "Defines the learned projection from hidden coordinates to token scores.",
+        "softmax": "Defines normalization of token logits into a candidate distribution."
+      }
+    },
+    "typed-keyword-argument-unpacking": {
+      "objective": "Typed keyword-argument unpacking uses Unpack with a TypedDict to statically check keyword names, per-key value types and required presence without changing Python runtime calling semantics.",
+      "prerequisiteReasons": {
+        "typed-dict": "Defines fixed named keys with heterogeneous types and required or optional presence."
+      }
+    },
+    "adaboost-exponential-objective": {
+      "objective": "AdaBoost reduces a binary exponential objective by reweighting mistakes and adding weak-classifier votes under an explicit score convention.",
+      "prerequisiteReasons": {
+        "loss-function": "Defines the margin-dependent objective being reduced.",
+        "measurement": "Defines held-out checks and noise-sensitive behavior.",
+        "logarithm": "Defines the binary vote log-ratio and its domain; exponential weighting is inherited."
+      }
     }
   }
 }

@@ -16,6 +16,8 @@ A formatting skill runs on 100 tasks and saves one minute each, for 100 minutes.
 
 Test both matching and nonmatching tasks, confirm paths and available tools, then compare held-out task success, false activation, latency and regressions with the base workflow. Retire or merge with a versioned rollback path, not simply because a procedure is rarely needed.
 
+A demonstration adds one observed trace, not an automatically general procedure. Extract preconditions, parameters and result checks, remove private example data, and replace incidental coordinates with stable semantic targets. A recorder can capture a Save click without proving persistence. Replay with changed input and a rejected write before promoting the procedure; keep the original task authority unchanged.
+
 ## Check your understanding
 
 Does a valid package format prove utility or permission? No: discovery, executable compatibility, measured benefit and authority are different contracts.

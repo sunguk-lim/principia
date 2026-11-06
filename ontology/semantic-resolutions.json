@@ -8111,13 +8111,6 @@
       "reason": "Overview is supporting explanation for the canonical Denoising Diffusion Probabilistic Model objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-eac9202c1db5e6b28e88",
-      "sourceId": "knowledge-distillation",
-      "contentHash": "9c32dc07d170dffc49f2c2710788a8d32557d84863c6bf859038e5fcbf377cbf",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Knowledge Distillation objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-eaeaf691ae1edc0fa9bb",
       "sourceId": "oom-killer",
       "contentHash": "3230171a88806cabebdd16570dce262033c7267b14372cd2c81fa01fb876837a",
@@ -14515,6 +14508,321 @@
       "contentHash": "8c7ccf92b97a46affa2a2e1fe83d691f28e90e4c080e7f92df7f836603dab932",
       "decision": "retain",
       "reason": "One objective traces untrusted influence across calls. Sources, sinks, transformations and validation barriers define the path analysis, and the fictional installer trace illustrates model limits. Explains its causal or formal contract through declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-cd5b9aa5b7ea8d044d29",
+      "sourceId": "knowledge-distillation",
+      "contentHash": "aa470d9cc015526fc5f26190d59546be3d604e32b3fd6d5a1ab2c8fcd043435c",
+      "decision": "retain",
+      "reason": "Knowledge distillation trains a student on selected outputs or distributions from a teacher, transferring behavior without requiring that teacher during student inference. Preserves the existing single-objective article and its foundational mechanism; the corrected supervision/architecture scope does not create an alternative canonical distillation or routing identity."
+    },
+    {
+      "candidateKey": "cand-e726cf0101d43485417f",
+      "sourceId": "mg1-mean-waiting-time",
+      "contentHash": "7037c15aff357311af0b8b32a86c315dcc70c3ca16433a996ad5a368e8e33fe0",
+      "decision": "retain",
+      "reason": "The Pollaczek\\u2013Khinchine formula relates stationary FCFS single-server mean queue waiting to the second service-time moment under independent Poisson arrivals. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-b104bb2444078633221c",
+      "sourceId": "mg1-mean-waiting-time",
+      "contentHash": "618d14cb12b942ca0d27f47b1dc2ccb22aa05c20b68bb57ea68d832915966456",
+      "decision": "retain",
+      "reason": "The Pollaczek\\u2013Khinchine formula relates stationary FCFS single-server mean queue waiting to the second service-time moment under independent Poisson arrivals. Derives the same objective from declared prerequisites; formulas and assumptions specify the mechanism rather than independent synonym entities."
+    },
+    {
+      "candidateKey": "cand-7864aac2d316220b302e",
+      "sourceId": "mg1-mean-waiting-time",
+      "contentHash": "1bdebd318cea86d9498f8f73b63c3e9416f8aaa2aecb96ad7b80ddaa5b8e65f3",
+      "decision": "retain",
+      "reason": "The Pollaczek\\u2013Khinchine formula relates stationary FCFS single-server mean queue waiting to the second service-time moment under independent Poisson arrivals. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-45f030e96f03459f9aa8",
+      "sourceId": "mg1-mean-waiting-time",
+      "contentHash": "d1c7ba9206bdf9f911a1f4bc89126056a1d9763cba0632164379aeb80d86c7ab",
+      "decision": "retain",
+      "reason": "The Pollaczek\\u2013Khinchine formula relates stationary FCFS single-server mean queue waiting to the second service-time moment under independent Poisson arrivals. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-9c626719513aeaf5e46a",
+      "sourceId": "single-server-queue-stability",
+      "contentHash": "07dac2a7ff5ed696435dcd7629831ac441471c763c3707593ad338975142adbc",
+      "decision": "retain",
+      "reason": "Single-server queue stability compares offered work with service capacity, distinguishing a stationary backlog from temporary queue drainage and high-load latency. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-f680a6628a3f9931aa40",
+      "sourceId": "single-server-queue-stability",
+      "contentHash": "b86a1f30d903b610f4253060ff25ed8875de226a999b327c204bbf071c3360dd",
+      "decision": "retain",
+      "reason": "Single-server queue stability compares offered work with service capacity, distinguishing a stationary backlog from temporary queue drainage and high-load latency. Derives the same objective from declared prerequisites; formulas and assumptions specify the mechanism rather than independent synonym entities."
+    },
+    {
+      "candidateKey": "cand-f7f82e5507742b9dc247",
+      "sourceId": "single-server-queue-stability",
+      "contentHash": "d480364c09cc3877873d7aaa88bbfac00d765b7b914f5496e48096ac970d18bf",
+      "decision": "retain",
+      "reason": "Single-server queue stability compares offered work with service capacity, distinguishing a stationary backlog from temporary queue drainage and high-load latency. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-2d762b424a8f409dccf2",
+      "sourceId": "single-server-queue-stability",
+      "contentHash": "8a6c14b162c53a8da44eaf29041b09f0207c4e49ee2cb3c51ce32011d7bd88c5",
+      "decision": "retain",
+      "reason": "Single-server queue stability compares offered work with service capacity, distinguishing a stationary backlog from temporary queue drainage and high-load latency. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-4fd6052781be03d7c7ec",
+      "sourceId": "agent-execution-harness",
+      "contentHash": "fc05b0624bfeca3015324162da97faa9742293cd09eda5f7a32936e05944546b",
+      "decision": "retain",
+      "reason": "An agent execution harness is the application-owned control layer around model and tool calls that enforces permissions, budgets, state, recovery, and observability. Specifies input evidence and resource binding for the existing execution control layer. The original wrong-workspace example tests harness observation and acceptance, not a new file-inventory entity."
+    },
+    {
+      "candidateKey": "cand-25178bc6d1671b1ff74b",
+      "sourceId": "length-aware-inference-routing",
+      "contentHash": "f2146dfb58a999760df37794d701b8081044de9f5b5afff4d013fc10d80e323c",
+      "decision": "retain",
+      "reason": "Length-aware inference routing places requests using estimated remaining work rather than treating request counts as equal service demand. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-7011b524274043c0a90d",
+      "sourceId": "length-aware-inference-routing",
+      "contentHash": "487aa371133e3132fc22a176e6cec7d986ef9025958fc04363868b78b470be88",
+      "decision": "retain",
+      "reason": "Length-aware inference routing places requests using estimated remaining work rather than treating request counts as equal service demand. Derives the same objective from declared prerequisites; formulas and assumptions specify the mechanism rather than independent synonym entities."
+    },
+    {
+      "candidateKey": "cand-e7498cc7496b9216e072",
+      "sourceId": "length-aware-inference-routing",
+      "contentHash": "9cb6d9bbdc842da96b0aedbd361cb3cc3477d02d7e4d9d958b4da8b5ed91b65b",
+      "decision": "retain",
+      "reason": "Length-aware inference routing places requests using estimated remaining work rather than treating request counts as equal service demand. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-a88da45ce73afa11e371",
+      "sourceId": "length-aware-inference-routing",
+      "contentHash": "9cbded54785dc8e1d125a564aeba077ca9e808adfe8e3ae2ed6fb30a98606b43",
+      "decision": "retain",
+      "reason": "Length-aware inference routing places requests using estimated remaining work rather than treating request counts as equal service demand. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-9b4da460d5204c6d4c88",
+      "sourceId": "poisson-process",
+      "contentHash": "7cd400f2e01715e40d143a905e85ec150ae824d6ff86ad190112d496009053a5",
+      "decision": "retain",
+      "reason": "A homogeneous Poisson arrival process counts independent stationary event increments with a constant rate, rather than assuming that equal average rates imply equal arrival patterns. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-f5702fe8e87d5ce85d4f",
+      "sourceId": "poisson-process",
+      "contentHash": "69ad23de158cc574aa43ebd225f08a63b7ae93c0bb44f692ea0e509091e72630",
+      "decision": "retain",
+      "reason": "A homogeneous Poisson arrival process counts independent stationary event increments with a constant rate, rather than assuming that equal average rates imply equal arrival patterns. Derives the same objective from declared prerequisites; formulas and assumptions specify the mechanism rather than independent synonym entities."
+    },
+    {
+      "candidateKey": "cand-8f400ccca0fef910d7dd",
+      "sourceId": "poisson-process",
+      "contentHash": "217dd952ffff007ce1a0e68f2cddaadbdff368ebfa17e8954b3240428e31055c",
+      "decision": "retain",
+      "reason": "A homogeneous Poisson arrival process counts independent stationary event increments with a constant rate, rather than assuming that equal average rates imply equal arrival patterns. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-22fc19f0f06964dd5cb6",
+      "sourceId": "poisson-process",
+      "contentHash": "be55c5436f9be5aa718bb9a071c6985ee8823e8c4523b88d7bc14d26726f233c",
+      "decision": "retain",
+      "reason": "A homogeneous Poisson arrival process counts independent stationary event increments with a constant rate, rather than assuming that equal average rates imply equal arrival patterns. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-3eee6952669949eb7849",
+      "sourceId": "sequence-response-distillation",
+      "contentHash": "00e8fe9e6cb1a4210253cee7c62eec838df45368b3c60ad2c8166bccef8356b7",
+      "decision": "retain",
+      "reason": "Sequence response distillation trains a student on complete teacher-generated answers rather than requiring the teacher distribution at every training token. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-caa22042c55c19dd871a",
+      "sourceId": "sequence-response-distillation",
+      "contentHash": "65f746b8d12a75197370b57fdf54cef072c025d976e46a5c4beea6e76a22227f",
+      "decision": "retain",
+      "reason": "Sequence response distillation trains a student on complete teacher-generated answers rather than requiring the teacher distribution at every training token. Derives the same objective from declared prerequisites; formulas and assumptions specify the mechanism rather than independent synonym entities."
+    },
+    {
+      "candidateKey": "cand-6f9bf1fcd0e2919e4736",
+      "sourceId": "sequence-response-distillation",
+      "contentHash": "83a34f3f4da38f47cbfe2fcd611b930f7c7eeac7a9e2d4f5c398bf7ec421a70f",
+      "decision": "retain",
+      "reason": "Sequence response distillation trains a student on complete teacher-generated answers rather than requiring the teacher distribution at every training token. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-08fd54c59c5ef1594246",
+      "sourceId": "sequence-response-distillation",
+      "contentHash": "c18fc0ccff7e7297d3f55fae3a911b2466c9adc7bd323689c6c958cbc79967dd",
+      "decision": "retain",
+      "reason": "Sequence response distillation trains a student on complete teacher-generated answers rather than requiring the teacher distribution at every training token. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-260aa281fc57fea8cef0",
+      "sourceId": "distillation-divergence-objective",
+      "contentHash": "8fb0642f8f4abda82640cc934df83cc12907a12e742a338d59dafcb967a1e0f2",
+      "decision": "retain",
+      "reason": "A distillation divergence objective specifies the direction and support of teacher-student distribution mismatch separately from the prefixes used for training. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-cce6812eb7673e59fb46",
+      "sourceId": "distillation-divergence-objective",
+      "contentHash": "0b22b235a028487c6b203467e4fa60669bed51df2361acca1231a859d074bba0",
+      "decision": "retain",
+      "reason": "A distillation divergence objective specifies the direction and support of teacher-student distribution mismatch separately from the prefixes used for training. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-7fe0ccc9bc74d4efc18a",
+      "sourceId": "distillation-divergence-objective",
+      "contentHash": "850801723c7d4b3880b304cb501bf7e8b9eefd7e596304787ac7d49c44419cf0",
+      "decision": "retain",
+      "reason": "A distillation divergence objective specifies the direction and support of teacher-student distribution mismatch separately from the prefixes used for training. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-b0aca5a37fa8c6729cf0",
+      "sourceId": "distributed-serialization-cost",
+      "contentHash": "5921c55376b3875290d93514ec663ff6b2bce34d645654e1aab23acc549a2df6",
+      "decision": "retain",
+      "reason": "Distributed serialization cost combines encoding, byte transfer and reconstruction work, so more workers or smaller partitions do not necessarily accelerate a data pipeline. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-2582620566ccf6887be5",
+      "sourceId": "distributed-serialization-cost",
+      "contentHash": "a4a9c37742f7cfd213332bade83d791172757176a245a42e202ee723af813b45",
+      "decision": "retain",
+      "reason": "Distributed serialization cost combines encoding, byte transfer and reconstruction work, so more workers or smaller partitions do not necessarily accelerate a data pipeline. Derives the same objective from declared prerequisites; formulas and assumptions specify the mechanism rather than independent synonym entities."
+    },
+    {
+      "candidateKey": "cand-3f7926fe67f2569e5a29",
+      "sourceId": "distributed-serialization-cost",
+      "contentHash": "98bbe21461f5364b584cede1d61cd80174ebac94876b0f975bf740ff03e20bc1",
+      "decision": "retain",
+      "reason": "Distributed serialization cost combines encoding, byte transfer and reconstruction work, so more workers or smaller partitions do not necessarily accelerate a data pipeline. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-7877373d4e45961734ac",
+      "sourceId": "distributed-serialization-cost",
+      "contentHash": "cb379e1f3c0a4ce75c927323217433d6541ff2af1de2cbf743bbf93086392a68",
+      "decision": "retain",
+      "reason": "Distributed serialization cost combines encoding, byte transfer and reconstruction work, so more workers or smaller partitions do not necessarily accelerate a data pipeline. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-111760e2c573cc379b0f",
+      "sourceId": "little-law",
+      "contentHash": "6d5a58735133f784f4e4197dd3ccb59428de02ab17f087f6b24a310f9dab3b41",
+      "decision": "retain",
+      "reason": "Little's law relates long-run mean occupancy to effective throughput and mean time inside the same system boundary. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-c3a277a136e890bd08eb",
+      "sourceId": "little-law",
+      "contentHash": "b9ce168bc88298c11307408ccc8dbdd79af8a4b66605e9e80fcd4e1fcda05c15",
+      "decision": "retain",
+      "reason": "Little's law relates long-run mean occupancy to effective throughput and mean time inside the same system boundary. Derives the same objective from declared prerequisites; formulas and assumptions specify the mechanism rather than independent synonym entities."
+    },
+    {
+      "candidateKey": "cand-a74d8a6cc84de4ef828b",
+      "sourceId": "little-law",
+      "contentHash": "b5bcd0d034e72c2ad2fc3b512ea2a66edb0d688df61b0242b8c6352c176afe5a",
+      "decision": "retain",
+      "reason": "Little's law relates long-run mean occupancy to effective throughput and mean time inside the same system boundary. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-dc76a0a035e8ab93c8d0",
+      "sourceId": "little-law",
+      "contentHash": "3bc73c4439bee5490358c6ca566646dcdce224970d039b5d9f25ed7a52b2ff7c",
+      "decision": "retain",
+      "reason": "Little's law relates long-run mean occupancy to effective throughput and mean time inside the same system boundary. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-5c7de1ee4eaa50d329e5",
+      "sourceId": "on-policy-distillation",
+      "contentHash": "334ec734764cd36b83458de0fa593322795124666ebc6b295463c725c32130a3",
+      "decision": "retain",
+      "reason": "On-policy distillation obtains teacher feedback on prefixes generated by the current student so training addresses states the student can actually reach. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-0c97fb0c661220f688b2",
+      "sourceId": "on-policy-distillation",
+      "contentHash": "fa57e3083cf8da2653e3aaf3140b8e38a94ffafbb14e13476794b6316c13b84f",
+      "decision": "retain",
+      "reason": "On-policy distillation obtains teacher feedback on prefixes generated by the current student so training addresses states the student can actually reach. Derives the same objective from declared prerequisites; formulas and assumptions specify the mechanism rather than independent synonym entities."
+    },
+    {
+      "candidateKey": "cand-cd3a184f8a86fee26975",
+      "sourceId": "on-policy-distillation",
+      "contentHash": "07d34f69b9f64f2d5339afb0cab5108db8e51997eb865710311677e1f6df6385",
+      "decision": "retain",
+      "reason": "On-policy distillation obtains teacher feedback on prefixes generated by the current student so training addresses states the student can actually reach. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-f1c332a0e3e9fdce26f8",
+      "sourceId": "on-policy-distillation",
+      "contentHash": "5e51002554f033bb507ee911cd6f05b3ab30d27c6217c09f5ea1547f8bc074c7",
+      "decision": "retain",
+      "reason": "On-policy distillation obtains teacher feedback on prefixes generated by the current student so training addresses states the student can actually reach. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-f5c3e2e01c2435bd7377",
+      "sourceId": "adaptive-model-effort-routing",
+      "contentHash": "b2e671c511e6754407e9c15e9523b7e148da42fc5e659db4d048c0a0da4568ba",
+      "decision": "retain",
+      "reason": "Adaptive model-and-effort routing selects a model and inference budget per request using expected quality, latency, cost, and switching penalties rather than one fixed model. Preserves the existing single-objective article and its foundational mechanism; the corrected supervision/architecture scope does not create an alternative canonical distillation or routing identity."
+    },
+    {
+      "candidateKey": "cand-224f93aced4325e820e4",
+      "sourceId": "optimization-solver-interface",
+      "contentHash": "473721dd9ca3eb700da79d2992f3d0ef0ea27ddcdcc05ee3cc01b8ef36a77cba",
+      "decision": "retain",
+      "reason": "An optimization solver interface exposes algorithm-specific stopping and update controls, so missing a learning-rate parameter does not mean a model is fitted without optimization. Defines this canonical objective and its scope, not a separately introduced mechanism."
+    },
+    {
+      "candidateKey": "cand-e0ffdb582e36513bfe4f",
+      "sourceId": "optimization-solver-interface",
+      "contentHash": "a78769ce2dd4f182c519379acd22d24edc8410ffa8f75d513df44229dcccd0d7",
+      "decision": "retain",
+      "reason": "An optimization solver interface exposes algorithm-specific stopping and update controls, so missing a learning-rate parameter does not mean a model is fitted without optimization. An original worked instance demonstrates the canonical mechanism, with units and hypothetical inputs; it is not a separate learning identity."
+    },
+    {
+      "candidateKey": "cand-6d6b3b60b7dd02b66115",
+      "sourceId": "optimization-solver-interface",
+      "contentHash": "37f558b4ff7676b93eba9873d17497196f6f70936e9690a09d5ec8ecd2ec3394",
+      "decision": "retain",
+      "reason": "An optimization solver interface exposes algorithm-specific stopping and update controls, so missing a learning-rate parameter does not mean a model is fitted without optimization. Tests the objective and states its approximation, correctness or measurement boundaries; these validation caveats are supporting explanation."
+    },
+    {
+      "candidateKey": "cand-d87c88b54db42d1d1029",
+      "sourceId": "knowledge-distillation",
+      "contentHash": "b99c9f82c98bde274ae04a8b2f3b18b00262d8f6e80e462ad3c5133609bf322b",
+      "decision": "retain",
+      "reason": "Knowledge distillation trains a student on selected outputs or distributions from a teacher, transferring behavior without requiring that teacher during student inference. Student architecture and initialization are independent design choices within teacher-student transfer. Sequence-response supervision, on-policy feedback and divergence objectives are separate authored nodes; speculative decoding is a reviewed optional contrast, not a prerequisite."
+    },
+    {
+      "candidateKey": "cand-3db0705f1d64b4803701",
+      "sourceId": "distillation-divergence-objective",
+      "contentHash": "7a01b09dd9cec7e494d92ec158350fa687c0b6fd10d6dd42ca79727806fabfc0",
+      "decision": "retain",
+      "reason": "A distillation divergence objective specifies the direction and support of teacher-student distribution mismatch separately from the prefixes used for training. Derives this same objective through reviewed prerequisites; definitions, formulas and their limits specify this mechanism."
+    },
+    {
+      "candidateKey": "cand-f823b3d6ae2c7d710dd7",
+      "sourceId": "optimization-solver-interface",
+      "contentHash": "8ec60d1a929baeb7c31823c0a82f83b77fb92eb3d2682fd13c78ce644088fd36",
+      "decision": "retain",
+      "reason": "An optimization solver interface exposes algorithm-specific stopping and update controls, so missing a learning-rate parameter does not mean a model is fitted without optimization. Derives this same objective through reviewed prerequisites; definitions, formulas and their limits specify this mechanism."
+    },
+    {
+      "candidateKey": "cand-3b4f48fdcecff6a6541d",
+      "sourceId": "adaptive-model-effort-routing",
+      "contentHash": "fad2393966c84f1ea7f215125b6f1126facd17e8f5ff808b85a138d14b1078cd",
+      "decision": "retain",
+      "reason": "Adaptive model-and-effort routing selects a model and inference budget per request using expected quality, latency, cost, and switching penalties rather than one fixed model. Error and fallback transitions preserve eligibility in the existing model-and-effort policy. They are not a new model or router identity."
     }
   ]
 }

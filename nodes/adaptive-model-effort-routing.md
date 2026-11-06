@@ -8,7 +8,7 @@ prereqs: [decision-score-action-gate, inference-cost-break-even, prefix-caching,
 sources: [https://openrouter.ai/docs/guides/routing/routers/auto-router, https://openrouter.ai/typesafe/jev-router]
 status: explained
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-11-07
 ---
 
 # Adaptive Model-and-Effort Routing
@@ -24,6 +24,14 @@ A router observes permitted request features such as task type, input size, tool
 The decision is sequential. In a continuing conversation, switching models can lose reusable prompt state and [[prefix-caching]] benefits; staying on a slightly more expensive model may cost less than a cold switch. Likewise, raising effort on the current model can improve a hard turn without a provider change. Compare expected gain against extra tokens, latency, cache loss, and the probability of retry or escalation. This is distinct from GPU model residency: routing chooses an endpoint or model policy, while residency manages loaded weights on serving hardware.
 
 Build a fixed-model baseline on the same labeled task mix. Replay or randomize routing decisions with enough overlap to estimate task success, p50/p95 latency, accepted-answer cost, cache-hit rate, switching frequency, and failure rate. A router's explanation metadata is useful for debugging but not proof that its choice was optimal. Monitor distribution shift and keep explicit fallback behavior; a timeout or malformed routing answer needs a documented policy, not an implicit assumption that another router will intervene.
+
+## Fail-closed routing errors
+
+Router errors are policy events, not model choices. A timeout, malformed label, unsupported model, missing required score or invalid effort tier must not silently select an endpoint that bypasses eligibility checks. Reject before downstream dispatch when no authorized decision exists. A fallback is acceptable only if it is separately declared, independently eligible and observable; a convenience default that ignores mandatory constraints is fail-open behavior.
+
+In an invented request, only models A and B satisfy a tenant's processing policy. The router returns nonexistent model C with a valid-looking score. A parser success is insufficient: membership validation fails, so dispatch stops or enters an explicitly authorized fallback to A or B. Sending the request to a cheap global endpoint instead would change the policy boundary, even if that endpoint answers correctly. Failure to obtain a decision need not imply rejection of every request forever; bounded retry and human escalation are separate documented actions.
+
+Inject timeouts, truncated responses, unknown models and stale capability records. Verify that no model request occurs before decision validation, and measure rejected requests, retry cost and fallback frequency alongside quality and latency. Preserve the same region, data-policy, tool and resource constraints in every branch. Product-specific error codes and fallback defaults should be checked against deployed documentation rather than inferred from a generic router name.
 
 ## Prerequisites
 

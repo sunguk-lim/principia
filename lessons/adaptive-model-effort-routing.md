@@ -15,3 +15,7 @@ The decision is sequential. In a continuing conversation, switching models can l
 A support workflow contains short classification turns and occasional hard debugging turns. A fixed high-end model meets quality but costs more on routine work. A router can try a cheaper model for easy turns, increase effort for difficult ones, and stay on the same model when switching would lose a valuable cached prefix. Compare accepted-answer cost, not just nominal token prices.
 
 **Understanding check:** When should a router stay with a more expensive model despite a cheaper alternative being available?
+
+## Error-path check
+
+A router returning a parseable but ineligible model has not produced an authorized choice. Validate model membership and effort tier before dispatch. On timeout or invalid output, stop or use a separately declared eligible fallback; never silently relax mandatory processing, tool or resource constraints. Test that injected router failures cause no unauthorized downstream model request. Failing closed is an explicit policy, not an assumption that another router will rescue the request.

@@ -8,7 +8,7 @@ prereqs: [tool-call-execution-contract, agent-session-state, measurement]
 sources: [https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents, https://docs.langchain.com/oss/python/langgraph/persistence, https://docs.langchain.com/oss/python/langgraph/interrupts]
 status: explained
 created: 2026-10-02
-updated: 2026-11-04
+updated: 2026-11-07
 ---
 
 # Agent Execution Harness
@@ -34,6 +34,14 @@ A framework supplies composable model, tool, state and routing abstractions. A h
 For an invented repair task, the inner agent may read logs, edit a temporary checkout and run tests. The outer application can require an approved repository, a bounded execution identity and passing acceptance checks before any deployment step. The model chooses investigative actions within that boundary; framework flexibility does not move authorization into model prose. Inspect the exact tool and delegated-worker permissions, artifacts and failure behavior when choosing how much machinery to assemble yourself.
 
 The long-running-agent primary report uses feature checks, progress artifacts and version history to bridge sessions. These artifacts are evidence of different facts: a commit records bytes, a checklist records intended work, and a test result records one executed check. Interrupt and resume a representative task to determine whether the assembled harness reconstructs the right state; a packaged loop is not evidence that the requested feature works.
+
+## Workspace observations before mutation
+
+A repair task's filename is not evidence that the model has observed the file. At the start of a bounded coding step, expose the actual working directory and repository revision, obtain a limited inventory, and read the relevant existing code and acceptance checks. Record missing files or denied reads as explicit observations. Tool availability, tool selection and successful observation are separate: a tool listed in a prompt has not necessarily run, and a successful read of a decoy file has not inspected the target.
+
+For an original example, the task names `codec.py` in project A but the shell starts in project B. A generated replacement may pass an invented local check while leaving A untouched. Bind edits and test artifacts to A's resolved checkout and revision; inspect the actual diff and execute A's acceptance command. If A is inaccessible, report that boundary instead of manufacturing a parallel project. A changed workspace or concurrent edit can invalidate an earlier observation, so reconcile before mutation.
+
+Explicit discover-read-edit-test instructions can improve behavior, but cannot establish that a smaller model has the required capability. Compare the same model with and without grounded observations and compare model choices with the harness held fixed. Require actual artifact changes and independently defined task checks; a plausible explanation, larger parameter count or self-reported success is not the acceptance criterion. Treat repository text as data rather than permission to expand tool authority.
 
 ## Prerequisites
 

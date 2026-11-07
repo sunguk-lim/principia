@@ -4332,6 +4332,75 @@
         "expectation": "Supplies the steady-state mean occupancy and residence interpretation.",
         "measurement": "Requires aligned populations, time windows and units."
       }
+    },
+    "candidate-response-synthesis": {
+      "objective": "Candidate response synthesis constructs one constraint-consistent answer from several proposals rather than merely selecting or concatenating their text.",
+      "prerequisiteReasons": {
+        "multi-agent-orchestration": "Defines the proposal/evidence handoff and coordination boundary.",
+        "agent-verification-loop": "Defines external acceptance and repair of the constructed answer."
+      }
+    },
+    "expert-choice-routing": {
+      "objective": "Expert-choice routing lets each expert select a capacity-bounded set of tokens, fixing expert assignment counts while allowing unequal expert coverage per token.",
+      "prerequisiteReasons": {
+        "mixture-of-experts": "Supplies expert evaluation, scores and weighted output combination."
+      }
+    },
+    "adaptive-expert-count-routing": {
+      "objective": "Adaptive expert-count routing changes how many real expert transformations a token receives under a declared gating rule and quality-resource contract.",
+      "prerequisiteReasons": {
+        "mixture-of-experts": "Defines gate scores, sparse expert execution and combination."
+      }
+    },
+    "balanced-expert-assignment": {
+      "objective": "Balanced token-expert assignment jointly chooses routes to maximize declared affinities under per-token and expert-load constraints.",
+      "prerequisiteReasons": {
+        "mixture-of-experts": "Supplies expert affinities and conditional transformations.",
+        "arithmetic": "Grounds score aggregation and the finite allocation example."
+      }
+    },
+    "hash-expert-routing": {
+      "objective": "Hash-based expert routing deterministically maps a declared token feature to experts without learning a context-dependent routing gate.",
+      "prerequisiteReasons": {
+        "mixture-of-experts": "Defines the expert transformations whose selection changes.",
+        "hash-map": "Defines a deterministic mapping and why observed input frequencies matter."
+      }
+    },
+    "soft-moe-slots": {
+      "objective": "Soft MoE forms expert inputs as weighted token mixtures and reconstructs token outputs from processed slots rather than dispatching individual tokens to discrete experts.",
+      "prerequisiteReasons": {
+        "mixture-of-experts": "Supplies independent expert transformations and sparse-compute context.",
+        "matrix-multiplication": "Grounds dispatch and reconstruction shapes and products."
+      }
+    },
+    "hardware-group-limited-routing": {
+      "objective": "Hardware-group-limited routing restricts each token to a bounded set of expert-placement groups before choosing experts, trading global affinity for communication locality.",
+      "prerequisiteReasons": {
+        "moe-routing": "Supplies sparse expert choice and load constraints.",
+        "expert-parallelism": "Explains why placement turns routes into communication."
+      }
+    },
+    "grouped-gemm": {
+      "objective": "Grouped matrix multiplication schedules several independently shaped matrix products in one grouped execution while preserving each product and its output identity.",
+      "prerequisiteReasons": {
+        "matrix-multiplication": "Defines each independent product and output shape.",
+        "cuda-thread-hierarchy": "Explains blocks, tiles and the execution resources shared by the group."
+      }
+    },
+    "request-token-budget": {
+      "objective": "A per-request token budget bounds admitted context and generated or iterative model work through externally enforced limits and explicit exhaustion outcomes.",
+      "prerequisiteReasons": {
+        "tool-call-execution-contract": "Defines application-owned dispatch validation and loop/effect authority.",
+        "multi-turn-token-accounting": "Supplies disjoint usage categories and cross-call accounting."
+      }
+    },
+    "inference-benchmark-protocol": {
+      "objective": "A reproducible inference benchmark binds model quality, workload, executable configuration and measurement boundaries so serving results can be compared and rerun.",
+      "prerequisiteReasons": {
+        "load-testing": "Defines controlled demand, open/closed workloads and saturation.",
+        "llm-serving-metric-triangulation": "Defines phase-aware serving signals and comparable request windows.",
+        "measurement": "Grounds units, observation boundaries and uncertainty."
+      }
     }
   }
 }

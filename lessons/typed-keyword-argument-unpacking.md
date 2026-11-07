@@ -29,6 +29,10 @@ A value with a wider schema may be compatible with a narrower TypedDict view whi
 
 Keyword collisions also matter: a name already bound by an ordinary parameter cannot independently denote the same keyword in the unpacked schema. A positional-only parameter has different binding semantics. Keep these distinctions in conformance tests for the supported checker and language versions.
 
+## Boundary to preserve
+
+For dependency passing, a mapping may hold an already-created store and clock while one constructor accepts only store. Project the accepted fields instead of blindly forwarding extra keys. Accepting arbitrary ignored keywords can hide mistakes. A checker can reject missing or mistyped dependencies, but cannot prove that resources are open, authorized or correctly closed. Construction, lifetime and test doubles remain application responsibilities.
+
 ## Check your understanding
 
 Does a passing type check validate untrusted JSON at runtime? No. Parse and validate external values separately, and test both checker diagnostics and actual call behavior. Typed unpacking improves a static interface; it is not authorization, conversion or runtime schema enforcement.

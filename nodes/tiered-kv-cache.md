@@ -8,7 +8,7 @@ prereqs: [kv-cache, prefix-caching, memory-hierarchy]
 sources: [https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache, https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md]
 status: explained
 created: 2026-10-06
-updated: 2026-11-01
+updated: 2026-11-08
 ---
 
 # Tiered KV Cache
@@ -38,6 +38,14 @@ A storage tier can spread compatible cache blocks across devices and fetch sever
 Consider four equal 128 MiB blocks fetched on independent 2 GiB/s paths. Ignoring all overhead, each transfer takes 62.5 ms and concurrent completion also takes 62.5 ms. If their common network path sustains only 4 GiB/s in total, 512 MiB needs at least 125 ms instead. A slow device or queue adds further delay. Aggregate device peak rates are therefore not the end-to-end restore rate.
 
 Layerwise prefetch can overlap the next layer's transfer with current work, but the layer must wait for all state it reads and staging buffers must remain valid until consumption completes. Measure cold and warm restoration under contention, stragglers, worker loss and fallback recomputation. DeepInfer describes shared persistent cache and staged transfer as a system design; its deployment numbers are not general performance guarantees.
+
+## Inactive-prefix eviction versus active history
+
+Evicting an unreferenced reusable prefix entry changes future hit rate; a later request can recompute it. Discarding attention history still required by a running request is different: exact full-history decoding must restore or recompute that state before its next read. Replacing full attention with a window or selective history is a model/approximation contract, not merely cache housekeeping.
+
+For an original block example, cached prefix P has no active users, while block Q is referenced by two live requests. Reclaiming P loses a reuse opportunity. Reclaiming Q without a valid handoff or recomputation path corrupts both requests' expected state. Reference ownership and an atomic pin/release protocol must agree with the scheduler; a stale zero-reference observation is not permission to free a block acquired concurrently. Offloading Q can be valid only when reads wait for restoration and buffers remain valid through consumption.
+
+Test memory pressure, concurrent lookup and eviction, cancellation, worker loss and restored-versus-recomputed outputs under the numerical contract. Measure misses, recomputation, transfer cost and quality separately. A runtime's supported eviction option must be interpreted against that runtime's active-state ownership rules, not assumed to safely discard arbitrary old tokens.
 
 ## Prerequisites
 

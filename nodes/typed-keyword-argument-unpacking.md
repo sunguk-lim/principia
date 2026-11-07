@@ -8,7 +8,7 @@ prereqs: [typed-dict]
 sources: ["https://peps.python.org/pep-0692/"]
 status: explained
 created: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-08
 ---
 
 # Typed Keyword-Argument Unpacking
@@ -45,6 +45,14 @@ Keyword collisions also matter: a name already bound by an ordinary parameter ca
 ## Check your understanding
 
 Does a passing type check validate untrusted JSON at runtime? No. Parse and validate external values separately, and test both checker diagnostics and actual call behavior. Typed unpacking improves a static interface; it is not authorization, conversion or runtime schema enforcement.
+
+## Typed dependency passing
+
+A typed keyword mapping can carry already-created dependencies to constructors. The application still owns construction, lifetime and teardown; a TypedDict is neither a dependency resolver nor a runtime access-control system. This is an application of the callable contract, not a reason to make every resource accept arbitrary keywords.
+
+For an original example, let a dependency mapping contain `store` and `clock`, while `Report` accepts only `store` and `Audit` accepts both. Construct `Report(store=deps["store"])` and `Audit(store=deps["store"], clock=deps["clock"])`. Explicit projection preserves the receiving contracts. Blind `Report(**deps)` sends an unexpected `clock` and can fail at runtime even when a narrower static view hides that extra key. Adding `**ignored` can avoid the runtime exception but may also hide misspellings and unintended coupling; it is a deliberate broader interface, not automatic type safety.
+
+A test can supply a fake store and deterministic clock without global lookup, while production construction supplies live objects. Static checking can catch a missing required dependency or wrong value type; it cannot prove that a database connection is open, correctly authorized or closed at the right time. Test both checker diagnostics and runtime construction, and keep object lifecycle explicit. PEP 692 grounds keyword names, value types and forwarding restrictions rather than endorsing a particular dependency-injection framework.
 
 ## Prerequisites
 

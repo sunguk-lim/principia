@@ -18,6 +18,10 @@ For a hypothetical 2 GiB prefix, a restore path sustaining 8 GiB/s needs at leas
 
 Parallel storage reads do not bypass a shared bottleneck. Four 128 MiB blocks each read at 2 GiB/s could finish in 62.5 ms on independent paths; a common 4 GiB/s link raises the aggregate transfer floor to 125 ms. Queueing and stragglers add delay. Layerwise prefetch only hides transfer when required state arrives before use and staging lifetimes are correct. Measure the complete restore path, not the sum of device peak bandwidths.
 
+## Boundary to preserve
+
+Evicting an unreferenced reusable prefix loses a future hit. Removing state still needed by an active request instead requires restoration or recomputation before its next read; dropping history changes the model's computation unless an explicit approximation permits it. If two live requests reference one block, freeing it based on stale ownership can break both. Test concurrent pin/release, eviction and cancellation, not only hit rates.
+
 ## Check your understanding
 
 **Question:** Why is a cache hit not always a latency win?

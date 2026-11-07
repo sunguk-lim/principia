@@ -6641,13 +6641,6 @@
       "reason": "Why we need it: protection as a physical fact is supporting explanation for the canonical User Mode vs Kernel Mode objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-bfdecbffe2804fdef4ec",
-      "sourceId": "moe-routing",
-      "contentHash": "775fc6ad26569e7ff3232458361e60c4a751260060d1251b7032c9f36c013b7d",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical MoE Routing objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-c032fcd163f9be4c8d42",
       "sourceId": "glibc-wrapper",
       "contentHash": "ad902365b386e7195b007604b16da59f71a63ce45f9c8121a29ea116de1500f5",
@@ -14823,6 +14816,335 @@
       "contentHash": "fad2393966c84f1ea7f215125b6f1126facd17e8f5ff808b85a138d14b1078cd",
       "decision": "retain",
       "reason": "Adaptive model-and-effort routing selects a model and inference budget per request using expected quality, latency, cost, and switching penalties rather than one fixed model. Error and fallback transitions preserve eligibility in the existing model-and-effort policy. They are not a new model or router identity."
+    },
+    {
+      "candidateKey": "cand-8285c3a5a5d63929576f",
+      "sourceId": "expert-choice-routing",
+      "contentHash": "68751ed9bf57ed764178ef6d3f3ffc3ec96d1f2c2994388b6a06236bab7fdd78",
+      "decision": "retain",
+      "reason": "Expert-choice routing lets each expert select a capacity-bounded set of tokens, fixing expert assignment counts while allowing unequal expert coverage per token. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-0ac9adb82ba740bdc01d",
+      "sourceId": "expert-choice-routing",
+      "contentHash": "661120047d09e4621d7b64c3ed91e484dbb88bdad25e164960b235bc13f859b6",
+      "decision": "retain",
+      "reason": "Expert-choice routing lets each expert select a capacity-bounded set of tokens, fixing expert assignment counts while allowing unequal expert coverage per token. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-72dbf95c58d3bf52dc26",
+      "sourceId": "expert-choice-routing",
+      "contentHash": "c6787f0b7632e6b0d7f1366b98d868b3a0a683aec9d755175c574ae14faf2ec3",
+      "decision": "retain",
+      "reason": "Expert-choice routing lets each expert select a capacity-bounded set of tokens, fixing expert assignment counts while allowing unequal expert coverage per token. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-1ff3c25ea03ce3aac46e",
+      "sourceId": "expert-choice-routing",
+      "contentHash": "3c646b48da0c5cc94705b975c330c8c0ebe79ad42f2e2a3ac23001b1bb7bdec2",
+      "decision": "retain",
+      "reason": "Expert-choice routing lets each expert select a capacity-bounded set of tokens, fixing expert assignment counts while allowing unequal expert coverage per token. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-ee7fe8e581733408c00d",
+      "sourceId": "inference-benchmark-protocol",
+      "contentHash": "5e289801492c40d628c610b9697093f3a5773de113eddce748940659d62eb9da",
+      "decision": "retain",
+      "reason": "A reproducible inference benchmark binds model quality, workload, executable configuration and measurement boundaries so serving results can be compared and rerun. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-6dd5460770a16ca39dba",
+      "sourceId": "inference-benchmark-protocol",
+      "contentHash": "47056a08f944b003f282e70b2de5b4b839506ce1a281124d810be69baf34559f",
+      "decision": "retain",
+      "reason": "A reproducible inference benchmark binds model quality, workload, executable configuration and measurement boundaries so serving results can be compared and rerun. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-d742fb4674fa498ab0be",
+      "sourceId": "inference-benchmark-protocol",
+      "contentHash": "fab216a3088a8a306f039ad6857b7f456743c28cbbbcd595b7db2231d7e31f94",
+      "decision": "retain",
+      "reason": "A reproducible inference benchmark binds model quality, workload, executable configuration and measurement boundaries so serving results can be compared and rerun. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-0bcad7481d89f724e6ec",
+      "sourceId": "inference-benchmark-protocol",
+      "contentHash": "6d091263e17ad61f91a04ef739e9fbab07823f71f5333d3fcab46de2db363ec0",
+      "decision": "retain",
+      "reason": "A reproducible inference benchmark binds model quality, workload, executable configuration and measurement boundaries so serving results can be compared and rerun. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-439b8fdab82e48edaf55",
+      "sourceId": "hash-expert-routing",
+      "contentHash": "7691408464e506358cd1bbe1c7ba58018923a17a59b39797c35859eadb9b02b8",
+      "decision": "retain",
+      "reason": "Hash-based expert routing deterministically maps a declared token feature to experts without learning a context-dependent routing gate. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-c5cd465bc8a0ed38559d",
+      "sourceId": "hash-expert-routing",
+      "contentHash": "1e50b329bdafeca901928434b2c60f64da7be923049d24402d2bf6e0fcd73479",
+      "decision": "retain",
+      "reason": "Hash-based expert routing deterministically maps a declared token feature to experts without learning a context-dependent routing gate. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-069a5086d46e95f84daf",
+      "sourceId": "hash-expert-routing",
+      "contentHash": "1c5074a8990d34db1acb2d03413da0b9136c2178a7401abebb0424930c42d1c7",
+      "decision": "retain",
+      "reason": "Hash-based expert routing deterministically maps a declared token feature to experts without learning a context-dependent routing gate. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-0ee5bd0e36beee408ce0",
+      "sourceId": "hash-expert-routing",
+      "contentHash": "8f6235e717951bd5435c3a65432cef6219941413f1942f185cd777695baa7cda",
+      "decision": "retain",
+      "reason": "Hash-based expert routing deterministically maps a declared token feature to experts without learning a context-dependent routing gate. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-4b6b2a638163d27588a6",
+      "sourceId": "hardware-group-limited-routing",
+      "contentHash": "e7aa93ddd34278ef312cc96ad3b3151215f5b4253907fef267c9887e027a63af",
+      "decision": "retain",
+      "reason": "Hardware-group-limited routing restricts each token to a bounded set of expert-placement groups before choosing experts, trading global affinity for communication locality. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-07ae1523e34d27f14f67",
+      "sourceId": "hardware-group-limited-routing",
+      "contentHash": "17cb57e5beed3c464ab649e699e8664a999ba623218d100367d340b30301ed56",
+      "decision": "retain",
+      "reason": "Hardware-group-limited routing restricts each token to a bounded set of expert-placement groups before choosing experts, trading global affinity for communication locality. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-ad256c67947f4079e5ac",
+      "sourceId": "hardware-group-limited-routing",
+      "contentHash": "00e1f64021ba1bf8fa8f4c50e38356d9b022a81c2d8a49f24b029eb09d25dd82",
+      "decision": "retain",
+      "reason": "Hardware-group-limited routing restricts each token to a bounded set of expert-placement groups before choosing experts, trading global affinity for communication locality. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-e5b088c79615a329fff2",
+      "sourceId": "hardware-group-limited-routing",
+      "contentHash": "2f034aa4d9a28220528f789aac6c2e5db3351d7abfe31078027479fdf636482d",
+      "decision": "retain",
+      "reason": "Hardware-group-limited routing restricts each token to a bounded set of expert-placement groups before choosing experts, trading global affinity for communication locality. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-ef7ffa74a9c1e4bcef79",
+      "sourceId": "tiered-kv-cache",
+      "contentHash": "7e5152e43186a170dde6357daeea2e5594b9fcb83a6ac7cb0815ed6fd4a85923",
+      "decision": "retain",
+      "reason": "A tiered KV cache moves reusable attention state from scarce GPU memory to slower CPU or storage tiers, trading recomputation against transfer latency and working-set size. Correctness boundary of cache retention/restoration: unreferenced reusable blocks differ from active required state. It is part of the canonical tiered-cache objective, not a new attention algorithm."
+    },
+    {
+      "candidateKey": "cand-1914323b5a9cce50847f",
+      "sourceId": "request-token-budget",
+      "contentHash": "a5c267e8b8ea9357370f0fa9ae2515fc7921459d49fa847c3af8a90d301e54e8",
+      "decision": "retain",
+      "reason": "A per-request token budget bounds admitted context and generated or iterative model work through externally enforced limits and explicit exhaustion outcomes. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-502a4e36884b0d21aa2d",
+      "sourceId": "request-token-budget",
+      "contentHash": "f100472a75997428388276094b730ef532514d9f379401fdae761c09fe0ec488",
+      "decision": "retain",
+      "reason": "A per-request token budget bounds admitted context and generated or iterative model work through externally enforced limits and explicit exhaustion outcomes. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-9d088cb254407a09b33d",
+      "sourceId": "request-token-budget",
+      "contentHash": "5bdc020fafef550cff3334720512a2f61f5c4e275d9421f536976575d569658b",
+      "decision": "retain",
+      "reason": "A per-request token budget bounds admitted context and generated or iterative model work through externally enforced limits and explicit exhaustion outcomes. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-1ef6c11ef06fbb388c15",
+      "sourceId": "request-token-budget",
+      "contentHash": "0267eeb55cb0d30e9ea15a30d2c7799745d391c94513ad202fb067a67ddb6cb1",
+      "decision": "retain",
+      "reason": "A per-request token budget bounds admitted context and generated or iterative model work through externally enforced limits and explicit exhaustion outcomes. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-6048a5940370b7bcbb5b",
+      "sourceId": "adaptive-expert-count-routing",
+      "contentHash": "2e2f50e30f06912e6d0666de7edac3b3fae1ea15a7d8632627496fbdb3825a9b",
+      "decision": "retain",
+      "reason": "Adaptive expert-count routing changes how many real expert transformations a token receives under a declared gating rule and quality-resource contract. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-d39b10d01e54af4348b0",
+      "sourceId": "adaptive-expert-count-routing",
+      "contentHash": "c7e72b1734e13f503eef8da9a476831383f50781164d8f15db8909857d710231",
+      "decision": "retain",
+      "reason": "Adaptive expert-count routing changes how many real expert transformations a token receives under a declared gating rule and quality-resource contract. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-876fc537becdd8ad9b15",
+      "sourceId": "adaptive-expert-count-routing",
+      "contentHash": "2241039c8cb7d871cc43f6c45de79dd83198f18af1bab96e21694e64ea134e06",
+      "decision": "retain",
+      "reason": "Adaptive expert-count routing changes how many real expert transformations a token receives under a declared gating rule and quality-resource contract. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-f7a070b441f22c841d6a",
+      "sourceId": "adaptive-expert-count-routing",
+      "contentHash": "28185f1b8c5f98e62d0974479a3cb53c4fd9b952caed41160434513ffd536515",
+      "decision": "retain",
+      "reason": "Adaptive expert-count routing changes how many real expert transformations a token receives under a declared gating rule and quality-resource contract. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-210012cabf849bd6e8bd",
+      "sourceId": "candidate-response-synthesis",
+      "contentHash": "19a819af6dcd8c456daffa1069fb1dc6603d45f65805611625c02ffe0bf40f95",
+      "decision": "retain",
+      "reason": "Candidate response synthesis constructs one constraint-consistent answer from several proposals rather than merely selecting or concatenating their text. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-44072e6f99ada92fb9b5",
+      "sourceId": "candidate-response-synthesis",
+      "contentHash": "bfac0998c48e5e95236cc93d7085d3668c61b8066bf6fe3f36b48bae94fbacb2",
+      "decision": "retain",
+      "reason": "Candidate response synthesis constructs one constraint-consistent answer from several proposals rather than merely selecting or concatenating their text. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-33cf8a6db9e32964eff2",
+      "sourceId": "candidate-response-synthesis",
+      "contentHash": "de3164c6d8fada4c954baa6158a2d196de1f049607dc9fb730612ee2a0e8b1e6",
+      "decision": "retain",
+      "reason": "Candidate response synthesis constructs one constraint-consistent answer from several proposals rather than merely selecting or concatenating their text. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-caed3c5481520b868470",
+      "sourceId": "candidate-response-synthesis",
+      "contentHash": "b1c98c38e2810465305cbf1fa882e3a02352983fc6911d12470dc05b2e690520",
+      "decision": "retain",
+      "reason": "Candidate response synthesis constructs one constraint-consistent answer from several proposals rather than merely selecting or concatenating their text. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-f80edbd2ba21b566084d",
+      "sourceId": "grouped-gemm",
+      "contentHash": "402db4464e8bf20562f9f6b85514f85dbbf0c736893eaec94672014a1dd17320",
+      "decision": "retain",
+      "reason": "Grouped matrix multiplication schedules several independently shaped matrix products in one grouped execution while preserving each product and its output identity. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-56434aa13c7261db5181",
+      "sourceId": "grouped-gemm",
+      "contentHash": "33596da4ecbe147568b80f750a7c0a738df5553103606f3438fc0617f5daafdf",
+      "decision": "retain",
+      "reason": "Grouped matrix multiplication schedules several independently shaped matrix products in one grouped execution while preserving each product and its output identity. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-1d94a786b035a2956866",
+      "sourceId": "grouped-gemm",
+      "contentHash": "a16c7ad9245438ef79ef95ef2856807c1c652250c6c84c41d2363a12fa74bd2a",
+      "decision": "retain",
+      "reason": "Grouped matrix multiplication schedules several independently shaped matrix products in one grouped execution while preserving each product and its output identity. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-84d28b3a36b1357ad80a",
+      "sourceId": "grouped-gemm",
+      "contentHash": "1663b57fb6619efe52039837f58fc1ee8a984df3c6bd3640237f970ff69e1464",
+      "decision": "retain",
+      "reason": "Grouped matrix multiplication schedules several independently shaped matrix products in one grouped execution while preserving each product and its output identity. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-84bf2f1a35a98321c70d",
+      "sourceId": "moe-routing",
+      "contentHash": "515afc4480b3fb0e814a024af7f1e31dbe230fa7344a6147048e04611415bc02",
+      "decision": "retain",
+      "reason": "MoE routing defines token-to-expert assignments, output weights and capacity handling; token-choice top-k is one routing family rather than a universal contract. Retains the canonical explanation and corrects its scope; none of these paragraphs independently changes identity."
+    },
+    {
+      "candidateKey": "cand-2af813d310653a3fef94",
+      "sourceId": "moe-routing",
+      "contentHash": "cfc23884d137e899bcaab5673b647ed724196f5507515c3397915055ec1e6feb",
+      "decision": "retain",
+      "reason": "MoE routing defines token-to-expert assignments, output weights and capacity handling; token-choice top-k is one routing family rather than a universal contract. Defines the selection/mixing contract inside canonical MoE routing. Distinct alternative routing mechanisms are independently authored nodes, not conflated with this example."
+    },
+    {
+      "candidateKey": "cand-eff362018752423db1e0",
+      "sourceId": "moe-routing",
+      "contentHash": "6b13456b0fb7718b92a2d4f9e1dbb9f4cacf9774667528bde28435447596f8a5",
+      "decision": "retain",
+      "reason": "MoE routing defines token-to-expert assignments, output weights and capacity handling; token-choice top-k is one routing family rather than a universal contract. Defines router assignment capacity and alternative overflow policies as parts of the same routing contract; no generic claim that dropping is required or low-cost is retained."
+    },
+    {
+      "candidateKey": "cand-bece974a486c38552d59",
+      "sourceId": "moe-routing",
+      "contentHash": "9b6890b8606606dc30b511491216ba61185dc33093cb73277cf416665c111885",
+      "decision": "retain",
+      "reason": "MoE routing defines token-to-expert assignments, output weights and capacity handling; token-choice top-k is one routing family rather than a universal contract. Verification of the routing contract, not an independent algorithm."
+    },
+    {
+      "candidateKey": "cand-147b0231ff827de0cd98",
+      "sourceId": "soft-moe-slots",
+      "contentHash": "39ec75fac82fdbab58a12575f34bd27a0ea3be067bd135226964ee7fb04efd1d",
+      "decision": "retain",
+      "reason": "Soft MoE forms expert inputs as weighted token mixtures and reconstructs token outputs from processed slots rather than dispatching individual tokens to discrete experts. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-3ba99e7fdf9ac6c075f2",
+      "sourceId": "soft-moe-slots",
+      "contentHash": "97c4b552ae6788ac736a0861f14f20d3362961dd31e49dfdcde8ca36d10442cf",
+      "decision": "retain",
+      "reason": "Soft MoE forms expert inputs as weighted token mixtures and reconstructs token outputs from processed slots rather than dispatching individual tokens to discrete experts. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-d84ae958480ff43210bf",
+      "sourceId": "soft-moe-slots",
+      "contentHash": "653f769a6c517717deeea743f3c174ace7cf6459799ef6d8c2e6eb4be494c513",
+      "decision": "retain",
+      "reason": "Soft MoE forms expert inputs as weighted token mixtures and reconstructs token outputs from processed slots rather than dispatching individual tokens to discrete experts. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-d41cc0dd4caa2a4a9165",
+      "sourceId": "soft-moe-slots",
+      "contentHash": "977909f2069b64038925802a73a51a85e549ab83c0daae904c27dda4610b58a1",
+      "decision": "retain",
+      "reason": "Soft MoE forms expert inputs as weighted token mixtures and reconstructs token outputs from processed slots rather than dispatching individual tokens to discrete experts. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-f9906daeb96ed437fbca",
+      "sourceId": "balanced-expert-assignment",
+      "contentHash": "846f20c8036fb0a0106680047d5e583aa71592d03caf2d07b8c8ee7774d6fcda",
+      "decision": "retain",
+      "reason": "Balanced token-expert assignment jointly chooses routes to maximize declared affinities under per-token and expert-load constraints. Defines this canonical objective and scope, not another synonymous entity."
+    },
+    {
+      "candidateKey": "cand-71f605e238883347665f",
+      "sourceId": "balanced-expert-assignment",
+      "contentHash": "3bde06cd63a56f53200b919dcdec46cfa5276ac08d7b62eb8455f611c47e8f24",
+      "decision": "retain",
+      "reason": "Balanced token-expert assignment jointly chooses routes to maximize declared affinities under per-token and expert-load constraints. Explains this objective through reviewed prerequisites and a precise operational contract."
+    },
+    {
+      "candidateKey": "cand-378a91e5be22c33a764e",
+      "sourceId": "balanced-expert-assignment",
+      "contentHash": "90675c96ef14007e26f15e5d774bdafbbf4330a9aa0b00c41e187ed90c54e4be",
+      "decision": "retain",
+      "reason": "Balanced token-expert assignment jointly chooses routes to maximize declared affinities under per-token and expert-load constraints. An original numeric or process instance tests the same objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-bd6a6a8e7c96748c4f95",
+      "sourceId": "balanced-expert-assignment",
+      "contentHash": "bddea2b455d89adb23b7237d5e33749b4e04ea31955ff12b69b150e700d7c276",
+      "decision": "retain",
+      "reason": "Balanced token-expert assignment jointly chooses routes to maximize declared affinities under per-token and expert-load constraints. Tests boundaries and validation of this same objective; no new entity is inferred from a caution."
+    },
+    {
+      "candidateKey": "cand-ee9cbcfa24039f0a132b",
+      "sourceId": "typed-keyword-argument-unpacking",
+      "contentHash": "2fe24ff670ed7d17fb21760a8ca3d0aee4f9bb1651338518e7180b05a20fa690",
+      "decision": "retain",
+      "reason": "Typed keyword-argument unpacking uses Unpack with a TypedDict to statically check keyword names, per-key value types and required presence without changing Python runtime calling semantics. A concrete application of keyword names, value types and forwarding to constructed resources; no new automatic resolver or lifecycle engine is claimed."
+    },
+    {
+      "candidateKey": "cand-5c780884b419b59a4c88",
+      "sourceId": "multi-agent-scaling-evaluation",
+      "contentHash": "69dabbff1cf5db3e2c8c4056f5d708ae4133c6530f2d6175b2aef6d386a4360a",
+      "decision": "retain",
+      "reason": "Multi-agent scaling evaluation measures how team size changes verified task outcomes and total resources before selecting a budget-feasible collaboration policy. Adds fixed-pool and realizable-versus-oracle comparisons to the canonical team-scaling evaluation. Candidate construction itself is the separately authored candidate-response-synthesis node."
     }
   ]
 }

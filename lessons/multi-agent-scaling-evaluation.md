@@ -16,6 +16,10 @@ Use development tasks to choose a configuration under explicit quality and cost 
 
 For 200 invented validation tasks, 1 worker resolves 140 for $20, 4 workers resolve 160 for $45, and 8 resolve 162 for $80. The first expansion costs $25 for 20 additional successes; the second costs $35 for two. A $50 budget excludes the largest team. The four-worker result still needs comparison with a stronger or longer-running single-worker system at the same total budget.
 
+## Boundary to preserve
+
+Hold candidate sets fixed to isolate aggregation. Compare a realizable selector with synthesis and a diagnostic oracle that sees the best candidate using hidden truth. The oracle bounds selection, not a newly constructed answer. On 100 invented tasks, oracle selection succeeds on 80, a real selector on 65, and synthesis on 72: gain over the real selector is seven points, not a guaranteed synthesis benefit. Preserve paired per-task improvements and regressions, then compare complete systems at equal budgets.
+
 ## Check your understanding
 
 Does a flattening curve prove that agents cannot collaborate? **No.** It describes a particular task and policy. Poor diversity, selection or communication may be the bottleneck; diagnose them before generalizing.

@@ -5,10 +5,10 @@ summary: Multi-agent scaling evaluation measures how team size changes verified 
 type: concept
 tags: [ml/agents]
 prereqs: [multi-agent-orchestration, quality-cost-model-selection, agent-task-cost]
-sources: [https://www.anthropic.com/engineering/multi-agent-research-system, https://arxiv.org/abs/2408.03314]
+sources: [https://www.anthropic.com/engineering/multi-agent-research-system, https://arxiv.org/abs/2408.03314, https://arxiv.org/abs/2406.04692]
 status: explained
 created: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-08
 ---
 
 # Multi-Agent Scaling Evaluation
@@ -33,6 +33,14 @@ If the budget is $50, the eight-worker configuration is infeasible regardless of
 
 Shared models and evidence can create correlated errors. A weak selector may discard the one correct candidate; communication can duplicate research or spread an early false premise. Inspect disagreement, evidence coverage, message paths and selector errors. Ablate worker count, communication rounds and proposal diversity separately. Provider engineering reports motivate these mechanisms but their benchmark gains do not establish a universal scaling law. Never infer that a longer serial chain is always worse than every parallel topology.
 
+## Separate selection error from synthesis gain
+
+Hold the candidate pool fixed when evaluating an aggregator. Compare a deployable selector, direct synthesis and a diagnostic oracle that selects the best candidate using unavailable ground truth. The oracle is a ceiling for selection from that pool, not a production baseline or a ceiling for newly constructed answers. Attribute lost quality separately to absence of a good candidate, failure to select one, and damage introduced during synthesis.
+
+For an invented 100-task pool, at least one correct candidate exists on 80 tasks. A real selector succeeds on 65; a synthesizer succeeds on 72. Its measured gain over that selector is seven percentage points, while it remains eight points below the pool's oracle-selection result. It may nevertheless solve some tasks with no individually correct candidate by combining compatible partial work. Preserve paired per-task outcomes: aggregate subtraction alone cannot tell whether synthesis fixed ten tasks and broke three or fixed thirty and broke twenty-three.
+
+Use fixed candidate sets to isolate aggregation, then compare the complete generation-plus-selection/synthesis policies at equal total budgets. Track constraint violations, discarded counterevidence, unsupported new claims and cost. Claim-to-source tracing diagnoses loss, but lexical novelty is not the objective: copying a verified correct candidate can be optimal. The Mixture-of-Agents primary paper motivates response-conditioned synthesis without proving universal gains.
+
 ## Prerequisites
 
 - [[multi-agent-orchestration]]
@@ -43,3 +51,5 @@ Shared models and evidence can create correlated errors. A weak selector may dis
 
 - <https://www.anthropic.com/engineering/multi-agent-research-system>
 - <https://arxiv.org/abs/2408.03314>
+
+- <https://arxiv.org/abs/2406.04692>

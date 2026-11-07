@@ -17,4 +17,3 @@ Tokens A and B each need one expert. Experts X and Y each have quota one. Affini
 ## Check your understanding
 
 Does maximum total affinity prove minimum runtime? No. Expert shape, placement and data movement still affect elapsed time. Measure matching overhead, feasibility, score loss relative to unconstrained choices, quality, dispatch and slowest-expert time. Tiny causal decode groups may offer too little flexibility to balance; using future tokens would violate autoregressive semantics. Compare with simpler capacity handling and learned balancing under the same grouping and work budget.
-

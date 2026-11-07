@@ -17,4 +17,3 @@ Suppose an original scheduling problem requires completing jobs A and B under a 
 ## Check your understanding
 
 Is high copying necessarily a bad synthesis? No. An existing correct proof or tested implementation may need no rewrite. Compare direct selection, a deployable verifier or reranker, and synthesis on identical candidate pools. Track correctness, constraint violations, evidence survival, destructive revisions, tokens and latency. An oracle selecting the best candidate with hidden answers is a diagnostic ceiling for selection, not an available production policy. Synthesis can sometimes exceed that ceiling because it creates a new answer, but improvement must be demonstrated independently.
-

@@ -17,4 +17,3 @@ Use a toy rule expert_id = token_id modulo three. Token IDs [4,4,4,5,6] map to e
 ## Check your understanding
 
 Does removing the learned gate eliminate load imbalance? No. Frequent tokens, feature choice and shifted traffic still matter. Measure per-expert assignment counts, skew, quality by token/domain, overflow and complete execution time. Separate routing-computation savings from memory and communication costs. Compare fixed mappings and learned selection with matched expert architecture and active work. If using frequency-aware mapping or multiple hash destinations, state that additional mechanism rather than attributing it to hashing alone. Deterministic routing also does not guarantee bit-identical full-model outputs across kernels or batches.
-

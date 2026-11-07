@@ -17,4 +17,3 @@ Suppose six experts live as pairs on nodes A, B and C. Their scores for one toke
 ## Check your understanding
 
 Does a one-group limit prove lower end-to-end latency? No. It may worsen within-group skew, exclude useful experts or leave tiny expert batches. Profile routing, dispatch, local expert compute and combine under the real topology. Check model quality, destinations, network bytes and slowest-rank time. A training-time locality rule and a post-training serving retrofit are different interventions; a checkpoint is not guaranteed to tolerate arbitrary new group restrictions.
-

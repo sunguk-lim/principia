@@ -17,4 +17,3 @@ Two hypothetical experts have token-row counts three and one. Both multiply two 
 ## Check your understanding
 
 Does grouping ensure a speedup? No. Tiny groups, scheduling overhead, skewed reductions or an already-efficient baseline can erase the benefit. Validate results against independent products with the required precision, then measure launch gaps, tile occupancy, metadata setup and full application latency. In an MoE path, grouped expert compute does not remove token dispatch or combine communication. Supported shapes, dtypes and layouts are implementation-specific; verify the chosen kernel rather than inferring support from the mathematical interface.
-

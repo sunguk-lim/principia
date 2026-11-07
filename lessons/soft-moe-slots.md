@@ -17,4 +17,3 @@ Take two scalar token representations X=[2,8]. Two slots use token weights [.75,
 ## Check your understanding
 
 Can this unmasked operation be dropped unchanged into a causal decoder? No. A slot containing a later token can reveal it to an earlier output. The primary Soft MoE paper focuses on visual recognition and explicitly identifies autoregressive decoding as a limitation requiring careful causal design. Expert memory also remains even when slot compute is bounded. Validate weight axes, shapes, causal visibility, quality, memory and full-path runtime; reported vision results are not general decoder-serving guarantees.
-

@@ -17,4 +17,3 @@ For an invented cumulative-mass policy with threshold .8, probabilities [.85,.10
 ## Check your understanding
 
 Does a diffuse gate prove that an input is difficult? No. Gate confidence describes the router, not an independently calibrated task-difficulty score. More active experts can change output quality, batch sizes, imbalance and synchronization. Compare with fixed-k under the same data, model adaptation and quality target; measure actual expert calls, overflow, end-to-end latency and memory. Retrofitting variable compute into a checkpoint trained for fixed routing can change its learned function. Sparse operation counts are not a measured serving speedup.
-

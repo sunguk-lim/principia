@@ -17,4 +17,3 @@ Suppose two invented runs each complete 100 requests in ten seconds: ten request
 ## Check your understanding
 
 Does publishing an exact command make the result reproducible? Only partly. Missing checkpoints, data, dependencies, hardware configuration or measurement scope can still prevent meaningful repetition. Repeat runs, quantify variation and compare changed configurations on a held-out workload rather than tuning on the final report. Primary vLLM benchmarking interfaces and MLCommons inference implementations exemplify explicit workloads and measurements; neither supplies a universal hardware capacity guarantee. The accepted outcome is quality and latency under the stated load, not a context-free leaderboard number.
-

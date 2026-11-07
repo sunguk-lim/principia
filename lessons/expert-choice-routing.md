@@ -17,4 +17,3 @@ Three tokens A, B and C have two expert-affinity columns. Expert one scores them
 ## Check your understanding
 
 Does expert balance imply every token is processed equally? No. Inspect uncovered and multiply selected tokens as well as expert load. The primary paper's limitations explicitly note that its top-token selection uses past and future tokens, complicating autoregressive generation, and that very small serving batches need a different treatment. Do not apply a training-time token-group selector unchanged to a causal decoder or silently let one request influence another's computation. Compare quality, capacity, latency and coverage under an explicit grouping and causal contract.
-

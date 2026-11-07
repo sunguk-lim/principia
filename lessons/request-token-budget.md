@@ -17,4 +17,3 @@ An invented request permits at most 3,000 generated tokens across all model call
 ## Check your understanding
 
 Does a limit stop always mean task completion? No. Preserve a truncation or budget-exhausted outcome and incomplete artifacts. A retry that merely reopens the full allowance can defeat the cap and amplify costs. Test exact boundaries, unknown usage after connection loss, parallel reservations, repeated tool calls and supported reasoning accounting. Compare success, truncation, latency and total cost over the same tasks. A documented provider field or recursion limit is one enforcement mechanism, not proof of a complete cross-call budget controller.
-

@@ -174,7 +174,7 @@
         "Flash Attention",
         "FlashAttention"
       ],
-      "objective": "Explain why tiling and online normalization avoid storing the full attention matrix.",
+      "objective": "Explain how tiled online normalization avoids a full attention score matrix, while distinguishing mathematical equivalence from numerical and workload-specific performance guarantees.",
       "prerequisiteReasons": {
         "transformer-attention": "Defines the attention computation whose result the tiled algorithm preserves.",
         "online-softmax": "Explains how partial normalizers and weighted outputs combine across tiles."
@@ -4400,6 +4400,110 @@
         "load-testing": "Defines controlled demand, open/closed workloads and saturation.",
         "llm-serving-metric-triangulation": "Defines phase-aware serving signals and comparable request windows.",
         "measurement": "Grounds units, observation boundaries and uncertainty."
+      }
+    },
+    "task-underspecification": {
+      "objective": "Task underspecification leaves outcome-relevant choices open, allowing incompatible solutions to satisfy the same stated brief.",
+      "prerequisiteReasons": {
+        "ml-task-specification": "Defines the decisions and outcomes whose omissions matter."
+      }
+    },
+    "evaluation-oracle-availability": {
+      "objective": "Evaluation oracle availability describes which independent signals can distinguish acceptable outcomes from plausible but incorrect ones, with explicit coverage and cost limits.",
+      "prerequisiteReasons": {
+        "execution-benchmark-validity": "Defines the validity and coverage limits of executable grading.",
+        "agent-verification-loop": "Defines the action taken after evidence is checked."
+      }
+    },
+    "research-agent-capability-evaluation": {
+      "objective": "Research-agent capability evaluation separates ideation, study design, implementation and realized outcomes while controlling how much expert guidance the agent receives.",
+      "prerequisiteReasons": {
+        "task-underspecification": "Identifies design decisions supplied by the benchmark versus left open.",
+        "evaluation-oracle-availability": "Separates reference checks, methodological checks and expert judgments.",
+        "paired-benchmark-uncertainty": "Grounds matched comparisons and their uncertainty."
+      }
+    },
+    "versioned-inference-configuration": {
+      "objective": "Versioned inference configuration preserves the effective model, prompt, parameters, tools and routing rules as a reviewable artifact distinct from mutable preset names.",
+      "prerequisiteReasons": {
+        "model-alias-pinning": "Explains mutable names versus resolved model identity.",
+        "repository-agent-instructions": "Grounds persistent expert instructions and their enforcement limits."
+      }
+    },
+    "research-design-checkpoint": {
+      "objective": "A research design checkpoint reviews the question, hypotheses, data and analysis contract before execution can turn flawed assumptions into polished results.",
+      "prerequisiteReasons": {
+        "agent-plan-artifact": "Makes proposed decisions reviewable before execution.",
+        "hypothesis-testing": "Explains selection and confirmatory-evidence boundaries.",
+        "ml-task-specification": "Connects the study to a declared objective and population."
+      }
+    },
+    "gpu-recomputation-tradeoff": {
+      "objective": "GPU recomputation trades repeated arithmetic for reduced storage or transfer of intermediates, and wins runtime only when the avoided memory cost exceeds added work and execution overhead.",
+      "prerequisiteReasons": {
+        "roofline-model": "Relates operations and bytes to conditional throughput bounds.",
+        "activation-checkpointing": "Provides the training-graph instance and semantic constraints."
+      }
+    },
+    "gpu-kernel-benchmarking": {
+      "objective": "GPU kernel benchmarking measures a fixed operation and correctness contract under explicit shapes, timing boundaries and execution state rather than extrapolating a best-case speedup.",
+      "prerequisiteReasons": {
+        "measurement": "Defines timing units, repetition and comparison scope.",
+        "cuda-stream": "Explains asynchronous dispatch versus completion.",
+        "roofline-model": "Provides conditional compute/traffic bottleneck reasoning."
+      }
+    },
+    "adaptive-validation-overfitting": {
+      "objective": "Adaptive validation overfitting occurs when repeated selection decisions exploit noise in a reused validation set, making its score optimistic for the chosen procedure.",
+      "prerequisiteReasons": {
+        "cross-validation": "Provides fitting, selection and outer-evaluation boundaries.",
+        "variance": "Explains finite-sample criterion noise that repeated selection can exploit."
+      }
+    },
+    "winner-selection-bias": {
+      "objective": "Winner selection bias is the optimism produced by choosing a candidate partly because its measured outcome received favorable noise.",
+      "prerequisiteReasons": {
+        "variance": "Defines variation and noise before conditioning on selection.",
+        "measurement": "Distinguishes underlying performance from its observed estimate.",
+        "hypothesis-testing": "Grounds prespecified versus selected comparisons."
+      }
+    },
+    "multi-seed-model-comparison": {
+      "objective": "Multi-seed model comparison estimates how a training intervention changes outcomes across prespecified random conditions rather than reporting the luckiest run.",
+      "prerequisiteReasons": {
+        "paired-benchmark-uncertainty": "Provides matched-difference analysis and dependence limits."
+      }
+    },
+    "multi-fidelity-model-selection": {
+      "objective": "Multi-fidelity model selection allocates different training resources to candidates while treating early performance as an imperfect predictor of the target-budget objective.",
+      "prerequisiteReasons": {
+        "adaptive-validation-overfitting": "Prevents resource screening from being mistaken for independent evaluation.",
+        "optimizer-time-to-quality": "Distinguishes early convergence from the actual quality/resource objective."
+      }
+    },
+    "evaluation-harness-isolation": {
+      "objective": "Evaluation harness isolation keeps editable candidate code from modifying or reading protected grading logic, hidden answers and score aggregation through externally enforced boundaries.",
+      "prerequisiteReasons": {
+        "sandboxed-code-execution": "Supplies an externally enforced visibility and effect boundary.",
+        "execution-benchmark-validity": "Defines the scoring instrument whose correctness must also hold."
+      }
+    },
+    "typed-dict-extra-items": {
+      "objective": "TypedDict extra-item contracts distinguish open structural schemas, closed key sets and explicitly typed additional keys without adding runtime data validation.",
+      "prerequisiteReasons": {
+        "typed-dict": "Defines structural key-dependent dictionary schemas and runtime limits."
+      }
+    },
+    "typed-dict-readonly": {
+      "objective": "Read-only TypedDict items remove rebinding and deletion authority through a typed view without freezing the dictionary or objects stored inside it.",
+      "prerequisiteReasons": {
+        "typed-dict": "Defines the schema, mutation and requiredness rules being refined."
+      }
+    },
+    "usage-selection-bias": {
+      "objective": "Usage-observation selection bias arises when platform participation and traffic mix determine which activity is visible, so observed volume cannot identify general model quality or adoption.",
+      "prerequisiteReasons": {
+        "evaluation-slices": "Separates workload and cohort mixtures hidden by aggregates."
       }
     }
   }

@@ -1725,13 +1725,6 @@
       "reason": "Variance — expected squared deviation is supporting explanation for the canonical Expectation objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-3183d78e6c28cfa55a91",
-      "sourceId": "flash-attention",
-      "contentHash": "1ef392b37874fcd9cfba5d463219e213765dab209ac1cecffdaa506a65277e34",
-      "decision": "retain",
-      "reason": "The IO consequence explains why FlashAttention matters; it is not a standalone objective in this source."
-    },
-    {
       "candidateKey": "cand-319f6565e14efd1358e0",
       "sourceId": "nearest-neighbor-search",
       "contentHash": "8a1bfa20a87703e955cf69d454e45f59d5245ad218a2c3ac92e623496a4592a8",
@@ -4208,13 +4201,6 @@
       "contentHash": "1865db3c3a31ad096282e4007e967429653e7fd5e930b4eb4da2ce4170cfdf29",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Shared Memory objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-788201426d5e6eb9c668",
-      "sourceId": "flash-attention",
-      "contentHash": "ec1e23c56311e389fe3e0e4fa12e1a5faf5fe78db3dd7025e435d85a45ec0ec8",
-      "decision": "retain",
-      "reason": "This is the parent FlashAttention explanation, not a child entity."
     },
     {
       "candidateKey": "cand-78bb735ab9e1a72d02c3",
@@ -15145,6 +15131,447 @@
       "contentHash": "69dabbff1cf5db3e2c8c4056f5d708ae4133c6530f2d6175b2aef6d386a4360a",
       "decision": "retain",
       "reason": "Multi-agent scaling evaluation measures how team size changes verified task outcomes and total resources before selecting a budget-feasible collaboration policy. Adds fixed-pool and realizable-versus-oracle comparisons to the canonical team-scaling evaluation. Candidate construction itself is the separately authored candidate-response-synthesis node."
+    },
+    {
+      "candidateKey": "cand-1ef9e9026520b197d41a",
+      "sourceId": "research-design-checkpoint",
+      "contentHash": "23cb45aaf89ec9ba16c63a912f31d31d406b134dec016c898c1a589c67701c9b",
+      "decision": "retain",
+      "reason": "A research design checkpoint reviews the question, hypotheses, data and analysis contract before execution can turn flawed assumptions into polished results. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-3d7d46564bc889f13ef4",
+      "sourceId": "research-design-checkpoint",
+      "contentHash": "c87653a2861b3d253f7aec7cd0c43cfa5c462da635be538533da06fe096bd57f",
+      "decision": "retain",
+      "reason": "A research design checkpoint reviews the question, hypotheses, data and analysis contract before execution can turn flawed assumptions into polished results. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-17770dd4367b139df9ba",
+      "sourceId": "research-design-checkpoint",
+      "contentHash": "b16ae79e7c4896a91c00e842f4be9b7ab5d68a7d543ece64d375dac8e6474878",
+      "decision": "retain",
+      "reason": "A research design checkpoint reviews the question, hypotheses, data and analysis contract before execution can turn flawed assumptions into polished results. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-8a3560c4b8e2b2ea9759",
+      "sourceId": "research-design-checkpoint",
+      "contentHash": "5e52817a6bab44e3b33cf63620036cd42a65d6a7a13c66c025f8c97b69fda713",
+      "decision": "retain",
+      "reason": "A research design checkpoint reviews the question, hypotheses, data and analysis contract before execution can turn flawed assumptions into polished results. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-816caff7539e3b29d254",
+      "sourceId": "usage-selection-bias",
+      "contentHash": "954ec47ba36a92610a8a6160f042f251d57070355b56378b411ce14ae858b354",
+      "decision": "retain",
+      "reason": "Usage-observation selection bias arises when platform participation and traffic mix determine which activity is visible, so observed volume cannot identify general model quality or adoption. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-8e0ebc99a02d5cd1da25",
+      "sourceId": "usage-selection-bias",
+      "contentHash": "2d9bf25f007771de846f00f2e98a1e9964a0b1da3e82c0b36a3283ba7f7d17e0",
+      "decision": "retain",
+      "reason": "Usage-observation selection bias arises when platform participation and traffic mix determine which activity is visible, so observed volume cannot identify general model quality or adoption. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-65ca7cb91aa4cdeefc40",
+      "sourceId": "usage-selection-bias",
+      "contentHash": "4086d11a417fe6731a5cde1fd49bd0e38d1ebd93f169eca3758cb19b315d2f7d",
+      "decision": "retain",
+      "reason": "Usage-observation selection bias arises when platform participation and traffic mix determine which activity is visible, so observed volume cannot identify general model quality or adoption. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-bd5220145b7fad3f5ce2",
+      "sourceId": "usage-selection-bias",
+      "contentHash": "cfaf1bfd2f3f1321f1c1e6e47bab0be4d04ffa4b89f7b1f12e1b21d4bf3e25ab",
+      "decision": "retain",
+      "reason": "Usage-observation selection bias arises when platform participation and traffic mix determine which activity is visible, so observed volume cannot identify general model quality or adoption. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-25657cce904392cb846d",
+      "sourceId": "winner-selection-bias",
+      "contentHash": "2d00b36b88e8a16628c8730500166952208a1ef612c54735e472057374f88249",
+      "decision": "retain",
+      "reason": "Winner selection bias is the optimism produced by choosing a candidate partly because its measured outcome received favorable noise. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-9bdd8d85e48daea4f569",
+      "sourceId": "winner-selection-bias",
+      "contentHash": "84789e5b94347d18f020915ef3fc3115ae73a317a128e9dae896f0acd8ca6006",
+      "decision": "retain",
+      "reason": "Winner selection bias is the optimism produced by choosing a candidate partly because its measured outcome received favorable noise. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-6f02fff7724c8e525f37",
+      "sourceId": "winner-selection-bias",
+      "contentHash": "27dd6d586f24a022ee0878e3bc851864776b7ca337ddc4bb06ca14c753cbf2fa",
+      "decision": "retain",
+      "reason": "Winner selection bias is the optimism produced by choosing a candidate partly because its measured outcome received favorable noise. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-55d2637866e4cd435048",
+      "sourceId": "winner-selection-bias",
+      "contentHash": "c225dc509c787bc7782d9752b7766453837703cff29a969bc9c67dc0e895b839",
+      "decision": "retain",
+      "reason": "Winner selection bias is the optimism produced by choosing a candidate partly because its measured outcome received favorable noise. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-a28889780d0587912f91",
+      "sourceId": "versioned-inference-configuration",
+      "contentHash": "36e99f532e7aecc36b0ba7d2a9160958abec357adeb4e1753051c97ca47510a6",
+      "decision": "retain",
+      "reason": "Versioned inference configuration preserves the effective model, prompt, parameters, tools and routing rules as a reviewable artifact distinct from mutable preset names. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-37fd89fff2c8533cc51e",
+      "sourceId": "versioned-inference-configuration",
+      "contentHash": "e23cefebf4a21f36d1783b46629b086821a8298e8f58edc7af61857c86b4e3b4",
+      "decision": "retain",
+      "reason": "Versioned inference configuration preserves the effective model, prompt, parameters, tools and routing rules as a reviewable artifact distinct from mutable preset names. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-0dd09833a589787ee97e",
+      "sourceId": "versioned-inference-configuration",
+      "contentHash": "1dc18274a5dc2f9cf942f53af77fff519b084a7a98fb4a7dc19b72765a9dde8f",
+      "decision": "retain",
+      "reason": "Versioned inference configuration preserves the effective model, prompt, parameters, tools and routing rules as a reviewable artifact distinct from mutable preset names. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-55c0361ff7693e882867",
+      "sourceId": "versioned-inference-configuration",
+      "contentHash": "71b6f34a141c1e77c02e959afd58350f8d24a8812b661921102d3409c2a861c6",
+      "decision": "retain",
+      "reason": "Versioned inference configuration preserves the effective model, prompt, parameters, tools and routing rules as a reviewable artifact distinct from mutable preset names. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-1c512d79dbf4b27b9590",
+      "sourceId": "multi-seed-model-comparison",
+      "contentHash": "de6b35e5b05cb4b924824623a4b68af581f8b2c40e7c846d01e7f0e73dad68a0",
+      "decision": "retain",
+      "reason": "Multi-seed model comparison estimates how a training intervention changes outcomes across prespecified random conditions rather than reporting the luckiest run. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-db61f2ce3fd6afddd8df",
+      "sourceId": "multi-seed-model-comparison",
+      "contentHash": "1b8b144b7937749bef9cc252e25dd6c64a6c7578c1ee1c81ee5b351276f7522f",
+      "decision": "retain",
+      "reason": "Multi-seed model comparison estimates how a training intervention changes outcomes across prespecified random conditions rather than reporting the luckiest run. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-fbc48f4a874c7760b334",
+      "sourceId": "multi-seed-model-comparison",
+      "contentHash": "7b59f4b465d0c55e09eefc9cb9ddd56538b91d1939d65173c469ead4160b760d",
+      "decision": "retain",
+      "reason": "Multi-seed model comparison estimates how a training intervention changes outcomes across prespecified random conditions rather than reporting the luckiest run. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-b27409665659655e5810",
+      "sourceId": "multi-seed-model-comparison",
+      "contentHash": "d077b32071f1504939863c16ae3709a53e5cae9bc28cb0759db16be59c53b7cd",
+      "decision": "retain",
+      "reason": "Multi-seed model comparison estimates how a training intervention changes outcomes across prespecified random conditions rather than reporting the luckiest run. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-82d9d588942f6fb16409",
+      "sourceId": "adaptive-validation-overfitting",
+      "contentHash": "8c85ba3f0974c698366cfd056a7961d6e72234468c99a94245520571d6ad0ece",
+      "decision": "retain",
+      "reason": "Adaptive validation overfitting occurs when repeated selection decisions exploit noise in a reused validation set, making its score optimistic for the chosen procedure. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-5ea7d9d57ade9a0ab59f",
+      "sourceId": "adaptive-validation-overfitting",
+      "contentHash": "3b538e6c152236edec973321da751d888c61a16980f38d85ea0266c90e8bdb1c",
+      "decision": "retain",
+      "reason": "Adaptive validation overfitting occurs when repeated selection decisions exploit noise in a reused validation set, making its score optimistic for the chosen procedure. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-10a92896e23545faf1e1",
+      "sourceId": "adaptive-validation-overfitting",
+      "contentHash": "8f3491dcfc1e9c73d4833c5c41c064a68b9bf3641eb09a70d3cc55a6a5d2373e",
+      "decision": "retain",
+      "reason": "Adaptive validation overfitting occurs when repeated selection decisions exploit noise in a reused validation set, making its score optimistic for the chosen procedure. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-dc8e083184504132dcd6",
+      "sourceId": "adaptive-validation-overfitting",
+      "contentHash": "2d5b763ccd9d93c48725a66ed62626737f3cc40ed68e348aa4f8ff9d6bbf7cf9",
+      "decision": "retain",
+      "reason": "Adaptive validation overfitting occurs when repeated selection decisions exploit noise in a reused validation set, making its score optimistic for the chosen procedure. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-6f79d141a777816bab46",
+      "sourceId": "gpu-recomputation-tradeoff",
+      "contentHash": "8eb3a83784ca60222933b89b7cefdef2209814b71dacc71d79af79af90a57454",
+      "decision": "retain",
+      "reason": "GPU recomputation trades repeated arithmetic for reduced storage or transfer of intermediates, and wins runtime only when the avoided memory cost exceeds added work and execution overhead. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-d83b06021c2e8565e2a1",
+      "sourceId": "gpu-recomputation-tradeoff",
+      "contentHash": "fa839f3680e6b78dbc687099ecaecce129b3eeaf7c2918d1bd502591199cce87",
+      "decision": "retain",
+      "reason": "GPU recomputation trades repeated arithmetic for reduced storage or transfer of intermediates, and wins runtime only when the avoided memory cost exceeds added work and execution overhead. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-1fe0398e334bf88d6cf7",
+      "sourceId": "gpu-recomputation-tradeoff",
+      "contentHash": "6a8cce93ff90954a0848d023e99b2e9a2f4e05e4ce72120eb83b47b0617ec7e7",
+      "decision": "retain",
+      "reason": "GPU recomputation trades repeated arithmetic for reduced storage or transfer of intermediates, and wins runtime only when the avoided memory cost exceeds added work and execution overhead. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-abc8ed7fa7fa9fdb1946",
+      "sourceId": "gpu-recomputation-tradeoff",
+      "contentHash": "f167f15eb13106ba11df339c5069a9b6de65e1e2a7d3d870388f79753b7bcc00",
+      "decision": "retain",
+      "reason": "GPU recomputation trades repeated arithmetic for reduced storage or transfer of intermediates, and wins runtime only when the avoided memory cost exceeds added work and execution overhead. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-48f7c31425dca5a24f92",
+      "sourceId": "task-underspecification",
+      "contentHash": "c45bc82f645e1024d3b94ae643ee8c93e39a7edbc2582f701f304b20f521b66a",
+      "decision": "retain",
+      "reason": "Task underspecification leaves outcome-relevant choices open, allowing incompatible solutions to satisfy the same stated brief. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-e764675901c61ae95bcb",
+      "sourceId": "task-underspecification",
+      "contentHash": "a913acecc1f8ae9cc59b2c031c36a20f64e49f819958e86f000e6800e90b6246",
+      "decision": "retain",
+      "reason": "Task underspecification leaves outcome-relevant choices open, allowing incompatible solutions to satisfy the same stated brief. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-919a07b7088a01b591f1",
+      "sourceId": "task-underspecification",
+      "contentHash": "c84e7cb8c8f15617a9f93ca1e48d31bb8c836a2df1478c30805cbbf9b3ad39a4",
+      "decision": "retain",
+      "reason": "Task underspecification leaves outcome-relevant choices open, allowing incompatible solutions to satisfy the same stated brief. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-13d37abe82b46e9b61e7",
+      "sourceId": "task-underspecification",
+      "contentHash": "ca369f5680f9949eb4f7cabea675503b3896b54a9bc4624b26a74cb0c75dbf5f",
+      "decision": "retain",
+      "reason": "Task underspecification leaves outcome-relevant choices open, allowing incompatible solutions to satisfy the same stated brief. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-f1a18e6014b710808f6b",
+      "sourceId": "research-agent-capability-evaluation",
+      "contentHash": "91110cfd3fd5ff3b076ae9792b798da43483431c93916debe1e06bbe78b6a6a2",
+      "decision": "retain",
+      "reason": "Research-agent capability evaluation separates ideation, study design, implementation and realized outcomes while controlling how much expert guidance the agent receives. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-0fb4408f32ddef350437",
+      "sourceId": "research-agent-capability-evaluation",
+      "contentHash": "1672c4b64283b58c916828f462aef51fc5cb229fbb8ef79b5f5a7ccd721856bd",
+      "decision": "retain",
+      "reason": "Research-agent capability evaluation separates ideation, study design, implementation and realized outcomes while controlling how much expert guidance the agent receives. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-39d16070d0d0bdc9f6f4",
+      "sourceId": "research-agent-capability-evaluation",
+      "contentHash": "a976ec73d710d685aecaa4b267bed88bc60cec9c5eeb82f41c5ce11ec5c6ad55",
+      "decision": "retain",
+      "reason": "Research-agent capability evaluation separates ideation, study design, implementation and realized outcomes while controlling how much expert guidance the agent receives. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-d3c323454ea2ab45260b",
+      "sourceId": "research-agent-capability-evaluation",
+      "contentHash": "1ae4d8042734c2cdf1b72c504df878599b41aaba47bce530bb318fe31d9b0240",
+      "decision": "retain",
+      "reason": "Research-agent capability evaluation separates ideation, study design, implementation and realized outcomes while controlling how much expert guidance the agent receives. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-98f9ab4e141463254e41",
+      "sourceId": "typed-dict-extra-items",
+      "contentHash": "2cf3969512f50d8a934772a358b120d9e1f4686f16eb87dcfa26c3f5b7ad8f08",
+      "decision": "retain",
+      "reason": "TypedDict extra-item contracts distinguish open structural schemas, closed key sets and explicitly typed additional keys without adding runtime data validation. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-683976410d171132256b",
+      "sourceId": "typed-dict-extra-items",
+      "contentHash": "f5cf3cdca93354ca8066df9f915041ec811b873d2eec4a41715d98b6ea5df727",
+      "decision": "retain",
+      "reason": "TypedDict extra-item contracts distinguish open structural schemas, closed key sets and explicitly typed additional keys without adding runtime data validation. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-b437c51d54591280c099",
+      "sourceId": "typed-dict-extra-items",
+      "contentHash": "28dddf67edb29e516174df470bb6c823c7e69c4652aa120bbc70c7a782d8bd58",
+      "decision": "retain",
+      "reason": "TypedDict extra-item contracts distinguish open structural schemas, closed key sets and explicitly typed additional keys without adding runtime data validation. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-6a82f73438ac1e4482f7",
+      "sourceId": "typed-dict-extra-items",
+      "contentHash": "2254af3f182e56a780fb4783537eca5a380e1ee67f3fa8c4ecde9f13448f1afc",
+      "decision": "retain",
+      "reason": "TypedDict extra-item contracts distinguish open structural schemas, closed key sets and explicitly typed additional keys without adding runtime data validation. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-49613b23d951cf8002c0",
+      "sourceId": "multi-fidelity-model-selection",
+      "contentHash": "2f5f52ee520dbebe038f10f54d55bb98becafc76c23e5f9f0dd5d9423fafa116",
+      "decision": "retain",
+      "reason": "Multi-fidelity model selection allocates different training resources to candidates while treating early performance as an imperfect predictor of the target-budget objective. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-380725580c32affe83ae",
+      "sourceId": "multi-fidelity-model-selection",
+      "contentHash": "fde9592d4a0b9ffdc8590f0233be135be5da28187876c184b547987e0e3bb8bc",
+      "decision": "retain",
+      "reason": "Multi-fidelity model selection allocates different training resources to candidates while treating early performance as an imperfect predictor of the target-budget objective. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-269ea98043f85678492d",
+      "sourceId": "multi-fidelity-model-selection",
+      "contentHash": "56791051c54cc57b3dd5dd84a0c73a0209bc909cd071d4941bb9440abe402e6e",
+      "decision": "retain",
+      "reason": "Multi-fidelity model selection allocates different training resources to candidates while treating early performance as an imperfect predictor of the target-budget objective. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-130666a5471eacfa0c87",
+      "sourceId": "multi-fidelity-model-selection",
+      "contentHash": "df542ae923d3bce46012fd1d08a682d84b5340389b67fc567542c9025c38509d",
+      "decision": "retain",
+      "reason": "Multi-fidelity model selection allocates different training resources to candidates while treating early performance as an imperfect predictor of the target-budget objective. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-cbce749c9e25e37f9868",
+      "sourceId": "evaluation-harness-isolation",
+      "contentHash": "92f56fc3776df4604700c4cdb5a627a33dd3d98b2440288adcbf00514fb6855e",
+      "decision": "retain",
+      "reason": "Evaluation harness isolation keeps editable candidate code from modifying or reading protected grading logic, hidden answers and score aggregation through externally enforced boundaries. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-4824b360279fd7143af5",
+      "sourceId": "evaluation-harness-isolation",
+      "contentHash": "52fc3399b25dd81e53b2bf23f3a8a7c44235875408aa60998fe809302b8797cf",
+      "decision": "retain",
+      "reason": "Evaluation harness isolation keeps editable candidate code from modifying or reading protected grading logic, hidden answers and score aggregation through externally enforced boundaries. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-e70454ef63ae20b78b5d",
+      "sourceId": "evaluation-harness-isolation",
+      "contentHash": "211cd0720461301ec92edbec6fb5d8ac06ce7b1ac14e9d3a046c40c48f477e9f",
+      "decision": "retain",
+      "reason": "Evaluation harness isolation keeps editable candidate code from modifying or reading protected grading logic, hidden answers and score aggregation through externally enforced boundaries. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-0c3f4157b1097b6a7db2",
+      "sourceId": "evaluation-harness-isolation",
+      "contentHash": "d7de6fbb9122f3e74c64117b3dea09f5e0fd81bd018cc3b3d44596ebb3485685",
+      "decision": "retain",
+      "reason": "Evaluation harness isolation keeps editable candidate code from modifying or reading protected grading logic, hidden answers and score aggregation through externally enforced boundaries. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-bb30729a0e334f1b62c4",
+      "sourceId": "evaluation-oracle-availability",
+      "contentHash": "338f9ac2c0298c20ff65a33acfad58eab79bc72f7190bb555f63da5a026ff709",
+      "decision": "retain",
+      "reason": "Evaluation oracle availability describes which independent signals can distinguish acceptable outcomes from plausible but incorrect ones, with explicit coverage and cost limits. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-241d64aff4b1a2440454",
+      "sourceId": "evaluation-oracle-availability",
+      "contentHash": "83197eb35915a6cbd6154cd237f685f0ee25ac4b75818896cbf6a12c48d35705",
+      "decision": "retain",
+      "reason": "Evaluation oracle availability describes which independent signals can distinguish acceptable outcomes from plausible but incorrect ones, with explicit coverage and cost limits. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-0878fbb0643f854dc981",
+      "sourceId": "evaluation-oracle-availability",
+      "contentHash": "04fc309e7fbb989420049ec6cd244e91a455f8c0a3179c82ffbbed9dde6f2a14",
+      "decision": "retain",
+      "reason": "Evaluation oracle availability describes which independent signals can distinguish acceptable outcomes from plausible but incorrect ones, with explicit coverage and cost limits. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-1ac2c4864390367c5e10",
+      "sourceId": "evaluation-oracle-availability",
+      "contentHash": "ef0705afd857dce9de509927ef4bc33b62ec638ef7fc7f0f1a0b1e631d279234",
+      "decision": "retain",
+      "reason": "Evaluation oracle availability describes which independent signals can distinguish acceptable outcomes from plausible but incorrect ones, with explicit coverage and cost limits. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-29df8907882ebaaa706d",
+      "sourceId": "flash-attention",
+      "contentHash": "f079256f96b4f6defc97ce9481ca449de79cf930be80c11a4a1785a55ca0d414",
+      "decision": "retain",
+      "reason": "FlashAttention computes mathematically equivalent dense attention using tiled online normalization to avoid the full score matrix and reduce memory traffic under workload-dependent performance limits. Retains the IO-aware exact-attention mechanism while qualifying mathematical equivalence and traffic-dominated regimes."
+    },
+    {
+      "candidateKey": "cand-253d603cb14cc4c8a8d4",
+      "sourceId": "flash-attention",
+      "contentHash": "ed66e2668931ad5f4cde12a740004207555c1aea3752a64f2130434ae70d5125",
+      "decision": "retain",
+      "reason": "FlashAttention computes mathematically equivalent dense attention using tiled online normalization to avoid the full score matrix and reduce memory traffic under workload-dependent performance limits. Explains the same algorithm at its GPU storage boundary without asserting universal linear traffic or bitwise equality."
+    },
+    {
+      "candidateKey": "cand-a813199b0230bddeb345",
+      "sourceId": "flash-attention",
+      "contentHash": "60d3d4b22246922dca8902edca46c6efb48b3f608d8e785730839f7f112bc499",
+      "decision": "retain",
+      "reason": "FlashAttention computes mathematically equivalent dense attention using tiled online normalization to avoid the full score matrix and reduce memory traffic under workload-dependent performance limits. Qualifies this exact-attention implementation with workload, precision, forward/backward and timing boundaries; general recomputation and kernel benchmarking are separately authored concepts, not conflated here."
+    },
+    {
+      "candidateKey": "cand-a36ec73ac15abab4338c",
+      "sourceId": "typed-dict-readonly",
+      "contentHash": "028450e21bab74d14bdfe3c9f801a3b34fc8d813abb09b71644e19130b34babe",
+      "decision": "retain",
+      "reason": "Read-only TypedDict items remove rebinding and deletion authority through a typed view without freezing the dictionary or objects stored inside it. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-55572891c9671077193c",
+      "sourceId": "typed-dict-readonly",
+      "contentHash": "323d2ca1697e6e87e75294b2a523ddb3e4181b1c2b63160abc311baa97f8ab80",
+      "decision": "retain",
+      "reason": "Read-only TypedDict items remove rebinding and deletion authority through a typed view without freezing the dictionary or objects stored inside it. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-a9f7b03d5526e6fcda4d",
+      "sourceId": "typed-dict-readonly",
+      "contentHash": "2712030c3f8d56768d1175223cb295990eb8c3271371d75507be1704ccc3210d",
+      "decision": "retain",
+      "reason": "Read-only TypedDict items remove rebinding and deletion authority through a typed view without freezing the dictionary or objects stored inside it. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-5332ea8cbd58c49055f6",
+      "sourceId": "typed-dict-readonly",
+      "contentHash": "89e5b22e5ed9952d08955efb4f29573f5bd99918c8612827500e285f6369c3cb",
+      "decision": "retain",
+      "reason": "Read-only TypedDict items remove rebinding and deletion authority through a typed view without freezing the dictionary or objects stored inside it. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-af4a47d457438cf1ea02",
+      "sourceId": "gpu-kernel-benchmarking",
+      "contentHash": "604ad30d8b41a07e87c60859e3ec9610a1703d71585955e25e4677c649482082",
+      "decision": "retain",
+      "reason": "GPU kernel benchmarking measures a fixed operation and correctness contract under explicit shapes, timing boundaries and execution state rather than extrapolating a best-case speedup. Defines this canonical learning objective, not a second entity."
+    },
+    {
+      "candidateKey": "cand-ebd25b4bdb7fd69171dd",
+      "sourceId": "gpu-kernel-benchmarking",
+      "contentHash": "8ed01f91d4fb5f58a4ba338e0ba525ada838f543b85d2218f9daa3c65cecbef0",
+      "decision": "retain",
+      "reason": "GPU kernel benchmarking measures a fixed operation and correctness contract under explicit shapes, timing boundaries and execution state rather than extrapolating a best-case speedup. Explains the canonical mechanism using reviewed prerequisites; supporting steps and limitations do not define another independent objective."
+    },
+    {
+      "candidateKey": "cand-077aa31c38ececd837a4",
+      "sourceId": "gpu-kernel-benchmarking",
+      "contentHash": "6b2a8e34c56d2b10b960fa5461706f3d1f5a066264934dc8837c73e307194633",
+      "decision": "retain",
+      "reason": "GPU kernel benchmarking measures a fixed operation and correctness contract under explicit shapes, timing boundaries and execution state rather than extrapolating a best-case speedup. An original worked instance demonstrates this same objective; its numbers and process are not a separate entity."
+    },
+    {
+      "candidateKey": "cand-17142ab42a9ee6c721b8",
+      "sourceId": "gpu-kernel-benchmarking",
+      "contentHash": "f6448f0067c5155c065b28e0e796ed576a21115d9b3ef08d02cf6a0319b588dc",
+      "decision": "retain",
+      "reason": "GPU kernel benchmarking measures a fixed operation and correctness contract under explicit shapes, timing boundaries and execution state rather than extrapolating a best-case speedup. Tests the same mechanism and its boundaries rather than introducing a new method."
     }
   ]
 }

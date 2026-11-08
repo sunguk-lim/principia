@@ -1,21 +1,21 @@
 ---
 id: flash-attention
 title: FlashAttention
-summary: FlashAttention computes the exact same output as ordinary transformer-attention, but reorganizes the work so a GPU moves far less data.
+summary: FlashAttention computes mathematically equivalent dense attention using tiled online normalization to avoid the full score matrix and reduce memory traffic under workload-dependent performance limits.
 type: concept
 tags: [ml/llm/architecture]
 prereqs: [transformer-attention, online-softmax]
-sources: ["FlashAttention (Dao et al., 2022), arXiv:2205.14135"]
+sources: [https://arxiv.org/abs/2205.14135]
 status: explained
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-11-09
 ---
 
 # FlashAttention
 
 ## Summary
 
-FlashAttention computes the **exact same** output as ordinary [[transformer-attention]], but
+FlashAttention computes mathematically equivalent attention, subject to floating-point rounding, as ordinary [[transformer-attention]], but
 reorganizes the work so a GPU moves far less data. The naive method builds the whole $n \times n$
 matrix of attention scores in memory; FlashAttention instead **streams** the keys and values in small
 **tiles** and keeps a tiny **running summary**, so it never stores the full score matrix. The trick
@@ -31,7 +31,7 @@ where $S_j = q\cdot k_j/\sqrt{d}$ is the **score** of that query (vector $q$) ag
 $k_j$), there are $n$ keys, and $V_j$ is key $j$'s **value vector**. So the output is a **weighted
 average of the value vectors**, the weights coming from [[softmax]] over the scores. The naive route
 computes all $n$ scores, softmaxes them, then multiplies by $V$ — it needs the whole score row at once,
-and on a GPU the dominant cost is *moving* that data, not the arithmetic.
+and in traffic-limited regimes the dominant cost can be *moving* that data rather than arithmetic. The balance depends on shapes, precision, implementation and GPU; not all attention workloads are memory-bound.
 
 FlashAttention reaches the identical answer while looking at only a few keys at a time. Three ideas:
 
@@ -70,13 +70,17 @@ yet the whole score row never existed at once.
 - *Final* $O/\ell = 44.4 / 1.20 = 36.9$ — identical to a one-shot softmax over all four keys.
 
 **Why it matters.** A GPU has a small, fast on-chip memory (**SRAM**) and a large, slow off-chip memory
-(**HBM**); the bottleneck is traffic between them. The naive method writes and reads the full
+(**HBM**); traffic between them can be a bottleneck. The naive method writes and reads the full
 $n \times n$ score matrix in HBM — $O(n^2)$ traffic. FlashAttention keeps only the current tile plus the
 small summary $(m, \ell, O)$ in SRAM and never writes the full score matrix. Total memory traffic
 depends on tile sizes, head dimension, and SRAM capacity; it is not universally linear. (In
 full, both inputs are tiled: an outer loop over blocks of queries wraps an inner loop that streams the
 key/value tiles.) The output is mathematically equivalent to [[transformer-attention]], subject to floating-point rounding; only *where* the
 computation happens and *how* [[softmax]] is staged change.
+
+## Performance boundaries
+
+The IO-aware algorithm avoids materializing the full score matrix; it does not guarantee one speedup for every shape or attention version. Extra arithmetic can be worthwhile when it avoids more expensive transfers, while occupancy, synchronization and compute throughput can dominate elsewhere. Benchmark fixed masks, shapes, dtypes and hardware, with warmup, device-completion timing and numerical checks. Separate kernel speedup from full-model latency and training from inference. The original paper's backward algorithm recomputes attention intermediates instead of storing the full matrix; do not infer that every implementation performs the same FLOP count. Mathematical equivalence is not bitwise equality.
 
 ## Prerequisites
 

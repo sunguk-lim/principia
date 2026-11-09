@@ -15572,6 +15572,391 @@
       "contentHash": "f6448f0067c5155c065b28e0e796ed576a21115d9b3ef08d02cf6a0319b588dc",
       "decision": "retain",
       "reason": "GPU kernel benchmarking measures a fixed operation and correctness contract under explicit shapes, timing boundaries and execution state rather than extrapolating a best-case speedup. Tests the same mechanism and its boundaries rather than introducing a new method."
+    },
+    {
+      "candidateKey": "cand-9be0563a7c48dc69deca",
+      "sourceId": "model-edit-evaluation",
+      "contentHash": "389439159e96b0c7574551f4c6d484d8b00df41621834ad36a3b99aa6efb0cfc",
+      "decision": "retain",
+      "reason": "Model-edit evaluation separates target efficacy, generalization, unrelated-behavior preservation and causal attribution under matched decoding and held-out interventions. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-b43b05fcb3b1317dba6c",
+      "sourceId": "model-edit-evaluation",
+      "contentHash": "4daab2b021f95b4967be1ee334138e3e2b576844b1fbe83f1b651e6451705065",
+      "decision": "retain",
+      "reason": "Model-edit evaluation separates target efficacy, generalization, unrelated-behavior preservation and causal attribution under matched decoding and held-out interventions. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-4e0691bab3125c1203f8",
+      "sourceId": "model-edit-evaluation",
+      "contentHash": "5d7ab9428cffe556cbf9ce89db333d35e5766aa249f14c10b2907a6c778064f6",
+      "decision": "retain",
+      "reason": "Model-edit evaluation separates target efficacy, generalization, unrelated-behavior preservation and causal attribution under matched decoding and held-out interventions. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-7838e4781aafa6df8844",
+      "sourceId": "model-edit-evaluation",
+      "contentHash": "5b1bf3cb3ba73123f30bf450d5d0d3e0c35c3a84f2a73895abd67fbaee8eb61a",
+      "decision": "retain",
+      "reason": "Model-edit evaluation separates target efficacy, generalization, unrelated-behavior preservation and causal attribution under matched decoding and held-out interventions. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-5b940f98aa7aa710b995",
+      "sourceId": "score-history-prompt-optimization",
+      "contentHash": "cac07aa32dfc430190322700828d88ee7d8584f4b979d1131b82d36b952492b6",
+      "decision": "retain",
+      "reason": "Score-history prompt optimization conditions a language-model proposal on previous candidate configurations and measured outcomes rather than using a derivative of the task score. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-72e7cfd687ee926db486",
+      "sourceId": "score-history-prompt-optimization",
+      "contentHash": "433f5b77627b4ae2f0bb3f6bb9b9b486d0d1f4f53c5725454f46801c7dfe64a7",
+      "decision": "retain",
+      "reason": "Score-history prompt optimization conditions a language-model proposal on previous candidate configurations and measured outcomes rather than using a derivative of the task score. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-5e7515a1d23914aa2419",
+      "sourceId": "score-history-prompt-optimization",
+      "contentHash": "090fdd8c2fbd308f6842cad3c2d28f7164f1d53ea140763ed51ee6a8df8fc6bf",
+      "decision": "retain",
+      "reason": "Score-history prompt optimization conditions a language-model proposal on previous candidate configurations and measured outcomes rather than using a derivative of the task score. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-b62810a1140c29fddd80",
+      "sourceId": "score-history-prompt-optimization",
+      "contentHash": "4bc11446e97c0319fe93cde4a69c01ed49d84e05200b93800326f86716d5a539",
+      "decision": "retain",
+      "reason": "Score-history prompt optimization conditions a language-model proposal on previous candidate configurations and measured outcomes rather than using a derivative of the task score. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-73b59c159d91dca57a7a",
+      "sourceId": "pareto-candidate-selection",
+      "contentHash": "f9780b400b802f64502934fc819d6c3791a8bcf3a2c89fc9239a0be68caed385",
+      "decision": "retain",
+      "reason": "Pareto candidate selection retains candidates not dominated across declared objectives while keeping frontier membership separate from a deployable final choice. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-030633ace15ad84dc4e5",
+      "sourceId": "pareto-candidate-selection",
+      "contentHash": "6c1292b5c76a6920cd63773ce397a0980e7b3c4e32a95202ad35eb912eccf346",
+      "decision": "retain",
+      "reason": "Pareto candidate selection retains candidates not dominated across declared objectives while keeping frontier membership separate from a deployable final choice. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-bce2e1dee0aeda7a9efa",
+      "sourceId": "pareto-candidate-selection",
+      "contentHash": "72282000152070a63e15bd987e308ce70471fa41b0c787abda4b1071403a7b8c",
+      "decision": "retain",
+      "reason": "Pareto candidate selection retains candidates not dominated across declared objectives while keeping frontier membership separate from a deployable final choice. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-42531aadfe109b2019b7",
+      "sourceId": "pareto-candidate-selection",
+      "contentHash": "b8e495ad60df24fb74794724e932ef3916f282f8644666c9ec596d937e6f3fca",
+      "decision": "retain",
+      "reason": "Pareto candidate selection retains candidates not dominated across declared objectives while keeping frontier membership separate from a deployable final choice. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-5b3de7e0e2a158216202",
+      "sourceId": "strided-sparse-attention",
+      "contentHash": "254909b0f5d2dea259d189212dbb7db2e7bc4c26a0b7af36087c74e56b6ccd6e",
+      "decision": "retain",
+      "reason": "Strided sparse attention combines short contiguous reads with periodic long-range reads so information can traverse distant positions through several sparse stages. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-0caca737b16be42583db",
+      "sourceId": "strided-sparse-attention",
+      "contentHash": "9a30f3074cdff99001cc524164cfee55f25087eba1d2d271b37dc60e0220dae3",
+      "decision": "retain",
+      "reason": "Strided sparse attention combines short contiguous reads with periodic long-range reads so information can traverse distant positions through several sparse stages. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-fab8146e11e2b4fc1b58",
+      "sourceId": "strided-sparse-attention",
+      "contentHash": "1abaf78fd5b61eb267c0b43dfcbe6027bd50319b91d620fd46310d97ac7c93f3",
+      "decision": "retain",
+      "reason": "Strided sparse attention combines short contiguous reads with periodic long-range reads so information can traverse distant positions through several sparse stages. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-c109a0bc64c2dd1ca0fe",
+      "sourceId": "strided-sparse-attention",
+      "contentHash": "8967d6c695f3860ed044f3a2595fabb7f2d96068d805f13b474298538eee2e30",
+      "decision": "retain",
+      "reason": "Strided sparse attention combines short contiguous reads with periodic long-range reads so information can traverse distant positions through several sparse stages. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-f3aec0b53251e2d1e035",
+      "sourceId": "parameter-patch-manifest",
+      "contentHash": "663d4b8618c76a5185f9c22339571e0e2aec96e696b9256b56ca8bb5557b8488",
+      "decision": "retain",
+      "reason": "A parameter-patch manifest binds a tensor intervention to an exact base checkpoint, ordered operations and verified loaded artifact so the change is reproducible and reversible. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-f30432494a366067e463",
+      "sourceId": "parameter-patch-manifest",
+      "contentHash": "1ef369e0c68823dc775abae954c61b74609118fa96aa527ff4c26b6bad14cb2f",
+      "decision": "retain",
+      "reason": "A parameter-patch manifest binds a tensor intervention to an exact base checkpoint, ordered operations and verified loaded artifact so the change is reproducible and reversible. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-5d410f2300895de7a9cc",
+      "sourceId": "parameter-patch-manifest",
+      "contentHash": "be03f05838b67e4a87c9e923e7dea6e5814c8c09fa24eb2ae955d18ecd9fb12f",
+      "decision": "retain",
+      "reason": "A parameter-patch manifest binds a tensor intervention to an exact base checkpoint, ordered operations and verified loaded artifact so the change is reproducible and reversible. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-2efc83467de6d3c2dcd2",
+      "sourceId": "parameter-patch-manifest",
+      "contentHash": "51d960d0842419ce4a996ef82e901a0723b2ce724abdaee593024d163febac37",
+      "decision": "retain",
+      "reason": "A parameter-patch manifest binds a tensor intervention to an exact base checkpoint, ordered operations and verified loaded artifact so the change is reproducible and reversible. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-fe628697ae5e045ca80e",
+      "sourceId": "block-summary-sparse-attention",
+      "contentHash": "732f9fad78d6ad93f9dd4ff79e1eba8695decd5d96521f907fda76b29384bc28",
+      "decision": "retain",
+      "reason": "Block-summary sparse attention routes later tokens through designated positions of earlier blocks, trading dense inter-block access for bounded relay capacity across stages. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-ef6e58edd1a02f10aaef",
+      "sourceId": "block-summary-sparse-attention",
+      "contentHash": "5052699ba13eb1fe5d4b14eff03cd9f7185e00ca112d361b04a6e253133167d2",
+      "decision": "retain",
+      "reason": "Block-summary sparse attention routes later tokens through designated positions of earlier blocks, trading dense inter-block access for bounded relay capacity across stages. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-463cb591dca0bdcbd377",
+      "sourceId": "block-summary-sparse-attention",
+      "contentHash": "28f834a25a23cddfe86c3abdfe5eac7f52924043e263642bbb54ada16061f121",
+      "decision": "retain",
+      "reason": "Block-summary sparse attention routes later tokens through designated positions of earlier blocks, trading dense inter-block access for bounded relay capacity across stages. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-12d6f7f3291677717133",
+      "sourceId": "block-summary-sparse-attention",
+      "contentHash": "b6f51bd3978916454220c6aa7a905facf9b4794c2c38d5f1b6b24da73e776873",
+      "decision": "retain",
+      "reason": "Block-summary sparse attention routes later tokens through designated positions of earlier blocks, trading dense inter-block access for bounded relay capacity across stages. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-8e79b03899a46e78ef9b",
+      "sourceId": "weighted-stream-sampling",
+      "contentHash": "6b1413f8ba3987ff2d4a96d151d09748b861a30487524e29e0338afec246fcb8",
+      "decision": "retain",
+      "reason": "Weighted stream sampling changes the target selection law through explicit positive item weights, distinguishing sequential draw probabilities from final inclusion probabilities and from recency policies. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-caf6d8a7ddf07af1cd28",
+      "sourceId": "weighted-stream-sampling",
+      "contentHash": "d8c3e1ea9024b9ddf65fc4bdfb26c9029f7babfde05979fa8823e6db9bdfb969",
+      "decision": "retain",
+      "reason": "Weighted stream sampling changes the target selection law through explicit positive item weights, distinguishing sequential draw probabilities from final inclusion probabilities and from recency policies. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-44abbeb059d376edefa6",
+      "sourceId": "weighted-stream-sampling",
+      "contentHash": "828073e00913eee955a2f3975ccbb6e2e164cdb14fca160a99b43867190e9971",
+      "decision": "retain",
+      "reason": "Weighted stream sampling changes the target selection law through explicit positive item weights, distinguishing sequential draw probabilities from final inclusion probabilities and from recency policies. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-c6aa5bec98f95aceb1f5",
+      "sourceId": "position-wise-feed-forward-network",
+      "contentHash": "37f9f14b6275ba9286bd81e4c7d351049dae4841b4319f5571c91b44b4ba6821",
+      "decision": "retain",
+      "reason": "A Transformer applies the same learned nonlinear channel transformation independently at every sequence position. Preserves the existing position-wise channel-transformation objective and its distinction from token mixing."
+    },
+    {
+      "candidateKey": "cand-9d3915f3a7c99a8e7c65",
+      "sourceId": "position-wise-feed-forward-network",
+      "contentHash": "19a4c607685b7923a3c164c1073dd1dc0d5bdbb3cee4128209746d0bf78e7392",
+      "decision": "retain",
+      "reason": "A Transformer applies the same learned nonlinear channel transformation independently at every sequence position. The column expansion and numerical intervention are a complementary representation of the existing FFN output projection; residual addition is an explicitly declared foundation, not an ungrounded new entity."
+    },
+    {
+      "candidateKey": "cand-d0a6839604d3204a22e3",
+      "sourceId": "exponential-time-decayed-sampling",
+      "contentHash": "a6df0fc79aed3526a332fb63af496eee282238ce8c3bc34cd69d107a2e21ef82",
+      "decision": "retain",
+      "reason": "Exponential time-decayed sampling assigns recency-dependent weights whose common aging factor preserves old-item relative priorities while new arrivals enter the sample. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-76c1574f7e1842874c6f",
+      "sourceId": "exponential-time-decayed-sampling",
+      "contentHash": "91753ae282a98634ff81f58f7a250291646e2970364b4c42f5dea38e89d25ac8",
+      "decision": "retain",
+      "reason": "Exponential time-decayed sampling assigns recency-dependent weights whose common aging factor preserves old-item relative priorities while new arrivals enter the sample. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-d45827fdaa8336dd33de",
+      "sourceId": "exponential-time-decayed-sampling",
+      "contentHash": "756438a71f10a6b3a456b5481b23df43c2485896b86edcc3b957268a12750075",
+      "decision": "retain",
+      "reason": "Exponential time-decayed sampling assigns recency-dependent weights whose common aging factor preserves old-item relative priorities while new arrivals enter the sample. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-2242552bcf0d3254e61e",
+      "sourceId": "exponential-time-decayed-sampling",
+      "contentHash": "78ba33ac8374ca0193228479e0d265eead23e27f72fb23c0b6e82d7a50d4b064",
+      "decision": "retain",
+      "reason": "Exponential time-decayed sampling assigns recency-dependent weights whose common aging factor preserves old-item relative priorities while new arrivals enter the sample. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-f56f72fa8837555c3410",
+      "sourceId": "pass-at-k-evaluation",
+      "contentHash": "f8fb514c5a6f7c9aa7f488dab1cf4d9aca147e1bc42874c17f73221875afb1c2",
+      "decision": "retain",
+      "reason": "Pass-at-k measures the probability that at least one of a fixed number of sampled candidates passes a declared oracle, rather than mean single-generation correctness or deployable selection accuracy. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-8bc4fb562dc1892960e4",
+      "sourceId": "pass-at-k-evaluation",
+      "contentHash": "64da8d3e36fa03af1f02669e7342dc6633756460cdb9bfd46f7a38142c41ad19",
+      "decision": "retain",
+      "reason": "Pass-at-k measures the probability that at least one of a fixed number of sampled candidates passes a declared oracle, rather than mean single-generation correctness or deployable selection accuracy. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-c5303f0730c2a122bbba",
+      "sourceId": "pass-at-k-evaluation",
+      "contentHash": "1859447f6319802e53b8c78e06a627c98e001e5189f260a0e0313e22ce24895c",
+      "decision": "retain",
+      "reason": "Pass-at-k measures the probability that at least one of a fixed number of sampled candidates passes a declared oracle, rather than mean single-generation correctness or deployable selection accuracy. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-7d7e89584534150c6a28",
+      "sourceId": "pass-at-k-evaluation",
+      "contentHash": "4d285c7619358861ec3bc50ef675d842fec788ca8faaddf8c057ad20e467513e",
+      "decision": "retain",
+      "reason": "Pass-at-k measures the probability that at least one of a fixed number of sampled candidates passes a declared oracle, rather than mean single-generation correctness or deployable selection accuracy. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-81fa11366ad92571a875",
+      "sourceId": "staged-candidate-validation",
+      "contentHash": "a7fc433a6c9f77ac2d005e289142551e4724763b91e058f5bd161491d36a6fb4",
+      "decision": "retain",
+      "reason": "Staged candidate validation applies cheap feasibility gates before expensive quality evaluation without treating an early pass as proof of final task success. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-925557078033ef1ea97a",
+      "sourceId": "staged-candidate-validation",
+      "contentHash": "6842e0df5758b157bc396d1ee093b33b2b83c99e549e01d1755856ffaecd1e7f",
+      "decision": "retain",
+      "reason": "Staged candidate validation applies cheap feasibility gates before expensive quality evaluation without treating an early pass as proof of final task success. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-26afc747604471e3d695",
+      "sourceId": "staged-candidate-validation",
+      "contentHash": "bbe47d365181b86d87bedb9511c1caf10b451a5033b7de2222976458db6159b9",
+      "decision": "retain",
+      "reason": "Staged candidate validation applies cheap feasibility gates before expensive quality evaluation without treating an early pass as proof of final task success. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-ecbf7a0499db38c5d09b",
+      "sourceId": "staged-candidate-validation",
+      "contentHash": "000e5022fee46febbc30e68799c8a362bfa497dda16b22c8df2a9c63c83f08a7",
+      "decision": "retain",
+      "reason": "Staged candidate validation applies cheap feasibility gates before expensive quality evaluation without treating an early pass as proof of final task success. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-53e1591002802b79ee07",
+      "sourceId": "population-program-search",
+      "contentHash": "518c8e1ed1466920487086b0798774b069a7e5acffa0a79963f8a8567c2e6bc4",
+      "decision": "retain",
+      "reason": "Population-based program search explores executable candidates through parent selection, bounded mutation and compatible recombination while retaining provenance and independent acceptance checks. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-c985e759f84cbc5c4e24",
+      "sourceId": "population-program-search",
+      "contentHash": "f2dafc70cbdf8bbdbf110af17be8f9fff468d75a58a82739865bfc70658e7bd9",
+      "decision": "retain",
+      "reason": "Population-based program search explores executable candidates through parent selection, bounded mutation and compatible recombination while retaining provenance and independent acceptance checks. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-64a837acf8701667538e",
+      "sourceId": "population-program-search",
+      "contentHash": "c687aa7c1a6d8e6f360d0d8ffe914c83380b6747771314d985d3156755d2c1da",
+      "decision": "retain",
+      "reason": "Population-based program search explores executable candidates through parent selection, bounded mutation and compatible recombination while retaining provenance and independent acceptance checks. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-8194dc38e9c15089dab7",
+      "sourceId": "population-program-search",
+      "contentHash": "5653ada06df22cfd9a25eeedbfb119b73422e3f7ff669a207f0866b6346d3b30",
+      "decision": "retain",
+      "reason": "Population-based program search explores executable candidates through parent selection, bounded mutation and compatible recombination while retaining provenance and independent acceptance checks. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-92a52700ef9f2cddff51",
+      "sourceId": "termination-aware-evaluation",
+      "contentHash": "65135bcf084e74b07dc9e641467cfbfb147025cc93187b5cab27a87205b69aa9",
+      "decision": "retain",
+      "reason": "Termination-aware evaluation records correctness and generation completion separately so token-limit censoring, answer extraction and repetition cannot masquerade as one capability score. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-3999f6dbd456731dde6c",
+      "sourceId": "termination-aware-evaluation",
+      "contentHash": "c38d630dfab532c83e461c07c75edacd97ccbdb45ffb8a3653a57e81bee89ef0",
+      "decision": "retain",
+      "reason": "Termination-aware evaluation records correctness and generation completion separately so token-limit censoring, answer extraction and repetition cannot masquerade as one capability score. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-f3ee0a741a44f80a6328",
+      "sourceId": "termination-aware-evaluation",
+      "contentHash": "16075832b53b90f6fa988c56490ccd594c2b8e16ff60eb1fe76d701061f9388e",
+      "decision": "retain",
+      "reason": "Termination-aware evaluation records correctness and generation completion separately so token-limit censoring, answer extraction and repetition cannot masquerade as one capability score. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-664c4f94068ec6903b80",
+      "sourceId": "termination-aware-evaluation",
+      "contentHash": "bbc40a876c1dcbc2a4ee9852fb0fa0d338a4244761ccc8e118a2b5e6d2483f69",
+      "decision": "retain",
+      "reason": "Termination-aware evaluation records correctness and generation completion separately so token-limit censoring, answer extraction and repetition cannot masquerade as one capability score. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-17b1ce124f94df409275",
+      "sourceId": "model-parameter-editing",
+      "contentHash": "824a432006f23159340ea29bfee2d49924043d7dee84d7018c613c4de8842528",
+      "decision": "retain",
+      "reason": "Model parameter editing deliberately changes a model’s stored tensors to alter behavior, with the intervention distinguished from prompt changes and from any particular training algorithm. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-a5c037e3cdad048dc094",
+      "sourceId": "model-parameter-editing",
+      "contentHash": "afeade54dd8f2c4a7207c5c2f15e1449c2553e2c6a16acf4919c18c8dc9ab0f5",
+      "decision": "retain",
+      "reason": "Model parameter editing deliberately changes a model’s stored tensors to alter behavior, with the intervention distinguished from prompt changes and from any particular training algorithm. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-5b7ca0e4c416bc34c6bc",
+      "sourceId": "model-parameter-editing",
+      "contentHash": "7330252b9a25cbb38d261dbcc7bc19b197200ffdc02ea3f73382c28465d1e151",
+      "decision": "retain",
+      "reason": "Model parameter editing deliberately changes a model’s stored tensors to alter behavior, with the intervention distinguished from prompt changes and from any particular training algorithm. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-f02a136f68d05fcefef9",
+      "sourceId": "model-parameter-editing",
+      "contentHash": "013487438e235b68131bc9ecddfcbeffa9ce1f8ac7a171478f333690439c77d2",
+      "decision": "retain",
+      "reason": "Model parameter editing deliberately changes a model’s stored tensors to alter behavior, with the intervention distinguished from prompt changes and from any particular training algorithm. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-7d7e7e297e817129abac",
+      "sourceId": "persistent-agent-improvement",
+      "contentHash": "a72ff38113b98daeb6ab3830c54995d41d9cbdd2659ce2350e8897233046a754",
+      "decision": "retain",
+      "reason": "Persistent agent improvement turns observed task failures into a retained system or model change and promotes that change only after independent future-task evaluation. Trace-guided proposal and invariant-preserving acceptance refine the existing persistent-improvement loop. Reflection alone is not promoted into learning; the exact candidate, diagnostic hypothesis, held-out acceptance and unchanged constraints remain one retained-change contract."
+    },
+    {
+      "candidateKey": "cand-77186bbdbc4c6edbfb08",
+      "sourceId": "weighted-stream-sampling",
+      "contentHash": "f795b541fa4eba90e720345dee102e0dacb4a63d9c9a1dac24ae560e17de4d5c",
+      "decision": "retain",
+      "reason": "Weighted stream sampling changes the target selection law through explicit positive item weights, distinguishing sequential draw probabilities from final inclusion probabilities and from recency policies. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
     }
   ]
 }

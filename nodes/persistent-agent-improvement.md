@@ -5,10 +5,10 @@ summary: Persistent agent improvement turns observed task failures into a retain
 type: concept
 tags: [ml/agents]
 prereqs: [agent-execution-harness, agent-memory, agent-verification-loop, execution-benchmark-validity]
-sources: [https://arxiv.org/abs/2305.16291, https://docs.langchain.com/oss/python/langgraph/persistence, https://www.swebench.com/SWE-bench/guides/evaluation/, https://docs.langchain.com/langsmith/evaluation-concepts]
+sources: [https://arxiv.org/abs/2305.16291, https://docs.langchain.com/oss/python/langgraph/persistence, https://www.swebench.com/SWE-bench/guides/evaluation/, https://docs.langchain.com/langsmith/evaluation-concepts, https://arxiv.org/abs/2507.19457]
 status: explained
 created: 2026-10-10
-updated: 2026-10-25
+updated: 2026-11-10
 ---
 
 # Persistent Agent Improvement
@@ -39,6 +39,16 @@ For example, 100 episodes contain 20 manual edits. Review finds eight correction
 
 LangSmith's evaluation documentation distinguishes online production runs from offline curated examples and describes a loop where production failures become test cases. That mechanism supports controlled improvement; it does not guarantee every captured session helps. Current-policy sampling can overrepresent accepted actions and omit abandoned work. Record sampling rules, denominators and failure slices, then validate a retained prompt, skill or weight change against independent future tasks before promotion.
 
+## Reflective proposals and invariant-preserving search
+
+An optimizer needs more than a statement that the score was low. Preserve the exact candidate artifact, relevant tool inputs and outputs, the expected versus observed result and task-level outcomes. A missing file, a wrong argument and a valid tool result misinterpreted by the model suggest different changes. Reflective mutation uses this diagnostic evidence to propose a specific modification; the trace is not a derivative, and the proposed cause may be wrong. GEPA provides a primary example of reflection over trajectories and textual feedback before evaluated prompt mutation.
+
+For an invented ten-task extractor, a candidate returns eight correct answers but fails two missing-field cases. A trace shows a tool returning `null` while the prompt asks the model to always supply a string. Changing wording to sound more confident does not resolve that contract mismatch. Propose an explicit missing-value branch, test valid and missing cases, then compare on untouched documents. A trace may reveal useful program state without exposing any hidden model reasoning; do not assume a private reasoning transcript exists or is necessary.
+
+Keep invariants distinct from the score being optimized. Before search, freeze the tool interface, permitted effects, required output fields and existing regression checks. The optimizer can propose changes within that boundary but cannot redefine acceptance by weakening the evaluator. Apply external feasibility checks and retain the rejected artifact and reason. For example, a mutation that raises correctness from eight to nine cases by sending full customer records to an unapproved endpoint fails the unchanged privacy contract, regardless of the score. Likewise, deleting a difficult assertion is not a repair. An independently controlled promotion gate protects the search boundary; a natural-language reminder alone does not enforce it.
+
+Compare trace-guided proposals with score-only and no-update baselines under the same task and rollout budget. Record failure diagnoses, proposed edits, rejected invariant violations, per-task regressions and held-out outcomes. Reflection, search diversity and final release acceptance are different mechanisms; observing one does not establish the others.
+
 ## Sources
 
 - [Wang et al., Voyager](https://arxiv.org/abs/2305.16291): automatic curriculum, executable skill library, and environment feedback as one implementation.
@@ -46,3 +56,5 @@ LangSmith's evaluation documentation distinguishes online production runs from o
 - [SWE-bench evaluation guide](https://www.swebench.com/SWE-bench/guides/evaluation/): executable task-evaluation example.
 
 - <https://docs.langchain.com/langsmith/evaluation-concepts>
+
+- <https://arxiv.org/abs/2507.19457>: reflective mutation and evaluated prompt updates.

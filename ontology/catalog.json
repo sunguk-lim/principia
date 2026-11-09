@@ -4505,6 +4505,106 @@
       "prerequisiteReasons": {
         "evaluation-slices": "Separates workload and cohort mixtures hidden by aggregates."
       }
+    },
+    "score-history-prompt-optimization": {
+      "objective": "Score-history prompt optimization conditions a language-model proposal on previous candidate configurations and measured outcomes rather than using a derivative of the task score.",
+      "prerequisiteReasons": {
+        "persistent-agent-improvement": "Defines the retained-change and independent-promotion loop being optimized.",
+        "adaptive-validation-overfitting": "Explains why repeated score feedback cannot also supply an unbiased final estimate."
+      }
+    },
+    "pareto-candidate-selection": {
+      "objective": "Pareto candidate selection retains candidates not dominated across declared objectives while keeping frontier membership separate from a deployable final choice.",
+      "prerequisiteReasons": {
+        "measurement": "Defines comparable objective values, units and noise boundaries.",
+        "evaluation-slices": "Defines separately measured task populations rather than one hidden average."
+      }
+    },
+    "population-program-search": {
+      "objective": "Population-based program search explores executable candidates through parent selection, bounded mutation and compatible recombination while retaining provenance and independent acceptance checks.",
+      "prerequisiteReasons": {
+        "persistent-agent-improvement": "Defines the independently accepted persistent change rather than an untested rewrite.",
+        "pareto-candidate-selection": "Defines one explicit diversity-preserving parent-selection policy."
+      }
+    },
+    "staged-candidate-validation": {
+      "objective": "Staged candidate validation applies cheap feasibility gates before expensive quality evaluation without treating an early pass as proof of final task success.",
+      "prerequisiteReasons": {
+        "execution-benchmark-validity": "Defines when a pass/failure is an observation of the intended artifact and oracle.",
+        "agent-validation-hooks": "Explains how bounded lifecycle checks can run and block.",
+        "multi-fidelity-model-selection": "Separates feasibility screening from low-resource estimates of final quality."
+      }
+    },
+    "model-parameter-editing": {
+      "objective": "Model parameter editing deliberately changes a model’s stored tensors to alter behavior, with the intervention distinguished from prompt changes and from any particular training algorithm.",
+      "prerequisiteReasons": {
+        "position-wise-feed-forward-network": "Defines the feature activation and output projection being modified.",
+        "residual-connection": "Explains how a sublayer contribution changes the carried token state.",
+        "measurement": "Separates observed parameter differences from demonstrated behavior.",
+        "tensor": "Defines the shaped parameter arrays and slices that a model edit identifies and changes."
+      }
+    },
+    "model-edit-evaluation": {
+      "objective": "Model-edit evaluation separates target efficacy, generalization, unrelated-behavior preservation and causal attribution under matched decoding and held-out interventions.",
+      "prerequisiteReasons": {
+        "model-parameter-editing": "Defines the specific intervention whose consequences are being judged.",
+        "paired-benchmark-uncertainty": "Grounds comparisons using the same tasks and dependence structure.",
+        "adaptive-validation-overfitting": "Explains the optimism caused by selecting patches on reused benchmarks."
+      }
+    },
+    "parameter-patch-manifest": {
+      "objective": "A parameter-patch manifest binds a tensor intervention to an exact base checkpoint, ordered operations and verified loaded artifact so the change is reproducible and reversible.",
+      "prerequisiteReasons": {
+        "model-parameter-editing": "Defines tensor operations and the distinction between a parameter change and its behavior.",
+        "dataset-lineage": "Defines versioned inputs, transformations and outputs needed for reproducibility."
+      }
+    },
+    "termination-aware-evaluation": {
+      "objective": "Termination-aware evaluation records correctness and generation completion separately so token-limit censoring, answer extraction and repetition cannot masquerade as one capability score.",
+      "prerequisiteReasons": {
+        "request-token-budget": "Defines hard resource exhaustion independently of task success.",
+        "llm-sampling-controls": "Defines generation settings that affect continuation and comparisons.",
+        "measurement": "Defines denominators and separate observed outcomes."
+      }
+    },
+    "pass-at-k-evaluation": {
+      "objective": "Pass-at-k measures the probability that at least one of a fixed number of sampled candidates passes a declared oracle, rather than mean single-generation correctness or deployable selection accuracy.",
+      "prerequisiteReasons": {
+        "probability": "Defines single-trial and at-least-one success events.",
+        "paired-benchmark-uncertainty": "Keeps repeated samples grouped by problem during uncertainty estimation.",
+        "evaluation-oracle-availability": "Separates benchmark oracle access from a deployable candidate-selection method."
+      }
+    },
+    "weighted-stream-sampling": {
+      "objective": "Weighted stream sampling changes the target selection law through explicit positive item weights, distinguishing sequential draw probabilities from final inclusion probabilities and from recency policies.",
+      "prerequisiteReasons": {
+        "reservoir-sampling": "Provides the equal-weight baseline and bounded-stream invariant being changed.",
+        "logarithm": "Defines the equivalent stable key and half-life expression."
+      }
+    },
+    "strided-sparse-attention": {
+      "objective": "Strided sparse attention combines short contiguous reads with periodic long-range reads so information can traverse distant positions through several sparse stages.",
+      "prerequisiteReasons": {
+        "sparse-attention-patterns": "Defines omitted token-pair interactions, connectivity limits and conditional sparse cost."
+      }
+    },
+    "block-summary-sparse-attention": {
+      "objective": "Block-summary sparse attention routes later tokens through designated positions of earlier blocks, trading dense inter-block access for bounded relay capacity across stages.",
+      "prerequisiteReasons": {
+        "sparse-attention-patterns": "Defines sparse connectivity, stage-dependent propagation and cost boundaries."
+      }
+    },
+    "position-wise-feed-forward-network": {
+      "prerequisiteReasons": {
+        "residual-connection": "Defines how the FFN output direction is added to the carried token state in the worked column-intervention example."
+      }
+    },
+    "exponential-time-decayed-sampling": {
+      "objective": "Exponential time-decayed sampling assigns recency-dependent weights whose common aging factor preserves old-item relative priorities while new arrivals enter the sample.",
+      "prerequisiteReasons": {
+        "weighted-stream-sampling": "Defines the selection law whose effective weights are changed by the recency policy.",
+        "exponential-function": "Defines multiplicative aging and the common-factor identity."
+      }
     }
   }
 }

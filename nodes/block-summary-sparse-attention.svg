@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380" role="img" aria-labelledby="title desc">
+<title id="title">Block relays carry earlier content into later queries</title>
+<desc id="desc">Block length 4; query 10 reads old relays 2, 3, 6, 7. A reachable relay can lose detail: an available path is not lossless storage.</desc>
+<rect width="1000" height="380" fill="#fffdf8"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="#59636e"/></marker></defs>
+<text x="35" y="40" font-family="sans-serif" font-size="25" fill="#24313b">Block relays carry earlier content into later queries</text>
+<text x="35" y="73" font-family="sans-serif" font-size="18" fill="#43515d">Block length 4; query 10 reads old relays 2, 3, 6, 7.</text>
+<line x1="300" y1="181" x2="361" y2="181" stroke="#59636e" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="40" y="119" font-family="sans-serif" font-size="18" fill="#43515d">Input in block 0</text>
+<rect x="40" y="141" width="260" height="82" rx="10" fill="#e4f1ec" stroke="#59636e"/>
+<text x="58" y="190" font-family="sans-serif" font-size="23" fill="#24313b">Token 0</text>
+<text x="40" y="257" font-family="sans-serif" font-size="18" fill="#43515d">Not directly read by query 10</text>
+<line x1="635" y1="181" x2="696" y2="181" stroke="#59636e" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="375" y="119" font-family="sans-serif" font-size="18" fill="#43515d">Prior local stage</text>
+<rect x="375" y="141" width="260" height="82" rx="10" fill="#fff0c2" stroke="#59636e"/>
+<text x="393" y="190" font-family="sans-serif" font-size="23" fill="#24313b">Relay token 3</text>
+<text x="375" y="257" font-family="sans-serif" font-size="18" fill="#43515d">Reads causal block positions 0–3</text>
+<text x="710" y="119" font-family="sans-serif" font-size="18" fill="#43515d">Later relay-read stage</text>
+<rect x="710" y="141" width="260" height="82" rx="10" fill="#e4f1ec" stroke="#59636e"/>
+<text x="728" y="190" font-family="sans-serif" font-size="23" fill="#24313b">Query token 10</text>
+<text x="710" y="257" font-family="sans-serif" font-size="18" fill="#43515d">Reads the changed relay 3</text>
+<text x="35" y="321" font-family="sans-serif" font-size="19" fill="#24313b">A reachable relay can lose detail: an available path is not lossless storage.</text>
+<text x="35" y="351" font-family="sans-serif" font-size="16" fill="#59636e">Read arrows as information flow, opposite to the query-to-key read direction.</text>
+</svg>

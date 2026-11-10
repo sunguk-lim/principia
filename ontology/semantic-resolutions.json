@@ -15957,6 +15957,342 @@
       "contentHash": "f795b541fa4eba90e720345dee102e0dacb4a63d9c9a1dac24ae560e17de4d5c",
       "decision": "retain",
       "reason": "Weighted stream sampling changes the target selection law through explicit positive item weights, distinguishing sequential draw probabilities from final inclusion probabilities and from recency policies. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-fde96e55351d609c018c",
+      "sourceId": "scheduled-artifact-refresh",
+      "contentHash": "e4e62098614810fc483e9724e7121220dab48a55719d28f74ad3b875e82330d8",
+      "decision": "retain",
+      "reason": "Scheduled artifact refresh computes and validates a new artifact revision before advancing its stable publication identity while preserving freshness and audience boundaries. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-067fceb9021dfa43c6d5",
+      "sourceId": "scheduled-artifact-refresh",
+      "contentHash": "854617a438df84e047806f4c15ff219990dad04f2237d3fcc2c44754d831ac20",
+      "decision": "retain",
+      "reason": "Scheduled artifact refresh computes and validates a new artifact revision before advancing its stable publication identity while preserving freshness and audience boundaries. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-e4f152a359f9dc42d398",
+      "sourceId": "scheduled-artifact-refresh",
+      "contentHash": "b9e21bfc4b3c3728812d751f05bd9c1d2d58d83ed40cd469b2f5437cdc53fa50",
+      "decision": "retain",
+      "reason": "Scheduled artifact refresh computes and validates a new artifact revision before advancing its stable publication identity while preserving freshness and audience boundaries. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-f7991125dd971f40e85a",
+      "sourceId": "scheduled-artifact-refresh",
+      "contentHash": "c16c4368dc75f0e88bc3991f8afdf2706c1ee37dfe06a52f9d6574face7ccfaa",
+      "decision": "retain",
+      "reason": "Scheduled artifact refresh computes and validates a new artifact revision before advancing its stable publication identity while preserving freshness and audience boundaries. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-254ba2cf0d47511b2613",
+      "sourceId": "retrieval-memory-budget",
+      "contentHash": "a5c243301e9d34493592f79db6ce5c1ad1b55a46ad66857025f5a9d8025727f5",
+      "decision": "retain",
+      "reason": "A retrieval memory budget accounts separately for encoder weights, stored vectors, search structure, rescoring data and runtime buffers so one compression ratio cannot stand in for total system memory. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-78a22204dc6a4c875ce1",
+      "sourceId": "retrieval-memory-budget",
+      "contentHash": "2f2bb2322c4562645a84cac06bd1f4b813e8406213f55de398530a64a95df28a",
+      "decision": "retain",
+      "reason": "A retrieval memory budget accounts separately for encoder weights, stored vectors, search structure, rescoring data and runtime buffers so one compression ratio cannot stand in for total system memory. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-c31904f92af2fe2b180f",
+      "sourceId": "retrieval-memory-budget",
+      "contentHash": "8785b97e57ac1e3b5d6b3ac3c5f379e5dfd870de0aee98a22677e40980f5a989",
+      "decision": "retain",
+      "reason": "A retrieval memory budget accounts separately for encoder weights, stored vectors, search structure, rescoring data and runtime buffers so one compression ratio cannot stand in for total system memory. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-23a9fa15d16c91362f77",
+      "sourceId": "retrieval-memory-budget",
+      "contentHash": "f7ce5083e763e71aa751a59f1072cebf96c6b86df7a5edab1ca55134a5971788",
+      "decision": "retain",
+      "reason": "A retrieval memory budget accounts separately for encoder weights, stored vectors, search structure, rescoring data and runtime buffers so one compression ratio cannot stand in for total system memory. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-f9afa6dccf3e8ddee4d8",
+      "sourceId": "embedding-checkpoint-contract",
+      "contentHash": "179a386f08542fa0743bb246577369040f413064025da43b08905c8b3ad57f4c",
+      "decision": "retain",
+      "reason": "An embedding checkpoint contract binds available encoders, projections, preprocessing and output geometry to the concrete artifact loaded rather than inheriting every capability of a model family. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-cdce7d1d853a33361e00",
+      "sourceId": "embedding-checkpoint-contract",
+      "contentHash": "4cb62f144aeba369f67e37d3c3fc5775b732346cb30dbf9c511cb56f5ed704e5",
+      "decision": "retain",
+      "reason": "An embedding checkpoint contract binds available encoders, projections, preprocessing and output geometry to the concrete artifact loaded rather than inheriting every capability of a model family. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-8fbd92f60e88d58b004b",
+      "sourceId": "embedding-checkpoint-contract",
+      "contentHash": "736aa6f088dd5479c716f796b965d2932fed7337cbc78e18923b2097d060e0ec",
+      "decision": "retain",
+      "reason": "An embedding checkpoint contract binds available encoders, projections, preprocessing and output geometry to the concrete artifact loaded rather than inheriting every capability of a model family. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-7df6b4724fd456214518",
+      "sourceId": "embedding-checkpoint-contract",
+      "contentHash": "196c2d867fbeb59aa473a0ee41c620fe9ef4bb13903a83686dfd74612f8f2116",
+      "decision": "retain",
+      "reason": "An embedding checkpoint contract binds available encoders, projections, preprocessing and output geometry to the concrete artifact loaded rather than inheriting every capability of a model family. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-f0d469c3b9825fc63b6e",
+      "sourceId": "tensorized-sparse-attention",
+      "contentHash": "0fda3ff38350e03fb1e418962734d8f4b1fc889bb9f36a97ad5b0a77999e4309",
+      "decision": "retain",
+      "reason": "Tensorized sparse attention organizes permitted token pairs into batched or block-structured computation so mathematical sparsity can reduce executed work without changing the intended mask. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-e19519c03c88cf78cc06",
+      "sourceId": "tensorized-sparse-attention",
+      "contentHash": "ccb34b8d91c3fce2a52c4d4d2029394f85de52f14b2e9612e78b8e022f6b9228",
+      "decision": "retain",
+      "reason": "Tensorized sparse attention organizes permitted token pairs into batched or block-structured computation so mathematical sparsity can reduce executed work without changing the intended mask. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-303c2924c4dc2376b278",
+      "sourceId": "tensorized-sparse-attention",
+      "contentHash": "e4251288ee3ea9ddd0d0136beb74f2b042078e1c953639c564950c345c323a53",
+      "decision": "retain",
+      "reason": "Tensorized sparse attention organizes permitted token pairs into batched or block-structured computation so mathematical sparsity can reduce executed work without changing the intended mask. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-a8559dd0085f8217829c",
+      "sourceId": "tensorized-sparse-attention",
+      "contentHash": "2bf0dfd968b9f17301e3f453daded9ae3d7ff29d67a24105d90786cb9e17bdcd",
+      "decision": "retain",
+      "reason": "Tensorized sparse attention organizes permitted token pairs into batched or block-structured computation so mathematical sparsity can reduce executed work without changing the intended mask. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-498f0321ab43c04ca464",
+      "sourceId": "reformer-lsh-attention",
+      "contentHash": "841812350ce18e4b9a4c714dccd61dd1ad04a7fb3ccf887efa6a90f83a411f61",
+      "decision": "retain",
+      "reason": "Reformer LSH attention hashes shared query-key representations into content-based neighborhoods, sorts them into bounded chunks and restores outputs to their original sequence positions. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-88cf340b29caf9c5cda8",
+      "sourceId": "reformer-lsh-attention",
+      "contentHash": "6c381d0c30d547dd3cd83ec90629cb394571272bd04dd530e27d67548dd4f7fe",
+      "decision": "retain",
+      "reason": "Reformer LSH attention hashes shared query-key representations into content-based neighborhoods, sorts them into bounded chunks and restores outputs to their original sequence positions. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-6bd68b48dd976a1a7e3c",
+      "sourceId": "reformer-lsh-attention",
+      "contentHash": "11f609d5050a308f3f33dd63b4f7d25978c90ef5277c012e4698a15b6885fe64",
+      "decision": "retain",
+      "reason": "Reformer LSH attention hashes shared query-key representations into content-based neighborhoods, sorts them into bounded chunks and restores outputs to their original sequence positions. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-33346f654a6599296d95",
+      "sourceId": "reformer-lsh-attention",
+      "contentHash": "d95d1bac3b969ebbbffd37d424e1316bdc289f147bb261bc39f8047e73be5e05",
+      "decision": "retain",
+      "reason": "Reformer LSH attention hashes shared query-key representations into content-based neighborhoods, sorts them into bounded chunks and restores outputs to their original sequence positions. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-a5b41b4685b71157a8b2",
+      "sourceId": "ephemeral-database-provisioning",
+      "contentHash": "12aa98e8d8dc540f970e0949411fac5a4519b1791a3071abd9b606ea9d1efd39",
+      "decision": "retain",
+      "reason": "Ephemeral database provisioning gives a bounded workflow a temporary usable database while keeping readiness, credentials, resource limits and durable ownership explicit. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-cbfca513209cf82073da",
+      "sourceId": "ephemeral-database-provisioning",
+      "contentHash": "97e4837103e8b87dfa82c8418bcc774daecb7f510c80702ef4a8d94b71048812",
+      "decision": "retain",
+      "reason": "Ephemeral database provisioning gives a bounded workflow a temporary usable database while keeping readiness, credentials, resource limits and durable ownership explicit. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-86dbea34223802448df9",
+      "sourceId": "ephemeral-database-provisioning",
+      "contentHash": "a1f40975356c584d615ea43ad34e48cb6f08e9e9facd86dffd08d80cbe0c5afa",
+      "decision": "retain",
+      "reason": "Ephemeral database provisioning gives a bounded workflow a temporary usable database while keeping readiness, credentials, resource limits and durable ownership explicit. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-6c0e2f763aeeadcdb649",
+      "sourceId": "ephemeral-database-provisioning",
+      "contentHash": "2f1ed8d7d831f6be5f3d2f3277f77ee7727541d39170b538e444541321cd3369",
+      "decision": "retain",
+      "reason": "Ephemeral database provisioning gives a bounded workflow a temporary usable database while keeping readiness, credentials, resource limits and durable ownership explicit. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-0e0704db0273efd92e8e",
+      "sourceId": "distributed-reservoir-merging",
+      "contentHash": "2b25eca7f84d0e9a59ba56b99ba9d2d530d51fae94aa107accb154d98de8e120",
+      "decision": "retain",
+      "reason": "Distributed reservoir merging preserves a global uniform sample by combining compatible local sampling state rather than treating equal-sized samples from unequal partitions as equal populations. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-972df9b0ed8cf2eabfd7",
+      "sourceId": "distributed-reservoir-merging",
+      "contentHash": "2e781acafc998ebf6c2ecb1679595f659d8755d63896e01fc591228248a6f9e9",
+      "decision": "retain",
+      "reason": "Distributed reservoir merging preserves a global uniform sample by combining compatible local sampling state rather than treating equal-sized samples from unequal partitions as equal populations. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-2217d408c35a9bb275ba",
+      "sourceId": "distributed-reservoir-merging",
+      "contentHash": "64fb60473ffae7668b90ccd469decddda48a1f356ee8e6e10a663ec230e031ee",
+      "decision": "retain",
+      "reason": "Distributed reservoir merging preserves a global uniform sample by combining compatible local sampling state rather than treating equal-sized samples from unequal partitions as equal populations. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-e7505cf8659d089558e3",
+      "sourceId": "distributed-reservoir-merging",
+      "contentHash": "ae9e294a2f22929c503bf82b4659e1c47d8771f29febabc950a013de5ae27f2d",
+      "decision": "retain",
+      "reason": "Distributed reservoir merging preserves a global uniform sample by combining compatible local sampling state rather than treating equal-sized samples from unequal partitions as equal populations. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-eb8e14014a29124db4dc",
+      "sourceId": "durable-interactive-artifact",
+      "contentHash": "03230144ce29d27de085e483b740884006263ddd699833375771c5e88ea1b667",
+      "decision": "retain",
+      "reason": "A durable interactive artifact persists a versioned document and its interaction contract independently of the conversation or live process that produced it. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-24e02a6ec70136898b1b",
+      "sourceId": "durable-interactive-artifact",
+      "contentHash": "9db7bf60c9cf79cd017f0fcb8f350411a0c8bebb812518fe4674f5c92a582c0d",
+      "decision": "retain",
+      "reason": "A durable interactive artifact persists a versioned document and its interaction contract independently of the conversation or live process that produced it. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-45364cd954166f1a86c4",
+      "sourceId": "durable-interactive-artifact",
+      "contentHash": "e51b946ade680f677ddf4d201ac36c51680067285ec92814df2da4a0ee182f17",
+      "decision": "retain",
+      "reason": "A durable interactive artifact persists a versioned document and its interaction contract independently of the conversation or live process that produced it. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-b3eb7816d8fa64a0d8c6",
+      "sourceId": "durable-interactive-artifact",
+      "contentHash": "d04c24a1d250cb438b8fefff29efe272e8d563208f21cd7e4a0a27e3a50ae271",
+      "decision": "retain",
+      "reason": "A durable interactive artifact persists a versioned document and its interaction contract independently of the conversation or live process that produced it. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-59555381085914fe578d",
+      "sourceId": "retrieval-index-amortization",
+      "contentHash": "d975038eeed009a0aa613d41191e5fb2d2541e2c4cb5acea4b1130735149d8f9",
+      "decision": "retain",
+      "reason": "Retrieval index amortization separates reusable preprocessing from recurring query work and update cost so a fast warm lookup is not mistaken for low total system cost. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-4d30ebb003dc5d100cba",
+      "sourceId": "retrieval-index-amortization",
+      "contentHash": "8ccf4d474828bd9844464446c8ca1365d625966b687ff548c0d7eaec395903db",
+      "decision": "retain",
+      "reason": "Retrieval index amortization separates reusable preprocessing from recurring query work and update cost so a fast warm lookup is not mistaken for low total system cost. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-e5b986eab38de4ae20b0",
+      "sourceId": "retrieval-index-amortization",
+      "contentHash": "69f1b6fde021a794d73eb50512059691585f617a53a015ccf19f5ca234b7c9df",
+      "decision": "retain",
+      "reason": "Retrieval index amortization separates reusable preprocessing from recurring query work and update cost so a fast warm lookup is not mistaken for low total system cost. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-52221fc7cbace260f7ef",
+      "sourceId": "retrieval-index-amortization",
+      "contentHash": "0645f0b5e35503cc6c3e97859045ebef63b8ef22066d861b2881753b98165214",
+      "decision": "retain",
+      "reason": "Retrieval index amortization separates reusable preprocessing from recurring query work and update cost so a fast warm lookup is not mistaken for low total system cost. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-541e845fbb562da37cb5",
+      "sourceId": "timestamped-video-retrieval",
+      "contentHash": "e284f55dba9dc6f7d29eb96da4d3434255cd88c2daf47f3699ac2b9aa26dc29e",
+      "decision": "retain",
+      "reason": "Timestamped video retrieval ranks sampled visual representations while retaining source timestamps so a semantic match can be inspected at the corresponding video moment. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-d160c5877c724b56e45e",
+      "sourceId": "timestamped-video-retrieval",
+      "contentHash": "be6edede07f5f69ad44ce68d4514ac5e360326676b934055b032abf74682c51b",
+      "decision": "retain",
+      "reason": "Timestamped video retrieval ranks sampled visual representations while retaining source timestamps so a semantic match can be inspected at the corresponding video moment. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-923b961db1f23cd93144",
+      "sourceId": "timestamped-video-retrieval",
+      "contentHash": "3baf31aa607c6dedd10ee64386255a1f117a3a5bcde746ff32c330b99a2da41a",
+      "decision": "retain",
+      "reason": "Timestamped video retrieval ranks sampled visual representations while retaining source timestamps so a semantic match can be inspected at the corresponding video moment. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-d289d2d58befc88f3a67",
+      "sourceId": "timestamped-video-retrieval",
+      "contentHash": "9b2ba367243eaca213f9729b2346f6f2c120550bc6bde13fb8ef97972b017d49",
+      "decision": "retain",
+      "reason": "Timestamped video retrieval ranks sampled visual representations while retaining source timestamps so a semantic match can be inspected at the corresponding video moment. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-f018fe2c0b14cc9e4c19",
+      "sourceId": "expiring-resource-ownership",
+      "contentHash": "26670598b7e5bf0127f7fed1943bfa1619c8a58e0785ce388860f7e6ab887956",
+      "decision": "retain",
+      "reason": "Expiring resource ownership separates temporary use rights from durable administrative control and resolves claim-versus-expiry races through authoritative state transitions. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-cf3be6dcc108e2a42cd1",
+      "sourceId": "expiring-resource-ownership",
+      "contentHash": "12973113b64c24878e5872e1a173935d147a9051ce67a6eb5195dfbaa10defed",
+      "decision": "retain",
+      "reason": "Expiring resource ownership separates temporary use rights from durable administrative control and resolves claim-versus-expiry races through authoritative state transitions. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-2af0cff457321232d3ec",
+      "sourceId": "expiring-resource-ownership",
+      "contentHash": "5ee3b4805b08590480027797901c0e4758e9fd44980deb8390f4dbde1b47299e",
+      "decision": "retain",
+      "reason": "Expiring resource ownership separates temporary use rights from durable administrative control and resolves claim-versus-expiry races through authoritative state transitions. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-f0272ca42faf69b612e2",
+      "sourceId": "expiring-resource-ownership",
+      "contentHash": "61508abf996d70b376e3f1f639929443d421b314b5be77fe146d4bf33095e45d",
+      "decision": "retain",
+      "reason": "Expiring resource ownership separates temporary use rights from durable administrative control and resolves claim-versus-expiry races through authoritative state transitions. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-77d71c07f535ad514dc9",
+      "sourceId": "callable-factory-injection",
+      "contentHash": "914f52bb8782c02b8962e1c918383c69da0b006050d234bcb11500a267fc7036",
+      "decision": "retain",
+      "reason": "Callable factory injection passes an object-creation operation into a consumer so construction can vary without requiring a subclass or hard-coded concrete type. Defines the canonical objective and its contrast, not an additional independently teachable entity."
+    },
+    {
+      "candidateKey": "cand-feabbb15509152ef0f77",
+      "sourceId": "callable-factory-injection",
+      "contentHash": "352bda2cfaebec349c762ddeecd8d4fbc69ec52228ea8c68f8290d2e82cce336",
+      "decision": "retain",
+      "reason": "Callable factory injection passes an object-creation operation into a consumer so construction can vary without requiring a subclass or hard-coded concrete type. Derives this objective with declared foundations; method variants and implementation boundaries remain subordinate to its stated learning goal."
+    },
+    {
+      "candidateKey": "cand-b5b9d4a296f6479dc2b5",
+      "sourceId": "callable-factory-injection",
+      "contentHash": "66c3f9b63a4256d9f452d41c6d058113689a76365025e24ac0344f5b5fe6fa61",
+      "decision": "retain",
+      "reason": "Callable factory injection passes an object-creation operation into a consumer so construction can vary without requiring a subclass or hard-coded concrete type. Original worked numbers demonstrate this same objective; they are evidence of the mechanism rather than a new generic algorithm."
+    },
+    {
+      "candidateKey": "cand-fc703091e52936257829",
+      "sourceId": "callable-factory-injection",
+      "contentHash": "07cbd5a8562da3b4f0453d800848221a1db8953ab58d822ba21c91e59a0bff95",
+      "decision": "retain",
+      "reason": "Callable factory injection passes an object-creation operation into a consumer so construction can vary without requiring a subclass or hard-coded concrete type. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
     }
   ]
 }

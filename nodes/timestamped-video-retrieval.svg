@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380" role="img" aria-labelledby="title desc"><title id="title">Search cannot retrieve a moment that sampling omitted</title><desc id="desc">Ten-second clip; a warning is visible only from 3.1 to 3.5 seconds.</desc><rect width="1000" height="380" fill="#fffdf8"/>
+<style>text{font-family:sans-serif;fill:#24313b;font-size:18px}.title{font-size:25px}.small{font-size:16px}</style>
+<text x="30" y="40" class="title">Search cannot retrieve a moment that sampling omitted</text>
+<text x="30" y="73">Ten-second clip; a warning is visible only from 3.1 to 3.5 seconds.</text>
+<text x="30" y="160" class="">2 s grid</text>
+<line x1="160" y1="155" x2="910" y2="155" stroke="#59636e" stroke-width="2"/>
+<rect x="392.5" y="130" width="30.0" height="50" fill="#fff0c2"/>
+<text x="30" y="245" class="">0.25 s grid</text>
+<line x1="160" y1="240" x2="910" y2="240" stroke="#59636e" stroke-width="2"/>
+<rect x="392.5" y="215" width="30.0" height="50" fill="#fff0c2"/>
+<circle cx="160" cy="155" r="7" fill="#3f9b86"/>
+<text x="155" y="194" class="small">0s</text>
+<circle cx="310" cy="155" r="7" fill="#3f9b86"/>
+<text x="305" y="194" class="small">2s</text>
+<circle cx="460" cy="155" r="7" fill="#3f9b86"/>
+<text x="455" y="194" class="small">4s</text>
+<circle cx="610" cy="155" r="7" fill="#3f9b86"/>
+<text x="605" y="194" class="small">6s</text>
+<circle cx="760" cy="155" r="7" fill="#3f9b86"/>
+<text x="755" y="194" class="small">8s</text>
+<circle cx="160.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="178.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="197.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="216.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="235.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="253.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="272.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="291.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="310.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="328.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="347.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="366.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="385.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="403.75" cy="240" r="6" fill="#b07b16"/>
+<circle cx="422.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="441.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="460.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="478.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="497.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="516.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="535.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="553.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="572.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="591.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="610.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="628.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="647.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="666.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="685.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="703.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="722.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="741.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="760.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="778.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="797.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="816.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="835.0" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="853.75" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="872.5" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="891.25" cy="240" r="3" fill="#3f9b86"/>
+<circle cx="910.0" cy="240" r="3" fill="#3f9b86"/>
+<text x="350" y="290" class="">3.25 s represents the warning; coarse samples miss it.</text>
+<text x="30" y="335" class="">Denser sampling costs more encodings; query speed cannot compensate for absent evidence.</text>
+</svg>

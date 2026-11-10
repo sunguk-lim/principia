@@ -4605,6 +4605,94 @@
         "weighted-stream-sampling": "Defines the selection law whose effective weights are changed by the recency policy.",
         "exponential-function": "Defines multiplicative aging and the common-factor identity."
       }
+    },
+    "ephemeral-database-provisioning": {
+      "objective": "Ephemeral database provisioning gives a bounded workflow a temporary usable database while keeping readiness, credentials, resource limits and durable ownership explicit.",
+      "prerequisiteReasons": {
+        "tool-call-execution-contract": "Defines validation and authorization of the provisioning tool operation.",
+        "mongodb": "Supplies the concrete database behavior being provisioned rather than treating an endpoint as a database.",
+        "idempotent-operation-key": "Explains retry identity and the limits of duplicate-effect prevention."
+      }
+    },
+    "expiring-resource-ownership": {
+      "objective": "Expiring resource ownership separates temporary use rights from durable administrative control and resolves claim-versus-expiry races through authoritative state transitions.",
+      "prerequisiteReasons": {
+        "agent-workload-identity": "Distinguishes use by executing software from durable administrative ownership.",
+        "atomic-operation": "Grounds a conditional lifecycle transition and why check-then-act is insufficient."
+      }
+    },
+    "durable-interactive-artifact": {
+      "objective": "A durable interactive artifact persists a versioned document and its interaction contract independently of the conversation or live process that produced it.",
+      "prerequisiteReasons": {
+        "agent-session-state": "Explains why transient conversational state cannot be the sole artifact store.",
+        "reactive-user-interface": "Defines the relation between stored state, controls and rendered output.",
+        "dataset-lineage": "Binds the report to the evidence revision it represents."
+      }
+    },
+    "scheduled-artifact-refresh": {
+      "objective": "Scheduled artifact refresh computes and validates a new artifact revision before advancing its stable publication identity while preserving freshness and audience boundaries.",
+      "prerequisiteReasons": {
+        "periodic-agent-workflow": "Defines occurrence identity, bounded attempts, overlap and duplicate-effect limits.",
+        "durable-interactive-artifact": "Defines the independent artifact and its state/version contract.",
+        "single-writer-state-coordination": "Provides a reviewed accepted-version update boundary rather than uncontrolled whole-document replacement."
+      }
+    },
+    "timestamped-video-retrieval": {
+      "objective": "Timestamped video retrieval ranks sampled visual representations while retaining source timestamps so a semantic match can be inspected at the corresponding video moment.",
+      "prerequisiteReasons": {
+        "multimodal-embedding-alignment": "Grounds the compatible text/frame geometry and its evaluation rather than assuming equal vector dimensions suffice.",
+        "measurement": "Defines reproducible coverage, temporal-error and cost checks."
+      }
+    },
+    "retrieval-index-amortization": {
+      "objective": "Retrieval index amortization separates reusable preprocessing from recurring query work and update cost so a fast warm lookup is not mistaken for low total system cost.",
+      "prerequisiteReasons": {
+        "background-document-indexing": "Defines durable indexing, version invalidation and the work paid before search.",
+        "measurement": "Requires comparable units and distinguishes latency, throughput, quality and resource work."
+      }
+    },
+    "tensorized-sparse-attention": {
+      "objective": "Tensorized sparse attention organizes permitted token pairs into batched or block-structured computation so mathematical sparsity can reduce executed work without changing the intended mask.",
+      "prerequisiteReasons": {
+        "sparse-attention-patterns": "Defines the selected interactions and why connectivity changes the attention function.",
+        "gpu-kernel-benchmarking": "Grounds synchronized equivalent-work correctness and execution measurements rather than inferring throughput from edge count.",
+        "tensor": "Defines shaped typed model data: the inventory/expanded storage contract cannot be understood from an untyped file or API name."
+      }
+    },
+    "reformer-lsh-attention": {
+      "objective": "Reformer LSH attention hashes shared query-key representations into content-based neighborhoods, sorts them into bounded chunks and restores outputs to their original sequence positions.",
+      "prerequisiteReasons": {
+        "sparse-attention-patterns": "Defines changed interaction sets and connectivity versus dense attention.",
+        "nearest-neighbor-search": "Defines approximate content-neighbor selection and recall failures.",
+        "matrix-multiplication": "Defines the batched random projection used by the hash."
+      }
+    },
+    "callable-factory-injection": {
+      "objective": "Callable factory injection passes an object-creation operation into a consumer so construction can vary without requiring a subclass or hard-coded concrete type.",
+      "prerequisiteReasons": {
+        "first-class-function": "Explains passing and storing the creation behavior independently of its eventual invocation."
+      }
+    },
+    "distributed-reservoir-merging": {
+      "objective": "Distributed reservoir merging preserves a global uniform sample by combining compatible local sampling state rather than treating equal-sized samples from unequal partitions as equal populations.",
+      "prerequisiteReasons": {
+        "reservoir-sampling": "Defines the uniform fixed-size target and why sampling state rather than contents alone determines a correct merge."
+      }
+    },
+    "embedding-checkpoint-contract": {
+      "objective": "An embedding checkpoint contract binds available encoders, projections, preprocessing and output geometry to the concrete artifact loaded rather than inheriting every capability of a model family.",
+      "prerequisiteReasons": {
+        "text-embedding-api-contract": "Defines the observable vector input/output and geometry contract.",
+        "post-training-quantization": "Defines the encoder-weight representation and quality boundary.",
+        "tensor": "Defines shaped typed model data: the inventory/expanded storage contract cannot be understood from an untyped file or API name."
+      }
+    },
+    "retrieval-memory-budget": {
+      "objective": "A retrieval memory budget accounts separately for encoder weights, stored vectors, search structure, rescoring data and runtime buffers so one compression ratio cannot stand in for total system memory.",
+      "prerequisiteReasons": {
+        "binary-embedding-quantization": "Defines the stored vector compression and rescoring budget.",
+        "post-training-quantization": "Defines the encoder-weight representation and quality boundary."
+      }
     }
   }
 }

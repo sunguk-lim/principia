@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380" role="img" aria-labelledby="title desc"><title id="title">Temporary access is not durable ownership</title><desc id="desc">Illustrative policy: pause at hour 48; deletion at hour 168 unless a claim succeeds.</desc><rect width="1000" height="380" fill="#fffdf8"/>
+<style>text{font-family:sans-serif;fill:#24313b;font-size:18px}.title{font-size:25px}.small{font-size:16px}</style>
+<text x="30" y="40" class="title">Temporary access is not durable ownership</text>
+<text x="30" y="73">Illustrative policy: pause at hour 48; deletion at hour 168 unless a claim succeeds.</text>
+<text x="230" y="112" class="">0 h</text>
+<line x1="230" y1="125" x2="230" y2="284" stroke="#59636e" stroke-width="2"/>
+<text x="465" y="112" class="">47 h</text>
+<line x1="465" y1="125" x2="465" y2="284" stroke="#59636e" stroke-width="2"/>
+<text x="590" y="112" class="">48 h</text>
+<line x1="590" y1="125" x2="590" y2="284" stroke="#59636e" stroke-width="2"/>
+<text x="820" y="112" class="">168 h</text>
+<line x1="820" y1="125" x2="820" y2="284" stroke="#59636e" stroke-width="2"/>
+<text x="30" y="165" class="">No claim</text>
+<rect x="230" y="140" width="170" height="48" rx="8" fill="#e4f1ec" stroke="#59636e"/>
+<text x="242" y="170.0" class="">Active</text>
+<rect x="590" y="140" width="150" height="48" rx="8" fill="#e4f1ec" stroke="#59636e"/>
+<text x="602" y="170.0" class="">Paused</text>
+<rect x="820" y="140" width="145" height="48" rx="8" fill="#f2e5e0" stroke="#59636e"/>
+<text x="832" y="170.0" class="">Deleted</text>
+<line x1="400" y1="164" x2="590" y2="164" stroke="#59636e" stroke-width="2"/>
+<line x1="740" y1="164" x2="820" y2="164" stroke="#59636e" stroke-width="2"/>
+<text x="30" y="250" class="">Claim accepted</text>
+<rect x="230" y="225" width="170" height="48" rx="8" fill="#e4f1ec" stroke="#59636e"/>
+<text x="242" y="255.0" class="">Active</text>
+<line x1="400" y1="249" x2="465" y2="249" stroke="#59636e" stroke-width="2"/>
+<rect x="465" y="225" width="500" height="48" rx="8" fill="#fff0c2" stroke="#59636e"/>
+<text x="477" y="255.0" class="">Owned: temporary deadline no longer applies</text>
+<text x="30" y="326" class="">The authoritative claim/expiry transition decides the winner, not a client countdown.</text>
+<text x="30" y="354" class="small">Owned resources still follow their separate retention and access policies.</text>
+<text x="770" y="354" class="small">Clock not to scale</text>
+</svg>

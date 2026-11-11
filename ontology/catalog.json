@@ -4693,6 +4693,221 @@
         "binary-embedding-quantization": "Defines the stored vector compression and rescoring budget.",
         "post-training-quantization": "Defines the encoder-weight representation and quality boundary."
       }
+    },
+    "reinforce-policy-gradient": {
+      "aliases": [
+        "REINFORCE"
+      ],
+      "objective": "REINFORCE estimates a reward gradient by multiplying sampled returns by the parameter gradient of their log probability.",
+      "prerequisiteReasons": {
+        "model-free-learning": "Required to understand REINFORCE Policy Gradient: the policy improves from sampled outcomes rather than known transition dynamics.",
+        "advantage-baseline": "Required to understand REINFORCE Policy Gradient: reward centering and the zero-expected-gradient condition justify baseline subtraction.",
+        "logarithm": "Required to understand REINFORCE Policy Gradient: the log probability turns sequence products into additive contributions.",
+        "derivative": "Differentiating the fixed sampled probability is the core estimator operation.",
+        "variance": "The baseline aims to reduce squared estimator fluctuation without changing its expectation."
+      }
+    },
+    "proximal-policy-optimization": {
+      "aliases": [
+        "PPO",
+        "PPO-Clip"
+      ],
+      "objective": "PPO-Clip uses a pessimistic probability-ratio surrogate to remove incentives for excessive favorable movement on sampled actions.",
+      "prerequisiteReasons": {
+        "reinforce-policy-gradient": "Required to understand Proximal Policy Optimization: supplies the advantage-weighted sampled policy update and behavior-policy distinction."
+      }
+    },
+    "generalized-advantage-estimation": {
+      "aliases": [
+        "GAE"
+      ],
+      "objective": "GAE estimates an action advantage by exponentially weighting successive value-prediction residuals, trading reliance on a critic against sampled-return variance.",
+      "prerequisiteReasons": {
+        "bellman-equation": "Required to understand Generalized Advantage Estimation: defines the immediate-reward plus next-state-value consistency relation.",
+        "advantage-baseline": "Required to understand Generalized Advantage Estimation: distinguishes an advantage from a raw return.",
+        "variance": "Lambda trades reliance on estimated values against sampled-return variability."
+      }
+    },
+    "token-sequence-loss-weighting": {
+      "aliases": [
+        "Token-level loss aggregation"
+      ],
+      "objective": "Averaging token losses within each response and then across responses gives different length weights from averaging all valid tokens together.",
+      "prerequisiteReasons": {
+        "loss-function": "Required to understand Token-versus-Sequence Loss Weighting: the same per-token objective is aggregated under two different sample measures.",
+        "arithmetic": "Required to understand Token-versus-Sequence Loss Weighting: the weighting follows from the averaging denominators."
+      }
+    },
+    "asymmetric-policy-clipping": {
+      "aliases": [
+        "Clip-Higher"
+      ],
+      "objective": "Asymmetric clipping assigns separate bounds to increasing and decreasing sampled-action probabilities in a PPO-style surrogate.",
+      "prerequisiteReasons": {
+        "proximal-policy-optimization": "Required to understand Asymmetric Policy-Ratio Clipping: its sign-dependent minimum determines which side of the clipping band matters."
+      }
+    },
+    "dynamic-reward-group-sampling": {
+      "aliases": [
+        "DAPO dynamic sampling"
+      ],
+      "objective": "Dynamic group sampling replenishes a training batch after filtering prompt groups with no relative reward signal, changing both useful-batch size and the selected prompt distribution.",
+      "prerequisiteReasons": {
+        "group-relative-policy-optimization": "Required to understand Dynamic Sampling of Informative Reward Groups: explains why an all-equal reward group supplies zero centered advantage."
+      }
+    },
+    "overlong-response-reward-shaping": {
+      "aliases": [],
+      "objective": "Length-aware reward shaping assigns a graded cost near a response limit while keeping truncation and verified task correctness as separate signals.",
+      "prerequisiteReasons": {
+        "verifiable-reward-design": "Required to understand Overlong-Response Reward Shaping: length costs supplement a task scorer rather than certify an answer.",
+        "arithmetic": "Required to understand Overlong-Response Reward Shaping: the piecewise penalty must be numerically interpretable."
+      }
+    },
+    "recursive-synthetic-data-feedback": {
+      "aliases": [],
+      "objective": "Recursive reuse of model-generated training data changes the next generation’s sampling distribution and can progressively remove poorly represented modes.",
+      "prerequisiteReasons": {
+        "synthetic-training-data": "Required to understand Recursive Synthetic-Data Feedback: filtering and provenance apply to each generated training set.",
+        "probability-distribution": "Required to understand Recursive Synthetic-Data Feedback: rare modes can disappear through finite sampling and then lose their training support."
+      }
+    },
+    "vapo": {
+      "aliases": [
+        "VAPO"
+      ],
+      "objective": "VAPO coordinates value pretraining, decoupled and length-adaptive advantage estimation, and policy-loss changes for long-response actor–critic training.",
+      "prerequisiteReasons": {
+        "proximal-policy-optimization": "Required to understand Value-model-based Augmented PPO: defines the clipped policy surrogate.",
+        "generalized-advantage-estimation": "Required to understand Value-model-based Augmented PPO: explains critic residuals, lambda and distant-reward weighting.",
+        "token-sequence-loss-weighting": "Required to understand Value-model-based Augmented PPO: distinguishes the chosen token aggregation from equal response weighting.",
+        "asymmetric-policy-clipping": "Required to understand Value-model-based Augmented PPO: explains the separate upper-ratio bound.",
+        "success-filtered-self-training": "Required to understand Value-model-based Augmented PPO: grounds the extra imitation term on successful sampled outputs."
+      }
+    },
+    "vine-ppo": {
+      "aliases": [],
+      "objective": "VinePPO replaces a learned critic with Monte Carlo continuations from intermediate language prefixes to estimate step-level values for policy updates.",
+      "prerequisiteReasons": {
+        "proximal-policy-optimization": "Required to understand VinePPO: the policy update remains a clipped sampled-policy optimization.",
+        "bellman-equation": "Required to understand VinePPO: a value difference plus reward measures the contribution of a transition.",
+        "expectation": "Required to understand VinePPO: continuation returns estimate the policy-conditioned expected outcome."
+      }
+    },
+    "rloo": {
+      "aliases": [
+        "RLOO",
+        "REINFORCE leave one out"
+      ],
+      "objective": "RLOO centers each sampled response reward against rewards of the other independent responses for the same prompt, avoiding self-inclusion in its baseline.",
+      "prerequisiteReasons": {
+        "reinforce-policy-gradient": "Required to understand REINFORCE Leave-One-Out: defines the reward-weighted log-policy estimator and baseline-independence condition."
+      }
+    },
+    "remax": {
+      "aliases": [],
+      "objective": "ReMax uses the reward of a greedily decoded response as a prompt-conditioned baseline for sampled-response policy gradients.",
+      "prerequisiteReasons": {
+        "reinforce-policy-gradient": "Required to understand ReMax: explains why an action-independent reward baseline may reduce variance without differentiating the reward."
+      }
+    },
+    "reinforce-plus-plus": {
+      "aliases": [
+        "REINFORCE plus plus"
+      ],
+      "objective": "REINFORCE++ uses critic-free reward advantages with global-batch normalization and a clipped policy objective; its baseline variant separates group centering from global scaling.",
+      "prerequisiteReasons": {
+        "proximal-policy-optimization": "Required to understand REINFORCE++: provides the clipped policy surrogate, despite the REINFORCE name.",
+        "advantage-baseline": "Required to understand REINFORCE++: distinguishes centering, scaling and finite-sample dependence.",
+        "kl-divergence": "A reference-policy divergence can enter returns or an additional loss in the documented variants."
+      }
+    },
+    "on-policy-optimal-baseline": {
+      "aliases": [
+        "OPO"
+      ],
+      "objective": "OPO couples fresh data for each policy update with a practical length-weighted approximation to the variance-minimizing reward baseline.",
+      "prerequisiteReasons": {
+        "reinforce-policy-gradient": "Required to understand On-Policy RL with Optimal Reward Baseline: supplies the exact current-policy gradient and baseline-independence boundary."
+      }
+    },
+    "dr-grpo": {
+      "aliases": [
+        "Dr GRPO"
+      ],
+      "objective": "Dr. GRPO removes response-dependent length normalization and within-group reward-standard-deviation scaling from a GRPO-style update.",
+      "prerequisiteReasons": {
+        "group-relative-policy-optimization": "Required to understand Dr. GRPO: defines group-centered response advantages.",
+        "proximal-policy-optimization": "Required to understand Dr. GRPO: defines the clipped surrogate retained by the method.",
+        "token-sequence-loss-weighting": "Required to understand Dr. GRPO: explains how changing the length denominator changes response and token weights."
+      }
+    },
+    "dapo": {
+      "aliases": [
+        "Decoupled Clip and Dynamic Sampling Policy Optimization"
+      ],
+      "objective": "DAPO combines asymmetric clipping, informative-group replenishment, token-weighted policy loss and length-aware rewards in a critic-free language-model RL recipe.",
+      "prerequisiteReasons": {
+        "asymmetric-policy-clipping": "Required to understand DAPO: defines the decoupled policy-ratio band.",
+        "dynamic-reward-group-sampling": "Required to understand DAPO: defines which reward groups are kept and replenished.",
+        "token-sequence-loss-weighting": "Required to understand DAPO: defines the all-valid-token aggregation.",
+        "overlong-response-reward-shaping": "Required to understand DAPO: defines the response-length cost near truncation."
+      }
+    },
+    "lite-ppo": {
+      "aliases": [
+        "Lite PPO"
+      ],
+      "objective": "LitePPO combines prompt-group reward centering, global-batch advantage scaling and token-level loss aggregation with a critic-free PPO surrogate.",
+      "prerequisiteReasons": {
+        "group-relative-policy-optimization": "Required to understand LitePPO: explains prompt-group comparisons without a critic.",
+        "proximal-policy-optimization": "Required to understand LitePPO: defines the unchanged clipped surrogate family.",
+        "token-sequence-loss-weighting": "Required to understand LitePPO: explains the retained token-weighted aggregation."
+      }
+    },
+    "group-sequence-policy-optimization": {
+      "aliases": [
+        "GSPO"
+      ],
+      "objective": "GSPO clips a length-normalized sequence-likelihood ratio so response-level reward and the policy update share a sequence-level control signal.",
+      "prerequisiteReasons": {
+        "proximal-policy-optimization": "Required to understand Group Sequence Policy Optimization: defines sign-dependent clipping against the sampling policy.",
+        "group-relative-policy-optimization": "Required to understand Group Sequence Policy Optimization: supplies group-relative response advantages.",
+        "logarithm": "Required to understand Group Sequence Policy Optimization: sequence likelihood products become stable sums of token log ratios.",
+        "likelihood": "The ratio treats the observed response as fixed while changing policy parameters."
+      }
+    },
+    "geometric-mean-policy-optimization": {
+      "aliases": [
+        "GMPO"
+      ],
+      "objective": "GMPO geometrically aggregates magnitudes of sign-aware token surrogates within each response, retaining token-level clipping rather than GSPO’s single sequence clip.",
+      "prerequisiteReasons": {
+        "proximal-policy-optimization": "Required to understand Geometric-Mean Policy Optimization: defines the per-token sign-dependent minimum being aggregated.",
+        "group-relative-policy-optimization": "Required to understand Geometric-Mean Policy Optimization: defines the response-level group advantage.",
+        "logarithm": "Required to understand Geometric-Mean Policy Optimization: computes geometric aggregation through average log magnitudes."
+      }
+    },
+    "cispo": {
+      "aliases": [
+        "CISPO"
+      ],
+      "objective": "CISPO clips and detaches importance weights multiplying token log probabilities, bounding their coefficient without using PPO’s flat favorable-side token surrogate.",
+      "prerequisiteReasons": {
+        "proximal-policy-optimization": "Required to understand Clipped Importance-Sampling Policy Optimization: provides the clipping behavior contrasted with clipped coefficient weighting.",
+        "group-relative-policy-optimization": "Required to understand Clipped Importance-Sampling Policy Optimization: supplies the group-relative advantage.",
+        "token-sequence-loss-weighting": "Required to understand Clipped Importance-Sampling Policy Optimization: defines the valid-token aggregation used in the published recipe."
+      }
+    },
+    "soft-adaptive-policy-optimization": {
+      "aliases": [
+        "SAPO"
+      ],
+      "objective": "SAPO replaces hard favorable-side clipping with a differentiable sigmoid surrogate whose gradient smoothly attenuates token ratios away from one.",
+      "prerequisiteReasons": {
+        "proximal-policy-optimization": "Required to understand Soft Adaptive Policy Optimization: defines the hard clipping boundary being replaced.",
+        "group-relative-policy-optimization": "Required to understand Soft Adaptive Policy Optimization: provides fixed group advantages for the token update."
+      }
     }
   }
 }

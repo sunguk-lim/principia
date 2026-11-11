@@ -16293,6 +16293,629 @@
       "contentHash": "07cbd5a8562da3b4f0453d800848221a1db8953ab58d822ba21c91e59a0bff95",
       "decision": "retain",
       "reason": "Callable factory injection passes an object-creation operation into a consumer so construction can vary without requiring a subclass or hard-coded concrete type. Checks the same objective, necessary limitations and validation boundaries; does not introduce a new independent technique."
+    },
+    {
+      "candidateKey": "cand-74fa5cddaf7b5c54d4f9",
+      "sourceId": "asymmetric-policy-clipping",
+      "contentHash": "9b1d5d0fb0aad1e43d1b302e73e1fe6796f67a3f59d0ec30cab28ed4fa71bb3e",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Separate upper and lower widths refine the same sign-aware clipping operation, using PPO as the required foundation."
+    },
+    {
+      "candidateKey": "cand-e9dbb9ab129f9362d4fe",
+      "sourceId": "asymmetric-policy-clipping",
+      "contentHash": "86b15865ddd3278641f0356fef83197e05dd74ed8a5095dcc91596fade4864c2",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Separate upper and lower widths refine the same sign-aware clipping operation, using PPO as the required foundation."
+    },
+    {
+      "candidateKey": "cand-272f04514ae62ded9315",
+      "sourceId": "asymmetric-policy-clipping",
+      "contentHash": "047b801e5676418ae3889fa8e600fafc2acfe732fffc39c919ec6fc606eb13ca",
+      "decision": "retain",
+      "reason": "Separate upper and lower widths refine the same sign-aware clipping operation, using PPO as the required foundation."
+    },
+    {
+      "candidateKey": "cand-65745b6b6a2e7d71f5db",
+      "sourceId": "asymmetric-policy-clipping",
+      "contentHash": "7671b617865c53afba8bcdddaa79f4bdd9c6470a87f28a5160750a07d6844e35",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Separate upper and lower widths refine the same sign-aware clipping operation, using PPO as the required foundation."
+    },
+    {
+      "candidateKey": "cand-c9af3179b020cf8e03b8",
+      "sourceId": "cispo",
+      "contentHash": "67b14edecb4aaca6290e6213df61d6f0485a83171a3ad86ef9c8e7efd36e3592",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Detached clipped coefficients multiplying log probabilities define CISPO’s gradient path; the positive and negative worked cases distinguish it from PPO’s flat favorable surrogate."
+    },
+    {
+      "candidateKey": "cand-b6b9795d93fc160d8037",
+      "sourceId": "cispo",
+      "contentHash": "ef695778297f694d8543f956005d18a0cb0b38a59567877464d9be919d0a3e33",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Detached clipped coefficients multiplying log probabilities define CISPO’s gradient path; the positive and negative worked cases distinguish it from PPO’s flat favorable surrogate."
+    },
+    {
+      "candidateKey": "cand-5bc92238944345a26c2a",
+      "sourceId": "cispo",
+      "contentHash": "47b6f506f834ad2dcd2892efab7c2bb02df9600599131c1fa00d0211c584c933",
+      "decision": "retain",
+      "reason": "Detached clipped coefficients multiplying log probabilities define CISPO’s gradient path; the positive and negative worked cases distinguish it from PPO’s flat favorable surrogate."
+    },
+    {
+      "candidateKey": "cand-b12e26be0f78c267ad50",
+      "sourceId": "cispo",
+      "contentHash": "92f9583645e7c4fab3a407c745621dee88494889d0f548e1d8c3aa5e9dc51610",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Detached clipped coefficients multiplying log probabilities define CISPO’s gradient path; the positive and negative worked cases distinguish it from PPO’s flat favorable surrogate."
+    },
+    {
+      "candidateKey": "cand-e57d28d1113ae26c8489",
+      "sourceId": "dapo",
+      "contentHash": "e1c9319abffa19de9a515ddad9bb90bf3f5a8f32e78ef025df477ae52d2d9f55",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The complete recipe coordinates four already separately authored mechanisms; retaining its integrated design does not collapse their independent source-candidate verdicts."
+    },
+    {
+      "candidateKey": "cand-75fe0000e476f532a93e",
+      "sourceId": "dapo",
+      "contentHash": "d4068652f1e8b212b90f427e666e5f61d0b0582959b58beb577b899434bfd26d",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The complete recipe coordinates four already separately authored mechanisms; retaining its integrated design does not collapse their independent source-candidate verdicts."
+    },
+    {
+      "candidateKey": "cand-0f7dbe5f615ef0f12fa1",
+      "sourceId": "dapo",
+      "contentHash": "028ff390ce50249c285819eac752e529b42cb5c61cfcdd933d8c67c4abb13f85",
+      "decision": "retain",
+      "reason": "The complete recipe coordinates four already separately authored mechanisms; retaining its integrated design does not collapse their independent source-candidate verdicts."
+    },
+    {
+      "candidateKey": "cand-dcba89239a87be32eaa2",
+      "sourceId": "dapo",
+      "contentHash": "44153c6230c5155ae0620c4e5080810e6c483997dd8c0adbbf325901ba16b669",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The complete recipe coordinates four already separately authored mechanisms; retaining its integrated design does not collapse their independent source-candidate verdicts."
+    },
+    {
+      "candidateKey": "cand-89306a9ad2e4c2688429",
+      "sourceId": "dr-grpo",
+      "contentHash": "159724f075e49fcb5cad715e558df5619a0f6610c85857883234aa9d9f5e9312",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Removal of response-length and group-spread denominators defines this normalization revision; loss weighting is already a separately declared prerequisite."
+    },
+    {
+      "candidateKey": "cand-b0075092587a7babcd53",
+      "sourceId": "dr-grpo",
+      "contentHash": "25924c9235c0109921bf9355469a085a7333fe3da95801e04c61c9a01e987220",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Removal of response-length and group-spread denominators defines this normalization revision; loss weighting is already a separately declared prerequisite."
+    },
+    {
+      "candidateKey": "cand-994ef7d1982d865b785a",
+      "sourceId": "dr-grpo",
+      "contentHash": "8f5afd688a839f0b1a199268315083650514013bba636cff71b3d15aef5f6548",
+      "decision": "retain",
+      "reason": "Removal of response-length and group-spread denominators defines this normalization revision; loss weighting is already a separately declared prerequisite."
+    },
+    {
+      "candidateKey": "cand-dd8279c7de68922395ae",
+      "sourceId": "dr-grpo",
+      "contentHash": "0f82cffab9488a3edc92334fe2a19a527288aa69ff366a0576aa785ebe8c1ea1",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Removal of response-length and group-spread denominators defines this normalization revision; loss weighting is already a separately declared prerequisite."
+    },
+    {
+      "candidateKey": "cand-af24dc88f24791a826cf",
+      "sourceId": "dynamic-reward-group-sampling",
+      "contentHash": "4bfe5acd7cb7bb9c4fe9c7f7a8f336a0b9d847832b217fe867e9cf4728d7b283",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Filtering, replenishment and bounded generation are the same selected-group batch mechanism; the worked reward vectors and rejection cost do not create new entities."
+    },
+    {
+      "candidateKey": "cand-e3d66d371b561454d3db",
+      "sourceId": "dynamic-reward-group-sampling",
+      "contentHash": "f25372c641a317b954673d1803849947280d18ceddf39819ae522a9b2a3d97be",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Filtering, replenishment and bounded generation are the same selected-group batch mechanism; the worked reward vectors and rejection cost do not create new entities."
+    },
+    {
+      "candidateKey": "cand-2a7bed2c462f80edee63",
+      "sourceId": "dynamic-reward-group-sampling",
+      "contentHash": "1adf474289505e45d8c87ca1356fdb81b4b702668553a8e087f94983f5ecf148",
+      "decision": "retain",
+      "reason": "Filtering, replenishment and bounded generation are the same selected-group batch mechanism; the worked reward vectors and rejection cost do not create new entities."
+    },
+    {
+      "candidateKey": "cand-8d1491a4418334c68416",
+      "sourceId": "dynamic-reward-group-sampling",
+      "contentHash": "f8a48f91a20ac0ab53c75c638e377811cae61a796dfeff7b0d25e20821874a86",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Filtering, replenishment and bounded generation are the same selected-group batch mechanism; the worked reward vectors and rejection cost do not create new entities."
+    },
+    {
+      "candidateKey": "cand-37452b799b516ea05450",
+      "sourceId": "generalized-advantage-estimation",
+      "contentHash": "9528909e54a74be5fb1bd69c1730aab18c78f2473e48308f1c1e0fd924b22f89",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The residual sum and backward recursion are two representations of the same GAE estimator; Bellman residuals and variance are declared foundations."
+    },
+    {
+      "candidateKey": "cand-44ac57fac44af30ed249",
+      "sourceId": "generalized-advantage-estimation",
+      "contentHash": "529752492c28a4c290b19202c78425b72e146e0925c52ef14c1ee1cd4990a08a",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The residual sum and backward recursion are two representations of the same GAE estimator; Bellman residuals and variance are declared foundations."
+    },
+    {
+      "candidateKey": "cand-dd73dc95edb934269df7",
+      "sourceId": "generalized-advantage-estimation",
+      "contentHash": "8ff3bb6ca8ab5634c5a49a5359695c3eeebb7fb0d599cc004d7f402ef27fb60d",
+      "decision": "retain",
+      "reason": "The residual sum and backward recursion are two representations of the same GAE estimator; Bellman residuals and variance are declared foundations."
+    },
+    {
+      "candidateKey": "cand-461f4ed546b9c9b7e6bc",
+      "sourceId": "generalized-advantage-estimation",
+      "contentHash": "c7f42f2b3c1a166e67ce593229d79da61325534890218288bd9e56abcdb10d95",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The residual sum and backward recursion are two representations of the same GAE estimator; Bellman residuals and variance are declared foundations."
+    },
+    {
+      "candidateKey": "cand-d642159020ec0f8d9201",
+      "sourceId": "geometric-mean-policy-optimization",
+      "contentHash": "d70172465599126717e2316acf71d5196d0246d720c0913a8d4302ac36c950fb",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Token minimum, absolute geometric aggregation and restored advantage sign define GMPO; the two-token example proves clipping order differs from GSPO without creating a synonym node."
+    },
+    {
+      "candidateKey": "cand-248e061436236bdc0d5a",
+      "sourceId": "geometric-mean-policy-optimization",
+      "contentHash": "2ea9dc3addecd7a9a862769f2f31f327e5877dfa583da4067541f4cd4b3bdb7f",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Token minimum, absolute geometric aggregation and restored advantage sign define GMPO; the two-token example proves clipping order differs from GSPO without creating a synonym node."
+    },
+    {
+      "candidateKey": "cand-82f8cbc84dc5bf92a3bc",
+      "sourceId": "geometric-mean-policy-optimization",
+      "contentHash": "cc9dac961e381e4cad8bf4a40f0ab96b9ea05d31d0bb9c4c6175f113f2d2c495",
+      "decision": "retain",
+      "reason": "Token minimum, absolute geometric aggregation and restored advantage sign define GMPO; the two-token example proves clipping order differs from GSPO without creating a synonym node."
+    },
+    {
+      "candidateKey": "cand-36c7e45e223f4c1981e2",
+      "sourceId": "geometric-mean-policy-optimization",
+      "contentHash": "fcaf34cf533ddceb41acf45284cb27f64bca4fad79e33f8668ffadfabc256e7b",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Token minimum, absolute geometric aggregation and restored advantage sign define GMPO; the two-token example proves clipping order differs from GSPO without creating a synonym node."
+    },
+    {
+      "candidateKey": "cand-56f9c950109389697c79",
+      "sourceId": "group-sequence-policy-optimization",
+      "contentHash": "7f4de5be4e53b225404a7c9a16b571accc8528a400007ebbac6a12961fc3e81f",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Sequence log-ratio averaging followed by one clip is GSPO’s defining operation; the sequence-root versus unbiased full-ratio distinction belongs to its contract."
+    },
+    {
+      "candidateKey": "cand-a706fe1368ae85c47f9d",
+      "sourceId": "group-sequence-policy-optimization",
+      "contentHash": "9c6317cae801e3881e130aae8a3fa8053d5a9ef5040b21f2f27ebbe7657f4605",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Sequence log-ratio averaging followed by one clip is GSPO’s defining operation; the sequence-root versus unbiased full-ratio distinction belongs to its contract."
+    },
+    {
+      "candidateKey": "cand-a898d9895c8ee1788c9b",
+      "sourceId": "group-sequence-policy-optimization",
+      "contentHash": "56e84e46bbd0fd2b292c7c57d608cb8b12aaf7fd212c5333d99d0eac2c5aca7c",
+      "decision": "retain",
+      "reason": "Sequence log-ratio averaging followed by one clip is GSPO’s defining operation; the sequence-root versus unbiased full-ratio distinction belongs to its contract."
+    },
+    {
+      "candidateKey": "cand-8bd9e6092a153541a24d",
+      "sourceId": "group-sequence-policy-optimization",
+      "contentHash": "bab767c1ea29eb13e4f2d2fd0069797eb4cd1f2a23602a353575ab350cb52718",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Sequence log-ratio averaging followed by one clip is GSPO’s defining operation; the sequence-root versus unbiased full-ratio distinction belongs to its contract."
+    },
+    {
+      "candidateKey": "cand-8a63b942ddbbb047c1b3",
+      "sourceId": "hybrid-recurrent-attention",
+      "contentHash": "d7b8900e28f871433945d763018093c693f171b509a51e13bc8c2bdc4acc186f",
+      "decision": "retain",
+      "reason": "Hybrid-specific attention/recurrent byte arithmetic supports the same architecture trade-off. General workload memory budgeting is already a separate node; this section does not assert equal quality or measured throughput."
+    },
+    {
+      "candidateKey": "cand-c68b70e2fe129e15e049",
+      "sourceId": "hybrid-recurrent-attention",
+      "contentHash": "2724bfcddcd8a46c178ec9a84356b424ed225230f44e8202de50d5e239fd50b5",
+      "decision": "retain",
+      "reason": "Interleaving bounded recurrent state with token-addressable attention is the existing hybrid-decoder objective; exact recall wording was narrowed, not accepted as guaranteed."
+    },
+    {
+      "candidateKey": "cand-dfedcf6b0c6971810cac",
+      "sourceId": "hybrid-recurrent-attention",
+      "contentHash": "8752ed49ca2a1fd3889f2d3d7333166df1d1d6effd3e986c488c7c401642fb55",
+      "decision": "retain",
+      "reason": "Matched quality/context/layer-ratio tests delimit the existing hybrid-decoder objective rather than creating an evaluation-method entity."
+    },
+    {
+      "candidateKey": "cand-ba2df9072462b5d97bba",
+      "sourceId": "lite-ppo",
+      "contentHash": "b0cdd1e17805b16e59dd7563847fa86e04ad1bbf0ee598e787b990b97399c587",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Group centering, global batch scaling and token aggregation jointly define the minimalist recipe; the alternate scale calculation is an implementation boundary, not a second algorithm endorsed as identical."
+    },
+    {
+      "candidateKey": "cand-d2091f6cb24bb20aef21",
+      "sourceId": "lite-ppo",
+      "contentHash": "b15eb0818470173334c6ea402155927388fef588f7a5c0e18683c38b873b36d2",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Group centering, global batch scaling and token aggregation jointly define the minimalist recipe; the alternate scale calculation is an implementation boundary, not a second algorithm endorsed as identical."
+    },
+    {
+      "candidateKey": "cand-c46761b45df2b18f9a9b",
+      "sourceId": "lite-ppo",
+      "contentHash": "fb23e4c4a88d85128d1af9c7dde396334c4797393674520ad96415ff00103111",
+      "decision": "retain",
+      "reason": "Group centering, global batch scaling and token aggregation jointly define the minimalist recipe; the alternate scale calculation is an implementation boundary, not a second algorithm endorsed as identical."
+    },
+    {
+      "candidateKey": "cand-0b0cffa3282705d99a08",
+      "sourceId": "lite-ppo",
+      "contentHash": "b7ee9d60129fc5ea7c3f1153257611ed34dfa6004f852ee9411d1c0ab5641523",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Group centering, global batch scaling and token aggregation jointly define the minimalist recipe; the alternate scale calculation is an implementation boundary, not a second algorithm endorsed as identical."
+    },
+    {
+      "candidateKey": "cand-fdf8a7ec43f913b102ef",
+      "sourceId": "on-policy-optimal-baseline",
+      "contentHash": "cd376b22f49905da41b1aeb66dd0ce31dee51598feee64b302c9fad8cd82ebc0",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Fresh-step sampling and the gradient-norm-to-length approximation jointly define OPO; the finite-group dependence caveat is necessary to avoid overstating its optimality claim."
+    },
+    {
+      "candidateKey": "cand-bfb0d81734d0fbb1512c",
+      "sourceId": "on-policy-optimal-baseline",
+      "contentHash": "d714f8241c967f8a1d6991896b56fa11801f5120e06d58691dbaf72fd84d1bb9",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Fresh-step sampling and the gradient-norm-to-length approximation jointly define OPO; the finite-group dependence caveat is necessary to avoid overstating its optimality claim."
+    },
+    {
+      "candidateKey": "cand-f9edbefb9dcd597cb854",
+      "sourceId": "on-policy-optimal-baseline",
+      "contentHash": "0ce5b06c5272fc1cb304b1afb702c6d5f61011e0b10c090d794a299659ef54b9",
+      "decision": "retain",
+      "reason": "Fresh-step sampling and the gradient-norm-to-length approximation jointly define OPO; the finite-group dependence caveat is necessary to avoid overstating its optimality claim."
+    },
+    {
+      "candidateKey": "cand-9a5704378013959ff029",
+      "sourceId": "on-policy-optimal-baseline",
+      "contentHash": "e7d92953d3b81af477163e75a499f7645e11c413f9f7f897a2f6207abff702a4",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Fresh-step sampling and the gradient-norm-to-length approximation jointly define OPO; the finite-group dependence caveat is necessary to avoid overstating its optimality claim."
+    },
+    {
+      "candidateKey": "cand-568e7f3d5e38228174f6",
+      "sourceId": "overlong-response-reward-shaping",
+      "contentHash": "026fa8ce17029ba21732a780650c114dce4071817276d6196f98d3ab65d1622e",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The piecewise length ramp and censoring distinction delimit the same response-cost objective; verifier design is already a prerequisite."
+    },
+    {
+      "candidateKey": "cand-36a738fa0eda172c4d13",
+      "sourceId": "overlong-response-reward-shaping",
+      "contentHash": "769109b074d443d682fa6d9dd99bfd37a1e17df9bcf24a98c27a88c8364ad60c",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The piecewise length ramp and censoring distinction delimit the same response-cost objective; verifier design is already a prerequisite."
+    },
+    {
+      "candidateKey": "cand-48e0c4fcc904da4eaa3d",
+      "sourceId": "overlong-response-reward-shaping",
+      "contentHash": "2e4ddb12bad231ff7681fd23765880fe476758effd9f5b3b270fefa1241b2e11",
+      "decision": "retain",
+      "reason": "The piecewise length ramp and censoring distinction delimit the same response-cost objective; verifier design is already a prerequisite."
+    },
+    {
+      "candidateKey": "cand-ae4d8c5f899a6ef88090",
+      "sourceId": "overlong-response-reward-shaping",
+      "contentHash": "1fbc99981bf41d5583ccca743f2e84ef1ce73c647a887b5c19f285835a597fe2",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The piecewise length ramp and censoring distinction delimit the same response-cost objective; verifier design is already a prerequisite."
+    },
+    {
+      "candidateKey": "cand-7769f8d18af537dde149",
+      "sourceId": "proximal-policy-optimization",
+      "contentHash": "28ca568703aa6765408e4e9589e5a6c1f9d80d827c27d0a7ff8738e32ca169e7",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The advantage-sign-dependent minimum is the defining PPO-Clip surrogate, not a separate new concept for each branch; the worked branches explicitly avoid a hard trust-region claim."
+    },
+    {
+      "candidateKey": "cand-abcaad1ed23c7e567b9f",
+      "sourceId": "proximal-policy-optimization",
+      "contentHash": "217d58be3299bca124c39210f987d8970419976c1cd3a851625aabf71c889d6a",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The advantage-sign-dependent minimum is the defining PPO-Clip surrogate, not a separate new concept for each branch; the worked branches explicitly avoid a hard trust-region claim."
+    },
+    {
+      "candidateKey": "cand-bb7005012f3327f323a3",
+      "sourceId": "proximal-policy-optimization",
+      "contentHash": "40e8d8614849f99c64eee95ef7870688d55a61a0129bf23d77cb56d9f12d9f9a",
+      "decision": "retain",
+      "reason": "The advantage-sign-dependent minimum is the defining PPO-Clip surrogate, not a separate new concept for each branch; the worked branches explicitly avoid a hard trust-region claim."
+    },
+    {
+      "candidateKey": "cand-61e915248a60049f4a75",
+      "sourceId": "proximal-policy-optimization",
+      "contentHash": "9c01b9b4a1c5a23c169216621dff408415330788ff17e381d8113253b0804458",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The advantage-sign-dependent minimum is the defining PPO-Clip surrogate, not a separate new concept for each branch; the worked branches explicitly avoid a hard trust-region claim."
+    },
+    {
+      "candidateKey": "cand-5214b0284ad1469540cc",
+      "sourceId": "recursive-synthetic-data-feedback",
+      "contentHash": "ecd674956aa98dd0ebdbfca2d237584c1b476c0db6aff0e05f8578b8242ca4ef",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The repeated replacement loop and rare-mode loss explain distributional feedback beyond a one-round synthetic-data pipeline; the finite histogram is its illustrative mechanism, not a universal neural-model theorem."
+    },
+    {
+      "candidateKey": "cand-86fb1286bc427e077d96",
+      "sourceId": "recursive-synthetic-data-feedback",
+      "contentHash": "459bc493e918c4b6a51525479d9eb74a99f4ef4ec848045b6d73bcffcc58a075",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The repeated replacement loop and rare-mode loss explain distributional feedback beyond a one-round synthetic-data pipeline; the finite histogram is its illustrative mechanism, not a universal neural-model theorem."
+    },
+    {
+      "candidateKey": "cand-781c076789842ec22aa9",
+      "sourceId": "recursive-synthetic-data-feedback",
+      "contentHash": "9113d8d43e5f7b8ab77ca7f95366a443d2d8f1321ee542064a54cb09676ce8fa",
+      "decision": "retain",
+      "reason": "The repeated replacement loop and rare-mode loss explain distributional feedback beyond a one-round synthetic-data pipeline; the finite histogram is its illustrative mechanism, not a universal neural-model theorem."
+    },
+    {
+      "candidateKey": "cand-49c3f25a9dfeab49500e",
+      "sourceId": "recursive-synthetic-data-feedback",
+      "contentHash": "916bc7ab8576da09bbfb6e4782f91a927316d58071f58c268c6b31067db972b7",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The repeated replacement loop and rare-mode loss explain distributional feedback beyond a one-round synthetic-data pipeline; the finite histogram is its illustrative mechanism, not a universal neural-model theorem."
+    },
+    {
+      "candidateKey": "cand-b0f945c2afe5d867e1bb",
+      "sourceId": "reinforce-plus-plus",
+      "contentHash": "fbe98a6623b301ecf4f8e4810de25bb1460597d56a7dc9f95bc8150376560188",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Global advantage scaling and the group-centered variant define the named framework; the explicit reference-divergence prerequisite prevents using a hidden regularization mechanism."
+    },
+    {
+      "candidateKey": "cand-114b3243e44ee9441908",
+      "sourceId": "reinforce-plus-plus",
+      "contentHash": "6fdc857a3d7e14c06de6a33b1e26b4551900fc6f5a5bf0d0719879422fc0847c",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Global advantage scaling and the group-centered variant define the named framework; the explicit reference-divergence prerequisite prevents using a hidden regularization mechanism."
+    },
+    {
+      "candidateKey": "cand-e26d0a86b05660273680",
+      "sourceId": "reinforce-plus-plus",
+      "contentHash": "2442c0bbc17fcfdc9a11df7ab8b3581837bdc8f6ca88fee2847e50431f009ba4",
+      "decision": "retain",
+      "reason": "Global advantage scaling and the group-centered variant define the named framework; the explicit reference-divergence prerequisite prevents using a hidden regularization mechanism."
+    },
+    {
+      "candidateKey": "cand-b5edca5020248ce6f08f",
+      "sourceId": "reinforce-plus-plus",
+      "contentHash": "095749c05008d3b799305d65a5042481020f7a66f1311c4f23207a69d6089761",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Global advantage scaling and the group-centered variant define the named framework; the explicit reference-divergence prerequisite prevents using a hidden regularization mechanism."
+    },
+    {
+      "candidateKey": "cand-ecf44ffd30460a4898b1",
+      "sourceId": "reinforce-policy-gradient",
+      "contentHash": "cb24762e46a28fbace589f875cc6ebae61d3199534ab29ef2c0bb20301ac9a96",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The reward-weighted parameter-log-probability identity, detached baseline and one-response sampling contract jointly define REINFORCE; the derivative and variance foundations have their own prerequisites."
+    },
+    {
+      "candidateKey": "cand-b4941ba4879339f0115d",
+      "sourceId": "reinforce-policy-gradient",
+      "contentHash": "a839bbdef1f982fb5fb083d97e4585ac381ecbb9d2b9330957cd27e681e4d11e",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The reward-weighted parameter-log-probability identity, detached baseline and one-response sampling contract jointly define REINFORCE; the derivative and variance foundations have their own prerequisites."
+    },
+    {
+      "candidateKey": "cand-a5a48db19ccb5728f85d",
+      "sourceId": "reinforce-policy-gradient",
+      "contentHash": "312e3949007ada087c500b6a56c9bb5e4f97ceccd1da1592e2c0b26663cd35b1",
+      "decision": "retain",
+      "reason": "The reward-weighted parameter-log-probability identity, detached baseline and one-response sampling contract jointly define REINFORCE; the derivative and variance foundations have their own prerequisites."
+    },
+    {
+      "candidateKey": "cand-dee650f21c1ba585b3f0",
+      "sourceId": "reinforce-policy-gradient",
+      "contentHash": "599ba3ef7d7d0cf657a25f1a6d1c6df141729ca2f239d91747587b5125653245",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The reward-weighted parameter-log-probability identity, detached baseline and one-response sampling contract jointly define REINFORCE; the derivative and variance foundations have their own prerequisites."
+    },
+    {
+      "candidateKey": "cand-727ad0545f1459de9b94",
+      "sourceId": "remax",
+      "contentHash": "91b8efb2aef4ea74d28ba29794ced7dbe9713b4a01802adbdc1c5822ccc9e309",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The greedy outcome baseline and its detached gradient boundary define ReMax; memory and reference-model notes delimit the actual recipe instead of becoming independent outcome claims."
+    },
+    {
+      "candidateKey": "cand-2800f83ab91fcc10f2bd",
+      "sourceId": "remax",
+      "contentHash": "91abb1dc31e3781d5f0353da7ed1c842052f2c1c5ba1392ffb36a1a75624fda4",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The greedy outcome baseline and its detached gradient boundary define ReMax; memory and reference-model notes delimit the actual recipe instead of becoming independent outcome claims."
+    },
+    {
+      "candidateKey": "cand-0bee5e5d87414d4abf3f",
+      "sourceId": "remax",
+      "contentHash": "8cf3e1761e4fdd53b2d948eb7cab8ef757dd098636c98ab1b4180bb6b484a420",
+      "decision": "retain",
+      "reason": "The greedy outcome baseline and its detached gradient boundary define ReMax; memory and reference-model notes delimit the actual recipe instead of becoming independent outcome claims."
+    },
+    {
+      "candidateKey": "cand-5553764e5b01dbc81e27",
+      "sourceId": "remax",
+      "contentHash": "ec4a576cff60b9b6c06939cd52545cee9ff0542e38e67c5b7774466a0a249c50",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The greedy outcome baseline and its detached gradient boundary define ReMax; memory and reference-model notes delimit the actual recipe instead of becoming independent outcome claims."
+    },
+    {
+      "candidateKey": "cand-3c8fffd64647193cf354",
+      "sourceId": "rloo",
+      "contentHash": "71f58f84fa986d62f1c438927695a670aff12d4d724c67f87e3534cfadc1e3ba",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Excluding the current action from the peer baseline defines leave-one-out; the self-inclusion identity is a supporting derivation of that distinction."
+    },
+    {
+      "candidateKey": "cand-8cfc549984f2f9e4ba1f",
+      "sourceId": "rloo",
+      "contentHash": "d758928d1616444282dc866e554f65981d3c6ac838932d9554d933ff606775d4",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Excluding the current action from the peer baseline defines leave-one-out; the self-inclusion identity is a supporting derivation of that distinction."
+    },
+    {
+      "candidateKey": "cand-9aa780db29b20c277a1f",
+      "sourceId": "rloo",
+      "contentHash": "712e80e478466fce2c5a0182f6fa33f5e8f76ae77a748b31eb82c2b3c4438f52",
+      "decision": "retain",
+      "reason": "Excluding the current action from the peer baseline defines leave-one-out; the self-inclusion identity is a supporting derivation of that distinction."
+    },
+    {
+      "candidateKey": "cand-2d369e58755f56a926fd",
+      "sourceId": "rloo",
+      "contentHash": "eef16870cf99f40bf21ad2f67f44dd04477291d5f13c648169615b3b675945a1",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Excluding the current action from the peer baseline defines leave-one-out; the self-inclusion identity is a supporting derivation of that distinction."
+    },
+    {
+      "candidateKey": "cand-982be45e043de9f73d0c",
+      "sourceId": "soft-adaptive-policy-optimization",
+      "contentHash": "73e4ec1e7c16e8cf972fb91cc5eec102d43efa9659d0e0e64f7dbea1768775f7",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The scaled sigmoid surrogate and derived smooth gradient gate are one SAPO mechanism; separate temperatures and numerical bounds refine that objective."
+    },
+    {
+      "candidateKey": "cand-71a1e0a6e369324abc29",
+      "sourceId": "soft-adaptive-policy-optimization",
+      "contentHash": "6266d344d8e9876ab2a21ff0be79ae576d3067aa429a77639cc13c910c3ef1fe",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The scaled sigmoid surrogate and derived smooth gradient gate are one SAPO mechanism; separate temperatures and numerical bounds refine that objective."
+    },
+    {
+      "candidateKey": "cand-e1c4bda16f1c6c067c8f",
+      "sourceId": "soft-adaptive-policy-optimization",
+      "contentHash": "0ca6206de40cec171fd026f29a5ca4b09f58d27dd4ab43131d4ae4ca330d2531",
+      "decision": "retain",
+      "reason": "The scaled sigmoid surrogate and derived smooth gradient gate are one SAPO mechanism; separate temperatures and numerical bounds refine that objective."
+    },
+    {
+      "candidateKey": "cand-505cdc47fde7f4a07877",
+      "sourceId": "soft-adaptive-policy-optimization",
+      "contentHash": "4d28422e667bf3ee290ab13403366d51de576b005fd293eefe4ab9928be1da6d",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The scaled sigmoid surrogate and derived smooth gradient gate are one SAPO mechanism; separate temperatures and numerical bounds refine that objective."
+    },
+    {
+      "candidateKey": "cand-9640195ac6aeb8988050",
+      "sourceId": "success-filtered-self-training",
+      "contentHash": "c3ac25a034f6d06eca4725d90178f48149164f61a9225ef9fae8331db6fd19c6",
+      "decision": "retain",
+      "reason": "The new worked admission-precision and regression example extends the existing accepted-target filter to self-revisions. It preserves the external-verifier and first-pass-conditioning boundaries rather than inventing a synonym node for distillation."
+    },
+    {
+      "candidateKey": "cand-55ca3bda9ea6fec86a1a",
+      "sourceId": "success-filtered-self-training",
+      "contentHash": "e643d8d287e4fad59e2f95e2f39c44e0cfc4dd94ce0df410523ba054977da49d",
+      "decision": "retain",
+      "reason": "Generation, filtering, stale-data limits and pass-at-k delimit the existing success-filtered training objective; the section was read and unchanged supporting mechanisms retain their identities."
+    },
+    {
+      "candidateKey": "cand-f48f28d530c969f0589e",
+      "sourceId": "token-sequence-loss-weighting",
+      "contentHash": "74d9d87bf15a2cc54a1b4980932c138f2fb67a8bc70fecf4234a1c007f1dc58f",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. The two denominators define the node’s single weighting comparison; distributed aggregation and padding preserve that same sample measure rather than creating a new optimizer."
+    },
+    {
+      "candidateKey": "cand-f4722aa18d53be362473",
+      "sourceId": "token-sequence-loss-weighting",
+      "contentHash": "016cf0a5be378c45ef09e2dc0351480ec33e78effba79b06494a16aec9c8da62",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. The two denominators define the node’s single weighting comparison; distributed aggregation and padding preserve that same sample measure rather than creating a new optimizer."
+    },
+    {
+      "candidateKey": "cand-ef3488796cb46a615573",
+      "sourceId": "token-sequence-loss-weighting",
+      "contentHash": "e8d71efc09fa6085ac98be61ec222827ea3403066ffe55d145d899a4e92f25b7",
+      "decision": "retain",
+      "reason": "The two denominators define the node’s single weighting comparison; distributed aggregation and padding preserve that same sample measure rather than creating a new optimizer."
+    },
+    {
+      "candidateKey": "cand-f193b3e3a7480c3ef7d5",
+      "sourceId": "token-sequence-loss-weighting",
+      "contentHash": "668f8824f176d26c343d7f57186b176eb9b76f65232110da53dba6202a97984b",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. The two denominators define the node’s single weighting comparison; distributed aggregation and padding preserve that same sample measure rather than creating a new optimizer."
+    },
+    {
+      "candidateKey": "cand-e69ec9de006403b7485e",
+      "sourceId": "vapo",
+      "contentHash": "971cbfd69bcf28dd75cafbab7b4a19a8fa40cf5aa5c4163f00c477b2ce5de775",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Value pretraining, separate critic/actor traces, length-adaptive lambda and imitation form the integrated VAPO recipe; GAE, loss weighting, clipping and filtered imitation are independently grounded prerequisites, not silent merged verdicts."
+    },
+    {
+      "candidateKey": "cand-9de1f93d85647e1a0e20",
+      "sourceId": "vapo",
+      "contentHash": "f03d3b57e2ccf0a2c00715be8b1371c0d61516b6e4b63375cfc26a4a36c33949",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Value pretraining, separate critic/actor traces, length-adaptive lambda and imitation form the integrated VAPO recipe; GAE, loss weighting, clipping and filtered imitation are independently grounded prerequisites, not silent merged verdicts."
+    },
+    {
+      "candidateKey": "cand-0bd38b23d764599ad38a",
+      "sourceId": "vapo",
+      "contentHash": "370adf8189548f76041343ed064a4acc5d4b35f82937ae62d000bba22ae651fe",
+      "decision": "retain",
+      "reason": "Value pretraining, separate critic/actor traces, length-adaptive lambda and imitation form the integrated VAPO recipe; GAE, loss weighting, clipping and filtered imitation are independently grounded prerequisites, not silent merged verdicts."
+    },
+    {
+      "candidateKey": "cand-97407cbe3144b8af7fd8",
+      "sourceId": "vine-ppo",
+      "contentHash": "36742b344b4953b652147788335b5115323f3cd166ef2db8872234068c670289",
+      "decision": "retain",
+      "reason": "Applicability, correctness checks and counterexamples delimit this canonical operation. Prefix resets, auxiliary return averaging and neighboring-state differences form one sampled-value credit-assignment method; generic expectation and Bellman consistency are prerequisite entities."
+    },
+    {
+      "candidateKey": "cand-476d3733963ac4da02eb",
+      "sourceId": "vine-ppo",
+      "contentHash": "e46b0440edb4205f89311392e4e169da4781682622fede15359cf613b7d1817f",
+      "decision": "retain",
+      "reason": "Definition of the canonical node’s one learning objective. Prefix resets, auxiliary return averaging and neighboring-state differences form one sampled-value credit-assignment method; generic expectation and Bellman consistency are prerequisite entities."
+    },
+    {
+      "candidateKey": "cand-fcdcbb7356333333072f",
+      "sourceId": "vine-ppo",
+      "contentHash": "00d207225edfd1911e388169119ae289c627f27291bf1044d9e24e0a6fa7b2ec",
+      "decision": "retain",
+      "reason": "Prefix resets, auxiliary return averaging and neighboring-state differences form one sampled-value credit-assignment method; generic expectation and Bellman consistency are prerequisite entities."
+    },
+    {
+      "candidateKey": "cand-8df8d13e46db3bb72498",
+      "sourceId": "vine-ppo",
+      "contentHash": "00c9b66e9dc15c4ece71778c9eab38ac4e32e4ad7215f64a1fe36a544d38a84b",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Prefix resets, auxiliary return averaging and neighboring-state differences form one sampled-value credit-assignment method; generic expectation and Bellman consistency are prerequisite entities."
+    },
+    {
+      "candidateKey": "cand-8e797073f205c556b369",
+      "sourceId": "vapo",
+      "contentHash": "7b24c87dd58b7a19b21d06daaddd16afae6c555e5df74c026dcc4e2580519259",
+      "decision": "retain",
+      "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Value pretraining, separate critic/actor traces, length-adaptive lambda and imitation form the integrated VAPO recipe; GAE, loss weighting, clipping and filtered imitation are independently grounded prerequisites, not silent merged verdicts."
     }
   ]
 }

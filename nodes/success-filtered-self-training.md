@@ -8,7 +8,7 @@ prereqs: [neural-network, loss-function, probability-distribution]
 sources: [https://arxiv.org/abs/2308.08998]
 status: explained
 created: 2026-10-09
-updated: 2026-10-09
+updated: 2026-11-12
 ---
 
 # Success-Filtered Self-Training
@@ -26,6 +26,14 @@ The selected dataset has a biased task distribution. An easy task may contribute
 For an agent with executable tests, start with a fixed task suite split by difficulty. Compare success filtering with on-policy optimization at equal generated trajectories, training tokens, and compute. Report held-out pass@1, pass@k, diversity of accepted solutions, per-task coverage, and reward exploitability. Rebalance tasks or refresh rollouts when coverage or freshness—not the optimizer—causes the plateau.
 
 **Pass@k** asks whether at least one of $k$ sampled attempts passes a verifier; pass@1 measures a single attempt. If independent attempts each have success probability $p$, the idealized pass@k is $1-(1-p)^k$. Correlated samples and finite benchmark estimators break that shortcut, so report the sampling temperature, sample count, verifier, and uncertainty. A training loop may improve pass@1 while reducing solution diversity and thus harming pass@k, or vice versa.
+
+## Distilling a verified revision, not the act of reflection
+
+A draft–critique–revise loop can propose a new training target, but an intrinsic critique is not its own correctness oracle. Keep the original prompt, draft, revision, model version and external acceptance evidence. Admit the revision only after a task-appropriate check, and train the first-pass input on that verified target if the goal is to remove inference-time reflection. Training on an input that includes the full critique instead teaches a different conditional task.
+
+Consider an invented batch of 20 initially incorrect drafts. Reflection repairs six according to an independent test, but a fluency filter accepts eight revisions, including two still wrong. Training on all eight would give 2/8=25% wrong labels despite repairing 6/20=30% of the original errors. On a separate set of 80 initially correct drafts, suppose reflection corrupts four. Reporting only the 30% repair rate omits those regressions. Neither filter precision nor reflection accuracy establishes the trained first-pass model's result.
+
+Split tasks or templates before generating targets, keep independent final evaluation untouched, and retain difficult cases where no verified revision was found. Otherwise accepted corrections can overrepresent easy repairs. Compare the original first pass, reflection at inference, and the trained first pass on the same held-out tasks; report wrong-to-right and right-to-wrong transitions, critical failure slices, token cost, training cost and broader capability retention. Keep a rollback checkpoint. A model agreeing with its own revision is correlated evidence, not external validation; successful imitation transfers selected behavior without certifying the selection process.
 
 ## Prerequisites
 

@@ -1053,13 +1053,6 @@
       "reason": "Overview is supporting explanation for the canonical CUDA Thread Hierarchy objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-1d2d3137df1bbfe08e45",
-      "sourceId": "llm-as-a-judge",
-      "contentHash": "11863d70b2b317a59bf161b3dc381af8484ee157a712f64c866a976f1d11a79a",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical LLM as a Judge objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-1d912e590f7308341ab2",
       "sourceId": "gpu-data-flow",
       "contentHash": "6837a963b382115640a12b50f235a8992d5c60ff89161465525b84fdce57aeba",
@@ -3643,13 +3636,6 @@
       "reason": "The WHY: why graft code in at runtime instead of building it all in? is supporting explanation for the canonical Kernel Module objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-68673d2e87913a6ec505",
-      "sourceId": "rmsnorm",
-      "contentHash": "f6981a74c24bc53f61421852c581302cff3c805ed33d0f2d9647297e9fba771b",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical RMSNorm objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-689b143d8444c96d7b49",
       "sourceId": "load-testing",
       "contentHash": "208e4964be49c7c1d7294798f4201665fc13994e2dd84a59978bc0be8a9c7170",
@@ -3774,13 +3760,6 @@
       "contentHash": "f2a7654b90e9315d5f2bd0d5e2af57309120cace0a4cf19804f2ebad437cedbf",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Trie objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-6d795ad74ddf1250a6e4",
-      "sourceId": "metamorphic-testing",
-      "contentHash": "dc634a66d0494f47baa1135f50932ac5a9578b38ed9e623ec11560d19ebfad7e",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Metamorphic Testing objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-6e46b7fc97cd6d7e845b",
@@ -7166,13 +7145,6 @@
       "reason": "Overview is supporting explanation for the canonical seccomp objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-ccf22c4a0a4b9e3887de",
-      "sourceId": "rmsnorm",
-      "contentHash": "85326cc839ce2588244d3abc122942de6d9f5a6dd42a097ac88fe22caa2c0433",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical RMSNorm objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-cd0cba3d68e42cf8bf4b",
       "sourceId": "ml-system-freshness",
       "contentHash": "b1502fa2497cbfb1c4cd1526cd04f09ca1b93d465488603b4b0a6ca924d3da15",
@@ -10114,20 +10086,6 @@
       "reason": "Comprehension check for the single defining misconception, not a new entity."
     },
     {
-      "candidateKey": "cand-d3e0b7a267c915379a27",
-      "sourceId": "tool-call-execution-contract",
-      "contentHash": "fa9ac1addf732eaea0eab963305ddaccd29ca9ba188b41d331635f2db0cf1945",
-      "decision": "retain",
-      "reason": "Introduces the existing canonical object; no synonymous entity."
-    },
-    {
-      "candidateKey": "cand-6e3f9df3308e1fb6d537",
-      "sourceId": "tool-call-execution-contract",
-      "contentHash": "6c98717d409253aed29e1ba21afaf1f64485a90686be2899b3d433bac230ab5e",
-      "decision": "retain",
-      "reason": "Applies the existing tool-call handoff objective; the distinct scoped-reference mechanism now has its own canonical node."
-    },
-    {
       "candidateKey": "cand-946197d3a114e4f545e3",
       "sourceId": "transactional-outbox",
       "contentHash": "5ad42a5e17bb31013a19f4155850fce3db0842c652cceb7b81678ffb8d5952e7",
@@ -13061,34 +13019,6 @@
       "reason": "The canonical objective is policy-first endpoint eligibility; upstream policy and gateway retention scope remain separately checked boundaries within this routing architecture. Separates request enforcement, safety retention, tool scope and gateway exceptions so endpoint filtering is not mistaken for a blanket retention guarantee. These policy attributes qualify this canonical routing objective, not distinct invented product entities."
     },
     {
-      "candidateKey": "cand-cc7cb3f19ed286f1e2bd",
-      "sourceId": "quality-cost-model-selection",
-      "contentHash": "d4fc312043a3333476a3b19cb874561f851ea32ad14d87614eba8b794f545e2d",
-      "decision": "retain",
-      "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. Qualifies the objective with units, failure accounting, task matching and scope; generic validation is not a new entity."
-    },
-    {
-      "candidateKey": "cand-9d370f32cb884914903c",
-      "sourceId": "quality-cost-model-selection",
-      "contentHash": "38ae5edaeee9c5fc18b408e4bb73ea597d2812bbfdf555bb1b010fe796bedf6e",
-      "decision": "retain",
-      "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. Defines the same single canonical learning objective."
-    },
-    {
-      "candidateKey": "cand-96e8f15154c8e24a38df",
-      "sourceId": "quality-cost-model-selection",
-      "contentHash": "4e0a1bc0e59faa724335bad00804aa7580aa5b16019f8898e1741aa26c99e081",
-      "decision": "retain",
-      "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. Explains that objective through the explicitly reviewed prerequisite set; it does not create another entity for a prose section."
-    },
-    {
-      "candidateKey": "cand-c31227a0d068f2053e15",
-      "sourceId": "quality-cost-model-selection",
-      "contentHash": "8ccc2a5882dcdf57fa8d6bfc4711f6336a068a2661e9fef7c6d2bfd9251d474c",
-      "decision": "retain",
-      "reason": "The objective is a constraint-conditioned deployment decision using matched quality and measured resources; paired uncertainty and evaluation slices are declared prerequisites, not identity duplicates. The original numerical or evidence trace demonstrates this objective, not an unrelated concept."
-    },
-    {
       "candidateKey": "cand-16da9c66f4f0ed568d41",
       "sourceId": "application-containerization",
       "contentHash": "eeecb956c0d3b364ea8a1b78673c003597ccd221cd6d320b9b894a579e0ed6fb",
@@ -13885,13 +13815,6 @@
       "contentHash": "9225fdd92f2ec41600a08e56d8113f57f343151aaa287a6e1d406501f0651b55",
       "decision": "retain",
       "reason": "The single objective reconstructs a quantity from exact source identity, location, unit and transformation. Generic citation support is declared as a prerequisite; the wrong-row arithmetic example and bounded test checklist specifically establish quantitative trace verification, not a second citation entity. Tests the same objective and bounds evidence or implementation guarantees."
-    },
-    {
-      "candidateKey": "cand-61150367e64de0c7065e",
-      "sourceId": "quality-cost-model-selection",
-      "contentHash": "ed313d94d6bb922f0be0349ece6ecd80df2c4663c6a3b8af925bebcec575427c",
-      "decision": "retain",
-      "reason": "Usage-volume and composite-score sections are separately judged as selection evidence limits: selected traffic is not held-out task quality, and changing normalization or weights changes a decision objective. They improve the existing deployment-selection explanation, not a universal ranking method. Gives explicit traffic-selection and score-weight reversal cases; both remain supporting selection evidence, separately tracked as newsletter concept candidates."
     },
     {
       "candidateKey": "cand-b6f32dda56fc813593ee",
@@ -16916,6 +16839,608 @@
       "contentHash": "7b24c87dd58b7a19b21d06daaddd16afae6c555e5df74c026dcc4e2580519259",
       "decision": "retain",
       "reason": "Original numerical instance supporting the same objective; not a separately learnable entity. Value pretraining, separate critic/actor traces, length-adaptive lambda and imitation form the integrated VAPO recipe; GAE, loss weighting, clipping and filtered imitation are independently grounded prerequisites, not silent merged verdicts."
+    },
+    {
+      "candidateKey": "cand-710539c9f289e9efd069",
+      "sourceId": "agent-simulation-fidelity",
+      "contentHash": "46b6309f9602eaf48d587b3e8b2baafcf4e139fb6000eb51a98a1deda62419a8",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Task-relevant state, tool and permission correspondence is the single fidelity objective; synthetic user behavior is evaluated as part of that contract, not asserted representative."
+    },
+    {
+      "candidateKey": "cand-761a8bb17eb4140196d7",
+      "sourceId": "agent-simulation-fidelity",
+      "contentHash": "2454bccff5da6a706accac533cacb98140aa87320443309bed0a16f89ecf7953",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Task-relevant state, tool and permission correspondence is the single fidelity objective; synthetic user behavior is evaluated as part of that contract, not asserted representative."
+    },
+    {
+      "candidateKey": "cand-de80786c67d40c58c4ee",
+      "sourceId": "agent-simulation-fidelity",
+      "contentHash": "e26e3da1e9e1dc723a4568ac6cd8178aa945ba57db1883543ac17918d51324dc",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Task-relevant state, tool and permission correspondence is the single fidelity objective; synthetic user behavior is evaluated as part of that contract, not asserted representative."
+    },
+    {
+      "candidateKey": "cand-c7d957b72932c843b08a",
+      "sourceId": "agent-simulation-fidelity",
+      "contentHash": "0d2df28d80f1f54dd1b4c731ad3919cd6f72633832a2ab06e23fd0eb8c24c2ca",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Task-relevant state, tool and permission correspondence is the single fidelity objective; synthetic user behavior is evaluated as part of that contract, not asserted representative."
+    },
+    {
+      "candidateKey": "cand-b24b07b1636f529df581",
+      "sourceId": "agent-verification-loop",
+      "contentHash": "1b2ee48cf5db1eeb1686d39adef0cec19dffb21be2f6076d10f43067c215494f",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Verification, repair and stop remain the existing bounded loop. The new section protects the evaluation oracle and checks a fix against valid controls rather than moving its goalposts."
+    },
+    {
+      "candidateKey": "cand-d653d7b4acc35b0cdf96",
+      "sourceId": "agent-verification-loop",
+      "contentHash": "fa7412efbc7411dc2fb4db94f042c903e26fdcfc83e060822a45d8821ceaded0",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Verification, repair and stop remain the existing bounded loop. The new section protects the evaluation oracle and checks a fix against valid controls rather than moving its goalposts."
+    },
+    {
+      "candidateKey": "cand-6b8030d2eb0162fa5eda",
+      "sourceId": "cohen-kappa",
+      "contentHash": "139976eb4c7a8cc7c5c6b0765dbc1508cba9068819d0915b8cea29fdc9a9689f",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Observed agreement and independent marginal-frequency agreement define the one kappa statistic, with a complete nondegenerate count example and undefined-denominator boundary."
+    },
+    {
+      "candidateKey": "cand-e82d5d9e9734d37ba5c7",
+      "sourceId": "cohen-kappa",
+      "contentHash": "fca2dad11b5e5d4bd6a7983bd4a36c5a78bbfbbaeac42912621a5899f23a6f80",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Observed agreement and independent marginal-frequency agreement define the one kappa statistic, with a complete nondegenerate count example and undefined-denominator boundary."
+    },
+    {
+      "candidateKey": "cand-235f730b9e2d8ac56dbd",
+      "sourceId": "cohen-kappa",
+      "contentHash": "035a81d7ab4719edd0ce06c06c5bc3d17d50eade75b625af6cda3d0e2d859c65",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Observed agreement and independent marginal-frequency agreement define the one kappa statistic, with a complete nondegenerate count example and undefined-denominator boundary."
+    },
+    {
+      "candidateKey": "cand-80f5ad60bb3fac52b297",
+      "sourceId": "cohen-kappa",
+      "contentHash": "691ff6cb3320acb9d0c7f6f259ed2c28b162125b7060d2c79dc1295acf5ac043",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Observed agreement and independent marginal-frequency agreement define the one kappa statistic, with a complete nondegenerate count example and undefined-denominator boundary."
+    },
+    {
+      "candidateKey": "cand-dd26a16d6600be8c401a",
+      "sourceId": "decision-context-assistance",
+      "contentHash": "b59fd24a5beffa7775e0410854c931944b7fefb7e4370efeff2cffd7cd7ec71f",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Goal, constraints and timing define the recommendation context while evidence remains explicit; diagnosis/prescription separation and triage have their own independently authored nodes."
+    },
+    {
+      "candidateKey": "cand-38bd900510ef17dab0c0",
+      "sourceId": "decision-context-assistance",
+      "contentHash": "a5384b731a97925619a5b30c06ea77f0bfcd3d94bda5482c1b03c093d528d85a",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Goal, constraints and timing define the recommendation context while evidence remains explicit; diagnosis/prescription separation and triage have their own independently authored nodes."
+    },
+    {
+      "candidateKey": "cand-26ae0d635626f758d54a",
+      "sourceId": "decision-context-assistance",
+      "contentHash": "83a5a2466acd182feb2220fbf5b9208b778dcd13970bffbe2b2ff64344ed9789",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Goal, constraints and timing define the recommendation context while evidence remains explicit; diagnosis/prescription separation and triage have their own independently authored nodes."
+    },
+    {
+      "candidateKey": "cand-30ad57252be58ea09846",
+      "sourceId": "decision-context-assistance",
+      "contentHash": "cc5298e3516190680cccf3026ca7f24284d6959e29356c8732a46b77466eca0d",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Goal, constraints and timing define the recommendation context while evidence remains explicit; diagnosis/prescription separation and triage have their own independently authored nodes."
+    },
+    {
+      "candidateKey": "cand-84d507542d625a77003c",
+      "sourceId": "diagnosis-prescription-separation",
+      "contentHash": "985298affdea092469e5591098868acd5fc4cd111e8cc57d275210205c331d50",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Two records and a fixed-rubric paired test explain one assessment-versus-action boundary; legitimate risk-context changes explicitly prevent a universal invariance claim."
+    },
+    {
+      "candidateKey": "cand-b98073a7bbc6bd971a2b",
+      "sourceId": "diagnosis-prescription-separation",
+      "contentHash": "b13e3b73b8aceae46434b1d51ca3f76f274bc320fb041d4db4bc7a4e172216c9",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Two records and a fixed-rubric paired test explain one assessment-versus-action boundary; legitimate risk-context changes explicitly prevent a universal invariance claim."
+    },
+    {
+      "candidateKey": "cand-de8aa93bdc32eab334ff",
+      "sourceId": "diagnosis-prescription-separation",
+      "contentHash": "e87da864037a88c1f8bd914ce2f738db2e7bf3787d3bbaaef104e12fa328afb1",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Two records and a fixed-rubric paired test explain one assessment-versus-action boundary; legitimate risk-context changes explicitly prevent a universal invariance claim."
+    },
+    {
+      "candidateKey": "cand-e414cbba154389d536b7",
+      "sourceId": "diagnosis-prescription-separation",
+      "contentHash": "3e5ed39e72bd1909404a7bb3d4468c67e66b9214d1666d320fc286b75c12babc",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Two records and a fixed-rubric paired test explain one assessment-versus-action boundary; legitimate risk-context changes explicitly prevent a universal invariance claim."
+    },
+    {
+      "candidateKey": "cand-7985ce1f778a974dbb86",
+      "sourceId": "evaluator-selection-validity",
+      "contentHash": "c2c760f0440e2e6dd84d5b6f6a5d62d5286e09f8625b11da744c0e377aa6ea9c",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Independent confusion counts distinguish selectivity from valid admission and valid-item retention; the two selectors are supporting examples, not separate evaluator entities."
+    },
+    {
+      "candidateKey": "cand-b4f0cb2f7f32ac238a59",
+      "sourceId": "evaluator-selection-validity",
+      "contentHash": "57babfdaf4f061bb0b50542efddbb188682d3994178ea3f1f0eb59bd72618395",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Independent confusion counts distinguish selectivity from valid admission and valid-item retention; the two selectors are supporting examples, not separate evaluator entities."
+    },
+    {
+      "candidateKey": "cand-2efa5672e04956a7987b",
+      "sourceId": "evaluator-selection-validity",
+      "contentHash": "b140dfcf1a82268074ff9e0b8d97d52f97b09cd6a1c44baf225431459c24d5e8",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Independent confusion counts distinguish selectivity from valid admission and valid-item retention; the two selectors are supporting examples, not separate evaluator entities."
+    },
+    {
+      "candidateKey": "cand-a779448f0e1834743baa",
+      "sourceId": "evaluator-selection-validity",
+      "contentHash": "dd62157ee1d8493872d12d8a101a25aa2fa00c53a3033a3e067d11f4cbc093cc",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Independent confusion counts distinguish selectivity from valid admission and valid-item retention; the two selectors are supporting examples, not separate evaluator entities."
+    },
+    {
+      "candidateKey": "cand-0dec1b71fd76ff7690e1",
+      "sourceId": "feasibility-aware-triage",
+      "contentHash": "9458d9b01e933c5b2657638ddc50add11e310c4578015036e0549ca0adb6d469",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Action cost, prerequisites and mandatory blockers jointly define feasible triage; the budget portfolio is a worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-69391167edb2e477632b",
+      "sourceId": "feasibility-aware-triage",
+      "contentHash": "122c11ef3e763ec4991f195af722ad020e298843104a446ee7f00bf979b60d68",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Action cost, prerequisites and mandatory blockers jointly define feasible triage; the budget portfolio is a worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-8c0bf8cbf93f505fbb9e",
+      "sourceId": "feasibility-aware-triage",
+      "contentHash": "4091bbd440909dc1351fc42c24428c6e9450112babd3ddc95746cb6b1efb1b64",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Action cost, prerequisites and mandatory blockers jointly define feasible triage; the budget portfolio is a worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-9c64c028fffcbb5b824e",
+      "sourceId": "feasibility-aware-triage",
+      "contentHash": "ff85d8309cd50d36b1f0bbf0f87797a88277a74b2af9fae3c95501f5074fe74b",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Action cost, prerequisites and mandatory blockers jointly define feasible triage; the budget portfolio is a worked instance of the same objective."
+    },
+    {
+      "candidateKey": "cand-47448f064c8e0ecc5746",
+      "sourceId": "gated-linear-unit",
+      "contentHash": "06b370da703f1f45166948f20630b24a2a23d36fe7526a9cd8a9883060efb540",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. The equal-shaped content/gate split and sigmoid product define GLU; the gradient and signed-vector example explain that one operation, not recurrence or a separate activation architecture."
+    },
+    {
+      "candidateKey": "cand-f0e4ee970603c1dde328",
+      "sourceId": "gated-linear-unit",
+      "contentHash": "52193d3e0481b89e351e36000952cac17d4e6415afb4426444c86e50fe8b7f04",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. The equal-shaped content/gate split and sigmoid product define GLU; the gradient and signed-vector example explain that one operation, not recurrence or a separate activation architecture."
+    },
+    {
+      "candidateKey": "cand-9fa77b91c2437880110f",
+      "sourceId": "gated-linear-unit",
+      "contentHash": "da20c67f15b6277837f0d05e4e43d43a3e7b30b22f4a89846eab6946bdf82bef",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The equal-shaped content/gate split and sigmoid product define GLU; the gradient and signed-vector example explain that one operation, not recurrence or a separate activation architecture."
+    },
+    {
+      "candidateKey": "cand-5123a92f73b891b7c6bc",
+      "sourceId": "gated-linear-unit",
+      "contentHash": "81eb73a6eb9846bd0326e48ca2d3d9375533ecff83d6691078c207836308dfb9",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. The equal-shaped content/gate split and sigmoid product define GLU; the gradient and signed-vector example explain that one operation, not recurrence or a separate activation architecture."
+    },
+    {
+      "candidateKey": "cand-12ea0f2289c35ac1e2a2",
+      "sourceId": "incident-replay-regression",
+      "contentHash": "49d27c92aa8f0e2ce8be385b7afada24ee353db4d3791a6854a6c6d26533b44d",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Versioned initial state, interactive replay and protected outcome assertions explain one incident-to-regression transformation; simulation fidelity and verification are explicit foundations."
+    },
+    {
+      "candidateKey": "cand-171f50fc6c5b63651955",
+      "sourceId": "incident-replay-regression",
+      "contentHash": "8f03cee0ffc273d3919f2796fbc9e0f808e221dc0745444cfa90204fd309b03a",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Versioned initial state, interactive replay and protected outcome assertions explain one incident-to-regression transformation; simulation fidelity and verification are explicit foundations."
+    },
+    {
+      "candidateKey": "cand-4e46c2470da42b534b1e",
+      "sourceId": "incident-replay-regression",
+      "contentHash": "b58860a48193407d3eb7a5b889ceaa4aa126750e8ea36ec546209508d853d0fc",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Versioned initial state, interactive replay and protected outcome assertions explain one incident-to-regression transformation; simulation fidelity and verification are explicit foundations."
+    },
+    {
+      "candidateKey": "cand-144606bf1273ad3a89fc",
+      "sourceId": "incident-replay-regression",
+      "contentHash": "8be79f094600b87ac962b2371ec86cfd2718b3700df212078bd6a96d6d145f16",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Versioned initial state, interactive replay and protected outcome assertions explain one incident-to-regression transformation; simulation fidelity and verification are explicit foundations."
+    },
+    {
+      "candidateKey": "cand-c7c990490c16bb6e239e",
+      "sourceId": "llm-as-a-judge",
+      "contentHash": "c742e58e5e7a0991d745a41ef2608a5c791cb33cca7927291e052106a4ffb755",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The existing rubric-based proxy-label objective is preserved. Per-item joint errors extend judge dependence and do not equate model-family diversity with statistical independence."
+    },
+    {
+      "candidateKey": "cand-1d2d3137df1bbfe08e45",
+      "sourceId": "llm-as-a-judge",
+      "contentHash": "11863d70b2b317a59bf161b3dc381af8484ee157a712f64c866a976f1d11a79a",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The existing rubric-based proxy-label objective is preserved. Per-item joint errors extend judge dependence and do not equate model-family diversity with statistical independence."
+    },
+    {
+      "candidateKey": "cand-2fb30ff2deaa89f25f72",
+      "sourceId": "metamorphic-testing",
+      "contentHash": "15c1cb76ca035b757a8d6e5a874c96ec2a7272b2953c592f4a57325cae2b75f2",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The paired transformation relation is the existing objective. The new advice example distinguishes fixed evidence/rubric invariance from context changes that legitimately alter risk."
+    },
+    {
+      "candidateKey": "cand-6d795ad74ddf1250a6e4",
+      "sourceId": "metamorphic-testing",
+      "contentHash": "dc634a66d0494f47baa1135f50932ac5a9578b38ed9e623ec11560d19ebfad7e",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The paired transformation relation is the existing objective. The new advice example distinguishes fixed evidence/rubric invariance from context changes that legitimately alter risk."
+    },
+    {
+      "candidateKey": "cand-310b2b9f5f64a54b543e",
+      "sourceId": "null-object-pattern",
+      "contentHash": "c4e138e942a60d4b817adb6601827ff87ed6c439dca0aa743d8a4eef441a9848",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Neutral interface behavior is the one object-pattern objective; sentinels and missing mandatory behavior are explicit nonexamples rather than hidden prerequisite identities."
+    },
+    {
+      "candidateKey": "cand-e643eafbf90500ae4677",
+      "sourceId": "null-object-pattern",
+      "contentHash": "64f0b7f259eac7e3954eb0a7bb41cb89192fa6ee0624a0c76458a9dfa64f93e6",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Neutral interface behavior is the one object-pattern objective; sentinels and missing mandatory behavior are explicit nonexamples rather than hidden prerequisite identities."
+    },
+    {
+      "candidateKey": "cand-9dfeb9c0522e8f62ab71",
+      "sourceId": "null-object-pattern",
+      "contentHash": "7dc6c1f722cdd1bd74dc1d501db256a8c6b5d61cd8aa9be782378b7d3462fb87",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Neutral interface behavior is the one object-pattern objective; sentinels and missing mandatory behavior are explicit nonexamples rather than hidden prerequisite identities."
+    },
+    {
+      "candidateKey": "cand-3ee7a80edc1f00f52047",
+      "sourceId": "null-object-pattern",
+      "contentHash": "b15fbc91f1a940a1951e4958864008df49baddad44b16dcc800a877d4ef1a65c",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Neutral interface behavior is the one object-pattern objective; sentinels and missing mandatory behavior are explicit nonexamples rather than hidden prerequisite identities."
+    },
+    {
+      "candidateKey": "cand-41f2c6b219d2e7b28fcd",
+      "sourceId": "optimistic-concurrency-control",
+      "contentHash": "e1584cab02ce62f4f560f54c2c066899cce11c1b31e136581004de317e9583ef",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Read, compute and atomic conditional publication define optimistic validation; multi-record invariants are delimited rather than incorrectly restricted to one row."
+    },
+    {
+      "candidateKey": "cand-647dcefe8237d194ffdc",
+      "sourceId": "optimistic-concurrency-control",
+      "contentHash": "566b9bae9a228935f2f34adc122401478fc00cde03489471bfdf7ee0ad0880a2",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Read, compute and atomic conditional publication define optimistic validation; multi-record invariants are delimited rather than incorrectly restricted to one row."
+    },
+    {
+      "candidateKey": "cand-dd9e5e04a8eddf203fbd",
+      "sourceId": "optimistic-concurrency-control",
+      "contentHash": "59539c235504fb4c6cf9d6335052f37d86768102a012ba62a63a59aa15b0522c",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Read, compute and atomic conditional publication define optimistic validation; multi-record invariants are delimited rather than incorrectly restricted to one row."
+    },
+    {
+      "candidateKey": "cand-440605d60e32dd6a2ab8",
+      "sourceId": "optimistic-concurrency-control",
+      "contentHash": "022ec41925f4c4cce2838771886c5a620aa2225a17931c07db486ce0ab63c164",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Read, compute and atomic conditional publication define optimistic validation; multi-record invariants are delimited rather than incorrectly restricted to one row."
+    },
+    {
+      "candidateKey": "cand-31f57cc7bbb3c66d7f8e",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "7c5c67e21aa6b706bbdadb67245d9f6069adb497ca4ea17aae5725bb24c0815b",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Feasible configuration selection remains the single objective. Failure-inclusive cost arithmetic repairs success-only accounting; popularity and composite scores remain measurement caveats, not new selection entities."
+    },
+    {
+      "candidateKey": "cand-cc7cb3f19ed286f1e2bd",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "d4fc312043a3333476a3b19cb874561f851ea32ad14d87614eba8b794f545e2d",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Feasible configuration selection remains the single objective. Failure-inclusive cost arithmetic repairs success-only accounting; popularity and composite scores remain measurement caveats, not new selection entities."
+    },
+    {
+      "candidateKey": "cand-9d370f32cb884914903c",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "38ae5edaeee9c5fc18b408e4bb73ea597d2812bbfdf555bb1b010fe796bedf6e",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Feasible configuration selection remains the single objective. Failure-inclusive cost arithmetic repairs success-only accounting; popularity and composite scores remain measurement caveats, not new selection entities."
+    },
+    {
+      "candidateKey": "cand-96e8f15154c8e24a38df",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "4e0a1bc0e59faa724335bad00804aa7580aa5b16019f8898e1741aa26c99e081",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Feasible configuration selection remains the single objective. Failure-inclusive cost arithmetic repairs success-only accounting; popularity and composite scores remain measurement caveats, not new selection entities."
+    },
+    {
+      "candidateKey": "cand-61150367e64de0c7065e",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "ed313d94d6bb922f0be0349ece6ecd80df2c4663c6a3b8af925bebcec575427c",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Feasible configuration selection remains the single objective. Failure-inclusive cost arithmetic repairs success-only accounting; popularity and composite scores remain measurement caveats, not new selection entities."
+    },
+    {
+      "candidateKey": "cand-c31227a0d068f2053e15",
+      "sourceId": "quality-cost-model-selection",
+      "contentHash": "8ccc2a5882dcdf57fa8d6bfc4711f6336a068a2661e9fef7c6d2bfd9251d474c",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Feasible configuration selection remains the single objective. Failure-inclusive cost arithmetic repairs success-only accounting; popularity and composite scores remain measurement caveats, not new selection entities."
+    },
+    {
+      "candidateKey": "cand-a12a8e88735e3cb9d01f",
+      "sourceId": "rmsnorm",
+      "contentHash": "bf0e70a7d0fb5a6e4b598fabe3b3a612d38c0efd976d95420d521c0ae7e915a4",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. The root-mean-square denominator and learned gains define the existing operation. The epsilon example corrects exact-unit-size, direction and information-preservation claims without introducing another normalization method."
+    },
+    {
+      "candidateKey": "cand-35fb883765ac38882f64",
+      "sourceId": "rmsnorm",
+      "contentHash": "07bd7f00fa28a65a769f744194dc6e87d1e527a9c3630b57572ed228cafdd47a",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. The root-mean-square denominator and learned gains define the existing operation. The epsilon example corrects exact-unit-size, direction and information-preservation claims without introducing another normalization method."
+    },
+    {
+      "candidateKey": "cand-d498258f38126e0df0a9",
+      "sourceId": "rmsnorm",
+      "contentHash": "2a74c64e36e5c55cef77a3f8b172615b66108164cd3dedcabb3af29af6d1b8e8",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The root-mean-square denominator and learned gains define the existing operation. The epsilon example corrects exact-unit-size, direction and information-preservation claims without introducing another normalization method."
+    },
+    {
+      "candidateKey": "cand-b19d1629b6b8d72c32a6",
+      "sourceId": "role-separated-publication",
+      "contentHash": "01f7b4f1b9fa30686ad25499c7f59b86ae6101851f55b0a97bc4cb28eb114666",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Authenticated draft authority and digest-bound publication authorization define one authority separation; Cedar rules illustrate enforcement and its skip-on-error caveat."
+    },
+    {
+      "candidateKey": "cand-868bc35d845131bf64a6",
+      "sourceId": "role-separated-publication",
+      "contentHash": "d469a922a276ad0ccd0a02ec87e0c263f1586c38ceda480533396a32406c88b6",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Authenticated draft authority and digest-bound publication authorization define one authority separation; Cedar rules illustrate enforcement and its skip-on-error caveat."
+    },
+    {
+      "candidateKey": "cand-c70b56d924c48bbd7a59",
+      "sourceId": "role-separated-publication",
+      "contentHash": "1a11f7310a0ce6d5e1ea4d5cb4a9a77609fe219d249066cbf02ea079a36127dd",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Authenticated draft authority and digest-bound publication authorization define one authority separation; Cedar rules illustrate enforcement and its skip-on-error caveat."
+    },
+    {
+      "candidateKey": "cand-b33f4b2fa3adc17269ef",
+      "sourceId": "role-separated-publication",
+      "contentHash": "35c031f34e16c57214d6168fd96979f9a4552d721d3a854af7a60f74ad21efd4",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Authenticated draft authority and digest-bound publication authorization define one authority separation; Cedar rules illustrate enforcement and its skip-on-error caveat."
+    },
+    {
+      "candidateKey": "cand-ee91316a81421f762545",
+      "sourceId": "seeded-defect-evaluation",
+      "contentHash": "dec9f39f99b085822f8a88be51f0f273b4bdec3e310733b8df19ba1caba77f98",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Controlled fault injection, valid controls and type-specific detection comprise one evaluator-validation protocol; general precision/recall and metamorphic transformations are declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-77c85591eda7d5a9593a",
+      "sourceId": "seeded-defect-evaluation",
+      "contentHash": "14bc865ff54b6d9e51adcc284eb02af75a77d6362b45582a7872fec9ceecb155",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Controlled fault injection, valid controls and type-specific detection comprise one evaluator-validation protocol; general precision/recall and metamorphic transformations are declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-06aa5fd1c476e75b947d",
+      "sourceId": "seeded-defect-evaluation",
+      "contentHash": "b17914816fb81a1bc8a9fddaafddcf0f5652492357f41f03466a6cb64444183e",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Controlled fault injection, valid controls and type-specific detection comprise one evaluator-validation protocol; general precision/recall and metamorphic transformations are declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-ddbe9cfe447109271ce4",
+      "sourceId": "seeded-defect-evaluation",
+      "contentHash": "d0ade6507bc089677649c4aac010b453db05f10bb421681fef9531610f1e4ef9",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Controlled fault injection, valid controls and type-specific detection comprise one evaluator-validation protocol; general precision/recall and metamorphic transformations are declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-770f82b43854dacda905",
+      "sourceId": "three-way-merge",
+      "contentHash": "012b0343c6a9b7dfc0860eb1765bbc49c61080dde08a00756ff4bafdfd307f4b",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Base/current/proposal comparison is one merge operation; field-versus-record conflict scope and semantic validation delimit that operation rather than create another store architecture."
+    },
+    {
+      "candidateKey": "cand-1dce51e9e74f39f5a4dc",
+      "sourceId": "three-way-merge",
+      "contentHash": "09ff74accca9b25117978b965d56c68bda0f589090148e9c72121785be0a1602",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Base/current/proposal comparison is one merge operation; field-versus-record conflict scope and semantic validation delimit that operation rather than create another store architecture."
+    },
+    {
+      "candidateKey": "cand-60d93dee119f0a0df445",
+      "sourceId": "three-way-merge",
+      "contentHash": "347ce8c5707e609fa15daddad438d2a58cf64414ac770379679ee0a7e3297e24",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Base/current/proposal comparison is one merge operation; field-versus-record conflict scope and semantic validation delimit that operation rather than create another store architecture."
+    },
+    {
+      "candidateKey": "cand-f34df6fe2df322ce3746",
+      "sourceId": "three-way-merge",
+      "contentHash": "ccdf6522c2eb6b7af9b346fc5acd7ed28bf77c9e61d7a9cb1d4ea88aee5fbec4",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Base/current/proposal comparison is one merge operation; field-versus-record conflict scope and semantic validation delimit that operation rather than create another store architecture."
+    },
+    {
+      "candidateKey": "cand-4d685eb6ce19b4def874",
+      "sourceId": "tool-call-execution-contract",
+      "contentHash": "311ee5aae66a6e2a07d7d06dfbbb936d452573b54ee8f189335af358f5144040",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The validation/authority/effect boundary remains the objective. A two-path refund fixture adds observed-effect authorization evaluation rather than trusting generated success text."
+    },
+    {
+      "candidateKey": "cand-d3e0b7a267c915379a27",
+      "sourceId": "tool-call-execution-contract",
+      "contentHash": "fa9ac1addf732eaea0eab963305ddaccd29ca9ba188b41d331635f2db0cf1945",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The validation/authority/effect boundary remains the objective. A two-path refund fixture adds observed-effect authorization evaluation rather than trusting generated success text."
+    },
+    {
+      "candidateKey": "cand-6e3f9df3308e1fb6d537",
+      "sourceId": "tool-call-execution-contract",
+      "contentHash": "6c98717d409253aed29e1ba21afaf1f64485a90686be2899b3d433bac230ab5e",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. The validation/authority/effect boundary remains the objective. A two-path refund fixture adds observed-effect authorization evaluation rather than trusting generated success text."
+    },
+    {
+      "candidateKey": "cand-b72023d5e73dd9fd6330",
+      "sourceId": "transaction-retry",
+      "contentHash": "750016a794e9cb910cbbc1f502aa7edee7b69044bc02ead7c404e86f76eeb12e",
+      "decision": "retain",
+      "reason": "Scope and counterexamples delimit the canonical operation. Refreshed reads and recomputation of the complete decision are the single correct-retry objective, with external-effect reconciliation a declared prerequisite boundary."
+    },
+    {
+      "candidateKey": "cand-69d8f72cb48795ab0a69",
+      "sourceId": "transaction-retry",
+      "contentHash": "b9a17308cd3ccee4eacea37953f64ecf6396492117a3bdcc33008904a8350b92",
+      "decision": "retain",
+      "reason": "Definition of the canonical objective. Refreshed reads and recomputation of the complete decision are the single correct-retry objective, with external-effect reconciliation a declared prerequisite boundary."
+    },
+    {
+      "candidateKey": "cand-9a93e8322cf4f5ce86dc",
+      "sourceId": "transaction-retry",
+      "contentHash": "513ed7294134b069515da10c20611f1177631d316c9837ffcb3db860195ca06d",
+      "decision": "retain",
+      "reason": "Supporting explanation of the declared objective. Refreshed reads and recomputation of the complete decision are the single correct-retry objective, with external-effect reconciliation a declared prerequisite boundary."
+    },
+    {
+      "candidateKey": "cand-c34680b8752bd1d23e02",
+      "sourceId": "transaction-retry",
+      "contentHash": "eb356528de758cd1864c3e9ca7a22f3e1e8a039f7079e48dfc055d35833f52e9",
+      "decision": "retain",
+      "reason": "Worked instance of the same objective, with explicit assumptions and derived numbers. Refreshed reads and recomputation of the complete decision are the single correct-retry objective, with external-effect reconciliation a declared prerequisite boundary."
+    },
+    {
+      "candidateKey": "cand-50544c94c9f65dd82afc",
+      "sourceId": "authenticated-change-provenance",
+      "contentHash": "70db284a56765b35ff059b7be6bc28289475a35691e1a27d5323d5db33d5a3a3",
+      "decision": "retain",
+      "reason": "Boundaries and check supports the canonical objective. Verified principal, operation/attempt and before/after revision define change attribution; authorization, tamper resistance and truth remain distinct requirements. The approval/receipt example delimits that one provenance contract."
+    },
+    {
+      "candidateKey": "cand-488efdfd90583eb01d6c",
+      "sourceId": "authenticated-change-provenance",
+      "contentHash": "0868bac1856f317c0e9b6fd7fdd721af48e6eee61884d29b9a6fc429952ad760",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. Verified principal, operation/attempt and before/after revision define change attribution; authorization, tamper resistance and truth remain distinct requirements. The approval/receipt example delimits that one provenance contract."
+    },
+    {
+      "candidateKey": "cand-438031e65aa148c33d2a",
+      "sourceId": "authenticated-change-provenance",
+      "contentHash": "89aa29baf5a5d4a708afeeea81694e5e5ef347a9343dc3211186201f299b554a",
+      "decision": "retain",
+      "reason": "Mechanism supports the canonical objective. Verified principal, operation/attempt and before/after revision define change attribution; authorization, tamper resistance and truth remain distinct requirements. The approval/receipt example delimits that one provenance contract."
+    },
+    {
+      "candidateKey": "cand-f1334dedf019bad05da6",
+      "sourceId": "authenticated-change-provenance",
+      "contentHash": "9346dd9757781622503dead1fedfaac46a840962d8a69f234a4c43d0722e0028",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. Verified principal, operation/attempt and before/after revision define change attribution; authorization, tamper resistance and truth remain distinct requirements. The approval/receipt example delimits that one provenance contract."
+    },
+    {
+      "candidateKey": "cand-098324f0218a7b04845e",
+      "sourceId": "snapshot-read-consistency",
+      "contentHash": "d6bfb9a632004d5d376e2436b443118e207b91e150bb0364a0f0cc8ed8bb6eba",
+      "decision": "retain",
+      "reason": "Boundaries and check supports the canonical objective. One committed-version read boundary prevents mixed revisions; staleness, truth and write serializability are explicitly distinct. The paired component/decision example supports that one contract."
+    },
+    {
+      "candidateKey": "cand-9ef22564569d484d9eb5",
+      "sourceId": "snapshot-read-consistency",
+      "contentHash": "f433fd1a720d18de4235f1d713457e62899a19e0c10a532c9b6ac37e2397d55c",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. One committed-version read boundary prevents mixed revisions; staleness, truth and write serializability are explicitly distinct. The paired component/decision example supports that one contract."
+    },
+    {
+      "candidateKey": "cand-ac9f7638f96a32a7c45e",
+      "sourceId": "snapshot-read-consistency",
+      "contentHash": "4a7acccae5a113dd5f583d81cd646440b4109d781b606c79209d3e1e17352b1f",
+      "decision": "retain",
+      "reason": "Mechanism supports the canonical objective. One committed-version read boundary prevents mixed revisions; staleness, truth and write serializability are explicitly distinct. The paired component/decision example supports that one contract."
+    },
+    {
+      "candidateKey": "cand-fd4ec7c90a59553554a6",
+      "sourceId": "snapshot-read-consistency",
+      "contentHash": "618b67a221502dc5a84995e06dc79851aea77cf4c6c46ada3b5f26d1dcbdae5f",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. One committed-version read boundary prevents mixed revisions; staleness, truth and write serializability are explicitly distinct. The paired component/decision example supports that one contract."
+    },
+    {
+      "candidateKey": "cand-f6912ad8b1115ae062e0",
+      "sourceId": "version-controlled-agent-memory",
+      "contentHash": "eccb1a3a55d396c786d8ffb6a2dfe15267fd1634d8774a07961876759045c1c8",
+      "decision": "retain",
+      "reason": "Boundaries and check supports the canonical objective. Base-aware branch isolation and atomic reviewed publication define the memory architecture; independently learnable snapshot consistency, provenance and merge mechanics now have declared foundation nodes rather than inline substitutes."
+    },
+    {
+      "candidateKey": "cand-c4a9fff59ed1175e49f2",
+      "sourceId": "version-controlled-agent-memory",
+      "contentHash": "f5153525ecabd81895a4c9e89c8377746cf0bd024dd622433de6a255a17ca7a3",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. Base-aware branch isolation and atomic reviewed publication define the memory architecture; independently learnable snapshot consistency, provenance and merge mechanics now have declared foundation nodes rather than inline substitutes."
+    },
+    {
+      "candidateKey": "cand-27d33f391630fab69f5b",
+      "sourceId": "version-controlled-agent-memory",
+      "contentHash": "22af2517da40ced9c93abb9b461c4dde9d403c18740ba311926c1a23ea81b614",
+      "decision": "retain",
+      "reason": "Mechanism supports the canonical objective. Base-aware branch isolation and atomic reviewed publication define the memory architecture; independently learnable snapshot consistency, provenance and merge mechanics now have declared foundation nodes rather than inline substitutes."
+    },
+    {
+      "candidateKey": "cand-4e798a35e311b9570ad9",
+      "sourceId": "version-controlled-agent-memory",
+      "contentHash": "55775c095f37788877ee6e487f98691ee559e390fc2d47429c068b289a1656a2",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. Base-aware branch isolation and atomic reviewed publication define the memory architecture; independently learnable snapshot consistency, provenance and merge mechanics now have declared foundation nodes rather than inline substitutes."
     }
   ]
 }

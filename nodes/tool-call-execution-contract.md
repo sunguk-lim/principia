@@ -8,7 +8,7 @@ prereqs: [structured-output, agent-session-state]
 sources: [https://developers.openai.com/api/docs/guides/function-calling, https://developers.openai.com/api/docs/guides/function-calling, https://modelcontextprotocol.io/specification/2025-06-18/server/tools]
 status: explained
 created: 2026-09-30
-updated: 2026-10-21
+updated: 2026-11-13
 ---
 
 # Tool-Call Execution Contract
@@ -32,6 +32,12 @@ Do not ask the model to regenerate arguments already fixed in application state.
 Tool choice and argument filling can be staged, but their error and latency budgets compose. In a toy trace, a correct tool choice rate of 0.95 followed by an argument success rate of 0.9 conditioned on correct selection yields only 0.855 joint success. Compare staged and combined calls on the same held-out tasks rather than assuming two small decisions always win.
 
 Before execution, validate syntax, types, resource identifiers, cross-field business invariants and authority. If a read-only proposal is invalid, return a bounded, sanitized field error and allow a limited repair attempt. Retain the original goal and reject attempts to repair by changing the requested action. For a write with an uncertain external outcome, reconcile before any repair or retry can trigger another effect. Output validity, semantic correctness, permitted action and observed completion remain separate metrics.
+
+## Evaluate authorization through observable effects
+
+An evaluation should inspect both the decision and the resulting world state. For an invented refund fixture, place invoice I1 under customer A and issue a request authenticated as B. A passing denial leaves the ledger unchanged and returns an appropriate refusal. A second fixture authenticates A with an eligible invoice and requires exactly one recorded refund. An agent that refuses every request is not successful on both fixtures.
+
+The assistant's sentence “refund complete” is neither evidence of a refund nor permission to execute one. Assert authentication, ownership, eligibility, duplicate suppression and observed state transition independently. Test forged resource handles, revoked authority, interrupted responses and the case where the remote effect succeeds before the local receipt is persisted. Use a sandbox for these checks; no real customer write is required.
 
 ## Prerequisites
 

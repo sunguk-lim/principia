@@ -4908,6 +4908,159 @@
         "proximal-policy-optimization": "Required to understand Soft Adaptive Policy Optimization: defines the hard clipping boundary being replaced.",
         "group-relative-policy-optimization": "Required to understand Soft Adaptive Policy Optimization: provides fixed group advantages for the token update."
       }
+    },
+    "decision-context-assistance": {
+      "aliases": [],
+      "objective": "Decision-context-aware assistance conditions recommendations on explicit goals, constraints and decision timing while preserving evidence and uncertainty.",
+      "prerequisiteReasons": {
+        "agent-plan-artifact": "Recommendations need an inspectable objective, assumptions and proposed actions.",
+        "decision-score-action-gate": "A judgment and the policy selecting an action are separate stages."
+      }
+    },
+    "diagnosis-prescription-separation": {
+      "aliases": [],
+      "objective": "Diagnosis–prescription separation keeps evidence-based assessment distinct from the context-conditioned choice of a feasible response.",
+      "prerequisiteReasons": {
+        "decision-context-assistance": "Establishes the explicit goals and constraints that may change the action policy.",
+        "metamorphic-testing": "Provides paired tests of which outputs should and should not change."
+      }
+    },
+    "feasibility-aware-triage": {
+      "aliases": [],
+      "objective": "Feasibility-aware triage orders corrective actions by achievable risk reduction under explicit time, resource and dependency constraints without suppressing mandatory blockers.",
+      "prerequisiteReasons": {
+        "diagnosis-prescription-separation": "Keeps a defect assessment intact while selecting a practical response.",
+        "agent-plan-artifact": "Makes action dependencies, costs and verification reviewable."
+      }
+    },
+    "evaluator-selection-validity": {
+      "aliases": [],
+      "objective": "An evaluator’s acceptance rate describes its selection policy, while validity requires independent evidence about correct and incorrect decisions.",
+      "prerequisiteReasons": {
+        "confusion-matrix": "Accept/reject decisions require counts against independently established labels.",
+        "precision-recall": "Acceptance quality and missed valid work have different denominators."
+      }
+    },
+    "cohen-kappa": {
+      "aliases": [
+        "Cohen kappa",
+        "Chance-corrected inter-rater agreement"
+      ],
+      "objective": "Cohen’s kappa rescales observed categorical agreement relative to agreement expected from the two raters’ empirical label marginals.",
+      "prerequisiteReasons": {
+        "confusion-matrix": "The joint label counts and their marginals determine observed and expected agreement.",
+        "probability": "Observed proportions and marginal products define the chance-agreement model."
+      }
+    },
+    "seeded-defect-evaluation": {
+      "aliases": [],
+      "objective": "Seeded-defect validation tests an evaluator with controlled known faults and valid controls to measure detection coverage without assuming that rejection rate implies competence.",
+      "prerequisiteReasons": {
+        "precision-recall": "Detection needs both fault recall and false-positive accounting.",
+        "metamorphic-testing": "Controlled transformations must preserve the intended ground-truth relation."
+      }
+    },
+    "agent-simulation-fidelity": {
+      "aliases": [],
+      "objective": "Agent simulation fidelity is the task-relevant correspondence between a sandbox’s users, tools and state transitions and those of the deployment being evaluated.",
+      "prerequisiteReasons": {
+        "tool-call-execution-contract": "The simulator must reproduce permitted tool effects, refusals and uncertain outcomes.",
+        "evaluation-oracle-availability": "A simulated transcript needs independently checked outcome criteria."
+      }
+    },
+    "incident-replay-regression": {
+      "aliases": [],
+      "objective": "Incident replay turns a documented failure into a versioned initial state, interaction and outcome assertion that can be rerun against candidate releases.",
+      "prerequisiteReasons": {
+        "agent-simulation-fidelity": "A replay’s initial state and tool behavior must represent the failure being tested.",
+        "agent-verification-loop": "Observed completion must be checked against an independent criterion."
+      }
+    },
+    "optimistic-concurrency-control": {
+      "aliases": [
+        "Optimistic version validation"
+      ],
+      "objective": "Optimistic concurrency control permits speculative work but validates the read assumptions or base version before atomically publishing a change.",
+      "prerequisiteReasons": {
+        "concurrency-control": "Introduces concurrent transactions and conflict validation.",
+        "atomic-operation": "A version check and its accepted write must form one indivisible transition."
+      }
+    },
+    "three-way-merge": {
+      "aliases": [],
+      "objective": "A three-way merge compares a common base with two descendants so unchanged inherited state can be distinguished from competing edits.",
+      "prerequisiteReasons": {
+        "set": "A change set identifies which keyed elements differ from the common base.",
+        "measurement": "Explicit equality and validation rules decide whether changes can combine."
+      }
+    },
+    "version-controlled-agent-memory": {
+      "aliases": [
+        "Branch-isolated agent memory"
+      ],
+      "objective": "Version-controlled agent memory gives workers isolated revisions and publishes validated change sets against a recorded base while retaining inspectable history and snapshots.",
+      "prerequisiteReasons": {
+        "agent-memory": "Distinguishes durable memory from transient run state.",
+        "three-way-merge": "Base-aware combination distinguishes changes from inherited values.",
+        "transaction": "Related memory changes need an all-or-nothing publication boundary.",
+        "snapshot-read-consistency": "A revision-pinned view must not mix related facts across commits.",
+        "authenticated-change-provenance": "An inspectable history needs verified actor and exact revision/evidence attribution."
+      }
+    },
+    "transaction-retry": {
+      "aliases": [],
+      "objective": "A correct conflict retry repeats the full decision process against refreshed state rather than resubmitting a stale write payload.",
+      "prerequisiteReasons": {
+        "optimistic-concurrency-control": "A rejected base-version assumption requires recomputing the proposal.",
+        "tool-call-execution-contract": "External effects may have uncertain outcomes and cannot be repeated blindly."
+      }
+    },
+    "role-separated-publication": {
+      "aliases": [],
+      "objective": "Role-separated publication permits workers to draft changes but reserves publication of an exact reviewed revision to a separately authorized principal.",
+      "prerequisiteReasons": {
+        "agent-workload-identity": "A trusted authenticated principal must replace client-supplied actor labels.",
+        "version-controlled-agent-memory": "The proposed base and change set define the exact object being approved.",
+        "tool-call-execution-contract": "Authorization and observed effect remain application-owned."
+      }
+    },
+    "gated-linear-unit": {
+      "aliases": [
+        "GLU"
+      ],
+      "objective": "A gated linear unit splits a transformed activation into content and gate halves and multiplies the content by a sigmoid of the gate.",
+      "prerequisiteReasons": {
+        "neural-network": "Defines learned projections, activations and gradient-based training.",
+        "matrix-multiplication": "Learned linear projections produce equal-shaped content and gate vectors.",
+        "exponential-function": "The sigmoid gate is explicitly defined using exp.",
+        "derivative": "The gradient path explanation compares partial derivatives through content and gate."
+      }
+    },
+    "null-object-pattern": {
+      "aliases": [],
+      "objective": "A null object implements an expected interface with a deliberately neutral behavior so callers can use that interface without absence checks.",
+      "prerequisiteReasons": {
+        "object-oriented-inheritance": "A concrete implementation must satisfy the interface behavior expected by callers."
+      }
+    },
+    "snapshot-read-consistency": {
+      "aliases": [
+        "Snapshot reads"
+      ],
+      "objective": "A snapshot read evaluates all relevant facts against one identified committed version so the result does not mix mutually incompatible revisions.",
+      "prerequisiteReasons": {
+        "transaction-isolation": "A read view constrains which concurrent effects may be observed."
+      }
+    },
+    "authenticated-change-provenance": {
+      "aliases": [
+        "Audit provenance"
+      ],
+      "objective": "Authenticated change provenance binds a recorded modification to a verified principal, exact before-and-after revisions and the evidence or approval that justified publication.",
+      "prerequisiteReasons": {
+        "agent-workload-identity": "The actor must be established by the trusted execution boundary rather than a caller-supplied label.",
+        "trace-span": "Operation and attempt identities connect the observed change to its execution evidence."
+      }
     }
   }
 }

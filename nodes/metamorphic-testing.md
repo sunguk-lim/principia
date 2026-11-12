@@ -8,7 +8,7 @@ prereqs: [set, measurement]
 sources: [https://arxiv.org/abs/2005.04118, https://research.google/pubs/the-ml-test-score-a-rubric-for-ml-production-readiness-and-technical-debt-reduction/]
 status: explained
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-11-13
 ---
 
 # Metamorphic Testing
@@ -30,6 +30,14 @@ A deterministic matrix makes failures reproducible: fixed examples crossed with 
 The hard part is semantic validity. Cropping may remove the evidence that defines the label; orientation may be diagnostic; paraphrases may change intent. Invariance to such transformations would enforce the wrong behavior. Review each relation with domain owners and retain transformed inputs as versioned test artifacts.
 
 Metamorphic tests complement held-out evaluation. They probe specified behavior around selected examples but do not estimate deployment prevalence or discover every unknown shift. Use them as release gates only with justified tolerances, uncertainty handling, and enough examples to avoid mistaking noise for a deterministic defect.
+
+## Counterfactual advice without a universal invariance rule
+
+For an assistant that assesses an artifact and proposes next steps, hold the artifact, evidence and evaluation rubric fixed, then vary only an operational constraint such as remaining time. A useful relation can require the same evidence-based defect labels but different feasible recommendations. It should not require identical advice under different constraints.
+
+For an invented report with an unsupported generalization, a one-hour setting can recommend narrowing the claim; a one-week setting can recommend collecting fresh evidence. Both should preserve the evidence gap. If the changed input instead says the report will guide a safety-critical intervention rather than an exploratory discussion, risk severity may legitimately change. The invariance relation must identify which context variables are operational and which change the actual task or harm.
+
+Run paired repeated trials, inspect supporting evidence and distinguish random variation from systematic pressure to please the user. Stable labels do not prove that the labels were correct; independent correctness checks remain necessary.
 
 ## Prerequisites
 

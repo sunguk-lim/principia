@@ -16,6 +16,10 @@ A common `tools` array can reduce adapter code, yet providers differ in parallel
 
 A model proposes `search_books({"query":"graphs"})`. The host validates a bounded query, performs a read-only search, records the call ID and result, then shows the result to the model. If the model instead proposes `delete_book`, a parser must not invent authority to run it. If a write call times out, the host checks its receipt before retrying.
 
+## Check effects, not just words
+
+A refund test needs both an unauthorized request that leaves the ledger unchanged and an eligible authorized request that produces exactly one refund. Always denying requests passes the first case but fails the second. The assistant's claim that a refund completed proves neither authority nor an observed effect. Use a stateful sandbox and inspect identity, ownership, eligibility and final state independently.
+
 ## Check your understanding
 
 **Question:** What does a syntactically valid tool call prove? **Answer:** Only that it matches a permitted shape under the chosen parser. Authorization, truth, execution, and external outcome require separate checks.

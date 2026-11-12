@@ -8,7 +8,7 @@ prereqs: [transformer-attention, measurement, model-calibration]
 sources: [https://arxiv.org/abs/2306.05685]
 status: explained
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-11-13
 ---
 
 # LLM as a Judge
@@ -28,6 +28,14 @@ Known failure modes include preference for longer answers, self-enhancement towa
 Calibrate the judge against blinded human labels on the target task. Report agreement and confusion by rubric dimension, model family, length, language, and difficulty; [[model-calibration]] matters when numeric judge confidence is used as a probability. Keep a human-reviewed sentinel set and revalidate whenever prompts, judge versions, or candidate distributions change.
 
 Use deterministic rules or executable tests where correctness can be checked directly. Use judge models for dimensions such as helpfulness or style that require interpretation, ideally alongside references and human audits. Never let a high aggregate agreement conceal a slice where the judge systematically rewards the wrong behavior.
+
+## Measuring dependence rather than counting votes
+
+Several judge calls can share the same systematic error. On an independently labeled item set, record an error indicator for each judge and inspect joint failures by task slice, not only overall agreement. Shared pretraining, rubric and reference errors can induce dependence even across different vendors. Different family names are a diversity intervention, not proof of statistical independence.
+
+For an invented hundred-item set, judges A and B each make twenty errors. If all twenty are the same items, the two judges' agreement provides no rescue on those cases. If their error sets are disjoint, disagreement exposes forty cases for further checking, but choosing the right judge still requires evidence. A unanimous ensemble can therefore be less informative than its vote count suggests.
+
+Calibrate against blinded expert decisions and executable checks, rotate output order, control verbosity and model-origin cues, and retain per-item labels. When writers optimize repeatedly against the judge, reserve a separate hidden evaluation and refresh it under an explicit protocol. Never infer that an independent human or model exists merely because a second verdict was generated.
 
 ## Prerequisites
 

@@ -5061,6 +5061,63 @@
         "agent-workload-identity": "The actor must be established by the trusted execution boundary rather than a caller-supplied label.",
         "trace-span": "Operation and attempt identities connect the observed change to its execution evidence."
       }
+    },
+    "agent-memory-reconciliation": {
+      "aliases": [],
+      "objective": "Agent-memory reconciliation compares new candidate facts with scoped existing facts and publishes a validated current-state change without confusing temporal change with historical falsity.",
+      "prerequisiteReasons": {
+        "agent-memory": "Provides the persistent fact store and extraction/recall lifecycle being reconciled.",
+        "agent-memory-entity-resolution": "Determines whether new and old mentions refer to the same entity before deciding conflict.",
+        "temporal-knowledge-graph": "Separates valid time, observation time and historical supersession.",
+        "transaction": "Publishes related fact changes together rather than exposing a half-applied correction.",
+        "optimistic-concurrency-control": "Rejects stale proposals whose comparison base changed before publication."
+      }
+    },
+    "attention-backend-dispatch": {
+      "aliases": [],
+      "objective": "Attention backend dispatch selects an implementation of a declared attention operation subject to input compatibility while preserving explicit numerical and masking contracts.",
+      "prerequisiteReasons": {
+        "transformer-attention": "Defines the attention operation that different backends implement.",
+        "flash-attention": "Explains one fused IO-aware implementation rather than equating it with the API.",
+        "masked-attention-numerics": "Defines mask and empty-row correctness independently of backend selection.",
+        "gpu-kernel-benchmarking": "Provides device-completion timing, warmup and workload controls for comparing the executed kernels.",
+        "dropout": "The functional probability argument controls stochastic attention weights independently of module evaluation mode."
+      }
+    },
+    "label-noise": {
+      "aliases": [],
+      "objective": "Label noise is disagreement between recorded training targets and the intended labeling rule, with error structure that can depend on class, input, annotator or policy version.",
+      "prerequisiteReasons": {
+        "conditional-probability": "Defines how corruption rates can vary by intended class or observed input.",
+        "loss-function": "Explains why optimizing against corrupted targets can reward the wrong predictions.",
+        "dataset-lineage": "Locates annotation source and policy versions without declaring every source wrong."
+      }
+    },
+    "euclidean-distance": {
+      "aliases": [],
+      "objective": "Euclidean distance measures straight-line separation between coordinate vectors as the square root of the sum of squared coordinate differences.",
+      "prerequisiteReasons": {
+        "vector-dot-product": "Expresses squared displacement as the dot product of the displacement with itself."
+      }
+    },
+    "random-projection": {
+      "aliases": [],
+      "objective": "Random projection maps vectors through a randomly chosen scaled matrix to reduce coordinates while controlling geometric distortion under a stated distribution and target dimension.",
+      "prerequisiteReasons": {
+        "matrix-multiplication": "Implements the shared linear map for every vector.",
+        "normal-distribution": "Defines a common random-matrix entry distribution.",
+        "euclidean-distance": "Defines the pairwise geometry whose distortion is measured.",
+        "variance": "Defines the 1/k spread of random entries used to preserve expected squared lengths."
+      }
+    },
+    "johnson-lindenstrauss-lemma": {
+      "aliases": [],
+      "objective": "The Johnson-Lindenstrauss lemma guarantees that a fixed finite set admits a lower-dimensional map preserving all pairwise squared Euclidean distances within a chosen relative distortion.",
+      "prerequisiteReasons": {
+        "random-projection": "Provides a randomized construction and its finite-set rather than all-directions boundary.",
+        "probability": "Defines success and failure over the choice of map.",
+        "logarithm": "Explains logarithmic dependence on finite-set size."
+      }
     }
   }
 }

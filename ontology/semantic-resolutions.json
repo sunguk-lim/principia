@@ -3353,7 +3353,7 @@
       "sourceId": "temporal-knowledge-graph",
       "contentHash": "754fa18598af7953f281d8289b97edef7e7c11d3e9d3edc811c01ee567e82a0f",
       "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Temporal Knowledge Graph objective, not a separately learnable entity."
+      "reason": "Overview supports the canonical objective. Validity/observation time, provenance and current versus historical queries remain the existing temporal-graph objective. The added erasure distinction qualifies history preservation without claiming legal compliance or creating a separate privacy-law concept."
     },
     {
       "candidateKey": "cand-5f4baeec65f371b49319",
@@ -17441,6 +17441,181 @@
       "contentHash": "55775c095f37788877ee6e487f98691ee559e390fc2d47429c068b289a1656a2",
       "decision": "retain",
       "reason": "One example supports the canonical objective. Base-aware branch isolation and atomic reviewed publication define the memory architecture; independently learnable snapshot consistency, provenance and merge mechanics now have declared foundation nodes rather than inline substitutes."
+    },
+    {
+      "candidateKey": "cand-6c54b456e8d153ae5538",
+      "sourceId": "agent-memory-reconciliation",
+      "contentHash": "91e38db0ab9814892dbe36801cf32e740a9b458e915fc091b44a61322c759cc0",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. Extraction, conflict-candidate retrieval, scoped operation proposal and guarded publication jointly explain the write-reconciliation objective. Entity identity, temporal validity, atomicity and stale-write control are independently grounded prerequisites; the historical/current Mem0 distinction is an applicability boundary, not a product benchmark."
+    },
+    {
+      "candidateKey": "cand-ae5e5c1c50f78084febb",
+      "sourceId": "agent-memory-reconciliation",
+      "contentHash": "d328dddc1fa855efa6b9579ccc17973d951581bdf275c75a8926767667d84eed",
+      "decision": "retain",
+      "reason": "Mechanism supports the canonical objective. Extraction, conflict-candidate retrieval, scoped operation proposal and guarded publication jointly explain the write-reconciliation objective. Entity identity, temporal validity, atomicity and stale-write control are independently grounded prerequisites; the historical/current Mem0 distinction is an applicability boundary, not a product benchmark."
+    },
+    {
+      "candidateKey": "cand-f5ce6c94cb9aa75219df",
+      "sourceId": "agent-memory-reconciliation",
+      "contentHash": "1d93a4055741aa0c63238fd87c840825213d2d65880429df652b1fdf5bc6325c",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. Extraction, conflict-candidate retrieval, scoped operation proposal and guarded publication jointly explain the write-reconciliation objective. Entity identity, temporal validity, atomicity and stale-write control are independently grounded prerequisites; the historical/current Mem0 distinction is an applicability boundary, not a product benchmark."
+    },
+    {
+      "candidateKey": "cand-d9c4714ae7ec3656e9e3",
+      "sourceId": "agent-memory-reconciliation",
+      "contentHash": "8fc57d80dfde1292dc9dcb1a4374707a2e65c78c68777d246f1cc70d988fb361",
+      "decision": "retain",
+      "reason": "Validation and implementation boundary supports the canonical objective. Extraction, conflict-candidate retrieval, scoped operation proposal and guarded publication jointly explain the write-reconciliation objective. Entity identity, temporal validity, atomicity and stale-write control are independently grounded prerequisites; the historical/current Mem0 distinction is an applicability boundary, not a product benchmark."
+    },
+    {
+      "candidateKey": "cand-36feb935109464b95ca5",
+      "sourceId": "attention-backend-dispatch",
+      "contentHash": "268b789d992f63f1c5778251256b4656521f2e209220f91aa87645547778a544",
+      "decision": "retain",
+      "reason": "Check your understanding supports the canonical objective. Operation-versus-implementation selection, compatibility, backend control and the matched reference example teach one dispatch contract. Mask numerics, dropout and timing are declared foundations; version-specific API details do not create separate entities."
+    },
+    {
+      "candidateKey": "cand-510023a234de5bd826a5",
+      "sourceId": "attention-backend-dispatch",
+      "contentHash": "4bb86573d281ac3d3c352fa514e7333e3fcdb96fc3bb70afc27f3dd41ec6eb0e",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. Operation-versus-implementation selection, compatibility, backend control and the matched reference example teach one dispatch contract. Mask numerics, dropout and timing are declared foundations; version-specific API details do not create separate entities."
+    },
+    {
+      "candidateKey": "cand-c5ecf0a96186164ab00d",
+      "sourceId": "attention-backend-dispatch",
+      "contentHash": "93264f9063f06bc4be115d7dadc76730708f7cb5aa732b1c308ad0365f0fe9a6",
+      "decision": "retain",
+      "reason": "Mechanism supports the canonical objective. Operation-versus-implementation selection, compatibility, backend control and the matched reference example teach one dispatch contract. Mask numerics, dropout and timing are declared foundations; version-specific API details do not create separate entities."
+    },
+    {
+      "candidateKey": "cand-51aa877d62a7210ba423",
+      "sourceId": "attention-backend-dispatch",
+      "contentHash": "f62b04e37885e5e8756d093b00a10e806fd3d1b417f1be575bc476d05a1bc4a9",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. Operation-versus-implementation selection, compatibility, backend control and the matched reference example teach one dispatch contract. Mask numerics, dropout and timing are declared foundations; version-specific API details do not create separate entities."
+    },
+    {
+      "candidateKey": "cand-7412af5637abc0e6136a",
+      "sourceId": "euclidean-distance",
+      "contentHash": "1dfb8d13eb35710158a8ad61a28483fd4d6fa2bc394b50e1558ab0090dfe439d",
+      "decision": "retain",
+      "reason": "Check your understanding supports the canonical objective. Coordinate displacement, self-dot-product and square root define one distance; the worked pair and units distinguish squared and unsquared quantities."
+    },
+    {
+      "candidateKey": "cand-bf42ecabc4eb6560c5d3",
+      "sourceId": "euclidean-distance",
+      "contentHash": "e62b7ba4fb98c098135fa8734b486c71ab6e6116bd1ffc4810e278bdf902f710",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. Coordinate displacement, self-dot-product and square root define one distance; the worked pair and units distinguish squared and unsquared quantities."
+    },
+    {
+      "candidateKey": "cand-48d822bf379730a15ecc",
+      "sourceId": "euclidean-distance",
+      "contentHash": "762d1c9a8a1b8dab95cecc9eb343c2937fdcdee149315e5536b0046fd8f00eef",
+      "decision": "retain",
+      "reason": "Mechanism supports the canonical objective. Coordinate displacement, self-dot-product and square root define one distance; the worked pair and units distinguish squared and unsquared quantities."
+    },
+    {
+      "candidateKey": "cand-d73a89c4e9505cfda504",
+      "sourceId": "euclidean-distance",
+      "contentHash": "5f9d6c413417d4f1ca92158d524769c1606e4dafb7f5cf80d7410bc5d334ff73",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. Coordinate displacement, self-dot-product and square root define one distance; the worked pair and units distinguish squared and unsquared quantities."
+    },
+    {
+      "candidateKey": "cand-b0e1f069baf021d5eeda",
+      "sourceId": "johnson-lindenstrauss-lemma",
+      "contentHash": "858a00daa73ba630135cd509024f76b0eb8a28a9760559337c516126a719cba8",
+      "decision": "retain",
+      "reason": "Boundaries and check supports the canonical objective. The simultaneous finite-pair distortion contract, dimension calculation and non-transfer to learned attention projections explain the lemma. Random projection is separate; the example illustrates the same inequality rather than a new concept."
+    },
+    {
+      "candidateKey": "cand-6d7c298059e86405db55",
+      "sourceId": "johnson-lindenstrauss-lemma",
+      "contentHash": "202391eea7208096e3dd8ff35d6f63c2b193609d17d5756c56939c5f2f42a1fc",
+      "decision": "retain",
+      "reason": "Contract supports the canonical objective. The simultaneous finite-pair distortion contract, dimension calculation and non-transfer to learned attention projections explain the lemma. Random projection is separate; the example illustrates the same inequality rather than a new concept."
+    },
+    {
+      "candidateKey": "cand-6300ab786d861cae95dc",
+      "sourceId": "johnson-lindenstrauss-lemma",
+      "contentHash": "253d11335c5591edb593d6e949a6f0ceee34f78b6c9b2daa45012b0915b973e2",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. The simultaneous finite-pair distortion contract, dimension calculation and non-transfer to learned attention projections explain the lemma. Random projection is separate; the example illustrates the same inequality rather than a new concept."
+    },
+    {
+      "candidateKey": "cand-fc81dc1cfca13b550c50",
+      "sourceId": "johnson-lindenstrauss-lemma",
+      "contentHash": "bbb38634e87915f22ea4360d38e4a5a51ede54f1452a917129f8b2d512996fbd",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. The simultaneous finite-pair distortion contract, dimension calculation and non-transfer to learned attention projections explain the lemma. Random projection is separate; the example illustrates the same inequality rather than a new concept."
+    },
+    {
+      "candidateKey": "cand-7017b96d2f765abaffea",
+      "sourceId": "label-noise",
+      "contentHash": "b595a526c6355b214e28bbc75f9899247aeba7d816e1285c1e1603644f117189",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. Target corruption, asymmetric error counts and independent adjudication explain one label-quality concept; class-conditional noise is explicitly an assumption and model disagreement is not truth."
+    },
+    {
+      "candidateKey": "cand-94439ec1ff24d7d5b2f0",
+      "sourceId": "label-noise",
+      "contentHash": "55bbfd37eba72d0ef45324356e2d8f88ed942d49fa25c0ba34f25138ec23da79",
+      "decision": "retain",
+      "reason": "Mechanism supports the canonical objective. Target corruption, asymmetric error counts and independent adjudication explain one label-quality concept; class-conditional noise is explicitly an assumption and model disagreement is not truth."
+    },
+    {
+      "candidateKey": "cand-a62c9483245d9ba50652",
+      "sourceId": "label-noise",
+      "contentHash": "efa279fbb530caf391d42640bf1639ca3aef325c09f92d9d29f093de108671fb",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. Target corruption, asymmetric error counts and independent adjudication explain one label-quality concept; class-conditional noise is explicitly an assumption and model disagreement is not truth."
+    },
+    {
+      "candidateKey": "cand-7d4dd335d0740de41161",
+      "sourceId": "label-noise",
+      "contentHash": "ad66436a0a890bcfb03f000141252b0a4a92c67641e3b992f96f73355029c3f5",
+      "decision": "retain",
+      "reason": "Validation and alternatives supports the canonical objective. Target corruption, asymmetric error counts and independent adjudication explain one label-quality concept; class-conditional noise is explicitly an assumption and model disagreement is not truth."
+    },
+    {
+      "candidateKey": "cand-787b0094e42f2535305f",
+      "sourceId": "random-projection",
+      "contentHash": "812579d2db8192c0142ab9d33e8b25b771acabebcdc722cfe7d3ebff30a2b9af",
+      "decision": "retain",
+      "reason": "Check your understanding supports the canonical objective. Sampling and reusing a scaled map, a successful finite pair and a collapsed direction jointly delimit random projection. Distance and variance are declared foundations, and the finite-set guarantee is a separately authored lemma."
+    },
+    {
+      "candidateKey": "cand-1b16626e72af310f3fdb",
+      "sourceId": "random-projection",
+      "contentHash": "48737f2b738d72c9c99a766d35bba6e8340823bff7a3cdb420b49ef59aba7f81",
+      "decision": "retain",
+      "reason": "Meaning supports the canonical objective. Sampling and reusing a scaled map, a successful finite pair and a collapsed direction jointly delimit random projection. Distance and variance are declared foundations, and the finite-set guarantee is a separately authored lemma."
+    },
+    {
+      "candidateKey": "cand-a54ffe47c6f4beea2c9b",
+      "sourceId": "random-projection",
+      "contentHash": "bd7421d35bbe7f55beab4e04e75eae83f8f357225098a11fd0e2e9af6b493ac9",
+      "decision": "retain",
+      "reason": "Mechanism supports the canonical objective. Sampling and reusing a scaled map, a successful finite pair and a collapsed direction jointly delimit random projection. Distance and variance are declared foundations, and the finite-set guarantee is a separately authored lemma."
+    },
+    {
+      "candidateKey": "cand-04a4d38ef222de6efa01",
+      "sourceId": "random-projection",
+      "contentHash": "a309510453fa9facbad5a79eb8145ebdbbc331dc54ca7e03524cdd2f209f2d68",
+      "decision": "retain",
+      "reason": "One example supports the canonical objective. Sampling and reusing a scaled map, a successful finite pair and a collapsed direction jointly delimit random projection. Distance and variance are declared foundations, and the finite-set guarantee is a separately authored lemma."
+    },
+    {
+      "candidateKey": "cand-7c0afd0cb0766f599851",
+      "sourceId": "temporal-knowledge-graph",
+      "contentHash": "59d0e6e92d1b0e1cca7c0a450e05b1a9e1505c64b16621205f365c6df919d88e",
+      "decision": "retain",
+      "reason": "Invalidation is not erasure supports the canonical objective. Validity/observation time, provenance and current versus historical queries remain the existing temporal-graph objective. The added erasure distinction qualifies history preservation without claiming legal compliance or creating a separate privacy-law concept."
     }
   ]
 }

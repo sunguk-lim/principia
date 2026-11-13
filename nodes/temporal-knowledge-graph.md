@@ -8,7 +8,7 @@ prereqs: [graph, knowledge-graph, event, agent-memory]
 sources: [https://arxiv.org/abs/2501.13956]
 status: explained
 created: 2026-09-10
-updated: 2026-09-10
+updated: 2026-11-14
 ---
 
 # Temporal Knowledge Graph
@@ -29,6 +29,12 @@ For [[agent-memory]], separate raw episodes from extracted entities and relation
 
 Evaluate temporal retrieval with questions whose answers change over time. Measure fact extraction, interval accuracy, contradiction handling, as-of correctness, provenance coverage, update latency, and end-to-end answer faithfulness. Product-specific benchmark gains do not establish universal superiority over static retrieval.
 
+## Invalidation is not erasure
+
+Closing a fact's validity interval removes it from a current-state query without removing its historical representation. Erasure has a different scope: an authorized deletion request must define whether the target includes raw episodes, extracted facts, derived summaries, search indexes and retained copies. A negative current query only proves exclusion from that query, not deletion from every representation. Conversely, ending an employment interval does not require declaring that employment never happened.
+
+For an invented fact recorded on April 5 but valid only through March 31, an April current query should exclude it while an authorized February query can still use it. A subsequent erasure request can require those historical representations to be removed or restricted under the applicable retention contract. Verify each declared store and derivative rather than trusting one successful API response. This is a storage-lifecycle distinction, not a claim that any single memory product or deletion endpoint establishes legal compliance.
+
 ## Prerequisites
 
 - [[graph]]
@@ -39,3 +45,5 @@ Evaluate temporal retrieval with questions whose answers change over time. Measu
 ## Sources
 
 - [Rasmussen et al., “A Temporal Knowledge Graph Architecture for Agent Memory”](https://arxiv.org/abs/2501.13956): describes Graphiti as a temporally aware graph that integrates ongoing conversational and structured data while maintaining historical relationships.
+
+- <https://docs.mem0.ai/core-concepts/memory-operations/delete>

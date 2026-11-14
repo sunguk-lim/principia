@@ -17616,6 +17616,230 @@
       "contentHash": "59d0e6e92d1b0e1cca7c0a450e05b1a9e1505c64b16621205f365c6df919d88e",
       "decision": "retain",
       "reason": "Invalidation is not erasure supports the canonical objective. Validity/observation time, provenance and current versus historical queries remain the existing temporal-graph objective. The added erasure distinction qualifies history preservation without claiming legal compliance or creating a separate privacy-law concept."
+    },
+    {
+      "candidateKey": "cand-e98e4dbcc0eafc58ff62",
+      "sourceId": "dataset-distribution-shift",
+      "contentHash": "d69e6de810f534b8606cccb3d770ac33cf63d0b2c1535c018e68b277bd91dd8c",
+      "decision": "retain",
+      "reason": "Defines the reference-target distribution distinction rather than schema validity or only temporal concept drift; this is the canonical entity objective, not a second concept."
+    },
+    {
+      "candidateKey": "cand-5a0bc0bf89ecce4a573a",
+      "sourceId": "dataset-distribution-shift",
+      "contentHash": "2bf959e96b92daf133270415d48248893a7b9cf2ba3d552470c5ad5a932058de",
+      "decision": "retain",
+      "reason": "Explains the invariants and boundaries needed for the reference-target distribution distinction rather than schema validity or only temporal concept drift. Linked prerequisites retain their own entities; this section does not introduce a separate standalone objective."
+    },
+    {
+      "candidateKey": "cand-0adc48e5ee37ff30c54d",
+      "sourceId": "dataset-distribution-shift",
+      "contentHash": "b37bcf5b168deb3ac4f32157496f9a7f3b215441d1c80cb69d0e8969ac2cd436",
+      "decision": "retain",
+      "reason": "Worked counterexample or state transition illustrates the reference-target distribution distinction rather than schema validity or only temporal concept drift with invented values; retain as supporting explanation, not a new entity."
+    },
+    {
+      "candidateKey": "cand-42a9efac2155a208ba15",
+      "sourceId": "dataset-distribution-shift",
+      "contentHash": "ad7f76fec5ac338bbcb9a65a039bc16eee218951d80ed60037fe34724263ee9f",
+      "decision": "retain",
+      "reason": "Tests and diagnostic limits assess the reference-target distribution distinction rather than schema validity or only temporal concept drift; they are not independently named new learning entities."
+    },
+    {
+      "candidateKey": "cand-63178d51d0d970009745",
+      "sourceId": "inter-annotator-agreement",
+      "contentHash": "128937fc2f32bd1a37bddbf55952546f611b35fd53660ae4d4144b0415cf8966",
+      "decision": "retain",
+      "reason": "Defines the annotation-study protocol rather than one agreement coefficient or ground-truth accuracy; this is the canonical entity objective, not a second concept."
+    },
+    {
+      "candidateKey": "cand-43f5636b86f98b39e957",
+      "sourceId": "inter-annotator-agreement",
+      "contentHash": "a4716d22caaad2fb233acb4598b84378c60fb7f1a113d4dbd49dfbbbcf1ad536",
+      "decision": "retain",
+      "reason": "Explains the invariants and boundaries needed for the annotation-study protocol rather than one agreement coefficient or ground-truth accuracy. Linked prerequisites retain their own entities; this section does not introduce a separate standalone objective."
+    },
+    {
+      "candidateKey": "cand-e0114a1d5ca46b398cc4",
+      "sourceId": "inter-annotator-agreement",
+      "contentHash": "dadc7ab0994586a05c22058812a1634cbbc660a5098577ec0da5b055c88ece11",
+      "decision": "retain",
+      "reason": "Worked counterexample or state transition illustrates the annotation-study protocol rather than one agreement coefficient or ground-truth accuracy with invented values; retain as supporting explanation, not a new entity."
+    },
+    {
+      "candidateKey": "cand-439b76cfd59377c41a61",
+      "sourceId": "inter-annotator-agreement",
+      "contentHash": "ce1fed6461d17eb6d038257b71800b0b2f8dae0399e3a2a9128b47bacd1b3cd2",
+      "decision": "retain",
+      "reason": "Tests and diagnostic limits assess the annotation-study protocol rather than one agreement coefficient or ground-truth accuracy; they are not independently named new learning entities."
+    },
+    {
+      "candidateKey": "cand-81adf91973629f8dd3f1",
+      "sourceId": "process-environment",
+      "contentHash": "bcb0b5997d1d678acd5966c452ae9894bb6eb0032c9957eac7b242716fd53ec2",
+      "decision": "retain",
+      "reason": "Defines launch-scoped configuration rather than live cross-process synchronization; this is the canonical entity objective, not a second concept."
+    },
+    {
+      "candidateKey": "cand-1c0970026f8d29465e5b",
+      "sourceId": "process-environment",
+      "contentHash": "884665955676518710e22556a5a223e5a341867cf6edcdfa1a76ef631282c2d1",
+      "decision": "retain",
+      "reason": "Explains the invariants and boundaries needed for launch-scoped configuration rather than live cross-process synchronization. Linked prerequisites retain their own entities; this section does not introduce a separate standalone objective."
+    },
+    {
+      "candidateKey": "cand-64411d01086c8f27d139",
+      "sourceId": "process-environment",
+      "contentHash": "3f842424d07cc9eb0417cbfa1d9d630fb12516bfa2422f1c7b29f62308254ba3",
+      "decision": "retain",
+      "reason": "Worked counterexample or state transition illustrates launch-scoped configuration rather than live cross-process synchronization with invented values; retain as supporting explanation, not a new entity."
+    },
+    {
+      "candidateKey": "cand-18d901e1ddbf9c3a9894",
+      "sourceId": "process-environment",
+      "contentHash": "383fc2e7644709964f70b40e071e904b0d88c26550fa2862dee1f1afcad32a47",
+      "decision": "retain",
+      "reason": "Tests and diagnostic limits assess launch-scoped configuration rather than live cross-process synchronization; they are not independently named new learning entities."
+    },
+    {
+      "candidateKey": "cand-a99709a437633346087b",
+      "sourceId": "runtime-secret-injection",
+      "contentHash": "eec75bd69acc848c36af55ce5d3dfcbec2a0da09d04ec7de2468a0c8fac98454",
+      "decision": "retain",
+      "reason": "Tests and diagnostic limits assess authorized reference resolution at the execution boundary rather than stored plaintext; they are not independently named new learning entities."
+    },
+    {
+      "candidateKey": "cand-c4a7052899daf632dc5a",
+      "sourceId": "runtime-secret-injection",
+      "contentHash": "fe39ef51b91b7e46d911ed2006efbf9bacccafb03dc3f183d852c05301d1b7a5",
+      "decision": "retain",
+      "reason": "Defines authorized reference resolution at the execution boundary rather than stored plaintext; this is the canonical entity objective, not a second concept."
+    },
+    {
+      "candidateKey": "cand-d9bee8b2067e0055c335",
+      "sourceId": "runtime-secret-injection",
+      "contentHash": "6c32c6a9e09b8463cd1ecf061f950dbb544ddc2a700f2e465659a0b07b2ebc72",
+      "decision": "retain",
+      "reason": "Explains the invariants and boundaries needed for authorized reference resolution at the execution boundary rather than stored plaintext. Linked prerequisites retain their own entities; this section does not introduce a separate standalone objective."
+    },
+    {
+      "candidateKey": "cand-bd1ff06c42ecb56a12ef",
+      "sourceId": "runtime-secret-injection",
+      "contentHash": "757ac1068a31009f5a7f3a799fa465f6ab53d3504c7ae0ddc8594cbe17bf535d",
+      "decision": "retain",
+      "reason": "Worked counterexample or state transition illustrates authorized reference resolution at the execution boundary rather than stored plaintext with invented values; retain as supporting explanation, not a new entity."
+    },
+    {
+      "candidateKey": "cand-40e10b9fd3ce9831d900",
+      "sourceId": "secret-output-redaction",
+      "contentHash": "2faa8b46efb1052f24c6f17d5a4fd1c8333a8752359a77f53c5716070d0d7847",
+      "decision": "retain",
+      "reason": "Tests and diagnostic limits assess output-boundary filtering rather than input authorization or credential revocation; they are not independently named new learning entities."
+    },
+    {
+      "candidateKey": "cand-7c890d11613e9e9c9924",
+      "sourceId": "secret-output-redaction",
+      "contentHash": "5fa9449bcc22d053090a3827b3bd63683aaec97471036803ac1b37dbdaa7024c",
+      "decision": "retain",
+      "reason": "Defines output-boundary filtering rather than input authorization or credential revocation; this is the canonical entity objective, not a second concept."
+    },
+    {
+      "candidateKey": "cand-fcbaceea9de9efd64412",
+      "sourceId": "secret-output-redaction",
+      "contentHash": "1b3d0b71f65cc505a65d65e111509bf7fdc3038989a02aa911c39c7049d03ad7",
+      "decision": "retain",
+      "reason": "Explains the invariants and boundaries needed for output-boundary filtering rather than input authorization or credential revocation. Linked prerequisites retain their own entities; this section does not introduce a separate standalone objective."
+    },
+    {
+      "candidateKey": "cand-4a2ae57598420e176840",
+      "sourceId": "secret-output-redaction",
+      "contentHash": "7c73f56c86ca803b813e369dd83b0ad8c9c2ba351a3b64a6bb8be9bc1effd13c",
+      "decision": "retain",
+      "reason": "Worked counterexample or state transition illustrates output-boundary filtering rather than input authorization or credential revocation with invented values; retain as supporting explanation, not a new entity."
+    },
+    {
+      "candidateKey": "cand-5dc57f8c29aed712f3b9",
+      "sourceId": "shared-agent-collaboration-room",
+      "contentHash": "9447687f8a36cf47b6fa5666971c611894bec4e5571d7e594cebdf1b03b5de3c",
+      "decision": "retain",
+      "reason": "Defines the shared conversational interface rather than worker execution or task-state authority; this is the canonical entity objective, not a second concept."
+    },
+    {
+      "candidateKey": "cand-9e1825b0bb7e559ff316",
+      "sourceId": "shared-agent-collaboration-room",
+      "contentHash": "e07cc5466ecc2ce482edb62e933849bd5cb7ced5fc3b88cc5186dfe8f644a087",
+      "decision": "retain",
+      "reason": "Explains the invariants and boundaries needed for the shared conversational interface rather than worker execution or task-state authority. Linked prerequisites retain their own entities; this section does not introduce a separate standalone objective."
+    },
+    {
+      "candidateKey": "cand-f2744ff92696ccaf7ab2",
+      "sourceId": "shared-agent-collaboration-room",
+      "contentHash": "497c6494c8f30a41076ebdd774a1f5f6493747246bdf1fa98bb7a1881422d4ce",
+      "decision": "retain",
+      "reason": "Worked counterexample or state transition illustrates the shared conversational interface rather than worker execution or task-state authority with invented values; retain as supporting explanation, not a new entity."
+    },
+    {
+      "candidateKey": "cand-ee85c5da330252e78aac",
+      "sourceId": "shared-agent-collaboration-room",
+      "contentHash": "9f7e2ea8fbc988b3ff975c90de2790e0877d279eb693047cfd51a0fb6710dead",
+      "decision": "retain",
+      "reason": "Tests and diagnostic limits assess the shared conversational interface rather than worker execution or task-state authority; they are not independently named new learning entities."
+    },
+    {
+      "candidateKey": "cand-7e11c18dbd6739daee7a",
+      "sourceId": "snapshot-change-monitoring",
+      "contentHash": "211531170246a5efa3e2f0122f78e5035e16c17fcfd731b443de136ae61cce7d",
+      "decision": "retain",
+      "reason": "Tests and diagnostic limits assess timestamped observation comparison rather than a continuous source-state guarantee; they are not independently named new learning entities."
+    },
+    {
+      "candidateKey": "cand-f4009e5e11f905e9b26d",
+      "sourceId": "snapshot-change-monitoring",
+      "contentHash": "763e4cf10ef9a857dc5a63c1502b4aad7776ffb176d24b0df173efdf0afaa9f8",
+      "decision": "retain",
+      "reason": "Defines timestamped observation comparison rather than a continuous source-state guarantee; this is the canonical entity objective, not a second concept."
+    },
+    {
+      "candidateKey": "cand-a78b8eb04227384a7cd9",
+      "sourceId": "snapshot-change-monitoring",
+      "contentHash": "f75d7a8215d736cca4f35ecaf8902b396f29b5c628ffb7eed55969c049e4f78a",
+      "decision": "retain",
+      "reason": "Explains the invariants and boundaries needed for timestamped observation comparison rather than a continuous source-state guarantee. Linked prerequisites retain their own entities; this section does not introduce a separate standalone objective."
+    },
+    {
+      "candidateKey": "cand-df2a6171d30eb28def89",
+      "sourceId": "snapshot-change-monitoring",
+      "contentHash": "a8c76496fd73cf0f5ae3e637ef2dc3e2cf28346dc34373be9004ba7ce728702a",
+      "decision": "retain",
+      "reason": "Worked counterexample or state transition illustrates timestamped observation comparison rather than a continuous source-state guarantee with invented values; retain as supporting explanation, not a new entity."
+    },
+    {
+      "candidateKey": "cand-025ed95ebc37d62cd8b4",
+      "sourceId": "agent-workflow-graph",
+      "contentHash": "e39f9e1b304b9105ded529472d7330ab2b2c256c98779bf0c4a191fba772aa27",
+      "decision": "retain",
+      "reason": "Explains workflow checkpoint/resume compatibility and release conditions. Durable execution already has its own entity; retain this application-specific transition contract."
+    },
+    {
+      "candidateKey": "cand-7dcc8e897fbd08a84c07",
+      "sourceId": "agent-workflow-graph",
+      "contentHash": "4efe67a094ac6f4da0e78b4f3298a5fe90dda49e3673d61b6a7ce37055c79853",
+      "decision": "retain",
+      "reason": "Defines workflow state and permitted transitions; this remains the canonical workflow graph objective, not a separate entity."
+    },
+    {
+      "candidateKey": "cand-7e93087f891118f83c61",
+      "sourceId": "agent-workflow-graph",
+      "contentHash": "78037dc09c101a40d69448f3ea43fdc58ab9c0a2616d6570f5cfbe823de1325e",
+      "decision": "retain",
+      "reason": "Schema, runtime validation and semantic acceptance conditions define the workflow step interface; tool-call validation remains an existing prerequisite, not a newly inferred authority mechanism."
+    },
+    {
+      "candidateKey": "cand-18b0ec3165eed55291c0",
+      "sourceId": "agent-workflow-graph",
+      "contentHash": "634908b4f03f521e23bc7bdc7222f0be2fe3320724ca561cb5c95c42dad5b9df",
+      "decision": "retain",
+      "reason": "Accepted producing-attempt/input-output revision bindings are the workflow step handoff contract; the retry example illustrates that canonical objective rather than a synonym concept."
     }
   ]
 }

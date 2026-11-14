@@ -5118,6 +5118,64 @@
         "probability": "Defines success and failure over the choice of map.",
         "logarithm": "Explains logarithmic dependence on finite-set size."
       }
+    },
+    "process-environment": {
+      "aliases": [],
+      "objective": "A process environment supplies name-value strings to a program at launch and propagates through explicitly chosen child-launch rules rather than live synchronization between shells.",
+      "prerequisiteReasons": {
+        "process": "Provides the parent, child and running program image whose environment is initialized."
+      }
+    },
+    "runtime-secret-injection": {
+      "aliases": [],
+      "objective": "Runtime secret injection resolves a credential reference for an authorized workload at an execution boundary while limiting its recipients, lifetime and recorded exposure.",
+      "prerequisiteReasons": {
+        "agent-workload-identity": "Identifies the software principal that may retrieve and use a scoped credential.",
+        "process-environment": "Explains one injection channel and why existing processes do not acquire later shell changes."
+      }
+    },
+    "secret-output-redaction": {
+      "aliases": [],
+      "objective": "Secret output redaction removes or transforms sensitive fields before they cross logging, tracing, artifact or response boundaries without substituting for access control.",
+      "prerequisiteReasons": {
+        "trace-span": "Provides the structured operation records whose attributes can leak sensitive values.",
+        "log-record": "Provides the event body and attributes that must be filtered before persistence or export."
+      }
+    },
+    "shared-agent-collaboration-room": {
+      "aliases": [],
+      "objective": "A shared agent collaboration room exposes durable, addressed human-agent conversation while keeping message identity, execution authority, task state and disclosure scope distinct.",
+      "prerequisiteReasons": {
+        "multi-agent-orchestration": "Defines the worker roles and handoff contracts exposed through the room.",
+        "durable-agent-task-board": "Separates evidence-backed work ownership and completion from conversational statements.",
+        "agent-workload-identity": "Separates the execution principal from a visible handle and the requesting human."
+      }
+    },
+    "snapshot-change-monitoring": {
+      "aliases": [],
+      "objective": "Snapshot-based change monitoring compares identified, timestamped source captures under a stable extraction policy and reports evidence-backed differences with bounded observation time.",
+      "prerequisiteReasons": {
+        "periodic-agent-workflow": "Defines scheduled observation, missed-run and duplicate-effect policies.",
+        "dataset-lineage": "Binds captured data and extraction versions to the evidence used in a comparison."
+      }
+    },
+    "inter-annotator-agreement": {
+      "aliases": [],
+      "objective": "Inter-annotator agreement evaluates the reproducibility of a defined labeling task across independent raters while separating agreement, adjudication and correctness.",
+      "prerequisiteReasons": {
+        "confusion-matrix": "Organizes paired label counts and distinguishes systematic disagreements.",
+        "probability": "Defines agreement proportions and any declared chance baseline.",
+        "dataset-lineage": "Keeps item, annotator and instruction-version provenance for interpretable comparisons."
+      }
+    },
+    "dataset-distribution-shift": {
+      "aliases": [],
+      "objective": "Dataset distribution shift is a difference between reference and target data-generating distributions that can change inputs, label frequencies or input-to-target relationships without changing the schema.",
+      "prerequisiteReasons": {
+        "probability-distribution": "Defines the reference and target distributions being compared.",
+        "conditional-probability": "Separates input frequencies from the conditional target relationship.",
+        "evaluation-slices": "Tests behavior within meaningful populations rather than relying on one changed aggregate."
+      }
     }
   }
 }

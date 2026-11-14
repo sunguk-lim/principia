@@ -14,6 +14,10 @@ Use a graph when branching, retries, or recovery genuinely need inspection. A sh
 
 A document agent retrieves sources, assesses whether evidence is sufficient, loops only within a budget, then writes an answer. The graph records why it took each branch and which source IDs supported completion.
 
+Every step also needs an input/output contract. Validate required fields, schema version and semantic acceptance conditions before downstream work. Static type annotations and successful parsing do not prove that a result is true, current or authorized. A numeric price without currency and billing interval is insufficient for a meaningful comparison.
+
+Bind accepted outputs to their actual input revision and producing attempt. If evidence revision 4 produced extraction revision 7, a retrieval retry writing evidence revision 5 cannot silently relabel extraction 7 as derived from 5. Preserve the accepted pairing or rerun and validate extraction. A familiar file path is not a stable data revision. These checks belong to the graph's handoff contract, while the surrounding harness still enforces authority and effects.
+
 ## Check your understanding
 
 **Question:** Does a completed graph node establish real-world success? **Answer:** No; the effect requires separate evidence.

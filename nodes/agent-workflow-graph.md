@@ -8,7 +8,7 @@ prereqs: [agent-execution-harness, agent-session-state, tool-call-execution-cont
 sources: [https://docs.langchain.com/oss/python/langgraph/overview, https://docs.langchain.com/oss/python/langgraph/persistence, https://docs.langchain.com/oss/python/langgraph/human-in-the-loop]
 status: explained
 created: 2026-10-08
-updated: 2026-10-15
+updated: 2026-11-15
 ---
 
 # Agent Workflow Graph
@@ -36,3 +36,17 @@ A checkpoint also has a code-version boundary. If a graph deployment changes nod
 - [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview): stateful graph orchestration and deterministic/model-driven steps.
 - [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence): checkpoint and resume semantics.
 - [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/human-in-the-loop): persisted pause and explicit resume flow.
+
+## Typed step boundaries
+
+A step contract names required inputs, output shape, schema version and semantic acceptance conditions. Validate ordinary code-produced results as well as model-produced ones at the boundary before selecting a dependent transition. Static annotations alone do not perform runtime validation, and a structurally valid result can still be unsupported, stale or unauthorized. The existing [[tool-call-execution-contract]] applies this separation to external actions; internal workflow steps need the same explicit distinction between a proposed value and an accepted result.
+
+For example, extraction can emit `{amount: 15, currency: "USD", interval: "month"}`. A numeric amount without the currency or interval is insufficient for a meaningful price comparison even when it parses as JSON. An invented version 2 that changes amount from minor units to major units needs an explicit compatibility decision rather than silently accepting the same field name. Keep retry and rejection behavior observable; a failed validation must not be reinterpreted as an unchanged successful result.
+
+## Versioned step artifacts
+
+A checkpoint's execution position and a step's accepted output are different records. Bind a result to the producing run, step attempt, input revision, code/configuration version, schema version and observed validation outcome. A downstream step should consume that accepted revision, not whichever file most recently occupies a familiar path. This extends the graph's transition contract to the data passed across it.
+
+For an invented three-step workflow, retrieval attempt A produces evidence revision 4 and extraction E produces structured revision 7 from it. A later retrieval retry produces evidence revision 5. The publisher must not label extraction 7 as derived from evidence 5 merely because the evidence path was overwritten. Either keep the accepted pairing (4,7) or rerun extraction against 5 and validate a new result. Record sensitive inputs through authorized references rather than copying them indiscriminately into every artifact.
+
+Versioned artifacts make mismatch and reuse detectable; they do not establish that the input was true or the output useful. Test stale-path replacement, incompatible schemas, partial writes and recovery after an output is committed but its completion message is lost. Compare with a plain-code workflow before introducing a new runtime.

@@ -1,14 +1,14 @@
 ---
 id: agent-observation-ledger
 title: Agent Observation Ledger
-summary: An agent observation ledger keeps verified action outcomes, completed subgoals, and unresolved state separate from the latest visual observation so long-running computer-use tasks do not depend on replaying every screenshot.
+summary: An agent observation ledger preserves action outcomes, unresolved state and recoverable evidence references so prompt compaction does not erase what was observed.
 type: concept
 tags: [ml/agents]
 prereqs: [agent-session-state, agent-memory, agent-verification-loop]
-sources: [https://docs.langchain.com/oss/python/langgraph/persistence, https://docs.langchain.com/oss/python/langgraph/interrupts]
+sources: [https://docs.langchain.com/oss/python/langgraph/persistence, https://docs.langchain.com/oss/python/langgraph/interrupts, https://www.anthropic.com/research/effective-context-engineering-for-ai-agents]
 status: explained
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-11-16
 ---
 
 # Agent Observation Ledger
@@ -27,6 +27,14 @@ Compression trades token cost against omitted details. A checkpoint should retai
 
 Evaluate on long tasks with repeated-looking screens. Measure task completion, duplicate actions, false completion, recovery after compaction, context size, and cost. Compare full-history, recent-frame-only, and recent-frame-plus-ledger policies under identical tasks. Inspect individual failures before attributing them to attention or model training.
 
+## Tool-result receipts after masking
+
+The same ledger principle applies beyond screenshots. A compact receipt identifies a tool call, its safe input fingerprint, completion state, observation time, task-relevant facts and a resolvable reference to the retained output. A placeholder saying only “output omitted” records neither what was learned nor whether the action succeeded. Keep a model's interpretation distinct from the actual observation; a stored tool response remains untrusted data.
+
+For example, call C17 queried inventory version v6 for item Q and observed 12 units at 10:00. Its receipt can retain those facts and artifact A17 while the full 8,000-token response leaves the active prompt. A later question about a returned warehouse field can read A17 rather than rerun the original query. A question about current stock at 11:00 may need a fresh query instead. A hash can detect changed stored bytes, but it does not prove the original response was true or remains current.
+
+A receipt reference is useful only if the active runtime can resolve it with the correct access scope. Test a successful read, missing artifact, denied access, partial response and contradictory later observation. Keep incomplete calls unknown until reconciled. These fields are an independently designed ledger application, not a standardized provider schema or evidence that one particular compression policy always saves money.
+
 ## Prerequisites
 
 - [[agent-session-state]]
@@ -34,6 +42,8 @@ Evaluate on long tasks with repeated-looking screens. Measure task completion, d
 - [[agent-verification-loop]]
 
 ## Sources
+
+- <https://www.anthropic.com/research/effective-context-engineering-for-ai-agents>: lightweight references and on-demand context retrieval; receipt fields are an independent application.
 
 - [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence): checkpointed agent state.
 - [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts): resumable execution and state inspection.

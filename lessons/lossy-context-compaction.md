@@ -16,6 +16,10 @@ Detailed session records also serve recovery and tool-call reconciliation. A nat
 
 The original result reports that test T failed at alpha.py line 28 and beta.py passed. The summary says only “a parser test failed.” A later worker must search both files and repeat checks. A structured note keeps `T failed, alpha.py:28`, `beta.py passed`, and a reference to the original result. It is slightly longer but preserves the next decision's evidence.
 
+## Freshness boundary
+
+Recovering an old observation differs from repeating a tool action. Retrieve a 09:00 report when asked what it said; obtain fresh evidence when asked whether the service is healthy now. Bind an artifact to its tool inputs, observation time, version and access scope. If a payment request timed out, an absent local receipt does not prove that no payment occurred. Reconcile under the remote retry contract before repeating an effect.
+
 ## Check your understanding
 
 Is the shortest faithful-sounding summary necessarily the best compaction? **No.** Test downstream completion and recovery. Important details may become necessary only later. Compare structured notes, raw windows and recoverable originals under the same task and resource budget.

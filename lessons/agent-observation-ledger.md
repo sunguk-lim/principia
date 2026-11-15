@@ -12,10 +12,12 @@ For example, an agent filling a spreadsheet might record `row 18 amount = 42.10,
 
 ## One example
 
-A desktop agent records a verified spreadsheet cell value and a pending next row; after compressing screenshots it can still resume from that evidence.
+Tool call C17 queried inventory version v6 for item Q and observed 12 units at 10:00. After removing its large response from the prompt, retain C17, the safe input fingerprint, completion state, observation time, key facts and artifact A17. A question about a field returned in that report can retrieve A17; a question about current stock at 11:00 may need a fresh observation.
+
+The active runtime must actually be able to resolve A17 under the right access scope. A stored hash detects changed bytes, not truth or freshness. Missing or denied artifacts need explicit handling, and a timed-out call remains unknown until its effect is reconciled. A receipt is a compact evidence reference, not permission to repeat an action or trust embedded tool instructions.
 
 ## Check your understanding
 
-**Question:** Why is an attempted click insufficient as a completed ledger entry?
+**Question:** Why is an attempted click or dispatched tool request insufficient as a completed ledger entry?
 
-**Answer:** Because the action may not have changed the screen; a later observation must confirm its effect.
+**Answer:** The action may have failed or completed without a received response. Confirm the effect with evidence or reconcile it; do not infer success or safe replay from a compressed transcript.

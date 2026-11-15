@@ -2778,9 +2778,11 @@
     },
     "zero-redundancy-optimizer": {
       "prerequisiteReasons": {
-        "data-parallelism": "The stated objective requires Data parallelism: the complete explanation applies it in this mechanism: The Zero Redundancy Optimizer (ZeRO) removes the wasteful replication built into plain data-parallelism. Plain data parallelism keeps a full copy of three things on every worker: the model parameters (the trained numbers), the gradients (one adjustment-number per parameter,",
-        "gather": "The stated objective requires Gather: the complete explanation applies it in this mechanism: The Zero Redundancy Optimizer (ZeRO) removes the wasteful replication built into plain data-parallelism. Plain data parallelism keeps a full copy of three things on every worker: the model parameters (the trained numbers), the gradients (one adjustment-number per parameter,"
-      }
+        "data-parallelism": "Explains why workers replicate model state before ownership is partitioned.",
+        "gather": "Explains reconstructing distributed parameter pieces when a layer needs them.",
+        "training-memory-budget": "Defines parameter, gradient, optimizer and activation byte terms needed to interpret sharding savings."
+      },
+      "objective": "Calculate stage-specific persistent model-state storage and distinguish it from peak device memory."
     },
     "hypothesis-testing": {
       "prerequisiteReasons": {
@@ -5175,6 +5177,45 @@
         "probability-distribution": "Defines the reference and target distributions being compared.",
         "conditional-probability": "Separates input frequencies from the conditional target relationship.",
         "evaluation-slices": "Tests behavior within meaningful populations rather than relying on one changed aggregate."
+      }
+    },
+    "dataset-ablation-study": {
+      "aliases": [],
+      "objective": "A dataset ablation study varies a declared training-data component while controlling evaluation and training exposure to test that component's contribution.",
+      "prerequisiteReasons": {
+        "dataset-lineage": "Identifies the exact source versions and transformations varied between trials.",
+        "evaluation-slices": "Separates an aggregate change from differences across target populations."
+      }
+    },
+    "dataset-leakage-audit": {
+      "aliases": [],
+      "objective": "A dataset leakage audit checks whether training or model selection gained prohibited information from evaluation examples, shared groups or fitted preprocessing.",
+      "prerequisiteReasons": {
+        "measurement": "Quantifies residual overlap and performance under stricter splits.",
+        "dataset-lineage": "Preserves source identity and transformation versions to investigate prohibited information flow."
+      }
+    },
+    "source-mixture-reweighting": {
+      "aliases": [],
+      "objective": "Source mixture reweighting changes the share or loss contribution of training-data sources under an explicit objective rather than treating source size as its desired importance.",
+      "prerequisiteReasons": {
+        "dataset-lineage": "Provides reliable source membership and versioned policies.",
+        "evaluation-slices": "Checks whether mixture changes help the intended target groups."
+      }
+    },
+    "kernel-feature-map": {
+      "aliases": [],
+      "objective": "A kernel feature map represents a pairwise similarity as a dot product of transformed inputs, exactly for the chosen kernel or approximately for a target kernel.",
+      "prerequisiteReasons": {
+        "vector-dot-product": "Supplies the transformed-vector inner product that defines the similarity."
+      }
+    },
+    "linear-transformer-attention": {
+      "prerequisiteReasons": {
+        "kernel-feature-map": "Defines the similarity factorization before the attention products can be reassociated.",
+        "transformer-attention": "Defines query, key, value and normalized attention aggregation that the factorization changes.",
+        "matrix-multiplication": "Provides the associative product identity used to reorder key-value aggregation.",
+        "measurement": "Separates asymptotic scaling and approximation error from measured workload latency and quality."
       }
     }
   }

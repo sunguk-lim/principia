@@ -2,6 +2,8 @@
 
 ## Meaning
 
+A [[kernel-feature-map]] defines the query–key similarity that this mechanism factors and aggregates.
+
 Linear Transformer attention replaces all-pairs attention scores with a factorized similarity. It can summarize past keys and values in a running state, then answer each new query from that state.
 
 ## Mechanism

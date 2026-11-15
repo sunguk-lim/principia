@@ -5793,13 +5793,6 @@
       "reason": "Overview is supporting explanation for the canonical SQL (Structured Query Language) objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-a980b9256e15cc7896b6",
-      "sourceId": "zero-redundancy-optimizer",
-      "contentHash": "09f7259649d09fbf677897861da802c59c153d4637e3f3153fa5fdbe9ae7f50f",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Zero Redundancy Optimizer objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-a9823dbcdf65692ef380",
       "sourceId": "gpudirect",
       "contentHash": "4ac4e7855711d6ed72a2e5efc9cdd55cf2d5570343c1dc895928caf4ce54524b",
@@ -6380,13 +6373,6 @@
       "contentHash": "54da40adf6a17d011c57e0be8f884a7bf749847b358f98b73d33073466ae79af",
       "decision": "retain",
       "reason": "The slow death before the kill — thrashing is supporting explanation for the canonical OOM Killer objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-b8ecaaff4f0ceca6d44f",
-      "sourceId": "zero-redundancy-optimizer",
-      "contentHash": "3627b2b192ed767070e6860c6b3693920841070643a92d77f2225109637d9782",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Zero Redundancy Optimizer objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-b98d04386c7c7d8f9418",
@@ -9390,13 +9376,6 @@
       "contentHash": "79d31ac2b2e0c6dd8e34302e81e5954558d8fab3061ccab60c19d56d8dd71979",
       "decision": "retain",
       "reason": "Explains the concrete admission and memory-pressure actions of the existing inference scheduler; chunked prefill is linked as a real prerequisite."
-    },
-    {
-      "candidateKey": "cand-2c1957cc128785a0b29e",
-      "sourceId": "linear-transformer-attention",
-      "contentHash": "7c8603df8b118f48b1464b5c174bf7f1e0f3daabb187656b1bf180ce1fe73b6a",
-      "decision": "retain",
-      "reason": "Introduces and explains the canonical concept under the same learning objective."
     },
     {
       "candidateKey": "cand-393820f0410ca2251bd4",
@@ -17840,6 +17819,188 @@
       "contentHash": "634908b4f03f521e23bc7bdc7222f0be2fe3320724ca561cb5c95c42dad5b9df",
       "decision": "retain",
       "reason": "Accepted producing-attempt/input-output revision bindings are the workflow step handoff contract; the retry example illustrates that canonical objective rather than a synonym concept."
+    },
+    {
+      "candidateKey": "cand-ef03cb42e9965841a5e5",
+      "sourceId": "dataset-ablation-study",
+      "contentHash": "6541f7ab7b19e407f392f3a3919d38f05a0ae8067a7e73c48a9d26adaaf586a3",
+      "decision": "retain",
+      "reason": "Defines the intervention and exposure-control protocol for evaluating a data component, not a dataset quality label. It remains the canonical objective of this node, not an additional entity."
+    },
+    {
+      "candidateKey": "cand-2179b554cb31fd935a0a",
+      "sourceId": "dataset-ablation-study",
+      "contentHash": "7f9b54fd3947609c41a257035f6815f0c5510ab72e2299b5dfac740893842555",
+      "decision": "retain",
+      "reason": "Derives the invariant and necessary controls for the intervention and exposure-control protocol for evaluating a data component, not a dataset quality label. Existing linked foundations retain their own identities; no second concept is created by this exposition."
+    },
+    {
+      "candidateKey": "cand-18895ca35e511a58d628",
+      "sourceId": "dataset-ablation-study",
+      "contentHash": "464ed5d2b081fe79d54dab53f0185dafee60d8bf4c2c8736fa917ca6d1c76af7",
+      "decision": "retain",
+      "reason": "The independently invented worked values illustrate the intervention and exposure-control protocol for evaluating a data component, not a dataset quality label. This is supporting explanation, not a separate concept or empirical source claim."
+    },
+    {
+      "candidateKey": "cand-748e3317688b4c84ba09",
+      "sourceId": "dataset-ablation-study",
+      "contentHash": "b170b977feec1af6fc4f89577de2a96e5eac01651f00a9d203a6c32a5e9d180a",
+      "decision": "retain",
+      "reason": "A comprehension check for the intervention and exposure-control protocol for evaluating a data component, not a dataset quality label; it does not introduce an additional learning objective."
+    },
+    {
+      "candidateKey": "cand-d601e06ac7bc0dfbc3e4",
+      "sourceId": "dataset-leakage-audit",
+      "contentHash": "d1279e0a304d38bb230df6535906eafc4c097b056b76c18527f9e8dbec057d60",
+      "decision": "retain",
+      "reason": "Defines the general evaluation information-boundary audit, distinct from only temporal leakage or a code-corpus-specific implementation. It remains the canonical objective of this node, not an additional entity."
+    },
+    {
+      "candidateKey": "cand-09fcc38c4a0e1b4c9bc8",
+      "sourceId": "dataset-leakage-audit",
+      "contentHash": "33c9bda1fb706e9d993ad085be3f15f597bc4f3645fa2dc7d6e3eab987d97f9b",
+      "decision": "retain",
+      "reason": "The independently invented worked values illustrate the general evaluation information-boundary audit, distinct from only temporal leakage or a code-corpus-specific implementation. This is supporting explanation, not a separate concept or empirical source claim."
+    },
+    {
+      "candidateKey": "cand-855ee372dd2cc4521ca0",
+      "sourceId": "dataset-leakage-audit",
+      "contentHash": "79bbef7d5e2e030de9cac0ba820f5cc05d29a9f34b1c7942acefab91cba47f06",
+      "decision": "retain",
+      "reason": "A comprehension check for the general evaluation information-boundary audit, distinct from only temporal leakage or a code-corpus-specific implementation; it does not introduce an additional learning objective."
+    },
+    {
+      "candidateKey": "cand-ed00cdab8243c3827666",
+      "sourceId": "source-mixture-reweighting",
+      "contentHash": "35abed59d8aa4f58285a678b60b89a618909105e49d989ae0fdac69ce169ee32",
+      "decision": "retain",
+      "reason": "Defines source-level objective proportions and their sampling/weighting equivalence under explicit assumptions, not class weighting or a standalone DoReMi paper node. It remains the canonical objective of this node, not an additional entity."
+    },
+    {
+      "candidateKey": "cand-844e525e34917f1011fd",
+      "sourceId": "source-mixture-reweighting",
+      "contentHash": "53699adfeb39c072b752de1c3c1502f22c16d7825d6a79634d41c2f6d3172360",
+      "decision": "retain",
+      "reason": "Derives the invariant and necessary controls for source-level objective proportions and their sampling/weighting equivalence under explicit assumptions, not class weighting or a standalone DoReMi paper node. Existing linked foundations retain their own identities; no second concept is created by this exposition."
+    },
+    {
+      "candidateKey": "cand-603710e1cba42228ee39",
+      "sourceId": "source-mixture-reweighting",
+      "contentHash": "bff48d961c29cb3b522833b4fddd55a3b7d54d6ab614a9f1711228f245eb31ca",
+      "decision": "retain",
+      "reason": "The independently invented worked values illustrate source-level objective proportions and their sampling/weighting equivalence under explicit assumptions, not class weighting or a standalone DoReMi paper node. This is supporting explanation, not a separate concept or empirical source claim."
+    },
+    {
+      "candidateKey": "cand-2a151d1ce61fe7b3e51c",
+      "sourceId": "source-mixture-reweighting",
+      "contentHash": "0ed4aec541f96943e9ddaad6f16fd9b3ac4500fd99ca4f9d001ae8297cfb1c35",
+      "decision": "retain",
+      "reason": "A comprehension check for source-level objective proportions and their sampling/weighting equivalence under explicit assumptions, not class weighting or a standalone DoReMi paper node; it does not introduce an additional learning objective."
+    },
+    {
+      "candidateKey": "cand-e5c65a96dbbbfec809fe",
+      "sourceId": "kernel-feature-map",
+      "contentHash": "ca2682fe5efc581281aa0fbecb8c1c1437177819b3535b8ca19784ecca118e4e",
+      "decision": "retain",
+      "reason": "Defines the exact or approximate transformed-dot-product representation of similarity, distinct from a particular linear attention architecture. It remains the canonical objective of this node, not an additional entity."
+    },
+    {
+      "candidateKey": "cand-7c09e207a9be4c666a94",
+      "sourceId": "kernel-feature-map",
+      "contentHash": "f1ed98a63d73b87e3909def72aedda674e3b1656c70790effc0df998597d3c0b",
+      "decision": "retain",
+      "reason": "Derives the invariant and necessary controls for the exact or approximate transformed-dot-product representation of similarity, distinct from a particular linear attention architecture. Existing linked foundations retain their own identities; no second concept is created by this exposition."
+    },
+    {
+      "candidateKey": "cand-c37a6e2a637c5eee71ee",
+      "sourceId": "kernel-feature-map",
+      "contentHash": "bd7ce45501b4baa47747ca73a885c5f0eeeac0c5bc5b780e5a8cd192cda28d84",
+      "decision": "retain",
+      "reason": "The independently invented worked values illustrate the exact or approximate transformed-dot-product representation of similarity, distinct from a particular linear attention architecture. This is supporting explanation, not a separate concept or empirical source claim."
+    },
+    {
+      "candidateKey": "cand-b3e4faf2e450b301f010",
+      "sourceId": "kernel-feature-map",
+      "contentHash": "803042dfa4f22076eb976b995270db34cd9b16ac091b16e1a4c192f171529043",
+      "decision": "retain",
+      "reason": "Contrasts exact feature representations with approximate target kernels and normalization limits. Linear-transformer-attention and performer-attention already own those application objectives; retain only the boundary needed to avoid conflating them."
+    },
+    {
+      "candidateKey": "cand-5af616ed5db712aa0151",
+      "sourceId": "kernel-feature-map",
+      "contentHash": "d1d65e9e5f03b81cc2b978bb90b6d42511ec8238cd557de799d96774105fd9ce",
+      "decision": "retain",
+      "reason": "A comprehension check for the exact or approximate transformed-dot-product representation of similarity, distinct from a particular linear attention architecture; it does not introduce an additional learning objective."
+    },
+    {
+      "candidateKey": "cand-c7f6d8da187061975fb9",
+      "sourceId": "agent-observation-ledger",
+      "contentHash": "3b44f9336b565fa6ee75ae25c8bf91c0c12cca290f184267de5a2c7e035795d8",
+      "decision": "retain",
+      "reason": "Defines compact verified action state with recoverable observation references, not a transcript summary or retry guarantee. It remains the canonical objective of this node, not an additional entity."
+    },
+    {
+      "candidateKey": "cand-a04cd9134540257c5082",
+      "sourceId": "agent-observation-ledger",
+      "contentHash": "64b4839216420f0fa8973bd334f725f8a40afdba1d056dbbaeb2b20bc025da1a",
+      "decision": "retain",
+      "reason": "A recoverable tool-result receipt is an instance of the observation ledger: call identity, observed outcome and evidence reference. Extend the existing ledger rather than creating a synonym; cache freshness and remote idempotency remain separate contracts."
+    },
+    {
+      "candidateKey": "cand-93cec9f2dba44e9c8c69",
+      "sourceId": "lossy-context-compaction",
+      "contentHash": "b3846bfc5c9f0758b7a617183100e56b84492becdd4ec1000beac49877f28300",
+      "decision": "retain",
+      "reason": "Clarifies the boundary of compaction: a retained observation answers historical questions but does not establish freshness or authorize retrying a remote effect. Existing idempotent-operation-key covers the remote deduplication mechanism."
+    },
+    {
+      "candidateKey": "cand-9aa9217a0cb57f254e78",
+      "sourceId": "linear-transformer-attention",
+      "contentHash": "756734d535d6e21416ffbd56c4015e15fd8c4c711d08da6aa0cbf630b93ca555",
+      "decision": "retain",
+      "reason": "Defines factorized similarity and associative state aggregation, with the feature-map representation now explicitly grounded. It remains the canonical objective of this node, not an additional entity."
+    },
+    {
+      "candidateKey": "cand-0124ec1ecfb5712d218f",
+      "sourceId": "zero-redundancy-optimizer",
+      "contentHash": "f582a692a72949fc41eff122d58904512c98fcd64c32632a75417b8e069985d2",
+      "decision": "retain",
+      "reason": "Defines stage-specific partitioning of persistent model-state bytes rather than a guarantee about peak device memory. It remains the canonical objective of this node, not an additional entity."
+    },
+    {
+      "candidateKey": "cand-4a28b123f021d728fccf",
+      "sourceId": "zero-redundancy-optimizer",
+      "contentHash": "95bca0144c28caa35327c2dfa8045d229b8f9e53b26349eeabcb1ce89e258c5d",
+      "decision": "retain",
+      "reason": "Derives the invariant and necessary controls for stage-specific partitioning of persistent model-state bytes rather than a guarantee about peak device memory. Existing linked foundations retain their own identities; no second concept is created by this exposition."
+    },
+    {
+      "candidateKey": "cand-67a6406c881b935f383a",
+      "sourceId": "zero-redundancy-optimizer",
+      "contentHash": "8f7510f3c28928e0d64c6cc5aef2ea9f115b6aeea6036b5549dc97ddd14c0389",
+      "decision": "retain",
+      "reason": "The independently invented worked values illustrate stage-specific partitioning of persistent model-state bytes rather than a guarantee about peak device memory. This is supporting explanation, not a separate concept or empirical source claim."
+    },
+    {
+      "candidateKey": "cand-59b1a95e5818b4043f74",
+      "sourceId": "zero-redundancy-optimizer",
+      "contentHash": "990afe705bd0f97f1226483625cd32fcb49693407bfdc604e0f50a3c7712e64f",
+      "decision": "retain",
+      "reason": "Qualifies persistent ZeRO state formulas with activations, temporary reconstruction and communication. Training-memory-budget and existing parallelism concepts own those separate mechanisms; this is necessary interpretation of the stage formulas."
+    },
+    {
+      "candidateKey": "cand-64e1c9517647328a3a45",
+      "sourceId": "zero-redundancy-optimizer",
+      "contentHash": "a5b7fe7db1568ad9bcb0b4ed03b012463e398c2d5924eb76099f2d624ca483c9",
+      "decision": "retain",
+      "reason": "A comprehension check for stage-specific partitioning of persistent model-state bytes rather than a guarantee about peak device memory; it does not introduce an additional learning objective."
+    },
+    {
+      "candidateKey": "cand-2e39892bb89a2a0f63a2",
+      "contentHash": "b2bf10ec2a15e5d2bcb62e6c73b79cb10bf31ded4d0ee78428ce34f3fb17ca50",
+      "sourceId": "dataset-leakage-audit",
+      "decision": "retain",
+      "reason": "Explains group-disjoint splitting, overlap checks and train-only preprocessing under the general audit objective. Temporal availability is an optional application example rather than a required narrower prerequisite; no additional entity is implied."
     }
   ]
 }

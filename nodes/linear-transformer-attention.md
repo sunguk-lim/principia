@@ -4,18 +4,18 @@ title: Linear Transformer Attention
 type: concept
 summary: Linear Transformer attention factors a kernel similarity into query and key feature maps so attention aggregation can be reordered through a fixed-size state.
 tags: [ml/llm/architecture]
-prereqs: [transformer-attention, matrix-multiplication, measurement]
+prereqs: [transformer-attention, matrix-multiplication, kernel-feature-map, measurement]
 sources: [https://arxiv.org/abs/2205.14135, https://arxiv.org/abs/2006.16236, https://arxiv.org/abs/2410.10629]
 status: explained
 created: 2026-10-11
-updated: 2026-10-20
+updated: 2026-11-16
 ---
 
 # Linear Transformer Attention
 
 ## Summary
 
-A kernelized similarity can be written as `sim(q,k) = φ(q)ᵀφ(k)` instead of explicitly forming every query–key score. [[matrix-multiplication]] associativity then lets a model aggregate key–value contributions first and apply each query afterward. This changes the sequence-length scaling but also changes the attention function unless the feature map accurately represents the desired kernel.
+A [[kernel-feature-map]] represents the query–key similarity. It can be written as `sim(q,k) = φ(q)ᵀφ(k)` instead of explicitly forming every query–key score. [[matrix-multiplication]] associativity then lets a model aggregate key–value contributions first and apply each query afterward. This changes the sequence-length scaling but also changes the attention function unless the feature map accurately represents the desired kernel.
 
 ## Mechanism
 
@@ -41,6 +41,7 @@ For N=4 positions, dense attention considers 16 query–key pairs; with N=8 it c
 
 - [[transformer-attention]]
 - [[matrix-multiplication]]
+- [[kernel-feature-map]]
 - [[measurement]]
 
 ## Source

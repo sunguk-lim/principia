@@ -37,6 +37,12 @@ export interface SemanticRelation { s?: string; t: string; type: "REQUIRES" | "A
 export type GraphEdgeType = "REQUIRES" | "ALTERNATIVE_TO" | "CONTRASTS_WITH" | "APPLIES_TO" | "USES";
 export interface GraphEdge { s: string; t: string; type?: GraphEdgeType; reason?: string }
 export interface GraphData { schemaVersion: number; nodes: GraphNode[]; edges: GraphEdge[]; relations?: SemanticRelation[]; identityIndex?: Record<string, string[]> }
+/** The required-learning closure returned live by Neo4j for one goal. */
+export interface LearningRoadmap {
+  target: string;
+  requiredIds: string[];
+  requiredEdges: { source: string; target: string; reason: string }[];
+}
 export type StatusMap = Record<string, StudyStatus>;
 export type StoreMode = "server" | "device";
 

@@ -1,6 +1,6 @@
 import cytoscape, { type CollectionReturnValue, type Core, type NodeSingular } from "cytoscape";
 import { useEffect, useRef } from "react";
-import type { GraphData, GraphEdge, GraphEdgeType, StatusMap } from "./types";
+import type { GraphData, GraphEdge, GraphEdgeType, LearningRoadmap, StatusMap } from "./types";
 import { statusColor } from "./graph-utils";
 
 const rootColor = (root: string) => ({ ml:"#8b9cff", math:"#f4c95d", os:"#55d6be", gpu:"#ff8a65", databases:"#d48cff", algorithms:"#65a8ff", networking:"#ff6b91", observability:"#7ee787", languages:"#c9a0ff", "parallel-computing":"#55c2ff" } as Record<string,string>)[root] || "#8b9cff";
@@ -11,9 +11,10 @@ interface Props {
   statuses: StatusMap;
   selectedId: string | null;
   visibleIds: Set<string>;
-  focusDepth: 1 | 2;
+  roadmap: LearningRoadmap | null;
   onSelect: (id: string) => void;
   onClear: () => void;
+  onPreview: (id: string | null) => void;
 }
 
 function typeOf(edge: cytoscape.EdgeSingular): GraphEdgeType {
@@ -63,40 +64,33 @@ function contextualEdges(nodes: GraphData["nodes"], existing: GraphEdge[]) {
   return result;
 }
 
-function focusCollection(cy: Core, selected: NodeSingular, depth: 1 | 2): CollectionReturnValue {
-  const direct = directRelations(selected);
-  let nodes = selected.union(direct.prerequisiteNodes).union(direct.dependentNodes);
-  let edges = direct.prerequisiteEdges.union(direct.dependentEdges);
-  nodes = nodes.union(direct.contextNodes);
-  edges = edges.union(direct.contextEdges);
-  if (depth === 2) {
-    const secondEdges = nodes.connectedEdges().filter(edge => typeOf(edge as cytoscape.EdgeSingular) === "REQUIRES");
-    const secondNodes = secondEdges.connectedNodes();
-    nodes = nodes.union(secondNodes);
-    edges = edges.union(secondEdges.filter(edge => nodes.contains((edge as cytoscape.EdgeSingular).source()) && nodes.contains((edge as cytoscape.EdgeSingular).target())));
-  }
+function roadmapCollection(cy: Core, roadmap: LearningRoadmap): CollectionReturnValue {
+  const ids = new Set([...roadmap.requiredIds, roadmap.target]);
+  const selected = cy.getElementById(roadmap.target) as NodeSingular;
+  const nodes = cy.nodes().filter(node => ids.has(node.id()));
+  const expectedEdges = new Set(roadmap.requiredEdges.map(edge => `${edge.source}:${edge.target}`));
+  const edges = cy.edges().filter(edge => expectedEdges.has(`${edge.source().id()}:${edge.target().id()}`));
   cy.elements().removeClass(FOCUS_CLASSES);
   cy.elements().not(nodes.union(edges)).addClass("focus-muted");
   nodes.not(selected).addClass("focus-context");
   selected.addClass("focus-selected");
   edges.addClass("focus-edge");
-  direct.prerequisiteNodes.addClass("prerequisite-node");
-  direct.dependentNodes.addClass("dependent-node");
-  direct.prerequisiteEdges.addClass("prerequisite-edge");
-  direct.dependentEdges.addClass("dependent-edge");
-  direct.contextNodes.addClass("context-node");
-  direct.contextEdges.addClass("context-edge");
+  nodes.not(selected).addClass("prerequisite-node");
+  edges.addClass("prerequisite-edge");
   return nodes.union(edges);
 }
 
-export function GraphCanvas({ data, statuses, selectedId, visibleIds, focusDepth, onSelect, onClear }: Props) {
+export function GraphCanvas({ data, statuses, selectedId, visibleIds, roadmap, onSelect, onClear, onPreview }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const graph = useRef<Core | null>(null);
   const selectRef = useRef(onSelect);
   const clearRef = useRef(onClear);
+  const previewRef = useRef(onPreview);
   const selectedRef = useRef(selectedId);
+  const hoverClearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   selectRef.current = onSelect;
   clearRef.current = onClear;
+  previewRef.current = onPreview;
   selectedRef.current = selectedId;
 
   useEffect(() => {
@@ -146,21 +140,26 @@ export function GraphCanvas({ data, statuses, selectedId, visibleIds, focusDepth
     cy.on("tap", event => { if (event.target === cy) clearRef.current(); });
     cy.on("mouseover", "node", event => {
       if (selectedRef.current) return;
-      const node = event.target as NodeSingular;
-      const relations = directRelations(node);
-      const related = node.union(relations.prerequisiteNodes).union(relations.dependentNodes).union(relations.prerequisiteEdges).union(relations.dependentEdges);
-      cy.elements().not(related).addClass("focus-muted");
-      node.addClass("focus-selected");
-      relations.prerequisiteNodes.addClass("prerequisite-node");
-      relations.dependentNodes.addClass("dependent-node");
-      relations.prerequisiteEdges.addClass("focus-edge prerequisite-edge");
-      relations.dependentEdges.addClass("focus-edge dependent-edge");
-      relations.contextNodes.addClass("context-node");
-      relations.contextEdges.addClass("focus-edge context-edge");
+      if (hoverClearTimer.current) {
+        clearTimeout(hoverClearTimer.current);
+        hoverClearTimer.current = null;
+      }
+      previewRef.current(event.target.id());
     });
-    cy.on("mouseout", "node", () => { if (!selectedRef.current) cy.elements().removeClass(FOCUS_CLASSES); });
+    cy.on("mouseout", "node", () => {
+      if (selectedRef.current) return;
+      // A short delay prevents a pointer transition while Cytoscape repaints
+      // from cancelling the first roadmap request.
+      hoverClearTimer.current = setTimeout(() => {
+        hoverClearTimer.current = null;
+        if (!selectedRef.current) previewRef.current(null);
+      }, 120);
+    });
     graph.current = cy;
-    return () => { cy.destroy(); graph.current = null; };
+    return () => {
+      if (hoverClearTimer.current) clearTimeout(hoverClearTimer.current);
+      cy.destroy(); graph.current = null;
+    };
   }, [data]);
 
   useEffect(() => {
@@ -179,10 +178,14 @@ export function GraphCanvas({ data, statuses, selectedId, visibleIds, focusDepth
     selectedRef.current = selectedId;
     cy.elements().removeClass(FOCUS_CLASSES);
     requestAnimationFrame(() => cy.resize());
-    if (!selectedId) return;
-    const selected = cy.getElementById(selectedId);
+    if (!roadmap) return;
+    const selected = cy.getElementById(roadmap.target);
     if (!selected.length) return;
-    const focused = focusCollection(cy, selected, focusDepth);
+    const focused = roadmapCollection(cy, roadmap);
+    // Hovering previews the roadmap in place. Re-laying out it would move the
+    // hovered node away from the cursor, instantly firing mouseout and losing
+    // the first preview. Directional layout is reserved for an explicit select.
+    if (!selectedId) return;
     requestAnimationFrame(() => {
       focused.layout({ name: "breadthfirst", roots: [selected.id()], directed: true, circle: false, grid: false, spacingFactor: 1.25, padding: 30, animate: false }).run();
       cy.resize();
@@ -195,7 +198,7 @@ export function GraphCanvas({ data, statuses, selectedId, visibleIds, focusDepth
         cy.animate({ fit: { eles: focused, padding: 70 }, duration: 360 });
       }
     });
-  }, [selectedId, focusDepth]);
+  }, [selectedId, roadmap]);
 
   return <div className="graph-canvas" ref={host} aria-label="Interactive Principia knowledge graph" />;
 }

@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-09-14_
+_Last rebuilt: 2026-11-15_
 
-**436** nodes · **3** axioms · **0** on the frontier
+**441** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (163)
+## 🌳 Parent (root) nodes — top-level, required by nothing (166)
 
 - [Abstract Base Class](nodes/abstract-base-class.md)
 - [Activation Checkpointing](nodes/activation-checkpointing.md)
@@ -16,6 +16,7 @@ _Last rebuilt: 2026-09-14_
 - [Attention Sink](nodes/attention-sink.md)
 - [Bank Conflict](nodes/bank-conflict.md)
 - [Bayes' Theorem](nodes/bayes-theorem.md)
+- [Block Layer](nodes/block-layer.md)
 - [Boot Process](nodes/boot-process.md)
 - [Categorical Data Encoding](nodes/categorical-data-encoding.md)
 - [Causal Structure Learning](nodes/causal-structure-learning.md)
@@ -36,6 +37,7 @@ _Last rebuilt: 2026-09-14_
 - [Cyclical Feature Encoding](nodes/cyclical-feature-encoding.md)
 - [Deque](nodes/deque.md)
 - [Determinant](nodes/determinant.md)
+- [Differential operators](nodes/differential-operators.md)
 - [Diffusion Noise Schedule](nodes/diffusion-noise-schedule.md)
 - [Directional Derivative](nodes/directional-derivative.md)
 - [Divergence of a Curl is Zero](nodes/divergence-of-curl-zero.md)
@@ -61,6 +63,7 @@ _Last rebuilt: 2026-09-14_
 - [GPUDirect (P2P/RDMA)](nodes/gpudirect.md)
 - [Grouped-query attention (GQA / MQA)](nodes/gqa.md)
 - [Graph Memory](nodes/graph-memory.md)
+- [gRPC](nodes/grpc.md)
 - [Hard Link](nodes/hard-link.md)
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
 - [Huber Loss](nodes/huber-loss.md)
@@ -172,9 +175,10 @@ _Last rebuilt: 2026-09-14_
 - [Weight-Load Amortization](nodes/weight-load-amortization.md)
 - [Zero Redundancy Optimizer](nodes/zero-redundancy-optimizer.md)
 
-## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (9)
+## 🍃 Leaf nodes — no prerequisites · the axioms / recursion floors (10)
 
 - [Arithmetic (+ − × ÷)](nodes/arithmetic.md)
+- [Data serialization](nodes/data-serialization.md)
 - [Dynamic Typing](nodes/dynamic-typing.md)
 - [Event](nodes/event.md)
 - [First-Class Function](nodes/first-class-function.md)
@@ -266,6 +270,7 @@ _Last rebuilt: 2026-09-14_
 - [Curl of a Gradient is Zero](nodes/curl-of-gradient-zero.md)
 - [Cyclical Feature Encoding](nodes/cyclical-feature-encoding.md)
 - [Data parallelism](nodes/data-parallelism.md)
+- [Data serialization](nodes/data-serialization.md)
 - [Database Index](nodes/database-index.md)
 - [Database Trigger](nodes/database-trigger.md)
 - [Dataset Lineage](nodes/dataset-lineage.md)
@@ -336,6 +341,7 @@ _Last rebuilt: 2026-09-14_
 - [Graph Memory](nodes/graph-memory.md)
 - [Graph optimization](nodes/graph-optimization.md)
 - [GraphRAG](nodes/graph-rag.md)
+- [gRPC](nodes/grpc.md)
 - [Hard Link](nodes/hard-link.md)
 - [Hash Map](nodes/hash-map.md)
 - [Hash Set](nodes/hash-set.md)
@@ -343,6 +349,7 @@ _Last rebuilt: 2026-09-14_
 - [Hessian (H)](nodes/hessian.md)
 - [Hierarchical Bayes](nodes/hierarchical-bayes.md)
 - [HTTP](nodes/http.md)
+- [HTTP/2](nodes/http-2.md)
 - [Huber Loss](nodes/huber-loss.md)
 - [Hybrid Lexical–Semantic Retrieval](nodes/hybrid-lexical-semantic-retrieval.md)
 - [Hypervisor](nodes/hypervisor.md)
@@ -499,6 +506,7 @@ _Last rebuilt: 2026-09-14_
 - [Progressive Model Rollout](nodes/progressive-model-rollout.md)
 - [Prompt Caching](nodes/prompt-caching.md)
 - [Prompt Rewriting](nodes/prompt-rewriting.md)
+- [Protocol Buffers](nodes/protocol-buffers.md)
 - [PTX (Parallel Thread Execution)](nodes/ptx.md)
 - [Python Assertion](nodes/python-assertion.md)
 - [Python Break Statement](nodes/python-break-statement.md)
@@ -531,6 +539,7 @@ _Last rebuilt: 2026-09-14_
 - [Register Pressure](nodes/register-pressure.md)
 - [Regularization](nodes/regularization.md)
 - [Relational Model](nodes/relational-model.md)
+- [Remote procedure call](nodes/remote-procedure-call.md)
 - [Reparameterization Trick](nodes/reparameterization-trick.md)
 - [Replication](nodes/replication.md)
 - [Representation Alignment](nodes/representation-alignment.md)
@@ -710,9 +719,9 @@ _Last rebuilt: 2026-09-14_
 
   - **ml/training** (9) — [Activation Checkpointing](nodes/activation-checkpointing.md), [Active Learning](nodes/active-learning.md), [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md), [Gaussian Mixture Model](nodes/gaussian-mixture-model.md), [K-means clustering](nodes/k-means-clustering.md), [Label Smoothing](nodes/label-smoothing.md), [Representation Alignment](nodes/representation-alignment.md), [Reward Hacking](nodes/reward-hacking.md), [Subject-Driven Generation](nodes/subject-driven-generation.md)
 
-### networking (16)
+### networking (21)
 
-- **networking** (13) — [Container Networking](nodes/container-networking.md), [DNS](nodes/dns.md), [HTTP](nodes/http.md), [IP Routing](nodes/ip-routing.md), [Kubernetes Service](nodes/kubernetes-service.md), [Load Balancing](nodes/load-balancing.md), [MAC vs IP Addressing](nodes/mac-vs-ip.md), [Netfilter (iptables/NAT)](nodes/netfilter.md), [Network Stack](nodes/network-stack.md), [Socket Buffer (sk_buff)](nodes/sk-buff.md), [Socket](nodes/socket.md), [TCP](nodes/tcp.md), [UDP](nodes/udp.md)
+- **networking** (18) — [Container Networking](nodes/container-networking.md), [Data serialization](nodes/data-serialization.md), [DNS](nodes/dns.md), [gRPC](nodes/grpc.md), [HTTP](nodes/http.md), [HTTP/2](nodes/http-2.md), [IP Routing](nodes/ip-routing.md), [Kubernetes Service](nodes/kubernetes-service.md), [Load Balancing](nodes/load-balancing.md), [MAC vs IP Addressing](nodes/mac-vs-ip.md), [Netfilter (iptables/NAT)](nodes/netfilter.md), [Network Stack](nodes/network-stack.md), [Protocol Buffers](nodes/protocol-buffers.md), [Remote procedure call](nodes/remote-procedure-call.md), [Socket Buffer (sk_buff)](nodes/sk-buff.md), [Socket](nodes/socket.md), [TCP](nodes/tcp.md), [UDP](nodes/udp.md)
 
   - **networking/performance** (3) — [k6](nodes/k6.md), [Latency Percentiles (Tail Latency)](nodes/latency-percentile.md), [Load Testing](nodes/load-testing.md)
 

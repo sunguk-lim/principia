@@ -25,3 +25,35 @@
   .learning-stage .panel-head h2{font-size:24px}
   .back-to-map{padding:7px 8px;font-size:10px}
 }
+.roadmap-card{overflow:hidden}.roadmap-subgraph{max-width:100%;overflow:auto;margin:12px -2px 14px;padding:2px;border:1px solid var(--line);border-radius:10px;background:#080d16}.roadmap-subgraph svg{display:block;min-width:100%}.roadmap-link{fill:none;stroke:#f5b942;stroke-width:1.6;opacity:.9}.roadmap-node{cursor:pointer;outline:none}.roadmap-node rect{fill:#101a2a;stroke:#60718b;stroke-width:1.2}.roadmap-node:hover rect,.roadmap-node:focus rect{fill:#1c2a43;stroke:#aebaff;stroke-width:2}.roadmap-node.current rect{fill:#29355a;stroke:#f5b942;stroke-width:2}.roadmap-node text{fill:#e6edf8;font:600 11px "Avenir Next",system-ui;pointer-events:none}.roadmap-card details summary{cursor:pointer;color:var(--muted);font-size:11px}
+
+/* Keep Explore available without reserving graph space when it is collapsed. */
+.shell{height:100dvh;transition:grid-template-columns .2s ease}
+.shell.explorer-collapsed{grid-template-columns:0 minmax(0,1fr)}
+.shell.explorer-collapsed .explorer{visibility:hidden;pointer-events:none}
+.explorer{min-width:0;overflow:hidden}
+.mobile-menu{display:flex;align-items:center;gap:7px;min-height:40px;padding:8px 11px;border-radius:9px;margin-right:14px;white-space:nowrap}
+.close-mobile{display:grid;place-items:center;position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;font-size:21px}
+.wordmark{min-width:0;margin-right:28px}
+
+@media(max-width:1180px){
+  .shell,.shell.explorer-collapsed{grid-template-columns:minmax(0,1fr)}
+  .topbar{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+  .top-stats{gap:14px}
+  .explorer{position:fixed;left:0;top:64px;bottom:0;width:min(380px,88vw);transform:translateX(-105%);transition:transform .2s ease,visibility .2s;box-shadow:20px 0 60px #000c}
+  .explorer.open{transform:none;visibility:visible}
+  .graph-stage{grid-column:1;grid-row:2}
+  .graph-stage.panel-open{margin-right:0}
+  .node-panel.learning-stage{top:64px;width:100%;padding:22px max(24px,calc((100vw - 880px)/2)) max(40px,env(safe-area-inset-bottom));border-left:0;box-shadow:none}
+  .learning-stage .panel-head{top:-22px;margin:-22px 0 16px;padding:22px 0 14px}
+  .scrim{display:block;position:fixed;inset:64px 0 0;z-index:9;border:0;background:#0009}
+  .node-row,.filter-row select,.search{min-height:44px}
+  .mobile-menu,.close-mobile{min-height:44px}
+}
+@media(max-width:800px){
+  .explorer{top:58px;width:min(340px,88vw)}
+  .node-panel.learning-stage{top:58px;padding:18px 16px max(36px,env(safe-area-inset-bottom))}
+  .learning-stage .panel-head{top:-18px;margin:-18px 0 14px;padding:18px 0 12px}
+  .scrim{inset:58px 0 0}
+  .mobile-menu{margin-right:0}
+}

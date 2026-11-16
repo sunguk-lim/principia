@@ -18,6 +18,8 @@ This is not exact memoization of an identical function input, and it does not im
 
 Memory savings do not establish lower end-to-end latency: more recurrent computation, cache writes, masking, or irregular execution can dominate. State the architecture and cache contract alongside any result rather than describing parameter sharing itself as a free cache reduction.
 
+Dory provides another policy: keep only one cache per recurrent layer and overwrite it each loop. Earlier tokens then supply final-loop keys and values, while tokens in the current step supply current-loop entries. This changes which representations a query sees; it is not lossless aliasing. With fixed-block storage F and per-loop recurrent storage M, four-loop caching uses F+4M versus F+M for last-loop caching. Both still execute four loops. Validate quality across chunked prefill and decode rather than inferring semantic equivalence from equal storage.
+
 ## Check your understanding
 
 Do identical key-projection weights imply identical cached keys at different recurrence steps? No. Different hidden-state inputs generally produce different projections.

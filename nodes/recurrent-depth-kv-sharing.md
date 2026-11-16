@@ -8,7 +8,7 @@ prereqs: [looped-transformer, kv-cache]
 sources: [https://arxiv.org/html/2502.05171v2#S6.SS2]
 status: explained
 created: 2026-10-24
-updated: 2026-10-24
+updated: 2026-11-17
 ---
 
 # Recurrent-Depth KV Sharing
@@ -35,6 +35,10 @@ Memory savings do not establish lower end-to-end latency: more recurrent computa
 
 Do identical key-projection weights imply identical cached keys at different recurrence steps? No. Different hidden-state inputs generally produce different projections.
 
+**Last-loop caching is a different concrete policy.** Dory's primary report describes one cache per recurrent attention layer, overwritten on every loop. A query reads final-loop representations for previously cached tokens and current-loop representations for tokens processed in the same forward step. That differs from separate per-loop caches, where earlier tokens provide representations from the matching loop. It is therefore a change to attention-state semantics, not merely a lossless storage optimization. Input/output blocks still retain their own caches.
+
+For an illustrative recurrent-block cache of M bytes per loop and fixed-block caches of F bytes, four separate loops retain F+4M; last-loop caching retains F+M. Both still execute the recurrent computation four times. Chunked prefill and decode can expose different mixtures of old and newly processed tokens, so compare policies on both, including long-context retrieval, output quality, generated length and memory. The paper reports a measured quality change for its own checkpoint; that is not a guarantee for arbitrary tied-weight models or proof of equal outputs.
+
 ## Prerequisites
 
 - [[looped-transformer]]
@@ -43,3 +47,5 @@ Do identical key-projection weights imply identical cached keys at different rec
 ## Sources
 
 - <https://arxiv.org/html/2502.05171v2#S6.SS2>
+
+- <https://arxiv.org/html/2611.03998v1#S6.SS1>

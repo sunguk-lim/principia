@@ -8,7 +8,7 @@ prereqs: [transformer-attention, residual-connection, backpropagation-through-ti
 sources: [https://arxiv.org/html/1807.03819v3, https://arxiv.org/html/2502.05171v2]
 status: explained
 created: 2026-10-24
-updated: 2026-10-24
+updated: 2026-11-17
 ---
 
 # Looped Transformer
@@ -41,6 +41,10 @@ Evaluate quality and latency across depth, both inside and outside the training 
 
 Does drawing four copies of a shared block imply four independently trained weight sets? No. It represents four applications of the same parameters to successive states.
 
+**Input-anchored normalized recurrence.** One concrete design preserves a fixed encoded input x at every recurrence boundary. Let s_0=x, let N(v)=v/sqrt(sum_j v_j^2) denote per-token unit-length normalization for a nonzero vector v, and let F_theta be the shared block. Dory's primary report uses u_t=N(s_(t-1)+x) followed by s_t=N(F_theta(u_t)). Thus the input anchor is reinjected before every block application and the result is normalized again. A zero norm needs an implementation-defined handling rule. This is not the same operation as normalizing only the attention queries and keys, and not a requirement of every looped model.
+
+For a toy nonzero state s=[0,2] and anchor x=[1,0], the next block receives [1,2]/sqrt(5), approximately [.4472,.8944], rather than s alone. The anchor changes direction as well as scale; it does not guarantee convergence or a correct answer. Evaluate anchor removal and normalization placement at matched training and inference budgets. Report total work over generated tokens: a hypothetical two-loop path emitting 60 tokens versus a one-loop path emitting 100 tokens performs about 120 versus 100 recurrent-block token applications, before prefill, fixed blocks and tools. Shorter output can offset some, but not automatically all, added depth.
+
 ## Prerequisites
 
 - [[transformer-attention]]
@@ -51,3 +55,5 @@ Does drawing four copies of a shared block imply four independently trained weig
 
 - <https://arxiv.org/html/1807.03819v3>
 - <https://arxiv.org/html/2502.05171v2>
+
+- <https://arxiv.org/html/2611.03998v1#S3.SS2>

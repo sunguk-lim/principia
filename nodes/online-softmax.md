@@ -1,14 +1,14 @@
 ---
 id: online-softmax
 title: Online Softmax
-summary: Online softmax (also called streaming softmax) computes a numerically-stable softmax over a long list of values while seeing them one block at a time, in a single pass — never…
+summary: Online softmax streams and merges stable normalization statistics while explicitly separating those statistics from emitting every probability.
 type: concept
 tags: [ml/llm/architecture]
 prereqs: [softmax]
 sources: ["FlashAttention (Dao et al., 2022), arXiv:2205.14135"]
 status: explained
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-11-17
 ---
 
 # Online Softmax
@@ -87,6 +87,10 @@ and what lets paged attention consume scattered cache blocks one address at a ti
 a block into the running $(m,\ell,O)$ and discards it. (These are applications, not part of the
 definition.)
 
+**Parallel merge and exceptional inputs.** Two nonempty blocks A and B can each supply their own pair $(m_A,\ell_A)$ and $(m_B,\ell_B)$. With $m=\max(m_A,m_B)$, merge them as $\ell=e^{m_A-m}\ell_A+e^{m_B-m}\ell_B$. The same factors merge their value-weighted numerators. Every contribution is now expressed against one reference, which proves the merged state represents the union. For summaries $(2,1.5)$ and $(4,1.25)$, the merged maximum is four and denominator is $e^{-2}\times1.5+1.25\approx1.4530$. Different grouping gives the same real-arithmetic result, but floating-point rounding can differ.
+
+The stability argument assumes at least one unmasked finite score and no exceptional input that invalidates subtraction. An empty block must be handled as an identity without blindly evaluating $-\infty-(-\infty)$. A completely masked row has no valid probability distribution over permitted entries; choose and test an explicit output/error policy. Positive infinity and NaN likewise require a documented policy. Very negative shifted terms can still underflow, and a large reduction can still lose precision. The storage dtype does not by itself identify the dtype used for exponentiation and accumulation. Compare finite extreme inputs, changing chunk order, masks and forward/gradient errors against a high-precision reference. Computing normalization statistics in one streaming pass does not promise that all individual probabilities can be emitted without retaining or revisiting scores.
+
 ## Prerequisites
 
 - [[softmax]]
@@ -96,3 +100,5 @@ definition.)
 
 - Dao, Fu, Ermon, Rudra, Ré — *FlashAttention: Fast and Memory-Efficient Exact Attention with
   IO-Awareness* (2022), arXiv:2205.14135
+
+- <https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.softmax.html>

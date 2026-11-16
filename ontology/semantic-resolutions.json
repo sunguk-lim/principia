@@ -7523,13 +7523,6 @@
       "reason": "Worked walkthrough: what the kernel does when you press one key is supporting explanation for the canonical Kernel objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-d89a04b6c0d338336337",
-      "sourceId": "online-softmax",
-      "contentHash": "1f9e7029fbc85e969fc11091a84dcd7a033caf3da0859245bf551fe293ae29ab",
-      "decision": "retain",
-      "reason": "Worked instance is supporting explanation for the canonical Online Softmax objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-d8c4e70912a4874976ff",
       "sourceId": "empirical-bayes",
       "contentHash": "f786caa7fe1b052a45015e6a76483c245967fc47bb9291201d8c840a71cb9b1e",
@@ -10842,13 +10835,6 @@
       "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
     },
     {
-      "candidateKey": "cand-939f3cd61deb8c48f3ba",
-      "sourceId": "looped-transformer",
-      "contentHash": "22c2c3d9009791361597bebbb86a69d6b71b517b1a72151f3224f756b1f0406e",
-      "decision": "retain",
-      "reason": "Tests the defining misconception of this concept; not a separate entity."
-    },
-    {
       "candidateKey": "cand-89da3882f1a202a4c04c",
       "sourceId": "lstm",
       "contentHash": "14f2588bb36f350347b63439d123d028ec2e91d1656c69e05c77d5471437db1d",
@@ -10924,13 +10910,6 @@
       "contentHash": "62fa624d3409893e689ad9e3e3be12d49cbd0a7fb0df05cc1bd62c8c5b0bf584",
       "decision": "retain",
       "reason": "Traces a numerical or operational instance of the same objective, not a new identity."
-    },
-    {
-      "candidateKey": "cand-6ca7f3d71944ada342b0",
-      "sourceId": "recurrent-depth-kv-sharing",
-      "contentHash": "331917107211457bc70c0caba98c22b1a6fe46693be31f73a193c20c2c1cf922",
-      "decision": "retain",
-      "reason": "Tests the defining misconception of this concept; not a separate entity."
     },
     {
       "candidateKey": "cand-9f100a43e0b9b830fa72",
@@ -18001,6 +17980,146 @@
       "sourceId": "dataset-leakage-audit",
       "decision": "retain",
       "reason": "Explains group-disjoint splitting, overlap checks and train-only preprocessing under the general audit objective. Temporal availability is an optional application example rather than a required narrower prerequisite; no additional entity is implied."
+    },
+    {
+      "candidateKey": "cand-79ffe66ce91d55722dec",
+      "sourceId": "disk-backed-vector-search",
+      "contentHash": "f6e8f31be412b45a368b3adff9b5a6c8936ab31ccde4beffa442a15e25b13f9b",
+      "decision": "retain",
+      "reason": "Meaning: The section explains storage placement, candidate expansion and cold/warm IO budgeting as one larger-than-memory search objective."
+    },
+    {
+      "candidateKey": "cand-953280297f2bcb9ce996",
+      "sourceId": "disk-backed-vector-search",
+      "contentHash": "ba325fc004af253dfb3298219c9abeb38b40689fe2e320b2629e912f1eb8de50",
+      "decision": "retain",
+      "reason": "Mechanism: The section explains storage placement, candidate expansion and cold/warm IO budgeting as one larger-than-memory search objective."
+    },
+    {
+      "candidateKey": "cand-5677a798e71708c25fb0",
+      "sourceId": "disk-backed-vector-search",
+      "contentHash": "475825983b83720ca4ebd3903b11ab5b4b89065ebe26a8ad7d4ea1e72778e1ce",
+      "decision": "retain",
+      "reason": "One example: The section explains storage placement, candidate expansion and cold/warm IO budgeting as one larger-than-memory search objective."
+    },
+    {
+      "candidateKey": "cand-ab1fa4ce84fd4342c3fc",
+      "sourceId": "disk-backed-vector-search",
+      "contentHash": "5d97edf8202aa4560bc18b856d6adbdde27edf37307f01b991abc4dc35c8a95e",
+      "decision": "retain",
+      "reason": "Validation and check: The section explains storage placement, candidate expansion and cold/warm IO budgeting as one larger-than-memory search objective."
+    },
+    {
+      "candidateKey": "cand-ef45e44b7158f3031c4e",
+      "sourceId": "online-softmax",
+      "contentHash": "64f991a84edc8ebdb77db42801b693b29a2daba0dd976a484ec328d1f4443761",
+      "decision": "retain",
+      "reason": "Worked instance: The section derives the common-reference invariant, its parallel merge and finite-input limits within online normalization; attention and cache systems are optional applications, not newly claimed synonym entities."
+    },
+    {
+      "candidateKey": "cand-12b7db6427fc99d1bb37",
+      "sourceId": "recurrent-depth-kv-sharing",
+      "contentHash": "83b8b0f72103986772e1e535393b530d581e584f8b5983d0e819fffe97fa6a46",
+      "decision": "retain",
+      "reason": "Check your understanding: The section compares iteration-indexed cache contracts, including last-loop overwrite and its changed history semantics; this is supporting policy explanation for the existing recurrent-depth cache entity."
+    },
+    {
+      "candidateKey": "cand-436bdb3b9e23a7fb1069",
+      "sourceId": "rabitq",
+      "contentHash": "2b4f3bf8b1a9c5a6dcd9a349472c80513cc60082368e18b7b2d14ba61cd6de65",
+      "decision": "retain",
+      "reason": "Meaning: The section defines the randomized binary codebook, shrinkage correction and distance-error interpretation; the example and probabilistic caveats support this quantizer rather than a separate generic binary-code entity."
+    },
+    {
+      "candidateKey": "cand-5cd7c2111eb90fb7eee1",
+      "sourceId": "rabitq",
+      "contentHash": "593e11f405e1205a3daca46107e0b1491f950d8497fc7e0f950e0855fc081d85",
+      "decision": "retain",
+      "reason": "Mechanism: The section defines the randomized binary codebook, shrinkage correction and distance-error interpretation; the example and probabilistic caveats support this quantizer rather than a separate generic binary-code entity."
+    },
+    {
+      "candidateKey": "cand-9dec2a9d7283457844d0",
+      "sourceId": "rabitq",
+      "contentHash": "d2762eb037e18508a0029df2d2ebecb53904e25d9343e5e5caf80fdc2d23d45b",
+      "decision": "retain",
+      "reason": "One example: The section defines the randomized binary codebook, shrinkage correction and distance-error interpretation; the example and probabilistic caveats support this quantizer rather than a separate generic binary-code entity."
+    },
+    {
+      "candidateKey": "cand-ddebb02c865452a08abb",
+      "sourceId": "rabitq",
+      "contentHash": "fdbf666c5e74197e4b04d1e203e569ddbee04864c70cde2743b7121977fe241a",
+      "decision": "retain",
+      "reason": "Validation and check: The section defines the randomized binary codebook, shrinkage correction and distance-error interpretation; the example and probabilistic caveats support this quantizer rather than a separate generic binary-code entity."
+    },
+    {
+      "candidateKey": "cand-9044052055a102368271",
+      "sourceId": "looped-transformer",
+      "contentHash": "bd7313c89fe289e0c4cce8281e2928c5165750b307297239796b7cac68474f69",
+      "decision": "retain",
+      "reason": "Check your understanding: The section explains repeated shared-block execution, with an explicit Dory input-anchor example and cost boundary; normalization placement is an architecture choice inside this mechanism, not a claim that every looped model uses it."
+    },
+    {
+      "candidateKey": "cand-e5975690782d0ac41932",
+      "sourceId": "scalar-embedding-quantization",
+      "contentHash": "3e750723716432d87be0dae25abf16790ab78be0c466a0d7cf9ec3ff82d64c7c",
+      "decision": "retain",
+      "reason": "Meaning: The section defines or validates coordinate-wise calibrated coding of stored embeddings, distinct from model-weight conversion and sign-only codes."
+    },
+    {
+      "candidateKey": "cand-5389a8c70edd527a71f9",
+      "sourceId": "scalar-embedding-quantization",
+      "contentHash": "4de31477da2dbc12989d590bfb7dbae797fd558fe60b719552f4672ffcc3314d",
+      "decision": "retain",
+      "reason": "Mechanism: The section defines or validates coordinate-wise calibrated coding of stored embeddings, distinct from model-weight conversion and sign-only codes."
+    },
+    {
+      "candidateKey": "cand-f2bf46be00f296715724",
+      "sourceId": "scalar-embedding-quantization",
+      "contentHash": "735b3db5fa5638fc4d5999ef00973207905871278e044ea74a5ee76e1cd9a9a1",
+      "decision": "retain",
+      "reason": "One example: The section defines or validates coordinate-wise calibrated coding of stored embeddings, distinct from model-weight conversion and sign-only codes."
+    },
+    {
+      "candidateKey": "cand-b7c8c7e86ba79a1b0247",
+      "sourceId": "scalar-embedding-quantization",
+      "contentHash": "27dcc6d45098cf9236d88921d3475d93853320e805ffb76b18ed357c12485b36",
+      "decision": "retain",
+      "reason": "Validation and check: The section defines or validates coordinate-wise calibrated coding of stored embeddings, distinct from model-weight conversion and sign-only codes."
+    },
+    {
+      "candidateKey": "cand-690745c3422f8e9dd439",
+      "sourceId": "vector-index-reconciliation",
+      "contentHash": "3372cebbc3f747a6eb20c431d85a1164eb702fdfd6bfe557685f01a88f3f698e",
+      "decision": "retain",
+      "reason": "Meaning: The section defines or tests authoritative-to-derived convergence, conditional repair and deletion/access boundaries, rather than reducing the architecture to one ingestion worker."
+    },
+    {
+      "candidateKey": "cand-d696a661054f6c4f13fc",
+      "sourceId": "vector-index-reconciliation",
+      "contentHash": "8764e8c55a320671d727fbecc3cb5e6139004b7f55d0d8a76121c1e19f2ed1a8",
+      "decision": "retain",
+      "reason": "Mechanism: The section defines or tests authoritative-to-derived convergence, conditional repair and deletion/access boundaries, rather than reducing the architecture to one ingestion worker."
+    },
+    {
+      "candidateKey": "cand-31b93b8ea504b5a9d469",
+      "sourceId": "vector-index-reconciliation",
+      "contentHash": "e6409ac789d95d085070d62ce765ce2e460e66a0b924606671201b60c9d3d843",
+      "decision": "retain",
+      "reason": "One example: The section defines or tests authoritative-to-derived convergence, conditional repair and deletion/access boundaries, rather than reducing the architecture to one ingestion worker."
+    },
+    {
+      "candidateKey": "cand-606cb613bd724ceb3064",
+      "sourceId": "vector-index-reconciliation",
+      "contentHash": "c0e010c40f810fb33ab8d06e92be869ec5818a86e830e824e8e19cbeccd7ea76",
+      "decision": "retain",
+      "reason": "Validation and check: The section defines or tests authoritative-to-derived convergence, conditional repair and deletion/access boundaries, rather than reducing the architecture to one ingestion worker."
+    },
+    {
+      "candidateKey": "cand-8067cb102db1ea3c5348",
+      "sourceId": "vector-ann-index-families",
+      "contentHash": "a548b637aa67777e0f1825e49683a0be4d273e34ce095a326c976a72e8649482",
+      "decision": "retain",
+      "reason": "Overview: The section compares candidate-selection and representation families and derives the candidate-set ceiling on exact rescoring; it does not equate original-distance rescoring with learned passage reranking."
     }
   ]
 }

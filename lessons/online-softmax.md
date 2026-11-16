@@ -21,6 +21,8 @@ The factor $e^{m-m'}$ converts the old sum to the new reference point. It is ide
 
 The first block $[0,0]$ gives $m=0$ and $\ell=2$. A second block $[\log 2]$ raises the maximum. The old sum becomes $2\times 1/2=1$; the new term is one. Thus $\ell'=2$, matching a direct calculation with all three scores.
 
+Two independently summarized nonempty blocks can be combined too: use their larger maximum, rescale each denominator to that reference and add. This is the same invariant, not a new approximation. Handle empty blocks without evaluating infinity minus infinity. A fully masked row has no permitted probability distribution, so define its error or output policy separately. Storage dtype alone does not determine exponentiation or accumulation dtype.
+
 ## Check your understanding
 
 Can those two running numbers recover every individual output probability after discarding all scores?

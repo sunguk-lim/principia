@@ -20,6 +20,8 @@ Suppose a fixed prelude has two layers, a shared core has three, and a fixed out
 
 Evaluate quality and latency across depth, both inside and outside the training range, and inspect state growth, repeated-state cycles, and stopping failures. Compare with an untied model and explicit reasoning-token generation at matched useful quality and total compute. A parameter-count comparison alone cannot establish serving efficiency.
 
+A concrete input-anchored design adds the fixed encoded input to each successive state and normalizes before and after the shared block. For state [0,2] and anchor [1,0], unit-length normalization presents [1,2]/sqrt(5) to the block. This changes direction as well as scale and does not guarantee useful convergence. Evaluate total generated-token cost: twice the recurrence applied to 60 tokens is about 120 recurrent token applications, not automatically cheaper than one recurrence over 100 tokens.
+
 ## Check your understanding
 
 Does drawing four copies of a shared block imply four independently trained weight sets? No. It represents four applications of the same parameters to successive states.

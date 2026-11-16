@@ -8,7 +8,7 @@ prereqs: [nearest-neighbor-search, quantization]
 sources: [https://github.com/facebookresearch/faiss/wiki/Faiss-indexes, https://research.google/blog/announcing-scann-efficient-vector-similarity-search/]
 status: explained
 created: 2026-10-09
-updated: 2026-10-09
+updated: 2026-11-17
 ---
 
 # Vector ANN Index Families
@@ -25,6 +25,10 @@ PQ is not merely pruning: it uses [[quantization]] to encode subvectors with sma
 
 Measure recall@k against an exact flat index at a fixed embedding snapshot. Plot query latency and throughput versus recall, and include index-build time, peak memory, stored bytes per vector, insert/delete behavior, and post-filter recall. Tune each index to the same recall target before comparing latency. For RAG, also measure answer quality: nearest-vector recall is not the same as evidence sufficiency.
 
+**Exact rescoring cannot recover an absent candidate.** Let C be the candidate set produced by approximate search and k the requested result count. Fetch original representations for C and recompute the chosen original-space distance, then select the best k within C. This repairs approximate ordering inside C; it is still not a global exact search unless C contains every required exact neighbor. Scoring with another learned relevance model is a different operation from exact recomputation of the original vector distance.
+
+For a toy top-two query, exact distances are A=.1, B=.2, C=.3. A coarse stage omits A and returns B,C. Even perfect rescoring can only return B,C, giving recall 1/2 against A,B. Enlarging candidate depth may recover A but costs approximate scoring, original-vector reads and rescoring work. Retaining those originals is an additional memory or storage term. Faiss's refinement factor controls how many vectors are verified; tune candidate depth jointly with first-stage recall and measured end-to-end latency rather than advertising exact reranking as global exactness.
+
 ## Prerequisites
 
 - [[nearest-neighbor-search]]
@@ -34,3 +38,5 @@ Measure recall@k against an exact flat index at a fixed embedding snapshot. Plot
 
 - [Faiss index catalog](https://github.com/facebookresearch/faiss/wiki/Faiss-indexes): primary implementation descriptions of Flat, IVF, HNSW, PQ, and IVF-PQ.
 - [Google Research ScaNN overview](https://research.google/blog/announcing-scann-efficient-vector-similarity-search/): partition, approximate scoring, and rescoring design.
+
+- <https://github.com/facebookresearch/faiss/wiki/Index-IO,-cloning-and-hyper-parameter-tuning>

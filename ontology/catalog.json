@@ -5217,6 +5217,42 @@
         "matrix-multiplication": "Provides the associative product identity used to reorder key-value aggregation.",
         "measurement": "Separates asymptotic scaling and approximation error from measured workload latency and quality."
       }
+    },
+    "scalar-embedding-quantization": {
+      "aliases": [],
+      "objective": "Scalar embedding quantization encodes individual vector coordinates with calibrated finite levels while preserving an explicit query and distance contract.",
+      "prerequisiteReasons": {
+        "quantization": "Defines scalar encoding, clipping and reconstruction error.",
+        "embedding": "Defines the vector representation being compressed.",
+        "nearest-neighbor-search": "Defines candidate ranking and exact-reference recall."
+      }
+    },
+    "vector-index-reconciliation": {
+      "aliases": [],
+      "objective": "Vector-index reconciliation compares a derived search index with authoritative versioned records and repairs missing, stale, deleted or unauthorized evidence.",
+      "prerequisiteReasons": {
+        "background-document-indexing": "Supplies versioned ingestion and staged publication.",
+        "optimistic-concurrency-control": "Makes repair conditional on current authoritative state.",
+        "retrieval-authorization-boundary": "Explains why stale permissions cannot be treated as ranking errors."
+      }
+    },
+    "disk-backed-vector-search": {
+      "aliases": [],
+      "objective": "Disk-backed vector search places parts of the search representation on slower storage and controls candidate expansion and caching to bound memory without hiding IO cost.",
+      "prerequisiteReasons": {
+        "vector-ann-index-families": "Provides the candidate-pruning and compressed-scoring mechanisms.",
+        "page-cache": "Explains resident file pages and cold versus warm IO behavior."
+      }
+    },
+    "rabitq": {
+      "aliases": [],
+      "objective": "RaBitQ uses a randomized binary codebook and a corrected inner-product estimator to approximate vector distances under an explicit probabilistic error model.",
+      "prerequisiteReasons": {
+        "binary-embedding-quantization": "Establishes compact sign codes and their information loss.",
+        "matrix-multiplication": "Describes the shared coordinate transform.",
+        "vector-dot-product": "Defines directional similarity and distance reconstruction.",
+        "expectation": "Distinguishes an unbiased random estimator from a per-query exact result."
+      }
     }
   }
 }

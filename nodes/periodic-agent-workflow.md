@@ -8,7 +8,7 @@ prereqs: [durable-agent-execution, idempotent-operation-key]
 sources: ["https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/"]
 status: explained
 created: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-18
 ---
 
 # Periodic Agent Workflow
@@ -32,6 +32,12 @@ Choose whether a run still active at the next occurrence should overlap, skip th
 ## Check your understanding
 
 Does a scheduler's success flag prove a report was published? No. Verify the run's artifact and external receipt separately from trigger acceptance and process exit.
+
+## Notification quality is a separate acceptance criterion
+
+Waking on schedule does not imply that a user should receive a message on every run. Define outcomes such as a useful update, explicit no-notification decision, or a precisely bound approval request. Persist which outcome was delivered so retries do not repeat an old alert. Where local state and a notification intent must commit together, use a transactional outbox; the delivery endpoint still needs duplicate-safe or reconcilable effects.
+
+Evaluate the notification policy on events with independently labeled urgency and usefulness. Measure missed actionable events, delay, duplicate notices, irrelevant notices and user interruption burden separately. A quiet policy can look precise by missing important events; a noisy policy can maximize coverage while becoming unusable. Compare at a fixed event set and declared time budget, including overnight delivery rules and genuinely urgent exceptions. These are application-specific objectives, not a universal optimal message count. An invented ten-event test with two urgent events requires checking both whether those two were delivered on time and whether eight unrelated events were suppressed; total message count alone cannot distinguish success from a reversed policy.
 
 ## Prerequisites
 

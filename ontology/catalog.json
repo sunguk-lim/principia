@@ -5253,6 +5253,37 @@
         "vector-dot-product": "Defines directional similarity and distance reconstruction.",
         "expectation": "Distinguishes an unbiased random estimator from a per-query exact result."
       }
+    },
+    "numerical-comparison-contract": {
+      "prerequisiteReasons": {
+        "floating-point-reduction-order": "Rounded reduction order explains why equivalent formulas need not produce the same machine result.",
+        "measurement": "Defines observations and acceptance criteria needed to interpret numerical tests."
+      }
+    },
+    "durable-event-inbox": {
+      "prerequisiteReasons": {
+        "queue": "Explains buffered delivery and the distinction between arrival and processing.",
+        "transaction": "Explains atomic acceptance and state transitions in the local store.",
+        "idempotent-operation-key": "Explains stable effect identity and remote retry ambiguity."
+      }
+    },
+    "credential-injection-proxy": {
+      "prerequisiteReasons": {
+        "agent-workload-identity": "Separates the executing principal and its authority from the model and requesting user.",
+        "http": "Explains outbound destinations, methods, headers and redirect boundaries."
+      },
+      "relations": [
+        {
+          "type": "CONTRASTS_WITH",
+          "target": "runtime-secret-injection",
+          "reason": "Injecting a value into the workload makes it a recipient; a mediating proxy can keep the provider credential outside that workload."
+        },
+        {
+          "type": "USES",
+          "target": "ssrf-destination-validation",
+          "reason": "Destination validation is an additional enforcement mechanism for network forwarding; credential mediation remains distinct from arbitrary URL fetching."
+        }
+      ]
     }
   }
 }

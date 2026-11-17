@@ -1,12 +1,12 @@
 # Principia — Concept Graph
 
-_Last rebuilt: 2026-11-17_
+_Last rebuilt: 2026-11-18_
 
-**897** nodes · **3** axioms · **0** on the frontier
+**900** nodes · **3** axioms · **0** on the frontier
 
 ✅ World is closed — no missing prerequisites.
 
-## 🌳 Parent (root) nodes — top-level, required by nothing (409)
+## 🌳 Parent (root) nodes — top-level, required by nothing (412)
 
 - [Abstract Factory Pattern](nodes/abstract-factory-pattern.md)
 - [Accessibility-Tree Verification](nodes/accessibility-tree-verification.md)
@@ -83,6 +83,7 @@ _Last rebuilt: 2026-11-17_
 - [Continuous Integration](nodes/continuous-integration.md)
 - [Convex Transformation Order](nodes/convex-transformation-order.md)
 - [Crawl Frontier](nodes/crawl-frontier.md)
+- [Credential Injection Proxy](nodes/credential-injection-proxy.md)
 - [Cromwell's Rule](nodes/cromwell-rule.md)
 - [Cross-Attention](nodes/cross-attention.md)
 - [Cross Entropy versus Accuracy](nodes/cross-entropy-versus-accuracy.md)
@@ -113,6 +114,7 @@ _Last rebuilt: 2026-11-17_
 - [Double descent](nodes/double-descent.md)
 - [Dr. GRPO](nodes/dr-grpo.md)
 - [DropBlock](nodes/dropblock.md)
+- [Durable Event Inbox](nodes/durable-event-inbox.md)
 - [Dynamic Resource Allocation](nodes/dynamic-resource-allocation.md)
 - [Elastic Weight Consolidation](nodes/elastic-weight-consolidation.md)
 - [Embedding Checkpoint Contract](nodes/embedding-checkpoint-contract.md)
@@ -260,6 +262,7 @@ _Last rebuilt: 2026-11-17_
 - [Normalizing Flow](nodes/normalizing-flow.md)
 - [Null Object Pattern](nodes/null-object-pattern.md)
 - [NUMA Locality](nodes/numa-locality.md)
+- [Numerical Comparison Contract](nodes/numerical-comparison-contract.md)
 - [OCR Evaluation](nodes/ocr-evaluation.md)
 - [On-Policy Distillation](nodes/on-policy-distillation.md)
 - [On-Policy RL with Optimal Reward Baseline](nodes/on-policy-optimal-baseline.md)
@@ -595,6 +598,7 @@ _Last rebuilt: 2026-11-17_
 - [Cosine Similarity](nodes/cosine-similarity.md)
 - [CPU vs GPU](nodes/cpu-vs-gpu.md)
 - [Crawl Frontier](nodes/crawl-frontier.md)
+- [Credential Injection Proxy](nodes/credential-injection-proxy.md)
 - [Cromwell's Rule](nodes/cromwell-rule.md)
 - [Cross-Attention](nodes/cross-attention.md)
 - [Cross-Component Security Review](nodes/cross-component-security-review.md)
@@ -665,6 +669,7 @@ _Last rebuilt: 2026-11-17_
 - [Dropout](nodes/dropout.md)
 - [Durable Agent Execution](nodes/durable-agent-execution.md)
 - [Durable Agent Task Board](nodes/durable-agent-task-board.md)
+- [Durable Event Inbox](nodes/durable-event-inbox.md)
 - [Durable Interactive Artifact](nodes/durable-interactive-artifact.md)
 - [Dynamic Array](nodes/dynamic-array.md)
 - [Dynamic Resource Allocation](nodes/dynamic-resource-allocation.md)
@@ -979,6 +984,7 @@ _Last rebuilt: 2026-11-17_
 - [NUMA Locality](nodes/numa-locality.md)
 - [NUMA Memory Policy](nodes/numa-memory-policy.md)
 - [Numeric Precision Formats](nodes/numeric-precision-formats.md)
+- [Numerical Comparison Contract](nodes/numerical-comparison-contract.md)
 - [NVLink](nodes/nvlink.md)
 - [Object-Oriented Inheritance](nodes/object-oriented-inheritance.md)
 - [Observability](nodes/observability.md)
@@ -1358,11 +1364,11 @@ _Last rebuilt: 2026-11-17_
 
   - **databases/vector** (5) — [Calling LLMs from SQL](nodes/llm-from-sql.md), [pgai](nodes/pgai.md), [pgai Vectorizer](nodes/pgai-vectorizer.md), [pgvector](nodes/pgvector.md), [Product Quantization](nodes/product-quantization.md)
 
-### distributed-systems (9)
+### distributed-systems (10)
 
   - **distributed-systems/performance** (4) — [Distributed Serialization Cost](nodes/distributed-serialization-cost.md), [Little's Law](nodes/little-law.md), [M/G/1 Mean Waiting Time](nodes/mg1-mean-waiting-time.md), [Single-Server Queue Stability](nodes/single-server-queue-stability.md)
 
-  - **distributed-systems/reliability** (4) — [Expiring Resource Ownership](nodes/expiring-resource-ownership.md), [Idempotent Operation Key](nodes/idempotent-operation-key.md), [Single-Writer State Coordination](nodes/single-writer-state-coordination.md), [Transactional Outbox](nodes/transactional-outbox.md)
+  - **distributed-systems/reliability** (5) — [Durable Event Inbox](nodes/durable-event-inbox.md), [Expiring Resource Ownership](nodes/expiring-resource-ownership.md), [Idempotent Operation Key](nodes/idempotent-operation-key.md), [Single-Writer State Coordination](nodes/single-writer-state-coordination.md), [Transactional Outbox](nodes/transactional-outbox.md)
 
   - **distributed-systems/web** (1) — [Crawl Frontier](nodes/crawl-frontier.md)
 
@@ -1478,13 +1484,13 @@ _Last rebuilt: 2026-11-17_
 
   - **parallel-computing/models** (1) — [SPMD Tensor Partitioning](nodes/spmd-tensor-partitioning.md)
 
-### security (4)
+### security (5)
 
   - **security/authorization** (2) — [Authenticated Change Provenance](nodes/authenticated-change-provenance.md), [Role-Separated Publication](nodes/role-separated-publication.md)
 
-  - **security/credentials** (2) — [Runtime Secret Injection](nodes/runtime-secret-injection.md), [Secret Output Redaction](nodes/secret-output-redaction.md)
+  - **security/credentials** (3) — [Credential Injection Proxy](nodes/credential-injection-proxy.md), [Runtime Secret Injection](nodes/runtime-secret-injection.md), [Secret Output Redaction](nodes/secret-output-redaction.md)
 
-### software (15)
+### software (16)
 
   - **software/deployment** (2) — [Application Containerization](nodes/application-containerization.md), [Multi-Container Service Orchestration](nodes/multi-container-service-orchestration.md)
 
@@ -1492,7 +1498,7 @@ _Last rebuilt: 2026-11-17_
 
   - **software/security** (1) — [Package-Install Target Validation](nodes/package-install-target-validation.md)
 
-  - **software/testing** (10) — [Accessibility-Tree Verification](nodes/accessibility-tree-verification.md), [Continuous Integration](nodes/continuous-integration.md), [Cross-Component Security Review](nodes/cross-component-security-review.md), [Evaluation Harness Isolation](nodes/evaluation-harness-isolation.md), [Evidence-Oriented Vulnerability Triage](nodes/evidence-oriented-vulnerability-triage.md), [Execution Benchmark Validity](nodes/execution-benchmark-validity.md), [Hypothesis-Driven Troubleshooting](nodes/hypothesis-driven-troubleshooting.md), [Interprocedural Taint Analysis](nodes/interprocedural-taint-analysis.md), [Staged Candidate Validation](nodes/staged-candidate-validation.md), [Visual Regression Testing](nodes/visual-regression-testing.md)
+  - **software/testing** (11) — [Accessibility-Tree Verification](nodes/accessibility-tree-verification.md), [Continuous Integration](nodes/continuous-integration.md), [Cross-Component Security Review](nodes/cross-component-security-review.md), [Evaluation Harness Isolation](nodes/evaluation-harness-isolation.md), [Evidence-Oriented Vulnerability Triage](nodes/evidence-oriented-vulnerability-triage.md), [Execution Benchmark Validity](nodes/execution-benchmark-validity.md), [Hypothesis-Driven Troubleshooting](nodes/hypothesis-driven-troubleshooting.md), [Interprocedural Taint Analysis](nodes/interprocedural-taint-analysis.md), [Numerical Comparison Contract](nodes/numerical-comparison-contract.md), [Staged Candidate Validation](nodes/staged-candidate-validation.md), [Visual Regression Testing](nodes/visual-regression-testing.md)
 
   - **software/version-control** (1) — [Three-Way Merge](nodes/three-way-merge.md)
 

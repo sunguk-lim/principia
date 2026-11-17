@@ -18120,6 +18120,132 @@
       "contentHash": "a548b637aa67777e0f1825e49683a0be4d273e34ce095a326c976a72e8649482",
       "decision": "retain",
       "reason": "Overview: The section compares candidate-selection and representation families and derives the candidate-set ceiling on exact rescoring; it does not equate original-distance rescoring with learned passage reranking."
+    },
+    {
+      "candidateKey": "cand-9bbdc71929be2fd79380",
+      "sourceId": "cross-component-security-review",
+      "contentHash": "e17f5bb2f26d131026616d4943cbf3c5a360013ff7c149eca1c5d112f5080504",
+      "decision": "retain",
+      "reason": "Identity, object scope and review freshness: The added identity path and revision-scoped evidence explain how to perform cross-component security review; existing row security and CI remain distinct enforcement mechanisms, not concepts silently absorbed into this node."
+    },
+    {
+      "candidateKey": "cand-e852a84141cbcf862f3c",
+      "sourceId": "continuous-integration",
+      "contentHash": "a48a58df4a25fcf89404c7f63bed0a5b4073bb41fba3917a42bb68c3a7f1aee8",
+      "decision": "retain",
+      "reason": "Overview: Distinguishes check reporting, revision-specific execution evidence and repository enforcement; this is the acceptance boundary of the existing integration workflow, not a second CI entity."
+    },
+    {
+      "candidateKey": "cand-ad66ef66a3bdb781044d",
+      "sourceId": "continuous-integration",
+      "contentHash": "243b30925ed1fe3ef3fb30fdc993a309e221716a128b55aee09b7b12e914349e",
+      "decision": "retain",
+      "reason": "Reporting a check versus enforcing a merge gate: Distinguishes check reporting, revision-specific execution evidence and repository enforcement; this is the acceptance boundary of the existing integration workflow, not a second CI entity."
+    },
+    {
+      "candidateKey": "cand-107ca3e95e289d516824",
+      "sourceId": "numerical-comparison-contract",
+      "contentHash": "74d9c919acedca6bbce716a8e8fde9955be4d3187a676f001eb131a5b55be575",
+      "decision": "retain",
+      "reason": "Meaning: Defines and applies reference-oriented mixed tolerance, distinct from bitwise identity; reference, diagnostic and downstream checks are integral to interpreting the same numerical acceptance contract."
+    },
+    {
+      "candidateKey": "cand-e17f607fc682d4e31e8e",
+      "sourceId": "numerical-comparison-contract",
+      "contentHash": "2dfb7edc0569a698fbc3602e9d86fc777db2dd8149be358b3d4e571d620abfe9",
+      "decision": "retain",
+      "reason": "Mechanism: Defines and applies reference-oriented mixed tolerance, distinct from bitwise identity; reference, diagnostic and downstream checks are integral to interpreting the same numerical acceptance contract."
+    },
+    {
+      "candidateKey": "cand-27f01e805a33057d373f",
+      "sourceId": "numerical-comparison-contract",
+      "contentHash": "3cee7066b4965594665f9a5ce9ececb89a5ce8b263122093ab839b0e31a6d01e",
+      "decision": "retain",
+      "reason": "Worked example: Defines and applies reference-oriented mixed tolerance, distinct from bitwise identity; reference, diagnostic and downstream checks are integral to interpreting the same numerical acceptance contract."
+    },
+    {
+      "candidateKey": "cand-ae5bf1b756cd00ab5149",
+      "sourceId": "numerical-comparison-contract",
+      "contentHash": "4ffafdbde012dd413342f6d8dbfbf6569fab5f282e35e947bec83756a65c254f",
+      "decision": "retain",
+      "reason": "Diagnostic and application boundaries: Defines and applies reference-oriented mixed tolerance, distinct from bitwise identity; reference, diagnostic and downstream checks are integral to interpreting the same numerical acceptance contract."
+    },
+    {
+      "candidateKey": "cand-05f84ff3a4ec659c1dbe",
+      "sourceId": "durable-event-inbox",
+      "contentHash": "2a5a852a18810cfc21cc4e01921d56d6b6395deba1d2cafd9f8291d8bd8a3aae",
+      "decision": "retain",
+      "reason": "Meaning: Explains durable trigger acceptance and recoverable attempts as one architectural boundary. Existing transaction and effect-idempotency nodes retain their identities; the inbox is not a synonym for exactly-once execution."
+    },
+    {
+      "candidateKey": "cand-72249cef5b67a2273e7f",
+      "sourceId": "durable-event-inbox",
+      "contentHash": "2ff4d0e8b6fc981c7e347046c6a46d88a24b7f52930b337e8a3a05d622cd9d65",
+      "decision": "retain",
+      "reason": "Mechanism: Explains durable trigger acceptance and recoverable attempts as one architectural boundary. Existing transaction and effect-idempotency nodes retain their identities; the inbox is not a synonym for exactly-once execution."
+    },
+    {
+      "candidateKey": "cand-0cf183b1489e2c389b99",
+      "sourceId": "class-weighted-loss",
+      "contentHash": "5b201d4a25132f785f0d3a932a0760b7ac9ba5e43ca5c15dd72754d78926b300",
+      "decision": "retain",
+      "reason": "Threshold costs and sampling-prior correction: Derives separate threshold and sampling effects needed to interpret weighted-model scores; probability calibration and cost interpretation remain distinct candidates in the private review ledger."
+    },
+    {
+      "candidateKey": "cand-2e51ccf14889e45681c9",
+      "sourceId": "periodic-agent-workflow",
+      "contentHash": "70340dc53a114c0a5f94c08749bd1d3eca7815f830904f58c576c0cf1c3ce954",
+      "decision": "retain",
+      "reason": "Notification quality is a separate acceptance criterion: Adds outcome notification quality as an acceptance dimension of scheduled work, while effect delivery remains covered independently by transactional-outbox."
+    },
+    {
+      "candidateKey": "cand-013df59bf51246383fba",
+      "sourceId": "credential-injection-proxy",
+      "contentHash": "e2e4706bafbef8d8dc5696aff7e5259f35f0efac8d8fd1bbd391045e172059bd",
+      "decision": "retain",
+      "reason": "Meaning: Explains a mediator that keeps the upstream secret outside the consuming runtime, unlike runtime-secret-injection. Network destination enforcement is an explicitly optional related control rather than a new credential mechanism."
+    },
+    {
+      "candidateKey": "cand-04bf74982bc03b8d796c",
+      "sourceId": "credential-injection-proxy",
+      "contentHash": "f3733755618df4498608abd5e3528d622c4edf17703f3c215b24b69a7ffb2603",
+      "decision": "retain",
+      "reason": "Mechanism: Explains a mediator that keeps the upstream secret outside the consuming runtime, unlike runtime-secret-injection. Network destination enforcement is an explicitly optional related control rather than a new credential mechanism."
+    },
+    {
+      "candidateKey": "cand-128d47bd7af89c141073",
+      "sourceId": "credential-injection-proxy",
+      "contentHash": "026161deaa893b077b75310a8d2a576268f1d2aa9005b4c29086cb4adcea5c20",
+      "decision": "retain",
+      "reason": "Worked example: Explains a mediator that keeps the upstream secret outside the consuming runtime, unlike runtime-secret-injection. Network destination enforcement is an explicitly optional related control rather than a new credential mechanism."
+    },
+    {
+      "candidateKey": "cand-e792740e98aac9a5c097",
+      "sourceId": "credential-injection-proxy",
+      "contentHash": "dd931061d1f5576ca738cee45988c6e54b2a61f264352d4d3f98be9a7f0d0371",
+      "decision": "retain",
+      "reason": "Boundaries and validation: Explains a mediator that keeps the upstream secret outside the consuming runtime, unlike runtime-secret-injection. Network destination enforcement is an explicitly optional related control rather than a new credential mechanism."
+    },
+    {
+      "candidateKey": "cand-fb590f02bce23a5e11cd",
+      "sourceId": "durable-event-inbox",
+      "contentHash": "f5090f48c6fd7cd37f8f73ca57c474c520a109201c29e618c6bf1dfa7a1f2bfe",
+      "decision": "retain",
+      "reason": "Timer delivery through the same inbox: Specifies durable timed-event acceptance and replay through the same inbox. Temporal persistence grounds the timer premise; the independently stated dispatch and cancellation protocol is application design, not an assertion about Temporal internals. Existing periodic-agent-workflow covers recurring occurrence policy."
+    },
+    {
+      "candidateKey": "cand-a9751058d53e64e59fef",
+      "sourceId": "durable-event-inbox",
+      "contentHash": "33b8dbb00396d76a49ef188d0a37ae55c5cd9b1c4280092ee383cd709ac4fdcf",
+      "decision": "retain",
+      "reason": "Worked example: Specifies durable timed-event acceptance and replay through the same inbox. Temporal persistence grounds the timer premise; the independently stated dispatch and cancellation protocol is application design, not an assertion about Temporal internals. Existing periodic-agent-workflow covers recurring occurrence policy."
+    },
+    {
+      "candidateKey": "cand-1ac52719bdb210980396",
+      "sourceId": "durable-event-inbox",
+      "contentHash": "1f21866553480bd1f41d5d7d643f06810ee6f4c3bfd88838854eee59c81a421d",
+      "decision": "retain",
+      "reason": "Boundaries and validation: Specifies durable timed-event acceptance and replay through the same inbox. Temporal persistence grounds the timer premise; the independently stated dispatch and cancellation protocol is application design, not an assertion about Temporal internals. Existing periodic-agent-workflow covers recurring occurrence policy."
     }
   ]
 }

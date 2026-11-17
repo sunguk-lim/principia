@@ -5,10 +5,10 @@ summary: Continuous integration automatically builds and checks each proposed co
 type: concept
 tags: [software/testing]
 prereqs: [measurement, container]
-sources: [https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions, https://docs.github.com/en/actions/tutorials/build-and-test-code/python]
+sources: [https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches, https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions, https://docs.github.com/en/actions/tutorials/build-and-test-code/python]
 status: explained
 created: 2026-10-08
-updated: 2026-10-08
+updated: 2026-11-18
 ---
 
 # Continuous Integration
@@ -25,7 +25,15 @@ For a multi-container web application, a meaningful integration check starts the
 
 Treat build failure, test assertion failure, timeout, unavailable dependency, and infrastructure failure as different outcomes. Retry only after diagnosing which category failed; retrying flaky tests into green can hide defects. Compare CI signal with escaped defects and time-to-diagnosis, not just pass rate. Measure duration and false-failure frequency with [[measurement]], and remove checks that no longer provide evidence. A protected branch may require successful checks, but branch policy cannot make weak tests strong.
 
+## Reporting a check versus enforcing a merge gate
+
+A security scanner reporting failure is different from repository policy requiring that check for the commit being merged. Configure the relevant protected branch or ruleset to require the intended check, identify its expected producer where supported, and inspect any bypass permissions. Use unambiguous job names and define how skipped, neutral, absent or infrastructure-failed results should be interpreted. GitHub supports successful, skipped or neutral outcomes for required status checks; a green-looking merge policy is therefore not a promise that a particular security test executed. Do not relabel a test that never ran as a passing security result.
+
+Verify the gate with an intentionally failing change in an isolated branch: the check should report the intended failure and normal merge should be unavailable under the actual actor's permissions. Update the commit and require fresh evidence; a result on an older head is not a check of the new bytes. Preserve negative authorization tests after a fix rather than relying on the scanner to rediscover the same defect. Branch enforcement prevents specified unaccepted states from merging; it cannot establish detector recall or compensate for a missing test.
+
 ## Sources
 
 - [GitHub, Continuous integration](https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions): definition and workflow model.
 - [GitHub, Building and testing Python](https://docs.github.com/en/actions/tutorials/build-and-test-code/python): concrete build/test workflow example.
+
+- <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>

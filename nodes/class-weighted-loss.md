@@ -8,7 +8,7 @@ prereqs: [loss-function, derivative, model-calibration, precision-recall]
 sources: [https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression, https://arxiv.org/abs/1708.02002]
 status: explained
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-11-18
 ---
 
 # Class-Weighted Loss
@@ -55,6 +55,12 @@ This inverse does not correct arbitrary data shifts or model errors. Resampling 
 Use weights to express a justified training objective and compare with unweighted learning. Select the deployed threshold separately using [[precision-recall]] and operational costs. Evaluate on data with representative class proportions, rather than assuming a balanced test sample predicts alert volume.
 
 Focal loss adds a confidence-dependent factor to reduce easy examples' influence. The original paper demonstrates it for dense object detection; it does not establish that class weighting always fails or that focal loss is universally superior for rare fraud. Hard examples may also include mislabeled cases. Compare alternatives at fixed data and training budgets and check calibration as well as task performance.
+
+## Threshold costs and sampling-prior correction
+
+For a calibrated positive probability p, suppose a false positive costs C_FP, a false negative costs C_FN and correct decisions cost zero. Predicting positive has expected cost C_FP(1-p); predicting negative has cost C_FN p. Choose positive when p exceeds C_FP/(C_FP+C_FN), with an explicit tie rule. This calculation assumes those fixed costs and a probability calibrated for the deployment distribution. A review-capacity constraint can require a different policy; selecting a threshold is not the same operation as weighting the training loss.
+
+Label-dependent sampling can change prior odds. If positives are retained at rate s1 and negatives at rate s0, both positive and sampling independent of features conditional on label, sampled odds equal (s1/s0) times population odds. Thus population odds equal sampled odds times s0/s1. With s1=1 and s0=.1, a sampled calibrated score .5 has odds 1, but the implied population odds are .1 and probability is .1/1.1, about .0909. This independently invented example does not correct feature-dependent selection, concept drift or a misspecified model. Account for any class weights as well rather than correcting only one source of distortion. Validate calibration and expected cost on a held-out sample with deployment-representative proportions.
 
 ## Sources
 

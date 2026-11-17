@@ -5,10 +5,10 @@ summary: Cross-component security review follows untrusted data and authority ac
 type: concept
 tags: [software/testing]
 prereqs: [tool-call-execution-contract, agent-execution-harness]
-sources: ["https://owasp.org/www-community/attacks/xss/", "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control", "https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html"]
+sources: ["https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches", https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/, "https://owasp.org/www-community/attacks/xss/", "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control", "https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html"]
 status: explained
 created: 2026-10-14
-updated: 2026-11-06
+updated: 2026-11-18
 ---
 
 # Cross-Component Security Review
@@ -35,6 +35,14 @@ A framework migration can preserve feature behavior while dropping a security ch
 
 For an invented settings route, a legitimate JSON update still passes after migration. That proves only its happy path. Add isolated negative cases for missing authority, disallowed request origin, unsupported media type and a malformed body; observe that no mutation reaches the settings writer. Keep the previous invariant suite and an explicit map from each old enforcement point to its new owner. A larger passing test count does not compensate for losing these specific properties.
 
+## Identity, object scope and review freshness
+
+Authentication at a gateway identifies a caller; it does not authorize every object identifier that caller can supply. For an ownership-based service, constrain reads and mutations to both the requested object and verified principal or tenant. An illustrative query is `SELECT ... WHERE order_id = :requested AND owner_id = :verified_user`. Never derive `verified_user` directly from a client-supplied header. A gateway may strip and replace such a header, but the downstream service must also authenticate the gateway or otherwise prevent direct callers from forging that assertion. Some domains use shared access or delegated roles rather than owner equality; apply the actual object policy on every relevant path.
+
+Returning the same not-found response for nonexistent and inaccessible objects can reduce existence leakage, but differing timing, counts, caches or related endpoints may still reveal it. Test authorized and unauthorized reads, copies and mutations, forged identity assertions, direct downstream access and revoked rights. An ordinary successful test suite need not exercise any of these negative cases.
+
+Review evidence is revision-scoped. Record the code revision, relevant configuration and traced path, and invalidate that evidence when its premises change. A change in an upstream identity mapper can stale an otherwise unchanged downstream authorization review. Mark that state stale or pending, not vulnerable or safe without analysis. Track the affected path and rerun the boundary checks. GitHub's stale-approval dismissal is a concrete diff-scoped example; broader cross-service evidence invalidation is an application-owned policy, not an automatic property of a scanner. A reviewed-point percentage does not establish the absence of unmodeled attack paths.
+
 ## Prerequisites
 
 - [[tool-call-execution-contract]]
@@ -46,3 +54,7 @@ For an invented settings route, a legitimate JSON update still passes after migr
 - [https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control](https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control)
 
 - <https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html>
+
+- <https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/>
+
+- <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>

@@ -5284,6 +5284,79 @@
           "reason": "Destination validation is an additional enforcement mechanism for network forwarding; credential mediation remains distinct from arbitrary URL fetching."
         }
       ]
+    },
+    "kernel-fusion": {
+      "aliases": [],
+      "objective": "Kernel fusion executes compatible operations in one device program to reduce intermediate materialization and launch work while preserving a stated numerical contract.",
+      "prerequisiteReasons": {
+        "cuda-kernel": "Fusion changes how operations are grouped into device launches.",
+        "memory-hierarchy": "The benefit depends on retaining intermediates near computation instead of materializing them at a slower memory level.",
+        "occupancy": "More live state can reduce resident parallel work and reverse the expected gain."
+      }
+    },
+    "spatial-dataflow-execution": {
+      "aliases": [],
+      "objective": "Spatial dataflow execution maps operators to hardware regions connected by bounded channels so dependent values can move between concurrently active stages.",
+      "prerequisiteReasons": {
+        "computation-graph": "Operators and their value dependencies specify the graph being placed.",
+        "pipeline-bottleneck-localization": "Stage rates and fill/drain costs bound realized pipeline performance.",
+        "queue": "Bounded producer-consumer channels need ordering, capacity and full/empty behavior."
+      }
+    },
+    "persistent-kernel-execution": {
+      "aliases": [],
+      "objective": "Persistent kernel execution keeps a bounded set of device programs resident while they iterate over multiple work units, amortizing launch and setup costs under explicit synchronization and resource constraints.",
+      "prerequisiteReasons": {
+        "cuda-kernel": "Persistence moves repeated work inside a device launch.",
+        "occupancy": "Resident programs must fit the device resource budget.",
+        "thread-synchronization": "Long-lived cooperating programs need valid ordering and progress guarantees."
+      }
+    },
+    "semantic-response-cache": {
+      "aliases": [],
+      "objective": "A semantic response cache reuses a stored answer for a sufficiently similar request only when authorization, dependency versions and freshness policy also permit reuse.",
+      "prerequisiteReasons": {
+        "embedding": "Text needs a meaning-related vector representation before similarity can generate candidate cache hits.",
+        "cosine-similarity": "Similarity between request representations generates candidate cache hits.",
+        "ml-system-freshness": "A cached answer can become invalid when its underlying facts change.",
+        "retrieval-authorization-boundary": "Cached private answers must not cross principal or tenant boundaries."
+      }
+    },
+    "reusable-agent-playbook": {
+      "aliases": [],
+      "objective": "A reusable agent playbook stores a versioned procedure for a recurring task while resolving live data, permissions and exception handling at execution time.",
+      "prerequisiteReasons": {
+        "agent-workflow-graph": "An executable playbook needs explicit steps, transitions and failure paths.",
+        "agent-plan-artifact": "The reusable procedure is intended work, distinct from observed execution.",
+        "ml-system-freshness": "Reusing steps must not silently reuse stale facts."
+      }
+    },
+    "semantic-intent-routing": {
+      "aliases": [],
+      "objective": "Semantic intent routing selects an eligible workflow from a request representation using explicit matching, ambiguity and fallback rules without granting execution authority.",
+      "prerequisiteReasons": {
+        "embedding": "Reference and incoming text must be represented in a compatible semantic vector space.",
+        "cosine-similarity": "Reference-based routing compares request and route representations.",
+        "decision-score-action-gate": "A similarity result needs a threshold, abstention and separately authorized action policy.",
+        "agent-workflow-graph": "The selected route names a permitted execution path, not merely a topic label."
+      }
+    },
+    "block-diffusion-language-model": {
+      "aliases": [],
+      "objective": "A block diffusion language model generates blocks in an autoregressive order while denoising positions within each block, enabling cache reuse only across states made stable by its attention contract.",
+      "prerequisiteReasons": {
+        "masked-diffusion-language-model": "Within-block generation uses iterative masked-token denoising.",
+        "kv-cache": "The efficiency distinction depends on when prior key/value states remain valid.",
+        "decoder-only-transformer": "Autoregressive block order supplies the stable-prefix dependency structure."
+      }
+    },
+    "streaming-inter-accelerator-dataflow": {
+      "aliases": [],
+      "objective": "Streaming inter-accelerator dataflow pipelines bounded pieces of dependent state between devices while preserving transfer ordering, buffer ownership and backpressure.",
+      "prerequisiteReasons": {
+        "spatial-dataflow-execution": "Cross-device streaming extends the producer-channel-consumer execution model.",
+        "message-passing": "Devices must agree on matching data, shapes, ordering and completion."
+      }
     }
   }
 }

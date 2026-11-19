@@ -2789,13 +2789,6 @@
       "reason": "Worked example is supporting explanation for the canonical Positional Encoding objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-4e4ed1dc768afca30713",
-      "sourceId": "speculative-decoding",
-      "contentHash": "47ba7449f6c7f96a8784f9a20bd8a0aacfdc37f0350561c00794a868fc06611b",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Speculative Decoding objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-4e53714dded60cfc5886",
       "sourceId": "gil",
       "contentHash": "c004fa7eac36e4254f72edf68e88c914566c90996f62f9169919b336a7c3bc54",
@@ -5735,13 +5728,6 @@
       "contentHash": "50b2f5fed0ba9d89f8b3fce8bb2cdbddd28d87d92395e3e8e507f458b40831b9",
       "decision": "retain",
       "reason": "Overview is supporting explanation for the canonical Stochastic Process objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-a7b94e04c58a288d4036",
-      "sourceId": "memory-hierarchy",
-      "contentHash": "e57c895f1d0df62784695eb4639479cf8ab08a9fb7a70236330a2b997e0e4d73",
-      "decision": "retain",
-      "reason": "What the concept *is*: a ladder of stores, each bigger but slower is supporting explanation for the canonical Memory Hierarchy objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-a7eada2b3783cf112839",
@@ -18246,6 +18232,272 @@
       "contentHash": "1f21866553480bd1f41d5d7d643f06810ee6f4c3bfd88838854eee59c81a421d",
       "decision": "retain",
       "reason": "Boundaries and validation: Specifies durable timed-event acceptance and replay through the same inbox. Temporal persistence grounds the timer premise; the independently stated dispatch and cancellation protocol is application design, not an assertion about Temporal internals. Existing periodic-agent-workflow covers recurring occurrence policy."
+    },
+    {
+      "candidateKey": "cand-df03f016399c600884a2",
+      "sourceId": "kernel-fusion",
+      "contentHash": "43274fb158ff9825cf939332d805bf0ef68b82204405c3e6f60b12d0fa0002da",
+      "decision": "retain",
+      "reason": "Meaning defines the canonical mechanism, not another entity. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-3c056fb11352fa35bd24",
+      "sourceId": "kernel-fusion",
+      "contentHash": "44a40e244bf9371ae640b0fbc6b0d1b657c60fcec2bb1c15f37242874ba76827",
+      "decision": "retain",
+      "reason": "Mechanism grounds the canonical behavior and its limits. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-7548a641054f9786e052",
+      "sourceId": "kernel-fusion",
+      "contentHash": "2e1374b7ec962d216040413417b00f2830855f7587ecd46976c9baffb57c59b1",
+      "decision": "retain",
+      "reason": "One example is an illustrative application of the same mechanism. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-427b39707523d6fa9fde",
+      "sourceId": "kernel-fusion",
+      "contentHash": "2928101312aa2544b6ff468e64fd0faceb6ebb9cf18556060feaf9b8efa80ab3",
+      "decision": "retain",
+      "reason": "Check your understanding tests the canonical distinction and validation contract. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-ee371e8b3364d2637734",
+      "sourceId": "spatial-dataflow-execution",
+      "contentHash": "58b986f4780f48144e2e44acf29cb9121250ad7a1787fb93f78059a709b906f9",
+      "decision": "retain",
+      "reason": "Meaning defines the canonical mechanism, not another entity. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-fb14d438310b156087df",
+      "sourceId": "spatial-dataflow-execution",
+      "contentHash": "772c5ab8ef2ca632ebd41664d7b8263cf876118494cf86ce1cf2c4a26f8e28da",
+      "decision": "retain",
+      "reason": "Mechanism grounds the canonical behavior and its limits. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-3fdcb92932ceb70b7fcb",
+      "sourceId": "spatial-dataflow-execution",
+      "contentHash": "4d9fce5bf16751af65da968190aab057d0f2e521f9b947e18b265d8a998876e0",
+      "decision": "retain",
+      "reason": "One example is an illustrative application of the same mechanism. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-13ad2d6d5dcc71d69170",
+      "sourceId": "spatial-dataflow-execution",
+      "contentHash": "4187bc91376e69a52bbac70c2c8a541c5dd716e63f311507ba6eae0a882d3fdb",
+      "decision": "retain",
+      "reason": "Check your understanding tests the canonical distinction and validation contract. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-d487f5b4318359e0a225",
+      "sourceId": "persistent-kernel-execution",
+      "contentHash": "0f66e7edc900f79b723d459878160b920a145468af61783ddb8420c20ebb81b1",
+      "decision": "retain",
+      "reason": "Meaning defines the canonical mechanism, not another entity. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-966bd213a34c4b2e8182",
+      "sourceId": "persistent-kernel-execution",
+      "contentHash": "936ae8b622d0bd34f819380ab6b65b65391ccad845ac3d4a495759d5e89e17ee",
+      "decision": "retain",
+      "reason": "Mechanism grounds the canonical behavior and its limits. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-b013ad9befd015d98062",
+      "sourceId": "persistent-kernel-execution",
+      "contentHash": "063939808cacefb5b482ed00c4220e9e4c4aa5cc69932924894b3fbfdc341243",
+      "decision": "retain",
+      "reason": "One example is an illustrative application of the same mechanism. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-bbd30b316b7439377d4e",
+      "sourceId": "persistent-kernel-execution",
+      "contentHash": "27f1851eb0dffbc93982675e61e3a3c9f44d4c00a5ea852c2f7ee8e939764c96",
+      "decision": "retain",
+      "reason": "Check your understanding tests the canonical distinction and validation contract. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-370cdd8f91185d59390a",
+      "sourceId": "semantic-response-cache",
+      "contentHash": "cb86ac90ca383df7297a82dbfc18cafe28fc46060f8c97f697db46db5f66a43f",
+      "decision": "retain",
+      "reason": "Meaning defines the canonical mechanism, not another entity. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-bed807dcf440081e8590",
+      "sourceId": "semantic-response-cache",
+      "contentHash": "0ab87184e19e2d8151ca08e69e6bcaecff3e20dd699cf5d2842aeb049e18db59",
+      "decision": "retain",
+      "reason": "Mechanism grounds the canonical behavior and its limits. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-2b2ad738ae1767a81d7e",
+      "sourceId": "semantic-response-cache",
+      "contentHash": "6d784ce9f374dac8943fb98cef70c533833b9ba77f6bb40e1fc298fc4dc2751a",
+      "decision": "retain",
+      "reason": "One example is an illustrative application of the same mechanism. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-c039195f7070c28b603c",
+      "sourceId": "semantic-response-cache",
+      "contentHash": "70a153687857840cb893461e7ed86a16a84a20db3aa7b71b1a0409774ae47bf5",
+      "decision": "retain",
+      "reason": "Check your understanding tests the canonical distinction and validation contract. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-edb51d59433bd87dc016",
+      "sourceId": "reusable-agent-playbook",
+      "contentHash": "52409c2e27d6f44d27c97908bcc66a14d52de1d60fbdec9ee78df9f252caad83",
+      "decision": "retain",
+      "reason": "Meaning defines the canonical mechanism, not another entity. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-d8f07d13be1506faa414",
+      "sourceId": "reusable-agent-playbook",
+      "contentHash": "b7b83d76c5a990128e60fbcc652e6c691bfdc92f7d687be5bab3e283c0de38c4",
+      "decision": "retain",
+      "reason": "Mechanism grounds the canonical behavior and its limits. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-d45d4d4757ebee33e870",
+      "sourceId": "reusable-agent-playbook",
+      "contentHash": "b6ec9e7de98e63b9ce07008835d8d5cfae5309a0676e38ddac68c4d7bca34ace",
+      "decision": "retain",
+      "reason": "One example is an illustrative application of the same mechanism. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-a9c9542bd747b713c461",
+      "sourceId": "reusable-agent-playbook",
+      "contentHash": "98f1362bf6376ef4c5e113dc1dc1e160045e9b668794a9cdc3eb4112050a6725",
+      "decision": "retain",
+      "reason": "Check your understanding tests the canonical distinction and validation contract. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-abda42da79510096a29b",
+      "sourceId": "semantic-intent-routing",
+      "contentHash": "15b4529c3ceb454e802de613d548a6e717d1008d9fcee6f6baf3b65e9f627f5b",
+      "decision": "retain",
+      "reason": "Meaning defines the canonical mechanism, not another entity. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-96940317c3f00abd213d",
+      "sourceId": "semantic-intent-routing",
+      "contentHash": "20f4dc3c783cf9e4c55e8925624f11e0e739b1e5f7b9a624effa94d14a41a3a1",
+      "decision": "retain",
+      "reason": "Mechanism grounds the canonical behavior and its limits. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-9ea45449d5cbe317b08b",
+      "sourceId": "semantic-intent-routing",
+      "contentHash": "26d4dde5bc5bcffec970b7d01337c2e292c6c29a0afd9283794aeefe413e161b",
+      "decision": "retain",
+      "reason": "One example is an illustrative application of the same mechanism. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-b70c3b55c73e1224ca18",
+      "sourceId": "semantic-intent-routing",
+      "contentHash": "5c06a241624f33712e0645cdac5a3eaf161045c93fa1c9c497c8e56ce6cb33bc",
+      "decision": "retain",
+      "reason": "Check your understanding tests the canonical distinction and validation contract. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-767933a1a6dadd3b9ec0",
+      "sourceId": "block-diffusion-language-model",
+      "contentHash": "7f31ae86cca4c362c59b666f5629c4703511434a6f32e95b5c367f92f9089436",
+      "decision": "retain",
+      "reason": "Meaning defines the canonical mechanism, not another entity. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-421fc37a57fe54ccb7a8",
+      "sourceId": "block-diffusion-language-model",
+      "contentHash": "5d4fb7b504d86517db5b26b5f9993a679102a1ac4272fe4c4b88472fb490064a",
+      "decision": "retain",
+      "reason": "Mechanism grounds the canonical behavior and its limits. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-a846532842e31b256d08",
+      "sourceId": "block-diffusion-language-model",
+      "contentHash": "030ffcfbca2184a38ce4050f85754339940e7248ef4be912c85757839b13f759",
+      "decision": "retain",
+      "reason": "One example is an illustrative application of the same mechanism. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-8f6f7d5a97139b5fffc0",
+      "sourceId": "block-diffusion-language-model",
+      "contentHash": "9e36bfcb4a51da65edb188e924f2638d3a321913748a8be17f47535520d59223",
+      "decision": "retain",
+      "reason": "Check your understanding tests the canonical distinction and validation contract. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-d013475df295f762393d",
+      "sourceId": "streaming-inter-accelerator-dataflow",
+      "contentHash": "f7923f14e7ebc36f882e459bc4bfb444ad70f13c54dfaed0033de48f0868a9b2",
+      "decision": "retain",
+      "reason": "Meaning defines the canonical mechanism, not another entity. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-f9928c8ad198e9aa0a68",
+      "sourceId": "streaming-inter-accelerator-dataflow",
+      "contentHash": "8a16ede3ed456b0e4832f2d77da2cc97fa8fd4ff9c773befbdcfc6804e4b8680",
+      "decision": "retain",
+      "reason": "Mechanism grounds the canonical behavior and its limits. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-5a98d7fad85bea22533c",
+      "sourceId": "streaming-inter-accelerator-dataflow",
+      "contentHash": "08097d673d562e10d342cdf9b6277802cbd72c4ed2eb6a451743387153f003ed",
+      "decision": "retain",
+      "reason": "One example is an illustrative application of the same mechanism. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-b357dde8bc8ef2b61523",
+      "sourceId": "streaming-inter-accelerator-dataflow",
+      "contentHash": "6b34829b66e16a38121e41a7c6c49aa60aa61001fd7b143b8506c6c3df5eff5c",
+      "decision": "retain",
+      "reason": "Check your understanding tests the canonical distinction and validation contract. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-ff2c69b78d900ad21f66",
+      "sourceId": "speculative-decoding",
+      "contentHash": "bfc782344a9d2baf9575ca74fd34d5dc94312b0cfcb12843d58dc26f7432f0f4",
+      "decision": "retain",
+      "reason": "Overview is supporting explanation or a derivation within the existing canonical objective. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-6f137043dc3592da274b",
+      "sourceId": "speculative-decoding",
+      "contentHash": "c5ff4a987875d7cd17693765ad95441c9f013d8bffcf80fe840bc611dc955516",
+      "decision": "retain",
+      "reason": "Distribution contract and measured efficiency qualifies the same speculative-sampling algorithm rather than creating another sampler. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-fd08e10f849c120c36ab",
+      "sourceId": "memory-hierarchy",
+      "contentHash": "b6beb9840147e546634161c4175ef68c4739a5ae9d06982339c8ecb6c8d493a9",
+      "decision": "retain",
+      "reason": "What the concept *is*: a ladder of stores, each bigger but slower is supporting explanation or a derivation within the existing canonical objective. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-9a2c393bf241a64ad226",
+      "sourceId": "memory-hierarchy",
+      "contentHash": "c656170bcd04355946f9cbfbadd1e9092c8cf92b7a974108964318f2168b4a97",
+      "decision": "retain",
+      "reason": "Physical placement and management are separate properties corrects the physical-placement and measurement contract of the same hierarchy. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-be972ce05d446e4f0c21",
+      "sourceId": "distributed-dataframe-execution",
+      "contentHash": "f1fd9326081191c7765b9848836c2490a24261a9f15df82c554af4dfa83ae6b9",
+      "decision": "retain",
+      "reason": "Overview is supporting explanation or a derivation within the existing canonical objective. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-ab30ff95ac36f4451aee",
+      "sourceId": "distributed-dataframe-execution",
+      "contentHash": "7baa7802fba16ac0fe0e0c1480ccde9cabc320f7a2007616cb4661745be95a68",
+      "decision": "retain",
+      "reason": "Diagnose skew before changing partition counts explains the skew failure and valid plan rewrites within distributed dataframe execution. Reviewed complete authored section; no separate entity or additional required edge is warranted."
     }
   ]
 }

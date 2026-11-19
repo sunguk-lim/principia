@@ -1,7 +1,7 @@
 ---
 id: speculative-decoding
 title: Speculative Decoding
-summary: Generating text one token at a time runs the big "target" model once per token, and that pass is memory-bound — most of the time goes to streaming the model's weights and the…
+summary: Speculative decoding verifies draft tokens with a target model under an acceptance-and-correction rule that preserves the declared target distribution while making speed workload-dependent.
 type: concept
 tags: [ml/llm/inference]
 prereqs: [transformer-attention, kv-cache, softmax, probability-distribution]
@@ -10,23 +10,14 @@ sources:
   - "Chen et al., *Accelerating Large Language Model Decoding with Speculative Sampling*, 2023 (arXiv:2302.01318)"
 status: explained
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-11-20
 ---
 
 # Speculative Decoding
 
 ## Summary
 
-Generating text one token at a time runs the **big "target" model once per
-token**, and that pass is **memory-bound** — most of the time goes to streaming
-the model's weights and the [[kv-cache]] through memory, not to arithmetic, so
-scoring one token costs almost as much as scoring several. **Speculative
-decoding** exploits this slack. A small, cheap **draft** model proposes the next
-$k$ tokens; the target model then runs **one** pass that scores **all $k$
-positions in parallel**; and a **probabilistic acceptance rule** decides how many
-of the draft's tokens to keep. The rule is built so the tokens that come out are
-distributed **exactly** as if the target model had generated them alone — same
-quality, but often $k$ tokens per target pass instead of one.
+Speculative decoding lets a cheap draft propose several tokens, then uses a target model to verify them together. An acceptance-and-correction rule can preserve the target's declared sampling distribution while reducing its sequential forward passes. It is not a promise of lower latency, identical random-seed trajectories, or a speedup for every batch and device.
 
 ## Grounded explanation
 
@@ -40,16 +31,7 @@ token. Write $p(x)$ for the target's probability of token $x$ and $q(x)$ for
 the draft's probability of the same token, always conditioned on whatever prefix
 is current.
 
-**Why decoding is slow, and where the slack is.** With a [[kv-cache]], producing
-token $t$ costs *one* target forward pass: project the single new token to its
-query/key/value, append $k_t,v_t$ to the cache, and attend over the cache. That
-is already minimal in *arithmetic*. But each pass must read the model's entire
-weight set (and the cache) out of memory, and a modern target model is large, so
-the pass is **memory-bound**: the hardware finishes the few multiplications long
-before the memory traffic is done. Crucially, that memory traffic is **nearly the
-same whether the pass scores one token position or several** — the weights are
-read once either way. Sequential decoding wastes this: it pays full memory cost
-for a single token, $n$ times for $n$ tokens.
+**Where the possible speedup comes from.** At low active batch, a large dense target can spend much of each pass reading weights and the [[kv-cache]]. Verifying several proposed positions may amortize weight reads across more useful outputs. This is a conditional opportunity: caches, active experts, long-context attention, batch size, kernel efficiency and communication determine actual traffic. Drafting, verification, rejection and state rollback all add work. There is no general theorem that scoring several positions costs the same as scoring one.
 
 **The parallel-scoring trick (why one target pass scores $k$ tokens).** Suppose
 the current prefix is $x_{1:m}$ and the draft has cheaply proposed
@@ -65,10 +47,11 @@ $$p(\cdot \mid x_{1:m}),\quad p(\cdot \mid x_{1:m},\tilde x_{m+1}),\quad \dots,\
 
 This is the same fact the [[kv-cache]] rests on (each row is the distribution for
 its own prefix), used in the other direction: instead of feeding one token and
-reading one row, we feed $k$ guessed tokens and read $k$ rows — for essentially
-the cost of a single pass, since the pass was memory-bound anyway. The KV-cache
+reading one row, we feed several guessed tokens and score their positions together.
+The cached prefix supplies the first distribution, and verification supplies later ones;
+implementation state determines which rows are recomputed. Any cost saving must be measured. The KV-cache
 also lets us keep the prefix $x_{1:m}$'s keys/values and only pay for the $k$ new
-columns. Call the target distribution at the position **after** $\tilde x_{m+i}$
+columns. Call the target distribution at the position **before selecting** $\tilde x_{m+i}$
 by the shorthand $p_i = p(\cdot \mid x_{1:m},\dots,\tilde x_{m+i-1})$, so $p_1$
 scores the first draft token, $p_2$ the second, and so on; and let
 $q_i = q(\cdot \mid x_{1:m},\dots,\tilde x_{m+i-1})$ be the draft's distribution
@@ -89,7 +72,7 @@ $p_i(\tilde x_{m+i})$:
   where $(z)_+ = \max(0, z)$ is the positive part. Discard the rest of the draft.
 
 If *all* $k$ are accepted, we additionally sample one bonus token straight from
-$p_{k+1}$ — already available for free from the same target pass. So one target
+$p_{k+1}$ — available from the same target verification, without another target forward pass. So one target
 pass yields **somewhere between 1 and $k+1$** correct tokens.
 
 **Why this is EXACT — the justifying identity.** The magic-looking claim is that
@@ -144,11 +127,15 @@ $$p'_3 = \big(A{:}0.45/0.60,\ B{:}0.15/0.60,\ C{:}0\big) = (A{:}0.75,\ B{:}0.25,
 
 We sample from $p'_3$ and emit, say, $A$. **Net result of this round:** the
 sequence grew by $A, B, A$ — **3 correct target tokens from a single target
-forward pass**. The naive method would have spent **3** target passes for the
-same 3 tokens. (Had all 3 been accepted, we'd have taken a 4th free token from
+forward pass**. The naive method would have spent **3** target passes for three sequential output positions. This does not imply the same realized random tokens under a shared seed. (Had all 3 been accepted, we'd have taken a 4th free token from
 $p_4$, getting 4 tokens for one pass.) Every emitted token is a genuine target
-sample, by the identity above — so quality is untouched while target passes drop
-from 3 to 1.
+sample, by the identity above — so the ideal target distribution is preserved while this illustrated round uses one target verification for three outputs. Actual speed also includes draft and verification costs.
+
+## Distribution contract and measured efficiency
+
+The derivation applies to the actual normalized proposal and target distributions used by the algorithm. If sampling applies temperature, truncation or other transformations, verification and residual correction must use compatible distributions. A greedy verifier has a different decision rule from stochastic acceptance. Finite precision and implementation defects require tests; matching the mathematical distribution does not promise bitwise equality, identical seeded trajectories or unchanged wall-clock latency.
+
+Report accepted output tokens per target verification together with draft time, target time, rejection/rollback work, cache memory and complete request latency. A faster draft with poor agreement can lose to a slower accurate draft. High serving concurrency can already amortize target weight traffic, reducing speculative headroom. Test long contexts, masks, end-of-sequence handling, rejected suffix disposal and supported sampling controls. Compare with ordinary target sampling under the same quality and workload contract; extra proposals are not delivered-token throughput.
 
 ## Prerequisites
 

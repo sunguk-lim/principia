@@ -1,17 +1,18 @@
 ---
 id: memory-hierarchy
 title: Memory Hierarchy
-summary: A processor keeps data in a ladder of stores (bigger = slower), so a computation's speed is set by its operations-per-byte ratio versus the balance point of the (machine, number-format) pair it runs on.
+summary: A memory hierarchy trades capacity, access latency, bandwidth and management across storage levels, making performance depend on actual traffic and reuse at each level.
 type: concept
 tags: [os/memory]
 prereqs: [arithmetic, arithmetic-intensity, numeric-precision-formats]
 sources:
+  - "https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html"
   - "Harris & Patterson, Computer Organization and Design (memory hierarchy)"
   - "NVIDIA A100 / H100 architecture whitepapers (HBM, L2, SRAM bandwidths)"
   - "Williams, Waterman & Patterson, 'Roofline: An Insightful Visual Performance Model' (CACM 2009)"
 status: explained
 created: 2026-06-23
-updated: 2026-07-28
+updated: 2026-11-20
 ---
 
 # Memory Hierarchy
@@ -52,7 +53,7 @@ figures vary by chip, but the *gradient* is the point):
 
 | Level | What it is | Capacity (bytes) | Bandwidth (bytes/sec) |
 |---|---|---|---|
-| Registers | scratch slots beside the math units | ~256 KB (per SM) | effectively instant |
+| Registers | scratch slots beside the math units | ~256 KB (per SM) | low latency; finite ports |
 | SRAM / shared memory | fast on-chip scratchpad | ~20 MB total on-chip | ~20 TB/s |
 | L2 cache | shared on-chip cache | ~40 MB | ~7 TB/s |
 | HBM | the GPU's main memory | ~80 GB | ~3 TB/s |
@@ -207,6 +208,14 @@ balance point, turning a memory-bound computation into a compute-bound one. That
 the memory hierarchy is the substrate beneath every "IO-aware" technique: the ladder of
 bandwidths is the scoreboard those techniques are playing against.
 
+## Physical placement and management are separate properties
+
+The ladder above is an illustrative configuration, not a universal ordering theorem. Latency, sustainable bandwidth and capacity are separate measurements: a wide interface can have high throughput while each individual access still takes many cycles. Registers have finite access bandwidth and are not instantaneous. L2 and shared memory are both commonly implemented with on-chip SRAM, but differ in scope and management. Shared memory is explicitly managed storage; a cache follows a hardware replacement policy.
+
+Distinguish compute die, package, accelerator board and host system. High-bandwidth DRAM may be integrated near the compute die in a package, while higher-capacity DDR can be attached to an accelerator without being on the compute die or belonging to the host CPU. A named capacity alone establishes none of these locations. Not every GPU uses HBM, and an accelerator's storage policy can retain weights, activations and attention state in different tiers.
+
+For an invented working set with 40 MB of frequently reused intermediates and only 20 MB of available local storage, declaring the computation fused does not make all intermediates resident. It must tile, recompute, spill or change placement. Inspect measured bytes at each memory level, actual cache hits, register spills and supported placement APIs. Reuse benefits depend on the working set and concurrent tenants, not just the presence of a fast tier. The primary CUDA guide distinguishes register, shared, local, cache and global-memory behavior; its concrete device examples are not universal accelerator specifications.
+
 ## Prerequisites
 
 - [[arithmetic]]
@@ -218,3 +227,5 @@ bandwidths is the scoreboard those techniques are playing against.
 - Harris & Patterson, *Computer Organization and Design* — the classic treatment of the memory hierarchy (registers → cache → main memory) and the capacity/bandwidth trade-off.
 - NVIDIA A100 / H100 architecture whitepapers — concrete register, SRAM/shared-memory, L2, and HBM capacities and bandwidths.
 - Williams, Waterman & Patterson, "Roofline: An Insightful Visual Performance Model," *CACM* 2009 — arithmetic intensity and the memory-bound vs. compute-bound balance point.
+
+- <https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html>: memory spaces, effective bandwidth, reuse and resource constraints.

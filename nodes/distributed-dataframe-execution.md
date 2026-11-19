@@ -8,7 +8,7 @@ prereqs: [out-of-core-processing, reduction-operation]
 sources: [https://spark.apache.org/docs/latest/sql-performance-tuning.html, https://pandas.pydata.org/docs/user_guide/scale.html]
 status: explained
 created: 2026-10-07
-updated: 2026-10-07
+updated: 2026-11-20
 ---
 
 # Distributed Dataframe Execution
@@ -26,6 +26,14 @@ Suppose a daily log has 5 TB of compressed input. Neither that file size nor a l
 Translate the existing script into a plan before changing engines: identify filters and projections that can run early, operations with global state, exact ordering assumptions, and late or duplicate events. Choose batch or stream processing from the delivery deadline and update semantics, not from the input's size alone. Partition and shuffle settings are workload-specific; more partitions improve balance only until scheduling overhead and tiny tasks become significant.
 
 Validate transformation equivalence on a golden sample, then run at representative scale and skew. Measure peak executor memory, spill, shuffle bytes, input/output counts, task imbalance, elapsed time, failure recovery, and cost. Compare with a single-machine out-of-core baseline and a simpler columnar engine. The newsletter's categorical claims about pandas, the GIL, and 5–10× amplification are not established by its preview and are not prerequisites to this design.
+
+## Diagnose skew before changing partition counts
+
+Distinguish input-file imbalance, shuffle-partition byte imbalance, and unequal computational cost per key. A long tail of tasks with unusually high shuffle reads or spill can reveal a hot partition, but slow storage or a costly function can produce similar symptoms. Compare per-task input, shuffle bytes, execution time, memory and spill rather than relying on the mean partition size.
+
+Splitting a partition can reduce a straggler only when the operation preserves its grouping contract. An associative aggregation may combine local partial results before shuffling; an indivisible per-key operation cannot be split arbitrarily. A salted-key rewrite distributes a hot key but needs a correct second-stage merge, and joins may require replication with duplicate accounting. More partitions alone cannot distribute one unchanged key across reducers under ordinary key partitioning. Spark's adaptive skew-join optimization splits sufficiently large skewed partitions under a specific join strategy; it is not automatic support for every user-defined aggregation.
+
+For a hypothetical workload with nine 1 GB partitions and one 20 GB partition, the mean of 2.9 GB hides the 20 GB straggler. Compare maximum-to-median task time and spill before and after a valid rewrite. Keep output counts, duplicate behavior, null semantics and golden-slice equivalence fixed. Spilling can preserve progress beyond memory capacity, but adds storage traffic and may merely move the bottleneck; validate recovery and cost as well as the fastest successful run.
 
 ## Prerequisites
 

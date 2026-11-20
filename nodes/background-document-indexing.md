@@ -5,10 +5,10 @@ summary: Background document indexing persists versioned ingestion work and buil
 type: concept
 tags: [ml/information-retrieval]
 prereqs: [retrieval-chunking, vector-database, transactional-outbox, dataset-lineage]
-sources: [https://learn.microsoft.com/en-us/azure/search/search-indexer-overview, https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html, https://developers.llamaindex.ai/python/framework/module_guides/loading/ingestion_pipeline/]
+sources: [https://learn.microsoft.com/en-us/azure/search/search-indexer-overview, https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html, https://developers.llamaindex.ai/python/framework/module_guides/loading/ingestion_pipeline/, https://learn.microsoft.com/en-us/azure/search/search-howto-reindex]
 status: explained
 created: 2026-10-24
-updated: 2026-10-25
+updated: 2026-11-21
 ---
 
 # Background Document Indexing
@@ -41,6 +41,14 @@ A document content hash can skip unchanged work only if the cache identity also 
 
 For a toy corpus of 100 documents, suppose two change text, one is deleted and a fourth changes access scope. Re-embed the two changed texts under the same pipeline; remove the deleted document's units; update authorization for the fourth. Re-embedding only two documents is not a complete synchronization if deleted or revoked evidence remains searchable. If the embedding revision changes, potentially all 99 remaining documents require new compatible representations. Bind active versions, retries and tombstones to the same publication contract so a late old job cannot restore a deleted source. Track source-to-search delay and failed imports separately from endpoint health; periodic polling provides bounded freshness, not instantaneous consistency.
 
+## Publishing one complete document generation
+
+Treat a generation as an immutable set of expected chunks plus its transformation versions. Complete and validate those units before advancing an authoritative active-generation pointer. The pointer change must be conditional on the expected source revision and current document state; checking eligibility before a long computation leaves a race at publication. Readers bind retrieval to the selected generation and reject mismatched chunks rather than assembling a document from partly replaced versions.
+
+For a fictional document, generation 7 has four chunks. Generation 8 produces three new chunks, then its worker crashes before the fourth. Retain generation 7, with its explicit age, rather than marking 8 current. Once all four are validated and searchable, a conditional publication can select 8. If a deletion or newer source revision has already won, reject the late publication. Retaining an old generation for completeness must never override current access revocation.
+
+This is an application-owned protocol, not an assertion that a vector index automatically supplies a multi-system transaction. Azure's indexing documentation distinguishes accepted writes from searchable visibility and warns of mixed results during updates. A database pointer cannot make external index writes atomically searchable. Either wait for verifiable visibility under the chosen index contract, enforce generation filtering in the read path or expose the remaining consistency limitation. Test partial completion, stale workers, publication crashes and readers racing the pointer change.
+
 ## Prerequisites
 
 - [[retrieval-chunking]]
@@ -54,3 +62,4 @@ For a toy corpus of 100 documents, suppose two change text, one is deleted and a
 - <https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html>
 
 - <https://developers.llamaindex.ai/python/framework/module_guides/loading/ingestion_pipeline/>
+- <https://learn.microsoft.com/en-us/azure/search/search-howto-reindex>

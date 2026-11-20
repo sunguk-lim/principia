@@ -5,10 +5,10 @@ summary: A retrieval authorization boundary enforces a caller's document permiss
 type: concept
 tags: [ml/information-retrieval]
 prereqs: [retrieval-augmented-generation, measurement]
-sources: [https://learn.microsoft.com/en-us/azure/search/search-security-trimming-for-azure-search]
+sources: [https://learn.microsoft.com/en-us/azure/search/search-security-trimming-for-azure-search, https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html]
 status: explained
 created: 2026-10-01
-updated: 2026-10-02
+updated: 2026-11-21
 ---
 
 # Retrieval Authorization Boundary
@@ -29,6 +29,14 @@ Test the boundary with role-crossing queries, mixed-permission documents, revoke
 
 A shared index can carry tenant and resource identity on every chunk, with the search service enforcing an authenticated filter before candidates are returned. Separate indexes can reduce accidental cross-tenant mixing but add provisioning and operational overhead; neither layout is a substitute for query-time authorization and revocation handling. A partition key derived from model text or client-supplied metadata is not an authorization boundary. Test mixed-tenant batches, cache-key isolation, document moves, changed ACLs, and reindexing so no stale chunk crosses the caller's boundary. Compare permitted recall and latency as well as leakage across layouts.
 
+## Current evidence eligibility is separate from index membership
+
+For changing sources, bind every candidate to a source identity and published generation, then validate both generation eligibility and the caller's current rights before disclosure. An obsolete chunk may still rank first and a physically retained historical snapshot may remain coherent; neither makes it eligible for the present request. A failed eligibility lookup should follow an explicit fail-closed rule for protected evidence rather than silently trust the indexed copy.
+
+Suppose document D revision 5 is still searchable while revision 6 builds, and a caller loses permission during that interval. The read-path authorization state can exclude D immediately without waiting for the new embedding. That fixes exclusion, not discovery: a different newly permitted document can remain missing until indexing finishes. If policy changes during long generation, recheck at the actual disclosure boundary according to the application's contract. Context, intermediate caches and traces are also disclosure surfaces; filtering only the final user response cannot undo earlier unauthorized model exposure.
+
+Test obsolete generations, revoked users, unavailable policy state and cached answers that were created under an older permission epoch. Keep permission freshness and source-content freshness as separate measured contracts. A short cache lifetime is not immediate revocation.
+
 ## Prerequisites
 
 - [[retrieval-augmented-generation]]
@@ -37,3 +45,4 @@ A shared index can carry tenant and resource identity on every chunk, with the s
 ## Sources
 
 - [Azure AI Search security trimming](https://learn.microsoft.com/en-us/azure/search/search-security-trimming-for-azure-search): primary documentation for permission-filtered search results.
+- <https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html>

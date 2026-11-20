@@ -5357,6 +5357,62 @@
         "spatial-dataflow-execution": "Cross-device streaming extends the producer-channel-consumer execution model.",
         "message-passing": "Devices must agree on matching data, shapes, ordering and completion."
       }
+    },
+    "centralized-data-authorization": {
+      "aliases": [],
+      "objective": "Explain why a shared authorization policy requires complete mediation, authenticated context and bypass-path tests, not merely a common database connection.",
+      "prerequisiteReasons": {
+        "row-level-security": "Supplies the concrete database-owned row-policy mechanism whose coverage must be distinguished from the end-to-end architecture.",
+        "agent-workload-identity": "Distinguishes authenticated executing software, requesting human and the permissions applied to each."
+      }
+    },
+    "column-level-privileges": {
+      "aliases": [],
+      "objective": "Distinguish column authorization from row filtering and explain how broader grants can defeat a narrow column grant.",
+      "prerequisiteReasons": {
+        "sql": "Defines column references, operations and GRANT/REVOKE statements used by the authorization mechanism."
+      }
+    },
+    "authorization-audit-log": {
+      "aliases": [],
+      "objective": "Design an attributable access-decision record while separating policy outcome, execution outcome and sensitive payload logging.",
+      "prerequisiteReasons": {
+        "centralized-data-authorization": "Identifies the trusted policy-decision boundary and principal/resource contract that the audit evidence records.",
+        "log-record": "Supplies structured timestamped events and correlation fields for attributable evidence."
+      }
+    },
+    "application-rollback-compatibility": {
+      "aliases": [],
+      "objective": "Explain why restoring an earlier code revision does not undo committed data or guarantee compatibility with current application state.",
+      "prerequisiteReasons": {
+        "continuous-integration": "Supplies reproducible checks of a specific executable revision against a declared recovery environment.",
+        "transaction": "Distinguishes reverting executable deployment from undoing already committed persistent effects."
+      }
+    },
+    "query-semantic-validation": {
+      "aliases": [],
+      "objective": "Detect join amplification and other business-result errors using an independently specified result contract and justified input transformations.",
+      "prerequisiteReasons": {
+        "sql": "Defines the join, filter and aggregation operations whose result semantics are being validated.",
+        "metamorphic-testing": "Supplies relations between transformed inputs and expected outputs when exact reference results are expensive."
+      }
+    },
+    "deletion-tombstone": {
+      "aliases": [],
+      "objective": "Explain how an ordered deletion marker prevents stale-state resurrection and why marker reclamation requires a propagation and replay boundary.",
+      "prerequisiteReasons": {
+        "replication": "Explains why an old value can remain on another copy after a local delete.",
+        "single-writer-state-coordination": "Supplies an authoritative per-identity ordering and stale-publication rejection boundary for the ingestion example."
+      }
+    },
+    "rag-freshness-contract": {
+      "aliases": [],
+      "objective": "Define separate discovery and revocation consistency guarantees across a RAG update path and read path.",
+      "prerequisiteReasons": {
+        "background-document-indexing": "Distinguishes accepted source updates, completed representation work and safe searchable publication.",
+        "retrieval-authorization-boundary": "Defines caller-specific evidence eligibility and the independent revocation boundary.",
+        "ml-system-freshness": "Supplies end-to-end age and latency measurement rather than equating healthy queries with current evidence."
+      }
     }
   }
 }

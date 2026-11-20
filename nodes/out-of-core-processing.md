@@ -5,10 +5,10 @@ summary: Out-of-core processing computes over data larger than memory by boundin
 type: concept
 tags: [databases/storage]
 prereqs: [memory-hierarchy, reduction-operation]
-sources: [https://pandas.pydata.org/docs/user_guide/scale.html]
+sources: [https://pandas.pydata.org/docs/user_guide/scale.html, https://spark.apache.org/docs/latest/tuning.html]
 status: explained
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-11-21
 ---
 
 # Out-of-Core Processing
@@ -41,6 +41,15 @@ pandas supports smaller data types, loading selected columns, chunked processing
 
 Before changing engines, compare representative outputs, peak memory, intermediate size, data skew, and elapsed time. A distributed execution plan additionally moves data between workers; more machines need not help an operation dominated by that transfer or a single oversized partition. Record which operations genuinely require global information instead of treating every daily dataset as a low-latency stream.
 
+## Spilling intermediate state
+
+Spilling writes intermediate computation state to slower storage when the live state would otherwise exceed its memory budget. It is not merely reading input in chunks: a hash aggregation, join or sort may accumulate state across many input chunks. The engine must partition, serialize and later merge or reload that state under the operation's correctness contract.
+
+Consider a hypothetical 4 GiB execution-state budget and 7 GiB of intermediate state. At least 3 GiB cannot remain resident, and practical headroom can require spilling more. The byte difference is a capacity lower bound, not a prediction of total storage traffic: runs can be rewritten or read repeatedly during merge. A single indivisible oversized record or unsupported user function may still fail even when the engine supports spill for other operators.
+
+Compare peak memory, spill reads and writes, local storage capacity, elapsed time and output equivalence. More spill can trade an out-of-memory failure for a slower successful computation; it is not automatically an optimization. Test full temporary disks, worker loss, skew and cleanup without deleting durable source data. Spark's tuning guide distinguishes execution memory used by shuffles, joins, sorts and aggregations from cached storage, with contention affecting spill; engine-specific controls do not imply a universal memory multiplier.
+
 ## Sources
 
 - [pandas, Scaling to large datasets](https://pandas.pydata.org/docs/user_guide/scale.html): selective loading, memory reduction, chunking and alternative execution tools. Worked calculations above are independent examples.
+- <https://spark.apache.org/docs/latest/tuning.html>

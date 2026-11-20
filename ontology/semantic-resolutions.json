@@ -18498,6 +18498,223 @@
       "contentHash": "7baa7802fba16ac0fe0e0c1480ccde9cabc320f7a2007616cb4661745be95a68",
       "decision": "retain",
       "reason": "Diagnose skew before changing partition counts explains the skew failure and valid plan rewrites within distributed dataframe execution. Reviewed complete authored section; no separate entity or additional required edge is warranted."
+    },
+    {
+      "candidateKey": "cand-14f2add3c9457e0f6dff",
+      "sourceId": "centralized-data-authorization",
+      "contentHash": "b4ed06589c2ae7c7f14bbea946847bad05233d4f910fa95cd54a80d2f630261e",
+      "decision": "retain",
+      "reason": "Meaning: The learning objective is complete mediation of one policy contract across data paths. The section teaches its definition, enforcement, bypass example or limits; it is not another security product or an independently installed mechanism."
+    },
+    {
+      "candidateKey": "cand-9f2c81a1cdc587bf3817",
+      "sourceId": "centralized-data-authorization",
+      "contentHash": "f61ea7e15bbdef8e507216cade8872f44bced75a777c158cf69fc81f951c501c",
+      "decision": "retain",
+      "reason": "Mechanism: The learning objective is complete mediation of one policy contract across data paths. The section teaches its definition, enforcement, bypass example or limits; it is not another security product or an independently installed mechanism."
+    },
+    {
+      "candidateKey": "cand-9932b3198a7c73dc1a54",
+      "sourceId": "centralized-data-authorization",
+      "contentHash": "4ad1eeab50c1f26af30b12f597af9f5bba3579c4d0b37bc955af24425549f71b",
+      "decision": "retain",
+      "reason": "One example: The learning objective is complete mediation of one policy contract across data paths. The section teaches its definition, enforcement, bypass example or limits; it is not another security product or an independently installed mechanism."
+    },
+    {
+      "candidateKey": "cand-49117fc77280be7b22b6",
+      "sourceId": "centralized-data-authorization",
+      "contentHash": "469e08c20baac1612f80ff91bf167948f32a1ba9dc90dc780e43ae073a6d082d",
+      "decision": "retain",
+      "reason": "Boundaries and check: The learning objective is complete mediation of one policy contract across data paths. The section teaches its definition, enforcement, bypass example or limits; it is not another security product or an independently installed mechanism."
+    },
+    {
+      "candidateKey": "cand-0de1957bd29692c599cf",
+      "sourceId": "column-level-privileges",
+      "contentHash": "96b376e79b80c9dc998dd7c4d64af2a062e9054f1d4f3fea2daa28eeb542cfd5",
+      "decision": "retain",
+      "reason": "Meaning: The objective is column-specific authorization and effective-grant composition. The section defines or exercises this one permission mechanism, distinct from row visibility and masking."
+    },
+    {
+      "candidateKey": "cand-a47b5bd884ad3375660c",
+      "sourceId": "column-level-privileges",
+      "contentHash": "046a324d107f13f4c0cbedaab9d4bd88fbc231cff64d97ff5d7e35f08a8bfbc4",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is column-specific authorization and effective-grant composition. The section defines or exercises this one permission mechanism, distinct from row visibility and masking."
+    },
+    {
+      "candidateKey": "cand-7ab06f73d67a2354fec2",
+      "sourceId": "column-level-privileges",
+      "contentHash": "5db4bf391ad0298afaaec122b000b59e136504bce79b4f452801dde24290d717",
+      "decision": "retain",
+      "reason": "One example: The objective is column-specific authorization and effective-grant composition. The section defines or exercises this one permission mechanism, distinct from row visibility and masking."
+    },
+    {
+      "candidateKey": "cand-66609f501a0b20ef0134",
+      "sourceId": "column-level-privileges",
+      "contentHash": "9a6a5f9126cdc271e8ef8d4ca9dda9f93af1eddab84a080db9f1bc3b84a1d658",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is column-specific authorization and effective-grant composition. The section defines or exercises this one permission mechanism, distinct from row visibility and masking."
+    },
+    {
+      "candidateKey": "cand-308f73caceeee7b096ad",
+      "sourceId": "authorization-audit-log",
+      "contentHash": "0686eeb3b3ad9b25208c383a8dab92151fc9c2080a2647d73da460d67bd6febf",
+      "decision": "retain",
+      "reason": "Meaning: The objective is attributable authorization-decision evidence, separate from enforcement and effect completion. Field design, failed-export example and log protection remain supporting explanation of that contract."
+    },
+    {
+      "candidateKey": "cand-3498d7cbdf44c92608d6",
+      "sourceId": "authorization-audit-log",
+      "contentHash": "5dec76203f8e878c694e093826aec45ca34872126b979e64e80a2a692328ab9c",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is attributable authorization-decision evidence, separate from enforcement and effect completion. Field design, failed-export example and log protection remain supporting explanation of that contract."
+    },
+    {
+      "candidateKey": "cand-d13b7f7ae46602a9e9e1",
+      "sourceId": "authorization-audit-log",
+      "contentHash": "36d44086216169332062a8bff5d471a36d9227a47db9144c6927f678308beec9",
+      "decision": "retain",
+      "reason": "One example: The objective is attributable authorization-decision evidence, separate from enforcement and effect completion. Field design, failed-export example and log protection remain supporting explanation of that contract."
+    },
+    {
+      "candidateKey": "cand-d7f7ed8ace7d98bada08",
+      "sourceId": "authorization-audit-log",
+      "contentHash": "82c8a1cdb4e61262f59fdfb10e14217c141052e4b9b6dc448d5e331afa185ffb",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is attributable authorization-decision evidence, separate from enforcement and effect completion. Field design, failed-export example and log protection remain supporting explanation of that contract."
+    },
+    {
+      "candidateKey": "cand-7524d02702a90ddc84d2",
+      "sourceId": "application-rollback-compatibility",
+      "contentHash": "107e8b111004d565712268ee64ff3480a4cf7a0148670cc748fff275007c5d20",
+      "decision": "retain",
+      "reason": "Meaning: The objective is whether an earlier executable can operate safely on current persistent state. Schema transition, version fixture and Pod-template boundary qualify that one recovery contract rather than creating a general migration or transaction node."
+    },
+    {
+      "candidateKey": "cand-7c78168761c01e953e92",
+      "sourceId": "application-rollback-compatibility",
+      "contentHash": "fd5f78a5dd78518c0dc09cac42ebda2163e23e1baea4a7500f7cad2aa94af22a",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is whether an earlier executable can operate safely on current persistent state. Schema transition, version fixture and Pod-template boundary qualify that one recovery contract rather than creating a general migration or transaction node."
+    },
+    {
+      "candidateKey": "cand-d517280204fd2d71ac6a",
+      "sourceId": "application-rollback-compatibility",
+      "contentHash": "15f0e0fd6ac2ee0a94d5dc47ebd41c8648633365c2eab5b217982ae98fc0bc1d",
+      "decision": "retain",
+      "reason": "One example: The objective is whether an earlier executable can operate safely on current persistent state. Schema transition, version fixture and Pod-template boundary qualify that one recovery contract rather than creating a general migration or transaction node."
+    },
+    {
+      "candidateKey": "cand-c4a3ef99e67ddb497281",
+      "sourceId": "application-rollback-compatibility",
+      "contentHash": "b9dfc71e439c74984150e158f71c4c1b6ec1d35881eedfcfe2076679e4738a3f",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is whether an earlier executable can operate safely on current persistent state. Schema transition, version fixture and Pod-template boundary qualify that one recovery contract rather than creating a general migration or transaction node."
+    },
+    {
+      "candidateKey": "cand-19b9f4efedaf3f2c810a",
+      "sourceId": "query-semantic-validation",
+      "contentHash": "b9ab1225d49aefd10335682cea5ec6acd7dcafa1cf26a8db7505ff8a65bcaba8",
+      "decision": "retain",
+      "reason": "Meaning: The objective is validating query result grain against business semantics. Join multiplication and the DISTINCT counterexample are its worked tests; SQL and metamorphic testing remain already-declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-f29078451449174edc8b",
+      "sourceId": "query-semantic-validation",
+      "contentHash": "d69dd3a61b1b1522c9fb92af9273fe337b9d1c73a2a5602fc575df6ccafceb91",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is validating query result grain against business semantics. Join multiplication and the DISTINCT counterexample are its worked tests; SQL and metamorphic testing remain already-declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-371591f59138d181d773",
+      "sourceId": "query-semantic-validation",
+      "contentHash": "b8fe2ca9d4d5a40b00099a3323b4ecb796cd7e8c89e608b944443488feb52b57",
+      "decision": "retain",
+      "reason": "One example: The objective is validating query result grain against business semantics. Join multiplication and the DISTINCT counterexample are its worked tests; SQL and metamorphic testing remain already-declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-ef1c32654fb15cc2723a",
+      "sourceId": "query-semantic-validation",
+      "contentHash": "e09d80bd4774b3ac16af243c1e2e23452771a65e37632f9c6ce0d113c615e64c",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is validating query result grain against business semantics. Join multiplication and the DISTINCT counterexample are its worked tests; SQL and metamorphic testing remain already-declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-875d66bf38ea4399cf26",
+      "sourceId": "deletion-tombstone",
+      "contentHash": "fda63316ce6af3617482ab7115870f18f40b70aba912c81c9e54f4f8992ed00f",
+      "decision": "retain",
+      "reason": "Meaning: The objective is preserving an ordered negative fact against stale resurrection. Revision-fence and replica examples plus reclamation limits explain that one invariant, rather than defining another replication system."
+    },
+    {
+      "candidateKey": "cand-3ad63f13232b56e39b80",
+      "sourceId": "deletion-tombstone",
+      "contentHash": "3056a3d800565b5358da9f9463cec9022db7282e8348a2a9f60806b1eb0ad8a0",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is preserving an ordered negative fact against stale resurrection. Revision-fence and replica examples plus reclamation limits explain that one invariant, rather than defining another replication system."
+    },
+    {
+      "candidateKey": "cand-6d39ba6ea48411ff5c43",
+      "sourceId": "deletion-tombstone",
+      "contentHash": "e89872115686f1b6a429def77aa2a66f3d86c3603e571cbfcc2d6662be3452ef",
+      "decision": "retain",
+      "reason": "One example: The objective is preserving an ordered negative fact against stale resurrection. Revision-fence and replica examples plus reclamation limits explain that one invariant, rather than defining another replication system."
+    },
+    {
+      "candidateKey": "cand-4e55043d78e1223e83c4",
+      "sourceId": "deletion-tombstone",
+      "contentHash": "c6fced5322bd70a76b757d66f0507471758e740a84b61d41d4c19883b8e69505",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is preserving an ordered negative fact against stale resurrection. Revision-fence and replica examples plus reclamation limits explain that one invariant, rather than defining another replication system."
+    },
+    {
+      "candidateKey": "cand-560813aa57e1c1c7c579",
+      "sourceId": "rag-freshness-contract",
+      "contentHash": "4ff3727ca26ee4f1966815ae8da4e4e89c0ba8c2a87dc7accb34e162fcc838e2",
+      "decision": "retain",
+      "reason": "Meaning: The objective distinguishes observation, discoverability and permission eligibility. The time trace and failure checks teach this end-to-end contract; the individual ingestion and authorization mechanisms remain prerequisites."
+    },
+    {
+      "candidateKey": "cand-561856cc1786c59e5e13",
+      "sourceId": "rag-freshness-contract",
+      "contentHash": "1e368fbf75005cc20f52b197dd34c57ec4d76e6e741892ba61ca1eabc3d92a93",
+      "decision": "retain",
+      "reason": "Mechanism: The objective distinguishes observation, discoverability and permission eligibility. The time trace and failure checks teach this end-to-end contract; the individual ingestion and authorization mechanisms remain prerequisites."
+    },
+    {
+      "candidateKey": "cand-67b6da12fc9e525e5c3d",
+      "sourceId": "rag-freshness-contract",
+      "contentHash": "c0ea396788ac1a5297866c7eda754ed02d59a785fa8ee1f012f677fec2096dcc",
+      "decision": "retain",
+      "reason": "One example: The objective distinguishes observation, discoverability and permission eligibility. The time trace and failure checks teach this end-to-end contract; the individual ingestion and authorization mechanisms remain prerequisites."
+    },
+    {
+      "candidateKey": "cand-c76675c6503d7e0fc99a",
+      "sourceId": "rag-freshness-contract",
+      "contentHash": "91a8d70df74b07d28fef303ba1686f1ca2a4c5d420680bffd76d0b336d6f72d6",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective distinguishes observation, discoverability and permission eligibility. The time trace and failure checks teach this end-to-end contract; the individual ingestion and authorization mechanisms remain prerequisites."
+    },
+    {
+      "candidateKey": "cand-4707b3f7064096b1d802",
+      "sourceId": "background-document-indexing",
+      "contentHash": "769d407d03279e39b99ef63effbdb7c4d9ab841051c53f9846c76ae51d2e6747",
+      "decision": "retain",
+      "reason": "Publishing one complete document generation: Complete document-generation publication is part of this ingestion objective. The new section explains staged completeness, conditional active-pointer publication and external-index visibility limits rather than claiming one transaction spans independent services."
+    },
+    {
+      "candidateKey": "cand-f0eb433633ce1a9ab7ce",
+      "sourceId": "retrieval-authorization-boundary",
+      "contentHash": "e9f2a5a819140ba04dd1477a13640a37fce59451a04fe088361d80fa25d6aaf3",
+      "decision": "retain",
+      "reason": "Current evidence eligibility is separate from index membership: Current-generation and caller-rights eligibility belongs to this pre-disclosure admission boundary. The revocation trace separates exclusion from discovery and rejects stale-cache authority."
+    },
+    {
+      "candidateKey": "cand-d1ac3411ecc33fcc43d5",
+      "sourceId": "out-of-core-processing",
+      "contentHash": "318463c6bb11fa5214b35d9b8f7538bba7975b4fd48009eca562dccd3c723d1c",
+      "decision": "retain",
+      "reason": "Spilling intermediate state: Spill is the working-set mechanism already in this objective. The new section teaches intermediate-state storage, capacity versus traffic, unsupported operators and failure checks, not a separate dataframe execution API."
     }
   ]
 }

@@ -5310,13 +5310,6 @@
       "reason": "Worked example is supporting explanation for the canonical NUMA Memory Policy objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-9c8f919a23fe45c5e167",
-      "sourceId": "k-means-clustering",
-      "contentHash": "23070a54b7ddef24df66e334c764328564960069bc49fdb4317895bc5e2eb555",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical K-means clustering objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-9cd668ee7132f37243f8",
       "sourceId": "init-process",
       "contentHash": "5212bee404695ad5b399eb11067f0291e38c0db06b288b4381b15c2a06c852c9",
@@ -18715,6 +18708,391 @@
       "contentHash": "318463c6bb11fa5214b35d9b8f7538bba7975b4fd48009eca562dccd3c723d1c",
       "decision": "retain",
       "reason": "Spilling intermediate state: Spill is the working-set mechanism already in this objective. The new section teaches intermediate-state storage, capacity versus traffic, unsupported operators and failure checks, not a separate dataframe execution API."
+    },
+    {
+      "candidateKey": "cand-6408abda43925f6737f1",
+      "sourceId": "dependency-aware-agent-decomposition",
+      "contentHash": "c71e09c3475eb873d46858a5e7d800a7adc688ade21d36aa82eae29a60033016",
+      "decision": "retain",
+      "reason": "Meaning: This objective is choosing separable agent work from dependencies and effect contracts. Mechanism, dependency-path example and validation remain supporting explanation; generic graph and workflow/orchestration contracts are declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-29b3aef71b1b9f2fc5a9",
+      "sourceId": "dependency-aware-agent-decomposition",
+      "contentHash": "9111a73c02f6e9c3a21b911baaded9ef597bc734e0df677779445c90e5e9633f",
+      "decision": "retain",
+      "reason": "Mechanism: This objective is choosing separable agent work from dependencies and effect contracts. Mechanism, dependency-path example and validation remain supporting explanation; generic graph and workflow/orchestration contracts are declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-2a3f37a59ed1f9694332",
+      "sourceId": "dependency-aware-agent-decomposition",
+      "contentHash": "163ef0c476174158a61e813f7281c94177e26b12f78b152eb8025e8f90e5051e",
+      "decision": "retain",
+      "reason": "One example: This objective is choosing separable agent work from dependencies and effect contracts. Mechanism, dependency-path example and validation remain supporting explanation; generic graph and workflow/orchestration contracts are declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-634d6ad628c334778650",
+      "sourceId": "dependency-aware-agent-decomposition",
+      "contentHash": "84aa11403ab70e6cc25216970a699a79e04a90e543cf078ddc457b9a137730d6",
+      "decision": "retain",
+      "reason": "Boundaries and check: This objective is choosing separable agent work from dependencies and effect contracts. Mechanism, dependency-path example and validation remain supporting explanation; generic graph and workflow/orchestration contracts are declared prerequisites."
+    },
+    {
+      "candidateKey": "cand-1a3fb8814bf4e4fd76a8",
+      "sourceId": "caption-indexed-image-memory",
+      "contentHash": "8250782fba610d59163f2ab162f827670c8fe996df50198c8c031b9419720d71",
+      "decision": "retain",
+      "reason": "Meaning: This objective couples caption-mediated recall with authorized original-image resolution. Caption omissions, lazy payload loading and the worked inspection example explain that storage/recall contract rather than asserting a new image embedding model."
+    },
+    {
+      "candidateKey": "cand-336d521a7b8bf1dd0b32",
+      "sourceId": "caption-indexed-image-memory",
+      "contentHash": "2b8ae3d0bd317b4ccb5e5106f1e75b865d952ad8775b5498b064c9435c0154b4",
+      "decision": "retain",
+      "reason": "Mechanism: This objective couples caption-mediated recall with authorized original-image resolution. Caption omissions, lazy payload loading and the worked inspection example explain that storage/recall contract rather than asserting a new image embedding model."
+    },
+    {
+      "candidateKey": "cand-6c699855ae097050d25b",
+      "sourceId": "caption-indexed-image-memory",
+      "contentHash": "0b2b3ad14515a45a68dd2e4be4baa4c9602b2ccd4bd0f0e0b13fc143070c7e9e",
+      "decision": "retain",
+      "reason": "One example: This objective couples caption-mediated recall with authorized original-image resolution. Caption omissions, lazy payload loading and the worked inspection example explain that storage/recall contract rather than asserting a new image embedding model."
+    },
+    {
+      "candidateKey": "cand-47af25c420fb0f3c45c8",
+      "sourceId": "caption-indexed-image-memory",
+      "contentHash": "56a9d36ad9ebbc5761c0f434ef05533278832477dd8e26ef0e4dbae8a53179d1",
+      "decision": "retain",
+      "reason": "Boundaries and check: This objective couples caption-mediated recall with authorized original-image resolution. Caption omissions, lazy payload loading and the worked inspection example explain that storage/recall contract rather than asserting a new image embedding model."
+    },
+    {
+      "candidateKey": "cand-e9686c7e1bceea1ba6f7",
+      "sourceId": "mini-batch-k-means",
+      "contentHash": "3acdca1b6f2e6ab215d29d4414162b15c01ccb55ec44e5a0e820478022c94882",
+      "decision": "retain",
+      "reason": "Meaning: The objective is cumulative small-batch centroid optimization. Count/mean recurrence, assignment readout and the numerical example support that one objective rather than defining another clustering model."
+    },
+    {
+      "candidateKey": "cand-95d4b8e8aff50fca800a",
+      "sourceId": "mini-batch-k-means",
+      "contentHash": "4e38487454f007eb00f858f8bbd93388b5d77f96efa42a699e056169489459dc",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is cumulative small-batch centroid optimization. Count/mean recurrence, assignment readout and the numerical example support that one objective rather than defining another clustering model."
+    },
+    {
+      "candidateKey": "cand-508d78d853bead6da966",
+      "sourceId": "mini-batch-k-means",
+      "contentHash": "4e00423a2270a8915e2cbbc8cdddd692e4125c49c0eda13dbf0269927ecc97dc",
+      "decision": "retain",
+      "reason": "One example: The objective is cumulative small-batch centroid optimization. Count/mean recurrence, assignment readout and the numerical example support that one objective rather than defining another clustering model."
+    },
+    {
+      "candidateKey": "cand-f318418692afad787d29",
+      "sourceId": "mini-batch-k-means",
+      "contentHash": "b3e64a29b16ac3ce189b253a5b2115dbbe63d8ba443bcad2b4524f4c614d5b58",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is cumulative small-batch centroid optimization. Count/mean recurrence, assignment readout and the numerical example support that one objective rather than defining another clustering model."
+    },
+    {
+      "candidateKey": "cand-68cb7726766f7d85f855",
+      "sourceId": "centroid-revival",
+      "contentHash": "ab68001817f26776fcfbfa6264a5e73f91d8246e278fea0d0562a22c097ff8ea",
+      "decision": "retain",
+      "reason": "Meaning: The objective is reusing underoccupied cluster centers with consistent usage statistics. Weighted donor choice, split example and numeric edge cases qualify this intervention; they are not a whole new clustering objective."
+    },
+    {
+      "candidateKey": "cand-8fd9859c3d6876303b50",
+      "sourceId": "centroid-revival",
+      "contentHash": "f854c5033feb15bb0bbee2827f8e84077f59755bcf51e9700967522030a52569",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is reusing underoccupied cluster centers with consistent usage statistics. Weighted donor choice, split example and numeric edge cases qualify this intervention; they are not a whole new clustering objective."
+    },
+    {
+      "candidateKey": "cand-59d15f14a18930fec912",
+      "sourceId": "centroid-revival",
+      "contentHash": "dff516a64ad37250dfddad6848ff3b16875f615baa8635d65ac577e593035191",
+      "decision": "retain",
+      "reason": "One example: The objective is reusing underoccupied cluster centers with consistent usage statistics. Weighted donor choice, split example and numeric edge cases qualify this intervention; they are not a whole new clustering objective."
+    },
+    {
+      "candidateKey": "cand-b65f837f142d80339c3b",
+      "sourceId": "centroid-revival",
+      "contentHash": "4e7cb00f876112253372cd9cc055b1eed96b095356f3b41f41c2fec2a2b0a3f6",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is reusing underoccupied cluster centers with consistent usage statistics. Weighted donor choice, split example and numeric edge cases qualify this intervention; they are not a whole new clustering objective."
+    },
+    {
+      "candidateKey": "cand-61f796f1f4deb27a56f6",
+      "sourceId": "e-means-clustering",
+      "contentHash": "f19f96b69ca62617e2caac654eef8feb832a8ce54a3df6c59235728ccc02d5f7",
+      "decision": "retain",
+      "reason": "Meaning: The objective is the particular E-means optimization procedure. Sum/count EMA, cosine progress, fitted defaults, revival and final readout are its mechanism and boundaries, not unrelated general-purpose optimizer nodes. Separate mini-batch and revival foundations are prerequisites."
+    },
+    {
+      "candidateKey": "cand-1b56e0b5f369ccb4b612",
+      "sourceId": "e-means-clustering",
+      "contentHash": "a97abf1efe35d1a29fe93111f02a24e2c20c90edb1b05603502480d87d8eeafc",
+      "decision": "retain",
+      "reason": "Scheduled steps and fitted defaults: The objective is the particular E-means optimization procedure. Sum/count EMA, cosine progress, fitted defaults, revival and final readout are its mechanism and boundaries, not unrelated general-purpose optimizer nodes. Separate mini-batch and revival foundations are prerequisites."
+    },
+    {
+      "candidateKey": "cand-3a4487cb20fdd9671fc8",
+      "sourceId": "e-means-clustering",
+      "contentHash": "2cc6aa160df5cf3aec2bad9d9e5b3d6dedc6f8b6ea1ed22efd6b54f1a8d5560e",
+      "decision": "retain",
+      "reason": "Revival and final readout: The objective is the particular E-means optimization procedure. Sum/count EMA, cosine progress, fitted defaults, revival and final readout are its mechanism and boundaries, not unrelated general-purpose optimizer nodes. Separate mini-batch and revival foundations are prerequisites."
+    },
+    {
+      "candidateKey": "cand-484699fc6e3ff6536813",
+      "sourceId": "e-means-clustering",
+      "contentHash": "3657439329d26ad42113abd6c26c10ae3f2652a8457fcee74d0a78a731289500",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is the particular E-means optimization procedure. Sum/count EMA, cosine progress, fitted defaults, revival and final readout are its mechanism and boundaries, not unrelated general-purpose optimizer nodes. Separate mini-batch and revival foundations are prerequisites."
+    },
+    {
+      "candidateKey": "cand-44687b691dfd9424124f",
+      "sourceId": "vector-codebook-quantization",
+      "contentHash": "2ccdc15a0e5869bb20ced5c8bf4c6dc8738de6a0d2ecf56cf6b615558b214ad1",
+      "decision": "retain",
+      "reason": "Meaning: The objective is whole-vector representative coding and reconstruction. Codebook learning, index/storage example and distortion limits teach that one coding contract, not a product-codebook synonym."
+    },
+    {
+      "candidateKey": "cand-b842f40dfbf87b922bc0",
+      "sourceId": "vector-codebook-quantization",
+      "contentHash": "33b5d26c05f20f2b7603089c60937c3bf3423efb18c5ffae693899c19182d141",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is whole-vector representative coding and reconstruction. Codebook learning, index/storage example and distortion limits teach that one coding contract, not a product-codebook synonym."
+    },
+    {
+      "candidateKey": "cand-77b58866d724383f0872",
+      "sourceId": "vector-codebook-quantization",
+      "contentHash": "58fadf47c87351a8b0e16680d492fe08785ccd041b5a204a904c3228ecc9f454",
+      "decision": "retain",
+      "reason": "One example: The objective is whole-vector representative coding and reconstruction. Codebook learning, index/storage example and distortion limits teach that one coding contract, not a product-codebook synonym."
+    },
+    {
+      "candidateKey": "cand-4d06b2fd50d889cdcf19",
+      "sourceId": "vector-codebook-quantization",
+      "contentHash": "652f255e773660aad509f342d840e42cb94d79ecb50bc2989d547ee206631112",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is whole-vector representative coding and reconstruction. Codebook learning, index/storage example and distortion limits teach that one coding contract, not a product-codebook synonym."
+    },
+    {
+      "candidateKey": "cand-9d413004802244b26db3",
+      "sourceId": "clustering-data-curation",
+      "contentHash": "c75aacd0cb7e7b8a0d1573d2de557f61bb151dc46e0be7096120c69bd8c26741",
+      "decision": "retain",
+      "reason": "Meaning: The objective is changing training-data selection using representation-space groups. Quota example, encoder bias, leakage and controlled dataset comparisons explain this one selection policy; clustering is a prerequisite, not evidence of downstream quality."
+    },
+    {
+      "candidateKey": "cand-10188d4a5ee11d2ec9a0",
+      "sourceId": "clustering-data-curation",
+      "contentHash": "fffc17f5fa04e3fd473e07a6c65c61486bcb204caf42533876d16c9631097722",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is changing training-data selection using representation-space groups. Quota example, encoder bias, leakage and controlled dataset comparisons explain this one selection policy; clustering is a prerequisite, not evidence of downstream quality."
+    },
+    {
+      "candidateKey": "cand-3192485a53fca4b28931",
+      "sourceId": "clustering-data-curation",
+      "contentHash": "857f6ffaaa863fe27f165bedcb1e9cd7edc207840397a1e1c885eb13b941152b",
+      "decision": "retain",
+      "reason": "One example: The objective is changing training-data selection using representation-space groups. Quota example, encoder bias, leakage and controlled dataset comparisons explain this one selection policy; clustering is a prerequisite, not evidence of downstream quality."
+    },
+    {
+      "candidateKey": "cand-83944b7e33cf633291e7",
+      "sourceId": "clustering-data-curation",
+      "contentHash": "0e50361b35174f049f930371a0fbe8c9a5ead4f6fb942a0cce241f3d3008c071",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is changing training-data selection using representation-space groups. Quota example, encoder bias, leakage and controlled dataset comparisons explain this one selection policy; clustering is a prerequisite, not evidence of downstream quality."
+    },
+    {
+      "candidateKey": "cand-3264ced20e1a91a26023",
+      "sourceId": "dbscan",
+      "contentHash": "e46f53624802da1a3df0f4028350f1509f3c9ca75b5be251e7b04f4c18521975",
+      "decision": "retain",
+      "reason": "Meaning: The objective is core/border/noise density connectivity at one radius. Neighbor semantics, 1D example and order/scale limitations remain supporting explanation of DBSCAN."
+    },
+    {
+      "candidateKey": "cand-c8abfb70bd088d07437d",
+      "sourceId": "dbscan",
+      "contentHash": "235313e59c02903c0a119d7c1b848b12da209b5385e60d1a474445549049b7b1",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is core/border/noise density connectivity at one radius. Neighbor semantics, 1D example and order/scale limitations remain supporting explanation of DBSCAN."
+    },
+    {
+      "candidateKey": "cand-e8a847df2330c96f01fc",
+      "sourceId": "dbscan",
+      "contentHash": "610b82704d23c164fac07797af121e6dc0a780cb5cfb015ba3198c27180ba37d",
+      "decision": "retain",
+      "reason": "One example: The objective is core/border/noise density connectivity at one radius. Neighbor semantics, 1D example and order/scale limitations remain supporting explanation of DBSCAN."
+    },
+    {
+      "candidateKey": "cand-91f6a43c28078d99f466",
+      "sourceId": "dbscan",
+      "contentHash": "a7ae278e7c9ec5165a9a685fa4efea99f20cb26134104d795a4379bc73aab1fd",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is core/border/noise density connectivity at one radius. Neighbor semantics, 1D example and order/scale limitations remain supporting explanation of DBSCAN."
+    },
+    {
+      "candidateKey": "cand-1a858c6f501ec58c13fa",
+      "sourceId": "hdbscan",
+      "contentHash": "ebd7154d24dc41baae609d3ef169cd8ba901a15ea5a745bb595bbc0d0053c8b8",
+      "decision": "retain",
+      "reason": "Meaning: The objective is density-hierarchy construction and cluster selection. Core/mutual-reachability distances, hierarchy/selection distinction and parameter example support HDBSCAN; the general minimum spanning tree is explicitly separated as a prerequisite."
+    },
+    {
+      "candidateKey": "cand-2e1b977020bacc429f9a",
+      "sourceId": "hdbscan",
+      "contentHash": "8909f6ed9123e5fde960c2333500a1321761b981578cdcdafcc3c1a837d83224",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is density-hierarchy construction and cluster selection. Core/mutual-reachability distances, hierarchy/selection distinction and parameter example support HDBSCAN; the general minimum spanning tree is explicitly separated as a prerequisite."
+    },
+    {
+      "candidateKey": "cand-4b1c88e218f48773123b",
+      "sourceId": "hdbscan",
+      "contentHash": "a31fa63cf3c5c5feb2558efb61b56d92c2f45b92dc3346bb560d5028e4374b70",
+      "decision": "retain",
+      "reason": "One example: The objective is density-hierarchy construction and cluster selection. Core/mutual-reachability distances, hierarchy/selection distinction and parameter example support HDBSCAN; the general minimum spanning tree is explicitly separated as a prerequisite."
+    },
+    {
+      "candidateKey": "cand-d092d1b32288ee337f9c",
+      "sourceId": "hdbscan",
+      "contentHash": "9c04a51b163dab2a7938efd2ec7557b25ddfb6d7379621d83bbb3f00142132b0",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is density-hierarchy construction and cluster selection. Core/mutual-reachability distances, hierarchy/selection distinction and parameter example support HDBSCAN; the general minimum spanning tree is explicitly separated as a prerequisite."
+    },
+    {
+      "candidateKey": "cand-e7ca858fe22096fee245",
+      "sourceId": "dbscan-plus-plus",
+      "contentHash": "dc16577b288820d756ceff0ac0cc330378d80092bcc47daad773967c19fde6ce",
+      "decision": "retain",
+      "reason": "Meaning: The objective is subset empirical-density evaluation as a DBSCAN acceleration. Candidate coverage, rare-group example and inspected-evidence limits support it; this record does not invent uninspected detailed implementation semantics."
+    },
+    {
+      "candidateKey": "cand-22439996ada427fc68d7",
+      "sourceId": "dbscan-plus-plus",
+      "contentHash": "3d757f84f1a44352b9b5e6484fbe9d7352626ec59ecba1c3fae0ceb5658ce535",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is subset empirical-density evaluation as a DBSCAN acceleration. Candidate coverage, rare-group example and inspected-evidence limits support it; this record does not invent uninspected detailed implementation semantics."
+    },
+    {
+      "candidateKey": "cand-e45c683d56deae2b19b5",
+      "sourceId": "dbscan-plus-plus",
+      "contentHash": "c2b644faeb37eaae204dc7eecc6efdb34efaed66c977be0ec4363d5fed722e0f",
+      "decision": "retain",
+      "reason": "One example: The objective is subset empirical-density evaluation as a DBSCAN acceleration. Candidate coverage, rare-group example and inspected-evidence limits support it; this record does not invent uninspected detailed implementation semantics."
+    },
+    {
+      "candidateKey": "cand-f7d226d85640f86d5236",
+      "sourceId": "dbscan-plus-plus",
+      "contentHash": "375dac32caf7af862ad5072e42a8ef4913da47449a66dc9845ed64764da0e4da",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is subset empirical-density evaluation as a DBSCAN acceleration. Candidate coverage, rare-group example and inspected-evidence limits support it; this record does not invent uninspected detailed implementation semantics."
+    },
+    {
+      "candidateKey": "cand-524e37dc25927976a44b",
+      "sourceId": "optimizer-experiment-memory",
+      "contentHash": "8231fc3f168ab6aa06c9a8dc7f787583f2fb3740f24d1b9f9cbd2d82fcc31a7b",
+      "decision": "retain",
+      "reason": "Meaning: The objective is diagnostic experimental provenance for an optimizer. Pre-test predictions, failed-attempt retention and the worked regression record are fields and validation of that memory contract; persistent improvement, score history and factorial evaluation are prerequisites."
+    },
+    {
+      "candidateKey": "cand-640d1d073f40077c3aba",
+      "sourceId": "optimizer-experiment-memory",
+      "contentHash": "1777f8609425e3d0442c930630e8fc6153b62e41f1bd5b2089a06a08f6113551",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is diagnostic experimental provenance for an optimizer. Pre-test predictions, failed-attempt retention and the worked regression record are fields and validation of that memory contract; persistent improvement, score history and factorial evaluation are prerequisites."
+    },
+    {
+      "candidateKey": "cand-a93660e9e4a5a71779b3",
+      "sourceId": "optimizer-experiment-memory",
+      "contentHash": "9de4acec092791104d79cef558878c32fbf725bd36142fc3a4fc3efbc31f5d64",
+      "decision": "retain",
+      "reason": "Prospective predictions and model transitions: The objective is diagnostic experimental provenance for an optimizer. Pre-test predictions, failed-attempt retention and the worked regression record are fields and validation of that memory contract; persistent improvement, score history and factorial evaluation are prerequisites."
+    },
+    {
+      "candidateKey": "cand-711df0d0b3128ac292cc",
+      "sourceId": "optimizer-experiment-memory",
+      "contentHash": "c0e1f903603027ee4187d3fb3ad25d132ff103f5110deba0ae94544b50c620e0",
+      "decision": "retain",
+      "reason": "One example: The objective is diagnostic experimental provenance for an optimizer. Pre-test predictions, failed-attempt retention and the worked regression record are fields and validation of that memory contract; persistent improvement, score history and factorial evaluation are prerequisites."
+    },
+    {
+      "candidateKey": "cand-13707312a29a03981c46",
+      "sourceId": "optimizer-experiment-memory",
+      "contentHash": "6df29094f7364862fa4e2d53a5b41cd210186a2cd0de2fcdece129af7fb214fe",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is diagnostic experimental provenance for an optimizer. Pre-test predictions, failed-attempt retention and the worked regression record are fields and validation of that memory contract; persistent improvement, score history and factorial evaluation are prerequisites."
+    },
+    {
+      "candidateKey": "cand-93b7660e88e58c8eb44a",
+      "sourceId": "minimum-spanning-tree",
+      "contentHash": "3d21385ef12629b2c1a8dbb1937f471e10ddc18ee3ee4f9761005d9f28b49dd3",
+      "decision": "retain",
+      "reason": "Meaning: The objective is minimum-total-weight spanning connectivity. Kruskal exchange reasoning, triangle example, threshold-connectivity consequence and edge-case checks derive from this one graph primitive, distinct from shortest paths."
+    },
+    {
+      "candidateKey": "cand-e2d1a28efb30c45558ac",
+      "sourceId": "minimum-spanning-tree",
+      "contentHash": "dafde12cbf4f6a2aacab48959588c077a22fab22d79a86860781c793945e009a",
+      "decision": "retain",
+      "reason": "Mechanism: The objective is minimum-total-weight spanning connectivity. Kruskal exchange reasoning, triangle example, threshold-connectivity consequence and edge-case checks derive from this one graph primitive, distinct from shortest paths."
+    },
+    {
+      "candidateKey": "cand-20489a87abe6823dee0f",
+      "sourceId": "minimum-spanning-tree",
+      "contentHash": "0489dd29e3d4ad89c7bd74ebeb1f5618c16ffc3c627d7ab5f5fcbd09266a17ce",
+      "decision": "retain",
+      "reason": "One example: The objective is minimum-total-weight spanning connectivity. Kruskal exchange reasoning, triangle example, threshold-connectivity consequence and edge-case checks derive from this one graph primitive, distinct from shortest paths."
+    },
+    {
+      "candidateKey": "cand-b32492bfa6cdb22a039a",
+      "sourceId": "minimum-spanning-tree",
+      "contentHash": "60eed9e48202f6ad7c7469979d344d690183352f0a281ccfef54b6947581ad8a",
+      "decision": "retain",
+      "reason": "Threshold connectivity: The objective is minimum-total-weight spanning connectivity. Kruskal exchange reasoning, triangle example, threshold-connectivity consequence and edge-case checks derive from this one graph primitive, distinct from shortest paths."
+    },
+    {
+      "candidateKey": "cand-a0abeb8503363446995c",
+      "sourceId": "minimum-spanning-tree",
+      "contentHash": "64dd89bc01265f73030bb3d0cb75536a687fa3197977d18e2942ef919071a312",
+      "decision": "retain",
+      "reason": "Boundaries and check: The objective is minimum-total-weight spanning connectivity. Kruskal exchange reasoning, triangle example, threshold-connectivity consequence and edge-case checks derive from this one graph primitive, distinct from shortest paths."
+    },
+    {
+      "candidateKey": "cand-41da1e4cae0bddbf0da0",
+      "sourceId": "k-means-clustering",
+      "contentHash": "a468f0af75a952e758eb30fd423345cbcaa5adab53cc7da4db13dfe434f7083e",
+      "decision": "retain",
+      "reason": "Overview: The changed benchmark section supports the existing final squared-distance clustering objective. It distinguishes moving-pass/final-center losses, matched quality and time boundaries without adding a general GPU benchmarking prerequisite."
+    },
+    {
+      "candidateKey": "cand-5b5d758885961979b540",
+      "sourceId": "k-means-clustering",
+      "contentHash": "cb9dfb0f5556d5ce8b9878e70035efb6e68ce91073509017038ec7aa5ff7815a",
+      "decision": "retain",
+      "reason": "Compare at matched final quality: The changed benchmark section supports the existing final squared-distance clustering objective. It distinguishes moving-pass/final-center losses, matched quality and time boundaries without adding a general GPU benchmarking prerequisite."
+    },
+    {
+      "candidateKey": "cand-ee9f9e19b310d59a9535",
+      "sourceId": "agent-harness-transfer",
+      "contentHash": "1594165231b0526b1d47eba707780f09e4e384e843ab177ce0806832194bb062",
+      "decision": "retain",
+      "reason": "Swapping the model under an evolved harness: The model-swap section extends the existing harness/model transfer boundary in the inverse direction. The crossed example and retained-rationale fields are evaluation and provenance, not proof of a named study result."
+    },
+    {
+      "candidateKey": "cand-0791f371d9851d7c24ec",
+      "sourceId": "e-means-clustering",
+      "contentHash": "dfe91bb7ab933ac61d2e24a8d92dea34afa16d3bfe622f5c0d3aaa61e20206e6",
+      "decision": "retain",
+      "reason": "Mechanism: Meaning: The objective is the particular E-means optimization procedure. Sum/count EMA, cosine progress, fitted defaults, revival and final readout are its mechanism and boundaries, not unrelated general-purpose optimizer nodes. Separate mini-batch and revival foundations are prerequisites."
+    },
+    {
+      "candidateKey": "cand-649eeeb51451a5655b07",
+      "sourceId": "agent-harness-transfer",
+      "contentHash": "d593e2dfc8887def2ff29927097515bab8375177406494a6e4a4f32309045e0a",
+      "decision": "retain",
+      "reason": "Overview: Overview: The model-swap section extends the existing harness/model transfer boundary in the inverse direction. The crossed example and retained-rationale fields are evaluation and provenance, not proof of a named study result."
     }
   ]
 }

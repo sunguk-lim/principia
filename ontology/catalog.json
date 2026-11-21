@@ -5413,6 +5413,103 @@
         "retrieval-authorization-boundary": "Defines caller-specific evidence eligibility and the independent revocation boundary.",
         "ml-system-freshness": "Supplies end-to-end age and latency measurement rather than equating healthy queries with current evidence."
       }
+    },
+    "dependency-aware-agent-decomposition": {
+      "prerequisiteReasons": {
+        "multi-agent-orchestration": "The topology and role contracts define the policies being chosen.",
+        "agent-workflow-graph": "An explicit state-and-transition model expresses which branches can run independently.",
+        "graph": "Task edges, dependency paths and separability require the underlying directed-graph representation, which is not inherited from the workflow runtime node."
+      }
+    },
+    "caption-indexed-image-memory": {
+      "prerequisiteReasons": {
+        "embedding": "Text descriptions need a search representation.",
+        "agent-memory": "Offloaded storage and later recall establish the memory lifecycle.",
+        "retrieval-authorization-boundary": "Descriptions and original images both require pre-disclosure permission checks.",
+        "multimodal-input-contract": "Resolving an image requires a defined modality and content-part contract."
+      }
+    },
+    "mini-batch-k-means": {
+      "prerequisiteReasons": {
+        "k-means-clustering": "Defines the objective, centroid assignments and full-pass baseline being modified."
+      }
+    },
+    "centroid-revival": {
+      "prerequisiteReasons": {
+        "k-means-clustering": "Defines centers, assignments and the empty-group problem."
+      }
+    },
+    "e-means-clustering": {
+      "prerequisiteReasons": {
+        "mini-batch-k-means": "Provides the batch-assignment baseline and the distinction from cumulative means.",
+        "centroid-revival": "Explains the separately specified underused-center intervention."
+      }
+    },
+    "vector-codebook-quantization": {
+      "prerequisiteReasons": {
+        "k-means-clustering": "Defines nearest-centroid coding and how a codebook can be learned."
+      }
+    },
+    "clustering-data-curation": {
+      "prerequisiteReasons": {
+        "k-means-clustering": "Supplies a concrete grouping mechanism and its geometric limitations.",
+        "embedding": "The representation determines which examples appear similar.",
+        "dataset-ablation-study": "Independent equal-budget training comparisons test the proposed curation policy."
+      }
+    },
+    "dbscan": {
+      "prerequisiteReasons": {
+        "arithmetic": "Defines counts, threshold comparisons and the worked distances.",
+        "graph": "Connected core regions require a connectivity representation."
+      },
+      "relations": [
+        {
+          "type": "ALTERNATIVE_TO",
+          "target": "k-means-clustering",
+          "reason": "Density-connected regions and noise versus nearest-centroid partitions are alternative clustering objectives."
+        }
+      ]
+    },
+    "hdbscan": {
+      "prerequisiteReasons": {
+        "dbscan": "Provides density connectivity, core distances and the single-scale baseline.",
+        "minimum-spanning-tree": "The density hierarchy relies on the tree preserving connectivity across reachability thresholds."
+      },
+      "relations": [
+        {
+          "type": "ALTERNATIVE_TO",
+          "target": "dbscan",
+          "reason": "A selected density hierarchy is an alternative to one fixed-radius partition."
+        }
+      ]
+    },
+    "dbscan-plus-plus": {
+      "prerequisiteReasons": {
+        "dbscan": "Defines the full density-clustering procedure whose work is being reduced."
+      },
+      "aliases": [
+        "DBSCAN Plus-Plus"
+      ],
+      "relations": [
+        {
+          "type": "ALTERNATIVE_TO",
+          "target": "dbscan",
+          "reason": "Subset density estimation trades full candidate coverage for lower computation."
+        }
+      ]
+    },
+    "optimizer-experiment-memory": {
+      "prerequisiteReasons": {
+        "persistent-agent-improvement": "Provides retained-change validation and independent promotion rules.",
+        "score-history-prompt-optimization": "Defines the simpler candidate/score history that diagnostic memory extends.",
+        "factorial-agent-evaluation": "Separates model changes, harness changes and their interactions."
+      }
+    },
+    "minimum-spanning-tree": {
+      "prerequisiteReasons": {
+        "graph": "Spanning connectivity and cycles are graph properties.",
+        "arithmetic": "Edge-weight totals and comparisons define the optimum."
+      }
     }
   }
 }

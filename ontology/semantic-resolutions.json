@@ -10090,21 +10090,21 @@
       "sourceId": "agent-skill-package",
       "contentHash": "e155097623e831e8a4bf264f514663c1ba1498b927c95636029e095845a325cb",
       "decision": "retain",
-      "reason": "Introduces the canonical learning objective and its scope, not another entity."
+      "reason": "Overview: The paired library/no-skill comparison validates the existing reusable package lifecycle. The invented task transitions and rare-case controls operationalize utility without introducing another skill entity."
     },
     {
       "candidateKey": "cand-44046dcf246e2e55e6eb",
       "sourceId": "agent-skill-package",
       "contentHash": "7a69350ad80de87ac7f425ca20a7ddb332185a15dd213befef0c3c03596bbc12",
       "decision": "retain",
-      "reason": "Tests the same concept rather than adding a new learning objective."
+      "reason": "Validation: The paired library/no-skill comparison validates the existing reusable package lifecycle. The invented task transitions and rare-case controls operationalize utility without introducing another skill entity."
     },
     {
       "candidateKey": "cand-90e1bfb34292d4580a2b",
       "sourceId": "agent-skill-package",
       "contentHash": "98f404437ff7e1a197cce1b96aa66e3d2eeb9fc79d46b522e4d88624627cbfec",
       "decision": "retain",
-      "reason": "Extends the package lifecycle objective with scoped activation and outcome-based retirement; frequency example is a utility counterexample, not another package concept."
+      "reason": "Lifecycle utility is not invocation frequency: The paired library/no-skill comparison validates the existing reusable package lifecycle. The invented task transitions and rare-case controls operationalize utility without introducing another skill entity."
     },
     {
       "candidateKey": "cand-d5c2c21df6cb4d5ee07a",
@@ -11063,21 +11063,21 @@
       "sourceId": "effective-context-utilization",
       "contentHash": "322d818ec42d527c2fa30f7c5628cdd0ffbb7fdfb087603a41d6a0c9511f5f4f",
       "decision": "retain",
-      "reason": "Introduces the existing canonical objective before its sections; not a new concept."
+      "reason": "Overview: Stage labels and controlled evidence interventions deepen the existing effective-context measurement objective. The k-sweep example distinguishes omission from distraction without claiming a universal context-length law."
     },
     {
       "candidateKey": "cand-4f873a57548e81452e0b",
       "sourceId": "effective-context-utilization",
       "contentHash": "26a4fb6b1d6f91ebca44a62fdc992973e82b296bee9cef76e62efa88cbd684c3",
       "decision": "retain",
-      "reason": "Defines acceptance experiments for the same effective-context objective; no independent concept is introduced by a validation heading."
+      "reason": "Validation: Stage labels and controlled evidence interventions deepen the existing effective-context measurement objective. The k-sweep example distinguishes omission from distraction without claiming a universal context-length law."
     },
     {
       "candidateKey": "cand-07afc5e141406ec24666",
       "sourceId": "effective-context-utilization",
       "contentHash": "082245fc63c097464b44d2cbde30b288abdd61ad5b9481d913c2df69f31f4126",
       "decision": "retain",
-      "reason": "Supports the existing effective-context measurement identity with RULER tasks, perplexity limitations and stratified arithmetic; a proposed synonymous long-context node was not published."
+      "reason": "Beyond average loss and a single needle: Stage labels and controlled evidence interventions deepen the existing effective-context measurement objective. The k-sweep example distinguishes omission from distraction without claiming a universal context-length law."
     },
     {
       "candidateKey": "cand-8da06c5a5931cc1b5de9",
@@ -12246,28 +12246,28 @@
       "sourceId": "masked-attention-numerics",
       "contentHash": "6cd00f51c06b3115536b9074e5120e6161adbc2151b67db66f32f8ee2a5d3fa2",
       "decision": "retain",
-      "reason": "Defines numerical validity for allowed-key and empty-query cases within one attention-masking objective."
+      "reason": "Meaning: Boolean conventions, valid-query behavior and numerical empty rows jointly define the existing masking contract. The translated three-key example is supporting API precision, not a second attention entity."
     },
     {
       "candidateKey": "cand-10c817ff611feab14945",
       "sourceId": "masked-attention-numerics",
       "contentHash": "5060c58a4922117918b29a40ae22d233e00dd30abb356dbd8da35d081b60ebe0",
       "decision": "retain",
-      "reason": "Normalization and representability explain the existing attention and mixed-precision prerequisites in this mask-specific case."
+      "reason": "Mechanism: Boolean conventions, valid-query behavior and numerical empty rows jointly define the existing masking contract. The translated three-key example is supporting API precision, not a second attention entity."
     },
     {
       "candidateKey": "cand-fdc9e2866ccca0fdc17d",
       "sourceId": "masked-attention-numerics",
       "contentHash": "6c045c51d28337014521c281b9385cb61da936ca15b36497e8b0164a4613441c",
       "decision": "retain",
-      "reason": "Forward/gradient and padding checks establish the numerical masking contract rather than a separate generic testing entity."
+      "reason": "Validation and boundaries: Boolean conventions, valid-query behavior and numerical empty rows jointly define the existing masking contract. The translated three-key example is supporting API precision, not a second attention entity."
     },
     {
       "candidateKey": "cand-b6332f7186f43ea7a80e",
       "sourceId": "masked-attention-numerics",
       "contentHash": "e7d61e16c3d354c1f200bea53ef016603727b03a612814026671344bca731348",
       "decision": "retain",
-      "reason": "Finite and infinite sentinels are contrasting numerical cases, not new independent quantities."
+      "reason": "Worked example: Boolean conventions, valid-query behavior and numerical empty rows jointly define the existing masking contract. The translated three-key example is supporting API precision, not a second attention entity."
     },
     {
       "candidateKey": "cand-6e272839e41c5b248af9",
@@ -14290,7 +14290,7 @@
       "sourceId": "agent-skill-package",
       "contentHash": "1edd825f9597973ea8f49118afe15f49cd0740263e68beacec698e47f4affd28",
       "decision": "retain",
-      "reason": "The package objective is preserved. The added demonstration-to-procedure section explains how evidence becomes a valid reusable package and how to test generalization; it does not claim recordings automatically infer reliable skills. Judges evidence and generalization before packaging a reusable procedure."
+      "reason": "From a demonstration to a validated procedure: The paired library/no-skill comparison validates the existing reusable package lifecycle. The invented task transitions and rare-case controls operationalize utility without introducing another skill entity."
     },
     {
       "candidateKey": "cand-fb754b1b2ad344187695",
@@ -18112,14 +18112,14 @@
       "sourceId": "continuous-integration",
       "contentHash": "a48a58df4a25fcf89404c7f63bed0a5b4073bb41fba3917a42bb68c3a7f1aee8",
       "decision": "retain",
-      "reason": "Overview: Distinguishes check reporting, revision-specific execution evidence and repository enforcement; this is the acceptance boundary of the existing integration workflow, not a second CI entity."
+      "reason": "Overview: Versioned graders, incomplete runs and stochastic acceptance specify the evaluation evidence consumed by the existing integration gate. This is an AI-specific instance of current-head check enforcement, not a separate release orchestration system."
     },
     {
       "candidateKey": "cand-ad66ef66a3bdb781044d",
       "sourceId": "continuous-integration",
       "contentHash": "243b30925ed1fe3ef3fb30fdc993a309e221716a128b55aee09b7b12e914349e",
       "decision": "retain",
-      "reason": "Reporting a check versus enforcing a merge gate: Distinguishes check reporting, revision-specific execution evidence and repository enforcement; this is the acceptance boundary of the existing integration workflow, not a second CI entity."
+      "reason": "Reporting a check versus enforcing a merge gate: Versioned graders, incomplete runs and stochastic acceptance specify the evaluation evidence consumed by the existing integration gate. This is an AI-specific instance of current-head check enforcement, not a separate release orchestration system."
     },
     {
       "candidateKey": "cand-107ca3e95e289d516824",
@@ -19093,6 +19093,118 @@
       "contentHash": "d593e2dfc8887def2ff29927097515bab8375177406494a6e4a4f32309045e0a",
       "decision": "retain",
       "reason": "Overview: Overview: The model-swap section extends the existing harness/model transfer boundary in the inverse direction. The crossed example and retained-rationale fields are evaluation and provenance, not proof of a named study result."
+    },
+    {
+      "candidateKey": "cand-0bc22f83b00cbec4c094",
+      "sourceId": "continuous-integration",
+      "contentHash": "949e3f3abb1d25d43cd8a39b06eb36c1c422dbf32a46f32978db17c988ae9ad8",
+      "decision": "retain",
+      "reason": "An evaluation result is not an AI release decision: Versioned graders, incomplete runs and stochastic acceptance specify the evaluation evidence consumed by the existing integration gate. This is an AI-specific instance of current-head check enforcement, not a separate release orchestration system."
+    },
+    {
+      "candidateKey": "cand-0f2e0c184cda8e4e52b6",
+      "sourceId": "skill-procedure-consolidation",
+      "contentHash": "b94efb5de5b824ee40a1925b18647a0c29aa8071160671a129fc0d7a610cf19a",
+      "decision": "retain",
+      "reason": "Mechanism: This section explains contract-preserving consolidation into scoped implementations. Packaging and playbook contracts are declared prerequisites; the example and checks teach this one independently resolved consolidation objective."
+    },
+    {
+      "candidateKey": "cand-27bd794f8b109b133553",
+      "sourceId": "agent-memory-read-projections",
+      "contentHash": "19a4d1d8bc2e2beb48976a11dc5da05822cccd6a859d4d21e6ec99ec9ed4aad0",
+      "decision": "retain",
+      "reason": "Applicability scope before similarity ranking: Applicability scoping selects the bounded read view before ranking and tests false exclusions. Namespace and filter mechanisms support that same memory-projection objective; they are not a new OS namespace or a separate authorization implementation."
+    },
+    {
+      "candidateKey": "cand-39f3463f6c055dc2852f",
+      "sourceId": "agent-skill-package",
+      "contentHash": "c210598e1667b623138d30435faa96f38435057cceda0f8c304296c32f282d36",
+      "decision": "retain",
+      "reason": "Evaluating a library change rather than counting activations: The paired library/no-skill comparison validates the existing reusable package lifecycle. The invented task transitions and rare-case controls operationalize utility without introducing another skill entity."
+    },
+    {
+      "candidateKey": "cand-3da659dc00ddb2a00235",
+      "sourceId": "masked-attention-numerics",
+      "contentHash": "0bb1c83e329cd40f66f53ac9d59cab09e079f76592b964009c5e5d46422df257",
+      "decision": "retain",
+      "reason": "Boolean conventions and query rows are separate contracts: Boolean conventions, valid-query behavior and numerical empty rows jointly define the existing masking contract. The translated three-key example is supporting API precision, not a second attention entity."
+    },
+    {
+      "candidateKey": "cand-4bec42363478ea4701d6",
+      "sourceId": "skill-procedure-consolidation",
+      "contentHash": "c0346cf305ffbc67b9bfedbc8f306a891053a2fab162227ea2c80c86caa0f227",
+      "decision": "retain",
+      "reason": "Boundaries and check: This section explains contract-preserving consolidation into scoped implementations. Packaging and playbook contracts are declared prerequisites; the example and checks teach this one independently resolved consolidation objective."
+    },
+    {
+      "candidateKey": "cand-6362240a70044c330fa1",
+      "sourceId": "skill-procedure-consolidation",
+      "contentHash": "afe6714f14c1c282f6d9f45568146e32d959d5a3d579ac8424b0a0c78b28b40e",
+      "decision": "retain",
+      "reason": "One example: This section explains contract-preserving consolidation into scoped implementations. Packaging and playbook contracts are declared prerequisites; the example and checks teach this one independently resolved consolidation objective."
+    },
+    {
+      "candidateKey": "cand-67ae7208464ced1fc951",
+      "sourceId": "agent-memory-read-projections",
+      "contentHash": "00d587d086441c1731c1d8c440c855866a81147240b673c4d4d9faa06aa6e774",
+      "decision": "retain",
+      "reason": "Overview: Applicability scoping selects the bounded read view before ranking and tests false exclusions. Namespace and filter mechanisms support that same memory-projection objective; they are not a new OS namespace or a separate authorization implementation."
+    },
+    {
+      "candidateKey": "cand-798714d69f23d5e17f78",
+      "sourceId": "cascaded-classification",
+      "contentHash": "8e2e4de7f5e576008555891cebc12779d0043a0d8b030a936bedff07b6f44b8a",
+      "decision": "retain",
+      "reason": "One example: This section develops the routed-stage classification objective: conditional survivor probabilities, irreversible early misses and stage cost. The example and limits support the same independently resolved cascade entity, distinct from selective prediction alone."
+    },
+    {
+      "candidateKey": "cand-84438f2d1ffd10df1341",
+      "sourceId": "grouped-query-attention",
+      "contentHash": "1ddfa892005007bdd4db3ce2ad4d8271c6d664900bafb6737424b34855d65d45",
+      "decision": "retain",
+      "reason": "Overview: The head-block pooling and adaptation example explains how the existing GQA architecture can be initialized from MHA. It is a concrete supported construction within this objective, not a synonymous architecture node."
+    },
+    {
+      "candidateKey": "cand-8bc8ccc6226e3a78d952",
+      "sourceId": "grouped-query-attention",
+      "contentHash": "5509a5abb892dc6ae1e8a7df9fdf752bb1f2e19a0c3d3d5b32a39a4a159e5edb",
+      "decision": "retain",
+      "reason": "Checkpoint conversion is a lossy initialization followed by adaptation: The head-block pooling and adaptation example explains how the existing GQA architecture can be initialized from MHA. It is a concrete supported construction within this objective, not a synonymous architecture node."
+    },
+    {
+      "candidateKey": "cand-8eff2303f2fc124dc4cb",
+      "sourceId": "skill-procedure-consolidation",
+      "contentHash": "b19a4d48fac889078e5d53342f2384270d80400c69dec4f8ff8bd8e3413c0fde",
+      "decision": "retain",
+      "reason": "Meaning: This section explains contract-preserving consolidation into scoped implementations. Packaging and playbook contracts are declared prerequisites; the example and checks teach this one independently resolved consolidation objective."
+    },
+    {
+      "candidateKey": "cand-b6426412a2f48054982d",
+      "sourceId": "cascaded-classification",
+      "contentHash": "beaaef9bf7773a6b32e254744eaa78c8b20a10260f8a058fa33c6734eea8818e",
+      "decision": "retain",
+      "reason": "Mechanism: This section develops the routed-stage classification objective: conditional survivor probabilities, irreversible early misses and stage cost. The example and limits support the same independently resolved cascade entity, distinct from selective prediction alone."
+    },
+    {
+      "candidateKey": "cand-bbb18ca7921884002bcd",
+      "sourceId": "cascaded-classification",
+      "contentHash": "8679c099e1f70ffd927d15d135f8090cafded61db8a6483b577290b65097a007",
+      "decision": "retain",
+      "reason": "Validation and boundaries: This section develops the routed-stage classification objective: conditional survivor probabilities, irreversible early misses and stage cost. The example and limits support the same independently resolved cascade entity, distinct from selective prediction alone."
+    },
+    {
+      "candidateKey": "cand-bd889125b37783d48f28",
+      "sourceId": "cascaded-classification",
+      "contentHash": "d26635807dfec3b3987b55374057a1415ea0c3cb7e30df7fe1ff42b6bc8ecdcd",
+      "decision": "retain",
+      "reason": "Meaning: This section develops the routed-stage classification objective: conditional survivor probabilities, irreversible early misses and stage cost. The example and limits support the same independently resolved cascade entity, distinct from selective prediction alone."
+    },
+    {
+      "candidateKey": "cand-c20f946531646e00f654",
+      "sourceId": "effective-context-utilization",
+      "contentHash": "fc578c1cae4671ca38071e9c93070477b4d9c3d9fabbb91036288bd2ce706433",
+      "decision": "retain",
+      "reason": "Separating retrieval omission from context distraction: Stage labels and controlled evidence interventions deepen the existing effective-context measurement objective. The k-sweep example distinguishes omission from distraction without claiming a universal context-length law."
     }
   ]
 }

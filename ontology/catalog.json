@@ -5510,6 +5510,27 @@
         "graph": "Spanning connectivity and cycles are graph properties.",
         "arithmetic": "Edge-weight totals and comparisons define the optimum."
       }
+    },
+    "skill-procedure-consolidation": {
+      "objective": "Consolidate overlapping skill procedures without losing applicability, completion or recovery contracts.",
+      "prerequisiteReasons": {
+        "agent-skill-package": "Defines discoverable packaging and selective loading of procedural resources.",
+        "reusable-agent-playbook": "Defines the live inputs, preconditions and outcome checks whose behavior consolidation must preserve."
+      }
+    },
+    "cascaded-classification": {
+      "objective": "Compute and evaluate conditional error and cost through routed classification stages.",
+      "prerequisiteReasons": {
+        "conditional-probability": "Derives chained detection probabilities on the survivor population without an independence assumption.",
+        "precision-recall": "Interprets final alerts and missed positives at the deployment prevalence."
+      },
+      "relations": [
+        {
+          "type": "CONTRASTS_WITH",
+          "target": "selective-classification",
+          "reason": "Selective classification evaluates accepted versus rejected predictions; a cascade explicitly models later-stage conditional decisions and costs."
+        }
+      ]
     }
   }
 }

@@ -5,10 +5,10 @@ summary: Effective context utilization measures whether a model actually uses re
 type: concept
 tags: [ml/llm/evaluation]
 prereqs: [context-window, lost-in-the-middle, measurement]
-sources: [https://arxiv.org/abs/2307.03172, https://arxiv.org/abs/2308.14508, https://arxiv.org/abs/2404.06654]
+sources: [https://arxiv.org/abs/2307.03172, https://arxiv.org/abs/2308.14508, https://arxiv.org/abs/2404.06654, https://www.anthropic.com/research/effective-context-engineering-for-ai-agents]
 status: explained
 created: 2026-10-17
-updated: 2026-10-25
+updated: 2026-11-23
 ---
 
 # Effective Context Utilization
@@ -33,6 +33,16 @@ Language-model perplexity averages next-token prediction, so many local predicti
 
 For a toy suite with 20 cases at each of 2K, 8K and 16K tokens, suppose correct answers are 19, 16 and 10. Overall accuracy is 45/60=75%, but the longest slice is 10/20=50%. Within that slice, beginning evidence may succeed in 4/5 cases, middle evidence in 2/10 and ending evidence in 4/5. Reporting length alone then hides the 20% middle-position result. Preserve denominators and uncertainty; these small illustrative samples are not a model performance claim. Verify actual tokenized input and truncation, keep adaptation data separate from acceptance cases, and retest original short-context tasks after a length-extension change. Report prefill and decode costs under matched concurrency instead of assuming attention's quadratic score count is the whole runtime bill.
 
+## Separating retrieval omission from context distraction
+
+A retrieval-depth sweep is diagnostic only when it keeps distinct failure stages visible. For each held-out task, label whether the necessary evidence exists in the store, appears in the returned candidates, survives prompt assembly, and is used correctly. Increasing the result limit can improve candidate recall while worsening final task success; that observation alone does not establish distraction or justify deleting memories.
+
+Use paired conditions: no external evidence, production retrieval, and a manually adjudicated relevant-evidence condition. Hold model, task, tool environment and completion checks fixed. Then add controlled irrelevant passages while preserving the relevant passage and its position. A separate equal-length control helps distinguish mere input length from misleading content. These interventions test specific hypotheses rather than infer a cause from a top-k curve.
+
+For an invented 20-task replay, retrieval at k=2 contains sufficient evidence for 12 tasks and succeeds on 10. At k=6 it contains sufficient evidence for 18 but succeeds on 9. Recall rose from 12/20 to 18/20 while success fell from 10/20 to 9/20. Inspect which paired tasks changed; an oracle condition succeeding on 17 suggests a downstream opportunity but does not prove every remaining miss has the same cause. Stale evidence, contradictory instructions and accidental truncation require their own checks. Repeat trials and report uncertainty before selecting a retrieval budget.
+
+The context-engineering primary reference motivates selective context loading; this staged experiment is an independent diagnostic design, not a reported benchmark or proof that smaller context always wins.
+
 ## Prerequisites
 
 - [[context-window]]
@@ -45,3 +55,5 @@ For a toy suite with 20 cases at each of 2K, 8K and 16K tokens, suppose correct 
 - [Bai et al., *LongBench*](https://arxiv.org/abs/2308.14508): multi-task long-context evaluation.
 
 - <https://arxiv.org/abs/2404.06654>
+
+- <https://www.anthropic.com/research/effective-context-engineering-for-ai-agents>

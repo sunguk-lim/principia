@@ -5,10 +5,10 @@ summary: Continuous integration automatically builds and checks each proposed co
 type: concept
 tags: [software/testing]
 prereqs: [measurement, container]
-sources: [https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches, https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions, https://docs.github.com/en/actions/tutorials/build-and-test-code/python]
+sources: [https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches, https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions, https://docs.github.com/en/actions/tutorials/build-and-test-code/python, https://www.anthropic.com/research/demystifying-evals-for-ai-agents]
 status: explained
 created: 2026-10-08
-updated: 2026-11-18
+updated: 2026-11-23
 ---
 
 # Continuous Integration
@@ -31,9 +31,19 @@ A security scanner reporting failure is different from repository policy requiri
 
 Verify the gate with an intentionally failing change in an isolated branch: the check should report the intended failure and normal merge should be unavailable under the actual actor's permissions. Update the commit and require fresh evidence; a result on an older head is not a check of the new bytes. Preserve negative authorization tests after a fix rather than relying on the scanner to rediscover the same defect. Branch enforcement prevents specified unaccepted states from merging; it cannot establish detector recall or compensate for a missing test.
 
+## An evaluation result is not an AI release decision
+
+For a probabilistic AI application, a release gate binds a specific candidate version to a versioned evaluation set, graders, trial counts and acceptance rules. A model-based judge is one fallible measurement source; its fluent verdict cannot replace independently checked task outcomes. Separate a capability suite that seeks gains from a regression suite protecting established behavior, and declare critical failure slices before inspecting the new result.
+
+An illustrative gate requires at least 90 of 100 tasks completed and no unauthorized effects in a separate protected set. A candidate completing 93 tasks but violating one protected case fails that rule. A run that completed only 40 tasks after an infrastructure outage is incomplete, not a 40% capability score and not a pass. When trials are stochastic, choose repeated-trial and uncertainty requirements in advance rather than retrying until a favorable sample appears.
+
+CI must enforce the intended check on the current candidate, while the application team owns whether the suite measures the right behavior. Preserve the model, prompt, tool and grader versions, missing-result policy and decision evidence. Offline acceptance does not establish production success: later exposure, monitoring and rollback remain separate controls. Anthropic's evaluation reference supports task/outcome graders, repeated trials and distinct capability/regression suites; the numerical gate above is an invented policy example.
+
 ## Sources
 
 - [GitHub, Continuous integration](https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions): definition and workflow model.
 - [GitHub, Building and testing Python](https://docs.github.com/en/actions/tutorials/build-and-test-code/python): concrete build/test workflow example.
 
 - <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>
+
+- <https://www.anthropic.com/research/demystifying-evals-for-ai-agents>

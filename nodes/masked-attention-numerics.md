@@ -8,7 +8,7 @@ prereqs: [transformer-attention, mixed-precision-training]
 sources: [https://docs.pytorch.org/docs/2.15/generated/torch.nn.functional.scaled_dot_product_attention.html, https://docs.pytorch.org/docs/2.15/notes/numerical_accuracy.html]
 status: explained
 created: 2026-10-31
-updated: 2026-10-31
+updated: 2026-11-23
 ---
 
 # Masked Attention Numerics
@@ -32,6 +32,14 @@ For a valid query permitting only the first two keys, equal allowed scores shoul
 ## Validation and boundaries
 
 Define invalid-query behavior explicitly, for example a safe zero result and exclusion from the supervised loss, and ensure the implementation does not propagate invalid intermediates into gradients. Multiplying an already non-finite loss by zero is not a repair. Test finite forward results and gradients, all-padding cases, causal-plus-padding composition, representative dtypes and actual backend dispatch. Use a simple wider-precision reference for valid rows. A padded query can be semantically ignorable even though its computational path must still be numerically safe.
+
+## Boolean conventions and query rows are separate contracts
+
+A padding label says which positions are padding; an attention API decides how a boolean value is interpreted. In the inspected PyTorch 2.15 scaled-dot-product-attention API, True means that the key participates. In MultiheadAttention's key_padding_mask, True instead marks a key to ignore. Passing the same boolean array between those interfaces without translating it reverses the intended evidence boundary.
+
+For keys with values [2,5,8], suppose the third position is padding. The padding mask is [False,False,True], while the corresponding participation mask is [True,True,False]. For equal allowed scores, the valid output is (2+5)/2=3.5. Reusing the padding mask as participation selects only 8: the result is finite but semantically wrong. This error is independent of the all-invalid-row numerical problem above.
+
+Key exclusion does not automatically suppress padded query outputs. Specify how invalid query rows are handled and excluded from downstream objectives. Test mask shape and broadcasting, causal-plus-padding composition, non-square cached decoding and the actual backend. The inspected API documents a causal/explicit-mask restriction; construct a compatible combined mask when needed rather than assuming every backend accepts both controls. Pin the API version because a mathematical mask definition does not establish one library's argument convention.
 
 ## Sources
 

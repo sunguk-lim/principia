@@ -5,10 +5,10 @@ summary: An agent skill package bundles task-scoped instructions and optional re
 type: concept
 tags: [ml/agents]
 prereqs: [agent-execution-harness, repository-agent-instructions]
-sources: ["https://agentskills.io/specification", "https://playwright.dev/docs/codegen"]
+sources: ["https://agentskills.io/specification", "https://playwright.dev/docs/codegen", https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills]
 status: explained
 created: 2026-10-17
-updated: 2026-11-06
+updated: 2026-11-23
 ---
 
 # Agent Skill Package
@@ -41,6 +41,14 @@ Playwright's generator illustrates the distinction: it records interactions and 
 
 For an invented form-filling procedure, demonstrate one customer name but replay with a second name, an empty optional field and a rejected write. Verify that the procedure supplies the new input, preserves unrelated fields and reports failure without retrying an uncertain write blindly. Compare replay success, false completion, recovery cost and maintenance against a simpler explicit procedure. Demonstration-derived skills are useful only when the generalized contract survives those changes.
 
+## Evaluating a library change rather than counting activations
+
+A library revision should earn promotion through held-out task outcomes. Compare the previous library, the candidate library and a no-skill control with the same model, tools, permissions and resource budget. Record which skill was discovered, loaded and actually followed; these are different events. To test a proposed retirement, remove that skill or a compatible cluster while leaving unrelated procedures unchanged. Prefer paired tasks and repeated trials to a comparison of unrelated production sessions.
+
+For an invented 30-task suite, the old library succeeds on 23 and the candidate on 24. That total can conceal three newly solved cases and two regressions, including a rare recovery failure. Report the paired transitions, failure severity, latency and context cost, not only the net gain of one. A frequent skill may merely activate on easy tasks; observed success conditional on use does not establish its causal benefit. Keep rarely used safety and recovery checks even when frequency-based pruning would remove them.
+
+Separate tasks used to design a skill from acceptance tasks, and retain the old version for rollback. Test false activation, changed tools, missing resources and absent permissions. Anthropic's primary skill-authoring guidance emphasizes representative-task evaluation and observing actual activation; its agent-evaluation guidance distinguishes capability improvement from regression protection. The ablation protocol here is an independent way to apply those principles, not evidence that every skill needs the same experiment.
+
 ## Prerequisites
 
 - [[agent-execution-harness]]
@@ -51,3 +59,5 @@ For an invented form-filling procedure, demonstrate one customer name but replay
 - [Agent Skills specification](https://agentskills.io/specification): package layout, metadata, and optional resources.
 
 - <https://playwright.dev/docs/codegen>
+
+- <https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills>

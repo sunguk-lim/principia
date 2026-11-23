@@ -5,10 +5,10 @@ summary: Cross-component security review follows untrusted data and authority ac
 type: concept
 tags: [software/testing]
 prereqs: [tool-call-execution-contract, agent-execution-harness]
-sources: ["https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches", https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/, "https://owasp.org/www-community/attacks/xss/", "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control", "https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html"]
+sources: ["https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches", https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/, "https://owasp.org/www-community/attacks/xss/", "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control", "https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html", https://genai.owasp.org/resource/genai-red-teaming-guide/]
 status: explained
 created: 2026-10-14
-updated: 2026-11-18
+updated: 2026-11-24
 ---
 
 # Cross-Component Security Review
@@ -43,6 +43,15 @@ Returning the same not-found response for nonexistent and inaccessible objects c
 
 Review evidence is revision-scoped. Record the code revision, relevant configuration and traced path, and invalidate that evidence when its premises change. A change in an upstream identity mapper can stale an otherwise unchanged downstream authorization review. Mark that state stale or pending, not vulnerable or safe without analysis. Track the affected path and rerun the boundary checks. GitHub's stale-approval dismissal is a concrete diff-scoped example; broader cross-service evidence invalidation is an application-owned policy, not an automatic property of a scanner. A reviewed-point percentage does not establish the absence of unmodeled attack paths.
 
+
+## Adversarial campaigns and reproducible findings
+
+A red-team campaign deliberately probes an authorized system against a stated threat model. Review model behavior, application implementation, deployment infrastructure and runtime effects rather than treating a successful adversarial prompt as the whole assessment. OWASP's GenAI guide separates these four areas. A test that elicits disallowed text and a test that reaches an unauthorized external operation establish different findings.
+
+Define the tested revision/configuration, attacker entry point, assumed access, protected property and stopping rules. Use synthetic or otherwise authorized test data and controlled effects. An invented campaign plants a hostile instruction in a retrieved document, then observes whether the agent merely quotes it, proposes an unauthorized action or actually executes one. Preserve the exact causal path and final effect evidence; a model's assertion that it sent data is not a network receipt.
+
+Retain successful negative controls and legitimate tasks to assess false blocks. Reproduce findings on the target revision, validate remediation through the original entry point, and retain regression fixtures without exposing secrets. Attack-set pass rates estimate only tested coverage; they are not a certificate against every adaptive adversary. Findings need scope, preconditions, impact and next action, not merely a count of alarming responses.
+
 ## Prerequisites
 
 - [[tool-call-execution-contract]]
@@ -58,3 +67,5 @@ Review evidence is revision-scoped. Record the code revision, relevant configura
 - <https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/>
 
 - <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>
+
+- <https://genai.owasp.org/resource/genai-red-teaming-guide/>

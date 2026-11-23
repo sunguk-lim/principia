@@ -19205,6 +19205,398 @@
       "contentHash": "fc578c1cae4671ca38071e9c93070477b4d9c3d9fabbb91036288bd2ce706433",
       "decision": "retain",
       "reason": "Separating retrieval omission from context distraction: Stage labels and controlled evidence interventions deepen the existing effective-context measurement objective. The k-sweep example distinguishes omission from distraction without claiming a universal context-length law."
+    },
+    {
+      "candidateKey": "cand-8716fe5cdeacde248566",
+      "sourceId": "agent-interaction-trajectories",
+      "contentHash": "eb2bd547d5d0c6ff0bc192186412db247abe272b5564fdfa2536578671320770",
+      "decision": "retain",
+      "reason": "Whole-conversation and tool-outcome evaluation: Evaluation uses the existing episode/trace identity to interpret whole-conversation outcomes; replay coherence and stale tool arguments specify what trajectory evidence can establish, without conflating logging with ground truth."
+    },
+    {
+      "candidateKey": "cand-2e76d1d4dbf87efe4e1c",
+      "sourceId": "agent-memory-lifecycle",
+      "contentHash": "826f48d80f9389f58b511e49623728f079f326f2afd61b63b0036dab52b2c538",
+      "decision": "retain",
+      "reason": "Meaning: One lifecycle objective schedules scoped recall and validated promotion across start/turn/retry boundaries; the table and failure cases explain those same transitions. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-f3a249af5dfc264fd719",
+      "sourceId": "agent-memory-lifecycle",
+      "contentHash": "3f37a73f83eff084b59663d1dade628f0fdb32c50bb259f969569857d228696b",
+      "decision": "retain",
+      "reason": "Mechanism: One lifecycle objective schedules scoped recall and validated promotion across start/turn/retry boundaries; the table and failure cases explain those same transitions. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-f707e4fb856354ac18eb",
+      "sourceId": "agent-memory-lifecycle",
+      "contentHash": "4f26f5fd1d1ff9f33f35518b091b2306fbac3748fb2de323f9fc2591c3468952",
+      "decision": "retain",
+      "reason": "One example: One lifecycle objective schedules scoped recall and validated promotion across start/turn/retry boundaries; the table and failure cases explain those same transitions. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-da3b12edceefdef779ca",
+      "sourceId": "agent-memory-lifecycle",
+      "contentHash": "bacbbd8d9a272f9dcb11fe5e04e7cebe8f3ce9c5cd8bb79d44b2fd0da7cd0aa3",
+      "decision": "retain",
+      "reason": "Validation and check: One lifecycle objective schedules scoped recall and validated promotion across start/turn/retry boundaries; the table and failure cases explain those same transitions. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-42b08e22aa4ede354cfc",
+      "sourceId": "background-document-indexing",
+      "contentHash": "847cdc429cb584726d768ff55bf22c80e475bbfd116552bb1999b3946768136b",
+      "decision": "retain",
+      "reason": "Document and query embedding compatibility: Query/document representation compatibility is a required validity condition for publishing usable versioned evidence. It refines this ingestion contract; the broader cross-index release architecture has its own safe-vector-index-migration node."
+    },
+    {
+      "candidateKey": "cand-4a8315b70966c8dec8ff",
+      "sourceId": "context-engineering",
+      "contentHash": "f567b9d9ffd6902606745fd6673421a17d7627dfbef312ddce952d977a7736d3",
+      "decision": "retain",
+      "reason": "Meaning: One whole-input-state construction objective coordinates authority, evidence, finite budget and recovery; the token-budget instance is not a separate budgeting identity. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-430fcb43bbcde011ed89",
+      "sourceId": "context-engineering",
+      "contentHash": "e583779873bfa222a3b2b9ed1c73deeca25b27b8165e54bc38c1a1233cb72194",
+      "decision": "retain",
+      "reason": "Mechanism: One whole-input-state construction objective coordinates authority, evidence, finite budget and recovery; the token-budget instance is not a separate budgeting identity. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-21a5fd608b0a28f83adb",
+      "sourceId": "context-engineering",
+      "contentHash": "81e8dfb028b8dacb1d940eafb3dea6a3ca25f2feee6b512662d04aa26465187e",
+      "decision": "retain",
+      "reason": "One example: One whole-input-state construction objective coordinates authority, evidence, finite budget and recovery; the token-budget instance is not a separate budgeting identity. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-339ac778ca013553cc52",
+      "sourceId": "context-engineering",
+      "contentHash": "efacc81839cdc4a8d59f94322f40f0c0ab4a435b3191f1f417bc782bcb8c35f4",
+      "decision": "retain",
+      "reason": "Validation and check: One whole-input-state construction objective coordinates authority, evidence, finite budget and recovery; the token-budget instance is not a separate budgeting identity. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-b2a84a6cc80f98b47479",
+      "sourceId": "cross-component-security-review",
+      "contentHash": "7f101f3dc5656a043f92006d2f54a05f6ee3e44bc1ae9d56bfedfa1190369e02",
+      "decision": "retain",
+      "reason": "Adversarial campaigns and reproducible findings: The campaign section operationalizes adversarial coverage of the same data-and-authority paths, with four assessment scopes and reproducible findings; it does not define a new attack algorithm."
+    },
+    {
+      "candidateKey": "cand-187d4936b377b946f1b6",
+      "sourceId": "direct-preference-optimization",
+      "contentHash": "9e7ba0630e83823d4af7bed1d9d3a425abe2e719129e5954303ac8b326905473",
+      "decision": "retain",
+      "reason": "Meaning: One DPO objective transforms reference-relative response probabilities into a preference loss; the cancellation derivation and numeric pair teach the same loss. Pairwise preference modeling is separately linked. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-5ff04e2720413f687814",
+      "sourceId": "direct-preference-optimization",
+      "contentHash": "28cae2807c1a7aec22069821ec4ed2c00d148d4d846dcdb006f57196e1e292fc",
+      "decision": "retain",
+      "reason": "Mechanism: One DPO objective transforms reference-relative response probabilities into a preference loss; the cancellation derivation and numeric pair teach the same loss. Pairwise preference modeling is separately linked. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-b218e75586697657abb5",
+      "sourceId": "direct-preference-optimization",
+      "contentHash": "cd8d588268b71b37a4a60fe156bb028e7122d3a73e92ce870591c14f5b291ea7",
+      "decision": "retain",
+      "reason": "One example: One DPO objective transforms reference-relative response probabilities into a preference loss; the cancellation derivation and numeric pair teach the same loss. Pairwise preference modeling is separately linked. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-2bc6ad32abf88d576b7d",
+      "sourceId": "direct-preference-optimization",
+      "contentHash": "7270bcd57be488029f740a555253be674a6c0ce04147e2887125b996057a08df",
+      "decision": "retain",
+      "reason": "Validation and check: One DPO objective transforms reference-relative response probabilities into a preference loss; the cancellation derivation and numeric pair teach the same loss. Pairwise preference modeling is separately linked. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-21a369dd0d3276001530",
+      "sourceId": "evaluation-slices",
+      "contentHash": "5ed4fbd0d762570dbeca02c67cf61d46440ac57c4f8030327d2ca86d00b2ceb4",
+      "decision": "retain",
+      "reason": "Temporal holdouts and deployment-rate checks: Chronological holdouts and deployment-rate checks instantiate predeclared temporal/population membership, leakage control and denominator reporting under this same evaluation-slice objective."
+    },
+    {
+      "candidateKey": "cand-61c71b17a424c3414ef2",
+      "sourceId": "gpu-kernel-benchmarking",
+      "contentHash": "bb2fc9a72b01ac4cf7a8e8be2b84693dd4097920d89bcec9b6e7cf813c62b536",
+      "decision": "retain",
+      "reason": "Controlled comparisons across streams, caches and time: Stream joins, cache-state reversals and paired trial order specify a valid fixed-operation comparison. They strengthen the one experiment contract rather than declaring another kernel algorithm."
+    },
+    {
+      "candidateKey": "cand-5df64fd582cdee19820a",
+      "sourceId": "in-context-learning",
+      "contentHash": "70fa08a92b65b81f2349233b3044840bcfae61b538d10b02263d037edd511f51",
+      "decision": "retain",
+      "reason": "Meaning: One frozen-weight conditioning objective is contrasted with parameter updates; demonstration ambiguity and held-out controls test the same phenomenon. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-3d31487b0dafe0bc6f30",
+      "sourceId": "in-context-learning",
+      "contentHash": "b1e1eefa45fe20703f561b3eaa0a10dc0108fc6838db46be1f622a9a934c9fcb",
+      "decision": "retain",
+      "reason": "Mechanism: One frozen-weight conditioning objective is contrasted with parameter updates; demonstration ambiguity and held-out controls test the same phenomenon. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-48163644befb332558b2",
+      "sourceId": "in-context-learning",
+      "contentHash": "8ec28132eb7f5f56ed3783179e681d07b4d180d7f98098caf8e79411e0597efb",
+      "decision": "retain",
+      "reason": "One example: One frozen-weight conditioning objective is contrasted with parameter updates; demonstration ambiguity and held-out controls test the same phenomenon. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-785a0c866c512fcf6e0c",
+      "sourceId": "in-context-learning",
+      "contentHash": "b9cdf196acddcf39afbad47ffbee19864d628bc510673c38c529013b8c9ee92a",
+      "decision": "retain",
+      "reason": "Validation and check: One frozen-weight conditioning objective is contrasted with parameter updates; demonstration ambiguity and held-out controls test the same phenomenon. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-97a96b8cb7e4c147afed",
+      "sourceId": "llm-policy-optimization-method-selection",
+      "contentHash": "73f241550b20aa744a784a69c3eb4777675adc8036ab580ec9e06386133317e6",
+      "decision": "retain",
+      "reason": "Overview: The changed overview compares feedback and sampling contracts. The newly independent DPO and RLHF mechanisms are explicit prerequisites, while selection remains its own decision objective."
+    },
+    {
+      "candidateKey": "cand-6219b370ae7274eb5af6",
+      "sourceId": "memory-level-parallelism",
+      "contentHash": "53f4ae5ba48aabddc53ff8a8f6425c47027e8ee87d5617ec328337556daf464c",
+      "decision": "retain",
+      "reason": "Meaning: One overlap-versus-latency objective is derived through independent outstanding requests; the envelope and synthetic rates show its assumptions, not a separately named device optimization. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-5bb0e359b245d03e41e3",
+      "sourceId": "memory-level-parallelism",
+      "contentHash": "a3ce63fa589ddfa40bd58bc91dab25ed3ac5c4641173ff48995f12e9e8aabe4b",
+      "decision": "retain",
+      "reason": "Mechanism: One overlap-versus-latency objective is derived through independent outstanding requests; the envelope and synthetic rates show its assumptions, not a separately named device optimization. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-fbe61f7ee51bb034dab7",
+      "sourceId": "memory-level-parallelism",
+      "contentHash": "6a870ab418ee7809d2b5ca68d69e38071d1bcfd77afc27f043e38ff357d94784",
+      "decision": "retain",
+      "reason": "One example: One overlap-versus-latency objective is derived through independent outstanding requests; the envelope and synthetic rates show its assumptions, not a separately named device optimization. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-ba45cc408ff3056eef60",
+      "sourceId": "memory-level-parallelism",
+      "contentHash": "e74563436d744a5dd39e7b4c55ea38ac8e20d6f4ca3eba2a09450dce093c299b",
+      "decision": "retain",
+      "reason": "Validation and check: One overlap-versus-latency objective is derived through independent outstanding requests; the envelope and synthetic rates show its assumptions, not a separately named device optimization. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-f8b725959a3e7e79151b",
+      "sourceId": "pairwise-preference-model",
+      "contentHash": "9ff686b3f8bd1999ae39444895401b8c05589f35ac6c2a88818c0e434d7f613e",
+      "decision": "retain",
+      "reason": "Meaning: One comparison observation model maps score differences to choice probabilities; offset nonidentifiability and binary loss are its mechanism. Domain-specific image preferences remain a separate application. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-645b7af81b1b8f709609",
+      "sourceId": "pairwise-preference-model",
+      "contentHash": "4a70b50ebfd68292c0487de5286eb3836eab95d1475b49655c44a7fa380b86d3",
+      "decision": "retain",
+      "reason": "Mechanism: One comparison observation model maps score differences to choice probabilities; offset nonidentifiability and binary loss are its mechanism. Domain-specific image preferences remain a separate application. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-4ae749f4f02271d0a522",
+      "sourceId": "pairwise-preference-model",
+      "contentHash": "58dcfbd452dcc3651e3a723632340d30e0a7f864d19db0daec5756768dc6b7f6",
+      "decision": "retain",
+      "reason": "One example: One comparison observation model maps score differences to choice probabilities; offset nonidentifiability and binary loss are its mechanism. Domain-specific image preferences remain a separate application. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-db3f211ed0e613fb1c97",
+      "sourceId": "pairwise-preference-model",
+      "contentHash": "c1926501d5ffdc188ebfd7235d5b39944eac122f99256c01ba30b31c572f2163",
+      "decision": "retain",
+      "reason": "Validation and check: One comparison observation model maps score differences to choice probabilities; offset nonidentifiability and binary loss are its mechanism. Domain-specific image preferences remain a separate application. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-487cc6dec9e3935ef3da",
+      "sourceId": "portable-agent-memory",
+      "contentHash": "b8fe7e5dc6184f1a15af9443f898e003a5d560de490c45abcb292bc511b9385b",
+      "decision": "retain",
+      "reason": "Meaning: One owner-and-contract portability architecture composes existing reconciliation, runtime interoperability and adapter foundations; backend examples test whether the same semantic contract survives transfer. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-cc2209cd0b5f77b71df0",
+      "sourceId": "portable-agent-memory",
+      "contentHash": "01d0606ac576b1e85311a507bea9b8e5bd89cbdba85852e29a013f95930e0164",
+      "decision": "retain",
+      "reason": "Mechanism: One owner-and-contract portability architecture composes existing reconciliation, runtime interoperability and adapter foundations; backend examples test whether the same semantic contract survives transfer. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-fe21074b1250d4a363db",
+      "sourceId": "portable-agent-memory",
+      "contentHash": "85a25aae7607cc2b7b749201591a35e308a2bb393661815d25eaf9e1293a404b",
+      "decision": "retain",
+      "reason": "One example: One owner-and-contract portability architecture composes existing reconciliation, runtime interoperability and adapter foundations; backend examples test whether the same semantic contract survives transfer. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-e62205ea5b06d8134ae1",
+      "sourceId": "portable-agent-memory",
+      "contentHash": "0f6cd2c53901cabb79f2480953ad68a5767232504d9304849c50a2d80c1f7e25",
+      "decision": "retain",
+      "reason": "Validation and alternatives: One owner-and-contract portability architecture composes existing reconciliation, runtime interoperability and adapter foundations; backend examples test whether the same semantic contract survives transfer. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-4dbff10a42d573712279",
+      "sourceId": "prompt-versioning",
+      "contentHash": "30e12554bca3c75a2819b0ca58ebe27df600e62bc4e89e64a80fb1479331af25",
+      "decision": "retain",
+      "reason": "Meaning: One prompt release identity objective separates immutable commits from movable environment labels; the variable/schema mismatch illustrates compatible promotion and rollback. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-438b8d2991acc581690b",
+      "sourceId": "prompt-versioning",
+      "contentHash": "003bb500f05ebdc565d500d4f9dc1f2db43362e8fe8ec6734b17dcdfb89e653a",
+      "decision": "retain",
+      "reason": "Mechanism: One prompt release identity objective separates immutable commits from movable environment labels; the variable/schema mismatch illustrates compatible promotion and rollback. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-17b11bccbc6670e13c06",
+      "sourceId": "prompt-versioning",
+      "contentHash": "f89dfc68681e17d61b0fc96d4b1838f86e33c82bfb75c2cc7508276a6961ccbc",
+      "decision": "retain",
+      "reason": "One example: One prompt release identity objective separates immutable commits from movable environment labels; the variable/schema mismatch illustrates compatible promotion and rollback. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-32b36ed627d525e1cf72",
+      "sourceId": "prompt-versioning",
+      "contentHash": "3a57f183509356800eacb0405f0581d543c916fdde7a3d68241e65fc2118324d",
+      "decision": "retain",
+      "reason": "Validation and check: One prompt release identity objective separates immutable commits from movable environment labels; the variable/schema mismatch illustrates compatible promotion and rollback. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-8fc5dfac2441a2563107",
+      "sourceId": "rag-latency-budget",
+      "contentHash": "e510b7b749e586811fdffc8fb8d6207d9a0372388cb77a595234ed5e2668a613",
+      "decision": "retain",
+      "reason": "Verification before release changes usable latency: Verifier release gates change which interval counts as usable latency. Serial/parallel examples and timeouts explain the same critical-path accounting, with support validation separately linked."
+    },
+    {
+      "candidateKey": "cand-952acee8d909819a0920",
+      "sourceId": "reinforcement-learning-from-human-feedback",
+      "contentHash": "434dda74335818d2a4cbb349dd8e7932a9a5b3204e5c0ffef35306c9b1ca0014",
+      "decision": "retain",
+      "reason": "Meaning: One human-feedback training architecture connects demonstrations, comparison reward and policy optimization; the short-answer failure illustrates proxy error rather than introducing another reward method. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-2c5f12c362f8e5b56f70",
+      "sourceId": "reinforcement-learning-from-human-feedback",
+      "contentHash": "023281e5c5c517386058ad6d7e734944a31953032f05c30beab16fa91bdc8711",
+      "decision": "retain",
+      "reason": "Mechanism: One human-feedback training architecture connects demonstrations, comparison reward and policy optimization; the short-answer failure illustrates proxy error rather than introducing another reward method. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-105b20ae84465284393b",
+      "sourceId": "reinforcement-learning-from-human-feedback",
+      "contentHash": "de69c898e00073299410b924376ffe85d738bbfbc208976c34cd48881feb24ff",
+      "decision": "retain",
+      "reason": "One example: One human-feedback training architecture connects demonstrations, comparison reward and policy optimization; the short-answer failure illustrates proxy error rather than introducing another reward method. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-3f6815f2596fe4f1f4a3",
+      "sourceId": "reinforcement-learning-from-human-feedback",
+      "contentHash": "df8c0dd4fd333a17f5c8fd031e74d8acbb5de2a0effe3e53d49fbccfea2a3b9c",
+      "decision": "retain",
+      "reason": "Validation and check: One human-feedback training architecture connects demonstrations, comparison reward and policy optimization; the short-answer failure illustrates proxy error rather than introducing another reward method. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-df34756b3d7bb39503af",
+      "sourceId": "retrieval-evidence-gate",
+      "contentHash": "5ca8139c017406bd6b66425e32b2ea489047813d655ea4921ba305bbf916a3aa",
+      "decision": "retain",
+      "reason": "Revision-aware regression and failure localization: Revision-aware fixtures and conditional denominators locate an evidence gate failure. Source lineage is an explicit prerequisite and the migration architecture remains separate."
+    },
+    {
+      "candidateKey": "cand-4df10412882ea129bd0b",
+      "sourceId": "safe-vector-index-migration",
+      "contentHash": "7c6b413f9c9e5b1b932dcc894d35865d860d20210fce8e377ffa16d79b6c1d69",
+      "decision": "retain",
+      "reason": "Boundaries and check: One representation-release protocol coordinates query/index compatibility, source replay, gates and rollback; the index table and permission changes trace the same release boundary. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-b6d151881a832750c330",
+      "sourceId": "safe-vector-index-migration",
+      "contentHash": "3e8743cee4a00eb9007b31a535f6fa0fb6c22a03516677faf74ea4195c13e43b",
+      "decision": "retain",
+      "reason": "Meaning: One representation-release protocol coordinates query/index compatibility, source replay, gates and rollback; the index table and permission changes trace the same release boundary. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-cc5865771198535ecc10",
+      "sourceId": "safe-vector-index-migration",
+      "contentHash": "71dfbedbb7a3ec1c6c76f8c7cc57a0c769c00fde221839ad28920c2ca842db84",
+      "decision": "retain",
+      "reason": "Mechanism: One representation-release protocol coordinates query/index compatibility, source replay, gates and rollback; the index table and permission changes trace the same release boundary. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-81e7b734b90aa1fcca74",
+      "sourceId": "safe-vector-index-migration",
+      "contentHash": "0163ca69bb0f7597558a0c4238ad70819199959051f23c7b46c3ea8019b8a9b9",
+      "decision": "retain",
+      "reason": "One example: One representation-release protocol coordinates query/index compatibility, source replay, gates and rollback; the index table and permission changes trace the same release boundary. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-e1bc7870d937d4256d26",
+      "sourceId": "socket-mode-event-delivery",
+      "contentHash": "9619545e4d51da667af7caff9c039ffc90bf6d6722c0a6c26a7671bfb2f1edd7",
+      "decision": "retain",
+      "reason": "Boundaries and validation: One outbound delivery contract distinguishes envelope receipt, durable admission and task effects; reconnect and reply reconciliation are its failure boundaries. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-d98867c2936d84861d93",
+      "sourceId": "socket-mode-event-delivery",
+      "contentHash": "30fb82c436aa8260a26e872e30f86acc8dbc6bfecafa3fb5a0beb9a78b73b9dc",
+      "decision": "retain",
+      "reason": "Meaning: One outbound delivery contract distinguishes envelope receipt, durable admission and task effects; reconnect and reply reconciliation are its failure boundaries. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-67199a8b39d419a134d9",
+      "sourceId": "socket-mode-event-delivery",
+      "contentHash": "1c6497f0a34a2196a4857dae8cefb67a8f1fe2e9a75d727c35949e48aa171c79",
+      "decision": "retain",
+      "reason": "Mechanism: One outbound delivery contract distinguishes envelope receipt, durable admission and task effects; reconnect and reply reconciliation are its failure boundaries. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-865baa6f2681bd20ff57",
+      "sourceId": "socket-mode-event-delivery",
+      "contentHash": "ef812487f252d69fb178440fa40488da1b934413feba8e252b5ac901159a481a",
+      "decision": "retain",
+      "reason": "One example: One outbound delivery contract distinguishes envelope receipt, durable admission and task effects; reconnect and reply reconciliation are its failure boundaries. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-be8d916f70099beff226",
+      "sourceId": "verbalized-sampling",
+      "contentHash": "6326c0164120a278bf4e179422072df476a5ca08bebc508ac04e43d238c9f984",
+      "decision": "retain",
+      "reason": "Meaning: One proposal-set prompting method is distinguished from token sampling; conditional weight normalization and held-out diversity tests explain how to interpret and assess that same method. This section defines the canonical identity and scope."
+    },
+    {
+      "candidateKey": "cand-70d0ba21515f36d39475",
+      "sourceId": "verbalized-sampling",
+      "contentHash": "e32fe7eec00480bb496c4e3f0654217021a8828250cb025332832384873baa2a",
+      "decision": "retain",
+      "reason": "Mechanism: One proposal-set prompting method is distinguished from token sampling; conditional weight normalization and held-out diversity tests explain how to interpret and assess that same method. This section supplies the causal or mathematical mechanism of that identity."
+    },
+    {
+      "candidateKey": "cand-a2db0020da16cd91a9b0",
+      "sourceId": "verbalized-sampling",
+      "contentHash": "f4439e24b0b994f6913e9b8f801335bebaa059add98aabadfae14c1698fb676e",
+      "decision": "retain",
+      "reason": "One example: One proposal-set prompting method is distinguished from token sampling; conditional weight normalization and held-out diversity tests explain how to interpret and assess that same method. The original worked instance exercises that mechanism, not a second entity."
+    },
+    {
+      "candidateKey": "cand-9eadc20c4384dec037fb",
+      "sourceId": "verbalized-sampling",
+      "contentHash": "9d92caff656eb14d36cddf987ef212928b7d59e46235287cda073ee43282e095",
+      "decision": "retain",
+      "reason": "Validation and check: One proposal-set prompting method is distinguished from token sampling; conditional weight normalization and held-out diversity tests explain how to interpret and assess that same method. Acceptance checks and limitations belong with the mechanism being tested."
     }
   ]
 }

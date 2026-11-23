@@ -3614,7 +3614,8 @@
         "retrieval-augmented-generation": "Defines the retrieval and context-assembly stages whose elapsed work is attributed.",
         "prefill-vs-decode": "Separates input-processing and streamed-generation contributions to first and final output.",
         "trace-span": "Provides correlated start/end operation intervals and parent/child containment.",
-        "latency-percentile": "Grounds distributional latency validation rather than summing unrelated stage tails."
+        "latency-percentile": "Grounds distributional latency validation rather than summing unrelated stage tails.",
+        "citation-support-validation": "Usable-output timing depends on which claim-support checks must pass before release."
       }
     },
     "text-embedding-api-contract": {
@@ -5531,6 +5532,132 @@
           "reason": "Selective classification evaluates accepted versus rejected predictions; a cascade explicitly models later-stage conditional decisions and costs."
         }
       ]
+    },
+    "safe-vector-index-migration": {
+      "objective": "A safe vector-index migration coordinates document and query representations, source-change catch-up, acceptance gates and reversible routing as one versioned release.",
+      "prerequisiteReasons": {
+        "vector-index-reconciliation": "Reconciliation supplies source identities, revisions and deletion/permission convergence.",
+        "measurement": "Acceptance requires comparable quality, timing and failure measurements."
+      }
+    },
+    "portable-agent-memory": {
+      "objective": "Portable agent memory separates an authorized user memory namespace and its versioned semantics from harness-specific sessions and interchangeable storage adapters.",
+      "prerequisiteReasons": {
+        "agent-memory-reconciliation": "Shared facts need scoped correction, conflict and validity semantics.",
+        "agent-harness-interoperability": "Harness sessions and runtime capabilities are distinct from persistent memory ownership.",
+        "adapter-pattern": "Adapters translate interfaces without guaranteeing semantic equivalence."
+      }
+    },
+    "agent-memory-lifecycle": {
+      "objective": "Agent-memory lifecycle hooks bind initial context, turn-specific recall and validated writes to explicit run boundaries with retry, concurrency and failure semantics.",
+      "prerequisiteReasons": {
+        "agent-session-state": "Session/run boundaries determine what a reconnect or new turn means.",
+        "agent-memory-reconciliation": "Promotion and correction require evidence-based current-state decisions.",
+        "idempotent-operation-key": "Retries need an operation identity and a recorded outcome."
+      }
+    },
+    "socket-mode-event-delivery": {
+      "objective": "Socket-mode event delivery receives provider events through an authenticated outbound connection while keeping envelope acknowledgment separate from durable processing and authorized effects.",
+      "prerequisiteReasons": {
+        "socket": "The transport builds on a persistent network communication endpoint.",
+        "idempotent-operation-key": "Redelivery and retries need logical deduplication independent of task success."
+      }
+    },
+    "memory-level-parallelism": {
+      "objective": "Memory-level parallelism overlaps independent memory requests so throughput can rise without reducing individual access latency, until dependencies or finite resources become limiting.",
+      "prerequisiteReasons": {
+        "memory-hierarchy": "Access latency and bandwidth must refer to a specified memory level.",
+        "measurement": "Overlap and traffic claims require controlled timing and profiling."
+      },
+      "aliases": [
+        "MLP (memory-level parallelism)"
+      ],
+      "relations": [
+        {
+          "type": "CONTRASTS_WITH",
+          "target": "occupancy",
+          "reason": "Independent outstanding memory work differs from the fraction of GPU warps resident; residency does not establish eligible loads or memory saturation."
+        }
+      ]
+    },
+    "retrieval-evidence-gate": {
+      "prerequisiteReasons": {
+        "dataset-lineage": "Regression fixtures must bind source revisions and transformation configurations to their labels."
+      }
+    },
+    "in-context-learning": {
+      "objective": "In-context learning conditions a fixed language model on task instructions or demonstrations in its input rather than updating its weights for that task.",
+      "prerequisiteReasons": {
+        "causal-language-model-training": "The next-token conditional explains how a demonstration prefix can change a continuation.",
+        "context-window": "Demonstrations consume finite input capacity and do not persist by themselves.",
+        "measurement": "Held-out comparisons distinguish example use from unsupported learning claims."
+      },
+      "relations": [
+        {
+          "type": "CONTRASTS_WITH",
+          "target": "fine-tuning",
+          "reason": "Task-time conditioning changes the input computation without the parameter updates used by fine-tuning."
+        }
+      ]
+    },
+    "verbalized-sampling": {
+      "objective": "Verbalized sampling asks a model to generate multiple candidate responses with probability descriptions, separating a diverse proposal set from externally validated probabilities and selection.",
+      "prerequisiteReasons": {
+        "llm-sampling-controls": "Prompt-level candidate generation differs from token-level temperature or truncation.",
+        "model-calibration": "Written probability labels must not be confused with calibrated outcome frequencies.",
+        "measurement": "Diversity and utility require matched-budget held-out comparisons."
+      }
+    },
+    "context-engineering": {
+      "objective": "Context engineering selects, structures and refreshes the entire permitted model-input state under a finite budget while preserving evidence, authority and recoverability.",
+      "prerequisiteReasons": {
+        "effective-context-utilization": "Capacity and position do not prove that relevant evidence is used.",
+        "agent-execution-harness": "Input text and externally enforced runtime authority are separate boundaries.",
+        "lossy-context-compaction": "Compaction trades detail for space and needs an explicit recovery contract."
+      }
+    },
+    "prompt-versioning": {
+      "objective": "Prompt versioning identifies immutable prompt revisions and promotes tested compatible model-input configurations through named environments with attributable rollback.",
+      "prerequisiteReasons": {
+        "dataset-lineage": "Prompt experiments need attributable input and dependency versions.",
+        "progressive-model-rollout": "Promotion and rollback concern tested system behavior, not only a text edit."
+      }
+    },
+    "pairwise-preference-model": {
+      "objective": "A pairwise preference model maps prompt-conditioned candidate score differences to comparison probabilities and fits them against observed choices without treating the score as objective truth.",
+      "prerequisiteReasons": {
+        "binary-cross-entropy": "Observed choices provide the binary likelihood to fit.",
+        "model-calibration": "Preference probabilities require held-out calibration distinct from correctness."
+      }
+    },
+    "direct-preference-optimization": {
+      "objective": "Direct Preference Optimization fits preferred-versus-dispreferred response pairs using reference-relative policy log probabilities instead of a separately trained online reward-optimization loop.",
+      "prerequisiteReasons": {
+        "pairwise-preference-model": "The loss models observed comparison probabilities through score differences.",
+        "causal-language-model-training": "Response likelihoods and masks come from the autoregressive model contract.",
+        "kl-divergence": "The reference-relative reparameterization follows the KL-penalized reward objective."
+      },
+      "aliases": [
+        "DPO"
+      ]
+    },
+    "reinforcement-learning-from-human-feedback": {
+      "objective": "RLHF uses human feedback to fit a reward proxy and optimize a model policy while independently checking whether the changed behavior satisfies the intended task.",
+      "prerequisiteReasons": {
+        "fine-tuning": "Demonstration adaptation is a separate stage from preference-reward optimization.",
+        "pairwise-preference-model": "Human comparisons must be translated into an explicit fallible reward model.",
+        "proximal-policy-optimization": "The documented pipeline uses sampled-policy optimization with a defined update contract.",
+        "reward-hacking": "Optimizing a learned reward can exploit its gaps instead of improving the real task."
+      },
+      "aliases": [
+        "RLHF"
+      ]
+    },
+    "llm-policy-optimization-method-selection": {
+      "prerequisiteReasons": {
+        "direct-preference-optimization": "The selection comparison relies on the offline reference-relative preference objective.",
+        "reinforcement-learning-from-human-feedback": "The selection comparison distinguishes learned human-reward training from executable rewards."
+      }
     }
   }
 }

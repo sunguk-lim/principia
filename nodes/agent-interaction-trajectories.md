@@ -8,7 +8,7 @@ prereqs: [trace-span, log-record, dataset-lineage]
 sources: [https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/gen-ai/gen-ai-agent-spans.md, https://docs.langchain.com/langsmith/evaluation-concepts]
 status: explained
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-11-24
 ---
 
 # Agent Interaction Trajectories
@@ -32,6 +32,15 @@ Capture only permitted fields. Apply consent, secret redaction, scoped access an
 ## Check your understanding
 
 Does a user intervention by itself identify a correct target action? No. Its task, intent, outcome and annotation policy must establish what it means.
+
+
+## Whole-conversation and tool-outcome evaluation
+
+A multi-turn evaluator must preserve the episode's actual continuation policy. Replaying recorded user messages against a changed agent can create an incoherent conversation if those messages assumed different prior answers. Use a fixed scripted interaction when it remains valid, a controlled user simulator with its limitations declared, or separately adjudicated real conversations. A simulator agreeing with the agent is not independent proof of completion.
+
+Score final task state, policy-critical intermediate actions and conversation coherence separately. For an invented three-turn task, the user supplies a destination, corrects the date and confirms the updated request. A response can repeat the corrected date accurately yet invoke a tool with the obsolete date. Trace the actual tool arguments and receipt, not only the final prose. Conversely, a harmless exploratory read need not match one reference trajectory exactly if it preserves the task's invariants.
+
+LangSmith distinguishes individual runs from threads representing related multi-turn runs. Use that distinction to report per-turn defects and episode-level success without multiplying one conversation into independent observations. Retain cancellation, human takeover, missing receipts, retries and unknown outcomes. Compare on the same initial state and task distribution, with privacy/retention controls on transcripts and a held-out evaluation separate from prompt tuning.
 
 ## Prerequisites
 

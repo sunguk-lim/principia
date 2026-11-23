@@ -5,10 +5,10 @@ summary: Evaluation slices measure the same prediction task on explicitly define
 type: concept
 tags: [ml/evaluation]
 prereqs: [confusion-matrix, conditional-probability, loss-function]
-sources: [https://scikit-learn.org/stable/modules/model_evaluation.html, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html, https://docs.pytorch.org/docs/2.15/generated/torch.nn.CrossEntropyLoss.html]
+sources: [https://scikit-learn.org/stable/modules/model_evaluation.html, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html, https://docs.pytorch.org/docs/2.15/generated/torch.nn.CrossEntropyLoss.html, https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html]
 status: explained
 created: 2026-10-20
-updated: 2026-11-01
+updated: 2026-11-24
 ---
 
 # Evaluation Slices
@@ -35,6 +35,15 @@ The same slicing principle applies to a probabilistic [[loss-function]], not onl
 
 Keep the mix fixed when comparing models, and report slice losses and counts. Distinguish a changed mixture from changed within-slice performance. Per-token losses across incompatible tokenizers do not have matching units; declare a justified common normalization before comparing them. Overlapping slices do not necessarily reconstruct an overall weighted mean. Finally, a lower domain loss is still not proof of better top-choice decisions or task utility; evaluate those outcomes independently.
 
+
+## Temporal holdouts and deployment-rate checks
+
+When future behavior is the target, split by the time information became available, not a random row permutation. Fit preprocessing, calibration and thresholds only on the training/selection side. Delayed labels and repeated entities can leak future information even when an event timestamp looks earlier; choose a gap or entity boundary that matches the actual data process. TimeSeriesSplit provides expanding chronological folds and an explicit gap, while documenting equally spaced samples for comparable fold durations. It does not itself prevent every feature or label leak.
+
+For an invented fraud detector trained through June, select the threshold using July labels that are actually available, then evaluate August without retuning on it. Report precision, recall and alert counts at the deployment prevalence for August and relevant segments. A favorable average over all months can conceal a new-region failure or a changed alert volume. Threshold adjustment can be a legitimate operating-policy change; it is neither a universal cure nor inherently a superficial mistake.
+
+Shadow the proposed policy on current traffic where appropriate and keep denominator, delayed-label maturity, subgroup counts and uncertainty explicit. Monitoring a later month does not prove its labels are complete, and a historical precision floor does not survive arbitrary distribution change by definition. Revisit the policy when population or costs change while retaining the original held-out result.
+
 ## Prerequisites
 
 - [[loss-function]]
@@ -47,3 +56,5 @@ Keep the mix fixed when comparing models, and report slice losses and counts. Di
 - <https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html>
 
 - <https://docs.pytorch.org/docs/2.15/generated/torch.nn.CrossEntropyLoss.html>
+
+- <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html>

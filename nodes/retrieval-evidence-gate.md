@@ -4,11 +4,11 @@ title: Retrieval Evidence Gate
 summary: A retrieval evidence gate evaluates whether retrieved passages support an answer before generation, while keeping relevance, sufficiency, and authorization as separate checks.
 type: concept
 tags: [ml/information-retrieval]
-prereqs: [retrieval-augmented-generation, measurement]
-sources: [https://arxiv.org/abs/2005.11401, https://learn.microsoft.com/en-us/azure/search/semantic-search-overview, https://arxiv.org/html/2610.35868v1]
+prereqs: [retrieval-augmented-generation, measurement, dataset-lineage]
+sources: [https://arxiv.org/abs/2005.11401, https://learn.microsoft.com/en-us/azure/search/semantic-search-overview, https://arxiv.org/html/2610.35868v1, https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-migrate-embedding-models, https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_recall/]
 status: explained
 created: 2026-10-01
-updated: 2026-11-01
+updated: 2026-11-24
 ---
 
 # Retrieval Evidence Gate
@@ -37,7 +37,18 @@ In a hierarchical search, missing evidence can disappear before passage ranking 
 
 For 100 answerable questions, suppose the explored branches contain support for 90, and the final top passage contains support for 63. Branch coverage is 90/100=90%; top-one support is 63/100=63%; conditional top-one success among covered questions is 63/90=70%. A competing method with lower coverage but better conditional ordering can win top-one while losing at a larger context budget. Report all three quantities under explicit denominators. A bounded expansion or independent fallback search may recover a pruned branch; reranking the unchanged shortlist cannot. Compare build cost and end-to-end latency separately from the scoring pass, especially when systems use different deployment setups.
 
+
+## Revision-aware regression and failure localization
+
+Bind a regression fixture to a question, expected source revision and permission scope, labeled supporting evidence and the tested query/index configuration. [[dataset-lineage]] makes those inputs attributable; an answer reference without its effective revision can reward a superseded policy. Keep questions for old and revised facts, changed permissions and plausible-but-unsupported claims, with a held-out temporal set where the application changes over time.
+
+For 100 invented answerable questions, the correct current evidence exists in the candidate index for 92. Retrieval returns it for 70, and generated answers faithfully use it for 56. Availability is 92/100, retrieval success conditional on available support is 70/92, and supported-answer success conditional on retrieved support is 56/70. The final 56% alone cannot locate the losses. Separate missing/stale source coverage, incompatible representations, ranking misses and generation/support errors. A support classifier cannot recover an absent current document.
+
+Compare old and candidate configurations on the same eligible source boundary and labeled queries. Slice by revision, language, document structure, query type and access scope, retaining counts and uncertainty. Test newly revised facts alongside unchanged facts so a migration cannot look better solely by shifting the evaluation mixture. Reference-answer support judged by a model is a fallible proxy; adjudicate important disagreements and do not count a stale but internally entailed answer as current truth.
+
 ## Prerequisites
+
+- [[dataset-lineage]]
 
 - [[retrieval-augmented-generation]]
 - [[measurement]]
@@ -48,3 +59,7 @@ For 100 answerable questions, suppose the explored branches contain support for 
 - [Azure AI Search semantic ranking](https://learn.microsoft.com/en-us/azure/search/semantic-search-overview): documented reranking over an initial result set.
 
 - <https://arxiv.org/html/2610.35868v1>
+
+- <https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-migrate-embedding-models>
+
+- <https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_recall/>

@@ -4,11 +4,11 @@ title: RAG Latency Budget
 summary: A RAG latency budget attributes first-token and completion delay to the actual retrieval, context, queueing and generation critical path rather than assuming one universal bottleneck.
 type: concept
 tags: [ml/information-retrieval]
-prereqs: [retrieval-augmented-generation, prefill-vs-decode, trace-span, latency-percentile]
-sources: [https://docs.langchain.com/oss/python/langchain/retrieval, https://opentelemetry.io/docs/concepts/signals/traces/]
+prereqs: [retrieval-augmented-generation, prefill-vs-decode, trace-span, latency-percentile, citation-support-validation]
+sources: [https://docs.langchain.com/oss/python/langchain/retrieval, https://opentelemetry.io/docs/concepts/signals/traces/, https://arxiv.org/abs/2305.14627]
 status: explained
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-11-24
 ---
 
 # RAG Latency Budget
@@ -37,7 +37,18 @@ Measure [[latency-percentile]] over complete requests, not sums of component p95
 
 **Question:** Can a sum of child spans exceed end-to-end latency? **Answer:** Yes, when children overlap; the root interval measures elapsed time. That does not prove telemetry is wrong or mean every operation was serialized.
 
+
+## Verification before release changes usable latency
+
+A generated first token is not necessarily releasable output. If the application withholds an answer until its material claims pass a support check, include that verifier on the completion critical path. [[citation-support-validation]] supplies the claim-to-evidence contract; a fast relevance score is not an equivalent replacement. Streaming an unchecked answer first and withdrawing it later changes the user-visible risk policy.
+
+For an invented serial pipeline, retrieval and generation take 800 ms, claim extraction 40 ms and support scoring 60 ms. Checked completion is 900 ms, not 800. If three claim scorers overlap for 30, 50 and 60 ms and all results are required, their scoring interval is 60 ms before scheduling overhead, not 140. Measure actual overlap under load; queueing, token limits and a shared model can serialize apparently parallel calls.
+
+Compare always-verify and gated verification at the same accepted-answer risk/coverage target and include verifier cost, timeouts, retries and rejected answers. The gate can miss risky cases, so reduced verifier calls alone is not success. State whether a timeout abstains, defers or releases without verification; the last choice weakens the contract. Report time to first generated token separately from time to first permitted output and final checked completion, including all failure outcomes.
+
 ## Prerequisites
+
+- [[citation-support-validation]]
 
 - [[retrieval-augmented-generation]]
 - [[prefill-vs-decode]]
@@ -48,3 +59,5 @@ Measure [[latency-percentile]] over complete requests, not sums of component p95
 
 - <https://docs.langchain.com/oss/python/langchain/retrieval> — retrieval architectures and variable retrieval/inference latency.
 - <https://opentelemetry.io/docs/concepts/signals/traces/> — request traces and nested operation intervals.
+
+- <https://arxiv.org/abs/2305.14627>

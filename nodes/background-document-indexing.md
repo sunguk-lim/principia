@@ -5,10 +5,10 @@ summary: Background document indexing persists versioned ingestion work and buil
 type: concept
 tags: [ml/information-retrieval]
 prereqs: [retrieval-chunking, vector-database, transactional-outbox, dataset-lineage]
-sources: [https://learn.microsoft.com/en-us/azure/search/search-indexer-overview, https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html, https://developers.llamaindex.ai/python/framework/module_guides/loading/ingestion_pipeline/, https://learn.microsoft.com/en-us/azure/search/search-howto-reindex]
+sources: [https://learn.microsoft.com/en-us/azure/search/search-indexer-overview, https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html, https://developers.llamaindex.ai/python/framework/module_guides/loading/ingestion_pipeline/, https://learn.microsoft.com/en-us/azure/search/search-howto-reindex, https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-migrate-embedding-models]
 status: explained
 created: 2026-10-24
-updated: 2026-11-21
+updated: 2026-11-24
 ---
 
 # Background Document Indexing
@@ -49,6 +49,13 @@ For a fictional document, generation 7 has four chunks. Generation 8 produces th
 
 This is an application-owned protocol, not an assertion that a vector index automatically supplies a multi-system transaction. Azure's indexing documentation distinguishes accepted writes from searchable visibility and warns of mixed results during updates. A database pointer cannot make external index writes atomically searchable. Either wait for verifiable visibility under the chosen index contract, enforce generation filtering in the read path or expose the remaining consistency limitation. Test partial completion, stale workers, publication crashes and readers racing the pointer change.
 
+
+## Document and query embedding compatibility
+
+Record the actual embedding model revision, input preprocessing, representation role, dimensions and distance convention, not just a human-readable model family. A query vector and document vectors need a supported compatible relationship. Equal dimensions do not establish it: two models can assign unrelated meanings to the same coordinate positions. For a dual-encoder model, query and document encoders may differ by design; compatibility means the documented pair, not necessarily identical binaries.
+
+For an invented two-coordinate illustration, a query model uses coordinate one for topic A, while a replacement document model uses coordinate two for A. A query (1,0) and its relevant document (0,1) are dimensionally valid but have dot product zero. The example is a coordinate mismatch, not a model benchmark. Reject a query/index version mismatch or route it to a compatible generation instead of allowing a syntactically valid search to hide the error. Test cached query vectors, mixed old/new inserts and a rollback that changes only one encoder. Microsoft's migration guidance explicitly coordinates query generation and document representations; a completed ingestion job alone does not validate that serving pair.
+
 ## Prerequisites
 
 - [[retrieval-chunking]]
@@ -63,3 +70,5 @@ This is an application-owned protocol, not an assertion that a vector index auto
 
 - <https://developers.llamaindex.ai/python/framework/module_guides/loading/ingestion_pipeline/>
 - <https://learn.microsoft.com/en-us/azure/search/search-howto-reindex>
+
+- <https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-migrate-embedding-models>

@@ -1,14 +1,14 @@
 ---
 id: agent-memory
 title: Agent Memory
-summary: Agent memory is the machinery by which an AI agent — a language model that takes actions and holds conversations over many turns — retains information it has seen and recalls it…
+summary: Agent memory manages retained facts, episodes and procedures across bounded model contexts, separating where information lives from how it should be recalled, updated and authorized.
 type: concept
 tags: [ml/agents]
-prereqs: [retrieval-augmented-generation, context-window]
-sources: []
+prereqs: [retrieval-augmented-generation, context-window, fine-tuning]
+sources: [https://docs.langchain.com/oss/python/concepts/memory, https://arxiv.org/abs/2309.02427]
 status: explained
 created: 2026-06-23
-updated: 2026-10-01
+updated: 2026-11-25
 ---
 
 # Agent Memory
@@ -41,11 +41,21 @@ One closing note: this very brain — its store of concept nodes that an assista
 
 A completed interaction is evidence, not automatically a durable memory. Before writing long-term state, the application can propose candidate facts or procedures, check that they are supported by the trace, compare them with existing entries, and choose to add, update, defer, or discard. A repeated preference can be promoted as a scoped semantic fact; a one-off tool failure may remain an episode rather than becoming a universal procedure. Corrections should supersede stale facts with provenance and time rather than silently appending contradictions. This promotion gate controls privacy, retention, and quality separately from retrieval: a highly relevant memory may still be unauthorized to keep or reuse. Validate the gate on adjudicated examples for false promotion, missed useful lessons, stale preference handling, and downstream task outcomes. A model-provided relevance or novelty score is a fallible input, not the write policy itself.
 
+## Memory content is not its storage location
+
+Semantic, episodic and procedural describe what information means, not a mandatory storage medium. A stable fact can influence model weights; a procedure can live in trusted code, a reviewed prompt or an external record. Procedures can change too. The semantic/procedural distinction does not prove that every fact belongs in retrieval or that every workflow deserves a training run.
+
+With [[fine-tuning]], demonstrations change learned behavior and can impart domain knowledge, but a particular stored rule is not an independently editable record with a guaranteed citation or deletion path. External records can carry explicit versions and provenance, while still failing through stale indexing, bad retrieval or ignored evidence. Choose placement by update frequency, auditability, access control, validation cost and task performance rather than by the memory label alone.
+
+For an invented support assistant, a changing return window belongs in an approved versioned record. The sequence “check order, verify eligibility, then propose a return” may be expressed in code or demonstrations, but its action still needs current eligibility checks. Compare prompt-only, retrieved examples and tuned behavior on held-out tasks and rule changes. Training on procedural traces cannot guarantee that a model will follow a newer retrieved rule when its old behavior conflicts.
+
 ## Prerequisites
 
 - [[context-window]]
 - [[retrieval-augmented-generation]]
+- [[fine-tuning]]
 
 ## Sources
 
-_none_
+- <https://docs.langchain.com/oss/python/concepts/memory>
+- <https://arxiv.org/abs/2309.02427>

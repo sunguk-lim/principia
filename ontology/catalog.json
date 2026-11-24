@@ -245,8 +245,10 @@
     "agent-memory": {
       "prerequisiteReasons": {
         "retrieval-augmented-generation": "The stated objective requires Retrieval-Augmented Generation: the complete explanation applies it in this mechanism: Agent memory is the machinery by which an AI agent — a language model that takes actions and holds conversations over many turns — retains information it has seen and recalls it later, across turns, tasks, and whole sessions, beyond what fits in a single context-window. The",
-        "context-window": "The stated objective requires Context Window: the complete explanation applies it in this mechanism: Agent memory is the machinery by which an AI agent — a language model that takes actions and holds conversations over many turns — retains information it has seen and recalls it later, across turns, tasks, and whole sessions, beyond what fits in a single context-window. The"
-      }
+        "context-window": "The stated objective requires Context Window: the complete explanation applies it in this mechanism: Agent memory is the machinery by which an AI agent — a language model that takes actions and holds conversations over many turns — retains information it has seen and recalls it later, across turns, tasks, and whole sessions, beyond what fits in a single context-window. The",
+        "fine-tuning": "Distinguishes weight updates from explicit external record updates."
+      },
+      "objective": "Separate memory content types from storage placement and choose update, recall and authorization contracts."
     },
     "agent-session-state": {
       "prerequisiteReasons": {
@@ -5657,6 +5659,43 @@
       "prerequisiteReasons": {
         "direct-preference-optimization": "The selection comparison relies on the offline reference-relative preference objective.",
         "reinforcement-learning-from-human-feedback": "The selection comparison distinguishes learned human-reward training from executable rewards."
+      }
+    },
+    "agent-trajectory-fine-tuning": {
+      "aliases": [
+        "trajectory imitation for agents",
+        "procedural tool-use fine-tuning"
+      ],
+      "objective": "Agent trajectory fine-tuning imitates validated next actions from the information available at each interaction step, transferring procedural behavior without turning tool observations into policy authority.",
+      "prerequisiteReasons": {
+        "fine-tuning": "Explains updating pretrained weights from task examples.",
+        "causal-language-model-training": "Defines prefix-conditioned token targets and loss masks.",
+        "tool-call-execution-contract": "Defines what counts as a valid proposed action versus an authorized effect.",
+        "temporal-data-leakage": "Explains why future outcomes cannot appear in a decision prefix."
+      }
+    },
+    "retrieved-policy-authority": {
+      "aliases": [
+        "policy conflict resolution for retrieval",
+        "retrieved business-policy precedence"
+      ],
+      "objective": "Retrieved policy authority binds an application decision to an explicitly approved policy scope and version rather than treating model recollection, similarity rank or the newest-looking document as governing authority.",
+      "prerequisiteReasons": {
+        "rag-freshness-contract": "Defines source publication, current eligibility and stale-evidence contracts.",
+        "prompt-injection": "Explains why retrieved content cannot promote itself into operational authority."
+      }
+    },
+    "parallel-transformer-block": {
+      "aliases": [
+        "parallel attention and MLP block",
+        "parallel attention-feedforward block"
+      ],
+      "objective": "A parallel Transformer block computes attention and feedforward updates from the same pre-block state, removing the within-block dependency between those branches without making the architecture equivalent to a serial block.",
+      "prerequisiteReasons": {
+        "transformer-attention": "Defines the sequence-mixing branch.",
+        "position-wise-feed-forward-network": "Defines the per-token nonlinear branch.",
+        "residual-connection": "Defines the additive update to the block state.",
+        "layer-normalization": "Defines the pre-branch normalized input."
       }
     }
   }

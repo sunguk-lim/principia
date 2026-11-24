@@ -19597,6 +19597,125 @@
       "contentHash": "9d92caff656eb14d36cddf987ef212928b7d59e46235287cda073ee43282e095",
       "decision": "retain",
       "reason": "Validation and check: One proposal-set prompting method is distinguished from token sampling; conditional weight normalization and held-out diversity tests explain how to interpret and assess that same method. Acceptance checks and limitations belong with the mechanism being tested."
+    },
+    {
+      "candidateKey": "cand-21adeadd4bf5036e9376",
+      "sourceId": "active-learning",
+      "contentHash": "c70b3dd5bfe7e2749936ad9749eeb89d985fc7fa2430a8122679d4e8368daf7d",
+      "decision": "retain",
+      "reason": "This section specifies the uncertainty acquisition diagnostic and length/prefix aggregation limits within the active-learning objective. It does not assert a new general information-theory entity."
+    },
+    {
+      "candidateKey": "cand-04a074ada4b566111c6f",
+      "sourceId": "agent-memory",
+      "contentHash": "30a7dc1a1966bc11b21c58d2d9ed66ea326455ad06b424e22ddaf347477c50db",
+      "decision": "retain",
+      "reason": "This section distinguishes content type from storage placement within the agent-memory management objective; it is not a new synonym for RAG or fine-tuning."
+    },
+    {
+      "candidateKey": "cand-e01d51e8922b7075fbff",
+      "sourceId": "agent-trajectory-fine-tuning",
+      "contentHash": "c4b1e622e9d2c1bd97152f78d7793977286c2d2a5bdb345108491aa849a60c0e",
+      "decision": "retain",
+      "reason": "This section explains the curated prefix-to-next-action imitation objective, its example or its validation boundaries; it belongs to the trajectory fine-tuning entity, not the distinct trace-collection or planner-label entities."
+    },
+    {
+      "candidateKey": "cand-b90dba1abef6b6a0002a",
+      "sourceId": "agent-trajectory-fine-tuning",
+      "contentHash": "0afbf5c94d333026173ac844c73b2d84bc43607b192615332f1f15353732e9c0",
+      "decision": "retain",
+      "reason": "This section explains the curated prefix-to-next-action imitation objective, its example or its validation boundaries; it belongs to the trajectory fine-tuning entity, not the distinct trace-collection or planner-label entities."
+    },
+    {
+      "candidateKey": "cand-3221f526aeef3586326a",
+      "sourceId": "agent-trajectory-fine-tuning",
+      "contentHash": "5c3810efe4474cbafeb6011791ab2be4d7cba9f1e37ec84188f674bf225eb32b",
+      "decision": "retain",
+      "reason": "This section explains the curated prefix-to-next-action imitation objective, its example or its validation boundaries; it belongs to the trajectory fine-tuning entity, not the distinct trace-collection or planner-label entities."
+    },
+    {
+      "candidateKey": "cand-09431e9a3d18bd6175e4",
+      "sourceId": "agent-trajectory-fine-tuning",
+      "contentHash": "fceb535f6ef2daf217f598303ca00b895c80b810ca5eb87a9082c13fb6f318e2",
+      "decision": "retain",
+      "reason": "This section explains the curated prefix-to-next-action imitation objective, its example or its validation boundaries; it belongs to the trajectory fine-tuning entity, not the distinct trace-collection or planner-label entities."
+    },
+    {
+      "candidateKey": "cand-5e0e5b407cfcea42ba13",
+      "sourceId": "agent-trajectory-fine-tuning",
+      "contentHash": "7403923f529b7b4a87a059eebd7e5186e0a72d12187b8b650c960801ad4672e2",
+      "decision": "retain",
+      "reason": "This section explains the curated prefix-to-next-action imitation objective, its example or its validation boundaries; it belongs to the trajectory fine-tuning entity, not the distinct trace-collection or planner-label entities."
+    },
+    {
+      "candidateKey": "cand-5d4427395ddcc0d8dd74",
+      "sourceId": "parallel-transformer-block",
+      "contentHash": "14c4b42c8dbeae2c071648f7d5e5f56c2f9c898ccf05b603e136adc4e329d819",
+      "decision": "retain",
+      "reason": "This section explains shared branch input, residual combination or validation of the parallel block. Projection fusion is an optional implementation consequence, not a replacement for this architectural concept."
+    },
+    {
+      "candidateKey": "cand-60f21ca3e0757e3ac36c",
+      "sourceId": "parallel-transformer-block",
+      "contentHash": "4d0087d68a1e295de65663fa22e9e523738e8143464783609baf0925114bdc64",
+      "decision": "retain",
+      "reason": "This section explains shared branch input, residual combination or validation of the parallel block. Projection fusion is an optional implementation consequence, not a replacement for this architectural concept."
+    },
+    {
+      "candidateKey": "cand-189bdb0da399636b3396",
+      "sourceId": "parallel-transformer-block",
+      "contentHash": "c90a37ca88bc284eb56691c608600b1366a2642edf9cf757afc57ed4c6fc0893",
+      "decision": "retain",
+      "reason": "This section explains shared branch input, residual combination or validation of the parallel block. Projection fusion is an optional implementation consequence, not a replacement for this architectural concept."
+    },
+    {
+      "candidateKey": "cand-bd66c8324f28ede903e6",
+      "sourceId": "parallel-transformer-block",
+      "contentHash": "eefa51a5c81fd307e8e9a5cd517f412e14ad6aea2e791425964e5c4b4ac80edc",
+      "decision": "retain",
+      "reason": "This section explains shared branch input, residual combination or validation of the parallel block. Projection fusion is an optional implementation consequence, not a replacement for this architectural concept."
+    },
+    {
+      "candidateKey": "cand-f793e4c7d7fbd4a89c1e",
+      "sourceId": "parallel-transformer-block",
+      "contentHash": "27d2dde3df1116a412ccb8441f6f6dd023c5553d0c5574d72da18512428b96ee",
+      "decision": "retain",
+      "reason": "This section explains shared branch input, residual combination or validation of the parallel block. Projection fusion is an optional implementation consequence, not a replacement for this architectural concept."
+    },
+    {
+      "candidateKey": "cand-985e5c53c4f830b239fc",
+      "sourceId": "retrieved-policy-authority",
+      "contentHash": "3cdf26ccceee56c2c6659f3eb25f6f03725911dd05c75d4f2515006c6d93bff3",
+      "decision": "retain",
+      "reason": "This section defines or tests approved policy selection across versions and learned/retrieved disagreement; it supports the authority contract rather than creating another policy or authorization entity."
+    },
+    {
+      "candidateKey": "cand-3038b4dcc23c61ce5cac",
+      "sourceId": "retrieved-policy-authority",
+      "contentHash": "cb03df8128585fc72b53c9cab267ad2df81b8530418100577f5062f07b337b50",
+      "decision": "retain",
+      "reason": "This section defines or tests approved policy selection across versions and learned/retrieved disagreement; it supports the authority contract rather than creating another policy or authorization entity."
+    },
+    {
+      "candidateKey": "cand-93fa82e5f519f7d65555",
+      "sourceId": "retrieved-policy-authority",
+      "contentHash": "f88ff75a20c9049ef603fe611eb43091b14b27e293c3f3e10889fbb6f601f638",
+      "decision": "retain",
+      "reason": "This section defines or tests approved policy selection across versions and learned/retrieved disagreement; it supports the authority contract rather than creating another policy or authorization entity."
+    },
+    {
+      "candidateKey": "cand-1744381a4782e3216412",
+      "sourceId": "retrieved-policy-authority",
+      "contentHash": "68f7ed61559601b56c1b6bbe05a24b10f5e75c88b32dbda0a3c5165d20791a66",
+      "decision": "retain",
+      "reason": "This section defines or tests approved policy selection across versions and learned/retrieved disagreement; it supports the authority contract rather than creating another policy or authorization entity."
+    },
+    {
+      "candidateKey": "cand-08bf49cb5ff651d8062b",
+      "sourceId": "retrieved-policy-authority",
+      "contentHash": "463e78c2f677bc84d5efc7da3c0997ad7b9fdc7ff186da2a454aa810fea93f9d",
+      "decision": "retain",
+      "reason": "This section defines or tests approved policy selection across versions and learned/retrieved disagreement; it supports the authority contract rather than creating another policy or authorization entity."
     }
   ]
 }

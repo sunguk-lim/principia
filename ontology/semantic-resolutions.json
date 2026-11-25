@@ -19716,6 +19716,391 @@
       "contentHash": "463e78c2f677bc84d5efc7da3c0997ad7b9fdc7ff186da2a454aa810fea93f9d",
       "decision": "retain",
       "reason": "This section defines or tests approved policy selection across versions and learned/retrieved disagreement; it supports the authority contract rather than creating another policy or authorization entity."
+    },
+    {
+      "candidateKey": "cand-0f751c0d3944fbb30a62",
+      "sourceId": "access-based-memory-decay",
+      "contentHash": "60e0919854afbd3c4a007177f023a38d3117582431e78fdd853c717742205e60",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of last-access decay, clock semantics and self-reinforcement risk; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-f7f7f225e1698d35686e",
+      "sourceId": "access-based-memory-decay",
+      "contentHash": "57c958f07680e4af17ed9a0f0fa2850f3ac4b5911db90e28d6188f96e0cc93c1",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of last-access decay, clock semantics and self-reinforcement risk; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-df75f0f6c813b3fb5c40",
+      "sourceId": "access-based-memory-decay",
+      "contentHash": "2abe4f30f96c4bb4feba6aea4a9a1ddcafd9882bd8b32af59c84484015c125a0",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of last-access decay, clock semantics and self-reinforcement risk; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-b19f5fe422e4e8bbbb73",
+      "sourceId": "access-based-memory-decay",
+      "contentHash": "26a318c0cd69a330ae224fe8ac938cca804e3755c277e67d67bf90dd018b6ecc",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate last-access decay, clock semantics and self-reinforcement risk; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-494aa082710bc886a2c3",
+      "sourceId": "access-based-memory-decay",
+      "contentHash": "a6e93f64b78d5e33361847746eb6bd66b85c9c78ddb4347603a4547b155c2667",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit last-access decay, clock semantics and self-reinforcement risk; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-6b347296ae5c5e48b3ab",
+      "sourceId": "expected-model-change-acquisition",
+      "contentHash": "c3cffa3347e39e55ac702f68bb61f991fb84e32d781a4b55f4896b3d2f2e6458",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of probability-weighted hypothetical gradient magnitude as an acquisition rule; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-93a5725a27919eace3cb",
+      "sourceId": "expected-model-change-acquisition",
+      "contentHash": "7e3dfb0a500c29a22ed07af78daa8c253bdc8a262816cfe421ad47fde79a7966",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of probability-weighted hypothetical gradient magnitude as an acquisition rule; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-8521469e3e0f8852f981",
+      "sourceId": "expected-model-change-acquisition",
+      "contentHash": "1414622fbc0262094ce52b54e3e01969ec62ddcd63179d29e0517c88604a6e75",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of probability-weighted hypothetical gradient magnitude as an acquisition rule; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-9de6da540a260cba39e8",
+      "sourceId": "expected-model-change-acquisition",
+      "contentHash": "4621ccf5db567f5d1de538bd7fe35a76a0101c36272322f8ba21efd28d5539b0",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate probability-weighted hypothetical gradient magnitude as an acquisition rule; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-aa6430e9b6374196faf0",
+      "sourceId": "expected-model-change-acquisition",
+      "contentHash": "b547330f052bf76e4c932ce7d08f943fa14f6c913e5fab03acbc9e9440c44eec",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit probability-weighted hypothetical gradient magnitude as an acquisition rule; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-becc402b5c7538635f6a",
+      "sourceId": "hierarchical-memory-abstraction",
+      "contentHash": "91ab16367d29f3f3d66808e1571afb12212d39a4dfe155b96622770edcdf2c7e",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of layered inferences, shared support and correction propagation; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-d42e06b3b7d569f64793",
+      "sourceId": "hierarchical-memory-abstraction",
+      "contentHash": "050d92bee2da6b8e7dd55e59cad055400ebdc8b304c7e85d3f77b5b851c3367c",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of layered inferences, shared support and correction propagation; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-e4916a51f9bac6aaf5ad",
+      "sourceId": "hierarchical-memory-abstraction",
+      "contentHash": "2706bdbc52ac7cbde171ac343e5eac1ab581c32781cf13984b6074b973f4eb7b",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of layered inferences, shared support and correction propagation; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-0df5c83c9a093228f43c",
+      "sourceId": "hierarchical-memory-abstraction",
+      "contentHash": "ce42e8e9d97ec7f15f284c8bd0b70f97b2c47a6b17682ca38765510bf71a9f02",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate layered inferences, shared support and correction propagation; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-a4f27b7faa89950f3c71",
+      "sourceId": "hierarchical-memory-abstraction",
+      "contentHash": "d696bc72f366a99147894ac011e418f25a691ebef1655d8d1060d730d98da9d8",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit layered inferences, shared support and correction propagation; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-3f11657e01e201a6db13",
+      "sourceId": "importance-triggered-reflection",
+      "contentHash": "0c0a611347d7d266ac74301b13a9e86a98acd270016eaa3bdc379ecf411d3fe6",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of threshold crossing, evidence intervals and bounded reflection scheduling; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-d0c3278877740a5094ae",
+      "sourceId": "importance-triggered-reflection",
+      "contentHash": "8d159bf8f6f65af0f78e71c952323f3c39f4abf58ad3af5bd722c7b8faceb408",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of threshold crossing, evidence intervals and bounded reflection scheduling; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-9fa010fc3bf02e2770e6",
+      "sourceId": "importance-triggered-reflection",
+      "contentHash": "1b0f4db33347d15bdb616ae7a4c08983919af4ac155425ee10beda111b7a578f",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of threshold crossing, evidence intervals and bounded reflection scheduling; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-26a6d172280288db92a9",
+      "sourceId": "importance-triggered-reflection",
+      "contentHash": "9f67dd207bdc62daced4ec81825d52a971527b8f7f9cf48b05b72b8df8737ee9",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate threshold crossing, evidence intervals and bounded reflection scheduling; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-0676e1373a7a22d7d8b0",
+      "sourceId": "importance-triggered-reflection",
+      "contentHash": "1f5f90c7fa40118aae375fd904005d770c066e273a7d39b1895405b68ddc78f0",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit threshold crossing, evidence intervals and bounded reflection scheduling; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-16cb07a20bf80fdcf0b7",
+      "sourceId": "memory-importance-estimation",
+      "contentHash": "eaa3e1b8d9bee602969a577f3d445b72756795c664acb76d670e25ae9c58fa49",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of write-time salience, rubric versioning and query-independent scoring; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-612563b429d2ca17b1ac",
+      "sourceId": "memory-importance-estimation",
+      "contentHash": "80610efb61d7f440b025938d1b169a7df7947618253cb249894fa8809aaddb7f",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of write-time salience, rubric versioning and query-independent scoring; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-b000288c3ae9ae85b435",
+      "sourceId": "memory-importance-estimation",
+      "contentHash": "e34e2f8b2c736a576152f37e3e727de79da20169cb1ce61cbe053b6028e90dbd",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of write-time salience, rubric versioning and query-independent scoring; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-b932550cf0c2036870b6",
+      "sourceId": "memory-importance-estimation",
+      "contentHash": "3de9e11d7055e72101db5f006c60f96d39e5ddf5f77422f5c54d705d8a431334",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate write-time salience, rubric versioning and query-independent scoring; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-23aa57257bf50ad8197e",
+      "sourceId": "memory-importance-estimation",
+      "contentHash": "7bfddf0f867e1d5c8dc2300d85046dd1a6f4ff177395e8df07ca12dbad08b8c3",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit write-time salience, rubric versioning and query-independent scoring; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-3f138f91e826b515e91e",
+      "sourceId": "model-bandwidth-utilization",
+      "contentHash": "f456cbdbed775362c6ddf0df5357ba4f3feb1e4338ba41dd47de6988af1005fd",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of declared modeled bytes, iteration timing and peak-bandwidth boundary; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-61fbdf24e5dbb92cd8d6",
+      "sourceId": "model-bandwidth-utilization",
+      "contentHash": "ac78189f9f57173b1603d69fd2fec093cbc3e326bf7db7759dec48e9d3b1f3aa",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of declared modeled bytes, iteration timing and peak-bandwidth boundary; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-415960e8b1c7be079e30",
+      "sourceId": "model-bandwidth-utilization",
+      "contentHash": "2c36b648234414d9972293af4c67cec24770950d4b1c1c98066b0098788b0c8c",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of declared modeled bytes, iteration timing and peak-bandwidth boundary; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-430c44723e6772e4db87",
+      "sourceId": "model-bandwidth-utilization",
+      "contentHash": "a704ad020a75a7362959da70354bc789091f3484136b2e50c394d1a243e7c84c",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate declared modeled bytes, iteration timing and peak-bandwidth boundary; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-45bda277d6cea92761fa",
+      "sourceId": "model-bandwidth-utilization",
+      "contentHash": "9462a620d36d4ea11ba020451057609571bc09a2714c1dfc8021ad118d86f956",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit declared modeled bytes, iteration timing and peak-bandwidth boundary; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-8157767b905f605cde7d",
+      "sourceId": "multi-factor-memory-retrieval",
+      "contentHash": "35d1cf7272a74d5e846dd3a890f94e46a384cdfa60ac29f4eeb10ef6c5f76a98",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of normalized recency/importance/relevance selection under context limits; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-5aeb467d119b1895be46",
+      "sourceId": "multi-factor-memory-retrieval",
+      "contentHash": "77edec6a71a4c5d49275b708302b30ba7cb00efe8e47e6b9a58c0f49904c0724",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of normalized recency/importance/relevance selection under context limits; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-a2ea47b8825afbdc67f9",
+      "sourceId": "multi-factor-memory-retrieval",
+      "contentHash": "f34c9326f1d9adc906aa53d7a6810d487d18d7c3430d53cfd7940cad5ab12506",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of normalized recency/importance/relevance selection under context limits; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-004888293536b094963f",
+      "sourceId": "multi-factor-memory-retrieval",
+      "contentHash": "907594f2fbd244007710372a016cb989ed690ad117797d8e23cbec59ed989594",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate normalized recency/importance/relevance selection under context limits; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-420fcf5c18b6d6160140",
+      "sourceId": "multi-factor-memory-retrieval",
+      "contentHash": "752556460c2213f719d77586c1471bb28bbaf2e061785b849d7eab6a25140dd4",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit normalized recency/importance/relevance selection under context limits; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-122b02b3a3af3a437d45",
+      "sourceId": "query-by-committee",
+      "contentHash": "b21eea7e2b9ceee2c2691ecaa1f11de3c0663a29c0a436bb63a7ef729c85d899",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of constructed hypothesis diversity and disagreement-based label acquisition; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-98db0a34c2cf8492d302",
+      "sourceId": "query-by-committee",
+      "contentHash": "260838244a0b4862f432b65b1724e0609a3317749e10a4d5bbe94bd0127b0d3b",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of constructed hypothesis diversity and disagreement-based label acquisition; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-e9d07c34e317b9382921",
+      "sourceId": "query-by-committee",
+      "contentHash": "72581c42fb88fe5e36704c877237a4fc5f495d8d02d0932983b61273df704c2a",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of constructed hypothesis diversity and disagreement-based label acquisition; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-67e07ffbe217b1802aab",
+      "sourceId": "query-by-committee",
+      "contentHash": "eaf6c85857b5af02e62f4cb3fea16fad757e052757acac4785d0f5a2a6a7ce38",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate constructed hypothesis diversity and disagreement-based label acquisition; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-7663a1fc316a16eddb20",
+      "sourceId": "query-by-committee",
+      "contentHash": "ae19c66bc967a1463bade097fa323050d1a6d13037dc0c56fb94b899169f9ea8",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit constructed hypothesis diversity and disagreement-based label acquisition; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-f47d53accbef5ec777e7",
+      "sourceId": "reflective-memory-consolidation",
+      "contentHash": "ca4168b0c795f12fc26bc919799abf27711cb81253efd3d2f39015d60ba43a2a",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of evidence-linked inference and revisable event-to-belief synthesis; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-cca8b3a46b66f40a628a",
+      "sourceId": "reflective-memory-consolidation",
+      "contentHash": "a94dd94c1cf0a6ed1559dfd1280aa6027eb44ff56f2cd2e3f4224ab2a72a2296",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of evidence-linked inference and revisable event-to-belief synthesis; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-a7bfe7785536f084c99f",
+      "sourceId": "reflective-memory-consolidation",
+      "contentHash": "90433ec63c423a8c1beb2749337546d1ac91c73f32bd302f22600f33878e9d40",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of evidence-linked inference and revisable event-to-belief synthesis; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-574875dba2b5d2e05c18",
+      "sourceId": "reflective-memory-consolidation",
+      "contentHash": "0dc312eec8e815af97d041ac899c1fcff8fe1e7dfd899862cdfe54eea666807c",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate evidence-linked inference and revisable event-to-belief synthesis; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-44aac93262a90bf8f731",
+      "sourceId": "reflective-memory-consolidation",
+      "contentHash": "90ed326a4a760e65f23da72555ef6d39402de6939d70db3eef6bfca065c64850",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit evidence-linked inference and revisable event-to-belief synthesis; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-477ad082f6950515b8ef",
+      "sourceId": "shannon-entropy",
+      "contentHash": "7c67fac892d1535938e6d8356395a5e8a73167500085c5007df852f69870364d",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of expected discrete information content and units; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-647432d77b28e19d5117",
+      "sourceId": "shannon-entropy",
+      "contentHash": "9ba79bcaa4251a75974a0e92fbb53d1c3f9bdaa3f3af0e9aacce087aff620538",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of expected discrete information content and units; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-f7ae1a4d1f14d9dd48f7",
+      "sourceId": "shannon-entropy",
+      "contentHash": "a9442b8de6e625fdffbd6b90bceef7aa4310d4f0ccbd2b1d22f3d054e8048515",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of expected discrete information content and units; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-9ceef0661fbe452fcf26",
+      "sourceId": "shannon-entropy",
+      "contentHash": "efc0846097c8fd27214de2b53b199882589105bae04cf094da25dcc228f0708b",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate expected discrete information content and units; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-31cf5b7acd0cb5009e3b",
+      "sourceId": "shannon-entropy",
+      "contentHash": "e4b2451acc958937372b29933ae8025380e7c891a9ba7247ea331dddc467fee9",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit expected discrete information content and units; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-2c8a54d15dbe707021fd",
+      "sourceId": "tiered-model-weight-placement",
+      "contentHash": "8dc400d95676075179136f0184d778ccd73ebc989072b9ade780a4a57a595bbb",
+      "decision": "retain",
+      "reason": "This question tests the single learning objective of weight residency, repeated materialization and capacity/transfer trade-offs; it is pedagogical support, not a concept."
+    },
+    {
+      "candidateKey": "cand-ab0b9d71ae3bcb6e64a5",
+      "sourceId": "tiered-model-weight-placement",
+      "contentHash": "99ace68a80bbca00493f12c0169cae593b8e3783e1c4db5a4e2b2e1bf5a506e1",
+      "decision": "retain",
+      "reason": "This defines the canonical objective of weight residency, repeated materialization and capacity/transfer trade-offs; it is not an additional entity."
+    },
+    {
+      "candidateKey": "cand-9b63c3e4163feeb1c096",
+      "sourceId": "tiered-model-weight-placement",
+      "contentHash": "76b5066e5ee6dc9e6f34337ccd8999ef31cadbe33d06b1909973f3eec600ce78",
+      "decision": "retain",
+      "reason": "This is the defining mechanism of weight residency, repeated materialization and capacity/transfer trade-offs; named supporting concepts have reviewed prerequisites, rather than a heading-based split."
+    },
+    {
+      "candidateKey": "cand-57947bbfc72bb4f68000",
+      "sourceId": "tiered-model-weight-placement",
+      "contentHash": "f21386e11ba07e24ca8bdf72c510295d341450c576b31ed75b1b3cb4f317145c",
+      "decision": "retain",
+      "reason": "The worked values or event trace demonstrate weight residency, repeated materialization and capacity/transfer trade-offs; the invented instance is supporting explanation, not a new concept."
+    },
+    {
+      "candidateKey": "cand-2c2c9df5b1f5eb857cb6",
+      "sourceId": "tiered-model-weight-placement",
+      "contentHash": "f5199411b53b81d906e960c15a133b5b4ea2edb3eb91efa0e7eaee58da9a99ce",
+      "decision": "retain",
+      "reason": "These checks and counterexamples delimit weight residency, repeated materialization and capacity/transfer trade-offs; validation guidance remains within that objective."
     }
   ]
 }

@@ -5697,6 +5697,110 @@
         "residual-connection": "Defines the additive update to the block state.",
         "layer-normalization": "Defines the pre-branch normalized input."
       }
+    },
+    "reflective-memory-consolidation": {
+      "aliases": [
+        "reflective agent memory"
+      ],
+      "objective": "Reflective memory consolidation synthesizes evidence-linked inferences from retained episodes and stores them as revisable memories rather than treating retrieval of raw events as learning.",
+      "prerequisiteReasons": {
+        "agent-memory": "Defines retained episodes, semantic facts and the memory promotion boundary."
+      }
+    },
+    "hierarchical-memory-abstraction": {
+      "aliases": [],
+      "objective": "Hierarchical memory abstraction builds higher-level inferences over lower-level memories while preserving the distinction between compressed claims and their underlying observations.",
+      "prerequisiteReasons": {
+        "reflective-memory-consolidation": "Defines evidence-linked inferences that can themselves become inputs to further synthesis.",
+        "directed-acyclic-graph": "Defines directed support dependencies, shared ancestors and exclusion of circular evidence."
+      }
+    },
+    "memory-importance-estimation": {
+      "aliases": [
+        "memory salience scoring"
+      ],
+      "objective": "Write-time memory importance estimation assigns a reusable, fallible salience judgment when a memory is created, separating query-independent significance from later query relevance.",
+      "prerequisiteReasons": {
+        "agent-memory": "Defines the retained item and promotion boundary.",
+        "measurement": "Distinguishes an operational score from a validated quantity."
+      }
+    },
+    "access-based-memory-decay": {
+      "aliases": [],
+      "objective": "Access-based memory decay lowers retrieval priority as time since last use grows, modeling reinforcement through retrieval rather than proving that frequently recalled information is current.",
+      "prerequisiteReasons": {
+        "agent-memory": "Defines stored memories and retrieval events.",
+        "exponential-function": "Defines multiplicative decay over elapsed intervals."
+      }
+    },
+    "multi-factor-memory-retrieval": {
+      "aliases": [
+        "recency importance relevance retrieval"
+      ],
+      "objective": "Multi-factor memory retrieval combines normalized recency, importance and query relevance to rank retained memories under a bounded context budget.",
+      "prerequisiteReasons": {
+        "memory-importance-estimation": "Defines reusable salience and its limitations.",
+        "access-based-memory-decay": "Defines the recency feature and its feedback risks.",
+        "cosine-similarity": "Defines embedding similarity for query relevance."
+      }
+    },
+    "importance-triggered-reflection": {
+      "aliases": [],
+      "objective": "Importance-triggered reflection schedules memory synthesis when accumulated event salience reaches a budgeted threshold rather than invoking reflection after every interaction.",
+      "prerequisiteReasons": {
+        "reflective-memory-consolidation": "Defines the synthesis work being scheduled.",
+        "memory-importance-estimation": "Defines the event weights accumulated by the trigger."
+      }
+    },
+    "model-bandwidth-utilization": {
+      "aliases": [
+        "MBU"
+      ],
+      "objective": "Model bandwidth utilization compares a declared model-byte-per-decode-iteration estimate with elapsed iteration time and hardware bandwidth, without equating modeled traffic to measured memory-controller activity.",
+      "prerequisiteReasons": {
+        "prefill-vs-decode": "Defines the decode iteration and batch-dependent reuse.",
+        "roofline-model": "Defines a bandwidth ceiling and its limited predictive role.",
+        "measurement": "Defines controlled timing and stated measurement boundaries."
+      }
+    },
+    "tiered-model-weight-placement": {
+      "aliases": [],
+      "objective": "Tiered model-weight placement stores parameters across device, host and storage tiers and materializes required weights for execution, trading resident capacity against repeated transfer cost.",
+      "prerequisiteReasons": {
+        "llm-inference-memory-budget": "Accounts for weights alongside active inference state and temporary buffers.",
+        "gpu-data-flow": "Explains host/device transfers and their synchronization.",
+        "memory-hierarchy": "Defines the capacity and bandwidth differences between storage tiers."
+      }
+    },
+    "expected-model-change-acquisition": {
+      "aliases": [],
+      "objective": "Expected model-change acquisition scores an unlabeled example by the predicted magnitude of the learning update its possible labels would induce, rather than by uncertainty alone.",
+      "prerequisiteReasons": {
+        "active-learning": "Defines selecting unlabeled examples under a label and selection budget.",
+        "gradient-descent": "Defines a parameter update from a labeled example.",
+        "expectation": "Defines averaging over hypothetical labels.",
+        "euclidean-distance": "Defines Euclidean gradient magnitude as distance from the zero vector."
+      }
+    },
+    "query-by-committee": {
+      "aliases": [],
+      "objective": "Query-by-committee acquisition selects unlabeled examples where a deliberately constructed ensemble disagrees, using the disagreement rule and committee diversity as explicit modeling choices.",
+      "prerequisiteReasons": {
+        "active-learning": "Defines the annotation acquisition loop and representative evaluation.",
+        "bagging-variance-reduction": "Explains constructing differing predictors and the limits of correlated committee errors.",
+        "shannon-entropy": "Defines entropy of the committee vote distribution."
+      }
+    },
+    "shannon-entropy": {
+      "aliases": [
+        "discrete entropy"
+      ],
+      "objective": "Shannon entropy is the expected information content of a discrete outcome under a specified probability distribution and logarithm base.",
+      "prerequisiteReasons": {
+        "probability-distribution": "Defines the outcome probabilities being summarized.",
+        "logarithm": "Defines information content and the unit set by the log base.",
+        "expectation": "Defines the probability-weighted average of information."
+      }
     }
   }
 }

@@ -5,10 +5,10 @@ summary: A tiered KV cache moves reusable attention state from scarce GPU memory
 type: concept
 tags: [ml/llm/inference]
 prereqs: [kv-cache, prefix-caching, memory-hierarchy]
-sources: [https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache, https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md]
+sources: [https://docs.lmcache.ai/mp/index.html, https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache, https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md]
 status: explained
 created: 2026-10-06
-updated: 2026-11-08
+updated: 2026-11-27
 ---
 
 # Tiered KV Cache
@@ -47,6 +47,14 @@ For an original block example, cached prefix P has no active users, while block 
 
 Test memory pressure, concurrent lookup and eviction, cancellation, worker loss and restored-versus-recomputed outputs under the numerical contract. Measure misses, recomputation, transfer cost and quality separately. A runtime's supported eviction option must be interpreted against that runtime's active-state ownership rules, not assumed to safely discard arbitrary old tokens.
 
+## Concurrent tier lookup is a policy, not the definition of tiering
+
+Looking for the same compatible key in several backends at once differs from striping different blocks across devices. Concurrent lookup can avoid waiting for a slow miss, but duplicate hits need one authoritative selection and redundant transfers should be cancelled or suppressed. The key's model, representation, scope and validity must agree regardless of which backend wins. Bound outstanding requests and preserve object lifetime while transfers finish.
+
+For a hypothetical sequential policy, a first backend reports a miss after 12 ms and a second returns a usable hit after another 20 ms, totaling 32 ms before other work. Starting both at once can reveal that second hit in 20 ms if the paths do not interfere. It also starts extra work on every request. Shared storage bandwidth, staging pressure or cancellation overhead can erase the gain. Compare useful restore latency and tail cost with the staged policy under realistic load.
+
+Do not attribute this general design option to every release of a named cache service. LMCache's documented multiprocess lookup first reserves available L1 objects and sends remaining keys into its L2 prefetch path; inspect the deployed implementation before claiming that all tiers are queried simultaneously.
+
 ## Prerequisites
 
 - [[kv-cache]]
@@ -60,3 +68,5 @@ Test memory pressure, concurrent lookup and eviction, cancellation, worker loss 
 - <https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache>
 
 - <https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md>
+
+- <https://docs.lmcache.ai/mp/index.html>

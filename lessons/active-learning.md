@@ -19,3 +19,7 @@ Suppose a short two-token continuation has entropy 0.5 nats at each step, while 
 ## Check your understanding
 
 Does the highest entropy example necessarily deserve the next label? No. It may be ambiguous, redundant or expensive to score. Compare learning curves, critical slices, annotation disagreement and stopping criteria; retain confident errors as a diagnostic because low entropy is not proof of correctness.
+
+## Distinguish model uncertainty from label ambiguity
+
+An acquisition policy may deliberately select difficult cases. If 20 of 100 acquired items receive conflicting independent labels but only 4 of 100 random traffic items do, selection can explain the difference. Preserve pre-adjudication labels and instruction versions, investigate policy ambiguity and count adjudication cost. Do not assume human disagreement is the same as model uncertainty or that an agreed label is necessarily correct.

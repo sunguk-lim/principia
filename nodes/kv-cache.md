@@ -1,14 +1,14 @@
 ---
 id: kv-cache
 title: KV-cache
-summary: When a transformer generates text one token at a time, every step's transformer-attention needs the keys and values of all earlier tokens.
+summary: KV caching retains compatible per-layer attention keys and values across autoregressive steps, avoiding repeated past-state projection while retaining history-dependent reads.
 type: concept
 tags: [ml/llm/inference]
 prereqs: [transformer-attention]
-sources: []
+sources: [https://huggingface.co/docs/transformers/cache_explanation]
 status: explained
 created: 2026-06-20
-updated: 2026-06-20
+updated: 2026-11-27
 ---
 
 # KV-cache
@@ -19,7 +19,7 @@ When a transformer **generates text one token at a time**, every step's
 [[transformer-attention]] needs the **keys and values of all earlier tokens**.
 Those don't change once computed, so recomputing them each step is pure waste.
 The **KV-cache** stores each token's `K` and `V` the first time they're produced
-and **reuses** them forever after — so each new step only computes **one** new
+and **reuses** them while retained and valid — so each new step only computes **one** new
 token's query, key, and value, appends that `K`/`V` to the cache, and attends
 against the whole cache. It trades **memory** (the cache grows with the sequence)
 for a huge drop in repeated compute.
@@ -48,10 +48,16 @@ now produces token $t$. The key facts:
 This turns the per-step cost from *recomputing $t$ tokens'* `K`/`V` into computing
 **one** — generation over a length-$n$ sequence drops from $O(n^2)$ repeated
 projection work to $O(n)$. The price is memory: the cache holds
-$2 \times n_\text{tokens} \times n_\text{layers} \times n_\text{heads} \times d_\text{head}$
-values, which for long context or large batch becomes the **dominant** inference
+$2 \times n_\text{tokens} \times n_\text{layers} \times n_\text{KV heads} \times d_\text{head}$
+values, which for some long-context or large-batch workloads can become a **dominant memory**
 cost — the pressure that later motivates fewer KV heads (GQA/MQA), paged cache
 memory, and KV-quantization.
+
+## Storage growth is not dense attention score growth
+
+For B sequences with uniform retained length T, L layers, H_kv stored key/value heads, head width d and b bytes per scalar, an ordinary full-history cache payload has 2 B L T H_kv d b bytes. The factor two counts keys and values. This is linear in T at fixed architecture and batch. It excludes allocator padding, temporary workspaces, scale metadata and shared-prefix accounting. The number of stored KV heads need not equal the query-head count.
+
+In a toy B=1, L=2, T=4, H_kv=2, d=3 and b=2 configuration, the payload is 2×1×2×4×2×3×2=192 bytes. Appending one retained token adds 48 bytes, producing 240. Separately, a full dense prefill forms a quadratic number of query-key interactions; a new decode query reads a history-dependent row. Caching earlier states does not make those reads constant or eliminate all attention work. Validate masks, positions, model compatibility and cached-versus-recomputed outputs before treating reused bytes as correct.
 
 ## Prerequisites
 
@@ -59,4 +65,4 @@ memory, and KV-quantization.
 
 ## Sources
 
-_none_
+- <https://huggingface.co/docs/transformers/cache_explanation>

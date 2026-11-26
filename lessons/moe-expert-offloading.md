@@ -23,3 +23,7 @@ Keep the same model and tasks when comparing all-GPU, offloaded, and quantized v
 ## Understanding check
 
 What measurements would show that host-to-device expert transfer, rather than GPU compute, is the serving bottleneck?
+
+## Residency and phases
+
+Prefetch helps only when predicted transfers complete before demand without displacing more useful work. In an ideal schedule, 8 ms of independent compute can hide a 5 ms transfer; a 12 ms transfer still exposes at least 4 ms. Wrong predictions consume bandwidth. Long prefill and speculative verification can expand the expert working set: three positions routed to {A,B}, {B,C} and {C,D} need a four-expert union. Measure this traffic and cache admission separately, counting rejected proposals too.

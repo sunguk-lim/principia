@@ -1,29 +1,21 @@
-# Tiered Kv Cache
+# Tiered KV Cache
 
 ## Meaning
 
-A **tiered KV cache** keeps frequently reused attention blocks near the GPU and evicts colder blocks to larger, slower memory instead of discarding them immediately. It expands the possible reuse window for repeated prompts, but a cache hit is valuable only when fetching the block is cheaper than recomputing it.
+A tiered KV cache retains reusable attention state in larger, slower memory when GPU space is scarce. A later compatible request can restore it instead of recomputing its prefix. The useful trade is capacity and reuse against movement cost, not simply a higher hit rate.
 
 ## Mechanism
 
-[[kv-cache]] blocks occupy accelerator memory alongside weights and active requests. [[prefix-caching]] can reuse blocks across requests, yet a busy server eventually evicts them. A tiered design follows the [[memory-hierarchy]]: GPU memory for active blocks, CPU RAM for recently evicted blocks, and possibly local or network storage for colder ones. On a later matching prompt, the system checks whether a block still exists and fetches it back before continuing prefill.
+GPU memory holds active state; host RAM or storage can retain colder blocks. On reuse, the system verifies compatibility and ownership, locates the state and transfers it before consumption. A cache index can be stale, and concurrent traffic shares transfer paths. Layerwise prefetch helps only when state arrives before its read and staging buffers remain valid.
 
-Consider a long multi-turn conversation revisited after other users fill GPU memory. Without offload, its prior prefix must be recomputed. With CPU offload, a transfer may restore it faster. A short prefix may be cheaper to recompute; network storage might lose to recomputation even for a longer one under congestion. Eviction policy, block granularity, and request arrival patterns determine the trade-off. A cache index can be stale, and transfer bandwidth shared with other work may increase tail latency.
+Tiering does not require racing every backend. Concurrent lookup may shorten a slow miss path but can add redundant traffic and cancellation work. LMCache documents an L1 reservation followed by L2 handling of remaining keys; check the actual implementation before attributing an all-tier race to it.
 
 ## One example
 
-For a hypothetical 2 GiB prefix, a restore path sustaining 8 GiB/s needs at least 250 ms to transfer it. Add 30 ms for setup and queueing: restoration takes 280 ms before any additional contention. If recomputation takes 180 ms, a hit on that slower tier is not the fastest path. At 32 GiB/s the transfer floor is 62.5 ms; with the same overhead, 92.5 ms restoration can win. Retaining the block on the GPU avoids the restore but consumes space other requests could use. Measure the full path and reuse probability before choosing how long to retain it.
+For a hypothetical 2 GiB prefix and an effective 8 GiB/s path, transfer alone takes 250 ms. Adding 30 ms of setup and queueing gives 280 ms. If recomputation costs 180 ms, restoring that hit loses. At 32 GiB/s, transfer takes 62.5 ms and total restoration 92.5 ms, which can win under the same assumptions.
 
-## Shared transfer paths
-
-Parallel storage reads do not bypass a shared bottleneck. Four 128 MiB blocks each read at 2 GiB/s could finish in 62.5 ms on independent paths; a common 4 GiB/s link raises the aggregate transfer floor to 125 ms. Queueing and stragglers add delay. Layerwise prefetch only hides transfer when required state arrives before use and staging lifetimes are correct. Measure the complete restore path, not the sum of device peak bandwidths.
-
-## Boundary to preserve
-
-Evicting an unreferenced reusable prefix loses a future hit. Removing state still needed by an active request instead requires restoration or recomputation before its next read; dropping history changes the model's computation unless an explicit approximation permits it. If two live requests reference one block, freeing it based on stale ownership can break both. Test concurrent pin/release, eviction and cancellation, not only hit rates.
+Four independent storage paths do not evade a shared bottleneck. Four 128 MiB blocks total 512 MiB; a common 4 GiB/s link needs at least 125 ms, even when each device can read its own block faster. Measure complete restoration rather than summing device peaks.
 
 ## Check your understanding
 
-**Question:** Why is a cache hit not always a latency win?
-
-**Answer:** Restore transfer and queueing may cost more than recomputing the prefix.
+Can every cached block be evicted without affecting correctness? No. An unreferenced reusable prefix can be recomputed later, but an active request still needs its required state before the next read. Preserve pin/release ownership and test cancellation, eviction and worker loss. Report token reuse, transfer latency, memory pressure and task quality separately. A hit is an opportunity to avoid work, not proof of lower tail latency.

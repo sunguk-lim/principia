@@ -4,11 +4,11 @@ title: Active Learning
 summary: Active learning repeatedly selects unlabeled examples whose acquired labels are expected to improve a model most, seeking a target quality with fewer labels than uninformed sampling.
 type: concept
 tags: [ml/training]
-prereqs: [loss-function, model-calibration, probability-distribution]
-sources: [https://arxiv.org/abs/2005.14165, https://burrsettles.com/pub/settles.activelearning.pdf, https://arxiv.org/abs/1703.02910, https://arxiv.org/abs/1906.08158]
+prereqs: [loss-function, model-calibration, probability-distribution, logarithm]
+sources: [https://www.nltk.org/api/nltk.metrics.agreement.html, https://arxiv.org/abs/2005.14165, https://burrsettles.com/pub/settles.activelearning.pdf, https://arxiv.org/abs/1703.02910, https://arxiv.org/abs/1906.08158]
 status: explained
 created: 2026-09-09
-updated: 2026-11-25
+updated: 2026-11-27
 ---
 
 # Active Learning
@@ -25,7 +25,7 @@ Uncertainty sampling is one acquisition rule. For a binary classifier emitting p
 
 $$H(p)=-p\log p-(1-p)\log(1-p).$$
 
-This score is derived from the model's [[probability-distribution]], not from the unknown label. It is only meaningful to the extent that scores express useful uncertainty; [[model-calibration]] checks whether predicted probabilities agree with observed frequencies but does not by itself make an acquisition policy optimal.
+The log terms use [[logarithm]]. This score is derived from the model's [[probability-distribution]], not from the unknown label. It is only meaningful to the extent that scores express useful uncertainty; [[model-calibration]] checks whether predicted probabilities agree with observed frequencies but does not by itself make an acquisition policy optimal.
 
 Suppose $U$ contains four candidates with positive probabilities `0.50`, `0.52`, `0.90`, and `0.10`, and the budget is two labels. Ranking each point independently by entropy selects `0.50` and `0.52`. If those two candidates are near-duplicates, the second label may add little information. A diversity-aware batch can instead choose one uncertain example and a less redundant candidate. BatchBALD formalizes this issue by selecting examples jointly according to information about model parameters; its experiments show that independent batch acquisition can choose redundant points.
 
@@ -43,11 +43,19 @@ Length also changes rankings. In an invented example, a two-token response has p
 
 Full vocabulary scores, repeated generations and retraining all consume resources. Validate token aggregation or cheaper proxy scores against random acquisition and task-level error at matched annotation and selection cost. Keep a representative held-out evaluation set and inspect long answers, rare formats and out-of-distribution inputs. A high entropy score is not proof of a useful label, and a confident model can still be wrong.
 
+## Annotator disagreement in the acquisition loop
+
+Model uncertainty and human disagreement are different signals. An acquisition rule can concentrate ambiguous examples, making its acquired batch less reproducible than ordinary traffic. Audit independent labels before adjudication, retain the instruction version and inspect disagreement by acquisition round and task slice. Agreement does not establish truth, while disagreement can reflect unclear policy, multiple valid answers, annotator error or genuinely difficult inputs.
+
+In an invented batch, 20 of 100 acquired items have conflicting independent labels, compared with 4 of 100 randomly monitored traffic items. The difference can reflect selection toward ambiguity rather than a sudden collapse in annotator skill. Resolve the task definition and preserve original labels before treating every conflict as useful model uncertainty. Compare learning gains and adjudication cost; an acquisition policy can spend its entire budget repeatedly selecting irreducibly ambiguous cases. These audits support the loop's quality checks rather than replacing the acquisition objective with a raw disagreement coefficient.
+
 ## Prerequisites
 
 - [[loss-function]]
 - [[model-calibration]]
 - [[probability-distribution]]
+
+- [[logarithm]]
 
 ## Sources
 
@@ -56,3 +64,5 @@ Full vocabulary scores, repeated generations and retraining all consume resource
 - [Kirsch, van Amersfoort, and Gal, “BatchBALD”](https://arxiv.org/abs/1906.08158): joint batch acquisition and redundancy in independently ranked batches.
 
 - <https://arxiv.org/abs/2005.14165> — prefix-conditioned language-model probabilities; acquisition aggregation above is an explicit application design choice.
+
+- <https://www.nltk.org/api/nltk.metrics.agreement.html>

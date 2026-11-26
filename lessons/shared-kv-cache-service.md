@@ -17,3 +17,9 @@ Assume worker A computed a compatible prefix and then exited. Worker B receives 
 ## Check your understanding
 
 Does a separate cache process guarantee a warm request after any crash? No. The service, backend, index, compatible representation and authorization must all still permit restoration; otherwise fall back safely.
+
+## Failure and measurement boundary
+
+A process boundary does not remove shared device or storage failures. Specify timeouts and safe recomputation or explicit failure before assuming cache downtime is transparent. Test engine restart, cache restart and an interrupted restoration separately.
+
+For ten toy requests, eight each reuse ten prompt tokens and two each miss on 1,000 tokens. The request hit rate is 80%, yet token reuse is only 80/2,080≈3.85%. Neither number is a measured prefill-time saving. Report transfer time, reused-token volume, useful work avoided and tail latency separately.

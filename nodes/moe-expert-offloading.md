@@ -5,10 +5,10 @@ summary: Expert offloading keeps selected MoE weights in host memory and transfe
 type: concept
 tags: [ml/llm/inference]
 prereqs: [mixture-of-experts, llm-inference-memory-budget, gpu-data-flow]
-sources: [https://arxiv.org/abs/2401.14361]
+sources: [https://arxiv.org/html/2401.14361v3, https://arxiv.org/abs/2401.14361]
 status: explained
 created: 2026-10-16
-updated: 2026-10-25
+updated: 2026-11-27
 ---
 
 # Mixture-of-Experts Expert Offloading
@@ -33,6 +33,18 @@ For an illustrative cold-miss workload that reads 1.2 GB of expert data per outp
 
 Measure cold and warm expert bytes, cache misses, read amplification, storage queueing, staging memory, host/device copies, synchronization and token latency. Compare a browser or native implementation with the same weights, quantizer and operators; one correct completion and a handful of matching layer values do not prove full-model equivalence. Do not confuse loading a weight file once with paging expert weights during every generated token.
 
+## Reuse-aware residency and bounded prefetch
+
+Expert-cache policy should estimate reuse within the relevant request or workload phase, not just count historical popularity forever. MoE-Infinity uses activation traces to guide replacement and prefetching in its evaluated personal-machine setting. A frequent expert can become cold after a topic change; retaining it may evict a newly useful expert. Compare reuse-aware admission with recency-based and demand-only baselines under equal capacity.
+
+Prefetch moves a predicted expert before it is required. It helps only if useful reads overlap independent work and finish before consumption. Wrong predictions compete with demand traffic and consume staging space. In a toy schedule, one layer has 8 ms of independent work and the next expert transfer takes 5 ms: starting it early may hide that transfer. A 12 ms transfer still leaves at least 4 ms exposed under ideal overlap; shared-bandwidth contention can make the result worse. Measure useful prefetched bytes and critical-path stalls, not just queued I/O.
+
+## Prefill and speculative verification working sets
+
+A long prefill can touch many experts and evict the small hot set useful during decode. Phase-aware admission or protected capacity can preserve that set, at the cost of space unavailable to other work. This is an independently testable scheduling policy, not a claim that every engine provides it. Compare cold and warm decode after short and long prompts, including concurrent requests.
+
+Speculative verification can also expand the requested expert union. If one verification examines three proposed positions routed to sets {A,B}, {B,C} and {C,D}, their union contains four experts, not two. Rejected proposals can still incur reads. Jointly measure accepted output tokens, union size, misses, staging memory and complete draft/verify latency when selecting speculation width. Larger speculative batches are not free simply because each token activates few experts.
+
 ## Prerequisites
 
 - [[mixture-of-experts]]
@@ -42,3 +54,5 @@ Measure cold and warm expert bytes, cache misses, read amplification, storage qu
 ## Sources
 
 - [MoE-Infinity](https://arxiv.org/abs/2401.14361): activation-aware expert caching and offloading under constrained GPU capacity.
+
+- <https://arxiv.org/html/2401.14361v3>

@@ -4694,13 +4694,6 @@
       "reason": "Worked instance is supporting explanation for the canonical Context Parallelism objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-896c5df5a7c98b749eb7",
-      "sourceId": "active-learning",
-      "contentHash": "adcc77f3077827373c7bf5fcd53163d08d404751075b01679448de75dac9442e",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Active Learning objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-897a1861b751ad3ef858",
       "sourceId": "oom-killer",
       "contentHash": "133d75baeb0cb4b84b8a1ad9c3a03b28a99e232cdb1ffcb263c8779652e7efea",
@@ -4909,13 +4902,6 @@
       "contentHash": "20addc9a2eb8d425d79fe5f4e260c2e8e68040a25c05700fce1ad4725ec2932b",
       "decision": "retain",
       "reason": "Building the running total is supporting explanation for the canonical Cumulative Distribution Function objective, not a separately learnable entity."
-    },
-    {
-      "candidateKey": "cand-8fdb9435e572fd5675f0",
-      "sourceId": "kv-cache",
-      "contentHash": "f3bdb107b12f9129c4242daec5c1f04a38691f83df9a43f61dda7ab3188d5d8e",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical KV-cache objective, not a separately learnable entity."
     },
     {
       "candidateKey": "cand-8ff202b509ff10685a56",
@@ -20101,6 +20087,293 @@
       "contentHash": "f5199411b53b81d906e960c15a133b5b4ea2edb3eb91efa0e7eaee58da9a99ce",
       "decision": "retain",
       "reason": "These checks and counterexamples delimit weight residency, repeated materialization and capacity/transfer trade-offs; validation guidance remains within that objective."
+    },
+    {
+      "candidateKey": "cand-9cb09dceb4223ccb5006",
+      "sourceId": "tool-paged-agent-memory",
+      "contentHash": "533d7ff5590bae2a41cf9cd2bd1e6b6b1ceeaa43b15b26880d2cc67f7aa99c2a",
+      "decision": "retain",
+      "reason": "Defines this canonical learning objective and disambiguates its scope; it does not introduce another entity. Reviewed objective: bounded function-driven context paging, distinct from portable storage namespaces or automatic fixed retrieval."
+    },
+    {
+      "candidateKey": "cand-75c50ed26ad5ad032f64",
+      "sourceId": "tool-paged-agent-memory",
+      "contentHash": "32df9b936aa4ca57e7ae2e1104685dd79193206d4754154cdab1e47f4df900d2",
+      "decision": "retain",
+      "reason": "Derives the operations and invariants needed to understand the same objective, not an unrelated API or alternative method. Reviewed objective: bounded function-driven context paging, distinct from portable storage namespaces or automatic fixed retrieval."
+    },
+    {
+      "candidateKey": "cand-adc448c3b88fe1a070e4",
+      "sourceId": "tool-paged-agent-memory",
+      "contentHash": "6448d347351d3ef58c9f2295c21dfd74d57caee794a7fe9c7fd8e9affde603da",
+      "decision": "retain",
+      "reason": "An original numerical instance exercises this objective; invented values are pedagogical evidence, not a new concept. Reviewed objective: bounded function-driven context paging, distinct from portable storage namespaces or automatic fixed retrieval."
+    },
+    {
+      "candidateKey": "cand-fb8c1ea3327aec4ed703",
+      "sourceId": "tool-paged-agent-memory",
+      "contentHash": "d5a210133e410ee9bf92cb320ba99f849d7d0afed2e7696ceabbef28ea48a2c8",
+      "decision": "retain",
+      "reason": "Limits, counterexamples and acceptance checks qualify the same mechanism rather than define another entity. Reviewed objective: bounded function-driven context paging, distinct from portable storage namespaces or automatic fixed retrieval."
+    },
+    {
+      "candidateKey": "cand-41abcbb87fd67e264cfe",
+      "sourceId": "gpu-interprocess-memory-sharing",
+      "contentHash": "da37996d7daf3bdd5b142fe3761c4c21b8c1835196da2b1b4e9ed6c08430df97",
+      "decision": "retain",
+      "reason": "Defines this canonical learning objective and disambiguates its scope; it does not introduce another entity. Reviewed objective: one allocation mapped across process-local address spaces with explicit completion and lifetime."
+    },
+    {
+      "candidateKey": "cand-cca32e6763b6ced89d66",
+      "sourceId": "gpu-interprocess-memory-sharing",
+      "contentHash": "73e8517ea931cdb875539eb17fdf76b39f0c38f90809b82e6c4acc1b3b06feb8",
+      "decision": "retain",
+      "reason": "Derives the operations and invariants needed to understand the same objective, not an unrelated API or alternative method. Reviewed objective: one allocation mapped across process-local address spaces with explicit completion and lifetime."
+    },
+    {
+      "candidateKey": "cand-d6ca80620990bcf0c672",
+      "sourceId": "gpu-interprocess-memory-sharing",
+      "contentHash": "15ffe36f3ddd9796766b33c0a7253fe6cfa745b525ddbb4e7a09b212d484fcdb",
+      "decision": "retain",
+      "reason": "An original numerical instance exercises this objective; invented values are pedagogical evidence, not a new concept. Reviewed objective: one allocation mapped across process-local address spaces with explicit completion and lifetime."
+    },
+    {
+      "candidateKey": "cand-32113cccc34ee1bb5777",
+      "sourceId": "gpu-interprocess-memory-sharing",
+      "contentHash": "177cfeb7d14b2ff4213143e0db744ee624919d37140c2232f7595de627848758",
+      "decision": "retain",
+      "reason": "Limits, counterexamples and acceptance checks qualify the same mechanism rather than define another entity. Reviewed objective: one allocation mapped across process-local address spaces with explicit completion and lifetime."
+    },
+    {
+      "candidateKey": "cand-9209cbc6918bb3a532f6",
+      "sourceId": "beam-search-decoding",
+      "contentHash": "31e5db48d18c914029c62d114c8de5b27e95c6fda6fb32bc1cc2cfc59ade9d1d",
+      "decision": "retain",
+      "reason": "Defines this canonical learning objective and disambiguates its scope; it does not introduce another entity. Reviewed objective: bounded token-prefix likelihood search, distinct from verifier-guided reasoning search."
+    },
+    {
+      "candidateKey": "cand-1ba655a983e74ab7c703",
+      "sourceId": "beam-search-decoding",
+      "contentHash": "60616c71f24851a89f7e4a9f64a9d07caa0e2a0f5814e398bb76af990b79f2f9",
+      "decision": "retain",
+      "reason": "Derives the operations and invariants needed to understand the same objective, not an unrelated API or alternative method. Reviewed objective: bounded token-prefix likelihood search, distinct from verifier-guided reasoning search."
+    },
+    {
+      "candidateKey": "cand-21b665365d950af908a0",
+      "sourceId": "beam-search-decoding",
+      "contentHash": "92268ca36c21e158ebaa0f932d23ed0e1d153b14e053ee49a08ffb61e98e2ea7",
+      "decision": "retain",
+      "reason": "An original numerical instance exercises this objective; invented values are pedagogical evidence, not a new concept. Reviewed objective: bounded token-prefix likelihood search, distinct from verifier-guided reasoning search."
+    },
+    {
+      "candidateKey": "cand-89735ac5d00d2b11f989",
+      "sourceId": "beam-search-decoding",
+      "contentHash": "10b3def53f736e9faf4da5bd1c7dfcca6d8ff35f410ae554fd103ce08c24ac93",
+      "decision": "retain",
+      "reason": "Limits, counterexamples and acceptance checks qualify the same mechanism rather than define another entity. Reviewed objective: bounded token-prefix likelihood search, distinct from verifier-guided reasoning search."
+    },
+    {
+      "candidateKey": "cand-9d9a411a68b10d9526b3",
+      "sourceId": "contrastive-search-decoding",
+      "contentHash": "bf4dcc45cfd53347071565a1da34cf0d8a61316f9dd7555f0edc70e46e4a882a",
+      "decision": "retain",
+      "reason": "Defines this canonical learning objective and disambiguates its scope; it does not introduce another entity. Reviewed objective: probability versus contextual hidden-state similarity selection, not a second-model logit contrast."
+    },
+    {
+      "candidateKey": "cand-a4aa08428babcb04b3d2",
+      "sourceId": "contrastive-search-decoding",
+      "contentHash": "aba33b59a8a54d31f26ca806c8920ee1d49b83ff9bed949959ba3b82671350bd",
+      "decision": "retain",
+      "reason": "Derives the operations and invariants needed to understand the same objective, not an unrelated API or alternative method. Reviewed objective: probability versus contextual hidden-state similarity selection, not a second-model logit contrast."
+    },
+    {
+      "candidateKey": "cand-3eef815f0e97ff04fcbd",
+      "sourceId": "contrastive-search-decoding",
+      "contentHash": "84bb19b404aaa3bb3fdafb1aa9f3a773b548088fd35484c677bedcad24cf5ac8",
+      "decision": "retain",
+      "reason": "An original numerical instance exercises this objective; invented values are pedagogical evidence, not a new concept. Reviewed objective: probability versus contextual hidden-state similarity selection, not a second-model logit contrast."
+    },
+    {
+      "candidateKey": "cand-e91e45415ce2b0a2d407",
+      "sourceId": "contrastive-search-decoding",
+      "contentHash": "3eeff6d79f3e8f7fdc1799e5c343e3b121dce10216a054031f2f08d174373c15",
+      "decision": "retain",
+      "reason": "Limits, counterexamples and acceptance checks qualify the same mechanism rather than define another entity. Reviewed objective: probability versus contextual hidden-state similarity selection, not a second-model logit contrast."
+    },
+    {
+      "candidateKey": "cand-f34faa122d13b9aeb1cd",
+      "sourceId": "cost-aware-active-learning",
+      "contentHash": "a0d733d53575b670978732ac3f07859464ef48614660f232e04ae512d76a1341",
+      "decision": "retain",
+      "reason": "Defines this canonical learning objective and disambiguates its scope; it does not introduce another entity. Reviewed objective: budget-aware label selection with uncertain values and nonuniform costs."
+    },
+    {
+      "candidateKey": "cand-379473182cad56c3f3ad",
+      "sourceId": "cost-aware-active-learning",
+      "contentHash": "1190759e8a428776c1573bf7809ae6e791c63b5ff8c82e533f130df30fd96558",
+      "decision": "retain",
+      "reason": "Derives the operations and invariants needed to understand the same objective, not an unrelated API or alternative method. Reviewed objective: budget-aware label selection with uncertain values and nonuniform costs."
+    },
+    {
+      "candidateKey": "cand-ce13e18130e4259fd900",
+      "sourceId": "cost-aware-active-learning",
+      "contentHash": "6c8824f9cbcaf8473cd5ea82e93b919e75aa57ca8dd877329d9d6aaeb02a7bc8",
+      "decision": "retain",
+      "reason": "An original numerical instance exercises this objective; invented values are pedagogical evidence, not a new concept. Reviewed objective: budget-aware label selection with uncertain values and nonuniform costs."
+    },
+    {
+      "candidateKey": "cand-bce75eb31bcd1816ba2f",
+      "sourceId": "cost-aware-active-learning",
+      "contentHash": "822596e161ef051c7843cd6289732734313315853b85ccdac02da02248065d43",
+      "decision": "retain",
+      "reason": "Limits, counterexamples and acceptance checks qualify the same mechanism rather than define another entity. Reviewed objective: budget-aware label selection with uncertain values and nonuniform costs."
+    },
+    {
+      "candidateKey": "cand-71dbfcbc9a1da63f532a",
+      "sourceId": "active-learning-stopping-rules",
+      "contentHash": "5064bd81788e05b802434ce342a2fcd13a7a05121d4fb0b4e009e49e56ca2465",
+      "decision": "retain",
+      "reason": "Defines this canonical learning objective and disambiguates its scope; it does not introduce another entity. Reviewed objective: resource and progress termination semantics independent of acquisition ranking."
+    },
+    {
+      "candidateKey": "cand-e5758bb78baff54f7973",
+      "sourceId": "active-learning-stopping-rules",
+      "contentHash": "7b0817853aad4818ea32bbc218c607f77cad0e3142e25c1c734e342de2528c3e",
+      "decision": "retain",
+      "reason": "Derives the operations and invariants needed to understand the same objective, not an unrelated API or alternative method. Reviewed objective: resource and progress termination semantics independent of acquisition ranking."
+    },
+    {
+      "candidateKey": "cand-72e1366554858bd0b9b1",
+      "sourceId": "active-learning-stopping-rules",
+      "contentHash": "5d92434315ee22cc9666e42e8dc51b0a84a1a276d2767354d0a83ad23f4b7d59",
+      "decision": "retain",
+      "reason": "An original numerical instance exercises this objective; invented values are pedagogical evidence, not a new concept. Reviewed objective: resource and progress termination semantics independent of acquisition ranking."
+    },
+    {
+      "candidateKey": "cand-981790aeec9c844302de",
+      "sourceId": "active-learning-stopping-rules",
+      "contentHash": "6497b8293d91415f0fa218312a8d439050a3c45e31ed908278ed01822e1f4f53",
+      "decision": "retain",
+      "reason": "Limits, counterexamples and acceptance checks qualify the same mechanism rather than define another entity. Reviewed objective: resource and progress termination semantics independent of acquisition ranking."
+    },
+    {
+      "candidateKey": "cand-87a5c4d00b27dc28149c",
+      "sourceId": "effective-context-utilization",
+      "contentHash": "67526238aa3b4d9d055c44c565f7101c779778fde2302fba3bbecb2348bdf2e6",
+      "decision": "retain",
+      "reason": "The conditional score and changing-subset counterexample are supporting evaluation operations for effective context utilization, not a second context capacity entity. Reviewed objective: measured evidence use with explicit sufficient-evidence denominators and paired controls."
+    },
+    {
+      "candidateKey": "cand-2657c0ec71c46268e546",
+      "sourceId": "moe-expert-offloading",
+      "contentHash": "637304b1706b7e887e9720ec67f23f51116682fc0bdaa2b26348e39465a8ac52",
+      "decision": "retain",
+      "reason": "Admission, demand and overlap are explicitly reviewed parts of expert-offloading scheduling; no universal speed claim or named-engine equivalence is asserted. Reviewed objective: expert residency and transfer scheduling under capacity, demand and workload-phase constraints."
+    },
+    {
+      "candidateKey": "cand-73f7f6c9bd55b4272fea",
+      "sourceId": "moe-expert-offloading",
+      "contentHash": "4095d4f86f2175432e6df08ea0f129b51f88370ab45832fcb55c38afea9f693c",
+      "decision": "retain",
+      "reason": "The phase and routing-union examples explain demand presented to the expert store; neither creates a separate architecture merely from an implementation subsection. Reviewed objective: expert residency and transfer scheduling under capacity, demand and workload-phase constraints."
+    },
+    {
+      "candidateKey": "cand-6094040e67ab5b020cfc",
+      "sourceId": "tiered-kv-cache",
+      "contentHash": "4916dae02e064c2ff1d3cd3e3e782ff348faa15c856484f68ec134019b088f27",
+      "decision": "retain",
+      "reason": "Contrasts a bounded lookup option with the owning tiered-cache mechanism and preserves compatibility/cancellation boundaries; it is supporting design analysis. Reviewed objective: reuse versus restoration cost with valid active-state ownership and bounded tier lookup."
+    },
+    {
+      "candidateKey": "cand-17ae64d408a5f2db263a",
+      "sourceId": "active-learning",
+      "contentHash": "9e8eac7ec25ba08bf771b0d0e178bcd55e6ec1c40293f1835ed60317948fdf26",
+      "decision": "retain",
+      "reason": "The revised core explanation stays within the owning concept; narrower comparisons do not change its identity. Reviewed objective: the label-acquisition loop, including entropy notation and acquisition-conditioned label ambiguity audits."
+    },
+    {
+      "candidateKey": "cand-d1213b9fd653257d80b8",
+      "sourceId": "active-learning",
+      "contentHash": "390f771231a5f723223f84c7cb456a5799ed0a3599b73a495d1d6a509f0d6361",
+      "decision": "retain",
+      "reason": "Integrates acquired-batch ambiguity auditing into the active-learning loop without redefining inter-annotator agreement as acquisition uncertainty. Reviewed objective: the label-acquisition loop, including entropy notation and acquisition-conditioned label ambiguity audits."
+    },
+    {
+      "candidateKey": "cand-24659f43161ec5037287",
+      "sourceId": "kv-cache",
+      "contentHash": "75a6b4b9c519dc508da908c63758343ad737d53dc9a187d86a4ab5dc70a2c26b",
+      "decision": "retain",
+      "reason": "The revised core explanation stays within the owning concept; narrower comparisons do not change its identity. Reviewed objective: compatible causal state retention, distinguishing linear KV payload from dense attention score work."
+    },
+    {
+      "candidateKey": "cand-bfdb06ff2a3b40aac137",
+      "sourceId": "kv-cache",
+      "contentHash": "614181f861626f736556fb5163ac73e4cdf83914a19937cdb1c6252be9561695",
+      "decision": "retain",
+      "reason": "Derives the owning cache capacity and append operation, separating it from attention arithmetic; the formula is supporting explanation of KV state. Reviewed objective: compatible causal state retention, distinguishing linear KV payload from dense attention score work."
+    },
+    {
+      "candidateKey": "cand-88c854bb6ad203e35b4a",
+      "sourceId": "shared-kv-cache-service",
+      "contentHash": "cb66fab115b1b02d21bed7a73968e69a59a692cd8e6159972fed8357f7bd3a4a",
+      "decision": "retain",
+      "reason": "The failure and token-hit examples delimit a shared cache service contract; independent service lifetime alone is not a new guarantee of fault tolerance. Reviewed objective: shared attention-state lifetime independent of workers, including failure and useful-hit measurement boundaries."
+    },
+    {
+      "candidateKey": "cand-0113f1c646ac628974e3",
+      "sourceId": "error-prediction-acquisition",
+      "contentHash": "f7b197426d6e1410260b4c42b4836900dd23e4418fc8c9ce2d83a42450ccabb0",
+      "decision": "retain",
+      "reason": "Defines and disambiguates the owning objective for learned target-difficulty acquisition with a distinction between binary error and numerical loss. Supporting teaching material, not a separate entity inferred from a heading."
+    },
+    {
+      "candidateKey": "cand-cc1259a609c4cfb1ecd4",
+      "sourceId": "error-prediction-acquisition",
+      "contentHash": "13f02d22beec0031580493474e99f1253a0b90f741232c630c88c3eef8277740",
+      "decision": "retain",
+      "reason": "Explains the required scoring or search operations and constraints for learned target-difficulty acquisition with a distinction between binary error and numerical loss. Supporting teaching material, not a separate entity inferred from a heading."
+    },
+    {
+      "candidateKey": "cand-8728e9baf5ce93b0d4e4",
+      "sourceId": "error-prediction-acquisition",
+      "contentHash": "d4628ac47371ac3ee0bb8f7917fc0328d768ec1b6c09fb32e6cddc9f2fbcf11d",
+      "decision": "retain",
+      "reason": "Works an original counterexample or numerical instance of the owning mechanism for learned target-difficulty acquisition with a distinction between binary error and numerical loss. Supporting teaching material, not a separate entity inferred from a heading."
+    },
+    {
+      "candidateKey": "cand-2de8df7992979822f2ce",
+      "sourceId": "error-prediction-acquisition",
+      "contentHash": "6871ae02e40d678c41695c963728429c1dace361a9e35e15d9534e024acc412d",
+      "decision": "retain",
+      "reason": "States the owning mechanism's limits and independent acceptance conditions for learned target-difficulty acquisition with a distinction between binary error and numerical loss. Supporting teaching material, not a separate entity inferred from a heading."
+    },
+    {
+      "candidateKey": "cand-c0966cebacfdd4179ed7",
+      "sourceId": "hardware-aware-inference-autotuning",
+      "contentHash": "44a1534a945767df2a97812598808d04261cc5b11f5d6947dcdb4901cfe0736f",
+      "decision": "retain",
+      "reason": "Defines and disambiguates the owning objective for whole-runtime feasible configuration search, distinct from optimizing one kernel. Supporting teaching material, not a separate entity inferred from a heading."
+    },
+    {
+      "candidateKey": "cand-c8c5d98f1f393617832b",
+      "sourceId": "hardware-aware-inference-autotuning",
+      "contentHash": "9a47bbe424eae8e739e87e6ace29a1b2fe87b5632341605e56eff5283f2e7622",
+      "decision": "retain",
+      "reason": "Explains the required scoring or search operations and constraints for whole-runtime feasible configuration search, distinct from optimizing one kernel. Supporting teaching material, not a separate entity inferred from a heading."
+    },
+    {
+      "candidateKey": "cand-e53192b2fc6e8d3db829",
+      "sourceId": "hardware-aware-inference-autotuning",
+      "contentHash": "49eea24571b9fe255ac45c27da15e7cd8889ed696b49d7ae1bcae4f409ee46cd",
+      "decision": "retain",
+      "reason": "Works an original counterexample or numerical instance of the owning mechanism for whole-runtime feasible configuration search, distinct from optimizing one kernel. Supporting teaching material, not a separate entity inferred from a heading."
+    },
+    {
+      "candidateKey": "cand-3f8a5d2a573962f18701",
+      "sourceId": "hardware-aware-inference-autotuning",
+      "contentHash": "0d266960de7c6e607d438e44ac6940569e60bbe13c3bda2f8c19a856e0032705",
+      "decision": "retain",
+      "reason": "States the owning mechanism's limits and independent acceptance conditions for whole-runtime feasible configuration search, distinct from optimizing one kernel. Supporting teaching material, not a separate entity inferred from a heading."
     }
   ]
 }

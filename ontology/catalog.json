@@ -225,7 +225,8 @@
       "prerequisiteReasons": {
         "loss-function": "The stated objective requires Loss function: the complete explanation applies it in this mechanism: Begin with a labeled set $L$, an unlabeled pool $U$, an annotation budget $b$, and a model trained to minimize a loss-function. An acquisition function assigns a score to candidates in $U$. Select a batch, obtain its labels from an oracle such as a human annotator, move those",
         "model-calibration": "The stated objective requires Model Calibration: the complete explanation applies it in this mechanism: This score is derived from the model's probability-distribution, not from the unknown label. It is only meaningful to the extent that scores express useful uncertainty; model-calibration checks whether predicted probabilities agree with observed frequencies but does not by",
-        "probability-distribution": "The stated objective requires Probability Distribution: the complete explanation applies it in this mechanism: This score is derived from the model's probability-distribution, not from the unknown label. It is only meaningful to the extent that scores express useful uncertainty; model-calibration checks whether predicted probabilities agree with observed frequencies but does not by"
+        "probability-distribution": "The stated objective requires Probability Distribution: the complete explanation applies it in this mechanism: This score is derived from the model's probability-distribution, not from the unknown label. It is only meaningful to the extent that scores express useful uncertainty; model-calibration checks whether predicted probabilities agree with observed frequencies but does not by",
+        "logarithm": "Predictive entropy acquisition uses logarithms of label or token probabilities, including the sequence-aggregation distinction."
       }
     },
     "adaptive-layer-normalization": {
@@ -5801,6 +5802,84 @@
         "logarithm": "Defines information content and the unit set by the log base.",
         "expectation": "Defines the probability-weighted average of information."
       }
+    },
+    "tool-paged-agent-memory": {
+      "aliases": [
+        "Virtual context paging"
+      ],
+      "objective": "Tool-paged agent memory retrieves successive bounded portions of external history through validated tool calls, making context selection an explicit control-flow decision.",
+      "prerequisiteReasons": {
+        "agent-memory": "The reader must distinguish live context from retained external records before understanding movement between them.",
+        "tool-call-execution-contract": "The paging loop needs validated tool arguments, explicit results and externally enforced execution limits."
+      }
+    },
+    "gpu-interprocess-memory-sharing": {
+      "aliases": [
+        "CUDA IPC memory sharing"
+      ],
+      "objective": "GPU interprocess memory sharing exports a device-allocation handle so another process can map the same underlying storage under explicit lifetime and synchronization rules.",
+      "prerequisiteReasons": {
+        "process": "Separate processes have separate address spaces, so one process cannot interpret another process pointer as its own valid mapping.",
+        "gpu-data-flow": "Asynchronous GPU access and transfer completion determine when a shared allocation can safely be read or reclaimed."
+      }
+    },
+    "beam-search-decoding": {
+      "aliases": [
+        "Likelihood beam search"
+      ],
+      "objective": "Beam search retains a bounded frontier of high-scoring partial token sequences, approximating sequence search while making pruning, length scoring and stopping explicit.",
+      "prerequisiteReasons": {
+        "probability-chain-rule": "A completed sequence score multiplies the conditional token probabilities along its specific prefix path.",
+        "logarithm": "Log scores turn path probability products into stable additive sequence scores."
+      }
+    },
+    "contrastive-search-decoding": {
+      "aliases": [],
+      "objective": "Contrastive search selects a high-probability next-token candidate while penalizing similarity between its contextual hidden state and earlier token states.",
+      "prerequisiteReasons": {
+        "decoder-only-transformer": "The search scores next-token candidates and evaluates their contextual hidden states under the generated prefix.",
+        "cosine-similarity": "The degeneration penalty is the maximum cosine similarity to prior token hidden states."
+      }
+    },
+    "cost-aware-active-learning": {
+      "aliases": [],
+      "objective": "Cost-aware active learning chooses label acquisitions under explicit annotation and selection costs rather than equating every requested label with equal expense.",
+      "prerequisiteReasons": {
+        "active-learning": "Cost-aware acquisition changes which examples the active-learning loop requests under its budget.",
+        "expectation": "An acquisition value is an estimate of future benefit, not an observed guaranteed improvement."
+      }
+    },
+    "active-learning-stopping-rules": {
+      "aliases": [],
+      "objective": "Active-learning stopping rules decide when to end acquisition using declared resource limits or independently monitored learning progress, without equating exhaustion with adequate quality.",
+      "prerequisiteReasons": {
+        "active-learning": "Stopping is a decision at the boundary between successive acquisition-and-retraining rounds.",
+        "measurement": "Progress and resource conditions need explicit metrics, units and observed denominators."
+      }
+    },
+    "error-prediction-acquisition": {
+      "aliases": [
+        "Error-prediction acquisition models"
+      ],
+      "objective": "Learn a proxy for target-model difficulty, distinguish its outcome target from loss magnitude, and validate its label-acquisition value.",
+      "prerequisiteReasons": {
+        "active-learning": "The auxiliary score is used inside a label-acquisition loop rather than as the final task prediction."
+      }
+    },
+    "hardware-aware-inference-autotuning": {
+      "objective": "Hardware-aware inference autotuning searches valid runtime configurations against representative workloads and resource constraints rather than predicting whole-system performance from one fast kernel.",
+      "aliases": [],
+      "prerequisiteReasons": {
+        "inference-benchmark-protocol": "Representative phase, context and load measurements define what the tuner is allowed to optimize.",
+        "llm-inference-memory-budget": "Configuration feasibility depends on complete weights, cache, workspace and runtime capacity, not checkpoint size alone."
+      },
+      "relations": [
+        {
+          "type": "CONTRASTS_WITH",
+          "target": "kernel-autotuning",
+          "reason": "Whole-runtime configuration selection includes workload, placement and resource constraints; single-operation kernel tuning is a narrower search."
+        }
+      ]
     }
   }
 }

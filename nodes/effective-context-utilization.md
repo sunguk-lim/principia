@@ -8,7 +8,7 @@ prereqs: [context-window, lost-in-the-middle, measurement]
 sources: [https://arxiv.org/abs/2307.03172, https://arxiv.org/abs/2308.14508, https://arxiv.org/abs/2404.06654, https://www.anthropic.com/research/effective-context-engineering-for-ai-agents]
 status: explained
 created: 2026-10-17
-updated: 2026-11-23
+updated: 2026-11-27
 ---
 
 # Effective Context Utilization
@@ -42,6 +42,12 @@ Use paired conditions: no external evidence, production retrieval, and a manuall
 For an invented 20-task replay, retrieval at k=2 contains sufficient evidence for 12 tasks and succeeds on 10. At k=6 it contains sufficient evidence for 18 but succeeds on 9. Recall rose from 12/20 to 18/20 while success fell from 10/20 to 9/20. Inspect which paired tasks changed; an oracle condition succeeding on 17 suggests a downstream opportunity but does not prove every remaining miss has the same cause. Stale evidence, contradictory instructions and accidental truncation require their own checks. Repeat trials and report uncertainty before selecting a retrieval budget.
 
 The context-engineering primary reference motivates selective context loading; this staged experiment is an independent diagnostic design, not a reported benchmark or proof that smaller context always wins.
+
+## Conditional utilization accuracy
+
+Label E as “the fully assembled input contains adjudicated sufficient evidence” and C as “the final answer meets the independent correctness rubric.” The conditional utilization score is the fraction of E cases that also satisfy C: count(E and C)/count(E). Report its denominator and treat an empty E set as undefined. Candidate recall and assembled-evidence recall need separate labels; truncation can remove a correctly retrieved record before generation.
+
+For an original 100-question experiment, suppose k=5 supplies sufficient evidence for 60 questions and answers 48 of those correctly: conditional accuracy is 48/60=.80. At k=20, evidence reaches 90 questions but only 54 of those answers pass: .60 conditional accuracy. Recall rose and utilization fell, yet correct answers within E rose from 48 to 54. Overall correctness can also include answers outside E, so do not infer the full score from either fraction alone. The eligible subsets changed: compare their intersection and use paired oracle/distractor interventions before attributing the drop to a reader bottleneck or declaring the retriever irrelevant.
 
 ## Prerequisites
 

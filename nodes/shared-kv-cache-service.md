@@ -8,7 +8,7 @@ prereqs: [prefix-caching, tiered-kv-cache, process, retrieval-authorization-boun
 sources: [https://docs.lmcache.ai/mp/index.html, https://docs.lmcache.ai/]
 status: explained
 created: 2026-10-28
-updated: 2026-10-28
+updated: 2026-11-27
 ---
 
 # Shared KV-Cache Service
@@ -34,6 +34,14 @@ Compare independent worker caches, cache-aware routing and shared restoration un
 ## Check your understanding
 
 Does a separate cache process guarantee a warm request after any crash? No. The service, backend, index, compatible representation and authorization must all still permit restoration; otherwise fall back safely.
+
+## Failure isolation and useful-hit accounting
+
+A separate process isolates some software failures but still depends on shared devices, storage paths and request protocols. Define a bounded response to cache unavailability: timeout, cancel incomplete restoration, recompute safely when supported, or report that the request cannot continue. Engine restart only preserves a warm path if the cache backend, ownership information and compatible state survive. A surviving cache process is not proof that the engine can adopt every old block. Inject engine and cache failures separately, including loss during a transfer and reconnection with stale handles.
+
+A request-level hit ratio can hide almost all of the work. In a toy ten-request batch, eight requests reuse 10 tokens each, while two miss on 1,000-token prompts. The request hit rate is 8/10=80%, but only 80/(80+2,000)≈3.85% of input tokens are reused. That still is not the fraction of prefill time saved: token position, processing shape, restoration and queueing affect time. Track reused tokens, compatible bytes restored, transfer latency, useful work avoided, tail request latency and complete cost as separate measurements. Compare against recomputation under the same traffic and quality target.
+
+LMCache's multiprocess documentation provides primary implementation details for independent service processes, transfer paths and observability. Treat exact fallback behavior and metric definitions as versioned contracts, not universal consequences of the architecture.
 
 ## Prerequisites
 

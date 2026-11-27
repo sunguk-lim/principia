@@ -8503,13 +8503,6 @@
       "reason": "Where this picks up: the socket is one end; the stack is the road between two ends is supporting explanation for the canonical Network Stack objective, not a separately learnable entity."
     },
     {
-      "candidateKey": "cand-fa82c044d0437fbc6950",
-      "sourceId": "numeric-precision-formats",
-      "contentHash": "be93b4010f300a15821e980d51ca4374914a92208bb70fe817ca2d518298e877",
-      "decision": "retain",
-      "reason": "Overview is supporting explanation for the canonical Numeric Precision Formats objective, not a separately learnable entity."
-    },
-    {
       "candidateKey": "cand-faef6adf7273c38dd0c9",
       "sourceId": "process",
       "contentHash": "37a6a076a8454e4c64d17837a5754751438cb13dbd63abb9fac4e559d8b5564c",
@@ -20374,6 +20367,244 @@
       "contentHash": "0d266960de7c6e607d438e44ac6940569e60bbe13c3bda2f8c19a856e0032705",
       "decision": "retain",
       "reason": "States the owning mechanism's limits and independent acceptance conditions for whole-runtime feasible configuration search, distinct from optimizing one kernel. Supporting teaching material, not a separate entity inferred from a heading."
+    },
+    {
+      "candidateKey": "cand-77000c0579335619a598",
+      "sourceId": "token-repetition-penalties",
+      "contentHash": "5c9697948394ea53ffe4576d639c000688103ac6a1d499f1538fb2726bf18c6f",
+      "decision": "retain",
+      "reason": "Defines the owning canonical objective and its scope rather than a separate entity. Reviewed objective: additive prior-token count versus presence adjustments, not semantic novelty."
+    },
+    {
+      "candidateKey": "cand-9c4ca00d68f8542f0322",
+      "sourceId": "token-repetition-penalties",
+      "contentHash": "a6c2de9328b84272978cd54a61f2efd5f18dd280592aa9a5a385109187f605b3",
+      "decision": "retain",
+      "reason": "Explains operations and invariants of that same objective, linking load-bearing foundations. Reviewed objective: additive prior-token count versus presence adjustments, not semantic novelty."
+    },
+    {
+      "candidateKey": "cand-3729c4e8e47a1809b135",
+      "sourceId": "token-repetition-penalties",
+      "contentHash": "86bed13541c59bab1e35d029827f8381b689924e8b3a6d7044b178f94bfcad98",
+      "decision": "retain",
+      "reason": "An invented nondegenerate instance tests the same mechanism; the instance is not another concept. Reviewed objective: additive prior-token count versus presence adjustments, not semantic novelty."
+    },
+    {
+      "candidateKey": "cand-755fda11a2cc7e87a3b6",
+      "sourceId": "token-repetition-penalties",
+      "contentHash": "ae76024f673e751cb8171cca0144022d997198073ff71bb012d0a9bc34eafe23",
+      "decision": "retain",
+      "reason": "Tests and limitations qualify the owning mechanism; they do not define an additional entity. Reviewed objective: additive prior-token count versus presence adjustments, not semantic novelty."
+    },
+    {
+      "candidateKey": "cand-5fedace413d17703260d",
+      "sourceId": "generation-stopping-criteria",
+      "contentHash": "4450ebccfdce8640a27ab2d73305e7908633f5cf074d7372a897ad87fa5f78b8",
+      "decision": "retain",
+      "reason": "Defines the owning canonical objective and its scope rather than a separate entity. Reviewed objective: decoding termination signals and match boundaries, distinct from aggregate budget control and outcome grading."
+    },
+    {
+      "candidateKey": "cand-d0db41c4449e87fa1b19",
+      "sourceId": "generation-stopping-criteria",
+      "contentHash": "8fb144c1e8c24c595aca9e29e685d752c10f78593721410320455962e8874bed",
+      "decision": "retain",
+      "reason": "Explains operations and invariants of that same objective, linking load-bearing foundations. Reviewed objective: decoding termination signals and match boundaries, distinct from aggregate budget control and outcome grading."
+    },
+    {
+      "candidateKey": "cand-74416451f52137565a87",
+      "sourceId": "generation-stopping-criteria",
+      "contentHash": "f4b61800b0f9bda1b0422590b28650220cc997eabfb118846a50b1808d58e701",
+      "decision": "retain",
+      "reason": "An invented nondegenerate instance tests the same mechanism; the instance is not another concept. Reviewed objective: decoding termination signals and match boundaries, distinct from aggregate budget control and outcome grading."
+    },
+    {
+      "candidateKey": "cand-5b406a4c5175b2a02c3a",
+      "sourceId": "generation-stopping-criteria",
+      "contentHash": "048f6868d6bd32aac353d62ed34e655ca54daebf100f97c3dff24f7b4dfac483",
+      "decision": "retain",
+      "reason": "Tests and limitations qualify the owning mechanism; they do not define an additional entity. Reviewed objective: decoding termination signals and match boundaries, distinct from aggregate budget control and outcome grading."
+    },
+    {
+      "candidateKey": "cand-47e6713fc13305de4235",
+      "sourceId": "scenario-based-agent-testing",
+      "contentHash": "11bf032f3e13ce8150a7db095995c4e7f53e2a799e167a8cde8e54d35b95dde6",
+      "decision": "retain",
+      "reason": "Defines the owning canonical objective and its scope rather than a separate entity. Reviewed objective: the reproducible interactive fixture/driver/grader architecture, distinct from only simulator fidelity."
+    },
+    {
+      "candidateKey": "cand-649b74cdc81a2c76995d",
+      "sourceId": "scenario-based-agent-testing",
+      "contentHash": "d37da7a920d72bde4f3c2b269c53b3afd5cfa2243483a4f8e80c3622544148ba",
+      "decision": "retain",
+      "reason": "Explains operations and invariants of that same objective, linking load-bearing foundations. Reviewed objective: the reproducible interactive fixture/driver/grader architecture, distinct from only simulator fidelity."
+    },
+    {
+      "candidateKey": "cand-af2cff507ca9bf0bd054",
+      "sourceId": "scenario-based-agent-testing",
+      "contentHash": "55dc7908c2a4de14d0cf7e9e43e85b1fb629f81cb25a0a23802cf39abd0c8f27",
+      "decision": "retain",
+      "reason": "An invented nondegenerate instance tests the same mechanism; the instance is not another concept. Reviewed objective: the reproducible interactive fixture/driver/grader architecture, distinct from only simulator fidelity."
+    },
+    {
+      "candidateKey": "cand-2fcb62835fda37f3ab25",
+      "sourceId": "scenario-based-agent-testing",
+      "contentHash": "2c5c42c8e098bc3af8f4b5dd396940c0745d37529cd2ec050599c69362bee386",
+      "decision": "retain",
+      "reason": "Tests and limitations qualify the owning mechanism; they do not define an additional entity. Reviewed objective: the reproducible interactive fixture/driver/grader architecture, distinct from only simulator fidelity."
+    },
+    {
+      "candidateKey": "cand-40db58ba70ac5ccdb9ac",
+      "sourceId": "agent-clarification-policy",
+      "contentHash": "a290f6c47284ca12eda65dabf7634559fe9eecd480db39bc9a7b522ff7a19ebf",
+      "decision": "retain",
+      "reason": "Defines the owning canonical objective and its scope rather than a separate entity. Reviewed objective: the ask/default/wait decision for unresolved action-relevant inputs, not a synonym for task underspecification."
+    },
+    {
+      "candidateKey": "cand-8eee317fb6340cb0147c",
+      "sourceId": "agent-clarification-policy",
+      "contentHash": "7b19a5031fcf06eb0bb2e5d50e7969c7efa1f4d27bd53be21a99228efedf85ee",
+      "decision": "retain",
+      "reason": "Explains operations and invariants of that same objective, linking load-bearing foundations. Reviewed objective: the ask/default/wait decision for unresolved action-relevant inputs, not a synonym for task underspecification."
+    },
+    {
+      "candidateKey": "cand-9591ef4cbf52a67eabe8",
+      "sourceId": "agent-clarification-policy",
+      "contentHash": "b5f2e4384308536477d7f4bf4f66256ba90f912265ba1c47e42f57501de35791",
+      "decision": "retain",
+      "reason": "An invented nondegenerate instance tests the same mechanism; the instance is not another concept. Reviewed objective: the ask/default/wait decision for unresolved action-relevant inputs, not a synonym for task underspecification."
+    },
+    {
+      "candidateKey": "cand-816a855f7b707a1f6896",
+      "sourceId": "agent-clarification-policy",
+      "contentHash": "4387568f72b622f657065a0d94d691ffedaa0713624301dcc61c3ac32231222a",
+      "decision": "retain",
+      "reason": "Checks, counterexamples and failure limits support the same learning objective. Reviewed objective: the ask/default/wait decision for unresolved action-relevant inputs, not a synonym for task underspecification."
+    },
+    {
+      "candidateKey": "cand-bebb15f3fe83e58edd1f",
+      "sourceId": "online-feature-lookup",
+      "contentHash": "78b5b5e08917bf07e6d704d782ebd76e04fd27e506e14114b6ab68727d21dd52",
+      "decision": "retain",
+      "reason": "Defines the owning canonical objective and its scope rather than a separate entity. Reviewed objective: current entity-keyed attributes retrieved outside weights under explicit serving contracts."
+    },
+    {
+      "candidateKey": "cand-29ee018063f6613932e4",
+      "sourceId": "online-feature-lookup",
+      "contentHash": "4cbe0daeb0770e493203f9e08940243fadeb72ca682b547c235a9022326b8edb",
+      "decision": "retain",
+      "reason": "Explains operations and invariants of that same objective, linking load-bearing foundations. Reviewed objective: current entity-keyed attributes retrieved outside weights under explicit serving contracts."
+    },
+    {
+      "candidateKey": "cand-fd8bf2bab243c4e0d6c9",
+      "sourceId": "online-feature-lookup",
+      "contentHash": "8009d38c6a863dd311001ce6fc3b702a00723eb14d78b759bfca48b42dad21d0",
+      "decision": "retain",
+      "reason": "An invented nondegenerate instance tests the same mechanism; the instance is not another concept. Reviewed objective: current entity-keyed attributes retrieved outside weights under explicit serving contracts."
+    },
+    {
+      "candidateKey": "cand-ad6ac39c68b406c10d14",
+      "sourceId": "online-feature-lookup",
+      "contentHash": "b83c2ff52723417a3de845a88d80ba50e2f6a6a73ee95a7cef0b00a38f2fb438",
+      "decision": "retain",
+      "reason": "Checks, counterexamples and failure limits support the same learning objective. Reviewed objective: current entity-keyed attributes retrieved outside weights under explicit serving contracts."
+    },
+    {
+      "candidateKey": "cand-63473938d54bf21b5040",
+      "sourceId": "dataset-versioning",
+      "contentHash": "8a96d7542fc00ac2f499af84405d27f7146ad32833a89cfe97bea1f785c46c6c",
+      "decision": "retain",
+      "reason": "Defines the owning canonical objective and its scope rather than a separate entity. Reviewed objective: manifest/content durability and recoverable version selection, distinct from derivation lineage."
+    },
+    {
+      "candidateKey": "cand-7513f1bcbb57013d0210",
+      "sourceId": "dataset-versioning",
+      "contentHash": "2d5640c5c683f467a149fb4313119a0e48a5d2863500aa73c12d8f6ca4256a27",
+      "decision": "retain",
+      "reason": "Explains operations and invariants of that same objective, linking load-bearing foundations. Reviewed objective: manifest/content durability and recoverable version selection, distinct from derivation lineage."
+    },
+    {
+      "candidateKey": "cand-74e97dead783656957d7",
+      "sourceId": "dataset-versioning",
+      "contentHash": "dc6073eb9e748a0df10cda256c4566358b896961af17c90bea96048c464564ed",
+      "decision": "retain",
+      "reason": "An invented nondegenerate instance tests the same mechanism; the instance is not another concept. Reviewed objective: manifest/content durability and recoverable version selection, distinct from derivation lineage."
+    },
+    {
+      "candidateKey": "cand-4178530dbfb1e7c69ab9",
+      "sourceId": "dataset-versioning",
+      "contentHash": "83ce7f49c0c6b6ba874b40e9f1187ecc2fecb15d2bd61b2a1796f576a363b397",
+      "decision": "retain",
+      "reason": "Checks, counterexamples and failure limits support the same learning objective. Reviewed objective: manifest/content durability and recoverable version selection, distinct from derivation lineage."
+    },
+    {
+      "candidateKey": "cand-f89e6def450e192b375d",
+      "sourceId": "repository-agent-instructions",
+      "contentHash": "dcc399ec3d877c9031e98ec18a1549cab69a175a99741025b30c04b3fffcf64a",
+      "decision": "retain",
+      "reason": "Discovery precedence, preservation and paired maintenance tests are supporting lifecycle explanation of repository instructions; finite context and enforced harnesses remain distinct existing concepts. Reviewed objective: durable repository guidance under actual discovery semantics and measured maintenance."
+    },
+    {
+      "candidateKey": "cand-cc3bed07df535b1203be",
+      "sourceId": "llm-sampling-controls",
+      "contentHash": "9388690f2dfa91fdab08adf8bfa2cd7d021f4d4b85f1ca2148829635a43f9ee3",
+      "decision": "retain",
+      "reason": "The revised summary and core mechanism explain the owning concept, not an additional entity. Reviewed objective: distribution/support changes in next-token selection."
+    },
+    {
+      "candidateKey": "cand-46ac8420f5190553bf0d",
+      "sourceId": "llm-sampling-controls",
+      "contentHash": "d63ee1421f9e9b60a3e95bf16dbc4297dabb74e3d591b042550b7dfe082b540a",
+      "decision": "retain",
+      "reason": "The existing fixed-model prompt and seed protocol tests the same sampling-control objective, not a new entity. Reviewed objective: distribution/support changes in next-token selection."
+    },
+    {
+      "candidateKey": "cand-2569b9059b4bc45b60d5",
+      "sourceId": "llm-sampling-controls",
+      "contentHash": "4961a70d4ae7bedf6667f39341dd482ee0ae161611ea3cdf33357ca541a602d0",
+      "decision": "retain",
+      "reason": "The worked probability-support comparison teaches two controls of the owning next-token selection objective, not document retrieval. Reviewed objective: distribution/support changes in next-token selection."
+    },
+    {
+      "candidateKey": "cand-3552f5f88f1d8842a8af",
+      "sourceId": "masked-diffusion-language-model",
+      "contentHash": "c56e261e2b8f183f494b28e00cc9ce4c178b39d11a35d129eb8969117e9c6055",
+      "decision": "retain",
+      "reason": "The revised summary and core mechanism explain the owning concept, not an additional entity. Reviewed objective: masked reconstruction and iterative persistent token-state updates."
+    },
+    {
+      "candidateKey": "cand-a49186dcc8b281f3cb52",
+      "sourceId": "masked-diffusion-language-model",
+      "contentHash": "edc2ef1c252ca25537e93bae1db50c2fd2e91bd83b7a0424cfd0ad59bbf4f8ab",
+      "decision": "retain",
+      "reason": "The explicit proposed-versus-written token trace and reveal policy clarify the same masked sampler state, not a new architecture. Reviewed objective: masked reconstruction and iterative persistent token-state updates."
+    },
+    {
+      "candidateKey": "cand-98f6f1e43b5c4cf4b3c5",
+      "sourceId": "numeric-precision-formats",
+      "contentHash": "1196f6d6221605551f3b901d9e2db836d5ee9f7c97b7bb5f1a45c2419ecc85f7",
+      "decision": "retain",
+      "reason": "The revised summary and core mechanism explain the owning concept, not an additional entity. Reviewed objective: bit layout, range and resolution separate from total-memory and speed claims."
+    },
+    {
+      "candidateKey": "cand-d762ae2f10866694e911",
+      "sourceId": "numeric-precision-formats",
+      "contentHash": "eb97b7cd591d841df7f01d49a8799d7a758c32d6e32943944a1b30cba6e2b93e",
+      "decision": "retain",
+      "reason": "The corrected FP16/BF16 numeric example demonstrates format range and local spacing within the owning concept. Reviewed objective: bit layout, range and resolution separate from total-memory and speed claims."
+    },
+    {
+      "candidateKey": "cand-8f5d4176df6c7f420a3a",
+      "sourceId": "numeric-precision-formats",
+      "contentHash": "c20bee3acab7356d2bfd9c5e6b4a59392675689a33c1e51048b8f6d35126a099",
+      "decision": "retain",
+      "reason": "The payload/metadata/GB-GiB calculation qualifies storage implied by the format; the arithmetic is supporting explanation, not a separate memory architecture. Reviewed objective: bit layout, range and resolution separate from total-memory and speed claims."
+    },
+    {
+      "candidateKey": "cand-c625ebccc403ee51e155",
+      "sourceId": "numeric-precision-formats",
+      "contentHash": "622574be88ab47c3168fd85e21c082418f9db81031b226856edc90257a0c3e52",
+      "decision": "retain",
+      "reason": "Checks, counterexamples and failure limits support the same learning objective. Reviewed objective: bit layout, range and resolution separate from total-memory and speed claims."
     }
   ]
 }

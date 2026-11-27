@@ -5880,6 +5880,56 @@
           "reason": "Whole-runtime configuration selection includes workload, placement and resource constraints; single-operation kernel tuning is a narrower search."
         }
       ]
+    },
+    "token-repetition-penalties": {
+      "aliases": [],
+      "objective": "Token repetition penalties alter next-token logits according to prior token counts or presence, discouraging reuse without enforcing semantic novelty.",
+      "prerequisiteReasons": {
+        "softmax": "The adjusted scores become probabilities through softmax.",
+        "subword-tokenization": "The counts and presence indicator refer to token identities, not words or semantic topics."
+      }
+    },
+    "generation-stopping-criteria": {
+      "aliases": [],
+      "objective": "Generation stopping criteria terminate a decoding process on a budget, terminal token or matched sequence, without proving that the returned content is complete or valid.",
+      "prerequisiteReasons": {
+        "subword-tokenization": "Token and string boundaries determine budget and stop-matching behavior.",
+        "llm-sampling-controls": "The repeated generation loop is the process whose termination is controlled."
+      }
+    },
+    "scenario-based-agent-testing": {
+      "aliases": [],
+      "objective": "Scenario-based agent testing executes bounded interactive fixtures against a versioned agent and checks both its conversation and resulting environment state.",
+      "prerequisiteReasons": {
+        "agent-simulation-fidelity": "Interactive fixtures need explicit simulated user and environment semantics.",
+        "llm-as-a-judge": "Open-ended conversation scoring needs a calibrated judge rather than exact prose matching."
+      }
+    },
+    "agent-clarification-policy": {
+      "aliases": [],
+      "objective": "An agent clarification policy requests missing decision-relevant information when acting on an assumption would materially change the permitted or useful outcome.",
+      "prerequisiteReasons": {
+        "tool-call-execution-contract": "Clarification must precede effects whose arguments or authority depend on the missing information.",
+        "measurement": "The policy trades correct outcomes against extra questions and must be evaluated on both.",
+        "task-underspecification": "Clarification resolves outcome-relevant choices left unsettled by the task contract, rather than asking about every missing detail."
+      }
+    },
+    "online-feature-lookup": {
+      "aliases": [],
+      "objective": "Online feature lookup retrieves entity-keyed current feature values outside model weights under explicit schema, freshness, failure and latency contracts.",
+      "prerequisiteReasons": {
+        "hash-map": "Entity-keyed retrieval uses a key-to-record abstraction.",
+        "categorical-data-encoding": "Fetched categorical attributes must obey the fitted training-serving encoding.",
+        "measurement": "Latency, freshness and model-quality outcomes require explicit observed metrics."
+      }
+    },
+    "dataset-versioning": {
+      "aliases": [],
+      "objective": "Dataset versioning binds a small revisioned manifest to retrievable immutable data content so experiments can select and restore the intended dataset.",
+      "prerequisiteReasons": {
+        "dataset-lineage": "Dataset lineage explains the relation between fixed input versions and transformation runs.",
+        "hash-map": "Content-addressed storage requires a key-to-artifact lookup distinct from a filename."
+      }
     }
   }
 }

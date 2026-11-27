@@ -1,14 +1,14 @@
 ---
 id: masked-diffusion-language-model
 title: Masked Diffusion Language Model
-summary: A masked diffusion language model generates a fixed set of token positions by repeatedly predicting masked tokens and revealing selected positions, rather than extending a prefix one token at a time.
+summary: A masked diffusion language model learns reconstruction from incomplete token sequences and generates by repeatedly proposing masked tokens and committing a scheduled subset.
 type: concept
 tags: [ml/llm/architecture]
 prereqs: [transformer-attention, subword-tokenization, probability-distribution]
-sources: [https://arxiv.org/abs/2502.09992]
+sources: [https://arxiv.org/abs/2502.09992, https://raw.githubusercontent.com/ML-GSAI/LLaDA/main/generate.py]
 status: explained
 created: 2026-10-15
-updated: 2026-10-15
+updated: 2026-11-28
 ---
 
 # Masked Diffusion Language Model
@@ -25,6 +25,17 @@ For generation, choose an output length or length policy, initialize the unknown
 
 A useful small example begins with `The [MASK] is [MASK]`. One pass may propose `cat` and `sleeping`; a later pass can revise an uncertain position after the other is committed. The schedule must define what is frozen and what can change. Compare against an autoregressive model with matched quality and hardware, measuring wall-clock latency, model passes, tokens per pass, memory, length errors, and consistency under repeated decoding. Evaluate order-sensitive tasks separately, since bidirectional revision can help some constraints but can also produce incompatible local choices.
 
+
+## Prediction is not commitment
+
+A forward pass can propose a token at every remaining mask while the sampler writes only a subset into the persistent sequence. Unwritten proposals are discarded; the next pass recomputes them from the newly visible context. Predictions made in the same pass do not condition on one another's newly sampled values. Shared context creates statistical dependence, but does not supply an internal sequential conversation between those proposals.
+
+Consider an invented four-position output `[MASK, MASK, MASK, MASK]`. One pass proposes `[red, birds, can, fly]`, but the policy commits positions 2 and 4, leaving `[MASK, birds, MASK, fly]`. The next pass predicts positions 1 and 3 with `birds` and `fly` now visible. It may produce `[small, birds, often, fly]`; the discarded proposals `red` and `can` were never committed history. This is a state trace, not a measured output from a real model.
+
+Reveal count and reveal position are separate choices. A sampler can distribute a fixed mask count across steps, then select positions by sampled-token confidence or random scores. The public LLaDA sampler illustrates those policies and writes selected predictions into the sequence. Inspect the exact revision: a parameter named “remasking” does not prove that every committed token is later revised. More simultaneous commitments reduce opportunities to condition on other new values and can freeze inconsistent choices.
+
+Compare schedules under fixed output length, model and quality criteria. Count useful committed tokens, repeated sequence work, model evaluations and wall time; predicting four candidates and committing two is not four completed output tokens. Fixed initial slots, blockwise extension and stop handling are distinct length policies, not interchangeable consequences of the word diffusion.
+
 ## Prerequisites
 
 - [[transformer-attention]]
@@ -34,3 +45,5 @@ A useful small example begins with `The [MASK] is [MASK]`. One pass may propose 
 ## Sources
 
 - [Nie et al., “Large Language Diffusion Models”](https://arxiv.org/abs/2502.09992): masked forward corruption, reverse token prediction, and the LLaDA implementation.
+
+- <https://raw.githubusercontent.com/ML-GSAI/LLaDA/main/generate.py>
